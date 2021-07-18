@@ -13,12 +13,12 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     </div>
-    <div class="flex w-full flex-col font-semibold lg:flex-row lg:w-auto text-center my-2 lg:my-0" v-show="mobileView">
+    <div class="flex w-full flex-col font-semibold lg:flex-row lg:w-auto text-center my-2 lg:my-0" v-if="mobileView || lg">
       <a class="text-gray-900 border border-gray-200 rounded bg-gray-200 px-3 py-2 mx-1 my-1 lg:my-0" href="#">Home</a>
       <a class="text-gray-600 rounded px-3 py-2 mx-1 my-1 lg:my-0 hover:text-gray-800 hover:bg-gray-100" href="#">Games</a>
       <a class="text-gray-600 rounded px-3 py-2 mx-1 my-1 lg:my-0 hover:text-gray-800 hover:bg-gray-100" href="#">About</a>
     </div>
-    <div class="flex flex-col relative w-full px-2 my-1 lg:my-0 lg:flex-row lg:w-auto" v-show="mobileView">
+    <div class="flex flex-col relative w-full px-2 my-1 lg:my-0 lg:flex-row lg:w-auto" v-if="mobileView || lg">
       <input class="border border-gray-400 bg-white rounded px-4 py-2 pr-12 focus:outline-none" name="search" placeholder="Search...">
       <button type="submit" class="absolute right-6 bottom-3">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -26,7 +26,7 @@
         </svg>
       </button>      
     </div>
-    <div class="flex w-full flex-col lg:flex-row lg:w-auto text-center my-2 lg:my-0" v-if="mobileView">
+    <div class="flex w-full flex-col lg:flex-row lg:w-auto text-center my-2 lg:my-0" v-if="mobileView || lg">
       <a class="text-gray-600 border border-gray-300 rounded px-3 py-2 mx-1 my-1 lg:my-0 hover:text-gray-800 hover:bg-gray-100" href="#">Log In</a>
       <a class="text-gray-100 bg-gray-600 rounded px-3 py-2 mx-1 my-1 lg:my-0 hover:text-white hover:bg-gray-900" href="#">Sign Up</a>
     </div>    
@@ -38,7 +38,13 @@ export default {
   data() {
     return {
       mobileView: false,
+      lg: window.innerWidth >= 1024
     }
+  },
+  created() {
+    addEventListener('resize', () => {
+      this.lg = innerWidth >= 1024
+    })
   }
 }
 </script>
