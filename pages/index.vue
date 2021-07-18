@@ -1,7 +1,4 @@
 <template>
-  <div class="container mx-auto">
-    <navbar />
-  </div>
 </template>
 
 <script lang="ts">
