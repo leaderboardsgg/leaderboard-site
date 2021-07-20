@@ -48,7 +48,6 @@ export default {
     let lgSetBool = () => {
       this.lg = innerWidth >= 1024
     }
-
     lgSetBool()
     addEventListener('resize', lgSetBool)
   },
