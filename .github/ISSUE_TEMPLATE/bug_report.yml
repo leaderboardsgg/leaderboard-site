@@ -43,8 +43,8 @@ body:
       label: Were you on mobile when this happened?
       multiple: false
       options:
-        - No
-        - Yes
+        - 'No'
+        - 'Yes'
     validations:
       required: true
   - type: dropdown
