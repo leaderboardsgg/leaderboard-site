@@ -8,6 +8,10 @@ User Profiles
 Run Uploads (or external linking)
 Board Customization and good management tools.
 
+## Contributing
+
+If you'd like to start contributing to the project please check `CONTRIBUTING.md` first to make sure things go as smoothly as possible!
+
 ## Build Setup
 
 ```bash
