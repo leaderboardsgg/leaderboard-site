@@ -1,0 +1,30 @@
+name: Suggest a task
+description: Suggest an idea for improving this project without changing functionality
+title: "Task: {short description}"
+labels: [needs triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please take the time to fill out this . Thanks!
+  - type: textarea
+    id: new-functionality
+    attributes:
+      label: What are you wanting to be added?
+      description: Give us all the details.
+    validations:
+      required: true
+  - type: textarea
+    id: affected-functionality
+    attributes:
+      label: What might break?
+      description: Any known functionality impacted, or Unknown if further research needs to be done
+    validations:
+      required: true
+  - type: textarea
+    id: related-issues
+    attributes:
+      label: Relevant Issues
+      description: Link us to any related outstanding issues
+    validations:
+      required: false
