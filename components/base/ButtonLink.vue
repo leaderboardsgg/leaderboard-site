@@ -1,13 +1,8 @@
 <template>
   <NuxtLink
-    class="
-      rounded
-      px-3
-      text-current
-      hover:bg-current
-    "
     :class="classNames"
     :to="linkTo"
+    class="button-link"
   >
     <slot />
   </NuxtLink>
@@ -27,3 +22,11 @@ export default {
   }
 };
 </script>
+
+<style>
+  @layer components {
+    .button-link {
+      @apply rounded px-3 py-2 text-current hover:bg-current;
+    }
+  }
+</style>

@@ -1,10 +1,10 @@
 <template>
   <BaseButtonLink
     :class-names="classNames"
-    :link-to="linkTo"
-    class="nav-link"
+    class="sign-up-button"
+    link-to="#"
   >
-    <slot />
+    Sign Up
   </BaseButtonLink>
 </template>
 
@@ -14,10 +14,6 @@ export default {
     classNames: {
       default: '',
       type: String
-    },
-    linkTo: {
-      default: '#',
-      type: String
     }
   }
 };
@@ -25,8 +21,8 @@ export default {
 
 <style scoped>
   @layer components {
-    .nav-link {
-      @apply w-full mt-2 lg:mt-0 lg:mx-1 py-1 hover:bg-gray-100;
+    .sign-up-button {
+      @apply bg-gray-100 hover:bg-black mx-1 py-1 text-opacity-70 hover:text-white;
     }
   }
 </style>

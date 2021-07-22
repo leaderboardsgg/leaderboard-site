@@ -1,9 +1,7 @@
 <template>
   <BaseButtonLink
-    :class-names="classNames + `
-      py-2
-      hover:bg-gray-100
-    `"
+    :class-names="classNames"
+    class="login-button"
     link-to="#"
   >
     Log In
@@ -20,3 +18,11 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  @layer components {
+    .login-button {
+      @apply mx-1 py-1 hover:bg-gray-100;
+    }
+  }
+</style>

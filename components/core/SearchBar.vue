@@ -1,27 +1,14 @@
 <template>
   <div
-    class="
-      search-bar
-      relative
-      flex items-center
-      w-full px-2
-      text-gray-300
-    "
+    class="search-bar"
   >
     <input
-      class="
-        border border-current rounded
-        bg-white
-        w-full pr-12 px-4 py-1
-        focus:outline-none
-      "
       name="search"
       placeholder="search..."
     />
-    <button type="submit" class="absolute right-4 text-current">
+    <button type="submit">
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-5 w-5 stroke-current"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -36,3 +23,23 @@
     </button>
   </div>
 </template>
+
+<style scoped>
+  @layer components {
+    .search-bar {
+      @apply flex items-center px-2 relative text-gray-300 w-full;
+    }
+
+    .search-bar > input {
+      @apply border border-current rounded bg-white w-full pr-12 px-4 py-1 focus:outline-none;
+    }
+
+    .search-bar > button {
+      @apply absolute right-4 text-current;
+    }
+
+    .search-bar > button > svg {
+      @apply h-5 w-5 stroke-current;
+    }
+  }
+</style>
