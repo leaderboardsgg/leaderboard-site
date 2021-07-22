@@ -2,6 +2,7 @@
   <BaseButtonLink
     :class-names="classNames + `
       w-full
+      mt-2 lg:mt-0
       py-0 lg:py-1
       hover:bg-gray-100
     `"

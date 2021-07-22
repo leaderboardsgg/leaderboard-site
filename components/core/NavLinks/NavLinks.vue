@@ -6,12 +6,8 @@
         text-center text-black
       "
   >
-    <NavLink class-names="mt-1 lg:my-0">
-      Games
-    </NavLink>
-    <NavLink>
-      About
-    </NavLink>
+    <NavLink>Games</NavLink>
+    <NavLink>About</NavLink>
   </nav>
 </template>
 
