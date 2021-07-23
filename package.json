@@ -7,8 +7,13 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "lint:fix": "eslint --ext \".js,.vue\" --ignore-path .gitignore . --fix",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js",
+    "precommit": "run-s pretty:staged lint:js",
+    "prepare": "husky install",
+    "pretty:staged": "pretty-quick --staged",
+    "pretty": "pretty-quick",
     "test": "jest"
   },
   "dependencies": {
@@ -20,6 +25,7 @@
     "@testing-library/vue": "^5.8.1",
     "@vueuse/core": "^5.2.0",
     "core-js": "^3.16.0",
+    "husky": "^7.0.1",
     "nuxt": "^2.15.7"
   },
   "devDependencies": {
@@ -33,13 +39,19 @@
     "autoprefixer": "^10.3.1",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^27.0.5",
-    "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^7.12.1",
+    "eslint-plugin-vuejs-accessibility": "^0.7.1",
+    "eslint": "^7.29.0",
+    "jest-environment-jsdom": "^27.0.6",
     "jest": "^27.0.5",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.3.6",
     "prettier": "^2.3.2",
+    "pretty-quick": "^3.1.1",
     "tailwindcss": "^2.2.7",
     "ts-jest": "^27.0.3",
     "vue-jest": "^3.0.4"

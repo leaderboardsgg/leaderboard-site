@@ -1,0 +1,8 @@
+.husky
+.nuxt
+coverage
+node_modules
+static
+
+jest.*.js
+testUtils.js
