@@ -2,13 +2,9 @@
   <div class="border-b border-gray-300">
     <div
       class="
-        mx-auto
-        container
-        flex flex-wrap
-        justify-between
-        px-3
-        py-3
-        lg:flex-row
+        container relative
+        flex flex-wrap lg:flex-row justify-between
+        mx-auto px-3 py-3
       "
     >
       <NuxtLink class="flex flex-grow" to="/">
@@ -35,7 +31,7 @@
               font-semibold
               leading-6
               tracking-tight
-              hidden lg:inline
+              hidden md:inline
             "
           >
             speedrun.website
@@ -56,7 +52,7 @@
         <CoreSearchBar />
       </div>
       <div class="
-             flex flex-row
+             flex flex-row items-center
              absolute right-2 top-4
              lg:relative lg:right-0 lg:top-0
              space-x-2 lg:space-x-0
