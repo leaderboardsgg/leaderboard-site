@@ -56,8 +56,8 @@
         <CoreSearchBar />
       </div>
       <div class="
-             flex flex-row items-center
-             absolute right-2 top-5
+             flex flex-row
+             absolute right-2 top-4
              lg:relative lg:right-0 lg:top-0
              space-x-2 lg:space-x-0
            "
