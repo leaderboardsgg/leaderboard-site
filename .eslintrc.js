@@ -1,5 +1,4 @@
 module.exports = {
-  root: true,
   env: {
     browser: true,
     node: true,
@@ -10,8 +9,10 @@ module.exports = {
     'prettier',
   ],
   plugins: [],
+  root: true,
   // add your custom rules here
   rules: {
+    'eol-last': ['error', 'always'],
     'sort-keys': [
       'error',
       'asc',
