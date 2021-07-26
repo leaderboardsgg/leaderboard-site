@@ -3,22 +3,17 @@ module.exports = {
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
     '<rootDir>/layouts/**/*.vue',
-    '<rootDir>/pages/**/*.vue'
+    '<rootDir>/pages/**/*.vue',
   ],
   coverageThreshold: {
     global: {
-      statements: 70,
       branches: 70,
-      lines: 70,
       functions: 70,
+      lines: 70,
+      statements: 70,
     },
   },
-  moduleFileExtensions: [
-    'js',
-    'json',
-    'ts',
-    'vue'
-  ],
+  moduleFileExtensions: ['js', 'json', 'ts', 'vue'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^vue$': 'vue/dist/vue.common.js',
@@ -29,6 +24,6 @@ module.exports = {
   transform: {
     '.*\\.(vue)$': 'vue-jest',
     '^.+\\.js$': 'babel-jest',
-    "^.+\\.ts$": "ts-jest"
-  }
-}
+    '^.+\\.ts$': 'ts-jest',
+  },
+};
