@@ -84,7 +84,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import Vue from 'vue'
 
 export default Vue.extend({
   data: () => ({
@@ -99,12 +99,11 @@ export default Vue.extend({
  
   methods: {
     lgSetBool() {
-      console.log("pop")
-      return this.lg = innerWidth >= 1024;
-    }
+      return (this.lg = innerWidth >= 1024)
+    },
   },
   mounted() {
-    this.lgSetBool();
+    this.lgSetBool()
   },
   beforeMount() {
     addEventListener('resize', this.lgSetBool)
