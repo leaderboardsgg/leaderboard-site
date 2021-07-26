@@ -86,6 +86,11 @@
 <script lang="ts">
 import Vue from 'vue'
 
+/**
+ * TODO use https://vueuse.org/core/usebreakpoints and
+ * https://vueuse.org/core/useEventListener/
+ */
+
 export default Vue.extend({
   data: () => ({
     mobileNavIsActive: false,
