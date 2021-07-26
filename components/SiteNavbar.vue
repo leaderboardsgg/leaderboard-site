@@ -93,8 +93,8 @@ import Vue from 'vue'
 
 export default Vue.extend({
   data: () => ({
-    mobileNavIsActive: false,
     lg: false,
+    mobileNavIsActive: false,
   }),
 
   /* Need to disable the `sort-keys` rule here, since it
@@ -102,11 +102,6 @@ export default Vue.extend({
    */
   /* eslint-disable sort-keys */
  
-  methods: {
-    lgSetBool() {
-      return (this.lg = innerWidth >= 1024)
-    },
-  },
   mounted() {
     this.lgSetBool()
   },
@@ -115,6 +110,11 @@ export default Vue.extend({
   },
   beforeDestroy() {
     removeEventListener('resize', this.lgSetBool)
+  },
+  methods: {
+    lgSetBool() {
+      return (this.lg = innerWidth >= 1024)
+    },
   },
 })
 </script>
