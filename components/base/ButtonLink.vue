@@ -1,27 +1,12 @@
 <template>
   <NuxtLink
-    :class="classNames"
-    :to="linkTo"
     class="button-link"
+    v-bind="$attrs"
+    v-on="$listeners"
   >
     <slot />
   </NuxtLink>
 </template>
-
-<script>
-export default {
-  props: {
-    classNames: {
-      default: '',
-      type: String
-    },
-    linkTo: {
-      default: '#',
-      type: String
-    }
-  }
-};
-</script>
 
 <style>
   @layer components {
