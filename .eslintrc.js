@@ -13,10 +13,12 @@ module.exports = {
   // add your custom rules here
   rules: {
     'eol-last': ['error', 'always'],
-    'sort-keys': [
-      'error',
-      'asc',
-      { caseSensitive: true, minKeys: 2, natural: false },
-    ],
+    "vue/sort-keys": ["error", "asc", {
+      "caseSensitive": true,
+      "ignoreChildrenOf": ["model"],
+      "ignoreGrandchildrenOf": ["computed", "directives", "inject", "props", "watch"],
+      "minKeys": 2,
+      "natural": false
+    }]
   },
 }

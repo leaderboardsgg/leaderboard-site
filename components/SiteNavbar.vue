@@ -83,29 +83,32 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      lg: false,
-      mobileNavIsActive: false,
-    };
-  },
+<script lang="ts">
+import Vue from 'vue'
 
-  /* Need to disable the `sort-keys` rule here, since it
-   * conflicts with the `vue/order-in-components` rule.
-   */
-  /* eslint-disable sort-keys */
+/**
+ * TODO use https://vueuse.org/core/usebreakpoints and
+ * https://vueuse.org/core/useEventListener/
+ */
 
-  beforeDestroy() {
-    removeEventListener('resize', lgSetBool);
+export default Vue.extend({
+  data: () => ({
+    lg: false,
+    mobileNavIsActive: false,
+  }),
+  mounted() {
+    this.lgSetBool()
   },
   beforeMount() {
-    const lgSetBool = () => {
-      this.lg = innerWidth >= 1024
-    };
-    lgSetBool();
-    addEventListener('resize', lgSetBool);
+    addEventListener('resize', this.lgSetBool)
   },
-}
+  beforeDestroy() {
+    removeEventListener('resize', this.lgSetBool)
+  },
+  methods: {
+    lgSetBool() {
+      return (this.lg = innerWidth >= 1024)
+    },
+  },
+})
 </script>

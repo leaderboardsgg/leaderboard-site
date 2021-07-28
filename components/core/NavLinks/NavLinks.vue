@@ -1,18 +1,19 @@
 <template>
   <nav class="nav-link-container">
-    <NavLink>Games</NavLink>
-    <NavLink>About</NavLink>
+    <NavLink to="#">Games</NavLink>
+    <NavLink to="#">About</NavLink>
   </nav>
 </template>
 
-<script>
-import NavLink from './NavLink';
+<script lang="ts">
+import Vue from 'vue'
+import NavLink from './NavLink.vue';
 
-export default {
+export default Vue.extend({
   components: {
     NavLink
-  }
-}
+  }  
+})
 </script>
 
 <style scoped>

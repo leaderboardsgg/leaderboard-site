@@ -1,23 +1,13 @@
 <template>
   <BaseButtonLink
-    :class-names="classNames"
     class="sign-up-button"
-    link-to="#"
+    to="#"
+    v-bind="$attrs"
+    v-on="$listeners"
   >
     Sign Up
   </BaseButtonLink>
 </template>
-
-<script>
-export default {
-  props: {
-    classNames: {
-      default: '',
-      type: String
-    }
-  }
-};
-</script>
 
 <style scoped>
   @layer components {

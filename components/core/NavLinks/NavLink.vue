@@ -1,27 +1,12 @@
 <template>
   <BaseButtonLink
-    :class-names="classNames"
-    :link-to="linkTo"
     class="nav-link"
+    v-bind="$attrs"
+    v-on="$listeners"
   >
     <slot />
   </BaseButtonLink>
 </template>
-
-<script>
-export default {
-  props: {
-    classNames: {
-      default: '',
-      type: String
-    },
-    linkTo: {
-      default: '#',
-      type: String
-    }
-  }
-};
-</script>
 
 <style scoped>
   @layer components {
