@@ -11,13 +11,17 @@ export default {
     '@nuxt/typescript-build',
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
+    // https://composition-api.nuxtjs.org
+    '@nuxtjs/composition-api/module'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: [
+    "@/assets/css/tailwind.css",
+  ],
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
