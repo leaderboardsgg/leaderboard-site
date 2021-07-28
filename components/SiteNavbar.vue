@@ -96,12 +96,6 @@ export default Vue.extend({
     lg: false,
     mobileNavIsActive: false,
   }),
-
-  /* Need to disable the `sort-keys` rule here, since it
-   * conflicts with the `vue/order-in-components` rule.
-   */
-  /* eslint-disable sort-keys */
- 
   mounted() {
     this.lgSetBool()
   },
