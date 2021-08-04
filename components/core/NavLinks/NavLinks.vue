@@ -1,19 +1,35 @@
 <template>
   <nav class="nav-link-container">
-    <NavLink to="#">Games</NavLink>
-    <NavLink to="#">About</NavLink>
+    <NavLink v-for="navLink in navLinks" v-bind="navLink" :key="navLink.name">
+      {{ navLink.name }}
+    </NavLink>
   </nav>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api'
-import NavLink from './NavLink.vue';
+import NavLink from './NavLink/NavLink.vue';
 
 export default defineComponent({
   components: {
     NavLink
-  }
-})
+  },
+  props: {
+    navLinks: {
+      default: () => [
+        {
+          name: 'Games',
+          to: '#',
+        },
+        {
+          name: 'About',
+          to: '#',
+        },
+      ],
+      type: Array,
+    },
+  },
+});
 </script>
 
 <style scoped>

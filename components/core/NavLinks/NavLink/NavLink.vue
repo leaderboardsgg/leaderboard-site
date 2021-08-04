@@ -1,9 +1,5 @@
 <template>
-  <BaseButtonLink
-    class="nav-link"
-    v-bind="$attrs"
-    v-on="$listeners"
-  >
+  <BaseButtonLink class="nav-link" v-bind="$attrs" v-on="$listeners">
     <slot />
   </BaseButtonLink>
 </template>
