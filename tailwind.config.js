@@ -1,14 +1,17 @@
+const { screens } = require("./breakpoints.js");
+
 module.exports = {
   darkMode: false, // or 'media' or 'class'
+  mode: "jit",
   plugins: [],
   purge: [
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
-    './nuxt.config.{js,ts}',
   ],
   theme: {
     extend: {},
+    screens,
   },
   variants: {
     extend: {},

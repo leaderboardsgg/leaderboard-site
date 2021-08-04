@@ -84,31 +84,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent, ref } from '@nuxtjs/composition-api'
+import { useBreakpoints } from "@vueuse/core"
+import { screens } from "@/breakpoints";
 
-/**
- * TODO use https://vueuse.org/core/usebreakpoints and
- * https://vueuse.org/core/useEventListener/
- */
+const breakpoints = useBreakpoints(screens);
 
-export default Vue.extend({
-  data: () => ({
-    lg: false,
-    mobileNavIsActive: false,
-  }),
-  mounted() {
-    this.lgSetBool()
-  },
-  beforeMount() {
-    addEventListener('resize', this.lgSetBool)
-  },
-  beforeDestroy() {
-    removeEventListener('resize', this.lgSetBool)
-  },
-  methods: {
-    lgSetBool() {
-      return (this.lg = innerWidth >= 1024)
-    },
+export default defineComponent({
+  setup() {
+    const lg = breakpoints.greater("lg");
+    const mobileNavIsActive = ref(false);
+
+    return {
+      lg,
+      mobileNavIsActive,
+    }
   },
 })
 </script>
