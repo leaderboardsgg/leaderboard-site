@@ -1,10 +1,5 @@
 <template>
-  <BaseButtonLink
-    class="login-button"
-    to="#"
-    v-bind="$attrs"
-    v-on="$listeners"
-  >
+  <BaseButtonLink class="login-button" to="#" v-bind="$attrs" v-on="$listeners">
     Log In
   </BaseButtonLink>
 </template>

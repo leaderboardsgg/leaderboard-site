@@ -1,12 +1,7 @@
 <template>
-  <div
-    class="search-bar"
-  >
-    <input
-      name="search"
-      placeholder="search..."
-    />
-    <button type="submit">
+  <div class="search-bar">
+    <input name="search" placeholder="search..." @keyup.enter="onEnter" />
+    <button type="submit" @click="onClick">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -23,6 +18,27 @@
     </button>
   </div>
 </template>
+
+<script>
+import Vue from 'vue';
+
+export default Vue.extend({
+  props: {
+    onSubmit: {
+      default: () => console.log('submit'), // eslint-disable-line no-console
+      type: Function,
+    },
+  },
+  methods: {
+    onClick() {
+      this.$props.onSubmit();
+    },
+    onEnter() {
+      this.$props.onSubmit();
+    },
+  },
+});
+</script>
 
 <style scoped>
   .search-bar {

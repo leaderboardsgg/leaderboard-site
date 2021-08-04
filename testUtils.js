@@ -24,7 +24,7 @@ export const NuxtLinkStub = Vue.component('NuxtLinkStub', {
 
 export const stubbedRender = (Component, options) => {
   return render(Component, {
-    stubs: { NuxtLink: NuxtLinkStub, ...options.stubs },
+    stubs: { NuxtLink: NuxtLinkStub, ...options?.stubs },
     ...options,
   });
 };
