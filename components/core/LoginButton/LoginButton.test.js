@@ -7,4 +7,10 @@ describe('<LoginButton />', () => {
 
     unmount();
   });
+
+  it('renders correctly', () => {
+    stubbedRender(LoginButton);
+
+    expect(document.querySelector('.login-button')).toMatchSnapshot();
+  });
 });

@@ -7,4 +7,10 @@ describe('<SiteFooter />', () => {
 
     unmount();
   });
+
+  it('renders correctly', () => {
+    stubbedRender(SiteFooter);
+
+    expect(document.querySelector('.site-footer')).toMatchSnapshot();
+  });
 });

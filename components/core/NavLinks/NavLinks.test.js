@@ -18,6 +18,14 @@ describe('<NavLinks />', () => {
     unmount();
   });
 
+  it('renders correctly', () => {
+    stubbedRender(NavLinks, {
+      props: defaultProps,
+    });
+
+    expect(document.querySelector('.nav-link-container')).toMatchSnapshot();
+  });
+
   it('should render the same amount of <NavLink /> components as there are items in the navLinks props', () => {
     stubbedRender(NavLinks, {
       props: defaultProps,

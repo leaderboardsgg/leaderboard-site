@@ -7,4 +7,10 @@ describe('<SignUpButton />', () => {
 
     unmount();
   });
+
+  it('renders correctly', () => {
+    stubbedRender(SignUpButton);
+
+    expect(document.querySelector('.sign-up-button')).toMatchSnapshot();
+  });
 });

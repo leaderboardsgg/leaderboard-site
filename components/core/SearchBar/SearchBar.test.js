@@ -13,6 +13,14 @@ describe('<SearchBar />', () => {
     unmount();
   });
 
+  it('renders correctly', () => {
+    stubbedRender(SearchBar, {
+      props: defaultProps,
+    });
+
+    expect(document.querySelector('.search-bar')).toMatchSnapshot();
+  });
+
   describe('when search is initiated', () => {
     test('the onSubmit method is called when search button is clicked', async () => {
       stubbedRender(SearchBar, {

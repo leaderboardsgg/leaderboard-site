@@ -7,4 +7,10 @@ describe('<SiteNavbar />', () => {
 
     unmount();
   });
+
+  it('renders correctly', () => {
+    stubbedRender(SiteNavbar);
+
+    expect(document.querySelector('.site-navbar')).toMatchSnapshot();
+  });
 });

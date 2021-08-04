@@ -14,4 +14,14 @@ describe('<NavLink />', () => {
 
     unmount();
   });
+
+  it('renders correctly', () => {
+    stubbedRender(NavLink, {
+      attrs: defaultAttrs,
+      props: defaultProps,
+      slots: { default: 'Games' },
+    });
+
+    expect(document.querySelector('.custom-link')).toMatchSnapshot();
+  });
 });

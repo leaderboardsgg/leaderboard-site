@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SiteNavbar /> renders correctly 1`] = `
+<div
+  class="site-navbar border-b border-gray-300"
+>
+  <div
+    class="
+      container
+      relative
+      flex flex-wrap
+      lg:flex-row
+      justify-between
+      mx-auto
+      px-3
+      py-3
+    "
+  >
+    <a
+      class="flex flex-grow"
+      href="/"
+    >
+      <div
+        class="flex"
+      >
+        <svg
+          class="h-10 w-10 mx-1"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+          />
+        </svg>
+         
+        <h1
+          class="
+            w-full
+            py-2
+            text-lg text-center
+            md:text-left
+            font-semibold
+            leading-6
+            tracking-tight
+            hidden
+            md:inline
+          "
+        >
+          
+          speedrun.website
+        
+        </h1>
+      </div>
+    </a>
+     
+    <div
+      class="
+        border-t border-gray-300
+        lg:border-t-0
+        flex flex-col
+        lg:flex-row
+        mt-2
+        lg:mt-0
+        w-full
+        lg:w-auto
+        space-y-2
+        lg:space-y-0
+      "
+      style="display: none;"
+    >
+      <nav
+        class="nav-link-container"
+      >
+        <a
+          class="button-link nav-link"
+          href="#"
+          name="Games"
+          to="#"
+        >
+          
+    Games
+  
+        </a>
+        <a
+          class="button-link nav-link"
+          href="#"
+          name="About"
+          to="#"
+        >
+          
+    About
+  
+        </a>
+      </nav>
+       
+      <div
+        class="search-bar"
+      >
+        <input
+          name="search"
+          placeholder="search..."
+        />
+         
+        <button
+          type="submit"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+     
+    <div
+      class="
+        flex flex-row
+        items-center
+        absolute
+        right-2
+        top-4
+        lg:relative lg:right-0 lg:top-0
+        space-x-2
+        lg:space-x-0
+      "
+    >
+      <a
+        class="button-link login-button"
+        href="#"
+        to="#"
+      >
+        
+  Log In
+
+      </a>
+       
+      <a
+        class="button-link sign-up-button"
+        href="#"
+        to="#"
+      >
+        
+  Sign Up
+
+      </a>
+       
+      <button
+        class="items-center rounded text-black lg:hidden"
+      >
+        <svg
+          class="fill-current h-5 w-5 mx-2"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            Menu
+          </title>
+           
+          <path
+            d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;

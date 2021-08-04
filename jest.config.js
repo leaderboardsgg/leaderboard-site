@@ -20,6 +20,7 @@ module.exports = {
     '^~/(.*)$': '<rootDir>/$1',
   },
   setupFilesAfterEnv: ['./jest.setup.js'],
+  snapshotSerializers: ['jest-serializer-vue'],
   testEnvironment: 'jsdom',
   transform: {
     '.*\\.(vue)$': 'vue-jest',

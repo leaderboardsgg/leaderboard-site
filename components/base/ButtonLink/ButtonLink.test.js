@@ -15,6 +15,16 @@ describe('<ButtonLink />', () => {
     unmount();
   });
 
+  it('renders correctly', () => {
+    stubbedRender(ButtonLink, {
+      attrs: defaultAttrs,
+      props: defaultProps,
+      slots: { default: 'Button' },
+    });
+
+    expect(document.querySelector('.custom-link')).toMatchSnapshot();
+  });
+
   it('renders with the correct <slot />', () => {
     const { getByText } = stubbedRender(ButtonLink, {
       attrs: defaultAttrs,
