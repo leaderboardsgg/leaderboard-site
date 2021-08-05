@@ -41,19 +41,19 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-  .search-bar {
-    @apply flex items-center px-2 relative text-gray-300 w-full;
-  }
+.search-bar {
+  @apply flex items-center px-2 relative text-gray-300 w-full;
+}
 
-  .search-bar > input {
-    @apply border border-current rounded bg-white w-full pr-12 px-4 py-1 focus:outline-none;
-  }
+.search-bar > input {
+  @apply border border-current rounded bg-white w-full pr-12 px-4 py-1 focus:outline-none;
+}
 
-  .search-bar > button {
-    @apply absolute right-4 text-current;
-  }
+.search-bar > button {
+  @apply absolute right-4 text-current;
+}
 
-  .search-bar > button > svg {
-    @apply h-5 w-5 stroke-current;
-  }
+.search-bar > button > svg {
+  @apply h-5 w-5 stroke-current;
+}
 </style>

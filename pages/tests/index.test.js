@@ -9,6 +9,8 @@ describe('/index', () => {
 
   it('should render the placeholder text', () => {
     const { getByText } = render(index);
-    expect(getByText('This is just a primary content placeholder.')).toBeInTheDocument();
+    expect(
+      getByText('This is just a primary content placeholder.'),
+    ).toBeInTheDocument();
   });
 });

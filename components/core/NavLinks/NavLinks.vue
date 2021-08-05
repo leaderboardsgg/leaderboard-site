@@ -7,12 +7,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent } from '@nuxtjs/composition-api';
 import NavLink from './NavLink/NavLink.vue';
 
 export default defineComponent({
   components: {
-    NavLink
+    NavLink,
   },
   props: {
     navLinks: {
@@ -33,7 +33,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .nav-link-container {
-    @apply flex flex-col lg:flex-row items-center w-auto space-y-2 lg:space-y-0 text-center text-black;
-  }
+.nav-link-container {
+  @apply flex flex-col lg:flex-row items-center w-auto space-y-2 lg:space-y-0 text-center text-black;
+}
 </style>

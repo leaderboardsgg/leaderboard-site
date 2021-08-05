@@ -96,21 +96,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
-import { useBreakpoints } from "@vueuse/core"
-import { screens } from "@/breakpoints";
+import { defineComponent, ref } from '@nuxtjs/composition-api';
+import { useBreakpoints } from '@vueuse/core';
+import { screens } from '@/breakpoints';
 
 const breakpoints = useBreakpoints(screens);
 
 export default defineComponent({
   setup() {
-    const lg = breakpoints.greater("lg");
+    const lg = breakpoints.greater('lg');
     const mobileNavIsActive = ref(false);
 
     return {
       lg,
       mobileNavIsActive,
-    }
+    };
   },
 });
 </script>

@@ -1,6 +1,6 @@
 name: Feature Request
 description: Suggest an idea to add support for this project
-title: "Feature Request: {short description}"
+title: 'Feature Request: {short description}'
 labels: [enhancement, needs triage]
 body:
   - type: markdown
