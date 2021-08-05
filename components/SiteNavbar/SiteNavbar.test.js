@@ -28,8 +28,8 @@ describe('<SiteNavbar />', () => {
   });
 
   it('renders correctly', () => {
-    stubbedRender(SiteNavbar);
+    const { container } = stubbedRender(SiteNavbar);
 
-    expect(document.querySelector('.site-navbar')).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

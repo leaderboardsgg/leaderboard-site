@@ -9,8 +9,8 @@ describe('<SignUpButton />', () => {
   });
 
   it('renders correctly', () => {
-    stubbedRender(SignUpButton);
+    const { container } = stubbedRender(SignUpButton);
 
-    expect(document.querySelector('.sign-up-button')).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

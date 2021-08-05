@@ -9,8 +9,8 @@ describe('<LoginButton />', () => {
   });
 
   it('renders correctly', () => {
-    stubbedRender(LoginButton);
+    const { container } = stubbedRender(LoginButton);
 
-    expect(document.querySelector('.login-button')).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

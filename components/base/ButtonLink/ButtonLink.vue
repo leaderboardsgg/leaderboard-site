@@ -1,6 +1,6 @@
 <template>
   <NuxtLink class="button-link" v-bind="$attrs" v-on="$listeners">
-    <slot />
+    <slot> Placeholder </slot>
   </NuxtLink>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="site-navbar border-b border-gray-300">
+  <div class="border-b border-gray-300">
     <div
       class="
         container

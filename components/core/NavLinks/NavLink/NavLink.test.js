@@ -16,12 +16,12 @@ describe('<NavLink />', () => {
   });
 
   it('renders correctly', () => {
-    stubbedRender(NavLink, {
+    const { container } = stubbedRender(NavLink, {
       attrs: defaultAttrs,
       props: defaultProps,
       slots: { default: 'Games' },
     });
 
-    expect(document.querySelector('.custom-link')).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

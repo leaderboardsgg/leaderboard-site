@@ -19,20 +19,23 @@ describe('<NavLinks />', () => {
   });
 
   it('renders correctly', () => {
-    stubbedRender(NavLinks, {
+    const { container } = stubbedRender(NavLinks, {
       props: defaultProps,
     });
 
-    expect(document.querySelector('.nav-link-container')).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('should render the same amount of <NavLink /> components as there are items in the navLinks props', () => {
-    stubbedRender(NavLinks, {
+    const { container, getByText } = stubbedRender(NavLinks, {
       props: defaultProps,
     });
 
-    expect(document.querySelectorAll('.nav-link').length).toEqual(
+    expect(container.firstChild.childNodes.length).toEqual(
       defaultProps.navLinks.length,
     );
+    defaultProps.navLinks.forEach((navLink) => {
+      expect(getByText(navLink.name)).toBeInTheDocument();
+    });
   });
 });

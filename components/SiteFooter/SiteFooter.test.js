@@ -9,8 +9,14 @@ describe('<SiteFooter />', () => {
   });
 
   it('renders correctly', () => {
-    stubbedRender(SiteFooter);
+    const { container } = stubbedRender(SiteFooter);
 
-    expect(document.querySelector('.site-footer')).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
+  });
+
+  it('renders correctly with the copyright info', () => {
+    const { getByText } = stubbedRender(SiteFooter);
+
+    expect(getByText('Copyright 2021')).toBeInTheDocument();
   });
 });

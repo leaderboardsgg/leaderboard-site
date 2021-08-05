@@ -2,7 +2,7 @@
 
 exports[`<SiteNavbar /> renders correctly 1`] = `
 <div
-  class="site-navbar border-b border-gray-300"
+  class="border-b border-gray-300"
 >
   <div
     class="

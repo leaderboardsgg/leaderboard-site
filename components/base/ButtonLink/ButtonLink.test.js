@@ -16,13 +16,13 @@ describe('<ButtonLink />', () => {
   });
 
   it('renders correctly', () => {
-    stubbedRender(ButtonLink, {
+    const { container } = stubbedRender(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
       slots: { default: 'Button' },
     });
 
-    expect(document.querySelector('.custom-link')).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it('renders with the correct <slot />', () => {
@@ -35,13 +35,14 @@ describe('<ButtonLink />', () => {
   });
 
   it('renders with the passed link', () => {
-    stubbedRender(ButtonLink, {
+    const { getByText } = stubbedRender(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
     });
-    expect(document.querySelector('a').getAttribute('href')).toBe(
-      'https://www.test.com/',
-    );
+
+    const link = getByText('Placeholder');
+    expect(link.tagName).toEqual('A');
+    expect(link.getAttribute('href')).toEqual('https://www.test.com/');
   });
 
   it('renders with the custom classnames', () => {

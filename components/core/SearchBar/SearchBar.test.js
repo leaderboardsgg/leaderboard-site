@@ -14,11 +14,11 @@ describe('<SearchBar />', () => {
   });
 
   it('renders correctly', () => {
-    stubbedRender(SearchBar, {
+    const { container } = stubbedRender(SearchBar, {
       props: defaultProps,
     });
 
-    expect(document.querySelector('.search-bar')).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   describe('when search is initiated', () => {
