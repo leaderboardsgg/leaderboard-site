@@ -1,8 +1,6 @@
 import '@testing-library/jest-dom';
 import path from 'path';
 import glob from 'glob';
-import forEach from 'lodash/forEach';
-import join from 'lodash/join';
 import uniq from 'lodash/uniq';
 import upperFirst from 'lodash/upperFirst';
 import Vue from 'vue';
@@ -17,15 +15,15 @@ const globalComponentPaths = [
   './components/**/base/**/*.vue',
   './components/**/core/**/*.vue',
 ];
-forEach(globalComponentPaths, (globalComponentPath) => {
+globalComponentPaths.forEach((globalComponentPath) => {
   // glob returns an array of filenames matching the current globalComponentPath pattern
-  forEach(glob.sync(path.join(__dirname, globalComponentPath)), (file) => {
+  glob.sync(path.join(__dirname, globalComponentPath)).forEach((file) => {
     const componentRoutes = file.split('/components/')[1].split('/');
     componentRoutes[componentRoutes.length - 1] = componentRoutes[
       componentRoutes.length - 1
     ].replace('.vue', ''); // remove .vue from the last element
     componentRoutes[0] = upperFirst(componentRoutes[0]);
-    const nuxtName = join(uniq(componentRoutes), '');
+    const nuxtName = uniq(componentRoutes).join('');
     const requiredFile = require(file);
 
     if (requiredFile.default) {
