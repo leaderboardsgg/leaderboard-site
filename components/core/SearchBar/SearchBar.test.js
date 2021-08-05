@@ -22,24 +22,34 @@ describe('<SearchBar />', () => {
   });
 
   describe('when search is initiated', () => {
+    describe('and no onSubmit prop is passed', () => {
+      const spyConsoleLog = jest.spyOn(console, 'log');
+
+      it('should call the default onSubmit methd', async () => {
+        const { getByTestId } = stubbedRender(SearchBar);
+
+        await fireEvent.click(getByTestId('search-button'));
+
+        expect(spyConsoleLog).toHaveBeenCalled();
+      });
+    });
+
     test('the onSubmit method is called when search button is clicked', async () => {
-      stubbedRender(SearchBar, {
+      const { getByTestId } = stubbedRender(SearchBar, {
         props: defaultProps,
       });
 
-      const searchButton = document.querySelector('button[type="submit"]');
-      await fireEvent.click(searchButton);
+      await fireEvent.click(getByTestId('search-button'));
 
       expect(mockOnSubmit).toHaveBeenCalled();
     });
 
     test('the onSubmit method is called when the enter key is released', async () => {
-      stubbedRender(SearchBar, {
+      const { getByTestId } = stubbedRender(SearchBar, {
         props: defaultProps,
       });
 
-      const searchInput = document.querySelector('input');
-      await fireEvent.type(searchInput, '{enter}');
+      await fireEvent.type(getByTestId('search-input'), '{enter}');
 
       expect(mockOnSubmit).toHaveBeenCalled();
     });

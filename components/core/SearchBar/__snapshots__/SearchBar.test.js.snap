@@ -5,11 +5,13 @@ exports[`<SearchBar /> renders correctly 1`] = `
   class="search-bar"
 >
   <input
+    data-testid="search-input"
     name="search"
     placeholder="search..."
   />
    
   <button
+    data-testid="search-button"
     type="submit"
   >
     <svg

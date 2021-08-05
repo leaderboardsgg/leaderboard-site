@@ -1,7 +1,12 @@
 <template>
   <div class="search-bar">
-    <input name="search" placeholder="search..." @keyup.enter="onEnter" />
-    <button type="submit" @click="onClick">
+    <input
+      data-testid="search-input"
+      name="search"
+      placeholder="search..."
+      @keyup.enter="onEnter"
+    />
+    <button data-testid="search-button" type="submit" @click="onClick">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
