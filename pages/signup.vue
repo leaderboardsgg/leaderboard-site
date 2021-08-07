@@ -1,7 +1,7 @@
 <template>
   <div
     id="signup"
-    class="container mx-auto p-3 flex justify-center items-center"
+    class="flex flex-grow container mx-auto p-3 justify-center items-start"
   >
     <sign-up-card @logInClick="$router.push('/login')" />
   </div>
