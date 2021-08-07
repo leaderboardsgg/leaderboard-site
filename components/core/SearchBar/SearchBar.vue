@@ -25,9 +25,9 @@
 </template>
 
 <script>
-import Vue from 'vue';
+import { defineComponent } from '@nuxtjs/composition-api';
 
-export default Vue.extend({
+export default defineComponent({
   props: {
     onSubmit: {
       default: () => console.log('submit'), // eslint-disable-line no-console
