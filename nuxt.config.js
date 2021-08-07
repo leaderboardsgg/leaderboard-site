@@ -12,34 +12,29 @@ export default {
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
     // https://composition-api.nuxtjs.org
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    "@/assets/css/tailwind.css",
-  ],
+  css: ['@/assets/css/tailwind.css'],
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    link: [
-      { href: '/favicon.ico', rel: 'icon', type: 'image/x-icon' }
-    ],
+    link: [{ href: '/favicon.ico', rel: 'icon', type: 'image/x-icon' }],
     meta: [
       { charset: 'utf-8' },
       { content: 'width=device-width, initial-scale=1', name: 'viewport' },
-      { content: '', hid: 'description', name: 'description', },
-      { content: 'telephone=no', name: 'format-detection' }
+      { content: '', hid: 'description', name: 'description' },
+      { content: 'telephone=no', name: 'format-detection' },
     ],
     title: 'speedrun-website',
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-  ],
+  modules: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -47,7 +42,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
-    }
-  }
-}
+      lang: 'en',
+    },
+  },
+};

@@ -1,6 +1,6 @@
 name: Suggest a task
 description: Suggest an idea for improving this project without changing functionality
-title: "Task: {short description}"
+title: 'Task: {short description}'
 labels: [needs triage]
 body:
   - type: markdown

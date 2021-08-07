@@ -2,9 +2,14 @@
   <div class="border-b border-gray-300">
     <div
       class="
-        container relative
-        flex flex-wrap lg:flex-row justify-between
-        mx-auto px-3 py-3
+        container
+        relative
+        flex flex-wrap
+        lg:flex-row
+        justify-between
+        mx-auto
+        px-3
+        py-3
       "
     >
       <NuxtLink class="flex flex-grow" to="/">
@@ -27,11 +32,13 @@
             class="
               w-full
               py-2
-              text-lg text-center md:text-left
+              text-lg text-center
+              md:text-left
               font-semibold
               leading-6
               tracking-tight
-              hidden md:inline
+              hidden
+              md:inline
             "
           >
             speedrun.website
@@ -41,32 +48,37 @@
       <div
         v-show="lg || mobileNavIsActive"
         class="
-          border-t border-gray-300 lg:border-t-0
-          flex flex-col lg:flex-row
-          mt-2 lg:mt-0
-          w-full lg:w-auto
-          space-y-2 lg:space-y-0
+          border-t border-gray-300
+          lg:border-t-0
+          flex flex-col
+          lg:flex-row
+          mt-2
+          lg:mt-0
+          w-full
+          lg:w-auto
+          space-y-2
+          lg:space-y-0
         "
       >
         <CoreNavLinks />
         <CoreSearchBar />
       </div>
-      <div class="
-             flex flex-row items-center
-             absolute right-2 top-4
-             lg:relative lg:right-0 lg:top-0
-             space-x-2 lg:space-x-0
-           "
+      <div
+        class="
+          flex flex-row
+          items-center
+          absolute
+          right-2
+          top-4
+          lg:relative lg:right-0 lg:top-0
+          space-x-2
+          lg:space-x-0
+        "
       >
         <CoreLoginButton />
         <CoreSignUpButton />
         <button
-          class="
-            items-center
-            rounded
-            text-black
-            lg:hidden
-          "
+          class="items-center rounded text-black lg:hidden"
           @click="mobileNavIsActive = !mobileNavIsActive"
         >
           <svg
@@ -84,21 +96,21 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
-import { useBreakpoints } from "@vueuse/core"
-import { screens } from "@/breakpoints";
+import { defineComponent, ref } from '@nuxtjs/composition-api';
+import { useBreakpoints } from '@vueuse/core';
+import { screens } from '@/breakpoints';
 
 const breakpoints = useBreakpoints(screens);
 
 export default defineComponent({
   setup() {
-    const lg = breakpoints.greater("lg");
+    const lg = breakpoints.greater('lg');
     const mobileNavIsActive = ref(false);
 
     return {
       lg,
       mobileNavIsActive,
-    }
+    };
   },
-})
+});
 </script>
