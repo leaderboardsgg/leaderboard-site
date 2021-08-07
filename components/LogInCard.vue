@@ -1,10 +1,6 @@
 <template>
-  <div
-    id="loginCard"
-    class="bg-white rounded border border-gray-300 w-full max-w-xl"
-  >
-    <!-- Card Header -->
-    <div class="border-b border-gray-300 flex flex-row space-x-3 p-3">
+  <BaseCard id="loginCard" class="bg-white w-full max-w-xl">
+    <BaseCardHeader class="flex flex-row space-x-3">
       <div
         class="
           flex flex-1
@@ -19,13 +15,10 @@
         Log In
       </div>
 
-      <button
+      <BaseButton
         class="
           flex flex-1
           justify-center
-          px-3
-          py-2
-          rounded
           bg-white
           text-gray-900
           border border-gray-300
@@ -34,22 +27,14 @@
         @click="$emit('signUpClick')"
       >
         Sign Up
-      </button>
-    </div>
+      </BaseButton>
+    </BaseCardHeader>
 
-    <!-- Card Body -->
-    <div class="p-3">
+    <BaseCardBody>
       <div class="flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300">
-        <input
+        <BaseInput
           v-model="email"
-          class="
-            border border-gray-300
-            rounded
-            bg-white
-            px-3
-            py-2
-            focus:outline-none
-          "
+          class="bg-white"
           name="email"
           type="text"
           placeholder="Email"
@@ -57,17 +42,9 @@
         />
 
         <div class="relative flex flex-col w-full">
-          <input
+          <BaseInput
             v-model="password"
-            class="
-              border border-gray-300
-              rounded
-              bg-white
-              px-3
-              py-2
-              pr-12
-              focus:outline-none
-            "
+            class="bg-white pr-12"
             name="password"
             :type="showPassword ? 'text' : 'password'"
             placeholder="Password"
@@ -75,7 +52,7 @@
           />
 
           <div class="absolute top-0 right-0 flex items-center h-full">
-            <button
+            <BaseButton
               type="submit"
               class="
                 p-1
@@ -118,35 +95,30 @@
                   clip-rule="evenodd"
                 />
               </svg>
-            </button>
+            </BaseButton>
           </div>
         </div>
 
-        <button
+        <BaseButton
+          to="#"
           class="
             flex flex-1
             justify-center
-            px-3
-            py-2
-            rounded
             bg-gray-100
             text-gray-900
             hover:bg-gray-200
           "
         >
           Log In
-        </button>
+        </BaseButton>
       </div>
 
       <div class="flex flex-col w-full space-y-2">
-        <button
+        <BaseButton
           class="
             flex flex-1
             items-center
             justify-center
-            px-3
-            py-2
-            rounded
             fill-current
             bg-gray-100
             text-gray-900
@@ -165,17 +137,13 @@
           </svg>
 
           <p>Log In with Github</p>
-        </button>
+        </BaseButton>
 
-        <button
+        <BaseButton
           class="
             flex flex-1
             items-center
             justify-center
-            px-3
-            py-2
-            rounded
-            fill-current
             bg-gray-100
             text-gray-900
             hover:bg-gray-200
@@ -193,10 +161,10 @@
           </svg>
 
           <p>Log In with Google</p>
-        </button>
+        </BaseButton>
       </div>
-    </div>
-  </div>
+    </BaseCardBody>
+  </BaseCard>
 </template>
 
 <script lang="ts">

@@ -1,17 +1,10 @@
 <template>
-  <div
-    id="loginCard"
-    class="bg-white rounded border border-gray-300 w-full max-w-xl"
-  >
-    <!-- Card Header -->
-    <div class="border-b border-gray-300 flex flex-row space-x-3 p-3">
-      <button
+  <BaseCard id="signUpCard" class="bg-white w-full max-w-xl">
+    <BaseCardHeader class="flex flex-row space-x-3">
+      <BaseButton
         class="
           flex flex-1
           justify-center
-          px-3
-          py-2
-          rounded
           bg-white
           text-gray-900
           border border-gray-300
@@ -20,7 +13,7 @@
         @click="$emit('logInClick')"
       >
         Log In
-      </button>
+      </BaseButton>
 
       <div
         class="
@@ -35,21 +28,13 @@
       >
         Sign Up
       </div>
-    </div>
+    </BaseCardHeader>
 
     <!-- Card Body -->
     <div class="p-3">
       <div class="flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300">
-        <input
+        <BaseInput
           v-model="email"
-          class="
-            border border-gray-300
-            rounded
-            bg-white
-            px-3
-            py-2
-            focus:outline-none
-          "
           name="email"
           type="text"
           placeholder="Email"
@@ -57,16 +42,8 @@
         />
 
         <div class="flex flex-1 flex-col space-y-1">
-          <input
+          <BaseInput
             v-model="username"
-            class="
-              border border-gray-300
-              rounded
-              bg-white
-              px-3
-              py-2
-              focus:outline-none
-            "
             name="username"
             type="text"
             placeholder="Username"
@@ -84,47 +61,28 @@
               sm:space-y-0 sm:space-x-3
             "
           >
-            <input
+            <BaseInput
               v-model="password"
-              class="
-                border border-gray-300
-                rounded
-                bg-white
-                px-3
-                py-2
-                focus:outline-none
-                w-full
-              "
               name="password"
+              class="flex-grow"
               :type="showPassword ? 'text' : 'password'"
               placeholder="Password"
               autocomplete="password"
             />
 
-            <input
+            <BaseInput
               v-model="confirmPassword"
-              class="
-                border border-gray-300
-                rounded
-                bg-white
-                px-3
-                py-2
-                focus:outline-none
-                w-full
-              "
               name="confirmPassword"
+              class="flex-grow"
               :type="showPassword ? 'text' : 'password'"
               placeholder="Confirm"
               autocomplete="password"
             />
 
-            <button
+            <BaseButton
               class="
                 hidden
                 sm:inline
-                px-3
-                py-2
-                rounded
                 bg-white
                 text-gray-700
                 hover:bg-gray-100
@@ -162,7 +120,7 @@
                   clip-rule="evenodd"
                 />
               </svg>
-            </button>
+            </BaseButton>
           </div>
 
           <p class="text-sm">
@@ -170,32 +128,25 @@
           </p>
         </div>
 
-        <button
+        <BaseButton
           class="
             flex flex-1
             justify-center
-            px-3
-            py-2
-            rounded
             bg-gray-100
             text-gray-900
             hover:bg-gray-200
           "
         >
           Sign Up
-        </button>
+        </BaseButton>
       </div>
 
       <div class="flex flex-col w-full space-y-2">
-        <button
+        <BaseButton
           class="
             flex flex-1
             items-center
             justify-center
-            px-3
-            py-2
-            rounded
-            fill-current
             bg-gray-100
             text-gray-900
             hover:bg-gray-200
@@ -213,17 +164,13 @@
           </svg>
 
           <p>Sign Up with Github</p>
-        </button>
+        </BaseButton>
 
-        <button
+        <BaseButton
           class="
             flex flex-1
             items-center
             justify-center
-            px-3
-            py-2
-            rounded
-            fill-current
             bg-gray-100
             text-gray-900
             hover:bg-gray-200
@@ -241,10 +188,10 @@
           </svg>
 
           <p>Sign Up with Google</p>
-        </button>
+        </BaseButton>
       </div>
     </div>
-  </div>
+  </BaseCard>
 </template>
 
 <script lang="ts">
