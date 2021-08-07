@@ -1,8 +1,9 @@
-const { screens } = require("./breakpoints.js");
+const { screens } = require('./breakpoints.js')
 
 module.exports = {
   darkMode: false, // or 'media' or 'class'
-  mode: "jit",
+  important: true,
+  mode: 'jit',
   plugins: [],
   purge: [
     './components/**/*.{vue,js}',
