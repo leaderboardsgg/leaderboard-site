@@ -80,13 +80,7 @@
             />
 
             <BaseButton
-              class="
-                hidden
-                sm:inline
-                bg-white
-                text-gray-700
-                hover:bg-gray-100
-              "
+              class="hidden sm:inline bg-white text-gray-700 hover:bg-gray-100"
               @click="showPassword = !showPassword"
             >
               <svg
@@ -195,9 +189,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent } from '@nuxtjs/composition-api'
 
-export default Vue.extend({
+export default defineComponent({
   name: 'SignUpCard',
 
   data() {
@@ -211,5 +205,3 @@ export default Vue.extend({
   },
 })
 </script>
-
-<style></style>
