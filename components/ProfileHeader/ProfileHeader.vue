@@ -1,6 +1,8 @@
 <template>
   <div class="profile-header">
-    <div class="profile-banner"></div>
+    <div class="profile-banner">
+      <img src="https://via.placeholder.com/885x120" alt="profile banner" />
+    </div>
     <div class="profile-info-container">
       <div class="profile-info">
         <div class="profile-info--header">
@@ -18,11 +20,13 @@
         <div class="profile-info--user-bio">
           <h1 class="text-2xl font-semibold">{{ username }}</h1>
           <h2 class="text-sm text-black text-opacity-50">{{ location }}</h2>
-          <p class="text-black text-opacity-50 py-2">{{ bio }}</p>
+          <p class="text-black text-opacity-50 pt-2">{{ bio }}</p>
         </div>
-        <CoreFollowButton />
+        <div class="profile-info--follow">
+          <CoreFollowButton :badges="badges" />
+        </div>
         <div class="profile-info--socials">
-          <CoreSocialButtons socials="socials" />
+          <CoreSocialButtons :socials="socials" />
         </div>
       </div>
     </div>
@@ -38,16 +42,6 @@ export default defineComponent({
       default: () => [],
       type: Array,
     },
-    banner: {
-      desktop: {
-        default: '',
-        type: String,
-      },
-      mobile: {
-        default: '',
-        type: String,
-      },
-    },
     bio: {
       default: () =>
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.',
@@ -61,22 +55,33 @@ export default defineComponent({
       default: () => 'Olympus Mons, Mars',
       type: String,
     },
-    profile: {
-      desktop: {
-        default: '',
-        type: String,
-      },
-      mobile: {
-        default: '',
-        type: String,
-      },
-    },
     runCount: {
       default: () => 42,
       type: Number,
     },
     socials: {
-      default: () => [],
+      default: () => [
+        {
+          icon: 'twtr',
+          name: 'Twitter',
+          url: 'https://twitter.com/',
+        },
+        {
+          icon: 'twtr',
+          name: 'Twitter',
+          url: 'https://twitter.com/',
+        },
+        {
+          icon: 'twtr',
+          name: 'Twitter',
+          url: 'https://twitter.com/',
+        },
+        {
+          icon: 'twtr',
+          name: 'Twitter',
+          url: 'https://twitter.com/',
+        },
+      ],
       type: Array,
     },
     username: {
@@ -89,8 +94,8 @@ export default defineComponent({
 
 <style scoped>
 .profile-header {
-  height: 450px;
-  max-height: 450px;
+  height: fit-content;
+  min-height: 450px;
   position: relative;
 
   @apply flex flex-col;
@@ -103,6 +108,11 @@ export default defineComponent({
   min-height: 50%;
 
   @apply bg-cover bg-center bg-gray-900;
+  @apply flex items-center justify-center overflow-x-hidden;
+}
+
+.profile-banner > img {
+  @apply flex-shrink-0 object-cover min-h-full min-w-full;
 }
 
 .profile-info-container {
@@ -116,7 +126,7 @@ export default defineComponent({
 
   @apply bg-white;
   @apply grid grid-cols-1;
-  @apply border border-current rounded;
+  @apply border border-gray-300 rounded;
 }
 
 .profile-info--header {
@@ -141,6 +151,15 @@ export default defineComponent({
   @apply rounded;
 }
 
+.profile-info--socials {
+  @apply p-4 pt-0;
+}
+
+.profile-info--follow > .follow-button {
+  @apply w-full;
+}
+
+.profile-info--follow,
 .profile-info--user-activity,
 .profile-info--user-badges {
   @apply p-4;
@@ -150,9 +169,5 @@ export default defineComponent({
   @apply row-span-2;
   @apply px-4;
   @apply text-center;
-}
-
-.follow-button {
-  @apply mx-4;
 }
 </style>

@@ -25,6 +25,6 @@ export default defineComponent({
 
 <style scoped>
 .follow-button {
-  @apply m-2 py-2 text-center border border-current rounded border-gray-300 rounded hover:bg-gray-100;
+  @apply px-3 py-2 text-center border border-current rounded border-gray-300 rounded hover:bg-gray-100;
 }
 </style>
