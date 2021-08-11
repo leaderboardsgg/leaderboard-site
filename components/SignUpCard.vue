@@ -28,6 +28,8 @@
       >
         Sign Up
       </div>
+
+      <CoreCloseButton v-show="modal" @click.prevent="$emit('close')" />
     </BaseCardHeader>
 
     <!-- Card Body -->
@@ -165,6 +167,14 @@ import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'SignUpCard',
+
+  props: {
+    modal: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
 
   data() {
     return {
