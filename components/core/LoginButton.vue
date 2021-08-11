@@ -1,16 +1,11 @@
 <template>
-  <BaseButtonLink
-    class="login-button"
-    to="#"
-    v-bind="$attrs"
-    v-on="$listeners"
-  >
+  <BaseButton class="login-button" v-bind="$attrs" v-on="$listeners">
     Log In
-  </BaseButtonLink>
+  </BaseButton>
 </template>
 
 <style scoped>
-  .login-button {
-    @apply mx-1 py-1 hover:bg-gray-100;
-  }
+.login-button {
+  @apply mx-1 py-1 hover:bg-gray-100;
+}
 </style>
