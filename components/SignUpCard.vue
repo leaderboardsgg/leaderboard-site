@@ -122,30 +122,11 @@
           </p>
         </div>
 
-        <BaseButton
-          class="
-            flex flex-1
-            justify-center
-            bg-gray-100
-            text-gray-900
-            hover:bg-gray-200
-          "
-        >
-          Sign Up
-        </BaseButton>
+        <BaseButton class="signup-button"> Sign Up </BaseButton>
       </div>
 
       <div class="flex flex-col w-full space-y-2">
-        <BaseButton
-          class="
-            flex flex-1
-            items-center
-            justify-center
-            bg-gray-100
-            text-gray-900
-            hover:bg-gray-200
-          "
-        >
+        <BaseButton class="signup-button">
           <svg
             class="w-5 h-5 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -160,16 +141,7 @@
           <p>Sign Up with Github</p>
         </BaseButton>
 
-        <BaseButton
-          class="
-            flex flex-1
-            items-center
-            justify-center
-            bg-gray-100
-            text-gray-900
-            hover:bg-gray-200
-          "
-        >
+        <BaseButton class="signup-button">
           <svg
             class="w-5 h-5 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -205,3 +177,9 @@ export default defineComponent({
   },
 })
 </script>
+
+<style scoped>
+.signup-button {
+  @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
+}
+</style>

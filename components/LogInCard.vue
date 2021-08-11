@@ -99,32 +99,11 @@
           </div>
         </div>
 
-        <BaseButton
-          to="#"
-          class="
-            flex flex-1
-            justify-center
-            bg-gray-100
-            text-gray-900
-            hover:bg-gray-200
-          "
-        >
-          Log In
-        </BaseButton>
+        <BaseButton to="#" class="login-button">Log In</BaseButton>
       </div>
 
       <div class="flex flex-col w-full space-y-2">
-        <BaseButton
-          class="
-            flex flex-1
-            items-center
-            justify-center
-            fill-current
-            bg-gray-100
-            text-gray-900
-            hover:bg-gray-200
-          "
-        >
+        <BaseButton class="login-button">
           <svg
             class="w-5 h-5 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -139,16 +118,7 @@
           <p>Log In with Github</p>
         </BaseButton>
 
-        <BaseButton
-          class="
-            flex flex-1
-            items-center
-            justify-center
-            bg-gray-100
-            text-gray-900
-            hover:bg-gray-200
-          "
-        >
+        <BaseButton class="login-button">
           <svg
             class="w-5 h-5 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -168,7 +138,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'LoginCard',
@@ -182,3 +152,9 @@ export default defineComponent({
   },
 })
 </script>
+
+<style scoped>
+.login-button {
+  @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
+}
+</style>
