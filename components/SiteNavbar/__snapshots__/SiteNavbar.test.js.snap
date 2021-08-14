@@ -16,12 +16,12 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
       py-3
     "
   >
-    <a
+    <div
       class="flex flex-grow"
-      href="/"
     >
-      <div
+      <a
         class="flex"
+        href="/"
       >
         <svg
           class="h-10 w-10 mx-1"
@@ -55,8 +55,8 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
           speedrun.website
         
         </h1>
-      </div>
-    </a>
+      </a>
+    </div>
      
     <div
       class="
