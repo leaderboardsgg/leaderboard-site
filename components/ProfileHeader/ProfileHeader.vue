@@ -6,26 +6,30 @@
     <div class="profile-info-container">
       <div class="profile-info">
         <div class="profile-info--header">
-          <div class="profile-info--user-activity">
+          <div class="profile-info--user-activity md:hidden">
             <p><span class="font-semibold">Runs: </span>{{ runCount }}</p>
             <p><span class="font-semibold">Games: </span>{{ gameCount }}</p>
           </div>
           <div class="profile-info--picture-container">
             <img src="https://via.placeholder.com/120" alt="profile picture" />
           </div>
-          <div class="profile-info--user-badges">
-            <CoreUserBadges bagdes="badges" />
+          <div class="profile-info--user-badges md:hidden">
+            <CoreUserBadges :badges="badges" />
           </div>
         </div>
         <div class="profile-info--user-bio">
           <h1 class="text-2xl font-semibold">{{ username }}</h1>
           <h2 class="text-sm text-black text-opacity-50">{{ location }}</h2>
-          <p class="text-black text-opacity-50 pt-2">{{ bio }}</p>
+          <p class="text-black text-opacity-50 pt-2 md:hidden">{{ bio }}</p>
         </div>
         <div class="profile-info--follow">
-          <CoreFollowButton :badges="badges" />
+          <CoreFollowButton />
         </div>
-        <div class="profile-info--socials">
+        <div class="profile-info--user-activity hidden md:grid">
+          <p><span class="font-semibold">Runs: </span>{{ runCount }}</p>
+          <p><span class="font-semibold">Games: </span>{{ gameCount }}</p>
+        </div>
+        <div class="profile-info--socials md:hidden">
           <CoreSocialButtons :socials="socials" />
         </div>
       </div>
@@ -62,9 +66,14 @@ export default defineComponent({
     socials: {
       default: () => [
         {
-          icon: 'twtr',
-          name: 'Twitter',
-          url: 'https://twitter.com/',
+          icon: 'dscrd',
+          name: 'Discord',
+          url: 'https://discord.com/',
+        },
+        {
+          icon: 'twch',
+          name: 'Twitch',
+          url: 'https://twitch.tv/',
         },
         {
           icon: 'twtr',
@@ -72,14 +81,9 @@ export default defineComponent({
           url: 'https://twitter.com/',
         },
         {
-          icon: 'twtr',
-          name: 'Twitter',
-          url: 'https://twitter.com/',
-        },
-        {
-          icon: 'twtr',
-          name: 'Twitter',
-          url: 'https://twitter.com/',
+          icon: 'yt',
+          name: 'Youtube',
+          url: 'https://youtube.com/',
         },
       ],
       type: Array,
@@ -99,16 +103,17 @@ export default defineComponent({
   position: relative;
 
   @apply flex flex-col;
-  @apply max-w-screen-sm;
-  @apply border border-current;
+  @apply max-w-screen-md md:max-w-full md:min-h-0 md:h-auto;
+  @apply border md:border-gray-300 md:rounded;
 }
 
 .profile-banner {
   height: 50%;
   min-height: 50%;
 
+  @apply md:h-auto md:min-h-0;
   @apply bg-cover bg-center bg-gray-900;
-  @apply flex items-center justify-center overflow-x-hidden;
+  @apply flex items-center justify-center overflow-hidden;
 }
 
 .profile-banner > img {
@@ -116,25 +121,25 @@ export default defineComponent({
 }
 
 .profile-info-container {
-  position: absolute;
-  @apply bg-transparent;
-  @apply m-5 mb-0;
+  @apply absolute md:relative bg-transparent;
+  @apply m-5 mb-0 md:m-0;
 }
 
 .profile-info {
   margin-top: 60px;
+  @apply md:mt-0 md:px-4;
 
   @apply bg-white;
-  @apply grid grid-cols-1;
-  @apply border border-gray-300 rounded;
+  @apply grid grid-cols-1 md:flex md:items-center;
+  @apply border border-gray-300 rounded md:border-none;
 }
 
 .profile-info--header {
-  @apply grid grid-rows-1 grid-cols-3 relative;
+  @apply grid grid-rows-1 grid-cols-3 md:flex relative;
 }
 
 .profile-info--picture-container {
-  @apply relative;
+  @apply relative flex justify-center;
 }
 
 .profile-info--picture-container > img {
@@ -147,8 +152,7 @@ export default defineComponent({
     max-width: 82px;
   }
 
-  @apply absolute transform -translate-y-1/2;
-  @apply rounded;
+  @apply absolute md:relative rounded transform -translate-y-1/2;
 }
 
 .profile-info--socials {
@@ -156,18 +160,22 @@ export default defineComponent({
 }
 
 .profile-info--follow > .follow-button {
-  @apply w-full;
+  @apply w-full md:px-5;
 }
 
 .profile-info--follow,
 .profile-info--user-activity,
 .profile-info--user-badges {
-  @apply p-4;
+  @apply p-4 md:pl-5 md:pr-0;
+}
+
+.profile-info--user-activity {
+  @apply md:grid-cols-2 md:gap-x-5;
 }
 
 .profile-info--user-bio {
   @apply row-span-2;
-  @apply px-4;
+  @apply px-4 md:pl-5 md:pr-0;
   @apply text-center;
 }
 </style>
