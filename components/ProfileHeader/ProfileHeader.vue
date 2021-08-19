@@ -6,10 +6,11 @@
     <div class="profile-info-container">
       <div class="profile-info">
         <div class="profile-info--header">
-          <div class="profile-info--user-activity md:hidden">
-            <p><span class="font-semibold">Runs: </span>{{ runCount }}</p>
-            <p><span class="font-semibold">Games: </span>{{ gameCount }}</p>
-          </div>
+          <UserActivity
+            class="md:hidden"
+            :game-count="gameCount"
+            :run-count="runCount"
+          />
           <div class="profile-info--picture-container">
             <img src="https://via.placeholder.com/120" alt="profile picture" />
           </div>
@@ -25,10 +26,11 @@
         <div class="profile-info--follow">
           <CoreFollowButton />
         </div>
-        <div class="profile-info--user-activity hidden md:grid">
-          <p><span class="font-semibold">Runs: </span>{{ runCount }}</p>
-          <p><span class="font-semibold">Games: </span>{{ gameCount }}</p>
-        </div>
+        <UserActivity
+          class="hidden md:grid"
+          :game-count="gameCount"
+          :run-count="runCount"
+        />
         <div class="profile-info--socials md:hidden">
           <CoreSocialButtons :socials="socials" />
         </div>
@@ -39,8 +41,12 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api';
+import UserActivity from './UserActivity/UserActivity.vue';
 
 export default defineComponent({
+  components: {
+    UserActivity,
+  },
   props: {
     badges: {
       default: () => [],
