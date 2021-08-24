@@ -2,6 +2,10 @@ import { fireEvent, stubbedRender } from '@/testUtils';
 import FollowButton from './FollowButton';
 
 describe('<FollowButton />', () => {
+  /*
+   * This is a mock function for the onClick prop that is passed to the component.
+   * It is used to check a click event on the button calls the passed onClick function.
+   */
   const mockOnClick = jest.fn();
   const defaultProps = { onClick: mockOnClick };
 
