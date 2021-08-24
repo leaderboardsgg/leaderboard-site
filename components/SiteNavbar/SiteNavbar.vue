@@ -12,8 +12,8 @@
         py-3
       "
     >
-      <NuxtLink class="flex flex-grow" to="/">
-        <div class="flex">
+      <div class="flex flex-grow">
+        <NuxtLink class="flex" to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-10 w-10 mx-1"
@@ -43,8 +43,8 @@
           >
             speedrun.website
           </h1>
-        </div>
-      </NuxtLink>
+        </NuxtLink>
+      </div>
       <div
         v-show="lg || mobileNavIsActive"
         class="
