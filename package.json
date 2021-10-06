@@ -48,7 +48,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-vue": "^7.12.1",
     "eslint-plugin-vuejs-accessibility": "^0.7.1",
-    "glob": "^7.1.7",
+    "glob": "^7.2.0",
     "jest": "^27.0.5",
     "jest-environment-jsdom": "^27.0.6",
     "jest-serializer-vue": "^2.0.2",
