@@ -59,6 +59,6 @@
     "pretty-quick": "^3.1.1",
     "tailwindcss": "^2.2.7",
     "ts-jest": "^27.0.3",
-    "vue-jest": "^3.0.4"
+    "vue-jest": "^3.0.7"
   }
 }
