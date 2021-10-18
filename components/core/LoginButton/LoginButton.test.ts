@@ -1,15 +1,15 @@
 import { stubbedRender } from '@/testUtils';
-import ProfileHeader from './ProfileHeader';
+import LoginButton from './LoginButton.vue';
 
-describe('<ProfileHeader />', () => {
+describe('<LoginButton />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(ProfileHeader);
+    const { unmount } = stubbedRender(LoginButton);
 
     unmount();
   });
 
   it('renders correctly', () => {
-    const { container } = stubbedRender(ProfileHeader);
+    const { container } = stubbedRender(LoginButton);
 
     expect(container.firstChild).toMatchSnapshot();
   });

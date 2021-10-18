@@ -1,5 +1,5 @@
 import { stubbedRender } from '@/testUtils';
-import NavLinks from './NavLinks';
+import NavLinks from './NavLinks.vue';
 
 describe('<NavLinks />', () => {
   const defaultProps = {
@@ -31,7 +31,7 @@ describe('<NavLinks />', () => {
       props: defaultProps,
     });
 
-    expect(container.firstChild.childNodes.length).toEqual(
+    expect(container.firstChild?.childNodes.length).toEqual(
       defaultProps.navLinks.length,
     );
     defaultProps.navLinks.forEach((navLink) => {

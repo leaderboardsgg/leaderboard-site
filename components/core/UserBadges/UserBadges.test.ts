@@ -1,15 +1,15 @@
 import { stubbedRender } from '@/testUtils';
-import LoginButton from './LoginButton';
+import UserBadges from './UserBadges.vue';
 
-describe('<LoginButton />', () => {
+describe('<ProfileHeader />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(LoginButton);
+    const { unmount } = stubbedRender(UserBadges);
 
     unmount();
   });
 
   it('renders correctly', () => {
-    const { container } = stubbedRender(LoginButton);
+    const { container } = stubbedRender(UserBadges);
 
     expect(container.firstChild).toMatchSnapshot();
   });

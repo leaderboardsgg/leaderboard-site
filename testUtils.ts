@@ -1,17 +1,20 @@
-import Vue from 'vue';
-import { RouterLinkStub } from '@vue/test-utils';
+import Vue, { ComponentOptions } from 'vue';
+import { RouterLinkStub, VueClass } from '@vue/test-utils';
 import userEvent from '@testing-library/user-event';
-import { render } from '@testing-library/vue';
+import { render, RenderOptions } from '@testing-library/vue';
 
 export const NuxtLinkStub = Vue.component('NuxtLinkStub', {
   extends: RouterLinkStub,
   render(h) {
     const temp = h(
+      // @ts-ignore
       this.tag || 'a',
       {
         attrs: {
+          // @ts-ignore
           ...this.$vnode.data.attrs,
           ...this.$attrs,
+          // @ts-ignore
           href: this.to,
         },
       },
@@ -22,7 +25,10 @@ export const NuxtLinkStub = Vue.component('NuxtLinkStub', {
   },
 });
 
-export const stubbedRender = (Component, options) => {
+export const stubbedRender = (
+  Component: VueClass<Vue> | ComponentOptions<Vue>,
+  options?: RenderOptions<Vue>,
+) => {
   return render(Component, {
     stubs: { NuxtLink: NuxtLinkStub, ...options?.stubs },
     ...options,

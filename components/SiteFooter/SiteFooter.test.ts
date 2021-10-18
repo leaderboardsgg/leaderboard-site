@@ -1,5 +1,5 @@
 import { stubbedRender } from '@/testUtils';
-import SiteFooter from './SiteFooter';
+import SiteFooter from './SiteFooter.vue';
 
 describe('<SiteFooter />', () => {
   it('should render without crashing', () => {

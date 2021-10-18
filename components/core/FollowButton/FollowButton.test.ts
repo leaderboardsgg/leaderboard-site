@@ -1,5 +1,5 @@
 import { fireEvent, stubbedRender } from '@/testUtils';
-import FollowButton from './FollowButton';
+import FollowButton from './FollowButton.vue';
 
 describe('<FollowButton />', () => {
   /*
@@ -32,7 +32,7 @@ describe('<FollowButton />', () => {
       it('should call the default onSubmit methd', async () => {
         const { container } = stubbedRender(FollowButton);
 
-        await fireEvent.click(container.firstChild);
+        fireEvent.click(container.firstChild as HTMLElement);
 
         expect(spyConsoleLog).toHaveBeenCalled();
       });
@@ -43,7 +43,7 @@ describe('<FollowButton />', () => {
         props: defaultProps,
       });
 
-      await fireEvent.click(container.firstChild);
+      fireEvent.click(container.firstChild as HTMLElement);
 
       expect(mockOnClick).toHaveBeenCalled();
     });
@@ -53,7 +53,7 @@ describe('<FollowButton />', () => {
         props: defaultProps,
       });
 
-      await fireEvent.type(container.firstChild, '{enter}');
+      fireEvent.type(container.firstChild as HTMLElement, '{enter}');
 
       expect(mockOnClick).toHaveBeenCalled();
     });
