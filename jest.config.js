@@ -1,5 +1,4 @@
 module.exports = {
-  preset: 'ts-jest',
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
