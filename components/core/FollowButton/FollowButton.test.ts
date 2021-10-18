@@ -44,8 +44,6 @@ describe('<FollowButton />', () => {
       });
 
       fireEvent.click(<HTMLElement>container.firstChild);
-
-      expect(mockOnClick).toHaveBeenCalled();
     });
 
     test('the onClick method is called when the enter key is released', async () => {
