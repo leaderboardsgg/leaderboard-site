@@ -1,5 +1,4 @@
 module.exports = {
-  preset: 'ts-jest',
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
@@ -20,6 +19,7 @@ module.exports = {
     '^vue$': 'vue/dist/vue.common.js',
     '^~/(.*)$': '<rootDir>/$1',
   },
+  preset: 'ts-jest',
   setupFilesAfterEnv: ['./jest.setup.js'],
   snapshotSerializers: ['jest-serializer-vue'],
   testEnvironment: 'jsdom',
