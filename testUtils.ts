@@ -11,13 +11,11 @@ export const NuxtLinkStub = Vue.component<
   extends: RouterLinkStub,
   render(h) {
     const temp = h(
-      // @ts-ignore
       this.tag || 'a',
       {
         attrs: {
           ...this.$vnode.data?.attrs,
           ...this.$attrs,
-          // @ts-ignore
           href: this.to,
         },
       },
