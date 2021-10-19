@@ -3,18 +3,19 @@ import { RouterLinkStub, VueClass } from '@vue/test-utils';
 import userEvent from '@testing-library/user-event';
 import { render, RenderOptions } from '@testing-library/vue';
 
-export const NuxtLinkStub = Vue.component('NuxtLinkStub', {
+export const NuxtLinkStub = Vue.component<
+  { tag: string; to: string },
+  unknown,
+  unknown
+>('NuxtLinkStub', {
   extends: RouterLinkStub,
   render(h) {
     const temp = h(
-      // @ts-ignore
       this.tag || 'a',
       {
         attrs: {
-          // @ts-ignore
-          ...this.$vnode.data.attrs,
+          ...this.$vnode.data?.attrs,
           ...this.$attrs,
-          // @ts-ignore
           href: this.to,
         },
       },
