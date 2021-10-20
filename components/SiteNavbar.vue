@@ -46,11 +46,12 @@
         </div>
       </NuxtLink>
       <div
-        v-show="lg || mobileNavIsActive"
+        :class="{ hidden: !mobileNavIsActive }"
         class="
+          lg:flex
           border-t border-gray-300
           lg:border-t-0
-          flex flex-col
+          flex-col
           lg:flex-row
           mt-2
           lg:mt-0
@@ -80,7 +81,7 @@
 
         <button
           class="items-center rounded text-black lg:hidden"
-          @click="mobileNavIsActive = !mobileNavIsActive"
+          @click="toggleMenu"
         >
           <svg
             class="fill-current h-5 w-5 mx-2"
@@ -124,20 +125,18 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api'
-import { useBreakpoints } from '@vueuse/core'
-import { screens } from '@/breakpoints'
-
-const breakpoints = useBreakpoints(screens)
 
 export default defineComponent({
   setup() {
-    const lg = breakpoints.greater('lg')
-
     const state = reactive({
       showModal: false,
       showLogin: false,
       mobileNavIsActive: false,
     })
+
+    function toggleMenu() {
+      state.mobileNavIsActive = !state.mobileNavIsActive
+    }
 
     function toggleLoginModal() {
       state.showModal = !state.showModal
@@ -151,7 +150,7 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      lg,
+      toggleMenu,
       toggleLoginModal,
       toggleSignUpModal,
     }
