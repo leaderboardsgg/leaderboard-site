@@ -129,9 +129,9 @@ import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api'
 export default defineComponent({
   setup() {
     const state = reactive({
-      showModal: false,
-      showLogin: false,
       mobileNavIsActive: false,
+      showLogin: false,
+      showModal: false,
     })
 
     function toggleMenu() {
@@ -150,8 +150,8 @@ export default defineComponent({
 
     return {
       ...toRefs(state),
-      toggleMenu,
       toggleLoginModal,
+      toggleMenu,
       toggleSignUpModal,
     }
   },

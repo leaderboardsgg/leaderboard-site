@@ -178,11 +178,11 @@ export default defineComponent({
 
   data() {
     return {
-      email: '',
-      username: '',
-      password: '',
       confirmPassword: '',
+      email: '',
+      password: '',
       showPassword: false,
+      username: '',
     }
   },
 })

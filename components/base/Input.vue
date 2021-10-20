@@ -1,12 +1,17 @@
 <template>
-  <input class="input" v-model="model" />
+  <input v-model="model" class="input" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-  props: ['value'],
+  props: {
+    value: {
+      type: [String, Number],
+      default: '',
+    }
+  },
 
   computed: {
     model: {
