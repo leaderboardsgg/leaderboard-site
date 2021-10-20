@@ -163,7 +163,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api'
 
 export default defineComponent({
   name: 'SignUpCard',
@@ -176,13 +176,17 @@ export default defineComponent({
     },
   },
 
-  data() {
-    return {
+  setup() {
+    const state = reactive({
       confirmPassword: '',
       email: '',
       password: '',
       showPassword: false,
       username: '',
+    })
+
+    return {
+      ...toRefs(state),
     }
   },
 })
