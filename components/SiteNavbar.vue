@@ -123,7 +123,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@nuxtjs/composition-api'
+import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api'
 import { useBreakpoints } from '@vueuse/core'
 import { screens } from '@/breakpoints'
 
@@ -132,30 +132,29 @@ const breakpoints = useBreakpoints(screens)
 export default defineComponent({
   setup() {
     const lg = breakpoints.greater('lg')
-    const mobileNavIsActive = ref(false)
 
-    return {
-      lg,
-      mobileNavIsActive,
-    }
-  },
-
-  data() {
-    return {
+    const state = reactive({
       showModal: false,
       showLogin: false,
-    }
-  },
+      mobileNavIsActive: false,
+    })
 
-  methods: {
-    toggleLoginModal() {
-      this.showModal = !this.showModal
-      this.showLogin = true
-    },
-    toggleSignUpModal() {
-      this.showModal = !this.showModal
-      this.showLogin = false
-    },
+    function toggleLoginModal() {
+      state.showModal = !state.showModal
+      state.showLogin = true
+    }
+
+    function toggleSignUpModal() {
+      state.showModal = !state.showModal
+      state.showLogin = false
+    }
+
+    return {
+      ...toRefs(state),
+      lg,
+      toggleLoginModal,
+      toggleSignUpModal,
+    }
   },
 })
 </script>
