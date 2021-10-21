@@ -59,7 +59,7 @@
     "postcss": "^8.3.9",
     "prettier": "^2.4.1",
     "pretty-quick": "^3.1.1",
-    "tailwindcss": "^2.2.16",
+    "tailwindcss": "^2.2.17",
     "ts-jest": "^27.0.5",
     "vue-jest": "^3.0.7"
   }
