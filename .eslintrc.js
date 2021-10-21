@@ -13,8 +13,8 @@ module.exports = {
     'plugin:vue/essential',
     'plugin:vue/strongly-recommended',
     'plugin:vue/recommended',
-    'plugin:vuejs-accessibility/recommended',
     'prettier',
+    'plugin:vue-a11y/base',
   ],
   ignorePatterns: [
     '.husky',
@@ -25,7 +25,7 @@ module.exports = {
     'jest.*.js',
     'testUtils.ts',
   ],
-  plugins: ['jest', 'prettier', 'vue', 'vuejs-accessibility'],
+  plugins: ['jest', 'prettier', 'vue', 'vue-a11y'],
   root: true,
   // add your custom rules here
   rules: {

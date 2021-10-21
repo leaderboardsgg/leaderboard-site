@@ -6,7 +6,12 @@
       placeholder="search..."
       @keyup.enter="onEnter"
     />
-    <button data-testid="search-button" type="submit" @click="onClick">
+    <button
+      data-testid="search-button"
+      type="submit"
+      aria-hidden="true"
+      @click="onClick"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

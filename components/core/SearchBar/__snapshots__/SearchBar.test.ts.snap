@@ -11,6 +11,7 @@ exports[`<SearchBar /> renders correctly 1`] = `
   />
    
   <button
+    aria-hidden="true"
     data-testid="search-button"
     type="submit"
   >

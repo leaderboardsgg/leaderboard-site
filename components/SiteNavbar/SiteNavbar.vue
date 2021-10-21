@@ -90,6 +90,7 @@
         <button
           class="items-center rounded text-black lg:hidden"
           @click="toggleMenu"
+          @keydown.space="toggleMenu"
         >
           <svg
             class="fill-current h-5 w-5 mx-2"
