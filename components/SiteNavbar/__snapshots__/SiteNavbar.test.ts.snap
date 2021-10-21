@@ -60,9 +60,10 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
      
     <div
       class="
+        lg:flex
         border-t border-gray-300
         lg:border-t-0
-        flex flex-col
+        flex-col
         lg:flex-row
         mt-2
         lg:mt-0
@@ -70,8 +71,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
         lg:w-auto
         space-y-2
         lg:space-y-0
-      "
-      style="display: none;"
+       hidden"
     >
       <nav
         class="nav-link-container"
@@ -150,15 +150,13 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
 
       </a>
        
-      <a
-        class="button-link sign-up-button"
-        href="#"
-        to="#"
+      <button
+        class="base-button sign-up-button"
       >
         
   Sign Up
 
-      </a>
+      </button>
        
       <button
         class="items-center rounded text-black lg:hidden"
@@ -179,5 +177,42 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
       </button>
     </div>
   </div>
+   
+  <transition-stub
+    enteractiveclass="transition-opacity duration-200"
+    enterclass="opacity-0"
+    entertoclass="opacity-100"
+    leaveactiveclass="transition-opacity duration-200"
+    leaveclass="opacity-100"
+    leavetoclass="opacity-0"
+  >
+    <div
+      class="modal-wrapper"
+      style="display: none;"
+    >
+      <div
+        class="modal-container"
+      >
+        <div
+          class="modal-fade"
+        />
+         
+        <div
+          class="modal-content"
+        >
+          <logincard
+            class="shadow-xl"
+            modal="true"
+            style="display: none;"
+          />
+           
+          <signupcard
+            class="shadow-xl"
+            modal="true"
+          />
+        </div>
+      </div>
+    </div>
+  </transition-stub>
 </div>
 `;
