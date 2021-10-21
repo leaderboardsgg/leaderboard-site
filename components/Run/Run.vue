@@ -15,7 +15,7 @@
       class="
         flex flex-col
         text-right
-        md:text-left md:flex-row
+        md:text-center md:flex-row
         gap-x-5
         flex-grow
       "
@@ -56,6 +56,14 @@
 import { defineComponent } from '@nuxtjs/composition-api';
 export default defineComponent({
   props: {
+    date: {
+      default: () => '1 year ago',
+      type: String,
+    },
+    platform: {
+      default: () => 'PC',
+      type: String,
+    },
     standing: {
       default: () => '123th',
       type: String,
@@ -66,14 +74,6 @@ export default defineComponent({
     },
     user: {
       default: () => 'JohnSmithRuns',
-      type: String,
-    },
-    platform: {
-      default: () => 'PC',
-      type: String,
-    },
-    date: {
-      default: () => '1 year ago',
       type: String,
     },
   },
