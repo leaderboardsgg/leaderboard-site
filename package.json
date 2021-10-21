@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
     "lint:fix": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore . --fix",
     "lint:all": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
@@ -18,8 +18,8 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
+    "@nuxt/devalue": "^2.0.0",
     "@nuxtjs/axios": "5.13.6",
-    "@nuxtjs/composition-api": "^0.26.0",
     "@nuxtjs/pwa": "^3.3.5",
     "@testing-library/dom": "^8.10.1",
     "@testing-library/jest-dom": "^5.14.1",
@@ -28,15 +28,15 @@
     "@vueuse/core": "^5.2.0",
     "core-js": "^3.16.0",
     "husky": "^7.0.1",
-    "nuxt": "^2.15.8",
+    "nuxt-edge": "latest",
     "typescript": "^4.4.4",
     "vue": "2.6.14"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.8",
     "@babel/preset-typescript": "^7.15.0",
+    "@nuxt/bridge": "npm:@nuxt/bridge-edge@^3.0.0-27249044.7d918e1",
     "@nuxt/types": "^2.15.8",
-    "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^6.0.1",
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/tailwindcss": "^4.2.1",
@@ -63,6 +63,7 @@
     "pretty-quick": "^3.1.1",
     "tailwindcss": "^2.2.16",
     "ts-jest": "^27.0.5",
+    "typescript": "^4.4.4",
     "vue-jest": "^3.0.7"
   }
 }

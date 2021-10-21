@@ -1,4 +1,6 @@
-export default {
+import { defineNuxtConfig } from '@nuxt/bridge';
+
+export default defineNuxtConfig({
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -7,12 +9,8 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
-    // https://composition-api.nuxtjs.org
-    '@nuxtjs/composition-api/module',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -45,4 +43,7 @@ export default {
       lang: 'en',
     },
   },
-};
+  tailwindcss: {
+    viewer: false,
+  },
+});

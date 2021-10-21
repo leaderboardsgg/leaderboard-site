@@ -1,6 +1,6 @@
-const { screens } = require('./breakpoints.js');
+import { screens } from './breakpoints.js';
 
-module.exports = {
+export default {
   darkMode: false, // or 'media' or 'class'
   mode: 'jit',
   plugins: [],
