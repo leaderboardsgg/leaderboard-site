@@ -10,7 +10,7 @@ Board Customization and good management tools.
 
 ## Contributing
 
-If you'd like to start contributing to the project please check `CONTRIBUTING.md` first to make sure things go as smoothly as possible!
+If you'd like to start contributing to the project please check [`CONTRIBUTING.md`](https://github.com/speedrun-website/speedrun.website/blob/main/CONTRIBUTING.md) first to make sure things go as smoothly as possible!
 
 ## Build Setup
 
