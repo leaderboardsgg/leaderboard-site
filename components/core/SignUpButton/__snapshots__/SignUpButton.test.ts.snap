@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SignUpButton /> renders correctly 1`] = `
+<a
+  class="button-link sign-up-button"
+  href="#"
+  to="#"
+>
+  
+  Sign Up
+
+</a>
+`;

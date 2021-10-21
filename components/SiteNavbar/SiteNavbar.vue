@@ -12,8 +12,8 @@
         py-3
       "
     >
-      <NuxtLink class="flex flex-grow" to="/">
-        <div class="flex">
+      <div class="flex flex-grow">
+        <NuxtLink class="flex" to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-10 w-10 mx-1"
@@ -43,8 +43,8 @@
           >
             speedrun.website
           </h1>
-        </div>
-      </NuxtLink>
+        </NuxtLink>
+      </div>
       <div
         :class="{ hidden: !mobileNavIsActive }"
         class="
@@ -124,7 +124,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api'
+import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
 
 export default defineComponent({
   setup() {
@@ -132,20 +132,20 @@ export default defineComponent({
       mobileNavIsActive: false,
       showLogin: false,
       showModal: false,
-    })
+    });
 
     function toggleMenu() {
-      state.mobileNavIsActive = !state.mobileNavIsActive
+      state.mobileNavIsActive = !state.mobileNavIsActive;
     }
 
     function toggleLoginModal() {
-      state.showModal = !state.showModal
-      state.showLogin = true
+      state.showModal = !state.showModal;
+      state.showLogin = true;
     }
 
     function toggleSignUpModal() {
-      state.showModal = !state.showModal
-      state.showLogin = false
+      state.showModal = !state.showModal;
+      state.showLogin = false;
     }
 
     return {
@@ -153,7 +153,7 @@ export default defineComponent({
       toggleLoginModal,
       toggleMenu,
       toggleSignUpModal,
-    }
+    };
   },
-})
+});
 </script>

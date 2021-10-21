@@ -1,9 +1,13 @@
 <template>
   <div class="modal-wrapper">
     <div class="modal-container">
-      <div class="modal-fade" @click.self="$emit('close')"></div>
+      <div
+        class="modal-fade"
+        @click.self="$emit('close')"
+        @keypress.esc="$emit('close')"
+      ></div>
 
-      <div class="modal-content" @click.self="$emit('close')">
+      <div class="modal-content">
         <slot />
       </div>
     </div>
@@ -15,7 +19,7 @@
   @apply fixed z-10 inset-0 overflow-y-auto;
 }
 
-.modal-container {
+.modal-containeqr {
   @apply flex items-center min-h-screen p-5;
 }
 
