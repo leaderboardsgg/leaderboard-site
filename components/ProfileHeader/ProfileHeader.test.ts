@@ -1,15 +1,15 @@
 import { stubbedRender } from '@/testUtils';
-import UserActivity from './UserActivity';
+import ProfileHeader from './ProfileHeader.vue';
 
-describe('<UserActivity />', () => {
+describe('<ProfileHeader />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(UserActivity);
+    const { unmount } = stubbedRender(ProfileHeader);
 
     unmount();
   });
 
   it('renders correctly', () => {
-    const { container } = stubbedRender(UserActivity);
+    const { container } = stubbedRender(ProfileHeader);
 
     expect(container.firstChild).toMatchSnapshot();
   });

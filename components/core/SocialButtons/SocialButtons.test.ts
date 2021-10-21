@@ -1,5 +1,5 @@
 import { stubbedRender } from '@/testUtils';
-import SocialButtons from './SocialButtons';
+import SocialButtons from './SocialButtons.vue';
 
 describe('<SocialButtons />', () => {
   const defaultProps = {
@@ -43,7 +43,7 @@ describe('<SocialButtons />', () => {
       props: defaultProps,
     });
 
-    expect(container.firstChild.childNodes.length).toEqual(
+    expect(container.firstChild?.childNodes.length).toEqual(
       defaultProps.socials.length,
     );
     defaultProps.socials.forEach((social) => {

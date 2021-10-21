@@ -1,5 +1,5 @@
 import { stubbedRender } from '@/testUtils';
-import SignUpButton from './SignUpButton';
+import SignUpButton from './SignUpButton.vue';
 
 describe('<SignUpButton />', () => {
   it('should render without crashing', () => {
