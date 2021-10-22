@@ -1,5 +1,5 @@
-import ProfileAboutCard from './ProfileAboutCard';
 import { stubbedRender } from '@/testUtils';
+import ProfileAboutCard from './ProfileAboutCard.vue';
 
 describe('<ProfileAboutCard />', () => {
   it('should render without crashing', () => {

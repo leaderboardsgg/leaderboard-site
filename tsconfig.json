@@ -25,7 +25,10 @@
       "@nuxtjs/axios",
       "@types/node",
       "@types/jest",
-      "@testing-library/jest-dom"
+      "@testing-library/dom",
+      "@testing-library/jest-dom",
+      "@testing-library/user-event",
+      "@testing-library/vue"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]

@@ -1,6 +1,20 @@
 <template>
-  <BaseCard id="loginCard" class="bg-white w-full max-w-xl">
+  <BaseCard id="signUpCard" class="bg-white w-full max-w-xl">
     <BaseCardHeader class="flex flex-row space-x-3">
+      <BaseButton
+        class="
+          flex flex-1
+          justify-center
+          bg-white
+          text-gray-900
+          border border-gray-300
+          hover:bg-gray-100
+        "
+        @click="$emit('logInClick')"
+      >
+        Log In
+      </BaseButton>
+
       <div
         class="
           flex flex-1
@@ -12,58 +26,63 @@
           text-gray-900
         "
       >
-        Log In
-      </div>
-
-      <BaseButton
-        class="
-          flex flex-1
-          justify-center
-          bg-white
-          text-gray-900
-          border border-gray-300
-          hover:bg-gray-100
-        "
-        @click="$emit('signUpClick')"
-      >
         Sign Up
-      </BaseButton>
+      </div>
 
       <CoreCloseButton v-show="modal" @click.prevent="$emit('close')" />
     </BaseCardHeader>
 
-    <BaseCardBody>
+    <!-- Card Body -->
+    <div class="p-3">
       <div class="flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300">
         <BaseInput
           v-model="email"
-          class="bg-white"
           name="email"
           type="text"
           placeholder="Email"
           autocomplete="email"
         />
 
-        <div class="relative flex flex-col w-full">
+        <div class="flex flex-1 flex-col space-y-1">
           <BaseInput
-            v-model="password"
-            class="bg-white pr-12"
-            name="password"
-            :type="showPassword ? 'text' : 'password'"
-            placeholder="Password"
-            autocomplete="password"
+            v-model="username"
+            name="username"
+            type="text"
+            placeholder="Username"
+            autocomplete="nickname"
           />
+          <p class="text-sm">This can be changed later</p>
+        </div>
 
-          <div class="absolute top-0 right-0 flex items-center h-full">
+        <div class="flex flex-1 flex-col space-y-1">
+          <div
+            class="
+              flex flex-1 flex-col
+              sm:flex-row
+              space-y-3
+              sm:space-y-0 sm:space-x-3
+            "
+          >
+            <BaseInput
+              v-model="password"
+              name="password"
+              class="flex-grow"
+              :type="showPassword ? 'text' : 'password'"
+              placeholder="Password"
+              autocomplete="password"
+            />
+
+            <BaseInput
+              v-model="confirmPassword"
+              name="confirmPassword"
+              class="flex-grow"
+              :type="showPassword ? 'text' : 'password'"
+              placeholder="Confirm"
+              autocomplete="password"
+            />
+
             <BaseButton
-              type="submit"
-              class="
-                p-1
-                mr-2
-                rounded
-                fill-current
-                text-gray-500
-                hover:bg-gray-100 hover:text-gray-600
-              "
+              class="hidden sm:inline bg-white text-gray-700 hover:bg-gray-100"
               @click="showPassword = !showPassword"
             >
               <svg
@@ -99,13 +118,17 @@
               </svg>
             </BaseButton>
           </div>
+
+          <p class="text-sm">
+            * Must be 8 characters with a mix of letters and numbers
+          </p>
         </div>
 
-        <BaseButton to="#" class="login-button">Log In</BaseButton>
+        <BaseButton class="signup-button"> Sign Up </BaseButton>
       </div>
 
       <div class="flex flex-col w-full space-y-2">
-        <BaseButton class="login-button">
+        <BaseButton class="signup-button">
           <svg
             class="w-5 h-5 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -117,10 +140,10 @@
             ></path>
           </svg>
 
-          <p>Log In with Github</p>
+          <p>Sign Up with Github</p>
         </BaseButton>
 
-        <BaseButton class="login-button">
+        <BaseButton class="signup-button">
           <svg
             class="w-5 h-5 mr-2"
             xmlns="http://www.w3.org/2000/svg"
@@ -132,19 +155,17 @@
             ></path>
           </svg>
 
-          <p>Log In with Google</p>
+          <p>Sign Up with Google</p>
         </BaseButton>
       </div>
-    </BaseCardBody>
+    </div>
   </BaseCard>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api'
+import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
 
 export default defineComponent({
-  name: 'LoginCard',
-
   props: {
     modal: {
       type: Boolean,
@@ -155,20 +176,22 @@ export default defineComponent({
 
   setup() {
     const state = reactive({
+      confirmPassword: '',
       email: '',
       password: '',
       showPassword: false,
-    })
+      username: '',
+    });
 
     return {
       ...toRefs(state),
-    }
+    };
   },
-})
+});
 </script>
 
 <style scoped>
-.login-button {
+.signup-button {
   @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
 }
 </style>
