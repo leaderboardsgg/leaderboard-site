@@ -16,6 +16,15 @@ module.exports = {
     'plugin:vuejs-accessibility/recommended',
     'prettier',
   ],
+  ignorePatterns: [
+    '.husky',
+    '.nuxt',
+    'coverage',
+    'node_modules',
+    'static',
+    'jest.*.js',
+    'testUtils.ts',
+  ],
   plugins: ['jest', 'prettier', 'vue', 'vuejs-accessibility'],
   root: true,
   // add your custom rules here
