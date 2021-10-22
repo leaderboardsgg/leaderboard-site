@@ -94,20 +94,19 @@ export default defineComponent({
   },
   computed: {
     formattedStanding() {
-      const std: string = this.standing;
-      switch (std[std.length - 1]) {
+      switch (this.standing[this.standing.length - 1]) {
         case '1':
-          if (std === '1') {
-            return `${std}st`;
+          if (this.standing === '1') {
+            return `${this.standing}st`;
           } else {
-            return `${std}th`;
+            return `${this.standing}th`;
           }
         case '2':
-          return `${std}nd`;
+          return `${this.standing}nd`;
         case '3':
-          return `${std}rd`;
+          return `${this.standing}rd`;
         default:
-          return `${std}th`;
+          return `${this.standing}th`;
       }
     },
   },
