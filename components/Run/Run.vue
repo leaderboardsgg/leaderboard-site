@@ -8,7 +8,9 @@
     "
   >
     <div class="flex flex-col gap-x-5 mr-5 md:flex-row">
-      <p>{{ standing }}</p>
+      <div class="flex flex-row">
+        <p>{{ formattedStanding }}</p>
+      </div>
       <p>{{ user }}</p>
     </div>
     <div
@@ -65,7 +67,7 @@ export default defineComponent({
       type: String,
     },
     standing: {
-      default: () => '123th',
+      default: () => '123',
       type: String,
     },
     time: {
@@ -75,6 +77,29 @@ export default defineComponent({
     user: {
       default: () => 'JohnSmithRuns',
       type: String,
+    },
+  },
+  computed: {
+    formattedStanding() {
+      const std: string = this.standing;
+      switch (std[std.length - 1]) {
+        case '1':
+          if (std === '1') {
+            return `${std}st`;
+          } else {
+            return `${std}th`;
+          }
+          break;
+        case '2':
+          return `${std}nd`;
+          break;
+        case '3':
+          return `${std}rd`;
+          break;
+        default:
+          return `${std}th`;
+          break;
+      }
     },
   },
 });
