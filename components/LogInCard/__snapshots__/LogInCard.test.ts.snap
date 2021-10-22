@@ -88,12 +88,7 @@ exports[`<LogInCard /> renders correctly 1`] = `
           class="absolute top-0 right-0 flex items-center h-full"
         >
           <button
-            class="base-button hidden sm:inline bg-white 
-              p-1
-              mr-2
-              rounded
-              fill-current
-            "
+            class="base-button hidden sm:inline bg-white p-1 mr-2 rounded fill-current"
             data-testid="hide-show-password-button"
             id="hide-show-button"
             type="button"
