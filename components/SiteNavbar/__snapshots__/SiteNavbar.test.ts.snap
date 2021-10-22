@@ -232,8 +232,8 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
         bg-white
         text-gray-900
         border border-gray-300
-        hover:bg-gray-100
       "
+                id="sign-up-button"
               >
                 
       Sign Up
@@ -287,18 +287,19 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                     class="absolute top-0 right-0 flex items-center h-full"
                   >
                     <button
-                      class="base-button 
+                      class="base-button hidden sm:inline bg-white 
               p-1
               mr-2
               rounded
               fill-current
-              text-gray-500
-              hover:bg-gray-100 hover:text-gray-600
             "
-                      type="submit"
+                      data-testid="hide-show-password-button"
+                      id="hide-show-button"
+                      type="button"
                     >
                       <svg
                         class="h-5 w-5"
+                        data-testid="hidden-eye-icon"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -316,6 +317,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                        
                       <svg
                         class="h-5 w-5"
+                        data-testid="visible-eye-icon"
                         fill="currentColor"
                         style="display: none;"
                         viewBox="0 0 20 20"
@@ -402,8 +404,8 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
         bg-white
         text-gray-900
         border border-gray-300
-        hover:bg-gray-100
       "
+                id="login-button"
               >
                 
       Log In
@@ -484,7 +486,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
             flex flex-1 flex-col
             sm:flex-row
             space-y-3
-            sm:space-y-0 sm:space-x-3
+            sm:space-y-0 sm:space-x-2
           "
                   >
                     <input
@@ -504,10 +506,14 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                     />
                      
                     <button
-                      class="base-button hidden sm:inline bg-white text-gray-700 hover:bg-gray-100"
+                      class="base-button hidden sm:inline bg-white"
+                      data-testid="hide-show-password-button"
+                      id="hide-show-password"
+                      type="button"
                     >
                       <svg
                         class="h-5 w-5"
+                        data-testid="hidden-eye-icon"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
@@ -525,6 +531,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                        
                       <svg
                         class="h-5 w-5"
+                        data-testid="visible-eye-icon"
                         fill="currentColor"
                         style="display: none;"
                         viewBox="0 0 20 20"

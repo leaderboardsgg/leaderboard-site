@@ -32,7 +32,7 @@ describe('<FollowButton />', () => {
       it('should call the default onSubmit methd', async () => {
         const { container } = stubbedRender(FollowButton);
 
-        fireEvent.click(<HTMLElement>container.firstChild);
+        await fireEvent.click(<HTMLElement>container.firstChild);
 
         expect(spyConsoleLog).toHaveBeenCalled();
       });
@@ -43,7 +43,7 @@ describe('<FollowButton />', () => {
         props: defaultProps,
       });
 
-      fireEvent.click(<HTMLElement>container.firstChild);
+      await fireEvent.click(<HTMLElement>container.firstChild);
 
       expect(mockOnClick).toHaveBeenCalled();
     });
@@ -53,7 +53,7 @@ describe('<FollowButton />', () => {
         props: defaultProps,
       });
 
-      fireEvent.type(<HTMLElement>container.firstChild, '{enter}');
+      await fireEvent.type(<HTMLElement>container.firstChild, '{enter}');
 
       expect(mockOnClick).toHaveBeenCalled();
     });
