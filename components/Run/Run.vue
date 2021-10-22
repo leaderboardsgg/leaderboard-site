@@ -10,7 +10,7 @@
     <div class="flex flex-col gap-x-5 mr-5 md:flex-row">
       <div class="flex flex-row gap-x-1 items-center">
         <svg
-          v-if="parseFloat(standing) <= 3"
+          v-if="parseInt(standing) <= 3"
           width="14"
           height="14"
           xmlns="http://www.w3.org/2000/svg"
