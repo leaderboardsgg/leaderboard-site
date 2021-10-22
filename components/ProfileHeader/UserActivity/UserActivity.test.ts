@@ -1,5 +1,5 @@
-import { stubbedRender } from '@/testUtils';
 import UserActivity from './UserActivity.vue';
+import { stubbedRender } from '@/testUtils';
 
 describe('<UserActivity />', () => {
   it('should render without crashing', () => {
