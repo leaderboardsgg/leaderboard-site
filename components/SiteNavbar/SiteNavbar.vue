@@ -125,8 +125,14 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
+import LogInCard from '../LogInCard/LogInCard.vue';
+import SignUpCard from '../SignUpCard/SignUpCard.vue';
 
 export default defineComponent({
+  components: {
+    LogInCard,
+    SignUpCard,
+  },
   setup() {
     const state = reactive({
       mobileNavIsActive: false,
