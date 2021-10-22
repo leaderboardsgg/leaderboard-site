@@ -8,7 +8,20 @@
     "
   >
     <div class="flex flex-col gap-x-5 mr-5 md:flex-row">
-      <div class="flex flex-row">
+      <div class="flex flex-row gap-x-1 items-center">
+        <svg
+          v-if="parseFloat(standing) <= 3"
+          width="14"
+          height="14"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 14"
+        >
+          <path
+            fill="#000"
+            d="M12.444 1.556H10.89V.778A.78.78 0 0 0 10.11 0H3.89a.78.78 0 0 0-.778.778v.778H1.556C.7 1.556 0 2.256 0 3.11v.778C0 5.872 1.493 7.49 3.414 7.73a3.896 3.896 0 0 0 2.808 2.302v2.411H3.89a.78.78 0 0 0-.778.778c0 .428.35.778.778.778h6.222a.78.78 0 0 0 .778-.778.78.78 0 0 0-.778-.778H7.778v-2.41a3.896 3.896 0 0 0 2.808-2.303C12.506 7.49 14 5.872 14 3.89v-.78c0-.855-.7-1.555-1.556-1.555ZM1.556 3.889V3.11H3.11v2.971A2.341 2.341 0 0 1 1.556 3.89Zm10.888 0a2.341 2.341 0 0 1-1.555 2.193v-2.97h1.555v.777Z"
+          />
+        </svg>
         <p>{{ formattedStanding }}</p>
       </div>
       <p>{{ user }}</p>
@@ -67,7 +80,7 @@ export default defineComponent({
       type: String,
     },
     standing: {
-      default: () => '123',
+      default: () => '1',
       type: String,
     },
     time: {
@@ -89,16 +102,12 @@ export default defineComponent({
           } else {
             return `${std}th`;
           }
-          break;
         case '2':
           return `${std}nd`;
-          break;
         case '3':
           return `${std}rd`;
-          break;
         default:
           return `${std}th`;
-          break;
       }
     },
   },
