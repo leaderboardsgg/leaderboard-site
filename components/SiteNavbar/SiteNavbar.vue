@@ -76,8 +76,16 @@
           lg:space-x-0
         "
       >
-        <CoreLoginButton @click="toggleLoginModal" />
-        <CoreSignUpButton @click="toggleSignUpModal" />
+        <CoreLoginButton
+          data-testId="site-navbar-login-button"
+          @click="toggleLoginModal"
+          @keyup.enter="toggleLoginModal"
+        />
+        <CoreSignUpButton
+          data-testId="site-navbar-sign-up-button"
+          @click="toggleSignUpModal"
+          @keyup.enter="toggleSignUpModal"
+        />
 
         <button
           class="items-center rounded text-black lg:hidden"

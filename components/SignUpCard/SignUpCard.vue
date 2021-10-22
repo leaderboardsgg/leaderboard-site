@@ -1,5 +1,9 @@
 <template>
-  <BaseCard id="signUpCard" class="bg-white w-full max-w-xl">
+  <BaseCard
+    id="signUpCard"
+    data-testid="sign-up-card"
+    class="bg-white w-full max-w-xl"
+  >
     <BaseCardHeader class="flex flex-row space-x-3">
       <BaseButton
         class="

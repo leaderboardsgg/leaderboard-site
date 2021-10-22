@@ -140,18 +140,18 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
         lg:space-x-0
       "
     >
-      <a
-        class="button-link login-button"
-        href="#"
-        to="#"
+      <button
+        class="base-button login-button"
+        data-testid="site-navbar-login-button"
       >
         
   Log In
 
-      </a>
+      </button>
        
       <button
         class="base-button sign-up-button"
+        data-testid="site-navbar-sign-up-button"
       >
         
   Sign Up
@@ -202,6 +202,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
         >
           <div
             class="card bg-white w-full max-w-xl shadow-xl"
+            data-testid="login-card"
             id="loginCard"
             style="display: none;"
           >
@@ -388,6 +389,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
            
           <div
             class="card bg-white w-full max-w-xl shadow-xl"
+            data-testid="sign-up-card"
             id="signUpCard"
           >
             <div

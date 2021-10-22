@@ -1,5 +1,9 @@
 <template>
-  <BaseCard id="loginCard" class="bg-white w-full max-w-xl">
+  <BaseCard
+    id="loginCard"
+    data-testid="login-card"
+    class="bg-white w-full max-w-xl"
+  >
     <BaseCardHeader class="flex flex-row space-x-3">
       <div
         class="
