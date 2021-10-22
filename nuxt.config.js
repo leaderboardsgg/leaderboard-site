@@ -23,11 +23,14 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    htmlAttrs: {
+      lang: 'en-US',
+    },
     link: [{ href: '/favicon.ico', rel: 'icon', type: 'image/x-icon' }],
     meta: [
       { charset: 'utf-8' },
       { content: 'width=device-width, initial-scale=1', name: 'viewport' },
-      { content: '', hid: 'description', name: 'description' },
+      { content: 'speedrun-website', hid: 'description', name: 'description' },
       { content: 'telephone=no', name: 'format-detection' },
     ],
     title: 'speedrun-website',
@@ -44,5 +47,8 @@ export default {
     manifest: {
       lang: 'en',
     },
+  },
+  render: {
+    csp: true,
   },
 };

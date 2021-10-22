@@ -30,3 +30,9 @@ jobs:
 
       - name: Tests
         run: npm run test
+
+      - name: Run Lighthouse CI
+        run: |
+          npm run build
+          npm install -g @lhci/cli@0.8.x
+          lhci autorun
