@@ -15,6 +15,9 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 ## Build Setup
 
 ```bash
+# Copy example.env to .env and verify that the env variables inside are correct
+$ cp example.env .env
+
 # install dependencies
 $ npm install
 

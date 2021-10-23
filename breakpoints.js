@@ -1,5 +1,5 @@
 /* eslint-disable vue/sort-keys */
-export const screens = {
+module.exports = {
   sm: '640px',
   md: '768px',
   lg: '1024px',

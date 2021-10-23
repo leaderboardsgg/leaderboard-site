@@ -98,7 +98,7 @@
           </p>
         </div>
 
-        <BaseButton class="signup-button"> Sign Up </BaseButton>
+        <BaseButton class="signup-button" @click="signup"> Sign Up </BaseButton>
       </div>
 
       <div class="flex flex-col w-full space-y-2">
@@ -137,7 +137,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  useContext,
+} from '@nuxtjs/composition-api';
 import HideShowPassword from '../HideShowPassword/HideShowPassword.vue';
 
 export default defineComponent({
@@ -152,7 +157,9 @@ export default defineComponent({
     },
   },
 
-  setup() {
+  setup(_, { emit }) {
+    const { $axios } = useContext();
+
     const state = reactive({
       confirmPassword: '',
       email: '',
@@ -161,8 +168,24 @@ export default defineComponent({
       username: '',
     });
 
+    async function signup() {
+      try {
+        await $axios.post('/register', {
+          email: state.email,
+          password: state.password,
+          password_confirm: state.confirmPassword,
+          username: state.username,
+        });
+
+        emit('success');
+      } catch (e) {
+        emit('error');
+      }
+    }
+
     return {
       ...toRefs(state),
+      signup,
     };
   },
 });

@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <BaseButton to="#" class="login-button">Log In</BaseButton>
+        <BaseButton class="login-button" @click="login">Log In</BaseButton>
       </div>
 
       <div class="flex flex-col w-full space-y-2">
@@ -108,7 +108,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  useContext,
+} from '@nuxtjs/composition-api';
+import { useMagicKeys, whenever } from '@vueuse/core';
 import HideShowPassword from '../HideShowPassword/HideShowPassword.vue';
 
 export default defineComponent({
@@ -123,15 +129,42 @@ export default defineComponent({
     },
   },
 
-  setup() {
+  setup(_, { emit }) {
+    const { $auth } = useContext();
+    const { enter } = useMagicKeys();
+
     const state = reactive({
       email: '',
       password: '',
       showPassword: false,
     });
 
+    async function login() {
+      try {
+        await $auth.loginWith('local', {
+          data: {
+            email: state.email,
+            password: state.password,
+          },
+        });
+
+        emit('close');
+        reset();
+      } catch (e) {
+        // todo
+      }
+    }
+
+    function reset() {
+      state.email = '';
+      state.password = '';
+    }
+
+    whenever(() => enter?.value, login);
+
     return {
       ...toRefs(state),
+      login,
     };
   },
 });

@@ -77,14 +77,19 @@
         "
       >
         <CoreLoginButton
+          v-if="!$auth.loggedIn"
           data-testId="site-navbar-login-button"
           @click="toggleLoginModal"
-          @keyup.enter="toggleLoginModal"
         />
         <CoreSignUpButton
+          v-if="!$auth.loggedIn"
           data-testId="site-navbar-sign-up-button"
           @click="toggleSignUpModal"
-          @keyup.enter="toggleSignUpModal"
+        />
+        <CoreLogoutButton
+          v-if="$auth.loggedIn"
+          data-testId="site-navbar-logout-button"
+          @click="$auth.logout()"
         />
 
         <button
@@ -103,31 +108,23 @@
       </div>
     </div>
 
-    <transition
-      enter-active-class="transition-opacity duration-200"
-      leave-active-class="transition-opacity duration-200"
-      enter-class="opacity-0"
-      enter-to-class="opacity-100"
-      leave-class="opacity-100"
-      leave-to-class="opacity-0"
-    >
-      <BaseModal v-show="showModal" @close="showModal = false">
-        <LogInCard
-          v-show="showLogin"
-          class="shadow-xl"
-          :modal="true"
-          @close="showModal = false"
-          @signUpClick="showLogin = false"
-        />
-        <SignUpCard
-          v-show="!showLogin"
-          class="shadow-xl"
-          :modal="true"
-          @close="showModal = false"
-          @logInClick="showLogin = true"
-        />
-      </BaseModal>
-    </transition>
+    <BaseModal :visible.sync="showModal" @close="showModal = false">
+      <LogInCard
+        v-show="showLogin"
+        class="shadow-xl"
+        :modal="true"
+        @close="showModal = false"
+        @signUpClick="showLogin = false"
+      />
+      <SignUpCard
+        v-show="!showLogin"
+        class="shadow-xl"
+        :modal="true"
+        @close="showModal = false"
+        @logInClick="showLogin = true"
+        @success="showLogin = true"
+      />
+    </BaseModal>
   </div>
 </template>
 
