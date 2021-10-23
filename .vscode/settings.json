@@ -1,0 +1,17 @@
+{
+	"typescript.tsdk": "node_modules\\typescript\\lib",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.formatOnSave": true,
+	"eslint.validate": ["javascript", "vue"],
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"search.exclude": {
+		"**/.github": true,
+		"**/.husky": true,
+		"**/.nuxt": true,
+		"**/node_modules": true,
+		"package-lock.json": true,
+		".gitignore": true,
+		"**/**.md": true
+	}
+}

@@ -1,35 +1,43 @@
 {
-  "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
-    "noEmit": true,
-    "noImplicitAny": true,
-    "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "paths": {
-      "~/*": ["./*"],
-      "@/*": ["./*"]
-    },
-    "sourceMap": true,
-    "strict": true,
-    "target": "ES2020",
-    "types": [
-      "@nuxt/types",
-      "@nuxtjs/axios",
-      "@types/node",
-      "@types/jest",
-      "@testing-library/dom",
-      "@testing-library/jest-dom",
-      "@testing-library/user-event",
-      "@testing-library/vue"
-    ]
-  },
-  "exclude": ["node_modules", ".nuxt", "dist"]
+	"compilerOptions": {
+		"module": "ESNext",
+		"target": "ES2020",
+		"moduleResolution": "Node",
+
+		"strict": true,
+		"pretty": true,
+		"allowJs": true,
+		"sourceMap": true,
+		"importHelpers": true,
+		"removeComments": true,
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"experimentalDecorators": true,
+
+		"noEmit": true,
+		"noUnusedLocals": true,
+		"noImplicitReturns": true,
+		"noUnusedParameters": true,
+		"allowUnreachableCode": false,
+		"noUncheckedIndexedAccess": true,
+		"forceConsistentCasingInFileNames": true,
+
+		"baseUrl": ".",
+		"paths": {
+			"~/*": ["./*"],
+			"@/*": ["./*"]
+		},
+		"lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
+		"types": [
+			"@nuxt/types",
+			"@nuxtjs/axios",
+			"@types/node",
+			"@types/jest",
+			"@testing-library/dom",
+			"@testing-library/jest-dom",
+			"@testing-library/user-event",
+			"@testing-library/vue"
+		]
+	},
+	"exclude": ["node_modules", ".nuxt", "dist"]
 }
