@@ -11,6 +11,7 @@
       <div class="flex flex-row gap-x-1 items-center">
         <svg
           v-if="parseInt(standing) <= 3"
+          id="trophy"
           width="14"
           height="14"
           xmlns="http://www.w3.org/2000/svg"
