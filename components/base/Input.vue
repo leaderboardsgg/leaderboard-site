@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from '@vue/composition-api'
+import { computed, defineComponent } from '@vue/composition-api';
 
 export default defineComponent({
   props: {
@@ -15,18 +15,18 @@ export default defineComponent({
   setup(props, { emit }) {
     const model = computed({
       get(): any {
-        return props.value
+        return props.value;
       },
       set(value: any): void {
-        emit('input', value)
+        emit('input', value);
       },
-    })
+    });
 
     return {
       model,
-    }
+    };
   },
-})
+});
 </script>
 
 <style scoped>
