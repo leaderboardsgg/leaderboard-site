@@ -1,7 +1,7 @@
 <template>
-  <BaseButtonLink class="login-button" to="#" v-bind="$attrs" v-on="$listeners">
+  <BaseButton class="login-button" v-bind="$attrs" v-on="$listeners">
     Log In
-  </BaseButtonLink>
+  </BaseButton>
 </template>
 
 <style scoped>

@@ -1,15 +1,15 @@
+import SignUpCard from './SignUpCard.vue';
 import { stubbedRender } from '@/testUtils';
-import ProfileAboutCard from './ProfileAboutCard';
 
-describe('<ProfileAboutCard />', () => {
+describe('<SignUpCard />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(ProfileAboutCard);
+    const { unmount } = stubbedRender(SignUpCard);
 
     unmount();
   });
 
   it('renders correctly', () => {
-    const { container } = stubbedRender(ProfileAboutCard);
+    const { container } = stubbedRender(SignUpCard);
 
     expect(container.firstChild).toMatchSnapshot();
   });

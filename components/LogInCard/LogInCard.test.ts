@@ -1,15 +1,15 @@
-import LoginButton from './LoginButton.vue';
+import LogInCard from './LogInCard.vue';
 import { stubbedRender } from '@/testUtils';
 
-describe('<LoginButton />', () => {
+describe('<LogInCard />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(LoginButton);
+    const { unmount } = stubbedRender(LogInCard);
 
     unmount();
   });
 
   it('renders correctly', () => {
-    const { container } = stubbedRender(LoginButton);
+    const { container } = stubbedRender(LogInCard);
 
     expect(container.firstChild).toMatchSnapshot();
   });

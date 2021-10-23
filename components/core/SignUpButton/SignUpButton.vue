@@ -1,12 +1,7 @@
 <template>
-  <BaseButtonLink
-    class="sign-up-button"
-    to="#"
-    v-bind="$attrs"
-    v-on="$listeners"
-  >
+  <BaseButton class="sign-up-button" v-bind="$attrs" v-on="$listeners">
     Sign Up
-  </BaseButtonLink>
+  </BaseButton>
 </template>
 
 <style scoped>

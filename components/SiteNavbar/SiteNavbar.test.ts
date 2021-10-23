@@ -1,5 +1,5 @@
-import { stubbedRender } from '@/testUtils';
 import SiteNavbar from './SiteNavbar.vue';
+import { fireEvent, stubbedRender } from '@/testUtils';
 
 /* Need to mock the `window.matchMedia` method here, because it has not
  * yet been implemented by JSDOM. Hopefully this will be fixed soon.
@@ -31,5 +31,53 @@ describe('<SiteNavbar />', () => {
     const { container } = stubbedRender(SiteNavbar);
 
     expect(container.firstChild).toMatchSnapshot();
+  });
+
+  describe('`<CoreLoginButton />` interactions', () => {
+    describe('when being clicked', () => {
+      it('should open the modal containing the `<LogInCard />`', async () => {
+        const { getByTestId } = stubbedRender(SiteNavbar);
+        const loginButton = getByTestId('site-navbar-login-button');
+
+        await fireEvent.click(<HTMLElement>loginButton);
+
+        expect(getByTestId('login-card')).toBeVisible();
+      });
+    });
+
+    describe('when the element is focused and the enter key is released', () => {
+      it('should open the modal containing the `<LogInCard />`', async () => {
+        const { getByTestId } = stubbedRender(SiteNavbar);
+        const loginButton = getByTestId('site-navbar-login-button');
+
+        await fireEvent.type(<HTMLElement>loginButton, '{enter}');
+
+        expect(getByTestId('login-card')).toBeVisible();
+      });
+    });
+  });
+
+  describe('`<CoreSignUpButton />` interactions', () => {
+    describe('when being clicked', () => {
+      it('should open the modal containing the `<SignUpCard />`', async () => {
+        const { getByTestId } = stubbedRender(SiteNavbar);
+        const signUpButton = getByTestId('site-navbar-sign-up-button');
+
+        await fireEvent.click(<HTMLElement>signUpButton);
+
+        expect(getByTestId('sign-up-card')).toBeVisible();
+      });
+    });
+
+    describe('when the element is focused and the enter key is released', () => {
+      it('should open the modal containing the `<SignUpCard />`', async () => {
+        const { getByTestId } = stubbedRender(SiteNavbar);
+        const signUpButton = getByTestId('site-navbar-sign-up-button');
+
+        await fireEvent.type(<HTMLElement>signUpButton, '{enter}');
+
+        expect(getByTestId('sign-up-card')).toBeVisible();
+      });
+    });
   });
 });

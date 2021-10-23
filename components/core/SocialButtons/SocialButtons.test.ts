@@ -1,5 +1,5 @@
-import { stubbedRender } from '@/testUtils';
 import SocialButtons from './SocialButtons.vue';
+import { stubbedRender } from '@/testUtils';
 
 describe('<SocialButtons />', () => {
   const defaultProps = {
