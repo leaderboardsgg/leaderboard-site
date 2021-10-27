@@ -3,6 +3,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "octref.vetur",
-    "christian-kohler.npm-intellisense"
+    "christian-kohler.npm-intellisense",
+    "bradlc.vscode-tailwindcss"
   ]
 }
