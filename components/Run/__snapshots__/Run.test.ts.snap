@@ -6,7 +6,7 @@ exports[`<Run /> renders correctly 1`] = `
     flex flex-row
     text-base text-black
     py-3
-    border border-0 border-b-2 border-gray-200
+    border border-b-2 border-gray-200
   "
 >
   <div
@@ -18,7 +18,6 @@ exports[`<Run /> renders correctly 1`] = `
       <svg
         fill="none"
         height="14"
-        id="trophy"
         viewBox="0 0 14 14"
         width="14"
         xmlns="http://www.w3.org/2000/svg"
