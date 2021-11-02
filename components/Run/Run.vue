@@ -4,13 +4,13 @@
       flex flex-row
       text-base text-black
       py-3
-      border border-0 border-b-2 border-gray-200
+      border border-b-2 border-gray-200
     "
   >
     <div class="flex flex-col gap-x-5 mr-5 md:flex-row">
       <div class="flex flex-row gap-x-1 items-center">
         <svg
-          v-if="parseInt(standing) <= 3"
+          v-if="standing <= 3"
           id="trophy"
           width="14"
           height="14"
@@ -68,8 +68,10 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { computed, defineComponent } from '@nuxtjs/composition-api';
+
 export default defineComponent({
   props: {
     date: {
@@ -81,8 +83,8 @@ export default defineComponent({
       type: String,
     },
     standing: {
-      default: () => '1',
-      type: String,
+      default: () => 1,
+      type: Number,
     },
     time: {
       default: () => '01:23:45',
@@ -93,23 +95,27 @@ export default defineComponent({
       type: String,
     },
   },
-  computed: {
-    formattedStanding() {
-      switch (this.standing[this.standing.length - 1]) {
-        case '1':
-          if (this.standing === '1') {
-            return `${this.standing}st`;
-          } else {
-            return `${this.standing}th`;
-          }
-        case '2':
-          return `${this.standing}nd`;
-        case '3':
-          return `${this.standing}rd`;
+  setup(props) {
+    const formattedStanding = computed(() => {
+      /**
+       * We shouldn't hard code this because
+       * of i18n support
+       */
+      switch (props.standing) {
+        case 1:
+          return `${props.standing}st`;
+        case 2:
+          return `${props.standing}nd`;
+        case 3:
+          return `${props.standing}rd`;
         default:
-          return `${this.standing}th`;
+          return `${props.standing}th`;
       }
-    },
+    });
+
+    return {
+      formattedStanding,
+    };
   },
 });
 </script>

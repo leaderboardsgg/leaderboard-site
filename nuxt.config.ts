@@ -1,4 +1,6 @@
-export default {
+import { NuxtConfig } from '@nuxt/types';
+
+const config: NuxtConfig = {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -46,3 +48,5 @@ export default {
     },
   },
 };
+
+export default config;
