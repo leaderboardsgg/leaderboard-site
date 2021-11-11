@@ -14,9 +14,9 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api';
-import SocialButtons from '~/components/core/SocialButtons/SocialButtons';
-import CardHeader from '~/components/elements/CardHeader';
-import CardBody from '~/components/elements/CardBody';
+import SocialButtons from '~/components/elements/buttons/SocialButtons/SocialButtons';
+import CardHeader from '~/components/elements/cards/CardHeader';
+import CardBody from '~/components/elements/cards/CardBody';
 
 export default defineComponent({
   name: 'BioCard',

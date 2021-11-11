@@ -1,5 +1,5 @@
 <template>
-  <div class="social-button--container">
+  <div class="social-buttons">
     <a
       v-for="social in socials"
       :key="social.name"
@@ -26,7 +26,7 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.social-button--container {
+.social-buttons {
   @apply my-1;
   @apply grid auto-cols-fr grid-cols-4 gap-3;
 }
