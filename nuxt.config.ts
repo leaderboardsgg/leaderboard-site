@@ -72,7 +72,12 @@ const config: NuxtConfig = {
   modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/plugins/api'],
+
+  // https://nuxtjs.org/tutorials/moving-from-nuxtjs-dotenv-to-runtime-config/
+  publicRuntimeConfig: {
+    backendBaseUrl: process.env.BACKEND_BASE_URL,
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {

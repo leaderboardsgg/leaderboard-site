@@ -116,6 +116,7 @@ import Card from '~/components/elements/cards/Card.vue';
 import CardHeader from '~/components/elements/cards/CardHeader.vue';
 import CloseButton from '~/components/elements/buttons/CloseButton.vue';
 import BaseInput from '~/components/elements/BaseInput.vue';
+import { UserRegister } from '@/types';
 
 export default defineComponent({
   components: {
@@ -134,35 +135,34 @@ export default defineComponent({
     },
   },
   setup(_, { emit }) {
-    const { $axios } = useContext();
+    const { $api } = useContext();
 
-    const state = reactive({
+    const register = reactive<UserRegister>({
       email: '',
       password: '',
       passwordConfirm: '',
-      showPassword: false,
       username: '',
     });
 
-    async function signup() {
-      await $axios.$post('/api/v1/register', {
-        email: state.email,
-        password: state.password,
-        password_confirm: state.passwordConfirm,
-        username: state.username,
-      });
+    const state = reactive({
+      showPassword: false,
+    });
 
-      state.email = '';
-      state.password = '';
-      state.passwordConfirm = '';
+    async function signup() {
+      await $api.register(register);
+
+      register.email = '';
+      register.password = '';
+      register.passwordConfirm = '';
+      register.username = '';
       state.showPassword = false;
-      state.username = '';
 
       emit('logInClick');
     }
 
     return {
       ...toRefs(state),
+      ...toRefs(register),
       signup,
     };
   },

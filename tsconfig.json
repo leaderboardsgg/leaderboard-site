@@ -36,7 +36,8 @@
       "@testing-library/dom",
       "@testing-library/jest-dom",
       "@testing-library/user-event",
-      "@testing-library/vue"
+      "@testing-library/vue",
+      "@/plugins/api/types"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
