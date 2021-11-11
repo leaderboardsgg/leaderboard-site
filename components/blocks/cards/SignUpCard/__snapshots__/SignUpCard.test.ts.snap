@@ -88,7 +88,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
           <input
             autocomplete="password"
             class="input signup-card__password-field"
-            name="confirmPassword"
+            name="passwordConfirm"
             placeholder="Confirm"
             type="password"
           />

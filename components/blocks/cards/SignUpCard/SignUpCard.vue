@@ -45,8 +45,8 @@
             />
 
             <BaseInput
-              v-model="confirmPassword"
-              name="confirmPassword"
+              v-model="passwordConfirm"
+              name="passwordConfirm"
               class="signup-card__password-field"
               :type="showPassword ? 'text' : 'password'"
               placeholder="Confirm"
@@ -65,7 +65,7 @@
           <p>* Must be 8 characters with a mix of letters and numbers</p>
         </div>
 
-        <BaseButton class="signup-button"> Sign Up </BaseButton>
+        <BaseButton class="signup-button" @click="signup"> Sign Up </BaseButton>
       </div>
 
       <div class="signup-card__auth-buttons">
@@ -104,7 +104,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  useContext,
+} from '@nuxtjs/composition-api';
 import HideShowPassword from '~/components/elements/buttons/HideShowPassword/HideShowPassword.vue';
 import BaseButton from '~/components/elements/buttons/BaseButton.vue';
 import Card from '~/components/elements/cards/Card.vue';
@@ -128,18 +133,37 @@ export default defineComponent({
       default: false,
     },
   },
+  setup(_, { emit }) {
+    const { $axios } = useContext();
 
-  setup() {
     const state = reactive({
-      confirmPassword: '',
       email: '',
       password: '',
+      passwordConfirm: '',
       showPassword: false,
       username: '',
     });
 
+    async function signup() {
+      await $axios.$post('/api/v1/register', {
+        email: state.email,
+        password: state.password,
+        password_confirm: state.passwordConfirm,
+        username: state.username,
+      });
+
+      state.email = '';
+      state.password = '';
+      state.passwordConfirm = '';
+      state.showPassword = false;
+      state.username = '';
+
+      emit('logInClick');
+    }
+
     return {
       ...toRefs(state),
+      signup,
     };
   },
 });

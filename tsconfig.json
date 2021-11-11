@@ -29,6 +29,7 @@
     "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
     "types": [
       "@nuxt/types",
+      "@nuxtjs/auth-next",
       "@nuxtjs/axios",
       "@types/node",
       "@types/jest",

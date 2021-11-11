@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <BaseButton to="#" class="login-button">Log In</BaseButton>
+        <BaseButton class="login-button" @click="login">Log In</BaseButton>
       </div>
 
       <div class="login-card__auth-buttons">
@@ -84,7 +84,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  useContext,
+} from '@nuxtjs/composition-api';
 import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue';
 import BaseInput from '@/components/elements/BaseInput.vue';
 import Card from '@/components/elements/cards/Card.vue';
@@ -110,16 +115,33 @@ export default defineComponent({
       default: false,
     },
   },
+  setup(_, { emit }) {
+    const { $auth } = useContext();
 
-  setup() {
     const state = reactive({
       email: '',
       password: '',
       showPassword: false,
     });
 
+    async function login() {
+      await $auth.loginWith('local', {
+        data: {
+          email: state.email,
+          password: state.password,
+        },
+      });
+
+      state.email = '';
+      state.password = '';
+      state.showPassword = false;
+
+      emit('close');
+    }
+
     return {
       ...toRefs(state),
+      login,
     };
   },
 });

@@ -22,13 +22,25 @@ Object.defineProperty(window, 'matchMedia', {
 
 describe('<SiteNavbar />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(SiteNavbar);
+    const { unmount } = stubbedRender(SiteNavbar, {
+      mocks: {
+        $auth: {
+          loggedIn: false,
+        },
+      },
+    });
 
     unmount();
   });
 
   it('renders correctly', () => {
-    const { container } = stubbedRender(SiteNavbar);
+    const { container } = stubbedRender(SiteNavbar, {
+      mocks: {
+        $auth: {
+          loggedIn: false,
+        },
+      },
+    });
 
     expect(container.firstChild).toMatchSnapshot();
   });
@@ -36,7 +48,13 @@ describe('<SiteNavbar />', () => {
   describe('`<CoreLoginButton />` interactions', () => {
     describe('when being clicked', () => {
       it('should open the modal containing the `<LogInCard />`', async () => {
-        const { getByTestId } = stubbedRender(SiteNavbar);
+        const { getByTestId } = stubbedRender(SiteNavbar, {
+          mocks: {
+            $auth: {
+              loggedIn: false,
+            },
+          },
+        });
         const loginButton = getByTestId('site-navbar-login-button');
 
         await fireEvent.click(<HTMLElement>loginButton);
@@ -47,7 +65,13 @@ describe('<SiteNavbar />', () => {
 
     describe('when the element is focused and the enter key is released', () => {
       it('should open the modal containing the `<LogInCard />`', async () => {
-        const { getByTestId } = stubbedRender(SiteNavbar);
+        const { getByTestId } = stubbedRender(SiteNavbar, {
+          mocks: {
+            $auth: {
+              loggedIn: false,
+            },
+          },
+        });
         const loginButton = getByTestId('site-navbar-login-button');
 
         await fireEvent.type(<HTMLElement>loginButton, '{enter}');
@@ -60,7 +84,13 @@ describe('<SiteNavbar />', () => {
   describe('`<CoreSignUpButton />` interactions', () => {
     describe('when being clicked', () => {
       it('should open the modal containing the `<SignUpCard />`', async () => {
-        const { getByTestId } = stubbedRender(SiteNavbar);
+        const { getByTestId } = stubbedRender(SiteNavbar, {
+          mocks: {
+            $auth: {
+              loggedIn: false,
+            },
+          },
+        });
         const signUpButton = getByTestId('site-navbar-sign-up-button');
 
         await fireEvent.click(<HTMLElement>signUpButton);
@@ -71,7 +101,13 @@ describe('<SiteNavbar />', () => {
 
     describe('when the element is focused and the enter key is released', () => {
       it('should open the modal containing the `<SignUpCard />`', async () => {
-        const { getByTestId } = stubbedRender(SiteNavbar);
+        const { getByTestId } = stubbedRender(SiteNavbar, {
+          mocks: {
+            $auth: {
+              loggedIn: false,
+            },
+          },
+        });
         const signUpButton = getByTestId('site-navbar-sign-up-button');
 
         await fireEvent.type(<HTMLElement>signUpButton, '{enter}');

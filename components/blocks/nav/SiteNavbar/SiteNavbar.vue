@@ -25,16 +25,25 @@
         <SearchBar />
       </div>
       <div class="mobile-navbar">
-        <LogInButton
+        <LoginButton
+          v-if="!$auth.loggedIn"
           data-testId="site-navbar-login-button"
           @click="toggleLoginModal"
           @keyup.enter="toggleLoginModal"
         />
         <SignUpButton
+          v-if="!$auth.loggedIn"
           data-testId="site-navbar-sign-up-button"
           @click="toggleSignUpModal"
           @keyup.enter="toggleSignUpModal"
         />
+        <LogoutButton
+          v-if="$auth.loggedIn"
+          data-testId="site-navbar-logout-button"
+          @click="logout"
+          @keyup.enter="logout"
+        />
+
         <button class="mobile-menu__toggle" @click="toggleMenu">
           <svg
             class="fill-current h-5 w-5 mx-2"
@@ -77,27 +86,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
-import LogInCard from '../../cards/LogInCard/LogInCard.vue';
-import SignUpCard from '../../cards/SignUpCard/SignUpCard.vue';
-import SignUpButton from '~/components/elements/buttons/SignUpButton/SignUpButton.vue';
-import LogInButton from '~/components/elements/buttons/LoginButton/LoginButton.vue';
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  useContext,
+} from '@nuxtjs/composition-api';
+import LogInCard from '~/components/blocks/cards/LogInCard/LogInCard.vue';
+import SignUpCard from '~/components/blocks/cards/SignUpCard/SignUpCard.vue';
+import LoginButton from '~/components/elements/buttons/LoginButton/LoginButton.vue';
+import LogoutButton from '~/components/elements/buttons/LogoutButton/LogoutButton.vue';
 import Modal from '~/components/elements/Modal.vue';
 import NavLinks from '~/components/elements/nav/NavLinks/NavLinks.vue';
 import SearchBar from '~/components/elements/SearchBar/SearchBar.vue';
+import SignUpButton from '~/components/elements/buttons/SignUpButton/SignUpButton.vue';
 
 export default defineComponent({
   name: 'SiteNavBar',
   components: {
-    LogInButton,
     LogInCard,
+    SignUpCard,
+    LoginButton,
+    LogoutButton,
     Modal,
     NavLinks,
     SearchBar,
     SignUpButton,
-    SignUpCard,
   },
   setup() {
+    const { $auth } = useContext();
+
     const state = reactive({
       mobileNavIsActive: false,
       showLogin: false,
@@ -118,8 +136,13 @@ export default defineComponent({
       state.showLogin = false;
     }
 
+    function logout() {
+      $auth.logout();
+    }
+
     return {
       ...toRefs(state),
+      logout,
       toggleLoginModal,
       toggleMenu,
       toggleSignUpModal,

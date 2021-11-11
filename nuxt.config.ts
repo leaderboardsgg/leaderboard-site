@@ -1,6 +1,39 @@
 import { NuxtConfig } from '@nuxt/types';
+import { config as dotenv } from 'dotenv';
+
+dotenv();
 
 const config: NuxtConfig = {
+  // Auth module configuration https://auth.nuxtjs.org/
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            method: 'post',
+            url: `${process.env.BACKEND_BASE_URL}/api/v1/login`,
+          },
+          logout: {
+            method: 'post',
+            url: `${process.env.BACKEND_BASE_URL}/api/v1/logout`,
+          },
+          user: {
+            method: 'get',
+            url: `${process.env.BACKEND_BASE_URL}/api/v1/me`,
+          },
+        },
+        token: {
+          global: true,
+          property: 'token',
+          type: 'Bearer',
+        },
+        user: {
+          property: 'data',
+        },
+      },
+    },
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
 
@@ -36,7 +69,7 @@ const config: NuxtConfig = {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
