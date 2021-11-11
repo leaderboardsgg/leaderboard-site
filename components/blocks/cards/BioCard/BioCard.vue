@@ -1,13 +1,13 @@
 <template>
-  <div class="profile-about-card">
-    <div class="border-b border-gray-300">
-      <h2 class="text-xl font-bold">About</h2>
+  <div class="bio-card">
+    <div class="bio-card__header">
+      <h2>About</h2>
     </div>
 
-    <div>
-      <p class="text-black">{{ bio }}</p>
-      <div class="mt-5">
-        <CoreSocialButtons :socials="socials" />
+    <div class="bio-card__content">
+      <p>{{ bio }}</p>
+      <div class="bio-card__buttons">
+        <SocialButtons :socials="socials" />
       </div>
     </div>
   </div>
@@ -15,8 +15,11 @@
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api';
+import SocialButtons from '~/components/core/SocialButtons/SocialButtons';
 
 export default defineComponent({
+  name: 'BioCard',
+  components: { SocialButtons },
   props: {
     bio: {
       default: () =>
@@ -53,11 +56,27 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.profile-about-card {
+.bio-card {
   @apply hidden md:flex flex-col border rounded border-gray-300;
-}
-
-.profile-about-card > div {
-  @apply p-5;
+  & > div {
+    @apply p-5;
+  }
+  ,
+  &__header {
+    @apply border-b border-gray-300;
+    h2 {
+      @apply text-xl font-bold;
+    }
+  }
+  ,
+  &__content {
+    p {
+      @apply text-black;
+    }
+  }
+  ,
+  &__buttons {
+    @apply mt-5;
+  }
 }
 </style>
