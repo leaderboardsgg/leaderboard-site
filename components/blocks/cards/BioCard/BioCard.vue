@@ -1,25 +1,26 @@
 <template>
   <div class="bio-card">
-    <div class="bio-card__header">
+    <CardHeader class="bio-card__header">
       <h2>About</h2>
-    </div>
-
-    <div class="bio-card__content">
+    </CardHeader>
+    <CardBody class="bio-card__content">
       <p>{{ bio }}</p>
       <div class="bio-card__buttons">
         <SocialButtons :socials="socials" />
       </div>
-    </div>
+    </CardBody>
   </div>
 </template>
 
 <script>
 import { defineComponent } from '@nuxtjs/composition-api';
 import SocialButtons from '~/components/core/SocialButtons/SocialButtons';
+import CardHeader from '~/components/elements/CardHeader';
+import CardBody from '~/components/elements/CardBody';
 
 export default defineComponent({
   name: 'BioCard',
-  components: { SocialButtons },
+  components: { CardBody, CardHeader, SocialButtons },
   props: {
     bio: {
       default: () =>
