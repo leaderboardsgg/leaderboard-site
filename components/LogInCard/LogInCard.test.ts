@@ -1,5 +1,5 @@
-import { stubbedRender } from '@/testUtils';
 import LogInCard from './LogInCard.vue';
+import { stubbedRender } from '@/testUtils';
 
 describe('<LogInCard />', () => {
   it('should render without crashing', () => {

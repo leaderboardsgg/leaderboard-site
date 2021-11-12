@@ -1,5 +1,5 @@
-import { stubbedRender } from '@/testUtils';
 import NavLink from './NavLink.vue';
+import { stubbedRender } from '@/testUtils';
 
 describe('<NavLink />', () => {
   const defaultAttrs = { class: 'custom-link' };
