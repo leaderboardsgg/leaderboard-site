@@ -1,5 +1,5 @@
-import index from '../index.vue';
 import { render } from '@/testUtils';
+import index from '../index.vue';
 
 describe('/index', () => {
   it('should render without crashing', () => {

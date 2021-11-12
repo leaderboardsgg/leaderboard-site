@@ -1,5 +1,5 @@
-import LoginButton from './LoginButton.vue';
 import { stubbedRender } from '@/testUtils';
+import LoginButton from './LoginButton.vue';
 
 describe('<LoginButton />', () => {
   it('should render without crashing', () => {

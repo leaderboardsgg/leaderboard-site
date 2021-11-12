@@ -1,5 +1,5 @@
-import SearchBar from './SearchBar.vue';
 import { fireEvent, stubbedRender } from '@/testUtils';
+import SearchBar from './SearchBar.vue';
 
 describe('<SearchBar />', () => {
   const mockOnSubmit = jest.fn();

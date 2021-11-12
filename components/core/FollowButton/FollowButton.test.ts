@@ -1,5 +1,5 @@
-import FollowButton from './FollowButton.vue';
 import { fireEvent, stubbedRender } from '@/testUtils';
+import FollowButton from './FollowButton.vue';
 
 describe('<FollowButton />', () => {
   /*

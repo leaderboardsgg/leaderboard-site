@@ -1,5 +1,5 @@
-import ButtonLink from './ButtonLink.vue';
 import { stubbedRender } from '@/testUtils';
+import ButtonLink from './ButtonLink.vue';
 
 describe('<ButtonLink />', () => {
   const defaultAttrs = { class: 'custom-link' };

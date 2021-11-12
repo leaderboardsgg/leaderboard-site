@@ -1,5 +1,5 @@
-import Run from './Run.vue';
 import { stubbedRender } from '@/testUtils';
+import Run from './Run.vue';
 
 describe('<Run />', () => {
   it('should render without crashing', () => {
