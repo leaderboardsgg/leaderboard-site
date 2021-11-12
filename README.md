@@ -1,4 +1,4 @@
-# speedrun.website
+# leaderboards.gg
 
 The dream: src 2.0
 
@@ -10,7 +10,7 @@ Board Customization and good management tools.
 
 ## Contributing
 
-If you'd like to start contributing to the project please check [`CONTRIBUTING.md`](https://github.com/speedrun-website/speedrun.website/blob/main/CONTRIBUTING.md) first to make sure things go as smoothly as possible!
+If you'd like to start contributing to the project please check [`CONTRIBUTING.md`](https://github.com/leaderboardsgg/leaderboard-site/blob/main/CONTRIBUTING.md) first to make sure things go as smoothly as possible!
 
 ## Build Setup
 
@@ -33,6 +33,10 @@ $ pnpm generate
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+
+## Vue File Structure
+
+You'll find our Vue files in `components` and `pages`. The files are structured in the order: template, script, and style. One thing to note; we want to keep any and all styling in `<style>`. This means that we try not to use Tailwind's classes directly in a file's `<template>`. Rather, we make a class name, and in the file's `<style>`, call `@apply` on top of any extra styling.
 
 ## Special Directories
 
