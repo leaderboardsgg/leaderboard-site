@@ -4,6 +4,14 @@
   </div>
 </template>
 
+<script>
+import { defineComponent } from '@nuxtjs/composition-api';
+
+export default defineComponent({
+  name: 'CardBody',
+});
+</script>
+
 <style scoped>
 .card-body {
   @apply p-3;
