@@ -174,4 +174,7 @@ export default defineComponent({
     }
   }
 }
+.site-navbar__wrapper {
+  @apply container relative flex flex-wrap lg:flex-row justify-between mx-auto px-3 py-3;
+}
 </style>

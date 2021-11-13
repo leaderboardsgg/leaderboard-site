@@ -156,7 +156,7 @@ export default defineComponent({
 
 #hide-show-button {
   @apply text-gray-700 hover:bg-gray-100;
-  //class="p-1 mr-2 rounded fill-current"
+  @apply p-1 mr-2 rounded fill-current;
 }
 
 #sign-up-button {
