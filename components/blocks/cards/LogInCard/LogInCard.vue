@@ -1,33 +1,11 @@
 <template>
-  <Card
-    id="loginCard"
-    data-testid="login-card"
-    class="bg-white w-full max-w-xl"
-  >
-    <CardHeader class="flex flex-row space-x-3">
-      <div
-        class="
-          flex flex-1
-          justify-center
-          px-3
-          py-2
-          rounded
-          bg-gray-100
-          text-gray-900
-        "
-      >
-        Log In
-      </div>
+  <Card id="loginCard" data-testid="login-card" class="login-card">
+    <CardHeader class="login-card__header">
+      <div class="login-card__title">Log In</div>
 
       <BaseButton
         id="sign-up-button"
-        class="
-          flex flex-1
-          justify-center
-          bg-white
-          text-gray-900
-          border border-gray-300
-        "
+        class="login-card__sign-up-button"
         @click="$emit('signUpClick')"
       >
         Sign Up
@@ -37,31 +15,29 @@
     </CardHeader>
 
     <CardBody>
-      <div class="flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300">
+      <div class="login-card__body-wrapper">
         <BaseInput
           v-model="email"
-          class="bg-white"
           name="email"
           type="text"
           placeholder="Email"
           autocomplete="email"
         />
 
-        <div class="relative flex flex-col w-full">
+        <div class="login-card__input-wrapper">
           <BaseInput
             v-model="password"
-            class="bg-white pr-12"
+            class="login-card__password-field"
             name="password"
             :type="showPassword ? 'text' : 'password'"
             placeholder="Password"
             autocomplete="password"
           />
 
-          <div class="absolute top-0 right-0 flex items-center h-full">
+          <div class="login-card__button-wrapper">
             <HideShowPassword
               id="hide-show-button"
               type="button"
-              class="p-1 mr-2 rounded fill-current"
               @click="showPassword = !showPassword"
               @keydown.enter.prevent
               @keyup.enter="showPassword = !showPassword"
@@ -72,7 +48,7 @@
         <BaseButton to="#" class="login-button">Log In</BaseButton>
       </div>
 
-      <div class="flex flex-col w-full space-y-2">
+      <div class="login-card__auth-buttons">
         <BaseButton class="login-button">
           <svg
             class="w-5 h-5 mr-2"
@@ -150,8 +126,37 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.login-card {
+  @apply bg-white w-full max-w-xl;
+  &__header {
+    @apply flex flex-row space-x-3;
+  }
+  &__title {
+    @apply flex flex-1 justify-center px-3 py-2 rounded bg-gray-100 text-gray-900;
+  }
+  &__sign-up-button {
+    @apply flex flex-1 justify-center bg-white text-gray-900 border border-gray-300;
+  }
+  &__body-wrapper {
+    @apply flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300;
+  }
+  &__input-wrapper {
+    @apply relative flex flex-col w-full;
+  }
+  &__button-wrapper {
+    @apply absolute top-0 right-0 flex items-center h-full;
+  }
+  &__auth-buttons {
+    @apply flex flex-col w-full space-y-2;
+  }
+  &__password-field {
+    @apply bg-white pr-12;
+  }
+}
+
 #hide-show-button {
   @apply text-gray-700 hover:bg-gray-100;
+  //class="p-1 mr-2 rounded fill-current"
 }
 
 #sign-up-button {

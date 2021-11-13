@@ -62,20 +62,17 @@ export default defineComponent({
   & > div {
     @apply p-5;
   }
-  ,
   &__header {
     @apply border-b border-gray-300;
     h2 {
       @apply text-xl font-bold;
     }
   }
-  ,
   &__content {
     p {
       @apply text-black;
     }
   }
-  ,
   &__buttons {
     @apply mt-5;
   }

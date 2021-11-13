@@ -1,15 +1,15 @@
-import ProfileHeader from './ProfileHeader.vue';
-import { stubbedRender } from '@/testUtils';
+import UserBadges from './UserBadges.vue';
+import { stubbedRender } from '~/testUtils';
 
 describe('<ProfileHeader />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(ProfileHeader);
+    const { unmount } = stubbedRender(UserBadges);
 
     unmount();
   });
 
   it('renders correctly', () => {
-    const { container } = stubbedRender(ProfileHeader);
+    const { container } = stubbedRender(UserBadges);
 
     expect(container.firstChild).toMatchSnapshot();
   });

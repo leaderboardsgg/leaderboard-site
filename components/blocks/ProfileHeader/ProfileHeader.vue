@@ -15,7 +15,7 @@
             <img src="https://via.placeholder.com/120" alt="profile picture" />
           </div>
           <div class="profile-info--user-badges md:hidden">
-            <CoreUserBadges :badges="badges" />
+            <UserBadges :badges="badges" />
           </div>
         </div>
         <div class="profile-info--user-bio">
@@ -24,7 +24,7 @@
           <p class="text-black text-opacity-50 pt-2 md:hidden">{{ bio }}</p>
         </div>
         <div class="profile-info--follow">
-          <CoreFollowButton />
+          <FollowButton />
         </div>
         <UserActivity
           class="hidden md:grid"
@@ -32,7 +32,7 @@
           :run-count="runCount"
         />
         <div class="profile-info--socials md:hidden">
-          <CoreSocialButtons :socials="socials" />
+          <SocialButtons :socials="socials" />
         </div>
       </div>
     </div>
@@ -42,10 +42,16 @@
 <script>
 import { defineComponent } from '@nuxtjs/composition-api';
 import UserActivity from './UserActivity/UserActivity.vue';
+import SocialButtons from '~/components/elements/buttons/SocialButtons/SocialButtons.vue';
+import FollowButton from '~/components/elements/buttons/FollowButton/FollowButton.vue';
+import UserBadges from '~/components/elements/UserBadges/UserBadges.vue';
 
 export default defineComponent({
   components: {
+    FollowButton,
+    SocialButtons,
     UserActivity,
+    UserBadges,
   },
   props: {
     badges: {

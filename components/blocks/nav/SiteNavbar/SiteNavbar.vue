@@ -2,7 +2,7 @@
   <div class="site-navbar">
     <div class="site-navbar__wrapper">
       <div class="site-logo">
-        <NuxtLink to="/">
+        <NuxtLink class="site-navbar__homelink" to="/">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-10 w-10 mx-1"
@@ -158,15 +158,15 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 .site-navbar {
   @apply border-b border-gray-300;
-  &__wrapper {
+  .site-navbar__wrapper {
     @apply container relative flex flex-wrap lg:flex-row justify-between mx-auto px-3 py-3;
   }
   .site-logo {
     @apply flex flex-grow;
-    NuxtLink {
+    .site-navbar__homelink {
       @apply flex;
       h1 {
         @apply w-full py-2 text-lg text-center md:text-left font-semibold leading-6 tracking-tight hidden md:inline;

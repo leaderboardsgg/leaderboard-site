@@ -24,10 +24,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
 
 export default defineComponent({
+  name: 'SearchBar',
   props: {
     onSubmit: {
       default: () => console.log('submit'), // eslint-disable-line no-console

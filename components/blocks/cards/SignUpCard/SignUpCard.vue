@@ -1,44 +1,23 @@
 <template>
-  <Card
-    id="signUpCard"
-    data-testid="sign-up-card"
-    class="bg-white w-full max-w-xl"
-  >
-    <CardHeader class="flex flex-row space-x-3">
+  <!--  Card Header/ Buttons-->
+  <Card id="signUpCard" data-testid="sign-up-card" class="signup-card">
+    <CardHeader class="signup-card__header">
       <BaseButton
         id="login-button"
-        class="
-          flex flex-1
-          justify-center
-          bg-white
-          text-gray-900
-          border border-gray-300
-        "
+        class="signup-card__login-button"
         @click="$emit('logInClick')"
       >
         Log In
       </BaseButton>
 
-      <div
-        class="
-          flex flex-1
-          justify-center
-          px-3
-          py-2
-          rounded
-          bg-gray-100
-          text-gray-900
-        "
-      >
-        Sign Up
-      </div>
+      <div class="signup-card__title">Sign Up</div>
 
       <CloseButton v-show="modal" @click.prevent="$emit('close')" />
     </CardHeader>
 
     <!-- Card Body -->
-    <div class="p-3">
-      <div class="flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300">
+    <div class="signup-card__content">
+      <div class="signup-card__content-wrapper">
         <BaseInput
           v-model="email"
           name="email"
@@ -47,7 +26,7 @@
           autocomplete="email"
         />
 
-        <div class="flex flex-1 flex-col space-y-1">
+        <div class="signup-card__input-wrapper">
           <BaseInput
             v-model="username"
             name="username"
@@ -55,22 +34,15 @@
             placeholder="Username"
             autocomplete="nickname"
           />
-          <p class="text-sm">This can be changed later</p>
+          <p>This can be changed later</p>
         </div>
 
-        <div class="flex flex-1 flex-col space-y-1">
-          <div
-            class="
-              flex flex-1 flex-col
-              sm:flex-row
-              space-y-3
-              sm:space-y-0 sm:space-x-2
-            "
-          >
+        <div class="signup-card__input-wrapper">
+          <div class="signup-card__password-wrapper">
             <BaseInput
               v-model="password"
               name="password"
-              class="flex-grow"
+              class="signup-card__password-field"
               :type="showPassword ? 'text' : 'password'"
               placeholder="Password"
               autocomplete="password"
@@ -79,13 +51,14 @@
             <BaseInput
               v-model="confirmPassword"
               name="confirmPassword"
-              class="flex-grow"
+              class="signup-card__password-field"
               :type="showPassword ? 'text' : 'password'"
               placeholder="Confirm"
               autocomplete="password"
             />
 
             <HideShowPassword
+              id="hide-show-password"
               type="button"
               @click="showPassword = !showPassword"
               @keydown.enter.prevent
@@ -93,15 +66,13 @@
             />
           </div>
 
-          <p class="text-sm">
-            * Must be 8 characters with a mix of letters and numbers
-          </p>
+          <p>* Must be 8 characters with a mix of letters and numbers</p>
         </div>
 
         <BaseButton class="signup-button"> Sign Up </BaseButton>
       </div>
 
-      <div class="flex flex-col w-full space-y-2">
+      <div class="signup-card__auth-buttons">
         <BaseButton class="signup-button">
           <svg
             class="w-5 h-5 mr-2"
@@ -179,6 +150,36 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.signup-card {
+  @apply bg-white w-full max-w-xl;
+  &__header {
+    @apply flex flex-row space-x-3;
+  }
+  &__title {
+    @apply flex flex-1 justify-center bg-white text-gray-900 border border-gray-300;
+  }
+  &__content {
+    @apply p-3;
+  }
+  &__content-wrapper {
+    @apply flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300;
+  }
+  &__input-wrapper {
+    @apply flex flex-1 flex-col space-y-1;
+  }
+  &__password-wrapper {
+    @apply flex flex-1 flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-2;
+  }
+  &__password-field {
+    @apply flex-grow;
+  }
+  &__auth-buttons {
+    @apply flex flex-col w-full space-y-2;
+  }
+  p {
+    @apply text-sm;
+  }
+}
 #hide-show-password {
   @apply text-gray-700 hover:bg-gray-100;
 }
