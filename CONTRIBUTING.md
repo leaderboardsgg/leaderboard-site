@@ -1,4 +1,4 @@
-# Contributing to speedrun.website
+# Contributing to leaderboards.gg
 
 We appreciate your help!
 
@@ -10,11 +10,11 @@ Similarly, if you have a question about a potential feature, [the discord](https
 
 ## Filing issues
 
-Filing issues is as simple as going to [the issue tracker](https://github.com/speedrun-website/speedrun.website/issues), and adding an issue using one of the templates as listed below:
+Filing issues is as simple as going to [the issue tracker](https://github.com/leaderboardsgg/leaderboard-site/issues), and adding an issue using one of the templates as listed below:
 
-- [Bug Report:](https://github.com/speedrun-website/speedrun.website/issues/new?assignees=&labels=bug%2Cneeds+triage&template=bug_report.yml&title=Bug%3A+%7Bshort+description%7D) Create a report to help us improve
-- [Feature Request:](https://github.com/speedrun-website/speedrun.website/issues/new?assignees=&labels=enhancement%2Cneeds+triage&template=feature_request.yml&title=Feature+Request%3A+%7Bshort+description%7D) Suggest an idea to add support for this project
-- [Suggest a task:](https://github.com/speedrun-website/speedrun.website/issues/new?assignees=&labels=needs+triage&template=suggest_a_task.yml&title=Task%3A+%7Bshort+description%7D) Suggest an idea for improving this project without changing functionality
+- [Bug Report:](https://github.com/leaderboardsgg/leaderboard-site/issues/new?assignees=&labels=bug%2Cneeds+triage&template=bug_report.yml&title=Bug%3A+%7Bshort+description%7D) Create a report to help us improve
+- [Feature Request:](https://github.com/leaderboardsgg/leaderboard-site/issues/new?assignees=&labels=enhancement%2Cneeds+triage&template=feature_request.yml&title=Feature+Request%3A+%7Bshort+description%7D) Suggest an idea to add support for this project
+- [Suggest a task:](https://github.com/leaderboardsgg/leaderboard-site/issues/new?assignees=&labels=needs+triage&template=suggest_a_task.yml&title=Task%3A+%7Bshort+description%7D) Suggest an idea for improving this project without changing functionality
 
 ## Contributing code
 
@@ -25,7 +25,7 @@ Filing issues is as simple as going to [the issue tracker](https://github.com/sp
 1. Commit your changes (Tip! Please read our [Style guide](#style-guide) to help the pull request process go smoothly).
 1. Verify your changes work.
 1. Push your branch.
-1. Open a pull request to `speedrun-website/speedrun.website`.
+1. Open a pull request to `leaderboardsgg/leaderboard-site`.
 1. Get your pull request approved.
 1. Get someone to click `Rebase and merge`.
 1. Celebrate your amazing changes! 🎉

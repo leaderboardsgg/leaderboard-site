@@ -41,7 +41,7 @@
               md:inline
             "
           >
-            speedrun.website
+            leaderboards.gg
           </h1>
         </NuxtLink>
       </div>

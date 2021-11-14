@@ -32,7 +32,7 @@ const config: NuxtConfig = {
       { content: '', hid: 'description', name: 'description' },
       { content: 'telephone=no', name: 'format-detection' },
     ],
-    title: 'speedrun-website',
+    title: 'leaderboardsgg',
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules

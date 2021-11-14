@@ -52,7 +52,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
           "
         >
           
-          speedrun.website
+          leaderboards.gg
         
         </h1>
       </a>
