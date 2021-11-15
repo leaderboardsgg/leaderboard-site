@@ -20,37 +20,11 @@
           <h1>leaderboards.gg</h1>
         </NuxtLink>
       </div>
-      <div
-        :class="{ hidden: !mobileNavIsActive }"
-        class="
-          lg:flex
-          border-t border-gray-300
-          lg:border-t-0
-          flex-col
-          lg:flex-row
-          mt-2
-          lg:mt-0
-          w-full
-          lg:w-auto
-          space-y-2
-          lg:space-y-0
-        "
-      >
+      <div :class="{ hidden: !mobileNavIsActive }" class="mobile-menu">
         <NavLinks />
         <SearchBar />
       </div>
-      <div
-        class="
-          flex flex-row
-          items-center
-          absolute
-          right-2
-          top-4
-          lg:relative lg:right-0 lg:top-0
-          space-x-2
-          lg:space-x-0
-        "
-      >
+      <div class="mobile-navbar">
         <LogInButton
           data-testId="site-navbar-login-button"
           @click="toggleLoginModal"
@@ -61,11 +35,7 @@
           @click="toggleSignUpModal"
           @keyup.enter="toggleSignUpModal"
         />
-
-        <button
-          class="items-center rounded text-black lg:hidden"
-          @click="toggleMenu"
-        >
+        <button class="mobile-menu__toggle" @click="toggleMenu">
           <svg
             class="fill-current h-5 w-5 mx-2"
             viewBox="0 0 20 20"
@@ -163,6 +133,15 @@ export default defineComponent({
   @apply border-b border-gray-300;
   & .site-navbar__wrapper {
     @apply container relative flex flex-wrap lg:flex-row justify-between mx-auto px-3 py-3;
+    & .mobile-menu {
+      @apply lg:flex border-t border-gray-300 lg:border-t-0 flex-col lg:flex-row mt-2 lg:mt-0 w-full lg:w-auto space-y-2 lg:space-y-0;
+    }
+    & .mobile-navbar {
+      @apply flex flex-row items-center absolute right-2 top-4 lg:relative lg:right-0 lg:top-0 space-x-2 lg:space-x-0;
+      & .mobile-menu__toggle {
+        @apply items-center rounded text-black lg:hidden;
+      }
+    }
   }
   & .site-logo {
     @apply flex flex-grow;

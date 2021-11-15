@@ -1,7 +1,7 @@
 <template>
   <div class="run">
-    <div class="flex flex-col gap-x-5 mr-5 md:flex-row">
-      <div class="flex flex-row gap-x-1 items-center">
+    <div class="run__wrapper">
+      <div class="run__standing">
         <svg
           v-if="standing <= 3"
           id="trophy"
@@ -20,19 +20,13 @@
       </div>
       <p>{{ user }}</p>
     </div>
-    <div
-      class="
-        flex flex-col
-        text-right
-        md:text-center md:flex-row
-        gap-x-5
-        flex-grow
-      "
-    >
-      <p class="md:flex-grow">{{ time }}</p>
+    <div class="run__info">
+      <p>{{ time }}</p>
+      <!--      TODO: Need good BEM name for this -->
       <div class="hidden md:flex flex-row md:flex-grow">
         <p>{{ platform }}</p>
       </div>
+      <!--      TODO: Need good BEM name for this -->
       <div
         class="
           flex flex-row
@@ -117,5 +111,17 @@ export default defineComponent({
 <style scoped>
 .run {
   @apply flex flex-row text-base text-black py-3 border border-b-2 border-gray-200;
+  & .run__wrapper {
+    @apply flex flex-col gap-x-5 mr-5 md:flex-row;
+    & .run__standing {
+      @apply flex flex-row gap-x-1 items-center;
+    }
+  }
+  & .run__info {
+    @apply flex flex-col text-right md:text-center md:flex-row gap-x-5 flex-grow;
+    & p {
+      @apply md:flex-grow;
+    }
+  }
 }
 </style>
