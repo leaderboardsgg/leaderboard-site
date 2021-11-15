@@ -1,11 +1,11 @@
 <template>
-  <div class="profile-info--user-activity" v-bind="$attrs">
-    <p><span class="font-semibold">Runs: </span>{{ runCount }}</p>
-    <p><span class="font-semibold">Games: </span>{{ gameCount }}</p>
+  <div class="user-activity" v-bind="$attrs">
+    <p><span>Runs: </span>{{ runCount }}</p>
+    <p><span>Games: </span>{{ gameCount }}</p>
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
 
 export default defineComponent({
@@ -21,3 +21,11 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.user-activity {
+  & span {
+    @apply font-semibold;
+  }
+}
+</style>
