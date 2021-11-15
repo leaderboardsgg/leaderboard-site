@@ -1,12 +1,5 @@
 <template>
-  <div
-    class="
-      flex flex-row
-      text-base text-black
-      py-3
-      border border-b-2 border-gray-200
-    "
-  >
+  <div class="run">
     <div class="flex flex-col gap-x-5 mr-5 md:flex-row">
       <div class="flex flex-row gap-x-1 items-center">
         <svg
@@ -73,6 +66,7 @@
 import { computed, defineComponent } from '@nuxtjs/composition-api';
 
 export default defineComponent({
+  name: 'Run',
   props: {
     date: {
       default: () => '1 year ago',
@@ -119,3 +113,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.run {
+  @apply flex flex-row text-base text-black py-3 border border-b-2 border-gray-200;
+}
+</style>

@@ -47,6 +47,7 @@ import FollowButton from '~/components/elements/buttons/FollowButton/FollowButto
 import UserBadges from '~/components/elements/UserBadges/UserBadges.vue';
 
 export default defineComponent({
+  name: 'ProfileHeader',
   components: {
     FollowButton,
     SocialButtons,

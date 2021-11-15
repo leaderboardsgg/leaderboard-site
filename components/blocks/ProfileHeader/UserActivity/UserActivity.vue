@@ -9,6 +9,7 @@
 import { defineComponent } from '@nuxtjs/composition-api';
 
 export default defineComponent({
+  name: 'UserActivity',
   props: {
     gameCount: {
       default: () => 6,
