@@ -152,31 +152,31 @@ export default defineComponent({
 <style scoped>
 .signup-card {
   @apply bg-white w-full max-w-xl;
-  &__header {
+  & .signup-card__header {
     @apply flex flex-row space-x-3;
   }
-  &__title {
+  & .signup-card__title {
     @apply flex flex-1 justify-center bg-white text-gray-900 border border-gray-300;
   }
-  &__content {
+  & .signup-card__content {
     @apply p-3;
   }
-  &__content-wrapper {
+  & .signup-card__content-wrapper {
     @apply flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300;
   }
-  &__input-wrapper {
+  & .signup-card__input-wrapper {
     @apply flex flex-1 flex-col space-y-1;
   }
-  &__password-wrapper {
+  & .signup-card__password-wrapper {
     @apply flex flex-1 flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-2;
   }
-  &__password-field {
+  & .signup-card__password-field {
     @apply flex-grow;
   }
-  &__auth-buttons {
+  & .signup-card__auth-buttons {
     @apply flex flex-col w-full space-y-2;
   }
-  p {
+  & p {
     @apply text-sm;
   }
 }

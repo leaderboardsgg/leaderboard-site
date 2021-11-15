@@ -26,13 +26,13 @@ export default defineComponent({
 
 <style scoped>
 .modal {
-  &__wrapper {
+  & .modal__wrapper {
     @apply fixed z-10 inset-0 overflow-y-auto;
   }
-  &__container {
+  & .modal__container {
     @apply flex items-center min-h-screen p-5;
   }
-  &__content {
+  & .modal__content {
     @apply relative flex justify-center w-full;
   }
 }

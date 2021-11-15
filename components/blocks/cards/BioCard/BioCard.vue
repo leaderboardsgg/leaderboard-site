@@ -62,18 +62,18 @@ export default defineComponent({
   & > div {
     @apply p-5;
   }
-  &__header {
+  & .bio-card__header {
     @apply border-b border-gray-300;
-    h2 {
+    & h2 {
       @apply text-xl font-bold;
     }
   }
-  &__content {
-    p {
+  & .bio-card__content {
+    & p {
       @apply text-black;
     }
   }
-  &__buttons {
+  & .bio-card__buttons {
     @apply mt-5;
   }
 }

@@ -128,28 +128,28 @@ export default defineComponent({
 <style scoped>
 .login-card {
   @apply bg-white w-full max-w-xl;
-  &__header {
+  & .login-card__header {
     @apply flex flex-row space-x-3;
   }
-  &__title {
+  & .login-card__title {
     @apply flex flex-1 justify-center px-3 py-2 rounded bg-gray-100 text-gray-900;
   }
-  &__sign-up-button {
+  & .login-card__sign-up-button {
     @apply flex flex-1 justify-center bg-white text-gray-900 border border-gray-300;
   }
-  &__body-wrapper {
+  & .login-card__body-wrapper {
     @apply flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300;
   }
-  &__input-wrapper {
+  & .login-card__input-wrapper {
     @apply relative flex flex-col w-full;
   }
-  &__button-wrapper {
+  & .login-card__button-wrapper {
     @apply absolute top-0 right-0 flex items-center h-full;
   }
-  &__auth-buttons {
+  & .login-card__auth-buttons {
     @apply flex flex-col w-full space-y-2;
   }
-  &__password-field {
+  & .login-card__password-field {
     @apply bg-white pr-12;
   }
 }

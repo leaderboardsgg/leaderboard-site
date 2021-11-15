@@ -161,20 +161,17 @@ export default defineComponent({
 <style scoped>
 .site-navbar {
   @apply border-b border-gray-300;
-  .site-navbar__wrapper {
+  & .site-navbar__wrapper {
     @apply container relative flex flex-wrap lg:flex-row justify-between mx-auto px-3 py-3;
   }
-  .site-logo {
+  & .site-logo {
     @apply flex flex-grow;
-    .site-navbar__homelink {
+    & .site-navbar__homelink {
       @apply flex;
-      h1 {
+      & h1 {
         @apply w-full py-2 text-lg text-center md:text-left font-semibold leading-6 tracking-tight hidden md:inline;
       }
     }
   }
-}
-.site-navbar__wrapper {
-  @apply container relative flex flex-wrap lg:flex-row justify-between mx-auto px-3 py-3;
 }
 </style>
