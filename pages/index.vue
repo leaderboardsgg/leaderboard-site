@@ -3,18 +3,16 @@
     <div class="w-full rounded border border-gray-300 p-5">
       <h2 class="text-2xl text-center font-bold">Welcome!</h2>
       <p class="text-center">This is just a primary content placeholder.</p>
-      <Run></Run>
-      <BioCard></BioCard>
+      <ProfileHeader></ProfileHeader>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import Run from '~/components/blocks/Run/Run.vue';
-import BioCard from '~/components/blocks/cards/BioCard/BioCard.vue';
+import ProfileHeader from '~/components/blocks/ProfileHeader/ProfileHeader.vue';
 
 export default defineComponent({
-  components: { BioCard, Run },
+  components: { ProfileHeader },
 });
 </script>

@@ -168,12 +168,12 @@ export default defineComponent({
         @apply w-full md:px-5;
       }
       & .profile-info__follow,
-      & .profile-header__user-activity,
+      & .profile-info__user-activity,
       & .profile-info__user-badges {
         @apply p-4 md:pl-5 md:pr-0;
       }
 
-      & .profile-header__user-activity {
+      & .profile-info__user-activity {
         @apply md:grid-cols-2 md:gap-x-5;
       }
 
@@ -188,6 +188,7 @@ export default defineComponent({
       }
       & .profile-header__user-activity,
       & .profile-info__picture-container,
+      & .profile-info__user-badges,
       & .profile-info__user-bio p,
       & .profile-info__socials {
         @apply md:hidden;
