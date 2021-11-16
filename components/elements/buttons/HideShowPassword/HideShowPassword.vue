@@ -69,7 +69,7 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 .button {
   @apply hidden sm:inline bg-white;
 }
