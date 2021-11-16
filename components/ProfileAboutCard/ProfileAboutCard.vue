@@ -5,7 +5,9 @@
     </div>
 
     <div>
-      <p class="text-black">{{ bio }}</p>
+      <p class="text-black">
+        {{ bio }}
+      </p>
       <div class="mt-5">
         <CoreSocialButtons :socials="socials" />
       </div>

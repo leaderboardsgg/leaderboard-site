@@ -36,7 +36,9 @@
         flex-grow
       "
     >
-      <p class="md:flex-grow">{{ time }}</p>
+      <p class="md:flex-grow">
+        {{ time }}
+      </p>
       <div class="hidden md:flex flex-row md:flex-grow">
         <p>{{ platform }}</p>
       </div>

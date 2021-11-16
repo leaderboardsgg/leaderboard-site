@@ -1,0 +1,66 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true,
+    "jest/globals": true,
+    "node": true
+  },
+  "extends": [
+    "prettier",
+    "eslint:recommended",
+    "@nuxtjs/eslint-config-typescript",
+    "plugin:nuxt/recommended",
+    "plugin:vue/recommended",
+    "plugin:vuejs-accessibility/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "ignorePatterns": [
+    ".husky",
+    ".nuxt",
+    "coverage",
+    "node_modules",
+    "static",
+    "jest.*.js",
+    "testUtils.ts"
+  ],
+  "plugins": [
+    "jest",
+    "prettier",
+    "vue",
+    "@typescript-eslint",
+    "vuejs-accessibility"
+  ],
+  "parser": "vue-eslint-parser",
+  "parserOptions": {
+    "parser": "@typescript-eslint/parser",
+    "sourceType": "module",
+    "ecmaVersion": "latest"
+  },
+  "root": true,
+  // add your custom rules here
+  "rules": {
+    "semi": "off",
+    "comma-dangle": "off",
+    "space-before-function-paren": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "eol-last": ["error", "always"],
+    "vue/sort-keys": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": true,
+        "ignoreChildrenOf": ["model"],
+        "ignoreGrandchildrenOf": [
+          "computed",
+          "directives",
+          "inject",
+          "props",
+          "watch"
+        ],
+        "minKeys": 2,
+        "natural": false
+      }
+    ]
+  }
+}

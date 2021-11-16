@@ -19,9 +19,15 @@
           </div>
         </div>
         <div class="profile-info--user-bio">
-          <h1 class="text-2xl font-semibold">{{ username }}</h1>
-          <h2 class="text-sm text-black text-opacity-50">{{ location }}</h2>
-          <p class="text-black text-opacity-50 pt-2 md:hidden">{{ bio }}</p>
+          <h1 class="text-2xl font-semibold">
+            {{ username }}
+          </h1>
+          <h2 class="text-sm text-black text-opacity-50">
+            {{ location }}
+          </h2>
+          <p class="text-black text-opacity-50 pt-2 md:hidden">
+            {{ bio }}
+          </p>
         </div>
         <div class="profile-info--follow">
           <CoreFollowButton />

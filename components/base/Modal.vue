@@ -5,7 +5,7 @@
         class="modal-fade"
         @click.self="$emit('close')"
         @keypress.esc="$emit('close')"
-      ></div>
+      />
 
       <div class="modal-content">
         <slot />
