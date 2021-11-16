@@ -6,9 +6,8 @@
         id="login-button"
         class="signup-card__login-button"
         @click="$emit('logInClick')"
+        >Log In</BaseButton
       >
-        Log In
-      </BaseButton>
 
       <div class="signup-card__title">Sign Up</div>
 
@@ -156,6 +155,9 @@ export default defineComponent({
     @apply flex flex-row space-x-3;
   }
   & .signup-card__title {
+    @apply flex flex-1 justify-center px-3 py-2 rounded bg-gray-100 text-gray-900;
+  }
+  & .signup-card__login-button {
     @apply flex flex-1 justify-center bg-white text-gray-900 border border-gray-300;
   }
   & .signup-card__content {
