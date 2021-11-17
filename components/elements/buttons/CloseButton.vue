@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import BaseButton from '~/components/elements/buttons/BaseButton.vue';
+import BaseButton from '@/components/elements/buttons/BaseButton.vue';
 
 export default defineComponent({
   name: 'CloseButton',

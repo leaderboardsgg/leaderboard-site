@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import NavLink from './NavLink/NavLink.vue';
+import NavLink from '@/NavLink/NavLink.vue';
 
 export default defineComponent({
   components: {

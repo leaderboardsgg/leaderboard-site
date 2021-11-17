@@ -12,11 +12,11 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import SocialButtons from '~/components/elements/buttons/SocialButtons/SocialButtons';
-import CardHeader from '~/components/elements/cards/CardHeader';
-import CardBody from '~/components/elements/cards/CardBody';
+import SocialButtons from '@/components/elements/buttons/SocialButtons/SocialButtons.vue';
+import CardHeader from '@/components/elements/cards/CardHeader.vue';
+import CardBody from '@/components/elements/cards/CardBody.vue';
 
 export default defineComponent({
   name: 'BioCard',

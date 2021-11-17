@@ -46,7 +46,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
-import BaseButton from '~/components/elements/buttons/BaseButton.vue';
+import BaseButton from '@/components/elements/buttons/BaseButton.vue';
 
 export default defineComponent({
   components: {

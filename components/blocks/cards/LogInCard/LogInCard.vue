@@ -85,13 +85,13 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
-import HideShowPassword from '../../../elements/buttons/HideShowPassword/HideShowPassword.vue';
-import BaseInput from '~/components/elements/BaseInput.vue';
-import Card from '~/components/elements/cards/Card.vue';
-import CardBody from '~/components/elements/cards/CardBody.vue';
-import CardHeader from '~/components/elements/cards/CardHeader.vue';
-import BaseButton from '~/components/elements/buttons/BaseButton.vue';
-import CloseButton from '~/components/elements/buttons/CloseButton.vue';
+import HideShowPassword from '@/elements/buttons/HideShowPassword/HideShowPassword.vue';
+import BaseInput from '@/components/elements/BaseInput.vue';
+import Card from '@/components/elements/cards/Card.vue';
+import CardBody from '@/components/elements/cards/CardBody.vue';
+import CardHeader from '@/components/elements/cards/CardHeader.vue';
+import BaseButton from '@/components/elements/buttons/BaseButton.vue';
+import CloseButton from '@/components/elements/buttons/CloseButton.vue';
 
 export default defineComponent({
   components: {

@@ -39,12 +39,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import UserActivity from './UserActivity/UserActivity.vue';
-import SocialButtons from '~/components/elements/buttons/SocialButtons/SocialButtons.vue';
-import FollowButton from '~/components/elements/buttons/FollowButton/FollowButton.vue';
-import UserBadges from '~/components/elements/UserBadges/UserBadges.vue';
+import UserActivity from '@/UserActivity/UserActivity.vue';
+import SocialButtons from '@/components/elements/buttons/SocialButtons/SocialButtons.vue';
+import FollowButton from '@/components/elements/buttons/FollowButton/FollowButton.vue';
+import UserBadges from '@/components/elements/UserBadges/UserBadges.vue';
 
 export default defineComponent({
   name: 'ProfileHeader',

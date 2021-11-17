@@ -4,9 +4,9 @@
   </BaseButton>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import BaseButton from '~/components/elements/buttons/BaseButton';
+import BaseButton from '@/components/elements/buttons/BaseButton.vue';
 
 export default defineComponent({
   name: 'LoginButton',

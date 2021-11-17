@@ -8,8 +8,8 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import SiteFooter from '~/components/blocks/SiteFooter/SiteFooter.vue';
-import SiteNavbar from '~/components/blocks/nav/SiteNavbar/SiteNavbar.vue';
+import SiteFooter from '@/components/blocks/SiteFooter/SiteFooter.vue';
+import SiteNavbar from '@/components/blocks/nav/SiteNavbar/SiteNavbar.vue';
 
 export default defineComponent({
   components: {

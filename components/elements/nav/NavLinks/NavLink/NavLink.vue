@@ -4,9 +4,9 @@
   </ButtonLink>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import ButtonLink from '~/components/elements/buttons/ButtonLink/ButtonLink';
+import ButtonLink from '@/components/elements/buttons/ButtonLink/ButtonLink.vue';
 
 export default defineComponent({
   name: 'NavLink',
