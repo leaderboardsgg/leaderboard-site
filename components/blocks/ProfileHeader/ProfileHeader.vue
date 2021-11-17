@@ -111,17 +111,14 @@ export default defineComponent({
 
 <style scoped>
 .profile-header {
-  height: fit-content;
-  min-height: 450px;
-  position: relative;
+  @apply h-[fit-content] min-h-[28.125rem] relative;
 
   @apply flex flex-col;
   @apply max-w-screen-md md:max-w-full md:min-h-0 md:h-auto;
   @apply border md:border-gray-300 md:rounded;
 
   & .profile-banner {
-    height: 50%;
-    min-height: 50%;
+    @apply h-1/2 min-h-[50%];
 
     @apply md:h-auto md:min-h-0;
     @apply bg-cover bg-center bg-gray-900;
@@ -137,7 +134,7 @@ export default defineComponent({
     @apply m-5 mb-0 md:m-0;
 
     & .profile-info {
-      margin-top: 60px;
+      @apply mt-[3.75rem];
       @apply md:mt-0 md:px-4;
 
       @apply bg-white;
@@ -148,16 +145,10 @@ export default defineComponent({
         & .profile-info__picture-container {
           @apply relative flex justify-center;
           & > img {
-            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
-            max-height: 120px;
-            max-width: 120px;
+            @apply max-h-[7.5rem] max-w-[7.5rem];
+            @apply filter drop-shadow-[0,0.25rem,0.5rem,rgba(0,0,0,0.15)];
 
-            @media screen(md) {
-              max-height: 82px;
-              max-width: 82px;
-            }
-
-            @apply absolute md:relative rounded transform -translate-y-1/2;
+            @apply absolute md:relative md:max-h-[5.125rem] md:max-w-[5.125rem] rounded transform -translate-y-1/2;
           }
         }
       }
