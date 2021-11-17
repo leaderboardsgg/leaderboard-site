@@ -40,9 +40,9 @@ describe('<ButtonLink />', () => {
       props: defaultProps,
     });
 
-    const link = getByText('Placeholder');
+    const link = getByText('Placeholder Link Text');
     expect(link.tagName).toEqual('A');
-    expect(link.getAttribute('href')).toEqual('https://www.test.com/');
+    expect(link.getAttribute('to')).toEqual('https://www.test.com/');
   });
 
   it('renders with the custom classnames', () => {
