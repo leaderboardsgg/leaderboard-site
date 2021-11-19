@@ -24,7 +24,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from '@nuxtjs/composition-api';
 
 export default defineComponent({

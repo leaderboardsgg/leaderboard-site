@@ -41,7 +41,7 @@
 
 <script lang="ts">
 import { defineComponent } from '@nuxtjs/composition-api';
-import UserActivity from '@/UserActivity/UserActivity.vue';
+import UserActivity from '@/components/blocks/ProfileHeader/UserActivity/UserActivity.vue';
 import SocialButtons from '@/components/elements/buttons/SocialButtons/SocialButtons.vue';
 import FollowButton from '@/components/elements/buttons/FollowButton/FollowButton.vue';
 import UserBadges from '@/components/elements/UserBadges/UserBadges.vue';
@@ -146,7 +146,6 @@ export default defineComponent({
           @apply relative flex justify-center;
           & > img {
             @apply max-h-[7.5rem] max-w-[7.5rem];
-            @apply filter drop-shadow-[0,0.25rem,0.5rem,rgba(0,0,0,0.15)];
 
             @apply absolute md:relative md:max-h-[5.125rem] md:max-w-[5.125rem] rounded transform -translate-y-1/2;
           }

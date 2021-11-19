@@ -49,6 +49,7 @@ import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
 import BaseButton from '@/components/elements/buttons/BaseButton.vue';
 
 export default defineComponent({
+  name: 'HideShowPassword',
   components: {
     BaseButton,
   },

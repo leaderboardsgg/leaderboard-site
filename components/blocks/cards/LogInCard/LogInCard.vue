@@ -85,7 +85,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
-import HideShowPassword from '@/elements/buttons/HideShowPassword/HideShowPassword.vue';
+import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue';
 import BaseInput from '@/components/elements/BaseInput.vue';
 import Card from '@/components/elements/cards/Card.vue';
 import CardBody from '@/components/elements/cards/CardBody.vue';
