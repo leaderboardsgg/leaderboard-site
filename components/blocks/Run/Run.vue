@@ -22,11 +22,9 @@
     </div>
     <div class="run__info">
       <p>{{ time }}</p>
-      <!--      TODO: Need good BEM name for this -->
       <div class="hidden md:flex flex-row md:flex-grow">
         <p>{{ platform }}</p>
       </div>
-      <!--      TODO: Need good BEM name for this -->
       <div
         class="
           flex flex-row
