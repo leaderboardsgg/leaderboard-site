@@ -1,5 +1,4 @@
 <template>
-  <!--  Card Header/ Buttons-->
   <Card id="signUpCard" data-testid="sign-up-card" class="signup-card">
     <CardHeader class="signup-card__header">
       <BaseButton
@@ -13,8 +12,6 @@
 
       <CloseButton v-show="modal" @click.prevent="$emit('close')" />
     </CardHeader>
-
-    <!-- Card Body -->
     <div class="signup-card__content">
       <div class="signup-card__content-wrapper">
         <BaseInput
