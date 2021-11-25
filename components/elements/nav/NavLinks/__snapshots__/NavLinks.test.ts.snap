@@ -6,7 +6,7 @@ exports[`<NavLinks /> renders correctly 1`] = `
 >
   <a
     class="button-link nav-link"
-    href="/"
+    href=""
     name="Home"
     to="/"
   >
@@ -16,7 +16,7 @@ exports[`<NavLinks /> renders correctly 1`] = `
   </a>
   <a
     class="button-link nav-link"
-    href="/about"
+    href=""
     name="About"
     to="/about"
   >
@@ -26,7 +26,7 @@ exports[`<NavLinks /> renders correctly 1`] = `
   </a>
   <a
     class="button-link nav-link"
-    href="/contact"
+    href=""
     name="Contact"
     to="/contact"
   >

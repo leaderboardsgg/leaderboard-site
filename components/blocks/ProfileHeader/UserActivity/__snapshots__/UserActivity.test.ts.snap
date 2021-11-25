@@ -2,21 +2,17 @@
 
 exports[`<UserActivity /> renders correctly 1`] = `
 <div
-  class="profile-info--user-activity"
+  class="user-activity"
 >
   <p>
-    <span
-      class="font-semibold"
-    >
+    <span>
       Runs: 
     </span>
     42
   </p>
    
   <p>
-    <span
-      class="font-semibold"
-    >
+    <span>
       Games: 
     </span>
     6

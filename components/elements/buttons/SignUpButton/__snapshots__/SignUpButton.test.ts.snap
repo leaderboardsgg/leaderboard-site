@@ -2,7 +2,7 @@
 
 exports[`<SignUpButton /> renders correctly 1`] = `
 <button
-  class="base-button sign-up-button"
+  class="button sign-up-button"
 >
   
   Sign Up

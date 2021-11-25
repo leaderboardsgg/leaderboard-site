@@ -2,46 +2,28 @@
 
 exports[`<SignUpCard /> renders correctly 1`] = `
 <div
-  class="card bg-white w-full max-w-xl"
+  class="card signup-card"
   data-testid="sign-up-card"
   id="signUpCard"
 >
   <div
-    class="card-header flex flex-row space-x-3"
+    class="card-header signup-card__header"
   >
     <button
-      class="base-button 
-        flex flex-1
-        justify-center
-        bg-white
-        text-gray-900
-        border border-gray-300
-      "
+      class="button signup-card__login-button"
       id="login-button"
     >
-      
       Log In
-    
     </button>
      
     <div
-      class="
-        flex flex-1
-        justify-center
-        px-3
-        py-2
-        rounded
-        bg-gray-100
-        text-gray-900
-      "
+      class="signup-card__title"
     >
-      
       Sign Up
-    
     </div>
      
     <button
-      class="base-button close-button"
+      class="button close-button"
       style="display: none;"
     >
       <svg
@@ -60,10 +42,10 @@ exports[`<SignUpCard /> renders correctly 1`] = `
   </div>
    
   <div
-    class="p-3"
+    class="signup-card__content"
   >
     <div
-      class="flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300"
+      class="signup-card__content-wrapper"
     >
       <input
         autocomplete="email"
@@ -74,7 +56,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
       />
        
       <div
-        class="flex flex-1 flex-col space-y-1"
+        class="signup-card__input-wrapper"
       >
         <input
           autocomplete="nickname"
@@ -84,27 +66,20 @@ exports[`<SignUpCard /> renders correctly 1`] = `
           type="text"
         />
          
-        <p
-          class="text-sm"
-        >
+        <p>
           This can be changed later
         </p>
       </div>
        
       <div
-        class="flex flex-1 flex-col space-y-1"
+        class="signup-card__input-wrapper"
       >
         <div
-          class="
-            flex flex-1 flex-col
-            sm:flex-row
-            space-y-3
-            sm:space-y-0 sm:space-x-2
-          "
+          class="signup-card__password-wrapper"
         >
           <input
             autocomplete="password"
-            class="input flex-grow"
+            class="input signup-card__password-field"
             name="password"
             placeholder="Password"
             type="password"
@@ -112,14 +87,14 @@ exports[`<SignUpCard /> renders correctly 1`] = `
            
           <input
             autocomplete="password"
-            class="input flex-grow"
+            class="input signup-card__password-field"
             name="confirmPassword"
             placeholder="Confirm"
             type="password"
           />
            
           <button
-            class="base-button hidden sm:inline bg-white"
+            class="button button"
             data-testid="hide-show-password-button"
             id="hide-show-password"
             type="button"
@@ -163,27 +138,23 @@ exports[`<SignUpCard /> renders correctly 1`] = `
           </button>
         </div>
          
-        <p
-          class="text-sm"
-        >
-          
+        <p>
           * Must be 8 characters with a mix of letters and numbers
-        
         </p>
       </div>
        
       <button
-        class="base-button signup-button"
+        class="button signup-button"
       >
          Sign Up 
       </button>
     </div>
      
     <div
-      class="flex flex-col w-full space-y-2"
+      class="signup-card__auth-buttons"
     >
       <button
-        class="base-button signup-button"
+        class="button signup-button"
       >
         <svg
           class="w-5 h-5 mr-2"
@@ -202,7 +173,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
       </button>
        
       <button
-        class="base-button signup-button"
+        class="button signup-button"
       >
         <svg
           class="w-5 h-5 mr-2"

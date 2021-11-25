@@ -2,6 +2,6 @@
 
 exports[`<ProfileHeader /> renders correctly 1`] = `
 <div
-  class="user-badges--container"
+  class="user-badges__container"
 />
 `;

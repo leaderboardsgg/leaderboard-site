@@ -1,31 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProfileAboutCard /> renders correctly 1`] = `
+exports[`<BioCard /> renders correctly 1`] = `
 <div
-  class="profile-about-card"
+  class="bio-card"
 >
   <div
-    class="border-b border-gray-300"
+    class="card-header bio-card__header"
   >
-    <h2
-      class="text-xl font-bold"
-    >
+    <h2>
       About
     </h2>
   </div>
    
-  <div>
-    <p
-      class="text-black"
-    >
+  <div
+    class="card-body bio-card__content"
+  >
+    <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.
     </p>
      
     <div
-      class="mt-5"
+      class="bio-card__buttons"
     >
       <div
-        class="social-button--container"
+        class="social-buttons"
       >
         <a
           alt="Discord"

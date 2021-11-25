@@ -2,10 +2,10 @@
 
 exports[`<SiteFooter /> renders correctly 1`] = `
 <div
-  class="flex flex-wrap rounded bg-gray-100 p-5 text-gray-600"
+  class="site-footer"
 >
   <p
-    class="w-full text-center"
+    class="site-footer__copyright"
   >
     Copyright 2021
   </p>

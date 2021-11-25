@@ -3,7 +3,7 @@
 exports[`<ButtonLink /> renders correctly 1`] = `
 <a
   class="custom-link"
-  href="https://www.test.com/"
+  href=""
   to="https://www.test.com/"
 >
   Button

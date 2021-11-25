@@ -2,7 +2,7 @@
 
 exports[`<SocialButtons /> renders correctly 1`] = `
 <div
-  class="social-button--container"
+  class="social-buttons"
 >
   <a
     alt="Discord"

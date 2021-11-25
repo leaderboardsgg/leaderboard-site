@@ -2,37 +2,21 @@
 
 exports[`<LogInCard /> renders correctly 1`] = `
 <div
-  class="card bg-white w-full max-w-xl"
+  class="card login-card"
   data-testid="login-card"
   id="loginCard"
 >
   <div
-    class="card-header flex flex-row space-x-3"
+    class="card-header login-card__header"
   >
     <div
-      class="
-        flex flex-1
-        justify-center
-        px-3
-        py-2
-        rounded
-        bg-gray-100
-        text-gray-900
-      "
+      class="login-card__title"
     >
-      
       Log In
-    
     </div>
      
     <button
-      class="base-button 
-        flex flex-1
-        justify-center
-        bg-white
-        text-gray-900
-        border border-gray-300
-      "
+      class="button login-card__sign-up-button"
       id="sign-up-button"
     >
       
@@ -41,7 +25,7 @@ exports[`<LogInCard /> renders correctly 1`] = `
     </button>
      
     <button
-      class="base-button close-button"
+      class="button close-button"
       style="display: none;"
     >
       <svg
@@ -63,32 +47,32 @@ exports[`<LogInCard /> renders correctly 1`] = `
     class="card-body"
   >
     <div
-      class="flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300"
+      class="login-card__body-wrapper"
     >
       <input
         autocomplete="email"
-        class="input bg-white"
+        class="input"
         name="email"
         placeholder="Email"
         type="text"
       />
        
       <div
-        class="relative flex flex-col w-full"
+        class="login-card__input-wrapper"
       >
         <input
           autocomplete="password"
-          class="input bg-white pr-12"
+          class="input login-card__password-field"
           name="password"
           placeholder="Password"
           type="password"
         />
          
         <div
-          class="absolute top-0 right-0 flex items-center h-full"
+          class="login-card__button-wrapper"
         >
           <button
-            class="base-button hidden sm:inline bg-white p-1 mr-2 rounded fill-current"
+            class="button button"
             data-testid="hide-show-password-button"
             id="hide-show-button"
             type="button"
@@ -134,7 +118,7 @@ exports[`<LogInCard /> renders correctly 1`] = `
       </div>
        
       <button
-        class="base-button login-button"
+        class="button login-button"
         to="#"
       >
         Log In
@@ -142,10 +126,10 @@ exports[`<LogInCard /> renders correctly 1`] = `
     </div>
      
     <div
-      class="flex flex-col w-full space-y-2"
+      class="login-card__auth-buttons"
     >
       <button
-        class="base-button login-button"
+        class="button login-button"
       >
         <svg
           class="w-5 h-5 mr-2"
@@ -164,7 +148,7 @@ exports[`<LogInCard /> renders correctly 1`] = `
       </button>
        
       <button
-        class="base-button login-button"
+        class="button login-button"
       >
         <svg
           class="w-5 h-5 mr-2"

@@ -20,24 +20,20 @@ exports[`<ProfileHeader /> renders correctly 1`] = `
       class="profile-info"
     >
       <div
-        class="profile-info--header"
+        class="profile-info__header"
       >
         <div
-          class="profile-info--user-activity md:hidden"
+          class="user-activity profile-header__user-activity"
         >
           <p>
-            <span
-              class="font-semibold"
-            >
+            <span>
               Runs: 
             </span>
             42
           </p>
            
           <p>
-            <span
-              class="font-semibold"
-            >
+            <span>
               Games: 
             </span>
             6
@@ -45,7 +41,7 @@ exports[`<ProfileHeader /> renders correctly 1`] = `
         </div>
          
         <div
-          class="profile-info--picture-container"
+          class="profile-info__picture-container"
         >
           <img
             alt="profile picture"
@@ -54,39 +50,33 @@ exports[`<ProfileHeader /> renders correctly 1`] = `
         </div>
          
         <div
-          class="profile-info--user-badges md:hidden"
+          class="profile-info__user-badges"
         >
           <div
             badges=""
-            class="user-badges--container"
+            class="user-badges__container"
           />
         </div>
       </div>
        
       <div
-        class="profile-info--user-bio"
+        class="profile-info__user-bio"
       >
-        <h1
-          class="text-2xl font-semibold"
-        >
+        <h1>
           JohnSmithRuns
         </h1>
          
-        <h2
-          class="text-sm text-black text-opacity-50"
-        >
+        <h2>
           Olympus Mons, Mars
         </h2>
          
-        <p
-          class="text-black text-opacity-50 pt-2 md:hidden"
-        >
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.
         </p>
       </div>
        
       <div
-        class="profile-info--follow"
+        class="profile-info__follow"
       >
         <button
           class="follow-button"
@@ -98,21 +88,17 @@ exports[`<ProfileHeader /> renders correctly 1`] = `
       </div>
        
       <div
-        class="profile-info--user-activity hidden md:grid"
+        class="user-activity profile-info__user-activity"
       >
         <p>
-          <span
-            class="font-semibold"
-          >
+          <span>
             Runs: 
           </span>
           42
         </p>
          
         <p>
-          <span
-            class="font-semibold"
-          >
+          <span>
             Games: 
           </span>
           6
@@ -120,10 +106,10 @@ exports[`<ProfileHeader /> renders correctly 1`] = `
       </div>
        
       <div
-        class="profile-info--socials md:hidden"
+        class="profile-info__socials"
       >
         <div
-          class="social-button--container"
+          class="social-buttons"
         >
           <a
             alt="Discord"

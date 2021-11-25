@@ -3,7 +3,7 @@
 exports[`<NavLink /> renders correctly 1`] = `
 <a
   class="custom-link"
-  href="/games"
+  href=""
   to="/games"
 >
   Games
