@@ -40,6 +40,7 @@
   "root": true,
   // add your custom rules here
   "rules": {
+    "arrow-parens": ["error", "always"],
     "semi": "off",
     "comma-dangle": "off",
     "space-before-function-paren": "off",
