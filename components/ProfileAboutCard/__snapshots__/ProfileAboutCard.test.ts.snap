@@ -18,7 +18,9 @@ exports[`<ProfileAboutCard /> renders correctly 1`] = `
     <p
       class="text-black"
     >
+      
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.
+    
     </p>
      
     <div

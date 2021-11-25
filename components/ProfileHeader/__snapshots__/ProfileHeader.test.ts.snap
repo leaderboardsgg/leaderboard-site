@@ -69,19 +69,25 @@ exports[`<ProfileHeader /> renders correctly 1`] = `
         <h1
           class="text-2xl font-semibold"
         >
+          
           JohnSmithRuns
+        
         </h1>
          
         <h2
           class="text-sm text-black text-opacity-50"
         >
+          
           Olympus Mons, Mars
+        
         </h2>
          
         <p
           class="text-black text-opacity-50 pt-2 md:hidden"
         >
+          
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.
+        
         </p>
       </div>
        

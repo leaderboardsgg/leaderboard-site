@@ -336,7 +336,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   class="base-button login-button"
                   to="#"
                 >
-                  Log In
+                   Log In 
                 </button>
               </div>
                

@@ -51,7 +51,9 @@ exports[`<Run /> renders correctly 1`] = `
     <p
       class="md:flex-grow"
     >
+      
       01:23:45
+    
     </p>
      
     <div
