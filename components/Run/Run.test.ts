@@ -1,4 +1,4 @@
-import Run from './Run.vue';
+import Run from './RunComponent.vue';
 import { stubbedRender } from '@/testUtils';
 
 describe('<Run />', () => {

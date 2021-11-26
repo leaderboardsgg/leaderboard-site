@@ -1,4 +1,4 @@
-import index from '../index.vue';
+import index from '../IndexPage.vue';
 import { render } from '@/testUtils';
 
 describe('/index', () => {
