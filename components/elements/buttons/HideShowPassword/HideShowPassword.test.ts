@@ -1,5 +1,5 @@
 import HideShowPassword from './HideShowPassword.vue';
-import { fireEvent, stubbedRender } from '~/testUtils';
+import { fireEvent, stubbedRender } from '@/testUtils';
 
 describe('<HideShowPassword />', () => {
   it('should render without crashing', () => {

@@ -1,5 +1,5 @@
 import BioCard from './BioCard.vue';
-import { stubbedRender } from '~/testUtils';
+import { stubbedRender } from '@/testUtils';
 
 describe('<BioCard />', () => {
   it('should render without crashing', () => {

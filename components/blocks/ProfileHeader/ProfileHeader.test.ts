@@ -1,5 +1,5 @@
 import ProfileHeader from './ProfileHeader.vue';
-import { stubbedRender } from '~/testUtils';
+import { stubbedRender } from '@/testUtils';
 
 describe('<ProfileHeader />', () => {
   it('should render without crashing', () => {

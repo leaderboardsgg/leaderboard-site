@@ -1,5 +1,5 @@
 import SignUpCard from './SignUpCard.vue';
-import { stubbedRender } from '~/testUtils';
+import { stubbedRender } from '@/testUtils';
 
 describe('<SignUpCard />', () => {
   it('should render without crashing', () => {

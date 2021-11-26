@@ -1,5 +1,5 @@
 import SiteNavbar from './SiteNavbar.vue';
-import { fireEvent, stubbedRender } from '~/testUtils';
+import { fireEvent, stubbedRender } from '@/testUtils';
 
 /* Need to mock the `window.matchMedia` method here, because it has not
  * yet been implemented by JSDOM. Hopefully this will be fixed soon.

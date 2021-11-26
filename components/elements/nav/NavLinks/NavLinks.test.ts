@@ -1,5 +1,5 @@
 import NavLinks from './NavLinks.vue';
-import { stubbedRender } from '~/testUtils';
+import { stubbedRender } from '@/testUtils';
 
 describe('<NavLinks />', () => {
   const defaultProps = {
