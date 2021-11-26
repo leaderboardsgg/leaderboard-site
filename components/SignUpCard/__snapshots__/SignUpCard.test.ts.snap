@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SignUpCard /> renders correctly 1`] = `
-<div
-  class="card bg-white w-full max-w-xl"
+<basecard
+  class="bg-white w-full max-w-xl"
   data-testid="sign-up-card"
   id="signUpCard"
 >
   <div
     class="card-header flex flex-row space-x-3"
   >
-    <button
-      class="base-button 
+    <basebutton
+      class="
         flex flex-1
         justify-center
         bg-white
@@ -22,7 +22,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
       
       Log In
     
-    </button>
+    </basebutton>
      
     <div
       class="
@@ -40,8 +40,8 @@ exports[`<SignUpCard /> renders correctly 1`] = `
     
     </div>
      
-    <button
-      class="base-button close-button"
+    <basebutton
+      class="close-button"
       style="display: none;"
     >
       <svg
@@ -56,7 +56,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
           fill-rule="evenodd"
         />
       </svg>
-    </button>
+    </basebutton>
   </div>
    
   <div
@@ -65,9 +65,8 @@ exports[`<SignUpCard /> renders correctly 1`] = `
     <div
       class="flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300"
     >
-      <input
+      <baseinput
         autocomplete="email"
-        class="input"
         name="email"
         placeholder="Email"
         type="text"
@@ -76,9 +75,8 @@ exports[`<SignUpCard /> renders correctly 1`] = `
       <div
         class="flex flex-1 flex-col space-y-1"
       >
-        <input
+        <baseinput
           autocomplete="nickname"
-          class="input"
           name="username"
           placeholder="Username"
           type="text"
@@ -102,24 +100,24 @@ exports[`<SignUpCard /> renders correctly 1`] = `
             sm:space-y-0 sm:space-x-2
           "
         >
-          <input
+          <baseinput
             autocomplete="password"
-            class="input flex-grow"
+            class="flex-grow"
             name="password"
             placeholder="Password"
             type="password"
           />
            
-          <input
+          <baseinput
             autocomplete="password"
-            class="input flex-grow"
+            class="flex-grow"
             name="confirmPassword"
             placeholder="Confirm"
             type="password"
           />
            
-          <button
-            class="base-button hidden sm:inline bg-white"
+          <basebutton
+            class="hidden sm:inline bg-white"
             data-testid="hide-show-password-button"
             id="hide-show-password"
             type="button"
@@ -160,7 +158,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
                 fill-rule="evenodd"
               />
             </svg>
-          </button>
+          </basebutton>
         </div>
          
         <p
@@ -172,18 +170,18 @@ exports[`<SignUpCard /> renders correctly 1`] = `
         </p>
       </div>
        
-      <button
-        class="base-button signup-button"
+      <basebutton
+        class="signup-button"
       >
          Sign Up 
-      </button>
+      </basebutton>
     </div>
      
     <div
       class="flex flex-col w-full space-y-2"
     >
-      <button
-        class="base-button signup-button"
+      <basebutton
+        class="signup-button"
       >
         <svg
           class="w-5 h-5 mr-2"
@@ -199,10 +197,10 @@ exports[`<SignUpCard /> renders correctly 1`] = `
         <p>
           Sign Up with Github
         </p>
-      </button>
+      </basebutton>
        
-      <button
-        class="base-button signup-button"
+      <basebutton
+        class="signup-button"
       >
         <svg
           class="w-5 h-5 mr-2"
@@ -218,8 +216,8 @@ exports[`<SignUpCard /> renders correctly 1`] = `
         <p>
           Sign Up with Google
         </p>
-      </button>
+      </basebutton>
     </div>
   </div>
-</div>
+</basecard>
 `;

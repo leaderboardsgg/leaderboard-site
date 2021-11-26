@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LoginButton /> renders correctly 1`] = `
-<button
-  class="base-button login-button"
+<basebutton
+  class="login-button"
 >
   
   Log In
 
-</button>
+</basebutton>
 `;

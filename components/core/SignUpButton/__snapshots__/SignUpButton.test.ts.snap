@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SignUpButton /> renders correctly 1`] = `
-<button
-  class="base-button sign-up-button"
+<basebutton
+  class="sign-up-button"
 >
   
   Sign Up
 
-</button>
+</basebutton>
 `;
