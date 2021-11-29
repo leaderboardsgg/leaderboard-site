@@ -149,7 +149,7 @@ export default defineComponent({
     });
 
     async function signup() {
-      await $api.register(register);
+      await $api.register<void>(register);
 
       register.email = '';
       register.password = '';

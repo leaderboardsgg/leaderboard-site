@@ -11,15 +11,15 @@ const config: NuxtConfig = {
         endpoints: {
           login: {
             method: 'post',
-            url: `${process.env.BACKEND_BASE_URL}/api/v1/login`,
+            url: `/api/v1/login`,
           },
           logout: {
             method: 'post',
-            url: `${process.env.BACKEND_BASE_URL}/api/v1/logout`,
+            url: `/api/v1/logout`,
           },
           user: {
             method: 'get',
-            url: `${process.env.BACKEND_BASE_URL}/api/v1/me`,
+            url: `/api/v1/me`,
           },
         },
         token: {
@@ -35,7 +35,9 @@ const config: NuxtConfig = {
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.BACKEND_BASE_URL,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},

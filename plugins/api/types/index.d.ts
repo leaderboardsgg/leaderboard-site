@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 import { UserRegister } from '@/types';
 
 interface ApiInstance {
-  register(data: UserRegister): Promise<AxiosResponse<any>>;
+  register<T>(data: UserRegister): Promise<AxiosResponse<T>>;
 }
 
 // Nuxt 2.9+
