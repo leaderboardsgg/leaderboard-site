@@ -1,6 +1,6 @@
+import { screen } from '@testing-library/dom';
 import SiteNavbar from './SiteNavbar.vue';
 import { fireEvent, stubbedRender } from '@/testUtils';
-import { screen } from '@testing-library/dom';
 
 /* Need to mock the `window.matchMedia` method here, because it has not
  * yet been implemented by JSDOM. Hopefully this will be fixed soon.
@@ -118,7 +118,7 @@ describe('<SiteNavbar />', () => {
     });
 
     describe('display only sign out button when logged in', () => {
-      it('should open the modal containing the `<SignUpCard />`', async () => {
+      it('should open the modal containing the `<SignUpCard />`', () => {
         const { getByTestId } = stubbedRender(SiteNavbar, {
           mocks: {
             $auth: {
