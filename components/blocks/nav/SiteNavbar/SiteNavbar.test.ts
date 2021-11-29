@@ -1,5 +1,6 @@
 import SiteNavbar from './SiteNavbar.vue';
 import { fireEvent, stubbedRender } from '@/testUtils';
+import { screen } from '@testing-library/dom';
 
 /* Need to mock the `window.matchMedia` method here, because it has not
  * yet been implemented by JSDOM. Hopefully this will be fixed soon.
@@ -113,6 +114,21 @@ describe('<SiteNavbar />', () => {
         await fireEvent.type(<HTMLElement>signUpButton, '{enter}');
 
         expect(getByTestId('sign-up-card')).toBeVisible();
+      });
+    });
+
+    describe('display only sign out button when logged in', () => {
+      it('should open the modal containing the `<SignUpCard />`', async () => {
+        const { getByTestId } = stubbedRender(SiteNavbar, {
+          mocks: {
+            $auth: {
+              loggedIn: true,
+            },
+          },
+        });
+        expect(getByTestId('site-navbar-logout-button')).toBeVisible();
+        expect(screen.queryByTestId('site-navbar-sign-up-button')).toBeNull();
+        expect(screen.queryByTestId('site-navbar-login-button')).toBeNull();
       });
     });
   });
