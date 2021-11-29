@@ -1,5 +1,5 @@
 import { NuxtConfig } from '@nuxt/types';
-import { config as dotenv } from 'dotenv';
+import { config as dotenv } from 'dotenv-safe';
 
 dotenv();
 
