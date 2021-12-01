@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserActivity /> renders correctly 1`] = `
+<div
+  class="user-activity"
+>
+  <p>
+    <span>
+      Runs: 
+    </span>
+    42
+  </p>
+   
+  <p>
+    <span>
+      Games: 
+    </span>
+    6
+  </p>
+</div>
+`;

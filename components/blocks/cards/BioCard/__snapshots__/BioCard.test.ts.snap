@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BioCard /> renders correctly 1`] = `
+<div
+  class="bio-card"
+>
+  <div
+    class="card-header bio-card__header"
+  >
+    <h2>
+      About
+    </h2>
+  </div>
+   
+  <div
+    class="card-body bio-card__content"
+  >
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.
+    </p>
+     
+    <div
+      class="bio-card__buttons"
+    >
+      <div
+        class="social-buttons"
+      >
+        <a
+          alt="Discord"
+          class="social-button"
+          href="https://discord.com/"
+        >
+          
+    dscrd
+  
+        </a>
+        <a
+          alt="Twitch"
+          class="social-button"
+          href="https://twitch.tv/"
+        >
+          
+    twch
+  
+        </a>
+        <a
+          alt="Twitter"
+          class="social-button"
+          href="https://twitter.com/"
+        >
+          
+    twtr
+  
+        </a>
+        <a
+          alt="Youtube"
+          class="social-button"
+          href="https://youtube.com/"
+        >
+          
+    yt
+  
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

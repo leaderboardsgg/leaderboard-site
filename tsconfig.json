@@ -24,7 +24,6 @@
 
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./*"],
       "@/*": ["./*"]
     },
     "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SiteFooter /> renders correctly 1`] = `
+<div
+  class="site-footer"
+>
+  <p
+    class="site-footer__copyright"
+  >
+    Copyright 2021
+  </p>
+</div>
+`;
