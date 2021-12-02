@@ -30,6 +30,7 @@ module.exports = {
   // add your custom rules here
   rules: {
     'eol-last': ['error', 'always'],
+    'vue/multi-word-component-names': 'off',
     'vue/sort-keys': [
       'error',
       'asc',
