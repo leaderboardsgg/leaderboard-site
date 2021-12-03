@@ -92,26 +92,26 @@ import {
   toRefs,
   useContext,
 } from '@nuxtjs/composition-api';
-import LogInCard from '~/components/blocks/cards/LogInCard/LogInCard.vue';
-import SignUpCard from '~/components/blocks/cards/SignUpCard/SignUpCard.vue';
-import LoginButton from '~/components/elements/buttons/LoginButton/LoginButton.vue';
-import LogoutButton from '~/components/elements/buttons/LogoutButton/LogoutButton.vue';
-import Modal from '~/components/elements/Modal.vue';
-import NavLinks from '~/components/elements/nav/NavLinks/NavLinks.vue';
-import SearchBar from '~/components/elements/SearchBar/SearchBar.vue';
-import SignUpButton from '~/components/elements/buttons/SignUpButton/SignUpButton.vue';
+import LogInCard from '@/components/blocks/cards/LogInCard/LogInCard.vue';
+import LoginButton from '@/components/elements/buttons/LoginButton/LoginButton.vue';
+import LogoutButton from '@/components/elements/buttons/LogoutButton/LogoutButton.vue';
+import Modal from '@/components/elements/Modal.vue';
+import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue';
+import SearchBar from '@/components/elements/SearchBar/SearchBar.vue';
+import SignUpButton from '@/components/elements/buttons/SignUpButton/SignUpButton.vue';
+import SignUpCard from '@/components/blocks/cards/SignUpCard/SignUpCard.vue';
 
 export default defineComponent({
   name: 'SiteNavBar',
   components: {
     LogInCard,
-    SignUpCard,
     LoginButton,
     LogoutButton,
     Modal,
     NavLinks,
     SearchBar,
     SignUpButton,
+    SignUpCard,
   },
   setup() {
     const { $auth } = useContext();

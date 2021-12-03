@@ -110,12 +110,12 @@ import {
   toRefs,
   useContext,
 } from '@nuxtjs/composition-api';
-import HideShowPassword from '~/components/elements/buttons/HideShowPassword/HideShowPassword.vue';
-import BaseButton from '~/components/elements/buttons/BaseButton.vue';
-import Card from '~/components/elements/cards/Card.vue';
-import CardHeader from '~/components/elements/cards/CardHeader.vue';
-import CloseButton from '~/components/elements/buttons/CloseButton.vue';
-import BaseInput from '~/components/elements/BaseInput.vue';
+import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue';
+import BaseButton from '@/components/elements/buttons/BaseButton.vue';
+import Card from '@/components/elements/cards/Card.vue';
+import CardHeader from '@/components/elements/cards/CardHeader.vue';
+import CloseButton from '@/components/elements/buttons/CloseButton.vue';
+import BaseInput from '@/components/elements/BaseInput.vue';
 import { UserRegister } from '@/types';
 
 export default defineComponent({
