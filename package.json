@@ -16,7 +16,7 @@
     "lint": "pnpm lint:all",
     "precommit": "pnpm run-s pretty:staged lint:all",
     "prepare": "husky install",
-    "prettier:check": "prettier --check --ignore-path .gitignore .",
+    "prettier:check": "prettier --check --ignore-path .prettierignore .",
     "pretty:staged": "pretty-quick --staged",
     "pretty": "pretty-quick",
     "test": "jest",
