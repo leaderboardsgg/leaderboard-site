@@ -119,7 +119,6 @@ exports[`<LogInCard /> renders correctly 1`] = `
        
       <button
         class="button login-button"
-        to="#"
       >
         Log In
       </button>

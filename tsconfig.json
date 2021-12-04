@@ -29,13 +29,15 @@
     "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
     "types": [
       "@nuxt/types",
+      "@nuxtjs/auth-next",
       "@nuxtjs/axios",
       "@types/node",
       "@types/jest",
       "@testing-library/dom",
       "@testing-library/jest-dom",
       "@testing-library/user-event",
-      "@testing-library/vue"
+      "@testing-library/vue",
+      "@/plugins/api/types"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]

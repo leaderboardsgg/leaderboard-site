@@ -45,8 +45,8 @@
             />
 
             <BaseInput
-              v-model="confirmPassword"
-              name="confirmPassword"
+              v-model="passwordConfirm"
+              name="passwordConfirm"
               class="signup-card__password-field"
               :type="showPassword ? 'text' : 'password'"
               placeholder="Confirm"
@@ -65,7 +65,7 @@
           <p>* Must be 8 characters with a mix of letters and numbers</p>
         </div>
 
-        <BaseButton class="signup-button"> Sign Up </BaseButton>
+        <BaseButton class="signup-button" @click="signup"> Sign Up </BaseButton>
       </div>
 
       <div class="signup-card__auth-buttons">
@@ -104,13 +104,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs } from '@nuxtjs/composition-api';
-import HideShowPassword from '~/components/elements/buttons/HideShowPassword/HideShowPassword.vue';
-import BaseButton from '~/components/elements/buttons/BaseButton.vue';
-import Card from '~/components/elements/cards/Card.vue';
-import CardHeader from '~/components/elements/cards/CardHeader.vue';
-import CloseButton from '~/components/elements/buttons/CloseButton.vue';
-import BaseInput from '~/components/elements/BaseInput.vue';
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  useContext,
+} from '@nuxtjs/composition-api';
+import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue';
+import BaseButton from '@/components/elements/buttons/BaseButton.vue';
+import Card from '@/components/elements/cards/Card.vue';
+import CardHeader from '@/components/elements/cards/CardHeader.vue';
+import CloseButton from '@/components/elements/buttons/CloseButton.vue';
+import BaseInput from '@/components/elements/BaseInput.vue';
+import { UserRegister } from '@/types';
 
 export default defineComponent({
   components: {
@@ -128,18 +134,36 @@ export default defineComponent({
       default: false,
     },
   },
+  setup(_, { emit }) {
+    const { $api } = useContext();
 
-  setup() {
-    const state = reactive({
-      confirmPassword: '',
+    const register = reactive<UserRegister>({
       email: '',
       password: '',
-      showPassword: false,
+      passwordConfirm: '',
       username: '',
     });
 
+    const state = reactive({
+      showPassword: false,
+    });
+
+    async function signup() {
+      await $api.register<void>(register);
+
+      register.email = '';
+      register.password = '';
+      register.passwordConfirm = '';
+      register.username = '';
+      state.showPassword = false;
+
+      emit('logInClick');
+    }
+
     return {
       ...toRefs(state),
+      ...toRefs(register),
+      signup,
     };
   },
 });
