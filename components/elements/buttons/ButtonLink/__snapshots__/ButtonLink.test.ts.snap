@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ButtonLink /> renders correctly 1`] = `
+<a
+  class="custom-link"
+  href=""
+  to="https://www.test.com/"
+>
+  Button
+</a>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LogoutButton /> renders correctly 1`] = `
+<button
+  class="button logout-button"
+>
+  
+  Log Out
+
+</button>
+`;

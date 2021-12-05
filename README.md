@@ -14,23 +14,25 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 
 ## Build Setup
 
-```bash
-# install pnpm (Performant NPM)
-$ npm install -g pnpm
+- install pnpm (Performant NPM)  
+  $ `npm install -g pnpm`
 
-# install dependencies
-$ pnpm install
+- install dependencies  
+  $ `pnpm install`
 
-# serve with hot reload at localhost:3000
-$ pnpm dev
+- run and connect to backend  
+  $ Create a `.env` file with `BACKEND_BASE_URL` the address of your backend.  
+  $ You can download the backend project and run it locally [here](https://github.com/leaderboardsgg/leaderboard-backend)
 
-# build for production and launch server
-$ pnpm build
-$ pnpm start
+- serve with hot reload at `localhost:3000`  
+  $ `pnpm dev`
 
-# generate static project
-$ pnpm generate
-```
+- build for production and launch server  
+  $ `pnpm build`  
+  $ `pnpm start`
+
+- generate static project  
+  $ `pnpm generate`
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 

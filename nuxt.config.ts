@@ -1,8 +1,43 @@
 import { NuxtConfig } from '@nuxt/types';
+import { config as dotenv } from 'dotenv-safe';
+
+dotenv();
 
 export default {
+  // Auth module configuration https://auth.nuxtjs.org/
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: {
+            method: 'post',
+            url: `/api/v1/login`,
+          },
+          logout: {
+            method: 'post',
+            url: `/api/v1/logout`,
+          },
+          user: {
+            method: 'get',
+            url: `/api/v1/me`,
+          },
+        },
+        token: {
+          global: true,
+          property: 'token',
+          type: 'Bearer',
+        },
+        user: {
+          property: 'data',
+        },
+      },
+    },
+  },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL: process.env.BACKEND_BASE_URL,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
@@ -32,14 +67,19 @@ export default {
       { content: '', hid: 'description', name: 'description' },
       { content: 'telephone=no', name: 'format-detection' },
     ],
-    title: 'leaderboardsgg',
+    title: 'leaderboards.gg',
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/plugins/api'],
+
+  // https://nuxtjs.org/tutorials/moving-from-nuxtjs-dotenv-to-runtime-config/
+  publicRuntimeConfig: {
+    backendBaseUrl: process.env.BACKEND_BASE_URL,
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
