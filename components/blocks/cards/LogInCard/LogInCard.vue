@@ -97,6 +97,7 @@ import CardBody from '@/components/elements/cards/CardBody.vue';
 import CardHeader from '@/components/elements/cards/CardHeader.vue';
 import BaseButton from '@/components/elements/buttons/BaseButton.vue';
 import CloseButton from '@/components/elements/buttons/CloseButton.vue';
+
 export default defineComponent({
   components: {
     BaseButton,
@@ -116,11 +117,13 @@ export default defineComponent({
   },
   setup(_, { emit }) {
     const { $auth } = useContext();
+
     const state = reactive({
       email: '',
       password: '',
       showPassword: false,
     });
+
     async function login() {
       await $auth.loginWith('local', {
         data: {
@@ -128,11 +131,14 @@ export default defineComponent({
           password: state.password,
         },
       });
+
       state.email = '';
       state.password = '';
       state.showPassword = false;
+
       emit('close');
     }
+
     return {
       ...toRefs(state),
       login,
@@ -169,13 +175,16 @@ export default defineComponent({
     @apply bg-white pr-12;
   }
 }
+
 #hide-show-button {
   @apply text-gray-700 hover:bg-gray-100;
   @apply p-1 mr-2 rounded fill-current;
 }
+
 #sign-up-button {
   @apply hover:bg-gray-100;
 }
+
 .login-button {
   @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
 }
