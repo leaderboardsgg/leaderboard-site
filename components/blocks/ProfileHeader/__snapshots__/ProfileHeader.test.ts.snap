@@ -1,156 +1,81 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProfileHeader /> renders correctly 1`] = `
+exports[`<Run /> renders correctly 1`] = `
 <div
-  class="profile-header"
+  class="run"
 >
   <div
-    class="profile-banner"
+    class="run__wrapper"
   >
-    <img
-      alt="profile banner"
-      src="https://via.placeholder.com/885x120"
-    />
+    <div
+      class="run__standing"
+    >
+      <svg
+        fill="none"
+        height="14"
+        id="trophy"
+        viewBox="0 0 14 14"
+        width="14"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.444 1.556H10.89V.778A.78.78 0 0 0 10.11 0H3.89a.78.78 0 0 0-.778.778v.778H1.556C.7 1.556 0 2.256 0 3.11v.778C0 5.872 1.493 7.49 3.414 7.73a3.896 3.896 0 0 0 2.808 2.302v2.411H3.89a.78.78 0 0 0-.778.778c0 .428.35.778.778.778h6.222a.78.78 0 0 0 .778-.778.78.78 0 0 0-.778-.778H7.778v-2.41a3.896 3.896 0 0 0 2.808-2.303C12.506 7.49 14 5.872 14 3.89v-.78c0-.855-.7-1.555-1.556-1.555ZM1.556 3.889V3.11H3.11v2.971A2.341 2.341 0 0 1 1.556 3.89Zm10.888 0a2.341 2.341 0 0 1-1.555 2.193v-2.97h1.555v.777Z"
+          fill="#000"
+        />
+      </svg>
+       
+      <p>
+        1st
+      </p>
+    </div>
+     
+    <p>
+      JohnSmithRuns
+    </p>
   </div>
    
   <div
-    class="profile-info-container"
+    class="run__info"
   >
+    <p>
+      01:23:45
+    </p>
+     
     <div
-      class="profile-info"
+      class="hidden md:flex flex-row md:flex-grow"
     >
-      <div
-        class="profile-info__header"
-      >
-        <div
-          class="user-activity profile-header__user-activity"
-        >
-          <p>
-            <span>
-              Runs: 
-            </span>
-            42
-          </p>
-           
-          <p>
-            <span>
-              Games: 
-            </span>
-            6
-          </p>
-        </div>
-         
-        <div
-          class="profile-info__picture-container"
-        >
-          <img
-            alt="profile picture"
-            src="https://via.placeholder.com/120"
-          />
-        </div>
-         
-        <div
-          class="profile-info__user-badges"
-        >
-          <div
-            badges=""
-            class="user-badges__container"
-          />
-        </div>
-      </div>
+      <p>
+        PC
+      </p>
+    </div>
+     
+    <div
+      class="
+        flex flex-row
+        opacity-75
+        gap-x-5
+        md:opacity-100
+        justify-end
+        items-center
+      "
+    >
+      <p>
+        1 year ago
+      </p>
        
-      <div
-        class="profile-info__user-bio"
+      <svg
+        fill="none"
+        height="12"
+        viewBox="0 0 18 12"
+        width="18"
+        xmlns="http://www.w3.org/2000/svg"
       >
-        <h1>
-          JohnSmithRuns
-        
-        </h1>
-         
-        <h2>
-          Olympus Mons, Mars
-        
-        </h2>
-         
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.
-        
-        </p>
-      </div>
-       
-      <div
-        class="profile-info__follow"
-      >
-        <button
-          class="follow-button"
-        >
-          
-  Follow
-        </button>
-      </div>
-       
-      <div
-        class="user-activity profile-info__user-activity"
-      >
-        <p>
-          <span>
-            Runs: 
-          </span>
-          42
-        </p>
-         
-        <p>
-          <span>
-            Games: 
-          </span>
-          6
-        </p>
-      </div>
-       
-      <div
-        class="profile-info__socials"
-      >
-        <div
-          class="social-buttons"
-        >
-          <a
-            alt="Discord"
-            class="social-button"
-            href="https://discord.com/"
-          >
-            
-    dscrd
-  
-          </a>
-          <a
-            alt="Twitch"
-            class="social-button"
-            href="https://twitch.tv/"
-          >
-            
-    twch
-  
-          </a>
-          <a
-            alt="Twitter"
-            class="social-button"
-            href="https://twitter.com/"
-          >
-            
-    twtr
-  
-          </a>
-          <a
-            alt="Youtube"
-            class="social-button"
-            href="https://youtube.com/"
-          >
-            
-    yt
-  
-          </a>
-        </div>
-      </div>
+        <path
+          d="M14 4.5V1C14 0.45 13.55 0 13 0H1C0.45 0 0 0.45 0 1V11C0 11.55 0.45 12 1 12H13C13.55 12 14 11.55 14 11V7.5L16.29 9.79C16.92 10.42 18 9.97 18 9.08V2.91C18 2.02 16.92 1.57 16.29 2.2L14 4.5Z"
+          fill="black"
+          fill-opacity="0.71"
+        />
+      </svg>
     </div>
   </div>
 </div>
