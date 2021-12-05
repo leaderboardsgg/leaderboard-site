@@ -117,7 +117,6 @@ import CardHeader from '@/components/elements/cards/CardHeader.vue';
 import CloseButton from '@/components/elements/buttons/CloseButton.vue';
 import BaseInput from '@/components/elements/BaseInput.vue';
 import { UserRegister } from '@/types';
-
 export default defineComponent({
   components: {
     BaseButton,
@@ -136,30 +135,24 @@ export default defineComponent({
   },
   setup(_, { emit }) {
     const { $api } = useContext();
-
     const register = reactive<UserRegister>({
       email: '',
       password: '',
       passwordConfirm: '',
       username: '',
     });
-
     const state = reactive({
       showPassword: false,
     });
-
     async function signup() {
       await $api.register<void>(register);
-
       register.email = '';
       register.password = '';
       register.passwordConfirm = '';
       register.username = '';
       state.showPassword = false;
-
       emit('logInClick');
     }
-
     return {
       ...toRefs(state),
       ...toRefs(register),
@@ -206,11 +199,9 @@ export default defineComponent({
 #hide-show-password {
   @apply text-gray-700 hover:bg-gray-100;
 }
-
 #login-button {
   @apply hover:bg-gray-100;
 }
-
 .signup-button {
   @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
 }

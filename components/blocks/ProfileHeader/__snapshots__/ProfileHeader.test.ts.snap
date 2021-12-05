@@ -86,7 +86,6 @@ exports[`<ProfileHeader /> renders correctly 1`] = `
         >
           
   Follow
-
         </button>
       </div>
        
