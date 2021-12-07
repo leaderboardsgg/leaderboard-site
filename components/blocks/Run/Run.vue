@@ -26,14 +26,7 @@
         <p>{{ platform }}</p>
       </div>
       <div
-        class="
-          flex flex-row
-          opacity-75
-          gap-x-5
-          md:opacity-100
-          justify-end
-          items-center
-        "
+        class="flex flex-row opacity-75 gap-x-5 md:opacity-100 justify-end items-center"
       >
         <p>{{ date }}</p>
         <svg

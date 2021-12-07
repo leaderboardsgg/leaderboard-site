@@ -3,7 +3,7 @@ import { config as dotenv } from 'dotenv-safe';
 
 dotenv();
 
-const config: NuxtConfig = {
+export default {
   // Auth module configuration https://auth.nuxtjs.org/
   auth: {
     strategies: {
@@ -87,6 +87,4 @@ const config: NuxtConfig = {
       lang: 'en',
     },
   },
-};
-
-export default config;
+} as NuxtConfig;
