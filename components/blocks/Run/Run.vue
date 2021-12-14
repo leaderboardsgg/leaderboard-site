@@ -2,7 +2,11 @@
   <div class="run">
     <div class="run__wrapper">
       <div class="run__standing">
-        <svg-icon v-if="standing <= 3" name="trophy" />
+        <svg-icon
+          v-if="standing <= 3"
+          name="trophy"
+          data-testid="trophy-icon"
+        />
         <p>{{ formattedStanding }}</p>
       </div>
       <p>{{ user }}</p>

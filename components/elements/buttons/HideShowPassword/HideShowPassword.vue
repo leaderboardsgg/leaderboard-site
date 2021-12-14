@@ -8,8 +8,18 @@
     @click="toggleHidden"
     @keyup.enter="toggleHidden"
   >
-    <svg-icon v-show="hidden" class="h-5 w-5" name="eye-hidden" />
-    <svg-icon v-show="!hidden" class="h-5 w-5" name="eye-visible" />
+    <svg-icon
+      v-show="hidden"
+      class="h-5 w-5"
+      name="eye-hidden"
+      data-testid="hidden-eye-icon"
+    />
+    <svg-icon
+      v-show="!hidden"
+      class="h-5 w-5"
+      name="eye-visible"
+      data-testid="visible-eye-icon"
+    />
   </BaseButton>
 </template>
 
