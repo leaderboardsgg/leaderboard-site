@@ -14,7 +14,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
         class="site-navbar__homelink"
         href="/"
       >
-        <svg-icon
+        <svg-icon-stub
           class="h-10 w-10 mx-1"
           name="clock"
         />
@@ -66,7 +66,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
           data-testid="search-button"
           type="submit"
         >
-          <svg-icon
+          <svg-icon-stub
             name="search"
           />
         </button>
@@ -99,7 +99,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
       <button
         class="mobile-menu__toggle"
       >
-        <svg-icon
+        <svg-icon-stub
           class="fill-current h-5 w-5 mx-2"
           name="menu"
         />
@@ -159,7 +159,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                 <button
                   class="button close-button"
                 >
-                  <svg-icon
+                  <svg-icon-stub
                     class="h-5 w-5"
                     name="close"
                   />
@@ -200,13 +200,13 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                         id="hide-show-button"
                         type="button"
                       >
-                        <svg-icon
+                        <svg-icon-stub
                           class="h-5 w-5"
                           data-testid="hidden-eye-icon"
                           name="eye-hidden"
                         />
                          
-                        <svg-icon
+                        <svg-icon-stub
                           class="h-5 w-5"
                           data-testid="visible-eye-icon"
                           name="eye-visible"
@@ -229,7 +229,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   <button
                     class="button login-button"
                   >
-                    <svg-icon
+                    <svg-icon-stub
                       class="w-5 h-5 mr-2"
                       name="github"
                     />
@@ -242,7 +242,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   <button
                     class="button login-button"
                   >
-                    <svg-icon
+                    <svg-icon-stub
                       class="w-5 h-5 mr-2"
                       name="google"
                     />
@@ -279,7 +279,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                 <button
                   class="button close-button"
                 >
-                  <svg-icon
+                  <svg-icon-stub
                     class="h-5 w-5"
                     name="close"
                   />
@@ -344,13 +344,13 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                         id="hide-show-password"
                         type="button"
                       >
-                        <svg-icon
+                        <svg-icon-stub
                           class="h-5 w-5"
                           data-testid="hidden-eye-icon"
                           name="eye-hidden"
                         />
                          
-                        <svg-icon
+                        <svg-icon-stub
                           class="h-5 w-5"
                           data-testid="visible-eye-icon"
                           name="eye-visible"
@@ -377,7 +377,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   <button
                     class="button signup-button"
                   >
-                    <svg-icon
+                    <svg-icon-stub
                       class="w-5 h-5 mr-2"
                       name="github"
                     />
@@ -390,7 +390,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   <button
                     class="button signup-button"
                   >
-                    <svg-icon
+                    <svg-icon-stub
                       class="w-5 h-5 mr-2"
                       name="google"
                     />

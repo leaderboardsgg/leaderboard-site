@@ -10,7 +10,7 @@ exports[`<Run /> renders correctly 1`] = `
     <div
       class="run__standing"
     >
-      <svg-icon
+      <svg-icon-stub
         data-testid="trophy-icon"
         name="trophy"
       />
@@ -47,7 +47,7 @@ exports[`<Run /> renders correctly 1`] = `
         1 year ago
       </p>
        
-      <svg-icon
+      <svg-icon-stub
         name="video"
       />
     </div>
