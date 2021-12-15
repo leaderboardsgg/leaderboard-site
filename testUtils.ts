@@ -31,7 +31,11 @@ export const stubbedRender = (
   options?: RenderOptions<Vue>,
 ) => {
   return render(Component, {
-    stubs: { NuxtLink: NuxtLinkStub, ...options?.stubs },
+    stubs: {
+      NuxtLink: NuxtLinkStub,
+      'svg-icon': true,
+      ...options?.stubs,
+    },
     ...options,
   });
 };

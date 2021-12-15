@@ -71,7 +71,7 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next'],
+  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/svg-sprite'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/api'],
@@ -86,5 +86,9 @@ export default {
     manifest: {
       lang: 'en',
     },
+  },
+
+  svgSprite: {
+    // manipulate module options
   },
 } as NuxtConfig;
