@@ -2,7 +2,7 @@
   <div class="site-navbar">
     <div class="site-navbar__wrapper">
       <div class="site-logo">
-        <NuxtLink class="site-navbar__homelink" to="/">
+        <NuxtLink class="site-navbar__homelink" :to="localeRoute('/')">
           <svg-icon class="mx-1 w-10 h-10" name="clock" />
           <h1>leaderboards.gg</h1>
         </NuxtLink>

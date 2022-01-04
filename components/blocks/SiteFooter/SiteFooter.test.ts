@@ -19,4 +19,10 @@ describe('<SiteFooter />', () => {
 
     expect(getByText('Copyright 2021')).toBeInTheDocument();
   });
+
+  it('renders the language selector', () => {
+    const { getByTestId } = stubbedRender(SiteFooter);
+
+    expect(getByTestId('language-selector')).toBeInTheDocument();
+  });
 });

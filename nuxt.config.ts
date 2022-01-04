@@ -70,8 +70,34 @@ export default {
     title: 'leaderboards.gg',
   },
 
+  i18n: {
+    defaultLocale: 'en',
+    detectBrowserLanguage: {
+      alwaysRedirect: false,
+      useCookie: true,
+    },
+    langDir: '@/i18n/',
+    lazy: true,
+    locales: [
+      { code: 'de', file: 'de/index.js', iso: 'de-DE', name: 'Deutsch' },
+      { code: 'en', file: 'en/index.js', iso: 'en-US', name: 'English' },
+      { code: 'es', file: 'es/index.js', iso: 'es', name: 'Español' },
+      { code: 'fr', file: 'fr/index.js', iso: 'fr', name: 'Français' },
+      { code: 'ja', file: 'ja/index.js', iso: 'ja', name: '日本語' },
+    ],
+    strategy: 'prefix_and_default',
+    vueI18n: {
+      fallbackLocale: 'en',
+    },
+  },
+
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios', '@nuxtjs/auth-next', '@nuxtjs/svg-sprite'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
+    '@nuxtjs/i18n',
+    '@nuxtjs/svg-sprite',
+  ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: ['@/plugins/api'],

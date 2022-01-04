@@ -34,6 +34,7 @@
       "@nuxt/types",
       "@nuxtjs/auth-next",
       "@nuxtjs/axios",
+      "@nuxtjs/i18n",
       "@types/node",
       "@types/jest",
       "@testing-library/dom",

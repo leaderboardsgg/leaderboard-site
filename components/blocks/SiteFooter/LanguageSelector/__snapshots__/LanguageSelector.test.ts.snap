@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LanguageSelector /> renders correctly 1`] = `
+<select
+  class="language-selector"
+  role="listbox"
+>
+  <option
+    value="en"
+  >
+    
+    English
+  
+  </option>
+  <option
+    value="es"
+  >
+    
+    Spanish
+  
+  </option>
+  <option
+    value="fr"
+  >
+    
+    French
+  
+  </option>
+</select>
+`;
