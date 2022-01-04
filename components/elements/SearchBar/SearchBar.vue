@@ -13,14 +13,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, PropType } from '@nuxtjs/composition-api';
 
-export default defineComponent<{ onSubmit(): void }>({
+export default defineComponent({
   name: 'SearchBar',
   props: {
     onSubmit: {
       default: () => console.log('submit'), // eslint-disable-line no-console
-      type: Function,
+      type: Function as PropType<() => void>,
     },
   },
   methods: {
