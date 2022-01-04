@@ -70,6 +70,9 @@
         "minKeys": 2,
         "natural": false
       }
-    ]
+    ],
+    // disabled since this is only relevant for IE support
+    // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-685442841
+    "vuejs-accessibility/no-onchange": "off"
   }
 }
