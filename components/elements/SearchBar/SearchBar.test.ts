@@ -2,56 +2,39 @@ import SearchBar from './SearchBar.vue';
 import { fireEvent, stubbedRender } from '@/testUtils';
 
 describe('<SearchBar />', () => {
-  const mockOnSubmit = jest.fn();
-  const defaultProps = { onSubmit: mockOnSubmit };
-
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(SearchBar, {
-      props: defaultProps,
-    });
+    const { unmount } = stubbedRender(SearchBar);
 
     unmount();
   });
 
   it('renders correctly', () => {
-    const { container } = stubbedRender(SearchBar, {
-      props: defaultProps,
-    });
+    const { container } = stubbedRender(SearchBar);
 
     expect(container.firstChild).toMatchSnapshot();
   });
 
-  describe('when search is initiated', () => {
-    describe('and no onSubmit prop is passed', () => {
-      const spyConsoleLog = jest.spyOn(console, 'log');
+  describe('when the search event is emitted', () => {
+    const inputValue = 'test';
 
-      it('should call the default onSubmit methd', async () => {
-        const { getByTestId } = stubbedRender(SearchBar);
+    test('when the search button is clicked', async () => {
+      const { emitted, getByTestId } = stubbedRender(SearchBar);
 
-        await fireEvent.click(getByTestId('search-button'));
-
-        expect(spyConsoleLog).toHaveBeenCalled();
-      });
-    });
-
-    test('the onSubmit method is called when search button is clicked', async () => {
-      const { getByTestId } = stubbedRender(SearchBar, {
-        props: defaultProps,
-      });
-
+      await fireEvent.type(getByTestId('search-input'), inputValue);
       await fireEvent.click(getByTestId('search-button'));
 
-      expect(mockOnSubmit).toHaveBeenCalled();
+      expect(emitted().search).toBeTruthy();
+      expect(emitted().search?.[0]?.[0]).toEqual(inputValue);
     });
 
-    test('the onSubmit method is called when the enter key is released', async () => {
-      const { getByTestId } = stubbedRender(SearchBar, {
-        props: defaultProps,
-      });
+    test('when the enter key is released', async () => {
+      const { emitted, getByTestId } = stubbedRender(SearchBar);
 
+      await fireEvent.type(getByTestId('search-input'), inputValue);
       await fireEvent.type(getByTestId('search-input'), '{enter}');
 
-      expect(mockOnSubmit).toHaveBeenCalled();
+      expect(emitted().search).toBeTruthy();
+      expect(emitted().search?.[0]?.[0]).toEqual(inputValue);
     });
   });
 });

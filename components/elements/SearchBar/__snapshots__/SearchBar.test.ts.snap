@@ -12,7 +12,7 @@ exports[`<SearchBar /> renders correctly 1`] = `
    
   <button
     data-testid="search-button"
-    type="submit"
+    type="button"
   >
     <svg-icon-stub
       name="search"
