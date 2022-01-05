@@ -1,5 +1,11 @@
 import SiteFooter from './SiteFooter.vue';
-import { stubbedRender } from '@/testUtils';
+import { mockI18n, stubbedRender } from '@/testUtils';
+
+const { $i18n } = mockI18n();
+jest.mock('@nuxtjs/composition-api', () => ({
+  ...jest.requireActual('@nuxtjs/composition-api'),
+  useContext: jest.fn(() => ({ i18n: $i18n })),
+}));
 
 describe('<SiteFooter />', () => {
   it('should render without crashing', () => {

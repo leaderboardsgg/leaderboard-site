@@ -12,32 +12,42 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import {
+  computed,
+  defineComponent,
+  ref,
+  useContext,
+} from '@nuxtjs/composition-api';
 import { Locale } from '@/types';
 
 export default defineComponent({
   name: 'LanguageSelector',
-  data: () => ({
-    selected: '',
-  }),
-  computed: {
-    currentLocale(): Locale | undefined {
-      return this.locales.find(
-        (locale: Locale) => locale.code === this.$i18n.locale,
+  setup() {
+    const { i18n } = useContext();
+
+    const locales = computed(() => {
+      return i18n.locales as Locale[];
+    });
+
+    const currentLocale = computed(() => {
+      return locales.value.find(
+        (locale: Locale) => locale.code === i18n.locale,
       );
-    },
-    locales(): Locale[] {
-      return this.$i18n.locales as Locale[];
-    },
-  },
-  mounted() {
-    this.selected = this.currentLocale?.code ?? '';
-  },
-  methods: {
-    onChange(event: any): void {
-      this.$i18n.setLocale(event.target.value);
-      this.selected = event.target.value;
-    },
+    });
+
+    const selected = ref(currentLocale.value?.code);
+
+    const onChange = (event: any) => {
+      i18n.setLocale(event.target.value);
+      selected.value = event.target.value;
+    };
+
+    return {
+      currentLocale,
+      locales,
+      onChange,
+      selected,
+    };
   },
 });
 </script>
