@@ -79,11 +79,11 @@ export default {
     langDir: '@/i18n/',
     lazy: true,
     locales: [
-      { code: 'de', file: 'de/index.js', iso: 'de-DE', name: 'Deutsch' },
-      { code: 'en', file: 'en/index.js', iso: 'en-US', name: 'English' },
-      { code: 'es', file: 'es/index.js', iso: 'es', name: 'Español' },
-      { code: 'fr', file: 'fr/index.js', iso: 'fr', name: 'Français' },
-      { code: 'ja', file: 'ja/index.js', iso: 'ja', name: '日本語' },
+      { code: 'de', file: 'de/index.ts', iso: 'de-DE', name: 'Deutsch' },
+      { code: 'en', file: 'en/index.ts', iso: 'en-US', name: 'English' },
+      { code: 'es', file: 'es/index.ts', iso: 'es', name: 'Español' },
+      { code: 'fr', file: 'fr/index.ts', iso: 'fr', name: 'Français' },
+      { code: 'ja', file: 'ja/index.ts', iso: 'ja', name: '日本語' },
     ],
     strategy: 'prefix_and_default',
     vueI18n: {
