@@ -30,7 +30,7 @@ export default defineComponent({
   }
 }
 
-.site-footer__language {
+.site-footer__language-selector {
   @apply justify-self-end right-0 md:w-min w-full;
 }
 </style>
