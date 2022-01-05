@@ -21,9 +21,9 @@ describe('<LanguageSelector />', () => {
   it('should render a dropdown with all the locales as options', () => {
     const { getByText } = stubbedRender(LanguageSelector, { mocks });
 
-    expect(getByText('English')).toBeInTheDocument();
-    expect(getByText('Spanish')).toBeInTheDocument();
-    expect(getByText('French')).toBeInTheDocument();
+    for (const locale of mocks.$i18n.locales) {
+      expect(getByText(locale.name)).toBeInTheDocument();
+    }
   });
 
   describe('when an option is selected', () => {
