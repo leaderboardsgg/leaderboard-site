@@ -21,9 +21,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
     <div
       class="signup-card__title"
     >
-      
       Sign Up
-    
     </div>
      
     <button
@@ -118,9 +116,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
       <button
         class="button signup-button"
       >
-        
-        Sign Up
-      
+         Sign Up 
       </button>
     </div>
      

@@ -7,9 +7,7 @@ exports[`<SiteFooter /> renders correctly 1`] = `
   <p
     class="site-footer__copyright"
   >
-    
     Copyright 2021
-  
   </p>
    
   <select

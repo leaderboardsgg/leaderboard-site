@@ -144,9 +144,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                 <div
                   class="login-card__title"
                 >
-                  
-      Log In
-    
+                  Log In
                 </div>
                  
                 <button
@@ -221,9 +219,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   <button
                     class="button login-button"
                   >
-                    
-        Log In
-      
+                     Log In 
                   </button>
                 </div>
                  
@@ -279,9 +275,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                 <div
                   class="signup-card__title"
                 >
-                  
-      Sign Up
-    
+                  Sign Up
                 </div>
                  
                 <button
@@ -375,9 +369,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   <button
                     class="button signup-button"
                   >
-                    
-        Sign Up
-      
+                     Sign Up 
                   </button>
                 </div>
                  

@@ -12,9 +12,7 @@ exports[`<LogInCard /> renders correctly 1`] = `
     <div
       class="login-card__title"
     >
-      
       Log In
-    
     </div>
      
     <button
@@ -90,9 +88,7 @@ exports[`<LogInCard /> renders correctly 1`] = `
       <button
         class="button login-button"
       >
-        
-        Log In
-      
+         Log In 
       </button>
     </div>
      
