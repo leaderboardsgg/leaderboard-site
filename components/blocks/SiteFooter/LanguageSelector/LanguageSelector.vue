@@ -37,9 +37,8 @@ export default defineComponent({
 
     const selected = ref(currentLocale.value?.code);
 
-    const onChange = (event: any) => {
-      i18n.setLocale(event.target.value);
-      selected.value = event.target.value;
+    const onChange = (event: Event | MouseEvent | TouchEvent) => {
+      i18n.setLocale((event.target as HTMLSelectElement).value);
     };
 
     return {
