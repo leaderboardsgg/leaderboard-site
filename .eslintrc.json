@@ -37,6 +37,9 @@
   "parser": "vue-eslint-parser",
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
+    "ecmaFeatures": {
+      "jsx": false
+    },
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
