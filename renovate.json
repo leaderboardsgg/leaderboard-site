@@ -1,0 +1,11 @@
+{
+  "extends": ["config:base"],
+  "compatibility": { "pnpm": "^6.0.0" },
+  "labels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["eslint"],
+      "labels": ["linting"]
+    }
+  ]
+}
