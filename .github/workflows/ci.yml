@@ -19,7 +19,7 @@ jobs:
       - id: nvmrc
         uses: browniebroke/read-nvmrc-action@v1
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           # use the output from the action
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
