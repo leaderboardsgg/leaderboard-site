@@ -24,7 +24,7 @@ jobs:
           # use the output from the action
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
           cache: 'npm'
-          cache-dependency-path: '**/package-lock.json'
+          cache-dependency-path: 'package-lock.json'
 
       # Read the pnpm version from the `.pnpmrc` file
       - name: Read .pnpmrc
