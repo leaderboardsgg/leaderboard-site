@@ -35,7 +35,6 @@ jobs:
           # use the output from the action
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
           cache: 'pnpm'
-          run_install: true
 
       - name: Install `node_modules`
         run: pnpm install
