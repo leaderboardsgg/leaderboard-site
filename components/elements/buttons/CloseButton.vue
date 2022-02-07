@@ -16,7 +16,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .close-button {
   @apply fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
 }

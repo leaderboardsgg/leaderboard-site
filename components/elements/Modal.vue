@@ -24,7 +24,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .modal {
   & .modal__wrapper {
     @apply fixed z-10 inset-0 overflow-y-auto;

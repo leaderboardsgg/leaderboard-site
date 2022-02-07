@@ -131,7 +131,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .site-navbar {
   @apply border-b border-gray-300;
   & .site-navbar__wrapper {

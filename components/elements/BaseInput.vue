@@ -30,7 +30,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .input {
   @apply border border-gray-300 rounded px-3 py-2 focus:outline-none;
 }

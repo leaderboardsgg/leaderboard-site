@@ -12,7 +12,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .site-footer {
   @apply flex flex-wrap rounded bg-gray-100 p-5 text-gray-600;
   & .site-footer__copyright {

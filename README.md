@@ -36,6 +36,10 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
 
+## Development Environment
+
+If you're using VSCode (which we highly reccomend) please install the 6 extensions that we have in our `extensions.json` file. This in the extensions section then shows you ESLint, Prettier, Vetur, NPM Intellisense, TailwindCSS IntelliSense, and PostCSS Language Support. This will allow you to have proper automatic Linting and Formatting with no extra setup!
+
 ## Vue File Structure
 
 You'll find our Vue files in `components` and `pages`. The files are structured in the order: template, script, and style. One thing to note; we want to keep any and all styling in `<style>`. This means that we try not to use Tailwind's classes directly in a file's `<template>`. Rather, we make a class name, and in the file's `<style>`, call `@apply` on top of any extra styling.

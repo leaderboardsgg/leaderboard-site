@@ -49,7 +49,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .button {
   @apply hidden sm:inline bg-white;
 }

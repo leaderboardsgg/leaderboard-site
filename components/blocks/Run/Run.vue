@@ -78,7 +78,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .run {
   @apply flex flex-row text-base text-black py-3 border border-b-2 border-gray-200;
   & .run__wrapper {

@@ -4,6 +4,7 @@
     "esbenp.prettier-vscode",
     "octref.vetur",
     "christian-kohler.npm-intellisense",
-    "bradlc.vscode-tailwindcss"
+    "bradlc.vscode-tailwindcss",
+    "csstools.postcss"
   ]
 }

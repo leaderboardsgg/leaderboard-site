@@ -11,15 +11,15 @@ export default {
         endpoints: {
           login: {
             method: 'post',
-            url: `/api/v1/login`,
+            url: '/api/v1/login',
           },
           logout: {
             method: 'post',
-            url: `/api/v1/logout`,
+            url: '/api/v1/logout',
           },
           user: {
             method: 'get',
-            url: `/api/v1/me`,
+            url: '/api/v1/me',
           },
         },
         token: {

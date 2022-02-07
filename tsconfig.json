@@ -26,7 +26,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "lib": ["ESNext", "ESNext.AsyncIterable", "DOM"],
+    "lib": ["ESNext", "DOM"],
     "types": [
       "@nuxt/types",
       "@nuxtjs/auth-next",
@@ -35,9 +35,8 @@
       "@types/jest",
       "@testing-library/dom",
       "@testing-library/jest-dom",
-      "@testing-library/user-event",
       "@testing-library/vue",
-      "@/plugins/api/types"
+      "./plugins/api/types"
     ]
   },
   "exclude": ["node_modules", ".nuxt", "dist"]
