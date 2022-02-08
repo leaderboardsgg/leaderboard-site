@@ -51,7 +51,7 @@ specifiers:
   pretty-quick: 3.1.3
   tailwindcss: 2.2.19
   ts-jest: 27.1.3
-  ts-node: 10.4.0
+  ts-node: 10.5.0
   typescript: 4.5.5
   vue: 2.6.14
   vue-jest: 3.0.7
@@ -81,7 +81,7 @@ devDependencies:
   '@nuxt/typescript-build': 2.1.0_@nuxt+types@2.15.8+eslint@8.8.0
   '@nuxtjs/eslint-config-typescript': 8.0.0_e76c58994d9de148d83231d7dab71e7d
   '@nuxtjs/eslint-module': 3.0.2_eslint@8.8.0
-  '@nuxtjs/tailwindcss': 4.2.1_ts-node@10.4.0
+  '@nuxtjs/tailwindcss': 4.2.1_ts-node@10.5.0
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
   '@types/jest': 27.4.0
@@ -101,7 +101,7 @@ devDependencies:
   eslint-plugin-vue: 8.4.1_eslint@8.8.0
   eslint-plugin-vuejs-accessibility: 1.1.1_eslint@8.8.0
   glob: 7.2.0
-  jest: 27.5.0_ts-node@10.4.0
+  jest: 27.5.0_ts-node@10.5.0
   jest-environment-jsdom: 27.5.0
   jest-serializer-vue: 2.0.2
   lodash: 4.17.21
@@ -109,9 +109,9 @@ devDependencies:
   postcss: 8.4.6
   prettier: 2.5.1
   pretty-quick: 3.1.3_prettier@2.5.1
-  tailwindcss: 2.2.19_395544cfbe1472baf4d44cf7709a657a
+  tailwindcss: 2.2.19_27d966e3a2f4b84fbc8a2f9653dbb362
   ts-jest: 27.1.3_5534727ae5addfa246363ed76a8889a1
-  ts-node: 10.4.0_typescript@4.5.5
+  ts-node: 10.5.0_typescript@4.5.5
   vue-jest: 3.0.7_6950027468cb1abb3cd6715353f2665b
 
 packages:
@@ -1578,7 +1578,7 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /@jest/core/27.5.0_ts-node@10.4.0:
+  /@jest/core/27.5.0_ts-node@10.5.0:
     resolution: {integrity: sha512-DcUTkZyon+dRozTEjy38Bgt3PIU51GdUJuz3uHKg5maGtmCaYqPUGiM3Xddqi7eIMC7E3fTGIlHqH9i0pTOy6Q==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     peerDependencies:
@@ -1599,7 +1599,7 @@ packages:
       exit: 0.1.2
       graceful-fs: 4.2.9
       jest-changed-files: 27.5.0
-      jest-config: 27.5.0_ts-node@10.4.0
+      jest-config: 27.5.0_ts-node@10.5.0
       jest-haste-map: 27.5.0
       jest-message-util: 27.5.0
       jest-regex-util: 27.5.0
@@ -2352,7 +2352,7 @@ packages:
       vue-functional-data-merge: 3.1.0
     dev: false
 
-  /@nuxtjs/tailwindcss/4.2.1_ts-node@10.4.0:
+  /@nuxtjs/tailwindcss/4.2.1_ts-node@10.5.0:
     resolution: {integrity: sha512-Sku7VETunn5YmvzkXFDuRdP1gUGau02eh5HtcAsI9//1hpSuEN49n3XhatBrPOXQ57WhUlnjXf0/LjT9KQH0+A==}
     dependencies:
       '@nuxt/postcss8': 1.1.3
@@ -2365,7 +2365,7 @@ packages:
       postcss-custom-properties: 11.0.0_postcss@8.4.6
       postcss-nesting: 8.0.1_postcss@8.4.6
       tailwind-config-viewer: 1.6.2_tailwindcss@2.2.19
-      tailwindcss: 2.2.19_395544cfbe1472baf4d44cf7709a657a
+      tailwindcss: 2.2.19_27d966e3a2f4b84fbc8a2f9653dbb362
       ufo: 0.7.9
     transitivePeerDependencies:
       - supports-color
@@ -3447,12 +3447,6 @@ packages:
 
   /acorn/7.4.1:
     resolution: {integrity: sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-    dev: true
-
-  /acorn/8.6.0:
-    resolution: {integrity: sha512-U1riIR+lBSNi3IbxtaHOIKdH8sLFv3NYfNv8sg7ZsNhcfl4HF2++BfqqrNAxoCLQW1iiylOj76ecnaUxz+z9yw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
     dev: true
@@ -5794,7 +5788,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.11.0_de5a1ddccd75ca1e499b8b8491d3dcba
       '@typescript-eslint/experimental-utils': 5.10.2_eslint@8.8.0+typescript@4.5.5
       eslint: 8.8.0
-      jest: 27.5.0_ts-node@10.4.0
+      jest: 27.5.0_ts-node@10.5.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -5816,7 +5810,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.11.0_de5a1ddccd75ca1e499b8b8491d3dcba
       '@typescript-eslint/utils': 5.10.2_eslint@8.8.0+typescript@4.5.5
       eslint: 8.8.0
-      jest: 27.5.0_ts-node@10.4.0
+      jest: 27.5.0_ts-node@10.5.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -7642,7 +7636,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-cli/27.5.0_ts-node@10.4.0:
+  /jest-cli/27.5.0_ts-node@10.5.0:
     resolution: {integrity: sha512-9ANs79Goz1ULKtG7HDm/F//4E69v8EFOLXRIHmeC/eK1xTUeQGlU6XP0Zwst386sKaKB4O60qhWY/UaTBS2MLA==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     hasBin: true
@@ -7652,14 +7646,14 @@ packages:
       node-notifier:
         optional: true
     dependencies:
-      '@jest/core': 27.5.0_ts-node@10.4.0
+      '@jest/core': 27.5.0_ts-node@10.5.0
       '@jest/test-result': 27.5.0
       '@jest/types': 27.5.0
       chalk: 4.1.2
       exit: 0.1.2
       graceful-fs: 4.2.9
       import-local: 3.0.3
-      jest-config: 27.5.0_ts-node@10.4.0
+      jest-config: 27.5.0_ts-node@10.5.0
       jest-util: 27.5.0
       jest-validate: 27.5.0
       prompts: 2.4.2
@@ -7672,7 +7666,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /jest-config/27.5.0_ts-node@10.4.0:
+  /jest-config/27.5.0_ts-node@10.5.0:
     resolution: {integrity: sha512-eOIpvpXFz5WHuIYZN1QmvBLEjsSk3w+IAC/2jBpZClbprF53Bj9meBMgAbE15DSkaaJBDFmhXXd1L2eCLaWxQw==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     peerDependencies:
@@ -7703,7 +7697,7 @@ packages:
       micromatch: 4.0.4
       pretty-format: 27.5.0
       slash: 3.0.0
-      ts-node: 10.4.0_typescript@4.5.5
+      ts-node: 10.5.0_typescript@4.5.5
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -8072,7 +8066,7 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /jest/27.5.0_ts-node@10.4.0:
+  /jest/27.5.0_ts-node@10.5.0:
     resolution: {integrity: sha512-sCMZhL9zy0fiFc4H0cKlXq7BcghMSxm5ZnEyaPWTteArU5ix6JjOKyOXSUBGLTQCmt5kuX9zEvQ9BSshHOPB3A==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     hasBin: true
@@ -8082,9 +8076,9 @@ packages:
       node-notifier:
         optional: true
     dependencies:
-      '@jest/core': 27.5.0_ts-node@10.4.0
+      '@jest/core': 27.5.0_ts-node@10.5.0
       import-local: 3.0.3
-      jest-cli: 27.5.0_ts-node@10.4.0
+      jest-cli: 27.5.0_ts-node@10.5.0
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -8143,7 +8137,7 @@ packages:
         optional: true
     dependencies:
       abab: 2.0.5
-      acorn: 8.6.0
+      acorn: 8.7.0
       acorn-globals: 6.0.0
       cssom: 0.4.4
       cssstyle: 2.3.0
@@ -9869,7 +9863,7 @@ packages:
       import-cwd: 2.1.0
     dev: false
 
-  /postcss-load-config/3.1.0_ts-node@10.4.0:
+  /postcss-load-config/3.1.0_ts-node@10.5.0:
     resolution: {integrity: sha512-ipM8Ds01ZUophjDTQYSVP70slFSYg3T0/zyfII5vzhN6V57YSxMgG5syXuwi5VtS8wSf3iL30v0uBdoIVx4Q0g==}
     engines: {node: '>= 10'}
     peerDependencies:
@@ -9880,7 +9874,7 @@ packages:
     dependencies:
       import-cwd: 3.0.0
       lilconfig: 2.0.4
-      ts-node: 10.4.0_typescript@4.5.5
+      ts-node: 10.5.0_typescript@4.5.5
       yaml: 1.10.2
     dev: true
 
@@ -11697,12 +11691,12 @@ packages:
       open: 7.4.2
       portfinder: 1.0.28
       replace-in-file: 6.3.2
-      tailwindcss: 2.2.19_395544cfbe1472baf4d44cf7709a657a
+      tailwindcss: 2.2.19_27d966e3a2f4b84fbc8a2f9653dbb362
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /tailwindcss/2.2.19_395544cfbe1472baf4d44cf7709a657a:
+  /tailwindcss/2.2.19_27d966e3a2f4b84fbc8a2f9653dbb362:
     resolution: {integrity: sha512-6Ui7JSVtXadtTUo2NtkBBacobzWiQYVjYW0ZnKaP9S1ZCKQ0w7KVNz+YSDI/j7O7KCMHbOkz94ZMQhbT9pOqjw==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -11734,7 +11728,7 @@ packages:
       object-hash: 2.2.0
       postcss: 8.4.6
       postcss-js: 3.0.3
-      postcss-load-config: 3.1.0_ts-node@10.4.0
+      postcss-load-config: 3.1.0_ts-node@10.5.0
       postcss-nested: 5.0.6_postcss@8.4.6
       postcss-selector-parser: 6.0.6
       postcss-value-parser: 4.2.0
@@ -12016,7 +12010,7 @@ packages:
       babel-jest: 27.5.0
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 27.5.0_ts-node@10.4.0
+      jest: 27.5.0_ts-node@10.5.0
       jest-util: 27.5.0
       json5: 2.2.0
       lodash.memoize: 4.1.2
@@ -12041,8 +12035,8 @@ packages:
       typescript: 4.2.4
     dev: true
 
-  /ts-node/10.4.0_typescript@4.5.5:
-    resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==}
+  /ts-node/10.5.0_typescript@4.5.5:
+    resolution: {integrity: sha512-6kEJKwVxAJ35W4akuiysfKwKmjkbYxwQMTBaAxo9KKAx/Yd26mPUyhGz3ji+EsJoAgrLqVsYHNuuYwQe22lbtw==}
     hasBin: true
     peerDependencies:
       '@swc/core': '>=1.2.50'
@@ -12060,13 +12054,14 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
-      acorn: 8.6.0
+      acorn: 8.7.0
       acorn-walk: 8.2.0
       arg: 4.1.3
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
       typescript: 4.5.5
+      v8-compile-cache-lib: 3.0.0
       yn: 3.1.1
     dev: true
 
@@ -12433,6 +12428,10 @@ packages:
     resolution: {integrity: sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=}
     engines: {node: '>= 0.4.0'}
     dev: false
+
+  /v8-compile-cache-lib/3.0.0:
+    resolution: {integrity: sha512-mpSYqfsFvASnSn5qMiwrr4VKfumbPyONLCOPmsR3A6pTY/r0+tSaVbgPWSAIuzbk3lCTa+FForeTiO+wBQGkjA==}
+    dev: true
 
   /v8-compile-cache/2.3.0:
     resolution: {integrity: sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==}
