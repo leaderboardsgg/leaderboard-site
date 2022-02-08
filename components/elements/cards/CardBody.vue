@@ -12,7 +12,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .card-body {
   @apply p-3;
 }

@@ -34,7 +34,7 @@ export default defineComponent<{ onSubmit(): void }>({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .search-bar {
   @apply flex items-center px-2 relative text-gray-300 w-full;
 }

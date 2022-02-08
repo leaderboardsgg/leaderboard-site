@@ -16,7 +16,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .sign-up-button {
   @apply bg-gray-100 hover:bg-black mx-1 py-1 text-opacity-70 hover:text-white;
 }

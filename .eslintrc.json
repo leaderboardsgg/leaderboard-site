@@ -3,8 +3,7 @@
     "browser": true,
     "es2021": true,
     "jest": true,
-    "jest/globals": true,
-    "node": true
+    "jest/globals": true
   },
   "extends": [
     "prettier",
@@ -16,8 +15,10 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "ignorePatterns": [
-    ".husky",
     ".nuxt",
+    ".github",
+    ".husky",
+    ".vscode",
     "coverage",
     "node_modules",
     "static",
@@ -45,6 +46,10 @@
     "comma-dangle": "off",
     "space-before-function-paren": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "vue/multi-word-component-names": "off",
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/multiline-html-element-content-newline": "off",
+    "vue/html-self-closing": "off",
     "eol-last": ["error", "always"],
     "vue/sort-keys": [
       "error",

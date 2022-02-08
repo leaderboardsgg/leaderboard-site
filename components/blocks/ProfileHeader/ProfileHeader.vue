@@ -109,7 +109,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .profile-header {
   @apply h-[fit-content] min-h-[28.125rem] relative;
 

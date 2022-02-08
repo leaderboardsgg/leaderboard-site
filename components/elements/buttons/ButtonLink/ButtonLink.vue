@@ -26,7 +26,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .button-link {
   @apply rounded px-3 py-2 text-current hover:bg-current;
 }

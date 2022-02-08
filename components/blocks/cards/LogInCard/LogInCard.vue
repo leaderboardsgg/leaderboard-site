@@ -128,7 +128,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .login-card {
   @apply bg-white w-full max-w-xl;
   & .login-card__header {

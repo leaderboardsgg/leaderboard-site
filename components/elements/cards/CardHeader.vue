@@ -12,7 +12,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .card-header {
   @apply p-3 border-b border-gray-300;
 }

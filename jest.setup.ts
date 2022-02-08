@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import path from 'path';
-import glob from 'glob';
+import { sync } from 'glob';
 import uniq from 'lodash/uniq';
 import upperFirst from 'lodash/upperFirst';
 import Vue from 'vue';
@@ -18,7 +18,7 @@ const globalComponentPaths = [
 
 for (const globalComponentPath of globalComponentPaths) {
   // glob returns an array of filenames matching the current globalComponentPath pattern
-  for (const file of glob.sync(path.join(__dirname, globalComponentPath))) {
+  for (const file of sync(path.join(__dirname, globalComponentPath))) {
     const componentRoutes = buildComponentRoutes(file);
     const nuxtName = uniq(componentRoutes).join('');
     // eslint-disable-next-line @typescript-eslint/no-var-requires

@@ -26,7 +26,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .social-buttons {
   @apply my-1;
   @apply grid auto-cols-fr grid-cols-4 gap-3;

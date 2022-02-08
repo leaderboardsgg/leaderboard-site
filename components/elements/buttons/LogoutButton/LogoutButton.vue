@@ -16,7 +16,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .logout-button {
   @apply mx-1 py-1 hover:bg-gray-100;
 }

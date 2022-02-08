@@ -23,7 +23,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .user-activity {
   & span {
     @apply font-semibold;

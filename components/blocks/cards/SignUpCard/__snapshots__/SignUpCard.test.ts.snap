@@ -13,7 +13,9 @@ exports[`<SignUpCard /> renders correctly 1`] = `
       class="button signup-card__login-button"
       id="login-button"
     >
+      
       Log In
+    
     </button>
      
     <div

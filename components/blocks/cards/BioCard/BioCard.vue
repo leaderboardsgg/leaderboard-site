@@ -56,7 +56,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .bio-card {
   @apply hidden md:flex flex-col border rounded border-gray-300;
   & > div {

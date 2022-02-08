@@ -5,8 +5,9 @@
         id="login-button"
         class="signup-card__login-button"
         @click="$emit('logInClick')"
-        >Log In</BaseButton
       >
+        Log In
+      </BaseButton>
 
       <div class="signup-card__title">Sign Up</div>
 
@@ -151,7 +152,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style lang="postcss" scoped>
 .signup-card {
   @apply bg-white w-full max-w-xl;
   & .signup-card__header {
