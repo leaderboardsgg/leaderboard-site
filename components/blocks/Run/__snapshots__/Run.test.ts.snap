@@ -33,7 +33,7 @@ exports[`<Run /> renders correctly 1`] = `
     </p>
      
     <div
-      class="hidden md:flex flex-row md:flex-grow"
+      class="hidden flex-row md:flex md:grow"
     >
       <p>
         PC
@@ -41,7 +41,7 @@ exports[`<Run /> renders correctly 1`] = `
     </div>
      
     <div
-      class="flex flex-row opacity-75 gap-x-5 md:opacity-100 justify-end items-center"
+      class="flex flex-row gap-x-5 justify-end items-center opacity-75 md:opacity-100"
     >
       <p>
         1 year ago

@@ -1,6 +1,6 @@
 <template>
   <BaseButton class="close-button" v-bind="$attrs" v-on="$listeners">
-    <svg-icon class="h-5 w-5" name="close" />
+    <svg-icon class="w-5 h-5" name="close" />
   </BaseButton>
 </template>
 

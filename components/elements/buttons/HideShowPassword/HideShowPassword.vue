@@ -10,13 +10,13 @@
   >
     <svg-icon
       v-show="hidden"
-      class="h-5 w-5"
+      class="w-5 h-5"
       name="eye-hidden"
       data-testid="hidden-eye-icon"
     />
     <svg-icon
       v-show="!hidden"
-      class="h-5 w-5"
+      class="w-5 h-5"
       name="eye-visible"
       data-testid="visible-eye-icon"
     />

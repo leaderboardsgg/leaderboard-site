@@ -29,7 +29,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
       style="display: none;"
     >
       <svg-icon-stub
-        class="h-5 w-5"
+        class="w-5 h-5"
         name="close"
       />
     </button>
@@ -94,13 +94,13 @@ exports[`<SignUpCard /> renders correctly 1`] = `
             type="button"
           >
             <svg-icon-stub
-              class="h-5 w-5"
+              class="w-5 h-5"
               data-testid="hidden-eye-icon"
               name="eye-hidden"
             />
              
             <svg-icon-stub
-              class="h-5 w-5"
+              class="w-5 h-5"
               data-testid="visible-eye-icon"
               name="eye-visible"
               style="display: none;"
@@ -127,7 +127,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
         class="button signup-button"
       >
         <svg-icon-stub
-          class="w-5 h-5 mr-2"
+          class="mr-2 w-5 h-5"
           name="github"
         />
          
@@ -140,7 +140,7 @@ exports[`<SignUpCard /> renders correctly 1`] = `
         class="button signup-button"
       >
         <svg-icon-stub
-          class="w-5 h-5 mr-2"
+          class="mr-2 w-5 h-5"
           name="google"
         />
          

@@ -125,7 +125,7 @@ export default defineComponent({
     @apply flex items-center justify-center overflow-hidden;
 
     & > img {
-      @apply flex-shrink-0 object-cover min-h-full min-w-full;
+      @apply shrink-0 object-cover min-h-full min-w-full;
     }
   }
 
@@ -146,9 +146,9 @@ export default defineComponent({
           @apply relative flex justify-center;
           & > img {
             @apply max-h-[7.5rem] max-w-[7.5rem];
-            @apply filter drop-shadow-md;
+            @apply drop-shadow-md;
 
-            @apply absolute md:relative md:max-h-[5.125rem] md:max-w-[5.125rem] rounded transform -translate-y-1/2;
+            @apply absolute md:relative md:max-h-[5.125rem] md:max-w-[5.125rem] rounded -translate-y-1/2;
           }
         }
       }
