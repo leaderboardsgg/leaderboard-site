@@ -13,11 +13,11 @@
     </div>
     <div class="run__info">
       <p>{{ time }}</p>
-      <div class="hidden md:flex flex-row md:flex-grow">
+      <div class="hidden flex-row md:flex md:grow">
         <p>{{ platform }}</p>
       </div>
       <div
-        class="flex flex-row opacity-75 gap-x-5 md:opacity-100 justify-end items-center"
+        class="flex flex-row gap-x-5 justify-end items-center opacity-75 md:opacity-100"
       >
         <p>{{ date }}</p>
         <svg-icon name="video" />
@@ -88,9 +88,9 @@ export default defineComponent({
     }
   }
   & .run__info {
-    @apply flex flex-col text-right md:text-center md:flex-row gap-x-5 flex-grow;
+    @apply flex flex-col text-right md:text-center md:flex-row gap-x-5 grow;
     & p {
-      @apply md:flex-grow;
+      @apply md:grow;
     }
   }
 }

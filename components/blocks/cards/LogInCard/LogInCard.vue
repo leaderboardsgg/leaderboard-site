@@ -50,13 +50,13 @@
 
       <div class="login-card__auth-buttons">
         <BaseButton class="login-button">
-          <svg-icon class="w-5 h-5 mr-2" name="github" />
+          <svg-icon class="mr-2 w-5 h-5" name="github" />
 
           <p>Log In with Github</p>
         </BaseButton>
 
         <BaseButton class="login-button">
-          <svg-icon class="w-5 h-5 mr-2" name="google" />
+          <svg-icon class="mr-2 w-5 h-5" name="google" />
           <p>Log In with Google</p>
         </BaseButton>
       </div>

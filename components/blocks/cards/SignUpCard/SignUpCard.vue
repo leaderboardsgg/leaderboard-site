@@ -71,13 +71,13 @@
 
       <div class="signup-card__auth-buttons">
         <BaseButton class="signup-button">
-          <svg-icon class="w-5 h-5 mr-2" name="github" />
+          <svg-icon class="mr-2 w-5 h-5" name="github" />
 
           <p>Sign Up with Github</p>
         </BaseButton>
 
         <BaseButton class="signup-button">
-          <svg-icon class="w-5 h-5 mr-2" name="google" />
+          <svg-icon class="mr-2 w-5 h-5" name="google" />
 
           <p>Sign Up with Google</p>
         </BaseButton>
@@ -177,7 +177,7 @@ export default defineComponent({
     @apply flex flex-1 flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-2;
   }
   & .signup-card__password-field {
-    @apply flex-grow;
+    @apply grow;
   }
   & .signup-card__auth-buttons {
     @apply flex flex-col w-full space-y-2;

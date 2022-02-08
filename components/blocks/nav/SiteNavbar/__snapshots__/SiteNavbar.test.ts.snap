@@ -15,7 +15,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
         href="/"
       >
         <svg-icon-stub
-          class="h-10 w-10 mx-1"
+          class="mx-1 w-10 h-10"
           name="clock"
         />
          
@@ -100,7 +100,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
         class="mobile-menu__toggle"
       >
         <svg-icon-stub
-          class="fill-current h-5 w-5 mx-2"
+          class="mx-2 w-5 h-5 fill-current"
           name="menu"
         />
       </button>
@@ -160,7 +160,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   class="button close-button"
                 >
                   <svg-icon-stub
-                    class="h-5 w-5"
+                    class="w-5 h-5"
                     name="close"
                   />
                 </button>
@@ -201,13 +201,13 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                         type="button"
                       >
                         <svg-icon-stub
-                          class="h-5 w-5"
+                          class="w-5 h-5"
                           data-testid="hidden-eye-icon"
                           name="eye-hidden"
                         />
                          
                         <svg-icon-stub
-                          class="h-5 w-5"
+                          class="w-5 h-5"
                           data-testid="visible-eye-icon"
                           name="eye-visible"
                           style="display: none;"
@@ -230,7 +230,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                     class="button login-button"
                   >
                     <svg-icon-stub
-                      class="w-5 h-5 mr-2"
+                      class="mr-2 w-5 h-5"
                       name="github"
                     />
                      
@@ -243,7 +243,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                     class="button login-button"
                   >
                     <svg-icon-stub
-                      class="w-5 h-5 mr-2"
+                      class="mr-2 w-5 h-5"
                       name="google"
                     />
                      
@@ -282,7 +282,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                   class="button close-button"
                 >
                   <svg-icon-stub
-                    class="h-5 w-5"
+                    class="w-5 h-5"
                     name="close"
                   />
                 </button>
@@ -347,13 +347,13 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                         type="button"
                       >
                         <svg-icon-stub
-                          class="h-5 w-5"
+                          class="w-5 h-5"
                           data-testid="hidden-eye-icon"
                           name="eye-hidden"
                         />
                          
                         <svg-icon-stub
-                          class="h-5 w-5"
+                          class="w-5 h-5"
                           data-testid="visible-eye-icon"
                           name="eye-visible"
                           style="display: none;"
@@ -380,7 +380,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                     class="button signup-button"
                   >
                     <svg-icon-stub
-                      class="w-5 h-5 mr-2"
+                      class="mr-2 w-5 h-5"
                       name="github"
                     />
                      
@@ -393,7 +393,7 @@ exports[`<SiteNavbar /> renders correctly 1`] = `
                     class="button signup-button"
                   >
                     <svg-icon-stub
-                      class="w-5 h-5 mr-2"
+                      class="mr-2 w-5 h-5"
                       name="google"
                     />
                      

@@ -3,7 +3,7 @@
     <div class="site-navbar__wrapper">
       <div class="site-logo">
         <NuxtLink class="site-navbar__homelink" to="/">
-          <svg-icon class="h-10 w-10 mx-1" name="clock" />
+          <svg-icon class="mx-1 w-10 h-10" name="clock" />
           <h1>leaderboards.gg</h1>
         </NuxtLink>
       </div>
@@ -32,7 +32,7 @@
         />
 
         <button class="mobile-menu__toggle" @click="toggleMenu">
-          <svg-icon class="fill-current h-5 w-5 mx-2" name="menu" />
+          <svg-icon class="mx-2 w-5 h-5 fill-current" name="menu" />
         </button>
       </div>
     </div>
@@ -147,7 +147,7 @@ export default defineComponent({
     }
   }
   & .site-logo {
-    @apply flex flex-grow;
+    @apply flex grow;
     & .site-navbar__homelink {
       @apply flex;
       & h1 {

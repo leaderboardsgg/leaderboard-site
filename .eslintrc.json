@@ -12,7 +12,8 @@
     "plugin:nuxt/recommended",
     "plugin:vue/recommended",
     "plugin:vuejs-accessibility/recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:tailwindcss/recommended"
   ],
   "ignorePatterns": [
     ".nuxt",
@@ -30,7 +31,8 @@
     "prettier",
     "vue",
     "@typescript-eslint",
-    "vuejs-accessibility"
+    "vuejs-accessibility",
+    "tailwindcss"
   ],
   "parser": "vue-eslint-parser",
   "parserOptions": {
@@ -51,6 +53,7 @@
     "vue/multiline-html-element-content-newline": "off",
     "vue/html-self-closing": "off",
     "eol-last": ["error", "always"],
+    "tailwindcss/no-custom-classname": "off",
     "vue/sort-keys": [
       "error",
       "asc",

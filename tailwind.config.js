@@ -1,9 +1,7 @@
 /* eslint-disable vue/sort-keys */
 module.exports = {
-  darkMode: false, // or 'media' or 'class'
-  mode: 'jit',
   plugins: [],
-  purge: [
+  content: [
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
@@ -17,8 +15,5 @@ module.exports = {
       xl: '1280px',
       '2xl': '1536px',
     },
-  },
-  variants: {
-    extend: {},
   },
 };
