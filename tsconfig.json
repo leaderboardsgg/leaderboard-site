@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
     "module": "ESNext",
-    "target": "ES2020",
     "moduleResolution": "Node",
+    // Targeting down to ES2015/ ES6 to ensure as wide coverage as possible
+    // while still having microTasks/ promises to allow true Asynchronicity
+    "target": "ES2015",
 
     "strict": true,
     "pretty": true,
@@ -28,6 +30,7 @@
     },
     "lib": ["ESNext", "DOM"],
     "types": [
+      "node",
       "@nuxt/types",
       "@nuxtjs/auth-next",
       "@nuxtjs/axios",
