@@ -51,7 +51,7 @@ specifiers:
   postcss: 8.4.6
   prettier: 2.5.1
   pretty-quick: 3.1.3
-  tailwindcss: 3.0.20
+  tailwindcss: 3.0.21
   ts-jest: 27.1.3
   ts-node: 10.5.0
   typescript: 4.5.5
@@ -74,7 +74,7 @@ devDependencies:
   '@nuxt/typescript-build': 2.1.0_@nuxt+types@2.15.8+eslint@8.8.0
   '@nuxtjs/eslint-config-typescript': 8.0.0_7b06b48cd2eb35bf96307819d74e9bc0
   '@nuxtjs/eslint-module': 3.0.2_eslint@8.8.0
-  '@nuxtjs/tailwindcss': 5.0.0-4_prettier@2.5.1+ts-node@10.5.0
+  '@nuxtjs/tailwindcss': 5.0.0-4_ts-node@10.5.0
   '@testing-library/dom': 8.11.3
   '@testing-library/jest-dom': 5.16.2
   '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.3
@@ -98,7 +98,7 @@ devDependencies:
   eslint-plugin-jest: 26.1.0_3a7e61ab9913bfabbf9f51b59adccf52
   eslint-plugin-nuxt: 3.1.0_eslint@8.8.0
   eslint-plugin-prettier: 4.0.0_43197c8d12d1d439034cfcf65e1c48c2
-  eslint-plugin-tailwindcss: 3.4.3_82ace710b7923fe9431d10b6f14ea381
+  eslint-plugin-tailwindcss: 3.4.3_c940fbabf228b85b1c73d314b43e31f1
   eslint-plugin-vue: 8.4.1_eslint@8.8.0
   eslint-plugin-vuejs-accessibility: 1.1.1_eslint@8.8.0
   glob: 7.2.0
@@ -110,7 +110,7 @@ devDependencies:
   postcss: 8.4.6
   prettier: 2.5.1
   pretty-quick: 3.1.3_prettier@2.5.1
-  tailwindcss: 3.0.20_1815d15990460e5786af6dd92c3c6edf
+  tailwindcss: 3.0.21_27d966e3a2f4b84fbc8a2f9653dbb362
   ts-jest: 27.1.3_f82f6b27ce1653b385cc96aca1723e9b
   ts-node: 10.5.0_99ae9436e134a034c8d45fdd98ebbf22
   typescript: 4.5.5
@@ -2265,7 +2265,7 @@ packages:
       vue-functional-data-merge: 3.1.0
     dev: false
 
-  /@nuxtjs/tailwindcss/5.0.0-4_prettier@2.5.1+ts-node@10.5.0:
+  /@nuxtjs/tailwindcss/5.0.0-4_ts-node@10.5.0:
     resolution: {integrity: sha512-uXLOo8sJHj971cFP0ADqxOy+I5LqRQiV/twSdKTh4lcIE22PWZQh91LJMS3EEzYjGgO1UOCjk+94aG0WMRhhhQ==}
     dependencies:
       '@nuxt/kit': /@nuxt/kit-edge/3.0.0-27408580.aece351
@@ -2278,11 +2278,10 @@ packages:
       postcss: 8.4.6
       postcss-custom-properties: 12.1.4_postcss@8.4.6
       postcss-nesting: 10.1.2_postcss@8.4.6
-      tailwind-config-viewer: 1.6.3_tailwindcss@3.0.20
-      tailwindcss: 3.0.20_1815d15990460e5786af6dd92c3c6edf
+      tailwind-config-viewer: 1.6.3_tailwindcss@3.0.21
+      tailwindcss: 3.0.21_27d966e3a2f4b84fbc8a2f9653dbb362
       ufo: 0.7.10
     transitivePeerDependencies:
-      - prettier
       - supports-color
       - ts-node
       - webpack
@@ -5725,16 +5724,15 @@ packages:
       eslint: 8.8.0
     dev: true
 
-  /eslint-plugin-tailwindcss/3.4.3_82ace710b7923fe9431d10b6f14ea381:
+  /eslint-plugin-tailwindcss/3.4.3_c940fbabf228b85b1c73d314b43e31f1:
     resolution: {integrity: sha512-HagKvnHDBlVk3ErlPiiamVnNY3510DTXQTNc9h2KDVOuIdvgQc7X+08gLWvNAVQYPoKhbw/CzSHe/SSpMN8dig==}
     engines: {node: '>=12.13.0'}
     dependencies:
       fast-glob: 3.2.11
       postcss: 8.4.6
-      tailwindcss: 3.0.20_1815d15990460e5786af6dd92c3c6edf
+      tailwindcss: 3.0.21_27d966e3a2f4b84fbc8a2f9653dbb362
     transitivePeerDependencies:
       - autoprefixer
-      - prettier
       - ts-node
     dev: true
 
@@ -10211,15 +10209,6 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier-plugin-tailwindcss/0.1.7_prettier@2.5.1:
-    resolution: {integrity: sha512-tmBr45hCLuit2Cz9Pwow0/Jl1bGivYGsfcF29O+3sKcE++ybjz9dfie565S3ZsvAeV8uYer9SRMBWDsHPly2Lg==}
-    engines: {node: '>=12.17.0'}
-    peerDependencies:
-      prettier: '>=2.2.0'
-    dependencies:
-      prettier: 2.5.1
-    dev: true
-
   /prettier/2.5.1:
     resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
     engines: {node: '>=10.13.0'}
@@ -11447,7 +11436,7 @@ packages:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
     dev: true
 
-  /tailwind-config-viewer/1.6.3_tailwindcss@3.0.20:
+  /tailwind-config-viewer/1.6.3_tailwindcss@3.0.21:
     resolution: {integrity: sha512-XesuasyVLDXadHhLLDeS0H5EiAhhWnRPDjDRsP4sYRXGn8h7Vgnv9TzFXvoaNG6dvuRuwWQxJRfNOjaWid2V1g==}
     engines: {node: '>=8'}
     hasBin: true
@@ -11462,13 +11451,13 @@ packages:
       open: 7.4.2
       portfinder: 1.0.28
       replace-in-file: 6.3.2
-      tailwindcss: 3.0.20_1815d15990460e5786af6dd92c3c6edf
+      tailwindcss: 3.0.21_27d966e3a2f4b84fbc8a2f9653dbb362
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /tailwindcss/3.0.20_1815d15990460e5786af6dd92c3c6edf:
-    resolution: {integrity: sha512-Mdo5XMsEkHhZNgh8NzXOEwI9L4WAS9NnnhCWbWWhVDaNZ1bqcHvbybosbmW6CetrCuCgMtDeByQq4trSka7irQ==}
+  /tailwindcss/3.0.21_27d966e3a2f4b84fbc8a2f9653dbb362:
+    resolution: {integrity: sha512-PGTiaBu/K4QlzjKlLgtz6nVYlrmhy6INPMKYb6RHX18/VXwygFbRdAlJGl2NfXabTQOP62ttKwjQviWLKQuWrA==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     peerDependencies:
@@ -11495,11 +11484,9 @@ packages:
       postcss-nested: 5.0.6_postcss@8.4.6
       postcss-selector-parser: 6.0.9
       postcss-value-parser: 4.2.0
-      prettier-plugin-tailwindcss: 0.1.7_prettier@2.5.1
       quick-lru: 5.1.1
       resolve: 1.22.0
     transitivePeerDependencies:
-      - prettier
       - ts-node
     dev: true
 
