@@ -38,7 +38,7 @@ specifiers:
   eslint-plugin-jest: 26.1.0
   eslint-plugin-nuxt: 3.1.0
   eslint-plugin-prettier: 4.0.0
-  eslint-plugin-tailwindcss: 3.4.3
+  eslint-plugin-tailwindcss: 3.4.4
   eslint-plugin-vue: 8.4.1
   eslint-plugin-vuejs-accessibility: 1.1.1
   glob: 7.2.0
@@ -98,7 +98,7 @@ devDependencies:
   eslint-plugin-jest: 26.1.0_946000e98ece8674c6d3915064b2d847
   eslint-plugin-nuxt: 3.1.0_eslint@8.9.0
   eslint-plugin-prettier: 4.0.0_07b422646bb75d3db791621d4fdbc992
-  eslint-plugin-tailwindcss: 3.4.3_c940fbabf228b85b1c73d314b43e31f1
+  eslint-plugin-tailwindcss: 3.4.4_c940fbabf228b85b1c73d314b43e31f1
   eslint-plugin-vue: 8.4.1_eslint@8.9.0
   eslint-plugin-vuejs-accessibility: 1.1.1_eslint@8.9.0
   glob: 7.2.0
@@ -5724,8 +5724,8 @@ packages:
       eslint: 8.9.0
     dev: true
 
-  /eslint-plugin-tailwindcss/3.4.3_c940fbabf228b85b1c73d314b43e31f1:
-    resolution: {integrity: sha512-HagKvnHDBlVk3ErlPiiamVnNY3510DTXQTNc9h2KDVOuIdvgQc7X+08gLWvNAVQYPoKhbw/CzSHe/SSpMN8dig==}
+  /eslint-plugin-tailwindcss/3.4.4_c940fbabf228b85b1c73d314b43e31f1:
+    resolution: {integrity: sha512-HaOmeX3wdzB3SYR8RediKtrQnxqRPAEq6VsX4sZ4QYehqfeuAMxkp7+pfXr9Ep8rfgcfW9jHFvnvGNrs3sVpIw==}
     engines: {node: '>=12.13.0'}
     dependencies:
       fast-glob: 3.2.11
