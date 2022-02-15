@@ -61,7 +61,7 @@
     "dotenv-safe": "8.2.0",
     "eslint": "8.9.0",
     "eslint-config-prettier": "8.3.0",
-    "eslint-plugin-jest": "26.1.0",
+    "eslint-plugin-jest": "26.1.1",
     "eslint-plugin-nuxt": "3.1.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-tailwindcss": "3.4.4",
