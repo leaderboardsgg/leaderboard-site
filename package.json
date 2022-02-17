@@ -29,7 +29,7 @@
     "@nuxtjs/composition-api": "0.31.0",
     "@nuxtjs/pwa": "3.3.5",
     "@nuxtjs/svg-sprite": "0.5.2",
-    "core-js": "3.21.0",
+    "core-js": "3.21.1",
     "nuxt": "2.15.8"
   },
   "devDependencies": {
