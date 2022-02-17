@@ -26,7 +26,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': 5.12.0
   '@typescript-eslint/parser': 5.12.0
   '@vue/test-utils': 1.3.0
-  '@vueuse/core': 7.6.1
+  '@vueuse/core': 7.6.2
   autoprefixer: 10.4.2
   axios: 0.26.0
   babel-core: 7.0.0-bridge.0
@@ -87,7 +87,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.12.0_c467cf9bb49b295941e83ce479a578b7
   '@typescript-eslint/parser': 5.12.0_eslint@8.9.0+typescript@4.5.5
   '@vue/test-utils': 1.3.0
-  '@vueuse/core': 7.6.1
+  '@vueuse/core': 7.6.2
   autoprefixer: 10.4.2_postcss@8.4.6
   axios: 0.26.0
   babel-core: 7.0.0-bridge.0_@babel+core@7.17.4
@@ -3202,8 +3202,8 @@ packages:
       pretty: 2.0.0
     dev: true
 
-  /@vueuse/core/7.6.1:
-    resolution: {integrity: sha512-492y7R9HRu6TXzcGBMVG5qg5o9CHjrWLfOHh+TEknJeLe3LIYHsIBi1IlUN5s/yP3OHlBynjrzMMUm4gEyBmQg==}
+  /@vueuse/core/7.6.2:
+    resolution: {integrity: sha512-bjAbXJVJO6aElMaZtDz2B70C0L6jFk/jGVqJxWZS5huffxA6dW5DN6tQQJwzOnx9B9rDhePHJIFKsix0qZIH2Q==}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
@@ -3213,12 +3213,12 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@vueuse/shared': 7.6.1
+      '@vueuse/shared': 7.6.2
       vue-demi: 0.12.1
     dev: true
 
-  /@vueuse/shared/7.6.1:
-    resolution: {integrity: sha512-VhURBjuyELYLW94TLqwyM+tUZ0uyWAOjp8zDnJts5wwyHZlGt/yabLbuEl70cKmt0zR9psVyAyHC+LTgRrA1Zw==}
+  /@vueuse/shared/7.6.2:
+    resolution: {integrity: sha512-ThDld4Mx501tahRuHV6qJGkwCr17GknZrOzlD02Na9qJcH7Pq0quNTLx5cNDou7b1CKNvE3BXi2w/hz9KuPNTQ==}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
