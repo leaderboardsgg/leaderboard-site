@@ -1,35 +1,39 @@
 <template>
   <div class="search-bar">
     <input
+      v-model="inputValue"
       data-testid="search-input"
       name="search"
       placeholder="search..."
       @keyup.enter="onEnter"
     />
-    <button data-testid="search-button" type="submit" @click="onClick">
+    <button data-testid="search-button" type="button" @click="onClick">
       <svg-icon name="search" />
     </button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api';
+import { defineComponent, ref } from '@nuxtjs/composition-api';
 
-export default defineComponent<{ onSubmit(): void }>({
+export default defineComponent({
   name: 'SearchBar',
-  props: {
-    onSubmit: {
-      default: () => console.log('submit'), // eslint-disable-line no-console
-      type: Function,
-    },
-  },
-  methods: {
-    onClick() {
-      this.$props.onSubmit();
-    },
-    onEnter() {
-      this.$props.onSubmit();
-    },
+  setup(_, { emit }) {
+    const inputValue = ref('');
+
+    const onClick = () => {
+      emit('search', inputValue.value);
+    };
+
+    const onEnter = () => {
+      emit('search', inputValue.value);
+    };
+
+    return {
+      inputValue,
+      onClick,
+      onEnter,
+    };
   },
 });
 </script>

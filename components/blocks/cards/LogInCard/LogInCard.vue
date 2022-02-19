@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <BaseButton class="login-button" @click="login">Log In</BaseButton>
+        <BaseButton class="login-button" @click="login"> Log In </BaseButton>
       </div>
 
       <div class="login-card__auth-buttons">

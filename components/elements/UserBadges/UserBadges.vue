@@ -4,5 +4,5 @@
 -->
 
 <template>
-  <div class="user-badges__container"></div>
+  <div class="user-badges__container" />
 </template>

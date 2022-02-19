@@ -9,5 +9,33 @@ exports[`<SiteFooter /> renders correctly 1`] = `
   >
     Copyright 2021
   </p>
+   
+  <select
+    class="language-selector site-footer__language-selector"
+    data-testid="language-selector"
+    role="listbox"
+  >
+    <option
+      value="en"
+    >
+      
+    English
+  
+    </option>
+    <option
+      value="es"
+    >
+      
+    Spanish
+  
+    </option>
+    <option
+      value="fr"
+    >
+      
+    French
+  
+    </option>
+  </select>
 </div>
 `;
