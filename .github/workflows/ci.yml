@@ -22,7 +22,7 @@ jobs:
         with:
           path: ./.pnpmrc
 
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2.2.0
         with:
           version: '${{ steps.pnpm_version.outputs.content }}'
 
