@@ -22,6 +22,13 @@ jobs:
         with:
           path: ./.pnpmrc
 
+      - name: Cache PNPM modules
+        uses: actions/cache@v2
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: ${{ runner.os }}-
+
       - uses: pnpm/action-setup@v2.2.0
         with:
           version: '${{ steps.pnpm_version.outputs.content }}'
@@ -34,7 +41,6 @@ jobs:
         with:
           # use the output from the action
           node-version: '${{ steps.nvmrc.outputs.node_version }}'
-          cache: 'pnpm'
 
       - name: Install `node_modules`
         run: pnpm install
