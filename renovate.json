@@ -6,6 +6,7 @@
     {
       "matchPackagePatterns": ["eslint"],
       "labels": ["linting"]
-    }
+    },
+    { "updateTypes": ["minor", "patch"], "automerge": true }
   ]
 }
