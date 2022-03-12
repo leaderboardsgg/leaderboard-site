@@ -13,7 +13,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       # Read the pnpm version from the `.pnpmrc` file
       - name: Read .pnpmrc
@@ -37,7 +37,7 @@ jobs:
       - id: nvmrc
         uses: browniebroke/read-nvmrc-action@v1
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           # use the output from the action
           node-version: '${{ steps.nvmrc.outputs.node_version }}'

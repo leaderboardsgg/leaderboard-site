@@ -4,10 +4,15 @@
   "labels": ["dependencies"],
   "packageRules": [
     {
-      "matchPackagePatterns": ["eslint"],
-      "labels": ["linting"]
+      "description": "Automerge all non Major updates",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true
     },
-    { "updateTypes": ["minor", "patch"], "automerge": true }
+    {
+      "description": "Ensure automerge is not on for Major updates",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
   ],
   "ignoreTests": false,
   "description": [
