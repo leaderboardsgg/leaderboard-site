@@ -8,5 +8,10 @@
       "labels": ["linting"]
     },
     { "updateTypes": ["minor", "patch"], "automerge": true }
+  ],
+  "ignoreTests": false,
+  "description": [
+    "The usage of ignoreTests just means that Renovate will ignore its own internal checks of merge readiness,",
+    "this means that we can disable this because we already lock the PRs to need to pass CI before it can succesfully merge."
   ]
 }
