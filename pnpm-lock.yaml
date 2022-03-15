@@ -28,7 +28,7 @@ specifiers:
   '@typescript-eslint/parser': 5.15.0
   '@vue/test-utils': 1.3.0
   '@vueuse/core': 7.7.1
-  autoprefixer: 10.4.2
+  autoprefixer: 10.4.3
   axios: 0.26.1
   babel-core: 7.0.0-bridge.0
   babel-jest: 27.5.1
@@ -90,7 +90,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.15.0_eslint@8.11.0+typescript@4.6.2
   '@vue/test-utils': 1.3.0
   '@vueuse/core': 7.7.1
-  autoprefixer: 10.4.2_postcss@8.4.8
+  autoprefixer: 10.4.3_postcss@8.4.8
   axios: 0.26.1
   babel-core: 7.0.0-bridge.0_@babel+core@7.17.7
   babel-jest: 27.5.1_@babel+core@7.17.7
@@ -100,7 +100,7 @@ devDependencies:
   eslint-plugin-jest: 26.1.1_999503cc9dd683854c288a023c8289ec
   eslint-plugin-nuxt: 3.2.0_eslint@8.11.0
   eslint-plugin-prettier: 4.0.0_c9d5adccfd1d43a8805a302169f6a967
-  eslint-plugin-tailwindcss: 3.5.0_2a12c91f48b4280adc4c14dfe7c50ae2
+  eslint-plugin-tailwindcss: 3.5.0_fe9473d2ec560c8b38db06c0d69bde16
   eslint-plugin-vue: 8.5.0_eslint@8.11.0
   eslint-plugin-vuejs-accessibility: 1.1.1_eslint@8.11.0
   glob: 7.2.0
@@ -112,7 +112,7 @@ devDependencies:
   postcss: 8.4.8
   prettier: 2.5.1
   pretty-quick: 3.1.3_prettier@2.5.1
-  tailwindcss: 3.0.23_2a12c91f48b4280adc4c14dfe7c50ae2
+  tailwindcss: 3.0.23_fe9473d2ec560c8b38db06c0d69bde16
   ts-jest: 27.1.3_3aedd15540997aea680ab26eff791a7a
   ts-node: 10.7.0_e0d91565390b0295ac4f63ea0dc0f58e
   typescript: 4.6.2
@@ -225,7 +225,7 @@ packages:
       '@babel/compat-data': 7.17.7
       '@babel/core': 7.17.7
       '@babel/helper-validator-option': 7.16.7
-      browserslist: 4.19.1
+      browserslist: 4.20.2
       semver: 6.3.0
 
   /@babel/helper-create-class-features-plugin/7.17.1_@babel+core@7.17.7:
@@ -1335,6 +1335,11 @@ packages:
     dependencies:
       regenerator-runtime: 0.13.9
 
+  /@babel/standalone/7.17.7:
+    resolution: {integrity: sha512-461jrYyk7g4bRQoOROABqErtygmZrx1cZXWONIPCQzVTynT5VL83btu1PJIaXNgl4JtHXjzaYT7j3IOlVhnC1Q==}
+    engines: {node: '>=6.9.0'}
+    dev: true
+
   /@babel/template/7.16.7:
     resolution: {integrity: sha512-I8j/x8kHUrbYRTUxXrrMbfCa7jxkE7tZre39x3kjr9hvI82cK1FfqLygotcWN5kdPGWcLdWMHpSBavse5tWw3w==}
     engines: {node: '>=6.9.0'}
@@ -1884,11 +1889,11 @@ packages:
       ufo: 0.7.11
     dev: false
 
-  /@nuxt/kit-edge/3.0.0-27454426.4cefce4:
-    resolution: {integrity: sha512-tEkTHg+uRmTAewVslJ7ahtwYRiMtyB5Mt2SViQmjiAODHZaVJmDq9i+M7YHFFr3FfRnV6ZUNOIYrIc8F/9TRog==}
+  /@nuxt/kit-edge/3.0.0-27456065.f38cace:
+    resolution: {integrity: sha512-3+dy1Ake6ZFOUXz/1BJqJUfS8MnrVv3TjqYt3x4lg6PtwR3miQ2BgPJW2sVNGD0hb+EPHrV0My9s9lfPfzXJTg==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-27454426.4cefce4
+      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-27456065.f38cace
       c12: 0.1.4
       consola: 2.15.3
       defu: 5.0.1
@@ -1904,11 +1909,12 @@ packages:
       scule: 0.2.1
       semver: 7.3.5
       unctx: 1.0.2
-      unimport: 0.0.8
-      untyped: 0.4.2
+      unimport: 0.1.0
+      untyped: 0.4.3
     transitivePeerDependencies:
       - esbuild
       - rollup
+      - supports-color
       - vite
       - webpack
     dev: true
@@ -1936,7 +1942,7 @@ packages:
   /@nuxt/postcss8/1.1.3:
     resolution: {integrity: sha512-CdHtErhvQwueNZPBOmlAAKrNCK7aIpZDYhtS7TzXlSgPHHox1g3cSlf+Ke9oB/8t4mNNjdB+prclme2ibuCOEA==}
     dependencies:
-      autoprefixer: 10.4.2_postcss@8.4.8
+      autoprefixer: 10.4.3_postcss@8.4.8
       css-loader: 5.2.7
       defu: 3.2.2
       postcss: 8.4.8
@@ -1948,8 +1954,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.0.0-27454426.4cefce4:
-    resolution: {integrity: sha512-6dCjAGDBPUYg2HR0vQSm7iCp27v46lCfmvTqGupeHa4sXPrltK6ln9zO5hyo1411wptwp6FaGSDbsMx+NZeouA==}
+  /@nuxt/schema-edge/3.0.0-27456065.f38cace:
+    resolution: {integrity: sha512-HgvULGSjiqV4WRdVe/wP8+CFX8qT9F06Mhy+h3sDsSRfsvA6vo6JCXn9ObIgEjlQxaGK2YodExCEX9RKSzp/Dg==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     dependencies:
       c12: 0.1.4
@@ -1961,7 +1967,7 @@ packages:
       scule: 0.2.1
       std-env: 3.0.1
       ufo: 0.7.11
-      unimport: 0.0.8
+      unimport: 0.1.0
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -2117,7 +2123,7 @@ packages:
       '@nuxt/utils': 2.15.8
       babel-loader: 8.2.3_32e703f21febc05728783ca1539695a9
       cache-loader: 4.1.0_webpack@4.46.0
-      caniuse-lite: 1.0.30001312
+      caniuse-lite: 1.0.30001317
       consola: 2.15.3
       css-loader: 4.3.0_webpack@4.46.0
       cssnano: 4.1.11
@@ -2335,9 +2341,9 @@ packages:
   /@nuxtjs/tailwindcss/5.0.1_ts-node@10.7.0:
     resolution: {integrity: sha512-PWIrt86fSk/fZAVqjaa2m0bSkXAWwMSl6WsoKo06d06jgj6k0Po435B2OTmDQ6lVy8vblvuACndZogW+FEn17A==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-27454426.4cefce4
+      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-27456065.f38cace
       '@nuxt/postcss8': 1.1.3
-      autoprefixer: 10.4.2_postcss@8.4.8
+      autoprefixer: 10.4.3_postcss@8.4.8
       chalk: 4.1.2
       clear-module: 4.1.2
       consola: 2.15.3
@@ -2346,7 +2352,7 @@ packages:
       postcss-custom-properties: 12.1.4_postcss@8.4.8
       postcss-nesting: 10.1.3_postcss@8.4.8
       tailwind-config-viewer: 1.6.3_tailwindcss@3.0.23
-      tailwindcss: 3.0.23_2a12c91f48b4280adc4c14dfe7c50ae2
+      tailwindcss: 3.0.23_fe9473d2ec560c8b38db06c0d69bde16
       ufo: 0.7.11
     transitivePeerDependencies:
       - esbuild
@@ -2547,7 +2553,7 @@ packages:
     resolution: {integrity: sha512-h9LyKErRGZqMsHh9bd+FE8yCIal4S0DxKTOeui56VgVXqa66TKiuaIUxCAI7c1O0LjaUzOTcsMyOpO9GetozRA==}
     deprecated: This is a stub types definition. browserslist provides its own type definitions, so you do not need this installed.
     dependencies:
-      browserslist: 4.19.1
+      browserslist: 4.20.2
     dev: true
 
   /@types/clean-css/4.2.5:
@@ -3685,16 +3691,16 @@ packages:
     engines: {node: '>= 4.5.0'}
     hasBin: true
 
-  /autoprefixer/10.4.2_postcss@8.4.8:
-    resolution: {integrity: sha512-9fOPpHKuDW1w/0EKfRmVnxTDt8166MAnLI3mgZ1JCnhNtYWxcJ6Ud5CO/AVOZi/AvFa8DY9RTy3h3+tFBlrrdQ==}
+  /autoprefixer/10.4.3_postcss@8.4.8:
+    resolution: {integrity: sha512-3EIK6tHl2SyJWCoPsQzL3NEqKOdjCWbPzoOInjVAQYo/y/OCEFG9KwB5162dehG5GadiGfgxu7nrWCpExCfRFQ==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.19.1
-      caniuse-lite: 1.0.30001312
-      fraction.js: 4.1.2
+      browserslist: 4.20.2
+      caniuse-lite: 1.0.30001317
+      fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
       postcss: 8.4.8
@@ -3705,8 +3711,8 @@ packages:
     resolution: {integrity: sha512-eM9d/swFopRt5gdJ7jrpCwgvEMIayITpojhkkSMRsFHYuH5bkSQ4p/9qTEHtmNudUZh22Tehu7I6CxAW0IXTKA==}
     hasBin: true
     dependencies:
-      browserslist: 4.19.1
-      caniuse-lite: 1.0.30001312
+      browserslist: 4.20.2
+      caniuse-lite: 1.0.30001317
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       picocolors: 0.2.1
@@ -4136,15 +4142,15 @@ packages:
       pako: 1.0.11
     dev: false
 
-  /browserslist/4.19.1:
-    resolution: {integrity: sha512-u2tbbG5PdKRTUoctO3NBD8FQ5HdPh1ZXPHzp1rwaa5jTc+RV9/+RlWiAIKmjRPQF+xbGM9Kklj5bZQFa2s/38A==}
+  /browserslist/4.20.2:
+    resolution: {integrity: sha512-CQOBCqp/9pDvDbx3xfMi+86pr4KXIf2FDkTTdeuYw8OxS9t898LA1Khq57gtufFILXpfgsSx5woNgsBgvGjpsA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001312
-      electron-to-chromium: 1.4.71
+      caniuse-lite: 1.0.30001317
+      electron-to-chromium: 1.4.85
       escalade: 3.1.1
-      node-releases: 2.0.1
+      node-releases: 2.0.2
       picocolors: 1.0.0
 
   /bs-logger/0.2.6:
@@ -4362,14 +4368,14 @@ packages:
   /caniuse-api/3.0.0:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
-      browserslist: 4.19.1
-      caniuse-lite: 1.0.30001312
+      browserslist: 4.20.2
+      caniuse-lite: 1.0.30001317
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: false
 
-  /caniuse-lite/1.0.30001312:
-    resolution: {integrity: sha512-Wiz1Psk2MEK0pX3rUzWaunLTZzqS2JYZFzNKqAiJGiuxIjRPLgV6+VDPOg6lQOUxmDwhTlh198JsTTi8Hzw6aQ==}
+  /caniuse-lite/1.0.30001317:
+    resolution: {integrity: sha512-xIZLh8gBm4dqNX0gkzrBeyI86J2eCjWzYAs40q88smG844YIrN4tVQl/RhquHvKEKImWWFIVh1Lxe5n1G/N+GQ==}
 
   /chalk/1.1.3:
     resolution: {integrity: sha1-qBFcVeSnAv5NFQq9OHKCKn4J/Jg=}
@@ -4774,7 +4780,7 @@ packages:
   /core-js-compat/3.19.2:
     resolution: {integrity: sha512-ObBY1W5vx/LFFMaL1P5Udo4Npib6fu+cMokeziWkA8Tns4FcDemKF5j9JvaI5JhdkW8EQJQGJN1EcrzmEwuAqQ==}
     dependencies:
-      browserslist: 4.19.1
+      browserslist: 4.20.2
       semver: 7.0.0
     dev: false
 
@@ -5510,8 +5516,8 @@ packages:
   /ee-first/1.1.1:
     resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
 
-  /electron-to-chromium/1.4.71:
-    resolution: {integrity: sha512-Hk61vXXKRb2cd3znPE9F+2pLWdIOmP7GjiTj45y6L3W/lO+hSnUSUhq+6lEaERWBdZOHbk2s3YV5c9xVl3boVw==}
+  /electron-to-chromium/1.4.85:
+    resolution: {integrity: sha512-K9AsQ41WS2bjZUFpRWfvaS4RjEcRCamEkBJN1Z1TQILBfP1H8QnJ9ti0wiLiMv0sRjX3EHKzgs9jDnmGFx2jXg==}
 
   /elliptic/6.5.4:
     resolution: {integrity: sha512-iLhC6ULemrljPZb+QutR5TQGB+pdW6KGD5RSegS+8sorOZT+rdQFbsQFJgvN3eRqNALqJer4oQ16YvJHlU8hzQ==}
@@ -5819,13 +5825,13 @@ packages:
       eslint: 8.11.0
     dev: true
 
-  /eslint-plugin-tailwindcss/3.5.0_2a12c91f48b4280adc4c14dfe7c50ae2:
+  /eslint-plugin-tailwindcss/3.5.0_fe9473d2ec560c8b38db06c0d69bde16:
     resolution: {integrity: sha512-m1NyKX1qii3arb+zWrsNO5R15b27aaEm6m1ie9JM9a6yBrU9Q8H62obzT/U8PSITIucMY864uxljV8MiP7H6xg==}
     engines: {node: '>=12.13.0'}
     dependencies:
       fast-glob: 3.2.11
       postcss: 8.4.8
-      tailwindcss: 3.0.23_2a12c91f48b4280adc4c14dfe7c50ae2
+      tailwindcss: 3.0.23_fe9473d2ec560c8b38db06c0d69bde16
     transitivePeerDependencies:
       - autoprefixer
       - ts-node
@@ -6427,8 +6433,8 @@ packages:
       mime-types: 2.1.34
     dev: true
 
-  /fraction.js/4.1.2:
-    resolution: {integrity: sha512-o2RiJQ6DZaR/5+Si0qJUIy637QMRudSi9kU/FFzx9EZazrIdnBgpU+3sEWCxAVhH2RtxW2Oz+T4p2o8uOPVcgA==}
+  /fraction.js/4.2.0:
+    resolution: {integrity: sha512-MhLuK+2gUcnZe8ZHlaaINnQLl0xRIGRfcGk2yl8xoQAfHrSsL3rYu6FCmBdkdbhc9EPlwyGHewaRsvwRMJtAlA==}
     dev: true
 
   /fragment-cache/0.2.1:
@@ -8969,8 +8975,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /node-releases/2.0.1:
-    resolution: {integrity: sha512-CqyzN6z7Q6aMeF/ktcMVTzhAHCEpf8SOarwpzpf8pNBY2k5/oM34UHldUwp8VKI7uxct2HxSRdJjBaZeESzcxA==}
+  /node-releases/2.0.2:
+    resolution: {integrity: sha512-XxYDdcQ6eKqp/YjI+tb2C5WM2LgjnZrfYg4vgQt49EK268b6gYCHsBLrK2qvJo4FmCtqmKezb0WZFK4fkrZNsg==}
 
   /node-res/5.0.1:
     resolution: {integrity: sha512-YOleO9c7MAqoHC+Ccu2vzvV1fL6Ku49gShq3PIMKWHRgrMSih3XcwL05NbLBi6oU2J471gTBfdpVVxwT6Pfhxg==}
@@ -9611,7 +9617,7 @@ packages:
     resolution: {integrity: sha512-WyQFAdDZpExQh32j0U0feWisZ0dmOtPl44qYmJKkq9xFWY3p+4qnRzCHeNrkeRhwPHz9bQ3mo0/yVkaply0MNw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      browserslist: 4.19.1
+      browserslist: 4.20.2
       color: 3.2.1
       has: 1.0.3
       postcss: 7.0.39
@@ -9877,7 +9883,7 @@ packages:
     resolution: {integrity: sha512-U7e3r1SbvYzO0Jr3UT/zKBVgYYyhAz0aitvGIYOYK5CPmkNih+WDSsS5tvPrJ8YMQYlEMvsZIiqmn7HdFUaeEQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      browserslist: 4.19.1
+      browserslist: 4.20.2
       caniuse-api: 3.0.0
       cssnano-util-same-parent: 4.0.1
       postcss: 7.0.39
@@ -9908,7 +9914,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       alphanum-sort: 1.0.2
-      browserslist: 4.19.1
+      browserslist: 4.20.2
       cssnano-util-get-arguments: 4.0.0
       postcss: 7.0.39
       postcss-value-parser: 3.3.1
@@ -10083,7 +10089,7 @@ packages:
     resolution: {integrity: sha512-od18Uq2wCYn+vZ/qCOeutvHjB5jm57ToxRaMeNuf0nWVHaP9Hua56QyMF6fs/4FSUnVIw0CBPsU0K4LnBPwYwg==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      browserslist: 4.19.1
+      browserslist: 4.20.2
       postcss: 7.0.39
       postcss-value-parser: 3.3.1
     dev: false
@@ -10141,8 +10147,8 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       autoprefixer: 9.8.8
-      browserslist: 4.19.1
-      caniuse-lite: 1.0.30001312
+      browserslist: 4.20.2
+      caniuse-lite: 1.0.30001317
       css-blank-pseudo: 0.1.4
       css-has-pseudo: 0.10.0
       css-prefers-color-scheme: 3.1.1
@@ -10191,7 +10197,7 @@ packages:
     resolution: {integrity: sha512-gKWmR5aUulSjbzOfD9AlJiHCGH6AEVLaM0AV+aSioxUDd16qXP1PCh8d1/BGVvpdWn8k/HiK7n6TjeoXN1F7DA==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      browserslist: 4.19.1
+      browserslist: 4.20.2
       caniuse-api: 3.0.0
       has: 1.0.3
       postcss: 7.0.39
@@ -11518,7 +11524,7 @@ packages:
     resolution: {integrity: sha512-7GlLk9JwlElY4Y6a/rmbH2MhVlTyVmiJd1PfTCqFaIBEGMYNsrO/v3SeGTdhBThLg4Z+NbOk/qFMwCa+J+3p/g==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      browserslist: 4.19.1
+      browserslist: 4.20.2
       postcss: 7.0.39
       postcss-selector-parser: 3.1.2
     dev: false
@@ -11602,12 +11608,12 @@ packages:
       open: 7.4.2
       portfinder: 1.0.28
       replace-in-file: 6.3.2
-      tailwindcss: 3.0.23_2a12c91f48b4280adc4c14dfe7c50ae2
+      tailwindcss: 3.0.23_fe9473d2ec560c8b38db06c0d69bde16
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /tailwindcss/3.0.23_2a12c91f48b4280adc4c14dfe7c50ae2:
+  /tailwindcss/3.0.23_fe9473d2ec560c8b38db06c0d69bde16:
     resolution: {integrity: sha512-+OZOV9ubyQ6oI2BXEhzw4HrqvgcARY38xv3zKcjnWtMIZstEsXdI9xftd1iB7+RbOnj2HOEzkA0OyB5BaSxPQA==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -11615,7 +11621,7 @@ packages:
       autoprefixer: ^10.0.2
     dependencies:
       arg: 5.0.1
-      autoprefixer: 10.4.2_postcss@8.4.8
+      autoprefixer: 10.4.3_postcss@8.4.8
       chalk: 4.1.2
       chokidar: 3.5.3
       color-name: 1.1.4
@@ -12162,14 +12168,17 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /unimport/0.0.8:
-    resolution: {integrity: sha512-WrDlMDCq1s5Nh7wBE5C/WRtnPeFwv0A0iiSjljlsoYwXLMkWDIveRWUhXWE/JYMYwy2KCHbahkGKDYBhFrM8fg==}
+  /unimport/0.1.0:
+    resolution: {integrity: sha512-GqMgP1Mj8YYD+9I3MK/Ca/oeoCS0HdmCc/O1IW0si85RgXgPKYIoK84XbMVwOl9Qv/XGfZa/F5JagTWGtMOXCw==}
     dependencies:
       '@rollup/pluginutils': 4.2.0
       escape-string-regexp: 5.0.0
+      globby: 13.1.1
       local-pkg: 0.4.1
       magic-string: 0.26.1
       mlly: 0.4.3
+      pathe: 0.2.0
+      scule: 0.2.1
       unplugin: 0.3.3
     transitivePeerDependencies:
       - esbuild
@@ -12287,8 +12296,15 @@ packages:
       isobject: 3.0.1
     dev: false
 
-  /untyped/0.4.2:
-    resolution: {integrity: sha512-akHdcDop+tvtwPQxrbDfGf6zfQUgMjJXA8hXYYxcnmH6NnuMQatiY9wYDZ+jkUCcWuctb70f/QBYmbMsJpl48g==}
+  /untyped/0.4.3:
+    resolution: {integrity: sha512-IFlE2be3vW69rLjdkmj5pa/JK/rAzbvFyJZfs+63QX/RN+jgx2CQUZckhTxNsV2H/JSXfc7NEqpX8tLoI2+eOg==}
+    dependencies:
+      '@babel/core': 7.17.7
+      '@babel/standalone': 7.17.7
+      '@babel/types': 7.17.0
+      scule: 0.2.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /upath/1.2.0:
