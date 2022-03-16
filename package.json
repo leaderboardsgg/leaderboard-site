@@ -74,7 +74,7 @@
     "jest-environment-jsdom": "27.5.1",
     "jest-serializer-vue": "2.0.2",
     "lodash": "4.17.21",
-    "postcss": "8.4.11",
+    "postcss": "8.4.12",
     "prettier": "2.5.1",
     "pretty-quick": "3.1.3",
     "tailwindcss": "3.0.23",
