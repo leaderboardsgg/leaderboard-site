@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@vueuse/core": "7.7.1",
-    "@babel/core": "7.17.7",
+    "@babel/core": "7.17.8",
     "@babel/eslint-parser": "7.17.0",
     "@babel/preset-typescript": "7.16.7",
     "@nuxt/types": "2.15.8",
