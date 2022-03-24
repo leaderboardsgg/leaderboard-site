@@ -16,7 +16,7 @@ specifiers:
   '@nuxtjs/svg-sprite': 0.5.2
   '@nuxtjs/tailwindcss': 5.0.2
   '@testing-library/dom': 8.11.4
-  '@testing-library/jest-dom': 5.16.2
+  '@testing-library/jest-dom': 5.16.3
   '@testing-library/user-event': 13.5.0
   '@testing-library/vue': 5.8.2
   '@types/dotenv-safe': 8.1.2
@@ -78,7 +78,7 @@ devDependencies:
   '@nuxtjs/eslint-module': 3.0.2_eslint@8.11.0
   '@nuxtjs/tailwindcss': 5.0.2_ts-node@10.7.0
   '@testing-library/dom': 8.11.4
-  '@testing-library/jest-dom': 5.16.2
+  '@testing-library/jest-dom': 5.16.3
   '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.4
   '@testing-library/vue': 5.8.2
   '@types/dotenv-safe': 8.1.2
@@ -2421,8 +2421,8 @@ packages:
       pretty-format: 27.5.1
     dev: true
 
-  /@testing-library/jest-dom/5.16.2:
-    resolution: {integrity: sha512-6ewxs1MXWwsBFZXIk4nKKskWANelkdUehchEOokHsN8X7c2eKXGw+77aRV63UU8f/DTSVUPLaGxdrj4lN7D/ug==}
+  /@testing-library/jest-dom/5.16.3:
+    resolution: {integrity: sha512-u5DfKj4wfSt6akfndfu1eG06jsdyA/IUrlX2n3pyq5UXgXMhXY+NJb8eNK/7pqPWAhCKsCGWDdDO0zKMKAYkEA==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
     dependencies:
       '@babel/runtime': 7.16.3
