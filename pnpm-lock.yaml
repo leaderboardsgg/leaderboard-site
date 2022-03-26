@@ -15,7 +15,7 @@ specifiers:
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
   '@nuxtjs/tailwindcss': 5.0.2
-  '@testing-library/dom': 8.11.4
+  '@testing-library/dom': 8.12.0
   '@testing-library/jest-dom': 5.16.3
   '@testing-library/user-event': 13.5.0
   '@testing-library/vue': 5.8.2
@@ -77,9 +77,9 @@ devDependencies:
   '@nuxtjs/eslint-config-typescript': 9.0.0_d0062e76d70ab01651d408ef76fbe2be
   '@nuxtjs/eslint-module': 3.0.2_eslint@8.12.0
   '@nuxtjs/tailwindcss': 5.0.2_ts-node@10.7.0
-  '@testing-library/dom': 8.11.4
+  '@testing-library/dom': 8.12.0
   '@testing-library/jest-dom': 5.16.3
-  '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.4
+  '@testing-library/user-event': 13.5.0_@testing-library+dom@8.12.0
   '@testing-library/vue': 5.8.2
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
@@ -2407,8 +2407,8 @@ packages:
       pretty-format: 26.6.2
     dev: true
 
-  /@testing-library/dom/8.11.4:
-    resolution: {integrity: sha512-7vZ6ZoBEbr6bfEM89W1nzl0vHbuI0g0kRrI0hwSXH3epnuqGO3KulFLQCKfmmW+60t7e4sevAkJPASSMmnNCRw==}
+  /@testing-library/dom/8.12.0:
+    resolution: {integrity: sha512-rBrJk5WjI02X1edtiUcZhgyhgBhiut96r5Jp8J5qktKdcvLcZpKDW8i2hkGMMItxrghjXuQ5AM6aE0imnFawaw==}
     engines: {node: '>=12'}
     dependencies:
       '@babel/code-frame': 7.16.7
@@ -2436,14 +2436,14 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/user-event/13.5.0_@testing-library+dom@8.11.4:
+  /@testing-library/user-event/13.5.0_@testing-library+dom@8.12.0:
     resolution: {integrity: sha512-5Kwtbo3Y/NowpkbRuSepbyMFkZmHgD+vPzYB/RJ4oxt5Gj/avFFBYjhw27cqSVPVw/3a67NK1PbiIr9k4Gwmdg==}
     engines: {node: '>=10', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
       '@babel/runtime': 7.16.3
-      '@testing-library/dom': 8.11.4
+      '@testing-library/dom': 8.12.0
     dev: true
 
   /@testing-library/vue/5.8.2:
