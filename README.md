@@ -14,7 +14,7 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 
 ## Build Setup
 
-- set nvm version
+- set node version with nvm
   $ `nvm use`
   (You may need to run `nvm install` first)
 
