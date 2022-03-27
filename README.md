@@ -14,6 +14,10 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 
 ## Build Setup
 
+- set nvm version
+  $ `nvm use`
+  (You may need to run `nvm install` first)
+
 - install pnpm (Performant NPM)  
   $ `npm install -g pnpm`
 
