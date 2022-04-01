@@ -24,7 +24,7 @@
     "test:snap": "jest --updateSnapshot"
   },
   "dependencies": {
-    "@nuxtjs/auth-next": "5.0.0-1647967358.de1bb0f",
+    "@nuxtjs/auth-next": "5.0.0-1648802546.c9880dc",
     "@nuxtjs/axios": "5.13.6",
     "@nuxtjs/composition-api": "0.32.0",
     "@nuxtjs/i18n": "7.2.0",
