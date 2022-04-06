@@ -40,7 +40,7 @@ specifiers:
   eslint-plugin-nuxt: 3.2.0
   eslint-plugin-prettier: 4.0.0
   eslint-plugin-tailwindcss: 3.5.0
-  eslint-plugin-vue: 8.5.0
+  eslint-plugin-vue: 8.6.0
   eslint-plugin-vuejs-accessibility: 1.1.1
   glob: 7.2.0
   husky: 7.0.4
@@ -101,7 +101,7 @@ devDependencies:
   eslint-plugin-nuxt: 3.2.0_eslint@8.12.0
   eslint-plugin-prettier: 4.0.0_f2c91d0f54113167d2bd9214a5ab5a36
   eslint-plugin-tailwindcss: 3.5.0_b89136460714832cdda11d1e9d57d1ff
-  eslint-plugin-vue: 8.5.0_eslint@8.12.0
+  eslint-plugin-vue: 8.6.0_eslint@8.12.0
   eslint-plugin-vuejs-accessibility: 1.1.1_eslint@8.12.0
   glob: 7.2.0
   husky: 7.0.4
@@ -1868,11 +1868,11 @@ packages:
       ufo: 0.7.11
     dev: false
 
-  /@nuxt/kit-edge/3.0.0-27486226.7a70644:
-    resolution: {integrity: sha512-MsuSnWsVU6wy1cwoAc63mRqPQwpcUNG/gkHQ4KEjLSN9AHJr4x69C12fak5INMJv5iKAiT5BnRk6abxMDgrHXQ==}
+  /@nuxt/kit-edge/3.0.0-27487080.ec32cf9:
+    resolution: {integrity: sha512-3EXmP9XUo41jOegcNUzJEpHmsGdE4a18iGWlqHeERTkWfriS4XyP98N5+Zb/BsQd72Bt+caHPaKjSUX+tjzplg==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-27486226.7a70644
+      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-27487080.ec32cf9
       c12: 0.2.4
       consola: 2.15.3
       defu: 6.0.0
@@ -1933,8 +1933,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.0.0-27486226.7a70644:
-    resolution: {integrity: sha512-KiqhKwtIIc7/6N4FTWFxgpBtdnJ3SmmWK6P6EfYH0VLXv7KO7gHdAX9neijqY9GNwWDCqItJ3zpk1BCgmczQbQ==}
+  /@nuxt/schema-edge/3.0.0-27487080.ec32cf9:
+    resolution: {integrity: sha512-AIniJM7WF2deprlMb5JLhm6I9pskYzX//G4OSGgUL5pTQv76OZy/xr+FEtcCIgB28qsMcqUZochEvGMX6SI6Rw==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0}
     dependencies:
       c12: 0.2.4
@@ -2245,7 +2245,7 @@ packages:
       eslint-plugin-node: 11.1.0_eslint@8.12.0
       eslint-plugin-promise: 6.0.0_eslint@8.12.0
       eslint-plugin-unicorn: 41.0.0_eslint@8.12.0
-      eslint-plugin-vue: 8.5.0_eslint@8.12.0
+      eslint-plugin-vue: 8.6.0_eslint@8.12.0
     transitivePeerDependencies:
       - '@typescript-eslint/eslint-plugin'
       - jest
@@ -2320,7 +2320,7 @@ packages:
   /@nuxtjs/tailwindcss/5.0.2_ts-node@10.7.0:
     resolution: {integrity: sha512-uxMFiL2VsyEUSv5q4ao1ILbSGIg3sdV3364o1f8Pq0oL2K3z3qPc03Qs+fzv1wm5CrdXvE+kxCBD/Obf0+6TPg==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-27486226.7a70644
+      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-27487080.ec32cf9
       '@nuxt/postcss8': 1.1.3
       autoprefixer: 10.4.4_postcss@8.4.12
       chalk: 4.1.2
@@ -5770,7 +5770,7 @@ packages:
   /eslint-plugin-nuxt/3.2.0_eslint@8.12.0:
     resolution: {integrity: sha512-SWpmJALwagdrlMooajFX9IFxFEKdBxD+e4NFOVw9FGc22HQpNKdiljRHchS/3O5e2R7sPZYv8xdCtoordqIXFQ==}
     dependencies:
-      eslint-plugin-vue: 8.5.0_eslint@8.12.0
+      eslint-plugin-vue: 8.6.0_eslint@8.12.0
       semver: 7.3.5
       vue-eslint-parser: 8.3.0_eslint@8.12.0
     transitivePeerDependencies:
@@ -5839,8 +5839,8 @@ packages:
       strip-indent: 3.0.0
     dev: true
 
-  /eslint-plugin-vue/8.5.0_eslint@8.12.0:
-    resolution: {integrity: sha512-i1uHCTAKOoEj12RDvdtONWrGzjFm/djkzqfhmQ0d6M/W8KM81mhswd/z+iTZ0jCpdUedW3YRgcVfQ37/J4zoYQ==}
+  /eslint-plugin-vue/8.6.0_eslint@8.12.0:
+    resolution: {integrity: sha512-abXiF2J18n/7ZPy9foSlJyouKf54IqpKlNvNmzhM93N0zs3QUxZG/oBd3tVPOJTKg7SlhBUtPxugpqzNbgGpQQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
@@ -5849,7 +5849,7 @@ packages:
       eslint-utils: 3.0.0_eslint@8.12.0
       natural-compare: 1.4.0
       semver: 7.3.5
-      vue-eslint-parser: 8.0.1_eslint@8.12.0
+      vue-eslint-parser: 8.3.0_eslint@8.12.0
     transitivePeerDependencies:
       - supports-color
     dev: true
