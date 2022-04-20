@@ -30,7 +30,7 @@
     "@nuxtjs/i18n": "7.2.1",
     "@nuxtjs/pwa": "3.3.5",
     "@nuxtjs/svg-sprite": "0.5.2",
-    "core-js": "3.22.0",
+    "core-js": "3.22.1",
     "nuxt": "2.15.8"
   },
   "devDependencies": {
