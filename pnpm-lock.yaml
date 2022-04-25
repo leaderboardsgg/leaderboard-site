@@ -29,7 +29,7 @@ specifiers:
   '@vue/test-utils': 1.3.0
   '@vueuse/core': 8.3.1
   autoprefixer: 10.4.5
-  axios: 0.26.1
+  axios: 0.27.0
   babel-core: 7.0.0-bridge.0
   babel-jest: 27.5.1
   core-js: 3.22.2
@@ -91,7 +91,7 @@ devDependencies:
   '@vue/test-utils': 1.3.0
   '@vueuse/core': 8.3.1
   autoprefixer: 10.4.5_postcss@8.4.12
-  axios: 0.26.1
+  axios: 0.27.0
   babel-core: 7.0.0-bridge.0_@babel+core@7.17.9
   babel-jest: 27.5.1_@babel+core@7.17.9
   dotenv-safe: 8.2.0
@@ -1861,11 +1861,11 @@ packages:
       ufo: 0.7.11
     dev: false
 
-  /@nuxt/kit-edge/3.0.0-rc.1-27510703.46ecbc5:
-    resolution: {integrity: sha512-cDExp5b1lKgYCPo3J+3j3ubJFq7+9c7XtGaDYIZDel+DBacGaA/o8yzRHrPEan9oSDuNnkc0xqSuWz5inLMH7g==}
+  /@nuxt/kit-edge/3.0.0-rc.1-27515100.b8d2e64:
+    resolution: {integrity: sha512-CUy2w6yILppYLiDmZG1o303DRW7JorrDw4k/a5bQSo9u6X/7riOyYtUt3t4uWwne2ZPFaHNqcKdMSX569Dd1uw==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.1-27510703.46ecbc5
+      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.1-27515100.b8d2e64
       c12: 0.2.7
       consola: 2.15.3
       defu: 6.0.0
@@ -1926,8 +1926,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.0.0-rc.1-27510703.46ecbc5:
-    resolution: {integrity: sha512-l32IHHYH8qPqwOZlqu2yWk1p2B+M5iRHrqhH2/vK1ZC3KhBSn9dwcfTsBiSo3AmJ/ello2Tx8qCftygdF7HJ3w==}
+  /@nuxt/schema-edge/3.0.0-rc.1-27515100.b8d2e64:
+    resolution: {integrity: sha512-+/1yGOeGqdOVQ86vBESaFszI6/UHKJLVREPnViOHg5upCb3BcJ/m2Z9n3/M2rvBHg2o9h79zbt+rMJfRLM2OXQ==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
       c12: 0.2.7
@@ -2314,7 +2314,7 @@ packages:
   /@nuxtjs/tailwindcss/5.0.3_ts-node@10.7.0:
     resolution: {integrity: sha512-nkr5/K/ILQs63414JqCyBApaAE5EKZ3dq9u8O98LryS91O5pqnvhvbD6aRPmIgf6zDhFfzlfCB040GUSAa03og==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.1-27510703.46ecbc5
+      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.1-27515100.b8d2e64
       '@nuxt/postcss8': 1.1.3
       autoprefixer: 10.4.5_postcss@8.4.12
       chalk: 4.1.2
@@ -3648,7 +3648,7 @@ packages:
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.14.8
+      follow-redirects: 1.14.9
     transitivePeerDependencies:
       - debug
     dev: false
@@ -3656,9 +3656,19 @@ packages:
   /axios/0.26.1:
     resolution: {integrity: sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==}
     dependencies:
-      follow-redirects: 1.14.8
+      follow-redirects: 1.14.9
     transitivePeerDependencies:
       - debug
+    dev: false
+
+  /axios/0.27.0:
+    resolution: {integrity: sha512-XV/WrPxXfzgZ8j4lcB5i6LyaXmi90yetmV/Fem0kmglGx+mpY06CiweL3YxU6wOTNLmqLUePW4G8h45nGZ/+pA==}
+    dependencies:
+      follow-redirects: 1.14.9
+      form-data: 4.0.0
+    transitivePeerDependencies:
+      - debug
+    dev: true
 
   /babel-code-frame/6.26.0:
     resolution: {integrity: sha1-Y/1D99weO7fONZR9uP42mj9Yx0s=}
@@ -6291,8 +6301,8 @@ packages:
       readable-stream: 2.3.7
     dev: false
 
-  /follow-redirects/1.14.8:
-    resolution: {integrity: sha512-1x0S9UVJHsQprFcEC/qnNzBLcIxsjAV905f/UkQxbclCsoTWlacCNOpQa/anodLl2uaEKFhfWOvM2Qg77+15zA==}
+  /follow-redirects/1.14.9:
+    resolution: {integrity: sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==}
     engines: {node: '>=4.0'}
     peerDependencies:
       debug: '*'
@@ -6340,6 +6350,15 @@ packages:
 
   /form-data/3.0.1:
     resolution: {integrity: sha512-RHkBKtLWUVwd7SqRIvCZMEvAMoGUp0XU+seQiZejj0COz3RI3hWP4sCv3gZWWLjJTd7rGwcsF5eKZGii0r/hbg==}
+    engines: {node: '>= 6'}
+    dependencies:
+      asynckit: 0.4.0
+      combined-stream: 1.0.8
+      mime-types: 2.1.34
+    dev: true
+
+  /form-data/4.0.0:
+    resolution: {integrity: sha512-ETEklSGi5t0QMZuiXoA/Q6vcnxcLQP5vdugSpuAyi6SVGi2clPPp+xgEhuMaHC+zGgn31Kd235W35f7Hykkaww==}
     engines: {node: '>= 6'}
     dependencies:
       asynckit: 0.4.0
@@ -6908,7 +6927,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.8
+      follow-redirects: 1.14.9
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
