@@ -29,7 +29,7 @@ specifiers:
   '@vue/test-utils': 1.3.0
   '@vueuse/core': 8.3.1
   autoprefixer: 10.4.5
-  axios: 0.27.0
+  axios: 0.27.1
   babel-core: 7.0.0-bridge.0
   babel-jest: 27.5.1
   core-js: 3.22.2
@@ -91,7 +91,7 @@ devDependencies:
   '@vue/test-utils': 1.3.0
   '@vueuse/core': 8.3.1
   autoprefixer: 10.4.5_postcss@8.4.12
-  axios: 0.27.0
+  axios: 0.27.1
   babel-core: 7.0.0-bridge.0_@babel+core@7.17.9
   babel-jest: 27.5.1_@babel+core@7.17.9
   dotenv-safe: 8.2.0
@@ -1861,11 +1861,11 @@ packages:
       ufo: 0.7.11
     dev: false
 
-  /@nuxt/kit-edge/3.0.0-rc.1-27515100.b8d2e64:
-    resolution: {integrity: sha512-CUy2w6yILppYLiDmZG1o303DRW7JorrDw4k/a5bQSo9u6X/7riOyYtUt3t4uWwne2ZPFaHNqcKdMSX569Dd1uw==}
+  /@nuxt/kit-edge/3.0.0-rc.1-27515112.2d202b5:
+    resolution: {integrity: sha512-LBXNzAd6FSrWokHNPk8kL1Nz4v7WUP625wQrrItbI+2k91/L3gskfOBmwMnJNJa/NCDtPCMgeLArXExlF7ZrdQ==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.1-27515100.b8d2e64
+      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.1-27515112.2d202b5
       c12: 0.2.7
       consola: 2.15.3
       defu: 6.0.0
@@ -1926,8 +1926,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.0.0-rc.1-27515100.b8d2e64:
-    resolution: {integrity: sha512-+/1yGOeGqdOVQ86vBESaFszI6/UHKJLVREPnViOHg5upCb3BcJ/m2Z9n3/M2rvBHg2o9h79zbt+rMJfRLM2OXQ==}
+  /@nuxt/schema-edge/3.0.0-rc.1-27515112.2d202b5:
+    resolution: {integrity: sha512-JTgExxeoLha+42EMqJmqNu+dN0kjaLZ8x+2bjZlik3KPPWS+6Vwb/D3XKAd33mD89Z+dgEPOK6/+ZlE64gAK+A==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
       c12: 0.2.7
@@ -2314,7 +2314,7 @@ packages:
   /@nuxtjs/tailwindcss/5.0.3_ts-node@10.7.0:
     resolution: {integrity: sha512-nkr5/K/ILQs63414JqCyBApaAE5EKZ3dq9u8O98LryS91O5pqnvhvbD6aRPmIgf6zDhFfzlfCB040GUSAa03og==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.1-27515100.b8d2e64
+      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.1-27515112.2d202b5
       '@nuxt/postcss8': 1.1.3
       autoprefixer: 10.4.5_postcss@8.4.12
       chalk: 4.1.2
@@ -3721,8 +3721,8 @@ packages:
       - debug
     dev: false
 
-  /axios/0.27.0:
-    resolution: {integrity: sha512-XV/WrPxXfzgZ8j4lcB5i6LyaXmi90yetmV/Fem0kmglGx+mpY06CiweL3YxU6wOTNLmqLUePW4G8h45nGZ/+pA==}
+  /axios/0.27.1:
+    resolution: {integrity: sha512-ePNMai55xo5GsXajb/k756AqZqpqeDaGwGcdvbZLSSELbbYwsIn2jNmGfUPEwd8j/yu4OoMstLLIVa4t0MneEA==}
     dependencies:
       follow-redirects: 1.14.9
       form-data: 4.0.0
