@@ -28,7 +28,7 @@ specifiers:
   '@typescript-eslint/parser': 5.21.0
   '@vue/test-utils': 1.3.0
   '@vueuse/core': 8.3.1
-  autoprefixer: 10.4.6
+  autoprefixer: 10.4.7
   axios: 0.27.2
   babel-core: 7.0.0-bridge.0
   babel-jest: 27.5.1
@@ -90,7 +90,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.21.0_eslint@8.14.0+typescript@4.6.4
   '@vue/test-utils': 1.3.0
   '@vueuse/core': 8.3.1
-  autoprefixer: 10.4.6_postcss@8.4.13
+  autoprefixer: 10.4.7_postcss@8.4.13
   axios: 0.27.2
   babel-core: 7.0.0-bridge.0_@babel+core@7.17.10
   babel-jest: 27.5.1_@babel+core@7.17.10
@@ -1896,11 +1896,11 @@ packages:
       ufo: 0.7.11
     dev: false
 
-  /@nuxt/kit-edge/3.0.0-rc.1-27520989.22954d0:
-    resolution: {integrity: sha512-0zNhrgp1tfmOH5S7Tmtxi3TvU05P3lRLc76KOsu8yhhtV+ixquFxtw8VlgUldvDBUizsnY2Bx279yBVjzARNdA==}
+  /@nuxt/kit-edge/3.0.0-rc.1-27524767.4826918:
+    resolution: {integrity: sha512-uFb65KlfDSNAQr6ZOH98P6dLFQ5XpHE5eEV+bm0Seh5FUtJ06XgMthEREr+iDz7qiMOOr2YdqsHqDLZvDe4tAw==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.1-27520989.22954d0
+      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.1-27524767.4826918
       c12: 0.2.7
       consola: 2.15.3
       defu: 6.0.0
@@ -1949,7 +1949,7 @@ packages:
   /@nuxt/postcss8/1.1.3:
     resolution: {integrity: sha512-CdHtErhvQwueNZPBOmlAAKrNCK7aIpZDYhtS7TzXlSgPHHox1g3cSlf+Ke9oB/8t4mNNjdB+prclme2ibuCOEA==}
     dependencies:
-      autoprefixer: 10.4.6_postcss@8.4.13
+      autoprefixer: 10.4.7_postcss@8.4.13
       css-loader: 5.2.7
       defu: 3.2.2
       postcss: 8.4.13
@@ -1961,8 +1961,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.0.0-rc.1-27520989.22954d0:
-    resolution: {integrity: sha512-FTGq322moUA4vyAtf335oIXSkaIExd0tx0AIXm40aKlqsvy2pZ8S/cZ+ZHHjU68QOKZ8wnnQJTeky3x55Cm6ig==}
+  /@nuxt/schema-edge/3.0.0-rc.1-27524767.4826918:
+    resolution: {integrity: sha512-KL13DWzJI8HEJP9QoOjU07csMu+SccN++9yknFovGT6E6OZXTAPP8PgtXGRoAFtuL2lR+rZr5kTkVP2Ky1sYJQ==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
       c12: 0.2.7
@@ -2130,7 +2130,7 @@ packages:
       '@nuxt/utils': 2.15.8
       babel-loader: 8.2.3_a48671a7a0b12e26689d4cec3e702e28
       cache-loader: 4.1.0_webpack@4.46.0
-      caniuse-lite: 1.0.30001334
+      caniuse-lite: 1.0.30001335
       consola: 2.15.3
       css-loader: 4.3.0_webpack@4.46.0
       cssnano: 4.1.11
@@ -2349,9 +2349,9 @@ packages:
   /@nuxtjs/tailwindcss/5.0.3_ts-node@10.7.0:
     resolution: {integrity: sha512-nkr5/K/ILQs63414JqCyBApaAE5EKZ3dq9u8O98LryS91O5pqnvhvbD6aRPmIgf6zDhFfzlfCB040GUSAa03og==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.1-27520989.22954d0
+      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.1-27524767.4826918
       '@nuxt/postcss8': 1.1.3
-      autoprefixer: 10.4.6_postcss@8.4.13
+      autoprefixer: 10.4.7_postcss@8.4.13
       chalk: 4.1.2
       clear-module: 4.1.2
       consola: 2.15.3
@@ -3704,15 +3704,15 @@ packages:
     engines: {node: '>= 4.5.0'}
     hasBin: true
 
-  /autoprefixer/10.4.6_postcss@8.4.13:
-    resolution: {integrity: sha512-Rvzel0AZO9tJNm3ydySK80PpkWoEZTGC5bHUh/xbrP8qJCy08NFBwNGPcozy3d3SDIM0b2kNxw2K7jAIYFF01A==}
+  /autoprefixer/10.4.7_postcss@8.4.13:
+    resolution: {integrity: sha512-ypHju4Y2Oav95SipEcCcI5J7CGPuvz8oat7sUtYj3ClK44bldfvtvcxK6IEK++7rqB7YchDGzweZIBG+SD0ZAA==}
     engines: {node: ^10 || ^12 || >=14}
     hasBin: true
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
       browserslist: 4.20.3
-      caniuse-lite: 1.0.30001334
+      caniuse-lite: 1.0.30001335
       fraction.js: 4.2.0
       normalize-range: 0.1.2
       picocolors: 1.0.0
@@ -3725,7 +3725,7 @@ packages:
     hasBin: true
     dependencies:
       browserslist: 4.20.3
-      caniuse-lite: 1.0.30001334
+      caniuse-lite: 1.0.30001335
       normalize-range: 0.1.2
       num2fraction: 1.2.2
       picocolors: 0.2.1
@@ -4160,7 +4160,7 @@ packages:
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
-      caniuse-lite: 1.0.30001334
+      caniuse-lite: 1.0.30001335
       electron-to-chromium: 1.4.129
       escalade: 3.1.1
       node-releases: 2.0.4
@@ -4382,13 +4382,13 @@ packages:
     resolution: {integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==}
     dependencies:
       browserslist: 4.20.3
-      caniuse-lite: 1.0.30001334
+      caniuse-lite: 1.0.30001335
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: false
 
-  /caniuse-lite/1.0.30001334:
-    resolution: {integrity: sha512-kbaCEBRRVSoeNs74sCuq92MJyGrMtjWVfhltoHUCW4t4pXFvGjUBrfo47weBRViHkiV3eBYyIsfl956NtHGazw==}
+  /caniuse-lite/1.0.30001335:
+    resolution: {integrity: sha512-ddP1Tgm7z2iIxu6QTtbZUv6HJxSaV/PZeSrWFZtbY4JZ69tOeNhBCl3HyRQgeNZKE5AOn1kpV7fhljigy0Ty3w==}
 
   /chalk/1.1.3:
     resolution: {integrity: sha1-qBFcVeSnAv5NFQq9OHKCKn4J/Jg=}
@@ -10152,7 +10152,7 @@ packages:
     dependencies:
       autoprefixer: 9.8.8
       browserslist: 4.20.3
-      caniuse-lite: 1.0.30001334
+      caniuse-lite: 1.0.30001335
       css-blank-pseudo: 0.1.4
       css-has-pseudo: 0.10.0
       css-prefers-color-scheme: 3.1.1
