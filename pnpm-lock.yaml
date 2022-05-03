@@ -17,7 +17,7 @@ specifiers:
   '@nuxtjs/tailwindcss': 5.0.3
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
-  '@testing-library/user-event': 13.5.0
+  '@testing-library/user-event': 14.1.1
   '@testing-library/vue': 5.8.2
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
@@ -79,7 +79,7 @@ devDependencies:
   '@nuxtjs/tailwindcss': 5.0.3_ts-node@10.7.0
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
-  '@testing-library/user-event': 13.5.0_@testing-library+dom@8.13.0
+  '@testing-library/user-event': 14.1.1_@testing-library+dom@8.13.0
   '@testing-library/vue': 5.8.2
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
@@ -1896,11 +1896,11 @@ packages:
       ufo: 0.7.11
     dev: false
 
-  /@nuxt/kit-edge/3.0.0-rc.2-27525415.a8d42d5:
-    resolution: {integrity: sha512-WfUj777D53SWprNmghE2JcgS/IAeU/NBLTsgJQf8EZG/GFjM62w/YCiY3zGcyVMsxHBSgnE9VUv5RZ5Gl8Os/A==}
+  /@nuxt/kit-edge/3.0.0-rc.2-27526179.f74a523:
+    resolution: {integrity: sha512-ksCqbrGhFwejEPryBsGQG9tL2nlidtnL4WVlnpa8eklnP4otG+mzdNPtqETVWQ/Ye6XuijfMjVTcvIV7HvOyWw==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.2-27525415.a8d42d5
+      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.2-27526179.f74a523
       c12: 0.2.7
       consola: 2.15.3
       defu: 6.0.0
@@ -1961,8 +1961,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.0.0-rc.2-27525415.a8d42d5:
-    resolution: {integrity: sha512-CrERM3lg+TXjBToAI/XmfLdJbGoQU600iUhZR9VIbUpNqq+nFPnIw1DxS6XioyBq/4rh/GmaHC+LxZFxNkigCA==}
+  /@nuxt/schema-edge/3.0.0-rc.2-27526179.f74a523:
+    resolution: {integrity: sha512-oy0N/bFkL0GI5cNCYA395rF/tsl7M6ULxyxntl+bw7JUfT9Vg6hSnyT26xH6CqRUnJMaFx244HuHDnkXBy86Cw==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
       c12: 0.2.7
@@ -2349,7 +2349,7 @@ packages:
   /@nuxtjs/tailwindcss/5.0.3_ts-node@10.7.0:
     resolution: {integrity: sha512-nkr5/K/ILQs63414JqCyBApaAE5EKZ3dq9u8O98LryS91O5pqnvhvbD6aRPmIgf6zDhFfzlfCB040GUSAa03og==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.2-27525415.a8d42d5
+      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.2-27526179.f74a523
       '@nuxt/postcss8': 1.1.3
       autoprefixer: 10.4.7_postcss@8.4.13
       chalk: 4.1.2
@@ -2445,13 +2445,12 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/user-event/13.5.0_@testing-library+dom@8.13.0:
-    resolution: {integrity: sha512-5Kwtbo3Y/NowpkbRuSepbyMFkZmHgD+vPzYB/RJ4oxt5Gj/avFFBYjhw27cqSVPVw/3a67NK1PbiIr9k4Gwmdg==}
-    engines: {node: '>=10', npm: '>=6'}
+  /@testing-library/user-event/14.1.1_@testing-library+dom@8.13.0:
+    resolution: {integrity: sha512-XrjH/iEUqNl9lF2HX9YhPNV7Amntkcnpw0Bo1KkRzowNDcgSN9i0nm4Q8Oi5wupgdfPaJNMAWa61A+voD6Kmwg==}
+    engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
-      '@babel/runtime': 7.16.3
       '@testing-library/dom': 8.13.0
     dev: true
 
