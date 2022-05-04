@@ -14,7 +14,7 @@ specifiers:
   '@nuxtjs/i18n': 7.2.2
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
-  '@nuxtjs/tailwindcss': 5.0.3
+  '@nuxtjs/tailwindcss': 5.0.4
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.1.1
@@ -76,7 +76,7 @@ devDependencies:
   '@nuxt/typescript-build': 2.1.0_@nuxt+types@2.15.8+eslint@8.14.0
   '@nuxtjs/eslint-config-typescript': 10.0.0_eslint@8.14.0+typescript@4.6.4
   '@nuxtjs/eslint-module': 3.1.0_eslint@8.14.0
-  '@nuxtjs/tailwindcss': 5.0.3_ts-node@10.7.0
+  '@nuxtjs/tailwindcss': 5.0.4_ts-node@10.7.0
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.1.1_@testing-library+dom@8.13.0
@@ -1917,11 +1917,11 @@ packages:
       ufo: 0.7.11
     dev: false
 
-  /@nuxt/kit-edge/3.0.0-rc.2-27526179.f74a523:
-    resolution: {integrity: sha512-ksCqbrGhFwejEPryBsGQG9tL2nlidtnL4WVlnpa8eklnP4otG+mzdNPtqETVWQ/Ye6XuijfMjVTcvIV7HvOyWw==}
+  /@nuxt/kit/3.0.0-rc.2:
+    resolution: {integrity: sha512-uRsV2UWj4sgkXhXq8bMcl+jostzfKsRUNQVIVHOi7TrhuHBnF1UjZJN9UfOAHVVzobQ9zUXLnGL7+PJhQ/xDdw==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.0.0-rc.2-27526179.f74a523
+      '@nuxt/schema': 3.0.0-rc.2
       c12: 0.2.7
       consola: 2.15.3
       defu: 6.0.0
@@ -1982,8 +1982,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.0.0-rc.2-27526179.f74a523:
-    resolution: {integrity: sha512-oy0N/bFkL0GI5cNCYA395rF/tsl7M6ULxyxntl+bw7JUfT9Vg6hSnyT26xH6CqRUnJMaFx244HuHDnkXBy86Cw==}
+  /@nuxt/schema/3.0.0-rc.2:
+    resolution: {integrity: sha512-5lhM+TF8jw2rx4asBtaP91KjEDYMbjid142dEla8TO4DPqZcwtzQ1rm075aGRtywwxjRVZ/e2kcu/3DV53D6VQ==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
       c12: 0.2.7
@@ -2363,11 +2363,12 @@ packages:
       vue-functional-data-merge: 3.1.0
     dev: false
 
-  /@nuxtjs/tailwindcss/5.0.3_ts-node@10.7.0:
-    resolution: {integrity: sha512-nkr5/K/ILQs63414JqCyBApaAE5EKZ3dq9u8O98LryS91O5pqnvhvbD6aRPmIgf6zDhFfzlfCB040GUSAa03og==}
+  /@nuxtjs/tailwindcss/5.0.4_ts-node@10.7.0:
+    resolution: {integrity: sha512-sNU7L0GueSP0dnZzHoqLjO6zqNjVImXvJtm8q+aouxuK+RsnzHorY5DKwNmNN3eJqSw6u7zL0dcIeOXFUjdoWQ==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.0.0-rc.2-27526179.f74a523
+      '@nuxt/kit': 3.0.0-rc.2
       '@nuxt/postcss8': 1.1.3
+      '@types/tailwindcss': 3.0.10
       autoprefixer: 10.4.7_postcss@8.4.13
       chalk: 4.1.2
       clear-module: 4.1.2
@@ -2825,6 +2826,10 @@ packages:
     resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
     dev: true
 
+  /@types/tailwindcss/3.0.10:
+    resolution: {integrity: sha512-1UnZIHO0NOPyPlPFV0HuMjki2SHkvG9uBA1ZehWj/OQMSROk503nuNyyfmJSIT289yewxTbKoPG+KLxYRvfIIg==}
+    dev: true
+
   /@types/tapable/1.0.8:
     resolution: {integrity: sha512-ipixuVrh2OdNmauvtT51o3d8z12p6LtFW9in7U79der/kwejjdNchQC5UMn5u/KxNoM7VHHOs/l8KS8uHxhODQ==}
 
@@ -2992,7 +2997,7 @@ packages:
         optional: true
     dependencies:
       '@typescript-eslint/utils': 5.22.0_eslint@8.14.0+typescript@4.6.4
-      debug: 4.3.3
+      debug: 4.3.4
       eslint: 8.14.0
       tsutils: 3.21.0_typescript@4.6.4
       typescript: 4.6.4
@@ -8949,7 +8954,7 @@ packages:
       array-differ: 3.0.0
       array-union: 2.1.0
       arrify: 2.0.1
-      minimatch: 3.0.4
+      minimatch: 3.1.2
     dev: true
 
   /mustache/2.3.2:
