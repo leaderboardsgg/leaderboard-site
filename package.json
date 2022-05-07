@@ -60,7 +60,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "28.1.0",
     "dotenv-safe": "8.2.0",
-    "eslint": "8.14.0",
+    "eslint": "8.15.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-jest": "26.1.5",
     "eslint-plugin-nuxt": "3.2.0",
