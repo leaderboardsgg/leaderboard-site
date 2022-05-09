@@ -18,7 +18,7 @@ specifiers:
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.1.1
-  '@testing-library/vue': 5.8.2
+  '@testing-library/vue': 5.8.3
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
   '@types/jest': 27.5.0
@@ -80,7 +80,7 @@ devDependencies:
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.1.1_@testing-library+dom@8.13.0
-  '@testing-library/vue': 5.8.2
+  '@testing-library/vue': 5.8.3
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
   '@types/jest': 27.5.0
@@ -2602,8 +2602,8 @@ packages:
       '@testing-library/dom': 8.13.0
     dev: true
 
-  /@testing-library/vue/5.8.2:
-    resolution: {integrity: sha512-evsQjLw3T/c92ZsXflZMzSN72P06VlgUZMIcrRKn5n9ZX7QgQyebB3DgdmPACf6JgNfP8Y3Lm2212FmeMnWlZw==}
+  /@testing-library/vue/5.8.3:
+    resolution: {integrity: sha512-M6+QqP1xuFHixKOeXF9pCLbtiyJZRKfJRP+unBf6Ljm7aS1V2CSS95oTetFoblaj0W1+AC9XJgwmUDtlLoaakQ==}
     engines: {node: '>10.18'}
     peerDependencies:
       vue: ^2.6.10
