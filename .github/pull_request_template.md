@@ -4,7 +4,7 @@ Short description of what was added/changed/removed in this PR
 
 ## Link to Issue
 
-https://github.com/speedrun-website/speedrun.website/issues/<ISSUE_NUMBER>
+Closes https://github.com/leaderboardsgg/leaderboard-site/issues/<ISSUE_NUMBER>
 
 ## Acceptance
 
