@@ -45,7 +45,7 @@
     "@nuxtjs/tailwindcss": "5.0.4",
     "@testing-library/dom": "8.13.0",
     "@testing-library/jest-dom": "5.16.4",
-    "@testing-library/user-event": "14.1.1",
+    "@testing-library/user-event": "14.2.0",
     "@testing-library/vue": "5.8.3",
     "@types/dotenv-safe": "8.1.2",
     "@types/glob": "7.2.0",
