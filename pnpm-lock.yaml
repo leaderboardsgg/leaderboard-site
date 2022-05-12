@@ -22,7 +22,7 @@ specifiers:
   '@testing-library/vue': 5.8.3
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
-  '@types/jest': 27.5.0
+  '@types/jest': 27.5.1
   '@types/lodash': 4.14.182
   '@types/node': 17.0.16
   '@typescript-eslint/eslint-plugin': 5.23.0
@@ -90,7 +90,7 @@ devDependencies:
   '@testing-library/vue': 5.8.3_9065e7474e033a8e4b95615fc8e6c36c
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
-  '@types/jest': 27.5.0
+  '@types/jest': 27.5.1
   '@types/lodash': 4.14.182
   '@types/node': 17.0.16
   '@typescript-eslint/eslint-plugin': 5.23.0_17b6d2ce7129f0b36f2c30ae592c16e7
@@ -122,7 +122,7 @@ devDependencies:
   prettier: 2.6.2
   pretty-quick: 3.1.3_prettier@2.6.2
   tailwindcss: 3.0.24_ts-node@10.7.0
-  ts-jest: 28.0.2_913c44ab8440320d2c36274e3abff73e
+  ts-jest: 28.0.2_67e07a830b058e7d1d5986d080d52d80
   ts-node: 10.7.0_7b0941fb53825b1bf3f7e583ae8cf218
   typescript: 4.6.4
   vue: 2.6.14
@@ -2815,8 +2815,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/27.5.0:
-    resolution: {integrity: sha512-9RBFx7r4k+msyj/arpfaa0WOOEcaAZNmN+j80KFbFCoSqCJGHTz7YMAMGQW9Xmqm5w6l5c25vbSjMwlikJi5+g==}
+  /@types/jest/27.5.1:
+    resolution: {integrity: sha512-fUy7YRpT+rHXto1YlL+J9rs0uLGyiqVt3ZOTQR+4ROc47yNl8WLdVLgUloBRhOxP1PZvguHl44T3H0wAWxahYQ==}
     dependencies:
       jest-matcher-utils: 27.5.1
       pretty-format: 27.5.1
@@ -2961,7 +2961,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.3:
     resolution: {integrity: sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==}
     dependencies:
-      '@types/jest': 27.5.0
+      '@types/jest': 27.5.1
     dev: true
 
   /@types/throttle-debounce/2.1.0:
@@ -12642,7 +12642,7 @@ packages:
       punycode: 2.1.1
     dev: true
 
-  /ts-jest/28.0.2_913c44ab8440320d2c36274e3abff73e:
+  /ts-jest/28.0.2_67e07a830b058e7d1d5986d080d52d80:
     resolution: {integrity: sha512-IOZMb3D0gx6IHO9ywPgiQxJ3Zl4ECylEFwoVpENB55aTn5sdO0Ptyx/7noNBxAaUff708RqQL4XBNxxOVjY0vQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     hasBin: true
@@ -12664,7 +12664,7 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.17.10
-      '@types/jest': 27.5.0
+      '@types/jest': 27.5.1
       babel-jest: 28.1.0_@babel+core@7.17.10
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
