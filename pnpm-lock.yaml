@@ -45,7 +45,7 @@ specifiers:
   eslint-plugin-tailwindcss: 3.5.0
   eslint-plugin-vue: 8.7.1
   eslint-plugin-vuejs-accessibility: 1.1.1
-  glob: 8.0.2
+  glob: 8.0.3
   husky: 7.0.4
   jest: 28.1.0
   jest-environment-jsdom: 28.1.0
@@ -112,7 +112,7 @@ devDependencies:
   eslint-plugin-tailwindcss: 3.5.0_ts-node@10.7.0
   eslint-plugin-vue: 8.7.1_eslint@8.15.0
   eslint-plugin-vuejs-accessibility: 1.1.1_eslint@8.15.0
-  glob: 8.0.2
+  glob: 8.0.3
   husky: 7.0.4
   jest: 28.1.0_f5b891dc3625f6fdb6e0c07ac787602f
   jest-environment-jsdom: 28.1.0
@@ -7272,8 +7272,8 @@ packages:
       once: 1.4.0
       path-is-absolute: 1.0.1
 
-  /glob/8.0.2:
-    resolution: {integrity: sha512-0jzor6jfIKaDg/2FIN+9L8oDxzHTkI/+vwJimOmOZjaVjFVVZJFojOYbbWC0okXbBVSgYpbcuQ7xy6gDP9f8gw==}
+  /glob/8.0.3:
+    resolution: {integrity: sha512-ull455NHSHI/Y1FqGaaYFaLGkNMMJbavMrEGFXG/PGrg6y7sutWHUHrz6gy6WEBH6akM1M414dWKCNs+IhKdiQ==}
     engines: {node: '>=12'}
     dependencies:
       fs.realpath: 1.0.0
