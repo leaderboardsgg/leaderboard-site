@@ -15,7 +15,7 @@ specifiers:
   '@nuxtjs/i18n': 7.2.2
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
-  '@nuxtjs/tailwindcss': 5.0.4
+  '@nuxtjs/tailwindcss': 5.1.2
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.2.0
@@ -83,7 +83,7 @@ devDependencies:
   '@nuxt/vue-app': 2.15.8
   '@nuxtjs/eslint-config-typescript': 10.0.0_eslint@8.16.0+typescript@4.6.4
   '@nuxtjs/eslint-module': 3.1.0_eslint@8.16.0+webpack@5.72.0
-  '@nuxtjs/tailwindcss': 5.0.4_ts-node@10.8.0+webpack@5.72.0
+  '@nuxtjs/tailwindcss': 5.1.2_ts-node@10.8.0+webpack@5.72.0
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.2.0_@testing-library+dom@8.13.0
@@ -1406,6 +1406,17 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
+  /@csstools/selector-specificity/1.0.0_e73911252e8c76a7ba13ab9c39479e7d:
+    resolution: {integrity: sha512-RkYG5KiGNX0fJ5YoI0f4Wfq2Yo74D25Hru4fxTOioYdQvHBxcrrtTTyT5Ozzh2ejcNrhFy7IEts2WyEY7yi5yw==}
+    engines: {node: ^12 || ^14 || >=16}
+    peerDependencies:
+      postcss: ^8.3
+      postcss-selector-parser: ^6.0.10
+    dependencies:
+      postcss: 8.4.14
+      postcss-selector-parser: 6.0.10
+    dev: true
+
   /@eslint/eslintrc/1.3.0:
     resolution: {integrity: sha512-UWW0TMTmk2d7hLcWD1/e2g5HDM/HQ3csaLSqXCfqwh4uNDuNqlaKWXmEsL4Cs41Z0KnILNvwbHAah3C2yt06kw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -1996,11 +2007,11 @@ packages:
       ufo: 0.7.11
     dev: false
 
-  /@nuxt/kit/3.0.0-rc.2_webpack@5.72.0:
-    resolution: {integrity: sha512-uRsV2UWj4sgkXhXq8bMcl+jostzfKsRUNQVIVHOi7TrhuHBnF1UjZJN9UfOAHVVzobQ9zUXLnGL7+PJhQ/xDdw==}
+  /@nuxt/kit/3.0.0-rc.3_webpack@5.72.0:
+    resolution: {integrity: sha512-aD993HKXZ76cwxkM2LCwWRQaOI3RjLCg/kj+8ZS6qN4VrpwrZp4xM59YYIYs3/Vze4OG3D4+0gr0u5zdgf8v8g==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
-      '@nuxt/schema': 3.0.0-rc.2_webpack@5.72.0
+      '@nuxt/schema': 3.0.0-rc.3_webpack@5.72.0
       c12: 0.2.7
       consola: 2.15.3
       defu: 6.0.0
@@ -2011,12 +2022,12 @@ packages:
       knitwork: 0.1.1
       lodash.template: 4.5.0
       mlly: 0.5.2
-      pathe: 0.2.0
+      pathe: 0.3.0
       pkg-types: 0.3.2
       scule: 0.2.1
       semver: 7.3.7
       unctx: 1.1.4_webpack@5.72.0
-      unimport: 0.1.8_webpack@5.72.0
+      unimport: 0.1.9_webpack@5.72.0
       untyped: 0.4.4
     transitivePeerDependencies:
       - esbuild
@@ -2065,20 +2076,20 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema/3.0.0-rc.2_webpack@5.72.0:
-    resolution: {integrity: sha512-5lhM+TF8jw2rx4asBtaP91KjEDYMbjid142dEla8TO4DPqZcwtzQ1rm075aGRtywwxjRVZ/e2kcu/3DV53D6VQ==}
+  /@nuxt/schema/3.0.0-rc.3_webpack@5.72.0:
+    resolution: {integrity: sha512-vICmOpIk8SjVVUN+MadAMMF/MEXqPgY3jquSjSkmWdydtMOBoxrBpl+5nkpJCtsCq5KJAK8WI+9SCNIkEASCgw==}
     engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
     dependencies:
       c12: 0.2.7
       create-require: 1.1.1
       defu: 6.0.0
       jiti: 1.13.0
-      pathe: 0.2.0
+      pathe: 0.3.0
       postcss-import-resolver: 2.0.0
       scule: 0.2.1
       std-env: 3.1.1
-      ufo: 0.8.3
-      unimport: 0.1.8_webpack@5.72.0
+      ufo: 0.8.4
+      unimport: 0.1.9_webpack@5.72.0
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -2506,23 +2517,23 @@ packages:
       vue-functional-data-merge: 3.1.0
     dev: false
 
-  /@nuxtjs/tailwindcss/5.0.4_ts-node@10.8.0+webpack@5.72.0:
-    resolution: {integrity: sha512-sNU7L0GueSP0dnZzHoqLjO6zqNjVImXvJtm8q+aouxuK+RsnzHorY5DKwNmNN3eJqSw6u7zL0dcIeOXFUjdoWQ==}
+  /@nuxtjs/tailwindcss/5.1.2_ts-node@10.8.0+webpack@5.72.0:
+    resolution: {integrity: sha512-GURUcEyAE6hsOWbLNGOiu832HX53ff2yrbfFJ7qqkFXnq0RNeaoOip+z5MX2mLcmyxlDtFjNmu2rw2rfCTsvHA==}
     dependencies:
-      '@nuxt/kit': 3.0.0-rc.2_webpack@5.72.0
+      '@nuxt/kit': 3.0.0-rc.3_webpack@5.72.0
       '@nuxt/postcss8': 1.1.3_webpack@5.72.0
       '@types/tailwindcss': 3.0.10
       autoprefixer: 10.4.7_postcss@8.4.14
       chalk: 4.1.2
       clear-module: 4.1.2
       consola: 2.15.3
-      defu: 5.0.1
+      defu: 6.0.0
       postcss: 8.4.14
       postcss-custom-properties: 12.1.7_postcss@8.4.14
-      postcss-nesting: 10.1.4_postcss@8.4.14
+      postcss-nesting: 10.1.7_postcss@8.4.14
       tailwind-config-viewer: 1.7.0_tailwindcss@3.0.24
       tailwindcss: 3.0.24_ts-node@10.8.0
-      ufo: 0.7.11
+      ufo: 0.8.4
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -4714,7 +4725,7 @@ packages:
     dev: false
 
   /callsites/2.0.0:
-    resolution: {integrity: sha1-BuuE8A7qQT2oav/vrL/7Ngk7PFA=}
+    resolution: {integrity: sha512-ksWePWBloaWPxJYQ8TL0JHvtci6G5QTKwQ95RcWAa/lzoAKuAOflGdAK92hpHXjkwb8zLxoLNUoNYZgVsaJzvQ==}
     engines: {node: '>=4'}
     dev: false
 
@@ -5839,6 +5850,7 @@ packages:
 
   /defu/5.0.1:
     resolution: {integrity: sha512-EPS1carKg+dkEVy3qNTqIdp2qV7mUP08nIsupfwQpz++slCVRw7qbQyWvSTig+kFPwz2XXp5/kIIkH+CwrJKkQ==}
+    dev: false
 
   /defu/6.0.0:
     resolution: {integrity: sha512-t2MZGLf1V2rV4VBZbWIaXKdX/mUcYW0n2znQZoADBkGGxYL8EWqCuCZBmJPJ/Yy9fofJkyuuSuo5GSwo0XdEgw==}
@@ -10144,6 +10156,10 @@ packages:
     resolution: {integrity: sha512-sTitTPYnn23esFR3RlqYBWn4c45WGeLcsKzQiUpXJAyfcWkolvlYpV8FLo7JishK946oQwMFUCHXQ9AjGPKExw==}
     dev: true
 
+  /pathe/0.3.0:
+    resolution: {integrity: sha512-3vUjp552BJzCw9vqKsO5sttHkbYqqsZtH0x1PNtItgqx8BXEXzoY1SYRKcL6BTyVh4lGJGLj0tM42elUDMvcYA==}
+    dev: true
+
   /pbkdf2/3.1.2:
     resolution: {integrity: sha512-iuh7L6jA7JEGu2WxDwtQP1ddOpaJNC4KlDEFfdQajSGgGPNi4OyDc2R7QnbY2bR9QjBVGwgvTdNJZoE7RaxUMA==}
     engines: {node: '>=0.12'}
@@ -10699,12 +10715,13 @@ packages:
       postcss-selector-parser: 6.0.10
     dev: true
 
-  /postcss-nesting/10.1.4_postcss@8.4.14:
-    resolution: {integrity: sha512-2ixdQ59ik/Gt1+oPHiI1kHdwEI8lLKEmui9B1nl6163ANLC+GewQn7fXMxJF2JSb4i2MKL96GU8fIiQztK4TTA==}
+  /postcss-nesting/10.1.7_postcss@8.4.14:
+    resolution: {integrity: sha512-Btho5XzDTpl117SmB3tvUHP8txg5n7Ayv7vQ5m4b1zXkfs1Y52C67uZjZ746h7QvOJ+rLRg50OlhhjFW+IQY6A==}
     engines: {node: ^12 || ^14 || >=16}
     peerDependencies:
       postcss: ^8.4
     dependencies:
+      '@csstools/selector-specificity': 1.0.0_e73911252e8c76a7ba13ab9c39479e7d
       postcss: 8.4.14
       postcss-selector-parser: 6.0.10
     dev: true
@@ -12843,6 +12860,11 @@ packages:
 
   /ufo/0.8.3:
     resolution: {integrity: sha512-AIkk06G21y/P+NCatfU+1qldCmI0XCszZLn8AkuKotffF3eqCvlce0KuwM7ZemLE/my0GSYADOAeM5zDYWMB+A==}
+    dev: false
+
+  /ufo/0.8.4:
+    resolution: {integrity: sha512-/+BmBDe8GvlB2nIflWasLLAInjYG0bC9HRnfEpNi4sw77J2AJNnEVnTDReVrehoh825+Q/evF3THXTAweyam2g==}
+    dev: true
 
   /uglify-js/3.15.4:
     resolution: {integrity: sha512-vMOPGDuvXecPs34V74qDKk4iJ/SN4vL3Ow/23ixafENYvtrNvtbcgUeugTcUGRGsOF/5fU8/NYSL5Hyb3l1OJA==}
@@ -12898,8 +12920,8 @@ packages:
     engines: {node: '>=4'}
     dev: false
 
-  /unimport/0.1.8_webpack@5.72.0:
-    resolution: {integrity: sha512-Eynu+yyVVZ76te5DbE3744z1YjqoES+muNlNP03kVURHC/S2IR65mjzdmT6wpWvU78q488dK0fQ+tUK9UEndZA==}
+  /unimport/0.1.9_webpack@5.72.0:
+    resolution: {integrity: sha512-ap7MnS7zuA4A8eAyA8CHN3YFw1tMpWQK3rSrh6jvrB3tWkT4EKvslg9sNoax5WuL8TnMaXSydRxwOgUUXrnovg==}
     dependencies:
       '@rollup/pluginutils': 4.2.1
       escape-string-regexp: 5.0.0
@@ -12907,9 +12929,9 @@ packages:
       local-pkg: 0.4.1
       magic-string: 0.26.1
       mlly: 0.5.2
-      pathe: 0.2.0
+      pathe: 0.3.0
       scule: 0.2.1
-      unplugin: 0.6.2_webpack@5.72.0
+      unplugin: 0.6.3_webpack@5.72.0
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -13019,6 +13041,29 @@ packages:
 
   /unplugin/0.6.2_webpack@5.72.0:
     resolution: {integrity: sha512-+QONc2uBFQbeo4x5mlJHjTKjR6pmuchMpGVrWhwdGFFMb4ttFZ4E9KqhOOrNcm3Q8NNyB1vJ4s5e36IZC7UWYw==}
+    peerDependencies:
+      esbuild: '>=0.13'
+      rollup: ^2.50.0
+      vite: ^2.3.0
+      webpack: 4 || 5
+    peerDependenciesMeta:
+      esbuild:
+        optional: true
+      rollup:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
+    dependencies:
+      chokidar: 3.5.3
+      webpack: 5.72.0
+      webpack-sources: 3.2.3
+      webpack-virtual-modules: 0.4.3
+    dev: true
+
+  /unplugin/0.6.3_webpack@5.72.0:
+    resolution: {integrity: sha512-CoW88FQfCW/yabVc4bLrjikN9HC8dEvMU4O7B6K2jsYMPK0l6iAnd9dpJwqGcmXJKRCU9vwSsy653qg+RK0G6A==}
     peerDependencies:
       esbuild: '>=0.13'
       rollup: ^2.50.0
