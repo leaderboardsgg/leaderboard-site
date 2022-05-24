@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint", // ESLint
+    "esbenp.prettier-vscode", // Prettier
+    "christian-kohler.npm-intellisense", // This is just really nice and everyone should use it :)))
+    "bradlc.vscode-tailwindcss", // Tooling for Tailwind
+    "csstools.postcss", // PostCSS as Tailwind is built on top of it
+    "Vue.volar" // Vue 3 Language support for VSC https://github.com/johnsoncodehk/volar
+  ]
+}
