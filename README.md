@@ -66,6 +66,10 @@ The components directory contains your Vue.js components. Components make up the
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
 
+#### `i18n`
+
+`i18n` (short for internationalizaion), is where we'll be storing our locales for translating this site into different languages.
+
 #### `layouts`
 
 Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
@@ -92,8 +96,6 @@ Example: `/static/robots.txt` is mapped as `/robots.txt`.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
 
-#### `store`
+#### `types`
 
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+This directory contains all the custom types for our use with Typescript.
