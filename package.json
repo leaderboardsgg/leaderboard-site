@@ -12,7 +12,10 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "precommit": "pnpm pretty:staged ",
+    "lint:fix": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore . --fix",
+    "lint:all": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+    "lint": "pnpm lint:all",
+    "precommit": "pnpm lint:all && pnpm pretty:staged ",
     "prepare": "husky install",
     "prettier:check": "prettier --check --ignore-path .prettierignore .",
     "pretty:staged": "pretty-quick --staged",
@@ -24,12 +27,26 @@
   },
   "devDependencies": {
     "@nuxt/vite-builder": "3.0.0-rc.3",
+    "@nuxtjs/eslint-config-typescript": "^10.0.0",
+    "@nuxtjs/eslint-module": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-jest": "^26.2.2",
+    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-vue": "^9.0.1",
+    "eslint-plugin-vuejs-accessibility": "^1.1.1",
     "husky": "^8.0.1",
     "prettier": "^2.6.2",
     "pretty-quick": "^3.1.3",
-    "vue": "3.2.36"
+    "typescript": "^4.7.2",
+    "vue": "3.2.36",
+    "webpack": "^5.72.1"
   },
   "peerDepsInDevDeps": {
-    "vue": "3.2.36"
+    "vue": "3.2.36",
+    "webpack": "^5.72.1"
   }
 }
