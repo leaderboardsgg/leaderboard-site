@@ -1,0 +1,27 @@
+{
+  "name": "leaderboardsgg",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=16.5.0",
+    "npm": ">=8.5.0",
+    "pnpm": ">=6.32.0"
+  },
+  "engineStrict": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "nuxt": "3.0.0-rc.3"
+  },
+  "devDependencies": {
+    "@nuxt/vite-builder": "3.0.0-rc.3",
+    "vue": "3.2.36"
+  },
+  "peerDepsInDevDeps": {
+    "vue": "3.2.36"
+  }
+}
