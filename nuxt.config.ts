@@ -25,6 +25,11 @@ export default defineNuxtConfig({
   // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
   css: ['@/assets/css/tailwind.css'],
 
+  // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
+  ignore: [
+    '**/__tests__',
+  ],
+
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
     // https://go.nuxtjs.dev/typescript

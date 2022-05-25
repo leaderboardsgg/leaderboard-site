@@ -25,7 +25,8 @@ dist
 lib-cov
 node_modules/
 npm-debug.log*
-nuxt.config.ts
+*.config.ts
+*.setup.ts
 pids
 sw.*
 typings/

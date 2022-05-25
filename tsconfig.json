@@ -26,9 +26,19 @@
       "@/*": ["./*"]
     },
     "lib": ["ESNext", "DOM"],
-    "types": ["node", "@nuxt/types", "@types/node"]
+    "types": [
+      "node",
+      "@nuxt/types",
+      "@testing-library/dom",
+      "@testing-library/jest-dom",
+      "@testing-library/vue",
+      "@types/jest",
+      "@types/node",
+      "vite/client",
+      "vitest/globals"
+    ]
   },
-  "exclude": ["node_modules", ".nuxt", "dist"],
+  "exclude": ["node_modules", ".nuxt", ".output", "dist"],
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"
 }
