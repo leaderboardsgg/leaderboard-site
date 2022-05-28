@@ -1,26 +1,30 @@
-<script lang="ts">
+<script setup lang="ts">
+import { withDefaults } from 'vue'
 import NavLink from '@/components/elements/nav/NavLinks/NavLink/NavLink.vue'
 
-export default {
-  components: {
-    NavLink,
-  },
-  props: {
-    navLinks: {
-      default: () => [
-        {
-          name: 'Games',
-          to: '#',
-        },
-        {
-          name: 'About',
-          to: '#',
-        },
-      ],
-      type: Array,
-    },
-  },
+interface NavLinksProps {
+  navLinks: {
+    name: string
+    to: string
+  }[]
 }
+
+withDefaults(defineProps<NavLinksProps>(), {
+  navLinks: () => [
+    {
+      name: 'Games',
+      to: '#',
+    },
+    {
+      name: 'About',
+      to: '#',
+    },
+  ],
+})
+</script>
+
+<script lang="ts">
+export default { name: 'NavLinks' }
 </script>
 
 <template>

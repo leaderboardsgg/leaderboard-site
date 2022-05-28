@@ -1,12 +1,5 @@
-<script lang="ts">
+<script setup lang="ts">
 import ButtonLink from '@/components/elements/buttons/ButtonLink/ButtonLink.vue'
-
-export default {
-  name: 'NavLink',
-  components: {
-    ButtonLink,
-  },
-}
 </script>
 
 <template>

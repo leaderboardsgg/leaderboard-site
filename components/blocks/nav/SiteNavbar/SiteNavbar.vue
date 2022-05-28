@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue'
+import SearchBar from '@/components/elements/SearchBar/SearchBar.vue'
 
 interface NavbarState {
   mobileNavIsActive: boolean
@@ -44,7 +45,7 @@ function logout() {
       </div>
       <div :class="{ hidden: !state.mobileNavIsActive }" class="mobile-menu">
         <NavLinks />
-        <p>desktop nav</p>
+        <SearchBar />
       </div>
       <div class="mobile-navbar">
         <p>mobile nav</p>
