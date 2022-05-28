@@ -1,0 +1,38 @@
+<script lang="ts">
+import NavLink from '@/components/elements/nav/NavLinks/NavLink/NavLink.vue'
+
+export default {
+  components: {
+    NavLink,
+  },
+  props: {
+    navLinks: {
+      default: () => [
+        {
+          name: 'Games',
+          to: '#',
+        },
+        {
+          name: 'About',
+          to: '#',
+        },
+      ],
+      type: Array,
+    },
+  },
+}
+</script>
+
+<template>
+  <nav class="nav-link-container">
+    <NavLink v-for="navLink in navLinks" v-bind="navLink" :key="navLink.name">
+      {{ navLink.name }}
+    </NavLink>
+  </nav>
+</template>
+
+<style lang="postcss" scoped>
+.nav-link-container {
+  @apply flex flex-col lg:flex-row items-center w-auto space-y-2 lg:space-y-0 text-center text-black;
+}
+</style>

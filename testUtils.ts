@@ -1,12 +1,18 @@
-import { ComponentOptions } from 'vue'
+import { createElementBlock, Component, ComponentOptions } from 'vue'
+import { MountingOptions } from '@vue/test-utils'
 import userEvent from '@testing-library/user-event'
 import { render, RenderOptions } from '@testing-library/vue'
 
 export const stubbedRender = (
-  Component: ComponentOptions,
-  options?: RenderOptions,
+  Component: Component | ComponentOptions,
+  options?: RenderOptions | MountingOptions<any>,
 ) => {
   return render(Component, {
+    global: {
+      stubs: {
+        NuxtLink: createElementBlock('a'),
+      },
+    },
     ...options,
   })
 }
