@@ -25,6 +25,7 @@
     "paths": {
       "@/*": ["./*"]
     },
+    "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "types": [
       "node",

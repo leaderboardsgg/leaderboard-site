@@ -1,8 +1,4 @@
 import { defineNuxtConfig } from 'nuxt'
-import Icons from 'unplugin-icons/vite';
-import { FileSystemIconLoader } from 'unplugin-icons/loaders'
-import IconResolver from 'unplugin-icons/resolver'
-import Components from 'unplugin-vue-components/vite'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -42,24 +38,4 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
   ],
-
-  vite: {
-    plugins: [
-      Icons({
-        autoInstall: true,
-        compiler: 'vue3',
-        customCollections: {
-          svg: FileSystemIconLoader('./assets/sprite/svg'),
-        },
-      }),
-      Components({
-        dts: true,
-        resolvers: [
-          IconResolver({
-            customCollections: ['svg'],
-          }),
-        ],
-      }),
-    ],
-  }
 })
