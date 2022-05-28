@@ -25,6 +25,7 @@
     "paths": {
       "@/*": ["./*"]
     },
+    "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "types": [
       "node",
@@ -34,11 +35,10 @@
       "@testing-library/vue",
       "@types/jest",
       "@types/node",
+      "unplugin-icons/types/vue3",
       "vite/client",
       "vitest/globals"
     ]
   },
-  "exclude": ["node_modules", ".nuxt", ".output", "dist"],
-  // https://v3.nuxtjs.org/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  "exclude": ["node_modules", ".nuxt", ".output", "dist"]
 }

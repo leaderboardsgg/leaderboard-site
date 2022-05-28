@@ -36,5 +36,6 @@ export default defineNuxtConfig({
     '@nuxt/typescript-build',
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
+    'unplugin-icons/nuxt',
   ],
 })

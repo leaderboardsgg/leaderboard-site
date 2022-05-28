@@ -23,8 +23,7 @@ function onEnter() {
       @keyup.enter="onEnter"
     />
     <button data-testid="search-button" type="button" @click="onClick">
-      <!-- <svg-icon name="search" /> -->
-      <p>search</p>
+      <i-svg-search />
     </button>
   </div>
 </template>
