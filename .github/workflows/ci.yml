@@ -45,6 +45,9 @@ jobs:
       - name: Install `node_modules`
         run: pnpm install
 
+      - name: Build the `.nuxt` directory
+        run: pnpm build
+
       - name: Tests
         run: pnpm run test
 
