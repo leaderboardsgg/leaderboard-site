@@ -40,5 +40,7 @@
       "vitest/globals"
     ]
   },
-  "exclude": ["node_modules", ".nuxt", ".output", "dist"]
+  "exclude": ["node_modules", ".nuxt", ".output", "dist"],
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json"
 }
