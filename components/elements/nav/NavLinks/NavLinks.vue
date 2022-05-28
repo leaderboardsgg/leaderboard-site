@@ -3,7 +3,7 @@ import { withDefaults } from 'vue'
 import NavLink from '@/components/elements/nav/NavLinks/NavLink/NavLink.vue'
 
 interface NavLinksProps {
-  navLinks: {
+  navLinks?: {
     name: string
     to: string
   }[]

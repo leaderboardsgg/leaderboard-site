@@ -34,6 +34,7 @@
       "@testing-library/vue",
       "@types/jest",
       "@types/node",
+      "unplugin-icons/types/vue3",
       "vite/client",
       "vitest/globals"
     ]
