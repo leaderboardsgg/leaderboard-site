@@ -29,7 +29,7 @@ specifiers:
   '@typescript-eslint/parser': 5.27.0
   '@vue/runtime-dom': ^3.2.26
   '@vue/test-utils': 1.3.0
-  '@vueuse/core': 8.5.0
+  '@vueuse/core': 8.6.0
   autoprefixer: 10.4.7
   axios: 0.27.2
   babel-core: 7.0.0-bridge.0
@@ -97,7 +97,7 @@ devDependencies:
   '@typescript-eslint/parser': 5.27.0_eslint@8.16.0+typescript@4.7.2
   '@vue/runtime-dom': 3.2.33
   '@vue/test-utils': 1.3.0_9065e7474e033a8e4b95615fc8e6c36c
-  '@vueuse/core': 8.5.0_vue@2.6.14
+  '@vueuse/core': 8.6.0_vue@2.6.14
   autoprefixer: 10.4.7_postcss@8.4.14
   axios: 0.27.2
   babel-core: 7.0.0-bridge.0_@babel+core@7.18.2
@@ -3475,8 +3475,8 @@ packages:
       vue-template-compiler: 2.6.14
     dev: true
 
-  /@vueuse/core/8.5.0_vue@2.6.14:
-    resolution: {integrity: sha512-VEJ6sGNsPlUp0o9BGda2YISvDZbhWJSOJu5zlp2TufRGVrLcYUKr31jyFEOj6RXzG3k/H4aCYeZyjpItfU8glw==}
+  /@vueuse/core/8.6.0_vue@2.6.14:
+    resolution: {integrity: sha512-VirzExCm/N+QdrEWT7J4uSrvJ5hquKIAU9alQ37kUvIJk9XxCLxmfRnmekYc1kz2+6BnoyuKYXVmrMV351CB4w==}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
@@ -3486,18 +3486,18 @@ packages:
       vue:
         optional: true
     dependencies:
-      '@vueuse/metadata': 8.5.0
-      '@vueuse/shared': 8.5.0_vue@2.6.14
+      '@vueuse/metadata': 8.6.0
+      '@vueuse/shared': 8.6.0_vue@2.6.14
       vue: 2.6.14
       vue-demi: 0.12.5_vue@2.6.14
     dev: true
 
-  /@vueuse/metadata/8.5.0:
-    resolution: {integrity: sha512-WxsD+Cd+bn+HcjpY6Dl9FJ8ywTRTT9pTwk3bCQpzEhXVYAyNczKDSahk50fCfIJKeWHhyI4B2+/ZEOxQAkUr0g==}
+  /@vueuse/metadata/8.6.0:
+    resolution: {integrity: sha512-F+CKPvaExsm7QgRr8y+ZNJFwXasn89rs5wth/HeX9lJ1q8XEt+HJ16Q5Sxh4rfG5YSKXrStveVge8TKvPjMjFA==}
     dev: true
 
-  /@vueuse/shared/8.5.0_vue@2.6.14:
-    resolution: {integrity: sha512-qKG+SZb44VvGD4dU5cQ63z4JE2Yk39hQUecR0a9sEdJA01cx+XrxAvFKJfPooxwoiqalAVw/ktWK6xbyc/jS3g==}
+  /@vueuse/shared/8.6.0_vue@2.6.14:
+    resolution: {integrity: sha512-Y/IVywZo7IfEoSSEtCYpkVEmPV7pU35mEIxV7PbD/D3ly18B3mEsBaPbtDkNM/QP3zAZ5mn4nEkOfddX4uwuIA==}
     peerDependencies:
       '@vue/composition-api': ^1.1.0
       vue: ^2.6.0 || ^3.2.0
