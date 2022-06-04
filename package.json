@@ -63,7 +63,7 @@
     "babel-jest": "28.1.0",
     "consola": "^2.15.3",
     "dotenv-safe": "8.2.0",
-    "eslint": "8.16.0",
+    "eslint": "8.17.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-jest": "26.4.6",
     "eslint-plugin-nuxt": "3.2.0",
