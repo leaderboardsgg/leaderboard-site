@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 
 const inputValue = ref<string>('')
-const emit = defineEmits(['search'])
+const emit = defineEmits<{(e: 'search', value: string): void}>()
 
 function onClick() {
   emit('search', inputValue.value)
