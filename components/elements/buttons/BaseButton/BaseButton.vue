@@ -1,16 +1,16 @@
 <script setup lang="ts" />
 <script lang="ts">
-export default { name: 'ButtonLink' }
+export default { name: 'BaseButton' }
 </script>
 
 <template>
-  <NuxtLink class="button-link" v-bind="$attrs">
-    <slot>Placeholder Link Text</slot>
-  </NuxtLink>
+  <button class="button" v-bind="$attrs">
+    <slot />
+  </button>
 </template>
 
 <style lang="postcss" scoped>
-.button-link {
+.button {
   @apply rounded px-3 py-2 text-current hover:bg-current;
 }
 </style>
