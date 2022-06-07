@@ -11,6 +11,6 @@ describe('<SiteFooter />', () => {
   it('renders correctly with the copyright info', () => {
     const { getByText } = stubbedRender(SiteFooter)
 
-    expect(getByText('Copyright 2021')).toBeInTheDocument()
+    expect(getByText('Copyright 2022')).toBeInTheDocument()
   })
 })

@@ -6,7 +6,7 @@ export default {
 
 <template>
   <div class="site-footer">
-    <p class="site-footer__copyright">Copyright 2021</p>
+    <p class="site-footer__copyright">Copyright 2022</p>
   </div>
 </template>
 
