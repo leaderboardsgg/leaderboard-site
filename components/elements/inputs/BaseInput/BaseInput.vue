@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, defineEmits, withDefaults } from 'vue'
+import { ref, withDefaults } from 'vue'
 
 type BaseInputValueType = number | string
 interface BaseInputProps {
@@ -10,22 +10,11 @@ const props = withDefaults(defineProps<BaseInputProps>(), {
   value: '',
 })
 
-const emit = defineEmits<{ (e: 'input', value: BaseInputValueType): void }>()
-const model = computed({
-  get(): BaseInputValueType {
-    return props.value
-  },
-  set(value: BaseInputValueType): void {
-    emit('input', value)
-  },
-})
-</script>
-<script lang="ts">
-export default { name: 'BaseInput' }
+const model = ref<BaseInputValueType>(props.value)
 </script>
 
 <template>
-  <input v-model="model" class="input" />
+  <input v-model="model" class="input" v-bind="$attrs" />
 </template>
 
 <style lang="postcss" scoped>

@@ -17,12 +17,7 @@ function toggleHidden() {
 }
 </script>
 <script lang="ts">
-export default {
-  name: 'HideShowPassword',
-  components: {
-    BaseButton,
-  },
-}
+export default { name: 'HideShowPassword' }
 </script>
 
 <template>

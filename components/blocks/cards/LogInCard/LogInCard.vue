@@ -1,34 +1,30 @@
 <script setup lang="ts">
 import { defineEmits, reactive, withDefaults } from 'vue'
 import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-// import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
+import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
 import Card from '@/components/elements/cards/Card/Card.vue'
-// import CardBody from '@/elements/cards/CardBody/CardBody.vue'
+import CardBody from '@/components/elements/cards/CardBody/CardBody.vue'
 import CardHeader from '@/components/elements/cards/CardHeader/CardHeader.vue'
 import CloseButton from '@/components/elements/buttons/CloseButton/CloseButton.vue'
+import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue'
 
-interface LoginCardEmits {
-  (e: 'close'): void
-  (e: 'signUpClick'): void
-}
-
-interface LoginCardProps {
+interface LogInCardProps {
   modal?: boolean
 }
 
-interface LoginCardState {
+interface LogInCardState {
   email: string
   password: string
   showPassword: boolean
 }
 
-const emit = defineEmits<LoginCardEmits>()
+const emit = defineEmits(['close', 'signUpClick'])
 
-const props = withDefaults(defineProps<LoginCardProps>(), {
+const props = withDefaults(defineProps<LogInCardProps>(), {
   modal: false,
 })
 
-const state: LoginCardState = reactive({
+const state = reactive<LogInCardState>({
   email: '',
   password: '',
   showPassword: false,
@@ -42,22 +38,9 @@ function login() {
   emit('close')
 }
 </script>
-<script lang="ts">
-export default {
-  name: 'LogInCard',
-  // components: {
-  //   BaseButton,
-  //   BaseInput,
-  //   Card,
-  //   CardBody,
-  //   CardHeader,
-  //   CloseButton,
-  // },
-}
-</script>
 
 <template>
-  <Card id="loginCard" data-testid="login-card" class="login-card">
+  <Card id="logInCard" data-testid="log-in-card" class="login-card">
     <CardHeader class="login-card__header">
       <div class="login-card__title">Log In</div>
 
@@ -72,8 +55,8 @@ export default {
       <CloseButton v-show="props.modal" @click.prevent="emit('close')" />
     </CardHeader>
 
-    <!-- <CardBody> -->
-    <!-- <div class="login-card__body-wrapper">
+    <CardBody>
+      <div class="login-card__body-wrapper">
         <BaseInput
           v-model="state.email"
           name="email"
@@ -108,17 +91,17 @@ export default {
 
       <div class="login-card__auth-buttons">
         <BaseButton class="login-button">
-          <svg-icon class="mr-2 w-5 h-5" name="github" />
+          <i-svg-github class="mr-2 w-5 h-5" />
 
           <p>Log In with Github</p>
         </BaseButton>
 
         <BaseButton class="login-button">
-          <svg-icon class="mr-2 w-5 h-5" name="google" />
+          <i-svg-google class="mr-2 w-5 h-5" />
           <p>Log In with Google</p>
         </BaseButton>
-      </div> -->
-    <!-- </CardBody> -->
+      </div>
+    </CardBody>
   </Card>
 </template>
 
