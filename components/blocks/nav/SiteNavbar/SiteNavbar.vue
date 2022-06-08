@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import BaseModal from '@/components/elements/modals/BaseModal/BaseModal.vue'
+import LogInCard from '@/components/blocks/cards/LogInCard/LogInCard.vue'
 import LoginButton from '@/components/elements/buttons/LoginButton/LoginButton.vue'
 import LogoutButton from '@/components/elements/buttons/LogoutButton/LogoutButton.vue'
 import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue'
@@ -37,6 +39,9 @@ function toggleSignUpModal() {
 function logout() {
   console.log('logout') // eslint-disable-line no-console
 }
+</script>
+<script lang="ts">
+export default { name: 'SiteNavbar' }
 </script>
 
 <template>
@@ -77,6 +82,25 @@ function logout() {
         </button>
       </div>
     </div>
+
+    <transition
+      enter-active-class="transition-opacity duration-200"
+      leave-active-class="transition-opacity duration-200"
+      enter-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <BaseModal v-show="state.showModal" @close="state.showModal = false">
+        <LogInCard
+          v-show="state.showLogin"
+          class="shadow-xl"
+          :modal="true"
+          @close="state.showModal = false"
+          @signUpClick="state.showLogin = false"
+        />
+      </BaseModal>
+    </transition>
   </div>
 </template>
 
