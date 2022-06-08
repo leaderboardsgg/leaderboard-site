@@ -7,6 +7,7 @@ import LogoutButton from '@/components/elements/buttons/LogoutButton/LogoutButto
 import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue'
 import SearchBar from '@/components/blocks/SearchBar/SearchBar.vue'
 import SignUpButton from '@/components/elements/buttons/SignUpButton/SignUpButton.vue'
+import SignUpCard from '@/components/blocks/cards/SignUpCard/SignUpCard.vue'
 
 interface NavbarState {
   mobileNavIsActive: boolean
@@ -98,6 +99,13 @@ export default { name: 'SiteNavbar' }
           :modal="true"
           @close="state.showModal = false"
           @signUpClick="state.showLogin = false"
+        />
+        <SignUpCard
+          v-show="!state.showLogin"
+          class="shadow-xl"
+          :modal="true"
+          @close="state.showModal = false"
+          @logInClick="state.showLogin = true"
         />
       </BaseModal>
     </transition>

@@ -1,18 +1,22 @@
-<script setup lang="ts" />
-<script lang="ts">
-export default { name: 'BaseModal' }
+<script setup lang="ts">
+import { defineEmits } from 'vue'
+import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
+
+const emit = defineEmits(['close'])
 </script>
 
 <template>
   <div class="modal">
     <div class="modal__wrapper">
       <div class="modal__container">
-        <button
-          class="modal-fade"
+        <BaseButton
+          class="modal__close-button"
           type="button"
-          @click.self="$emit('close')"
-          @keypress.esc="$emit('close')"
-        />
+          @click="emit('close')"
+          @keypress.esc="emit('close')"
+        >
+          <i-svg-close class="w-5 h-5" />
+        </BaseButton>
 
         <div class="modal__content">
           <slot />
@@ -25,7 +29,7 @@ export default { name: 'BaseModal' }
 <style lang="postcss" scoped>
 .modal {
   & .modal__wrapper {
-    @apply fixed z-10 inset-0 overflow-y-auto;
+    @apply fixed z-10 inset-0 overflow-y-auto bg-gray-900 bg-opacity-50 transition-opacity;
   }
   & .modal__container {
     @apply flex items-center min-h-screen p-5;
@@ -34,8 +38,8 @@ export default { name: 'BaseModal' }
     @apply relative flex justify-center w-full;
   }
 }
-.modal-fade {
-  all: unset;
-  @apply fixed inset-0 bg-gray-900 bg-opacity-50 transition-opacity;
+
+.modal__close-button {
+  @apply absolute top-2 left-2 p-1 bg-gray-100 bg-opacity-50 hover:bg-gray-100 hover:bg-opacity-75;
 }
 </style>

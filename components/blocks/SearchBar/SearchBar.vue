@@ -4,7 +4,7 @@ import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
 import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
 
 const inputValue = ref<string>('')
-const emit = defineEmits<{ (e: 'search', value: string): void }>()
+const emit = defineEmits<{(e: 'search', value: string): void}>()
 
 function onClick() {
   emit('search', inputValue.value)
