@@ -1,9 +1,6 @@
 <script setup lang="ts">
 import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
 </script>
-<script lang="ts">
-export default { name: 'CloseButton' }
-</script>
 
 <template>
   <BaseButton class="close-button" v-bind="$attrs">

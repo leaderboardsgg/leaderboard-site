@@ -1,7 +1,4 @@
 <script setup lang="ts" />
-<script lang="ts">
-export default { name: 'CardBody' }
-</script>
 
 <template>
   <div class="card-body" v-bind="$attrs">

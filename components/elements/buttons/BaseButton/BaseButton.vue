@@ -1,7 +1,4 @@
 <script setup lang="ts" />
-<script lang="ts">
-export default { name: 'BaseButton' }
-</script>
 
 <template>
   <button class="button" v-bind="$attrs">

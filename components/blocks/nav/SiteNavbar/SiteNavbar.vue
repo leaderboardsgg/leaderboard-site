@@ -41,9 +41,6 @@ function logout() {
   console.log('logout') // eslint-disable-line no-console
 }
 </script>
-<script lang="ts">
-export default { name: 'SiteNavbar' }
-</script>
 
 <template>
   <div class="site-navbar">

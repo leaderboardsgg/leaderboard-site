@@ -23,10 +23,6 @@ withDefaults(defineProps<NavLinksProps>(), {
 })
 </script>
 
-<script lang="ts">
-export default { name: 'NavLinks' }
-</script>
-
 <template>
   <nav class="nav-link-container">
     <NavLink v-for="navLink in navLinks" v-bind="navLink" :key="navLink.name">

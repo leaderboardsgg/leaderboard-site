@@ -1,7 +1,4 @@
 <script setup lang="ts" />
-<script lang="ts">
-export default { name: 'ButtonLink' }
-</script>
 
 <template>
   <NuxtLink class="button-link" v-bind="$attrs">

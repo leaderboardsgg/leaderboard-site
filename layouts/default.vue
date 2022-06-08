@@ -1,13 +1,6 @@
-<script lang="ts">
+<script setup lang="ts">
 import SiteFooter from '@/components/blocks/SiteFooter/SiteFooter.vue'
 import SiteNavbar from '@/components/blocks/nav/SiteNavbar/SiteNavbar.vue'
-
-export default {
-  components: {
-    SiteFooter,
-    SiteNavbar,
-  },
-}
 </script>
 
 <template>

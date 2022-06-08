@@ -16,9 +16,6 @@ function toggleHidden() {
   state.hidden = !state.hidden
 }
 </script>
-<script lang="ts">
-export default { name: 'HideShowPassword' }
-</script>
 
 <template>
   <BaseButton

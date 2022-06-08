@@ -1,7 +1,4 @@
 <script setup lang="ts" />
-<script lang="ts">
-export default { name: 'Card' }
-</script>
 
 <template>
   <div class="card" v-bind="$attrs">

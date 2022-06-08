@@ -1,13 +1,5 @@
-<script setup lang="ts" />
-<script lang="ts">
+<script setup lang="ts">
 import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-
-export default {
-  name: 'LoginButton',
-  components: {
-    BaseButton,
-  },
-}
 </script>
 
 <template>
