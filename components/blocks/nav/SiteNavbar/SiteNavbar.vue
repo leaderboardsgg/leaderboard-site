@@ -5,7 +5,7 @@ import LogInCard from '@/components/blocks/cards/LogInCard/LogInCard.vue'
 import LoginButton from '@/components/elements/buttons/LoginButton/LoginButton.vue'
 import LogoutButton from '@/components/elements/buttons/LogoutButton/LogoutButton.vue'
 import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue'
-import SearchBar from '@/components/elements/SearchBar/SearchBar.vue'
+import SearchBar from '@/components/blocks/SearchBar/SearchBar.vue'
 import SignUpButton from '@/components/elements/buttons/SignUpButton/SignUpButton.vue'
 
 interface NavbarState {
