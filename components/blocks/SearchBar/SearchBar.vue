@@ -4,7 +4,8 @@ import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
 import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
 
 const inputValue = ref<string>('')
-const emit = defineEmits<{(e: 'search', value: string): void}>()
+// TODO: Find a fix for this prettier issue
+const emit = defineEmits<{(e: 'search', value: string): void}>() // prettier-ignore
 
 function onClick() {
   emit('search', inputValue.value)
