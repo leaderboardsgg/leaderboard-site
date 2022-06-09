@@ -23,7 +23,7 @@ interface UserRegister {
   username: string
 }
 
-const emit = defineEmits(['close', 'logInClick'])
+const emit = defineEmits(['close', 'logInClick', 'signUpClick'])
 
 const props = withDefaults(defineProps<SignUpCardProps>(), {
   modal: false,
@@ -47,7 +47,7 @@ function signup() {
   register.username = ''
   state.showPassword = false
 
-  emit('logInClick')
+  emit('signUpClick')
 }
 </script>
 
@@ -57,6 +57,7 @@ function signup() {
       <BaseButton
         id="login-button"
         class="signup-card__login-button"
+        data-testid="login-button"
         @click="emit('logInClick')"
       >
         Log In
@@ -64,7 +65,11 @@ function signup() {
 
       <div class="signup-card__title">Sign Up</div>
 
-      <CloseButton v-show="props.modal" @click.prevent="emit('close')" />
+      <CloseButton
+        v-show="props.modal"
+        data-testid="close-button"
+        @click.prevent="emit('close')"
+      />
     </CardHeader>
 
     <CardBody>
@@ -75,6 +80,7 @@ function signup() {
           type="text"
           placeholder="Email"
           autocomplete="email"
+          data-testid="email-input"
         />
 
         <div class="signup-card__input-wrapper">
@@ -84,6 +90,7 @@ function signup() {
             type="text"
             placeholder="Username"
             autocomplete="nickname"
+            data-testid="username-input"
           />
           <p>This can be changed later</p>
         </div>
@@ -97,6 +104,7 @@ function signup() {
               :type="state.showPassword ? 'text' : 'password'"
               placeholder="Password"
               autocomplete="password"
+              data-testid="password-input"
             />
 
             <BaseInput
@@ -106,11 +114,13 @@ function signup() {
               :type="state.showPassword ? 'text' : 'password'"
               placeholder="Confirm"
               autocomplete="password"
+              data-testid="password-confirm-input"
             />
 
             <HideShowPassword
               id="hide-show-password"
               type="button"
+              data-testid="hide-show-button"
               @click="state.showPassword = !state.showPassword"
               @keydown.enter.prevent
               @keyup.enter="state.showPassword = !state.showPassword"
@@ -120,7 +130,13 @@ function signup() {
           <p>* Must be 8 characters with a mix of letters and numbers</p>
         </div>
 
-        <BaseButton class="signup-button" @click="signup"> Sign Up </BaseButton>
+        <BaseButton
+          class="signup-button"
+          data-testid="sign-up-button"
+          @click="signup"
+        >
+          Sign Up
+        </BaseButton>
       </div>
 
       <div class="signup-card__auth-buttons">

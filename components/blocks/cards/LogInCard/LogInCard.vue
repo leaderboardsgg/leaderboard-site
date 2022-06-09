@@ -47,12 +47,17 @@ function login() {
       <BaseButton
         id="sign-up-button"
         class="login-card__sign-up-button"
+        data-testid="sign-up-button"
         @click="emit('signUpClick')"
       >
         Sign Up
       </BaseButton>
 
-      <CloseButton v-show="props.modal" @click.prevent="emit('close')" />
+      <CloseButton
+        v-show="props.modal"
+        data-testid="close-button"
+        @click.prevent="emit('close')"
+      />
     </CardHeader>
 
     <CardBody>
@@ -63,6 +68,7 @@ function login() {
           type="text"
           placeholder="Email"
           autocomplete="email"
+          data-testid="email-input"
         />
 
         <div class="login-card__input-wrapper">
@@ -73,12 +79,14 @@ function login() {
             :type="state.showPassword ? 'text' : 'password'"
             placeholder="Password"
             autocomplete="password"
+            data-testid="password-input"
           />
 
           <div class="login-card__button-wrapper">
             <HideShowPassword
               id="hide-show-button"
               type="button"
+              data-testid="hide-show-button"
               @click="state.showPassword = !state.showPassword"
               @keydown.enter.prevent
               @keyup.enter="state.showPassword = !state.showPassword"
@@ -86,7 +94,13 @@ function login() {
           </div>
         </div>
 
-        <BaseButton class="login-button" @click="login"> Log In </BaseButton>
+        <BaseButton
+          class="login-button"
+          data-testid="login-button"
+          @click="login"
+        >
+          Log In
+        </BaseButton>
       </div>
 
       <div class="login-card__auth-buttons">

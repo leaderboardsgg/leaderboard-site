@@ -11,6 +11,7 @@ const emit = defineEmits(['close'])
       <div class="modal__container">
         <BaseButton
           class="modal__close-button"
+          data-testid="modal-close-button"
           type="button"
           @click="emit('close')"
           @keypress.esc="emit('close')"
