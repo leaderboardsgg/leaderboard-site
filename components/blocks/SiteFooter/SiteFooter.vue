@@ -1,12 +1,12 @@
-<script lang="ts">
-export default {
-  name: 'SiteFooter',
-}
+<script setup lang="ts">
+import { computed } from 'vue'
+
+const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <template>
   <div class="site-footer">
-    <p class="site-footer__copyright">Copyright 2021</p>
+    <p class="site-footer__copyright">Copyright {{ currentYear }}</p>
   </div>
 </template>
 

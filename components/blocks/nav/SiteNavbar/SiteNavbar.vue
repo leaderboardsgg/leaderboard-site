@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import BaseModal from '@/components/elements/modals/BaseModal/BaseModal.vue'
+import LogInCard from '@/components/blocks/cards/LogInCard/LogInCard.vue'
+import LoginButton from '@/components/elements/buttons/LoginButton/LoginButton.vue'
+import LogoutButton from '@/components/elements/buttons/LogoutButton/LogoutButton.vue'
 import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue'
-import SearchBar from '@/components/elements/SearchBar/SearchBar.vue'
+import SearchBar from '@/components/blocks/SearchBar/SearchBar.vue'
+import SignUpButton from '@/components/elements/buttons/SignUpButton/SignUpButton.vue'
+import SignUpCard from '@/components/blocks/cards/SignUpCard/SignUpCard.vue'
 
 interface NavbarState {
   mobileNavIsActive: boolean
@@ -14,6 +20,8 @@ const state: NavbarState = reactive({
   showLogin: false,
   showModal: false,
 })
+
+const $auth = { loggedIn: false }
 
 function toggleMenu() {
   state.mobileNavIsActive = !state.mobileNavIsActive
@@ -48,11 +56,56 @@ function logout() {
         <SearchBar />
       </div>
       <div class="mobile-navbar">
+        <LoginButton
+          v-if="!$auth.loggedIn"
+          data-testId="site-navbar-login-button"
+          @click="toggleLoginModal"
+          @keyup.enter="toggleLoginModal"
+        />
+        <SignUpButton
+          v-if="!$auth.loggedIn"
+          data-testId="site-navbar-sign-up-button"
+          @click="toggleSignUpModal"
+          @keyup.enter="toggleSignUpModal"
+        />
+        <LogoutButton
+          v-if="$auth.loggedIn"
+          data-testId="site-navbar-logout-button"
+          @click="logout"
+          @keyup.enter="logout"
+        />
+
         <button class="mobile-menu__toggle" @click="toggleMenu">
           <i-svg-menu class="mx-2 w-5 h-5 fill-current" />
         </button>
       </div>
     </div>
+
+    <transition
+      enter-active-class="transition-opacity duration-200"
+      leave-active-class="transition-opacity duration-200"
+      enter-class="opacity-0"
+      enter-to-class="opacity-100"
+      leave-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
+      <BaseModal v-show="state.showModal" @close="state.showModal = false">
+        <LogInCard
+          v-show="state.showLogin"
+          class="shadow-xl"
+          :modal="true"
+          @close="state.showModal = false"
+          @signUpClick="state.showLogin = false"
+        />
+        <SignUpCard
+          v-show="!state.showLogin"
+          class="shadow-xl"
+          :modal="true"
+          @close="state.showModal = false"
+          @logInClick="state.showLogin = true"
+        />
+      </BaseModal>
+    </transition>
   </div>
 </template>
 

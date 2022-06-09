@@ -10,7 +10,8 @@ describe('<SiteFooter />', () => {
 
   it('renders correctly with the copyright info', () => {
     const { getByText } = stubbedRender(SiteFooter)
+    const currentYear = new Date().getFullYear()
 
-    expect(getByText('Copyright 2021')).toBeInTheDocument()
+    expect(getByText(`Copyright ${currentYear}`)).toBeInTheDocument()
   })
 })
