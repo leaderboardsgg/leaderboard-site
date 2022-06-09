@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, reactive, withDefaults } from 'vue'
+import { reactive, withDefaults } from 'vue'
 import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
 import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
 import Card from '@/components/elements/cards/Card/Card.vue'
