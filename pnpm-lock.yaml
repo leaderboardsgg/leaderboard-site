@@ -22,7 +22,6 @@ specifiers:
   '@vue/test-utils': ^2.0.0
   eslint: ^8.16.0
   eslint-config-prettier: ^8.5.0
-  eslint-plugin-jest: ^26.2.2
   eslint-plugin-nuxt: ^3.2.0
   eslint-plugin-prettier: ^4.0.0
   eslint-plugin-tailwindcss: ^3.5.0
@@ -70,7 +69,6 @@ devDependencies:
   '@vue/test-utils': 2.0.0_vue@3.2.36
   eslint: 8.17.0
   eslint-config-prettier: 8.5.0_eslint@8.17.0
-  eslint-plugin-jest: 26.5.3_73r5ycrednkeozhd2eskx6x7ey
   eslint-plugin-nuxt: 3.2.0_eslint@8.17.0
   eslint-plugin-prettier: 4.0.0_ucegkljdju7q4zmvwxzqoprf3y
   eslint-plugin-tailwindcss: 3.5.0
@@ -3453,27 +3451,6 @@ packages:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
       - supports-color
-    dev: true
-
-  /eslint-plugin-jest/26.5.3_73r5ycrednkeozhd2eskx6x7ey:
-    resolution: {integrity: sha512-sICclUqJQnR1bFRZGLN2jnSVsYOsmPYYnroGCIMVSvTS3y8XR3yjzy1EcTQmk6typ5pRgyIWzbjqxK6cZHEZuQ==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    peerDependencies:
-      '@typescript-eslint/eslint-plugin': ^5.0.0
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
-      jest: '*'
-    peerDependenciesMeta:
-      '@typescript-eslint/eslint-plugin':
-        optional: true
-      jest:
-        optional: true
-    dependencies:
-      '@typescript-eslint/eslint-plugin': 5.27.1_aq7uryhocdbvbqum33pitcm3y4
-      '@typescript-eslint/utils': 5.27.1_ud6rd4xtew5bv4yhvkvu24pzm4
-      eslint: 8.17.0
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
     dev: true
 
   /eslint-plugin-n/15.2.1_eslint@8.17.0:

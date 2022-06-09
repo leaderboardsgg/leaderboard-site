@@ -1,9 +1,7 @@
 {
   "env": {
     "browser": true,
-    "es2021": true,
-    "jest": true,
-    "jest/globals": true
+    "es2021": true
   },
   "extends": [
     "prettier",
@@ -24,11 +22,10 @@
     "coverage",
     "node_modules",
     "static",
-    "jest.*.js",
-    "testUtils.ts"
+    "testUtils.ts",
+    "vite*.ts"
   ],
   "plugins": [
-    "jest",
     "prettier",
     "vue",
     "@typescript-eslint",
