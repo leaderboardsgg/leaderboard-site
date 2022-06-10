@@ -1,15 +1,16 @@
 {
   // blargh
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "eslint.validate": ["javascript", "vue"],
+  "eslint.validate": ["javascript", "typescript", "vue"],
 
   // Spaces, 2 space size, and LF line endings, and ensure it works
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "files.eol": "\n",
-  "javascript.format.semicolons": "remove",
-  "typescript.format.semicolons": "remove",
 
   // Excludes these directories from VSC search
   // This is to keep our searches from being muddied

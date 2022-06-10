@@ -5,11 +5,7 @@ import { defineConfig } from 'vitest/config'
 import { ViteConfig } from './vite.config'
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    ...ViteConfig.plugins,
-  ],
+  plugins: [vue(), vueJsx(), ...ViteConfig.plugins],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),
