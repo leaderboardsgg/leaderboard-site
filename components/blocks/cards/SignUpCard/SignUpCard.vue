@@ -1,13 +1,4 @@
 <script setup lang="ts">
-import { reactive, withDefaults } from 'vue'
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
-import Card from '@/components/elements/cards/Card/Card.vue'
-import CardBody from '@/components/elements/cards/CardBody/CardBody.vue'
-import CardHeader from '@/components/elements/cards/CardHeader/CardHeader.vue'
-import CloseButton from '@/components/elements/buttons/CloseButton/CloseButton.vue'
-import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue'
-
 interface SignUpCardProps {
   modal?: boolean
 }

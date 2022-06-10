@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt'
+import eslintPlugin from 'vite-plugin-eslint'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -29,7 +30,6 @@ export default defineNuxtConfig({
   ignore: [
     '**/__tests__',
   ],
-
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
     // https://go.nuxtjs.dev/typescript
@@ -37,5 +37,18 @@ export default defineNuxtConfig({
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
+    '@nuxtjs/eslint-module'
   ],
+
+  typescript: {
+    // Disabled as using Volar take over mode is the reccomended way to do this
+    shim: false,
+    strict: true,
+  },
+  
+  vite: {
+    plugins: [
+      eslintPlugin()
+    ]
+  }
 })

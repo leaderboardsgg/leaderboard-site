@@ -1,7 +1,4 @@
-<script setup lang="ts">
-import SiteFooter from '@/components/blocks/SiteFooter/SiteFooter.vue'
-import SiteNavbar from '@/components/blocks/nav/SiteNavbar/SiteNavbar.vue'
-</script>
+<script setup lang="ts" />
 
 <template>
   <div class="flex flex-col mx-auto h-screen">

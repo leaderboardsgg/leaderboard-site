@@ -1,46 +1,33 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    // Targeting down to ES2015/ ES6 to ensure as wide coverage as possible
-    // while still having microTasks/ promises to allow true Asynchronicity
-    "target": "ES2015",
-    "strict": true,
+    // Boolean flags
     "pretty": true,
-    "allowJs": true,
     "sourceMap": true,
     "importHelpers": true,
     "removeComments": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "noEmit": true,
     "noUnusedLocals": true,
     "noImplicitReturns": true,
     "noUnusedParameters": true,
     "allowUnreachableCode": false,
+    "experimentalDecorators": true,
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    },
-    "jsx": "preserve",
+
+    // Other
     "lib": ["ESNext", "DOM"],
     "types": [
-      "node",
+      "@types/node",
       "@nuxt/types",
       "@testing-library/dom",
-      "@testing-library/jest-dom",
       "@testing-library/vue",
-      "@types/jest",
-      "@types/node",
       "unplugin-icons/types/vue3",
       "vite/client",
       "vitest/globals"
     ]
   },
-  "exclude": ["node_modules", ".nuxt", ".output", "dist"],
+  "exclude": ["node_modules"],
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"
 }

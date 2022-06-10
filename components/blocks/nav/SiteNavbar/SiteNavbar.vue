@@ -1,14 +1,4 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
-import BaseModal from '@/components/elements/modals/BaseModal/BaseModal.vue'
-import LogInCard from '@/components/blocks/cards/LogInCard/LogInCard.vue'
-import LoginButton from '@/components/elements/buttons/LoginButton/LoginButton.vue'
-import LogoutButton from '@/components/elements/buttons/LogoutButton/LogoutButton.vue'
-import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue'
-import SearchBar from '@/components/blocks/SearchBar/SearchBar.vue'
-import SignUpButton from '@/components/elements/buttons/SignUpButton/SignUpButton.vue'
-import SignUpCard from '@/components/blocks/cards/SignUpCard/SignUpCard.vue'
-
 interface NavbarState {
   mobileNavIsActive: boolean
   showLogin: boolean
@@ -95,14 +85,14 @@ function logout() {
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"
-          @signUpClick="state.showLogin = false"
+          @sign-up-click="state.showLogin = false"
         />
         <SignUpCard
           v-show="!state.showLogin"
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"
-          @logInClick="state.showLogin = true"
+          @log-in-click="state.showLogin = true"
         />
       </BaseModal>
     </transition>

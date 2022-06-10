@@ -4,7 +4,7 @@ import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import IconResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 
-export const configs = {
+export const ViteConfig = {
   plugins: [
     Icons({
       autoInstall: true,
@@ -24,4 +24,4 @@ export const configs = {
   ],
 };
 
-export default defineConfig(configs);
+export default defineConfig(ViteConfig);

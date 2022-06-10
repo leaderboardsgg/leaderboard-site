@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, withDefaults } from 'vue'
-
 type BaseInputValueType = number | string
 interface BaseInputProps {
   value?: BaseInputValueType

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { reactive, toRef } from 'vue'
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-
 interface HideShowPasswordState {
   hidden: boolean
 }

@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
-
 const inputValue = ref<string>('')
 // TODO: Find a fix for this prettier issue
 const emit = defineEmits<{(e: 'search', value: string): void}>() // prettier-ignore

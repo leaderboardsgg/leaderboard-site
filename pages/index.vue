@@ -1,4 +1,4 @@
-<script setup lang="ts"></script>
+<script setup lang="ts" />
 
 <template>
   <div class="flex grow justify-center p-5">
