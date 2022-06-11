@@ -33,6 +33,7 @@
       "@testing-library/dom",
       "@testing-library/jest-dom",
       "@testing-library/vue",
+      "@types/dotenv-safe",
       "@types/jest",
       "@types/node",
       "unplugin-icons/types/vue3",
