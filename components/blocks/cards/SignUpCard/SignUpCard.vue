@@ -7,6 +7,7 @@ import CardBody from '@/components/elements/cards/CardBody/CardBody.vue'
 import CardHeader from '@/components/elements/cards/CardHeader/CardHeader.vue'
 import CloseButton from '@/components/elements/buttons/CloseButton/CloseButton.vue'
 import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue'
+import useRegisterUser from '@/composables/useApi'
 
 interface SignUpCardProps {
   modal?: boolean
@@ -41,6 +42,13 @@ const state = reactive<SignUpCardState>({
 })
 
 function signup() {
+  useRegisterUser({
+    email: register.email,
+    password: register.password,
+    passwordConfirm: register.passwordConfirm,
+    username: register.username,
+  })
+
   register.email = ''
   register.password = ''
   register.passwordConfirm = ''

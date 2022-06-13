@@ -38,4 +38,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
   ],
+
+  runtimeConfig: {
+    public: {
+      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+    }
+  }
 })
