@@ -1,7 +1,19 @@
 import SignUpCard from './SignUpCard.vue'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
+afterEach(vi.restoreAllMocks)
+
 describe('<SignUpCard />', () => {
+  beforeEach(() => {
+    vi.mock('#app', () => ({
+      useRuntimeConfig: () => ({
+        public: {
+          BACKEND_BASE_URL: 'http://localhost:3000',
+        },
+      }),
+    }))
+  })
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(SignUpCard)
 

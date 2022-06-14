@@ -22,9 +22,6 @@
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    },
     "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "types": [
