@@ -43,6 +43,7 @@ specifiers:
   unplugin-vue-components: ^0.19.6
   vite: ^2.9.9
   vitest: ^0.12.9
+  vitest-fetch-mock: ^0.1.0
   vue: 3.2.36
   webpack: ^5.72.1
 
@@ -91,6 +92,7 @@ devDependencies:
   typescript: 4.7.3
   vite: 2.9.10
   vitest: 0.12.10_jsdom@19.0.0
+  vitest-fetch-mock: 0.1.0_vitest@0.12.10
   vue: 3.2.36
   webpack: 5.73.0
 
@@ -2646,7 +2648,6 @@ packages:
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
-    dev: false
 
   /cross-spawn/7.0.3:
     resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
@@ -7670,7 +7671,7 @@ packages:
     dev: true
 
   /type-check/0.3.2:
-    resolution: {integrity: sha1-WITKtRLPHTVeP7eE8wgEsrUg23I=}
+    resolution: {integrity: sha512-ZCmOJdvOWDBYJlzAoFkC+Q0+bUyEOS1ltgp1MGU03fqHG+dbi9tBFU2Rd9QKiDZFAYrhPh2JUf7rZRIuHRKtOg==}
     engines: {node: '>= 0.8.0'}
     dependencies:
       prelude-ls: 1.1.2
@@ -8096,6 +8097,18 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
+  /vitest-fetch-mock/0.1.0_vitest@0.12.10:
+    resolution: {integrity: sha512-HpabFgokq0Q/cLwYNCTxwH6jV1TTUNg6IZxnLW4mFXgtDWcUQPJoiKS+LiOSf5cllXj2iCkIA8Cmuq5jU4oZQg==}
+    engines: {node: '>=14.14.0'}
+    peerDependencies:
+      vitest: '*'
+    dependencies:
+      cross-fetch: 3.1.5
+      vitest: 0.12.10_jsdom@19.0.0
+    transitivePeerDependencies:
+      - encoding
+    dev: true
+
   /vitest/0.12.10_jsdom@19.0.0:
     resolution: {integrity: sha512-TVoI6fM7rZ1zIMDjcviY8Dg5XIaPqBwDweaI3oUwvWqUz68cbM49CIHNMkF+UVoSjl94wXiBRdNhsT4ekgWuGA==}
     engines: {node: '>=v14.16.0'}
@@ -8380,7 +8393,7 @@ packages:
       strip-ansi: 6.0.1
 
   /wrappy/1.0.2:
-    resolution: {integrity: sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=}
+    resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
   /ws/8.7.0:
     resolution: {integrity: sha512-c2gsP0PRwcLFzUiA8Mkr37/MI7ilIlHQxaEAtd0uNMbVMoy8puJyafRlm0bV9MbGSabUPeLrRRaqIBcFcA2Pqg==}

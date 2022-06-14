@@ -18,7 +18,6 @@ const { generateApi } = require('swagger-typescript-api')
 generateApi({
   output: resolve(process.cwd(), './lib/api'),
   url: `${process.env.BACKEND_BASE_URL}/swagger/v1/swagger.json`,
-  templates: resolve(process.cwd(), './scripts/templates'),
 
   enumNamesAsValues: true,
   extractRequestBody: true,
