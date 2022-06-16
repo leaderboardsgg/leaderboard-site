@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { computed, reactive } from 'vue'
+import { useState } from '#app'
 import BaseModal from '@/components/elements/modals/BaseModal/BaseModal.vue'
 import LogInCard from '@/components/blocks/cards/LogInCard/LogInCard.vue'
 import LoginButton from '@/components/elements/buttons/LoginButton/LoginButton.vue'
@@ -8,6 +9,8 @@ import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue'
 import SearchBar from '@/components/blocks/SearchBar/SearchBar.vue'
 import SignUpButton from '@/components/elements/buttons/SignUpButton/SignUpButton.vue'
 import SignUpCard from '@/components/blocks/cards/SignUpCard/SignUpCard.vue'
+import { useLogoutUser } from '@/composables/api'
+import { User } from '@/lib/api/data-contracts'
 
 interface NavbarState {
   mobileNavIsActive: boolean
@@ -21,7 +24,14 @@ const state: NavbarState = reactive({
   showModal: false,
 })
 
-const $auth = { loggedIn: false }
+const currentUser = useState<User>('current_user', () => ({
+  admin: false,
+  email: '',
+  username: '',
+}))
+const loggedIn = computed(
+  () => !!currentUser.value?.username && currentUser.value?.username !== '',
+)
 
 function toggleMenu() {
   state.mobileNavIsActive = !state.mobileNavIsActive
@@ -38,7 +48,7 @@ function toggleSignUpModal() {
 }
 
 function logout() {
-  console.log('logout') // eslint-disable-line no-console
+  useLogoutUser()
 }
 </script>
 
@@ -57,19 +67,19 @@ function logout() {
       </div>
       <div class="mobile-navbar">
         <LoginButton
-          v-if="!$auth.loggedIn"
+          v-if="!loggedIn"
           data-testId="site-navbar-login-button"
           @click="toggleLoginModal"
           @keyup.enter="toggleLoginModal"
         />
         <SignUpButton
-          v-if="!$auth.loggedIn"
+          v-if="!loggedIn"
           data-testId="site-navbar-sign-up-button"
           @click="toggleSignUpModal"
           @keyup.enter="toggleSignUpModal"
         />
         <LogoutButton
-          v-if="$auth.loggedIn"
+          v-if="loggedIn"
           data-testId="site-navbar-logout-button"
           @click="logout"
           @keyup.enter="logout"
@@ -82,6 +92,7 @@ function logout() {
     </div>
 
     <transition
+      v-if="!loggedIn"
       enter-active-class="transition-opacity duration-200"
       leave-active-class="transition-opacity duration-200"
       enter-class="opacity-0"
