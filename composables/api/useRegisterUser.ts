@@ -35,6 +35,7 @@ export const useRegisterUser = (
     })
     .catch((error) => {
       console.error(error) // eslint-disable-line no-console
+      responseLoading.value = false
       responseError.value = error
     })
 
