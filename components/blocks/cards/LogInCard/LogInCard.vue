@@ -7,6 +7,7 @@ import CardBody from '@/components/elements/cards/CardBody/CardBody.vue'
 import CardHeader from '@/components/elements/cards/CardHeader/CardHeader.vue'
 import CloseButton from '@/components/elements/buttons/CloseButton/CloseButton.vue'
 import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue'
+import { useLoginUser } from '@/composables/api'
 
 interface LogInCardProps {
   modal?: boolean
@@ -31,6 +32,11 @@ const state = reactive<LogInCardState>({
 })
 
 function login() {
+  useLoginUser({
+    email: state.email,
+    password: state.password,
+  })
+
   state.email = ''
   state.password = ''
   state.showPassword = false
@@ -80,6 +86,7 @@ function login() {
             placeholder="Password"
             autocomplete="password"
             data-testid="password-input"
+            @keyup.enter="login"
           />
 
           <div class="login-card__button-wrapper">
@@ -88,7 +95,7 @@ function login() {
               type="button"
               data-testid="hide-show-button"
               @click="state.showPassword = !state.showPassword"
-              @keydown.enter.prevent
+              @keydown.enter="$event.preventDefault()"
               @keyup.enter="state.showPassword = !state.showPassword"
             />
           </div>

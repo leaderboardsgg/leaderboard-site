@@ -7,7 +7,7 @@ import CardBody from '@/components/elements/cards/CardBody/CardBody.vue'
 import CardHeader from '@/components/elements/cards/CardHeader/CardHeader.vue'
 import CloseButton from '@/components/elements/buttons/CloseButton/CloseButton.vue'
 import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue'
-import useRegisterUser from '@/composables/useApi'
+import { useRegisterUser } from '@/composables/api'
 
 interface SignUpCardProps {
   modal?: boolean
