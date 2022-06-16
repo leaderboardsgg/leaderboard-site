@@ -1,4 +1,3 @@
-import { SpyInstanceFn } from 'vitest'
 import { ref } from 'vue'
 import { useState } from '#app'
 import SiteNavbar from './SiteNavbar.vue'
@@ -17,7 +16,7 @@ afterEach(() => {
 
 describe('<SiteNavbar />', () => {
   it('should render without crashing', () => {
-    ;(useState as SpyInstanceFn).mockImplementation(() => ref())
+    useState.mockImplementation(() => ref())
 
     const { unmount } = stubbedRender(SiteNavbar)
 
@@ -26,7 +25,7 @@ describe('<SiteNavbar />', () => {
 
   describe('when no user is logged in', () => {
     beforeEach(() => {
-      ;(useState as SpyInstanceFn).mockImplementationOnce((_stateId: string) =>
+      useState.mockImplementationOnce((_stateId: string) =>
         ref<User>({
           admin: false,
           email: '',
@@ -65,7 +64,7 @@ describe('<SiteNavbar />', () => {
 
   describe('when a user is logged in', () => {
     beforeEach(() => {
-      ;(useState as SpyInstanceFn).mockImplementation((_stateId: string) =>
+      useState.mockImplementation((_stateId: string) =>
         ref<User>({
           admin: true,
           email: 'admin@leaderboards.gg',
