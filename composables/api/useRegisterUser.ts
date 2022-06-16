@@ -26,7 +26,7 @@ export const useRegisterUser = (
   userClient
     .usersRegisterCreate(requestData)
     .then((response) => {
-      if (response.status >= 200 && response.status < 300) {
+      if (response.ok) {
         responseData.value = response?.data
       } else {
         throw response?.error

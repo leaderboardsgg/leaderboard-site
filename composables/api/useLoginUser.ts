@@ -24,7 +24,7 @@ export const useLoginUser = (requestData: LoginRequest): LoginUserResponse => {
   userClient
     .usersLoginCreate(requestData)
     .then((response) => {
-      if (response.status >= 200 && response.status < 300) {
+      if (response.ok) {
         authToken.value = response?.data?.token
       } else {
         throw response?.error
@@ -36,7 +36,7 @@ export const useLoginUser = (requestData: LoginRequest): LoginUserResponse => {
           headers: { Authorization: `Bearer ${authToken.value}` },
         })
         .then((response) => {
-          if (response.status >= 200 && response.status < 300) {
+          if (response.ok) {
             currentUser.value = response?.data
           } else {
             throw response?.error
