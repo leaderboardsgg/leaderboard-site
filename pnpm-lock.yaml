@@ -18,7 +18,7 @@ specifiers:
   '@nuxtjs/tailwindcss': 5.1.2
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
-  '@testing-library/user-event': 14.2.0
+  '@testing-library/user-event': 14.2.1
   '@testing-library/vue': 5.8.3
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
@@ -86,7 +86,7 @@ devDependencies:
   '@nuxtjs/tailwindcss': 5.1.2_ts-node@10.8.1+webpack@5.72.0
   '@testing-library/dom': 8.13.0
   '@testing-library/jest-dom': 5.16.4
-  '@testing-library/user-event': 14.2.0_@testing-library+dom@8.13.0
+  '@testing-library/user-event': 14.2.1_@testing-library+dom@8.13.0
   '@testing-library/vue': 5.8.3_9065e7474e033a8e4b95615fc8e6c36c
   '@types/dotenv-safe': 8.1.2
   '@types/glob': 7.2.0
@@ -2626,8 +2626,8 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/user-event/14.2.0_@testing-library+dom@8.13.0:
-    resolution: {integrity: sha512-+hIlG4nJS6ivZrKnOP7OGsDu9Fxmryj9vCl8x0ZINtTJcCHs2zLsYif5GzuRiBF2ck5GZG2aQr7Msg+EHlnYVQ==}
+  /@testing-library/user-event/14.2.1_@testing-library+dom@8.13.0:
+    resolution: {integrity: sha512-HOr1QiODrq+0j9lKU5i10y9TbhxMBMRMGimNx10asdmau9cb8Xb1Vyg0GvTwyIL2ziQyh2kAloOtAQFBQVuecA==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
