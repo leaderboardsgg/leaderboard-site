@@ -84,7 +84,7 @@ More information about the usage of this directory in [the documentation](https:
 
 #### `lib`
 
-This directory contains common files and utilities for the project. The subfolder `api` is extra special as the containing files are auto-generated with the `scripts/generate-api` script and `generate:api` package command.
+This directory contains common files and utilities for the project. The subfolder `api` is extra special as the containing files are auto-generated with the `scripts/generate-api` script and `generate:api` package command (which calls that script).
 
 #### `pages`
 
