@@ -6,7 +6,7 @@ import { User } from '@/lib/api/data-contracts'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
 vi.mock('#app', () => ({
-  useState: vi.fn(),
+  useState: vi.fn(ref),
 }))
 
 afterEach(() => {
@@ -16,8 +16,6 @@ afterEach(() => {
 
 describe('<SiteNavbar />', () => {
   it('should render without crashing', () => {
-    useState.mockImplementation(() => ref())
-
     const { unmount } = stubbedRender(SiteNavbar)
 
     unmount()
@@ -25,7 +23,7 @@ describe('<SiteNavbar />', () => {
 
   describe('when no user is logged in', () => {
     beforeEach(() => {
-      useState.mockImplementationOnce((_stateId: string) =>
+      useState.mockImplementation((_stateId: string) =>
         ref<User>({
           admin: false,
           email: '',

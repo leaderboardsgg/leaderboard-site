@@ -1,9 +1,8 @@
-import { useState } from '#app'
-import { User } from '@/lib/api/data-contracts'
+import { useCurrentUser, useSessionToken } from '@/composables'
 
 export const useLogoutUser = (): void => {
-  const authToken = useState<string>('session_token')
-  const currentUser = useState<User>('current_user')
+  const authToken = useSessionToken()
+  const currentUser = useCurrentUser()
 
   authToken.value = ''
   currentUser.value = {

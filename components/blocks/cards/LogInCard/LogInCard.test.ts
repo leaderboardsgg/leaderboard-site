@@ -9,23 +9,21 @@ fetchMock.enableMocks()
 
 type fetchMockCall = [string, FullRequestParams]
 
+vi.mock('#app', () => ({
+  useRuntimeConfig: () => ({
+    public: {
+      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+    },
+  }),
+  useState: vi.fn(ref),
+}))
+
 afterEach(() => {
   fetchMock.resetMocks()
   vi.restoreAllMocks()
 })
 
 describe('<LogInCard />', () => {
-  beforeEach(() => {
-    vi.mock('#app', () => ({
-      useRuntimeConfig: () => ({
-        public: {
-          BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
-        },
-      }),
-      useState: vi.fn(ref),
-    }))
-  })
-
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(LogInCard)
 
@@ -97,6 +95,9 @@ describe('<LogInCard />', () => {
     })
 
     it('calls the api', async () => {
+      const token = 'jwt-token'
+      fetchMock.mockResponseOnce(JSON.stringify({ token }))
+
       const { getByTestId } = stubbedRender(LogInCard)
 
       const emailInput: HTMLInputElement = getByTestId('email-input')
@@ -127,10 +128,11 @@ describe('<LogInCard />', () => {
         `${process.env.BACKEND_BASE_URL}/api/Users/me`,
       )
       expect(meApiCall?.[1].method).toBe('GET')
-      expect(meApiCall?.[1].headers).toBeDefined()
-      expect(Object.keys({ ...meApiCall?.[1].headers })).toContain(
-        'Authorization',
-      )
+
+      const headers = meApiCall?.[1]?.headers as Record<string, string>
+      expect(headers).toBeDefined()
+      expect(Object.keys(headers)).toContain('Authorization')
+      expect(headers.Authorization).toEqual(`Bearer ${token}`)
     })
   })
 

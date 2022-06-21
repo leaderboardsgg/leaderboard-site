@@ -1,22 +1,19 @@
 import { ref } from 'vue'
-import { useRuntimeConfig, useState } from '#app'
-import { LoginRequest, User } from '@/lib/api/data-contracts'
+import { useRuntimeConfig } from '#app'
+import { useCurrentUser, useSessionToken } from '@/composables'
+import { LoginRequest, ProblemDetails } from '@/lib/api/data-contracts'
 import { Users } from '@/lib/api/Users'
 
 interface LoginUserResponse {
   loading: boolean
-  error: string | null
+  error: ProblemDetails | null
 }
 
 export const useLoginUser = (requestData: LoginRequest): LoginUserResponse => {
   const responseLoading = ref(true)
-  const responseError = ref<string | null>(null)
-  const authToken = useState<string>('session_token')
-  const currentUser = useState<User>('current_user', () => ({
-    admin: false,
-    email: '',
-    username: '',
-  }))
+  const responseError = ref<ProblemDetails | null>(null)
+  const authToken = useSessionToken()
+  const currentUser = useCurrentUser()
 
   const userClient = new Users({
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
@@ -25,9 +22,9 @@ export const useLoginUser = (requestData: LoginRequest): LoginUserResponse => {
     .usersLoginCreate(requestData)
     .then((response) => {
       if (response.ok) {
-        authToken.value = response?.data?.token
+        authToken.value = response.data.token
       } else {
-        throw response?.error
+        throw response.error
       }
     })
     .then(() => {
@@ -37,15 +34,15 @@ export const useLoginUser = (requestData: LoginRequest): LoginUserResponse => {
         })
         .then((response) => {
           if (response.ok) {
-            currentUser.value = response?.data
+            currentUser.value = response.data
           } else {
-            throw response?.error
+            throw response.error
           }
         })
 
       responseLoading.value = false
     })
-    .catch((error) => {
+    .catch((error: ProblemDetails) => {
       console.error(error) // eslint-disable-line no-console
       responseLoading.value = false
       responseError.value = error

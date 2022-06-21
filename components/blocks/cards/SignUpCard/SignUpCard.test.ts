@@ -1,25 +1,21 @@
 import createFetchMock from 'vitest-fetch-mock'
 import SignUpCard from './SignUpCard.vue'
 import { fireEvent, stubbedRender } from '@/testUtils'
+
 const fetchMock = createFetchMock(vi)
 fetchMock.enableMocks()
 
-afterEach(() => {
-  fetchMock.resetMocks()
-  vi.restoreAllMocks()
-})
+vi.mock('#app', () => ({
+  useRuntimeConfig: () => ({
+    public: {
+      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+    },
+  }),
+}))
+
+afterEach(fetchMock.resetMocks)
 
 describe('<SignUpCard />', () => {
-  beforeEach(() => {
-    vi.mock('#app', () => ({
-      useRuntimeConfig: () => ({
-        public: {
-          BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
-        },
-      }),
-    }))
-  })
-
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(SignUpCard)
 
