@@ -131,7 +131,9 @@ function signup() {
               data-testid="hide-show-button"
               @click="state.showPassword.value = !state.showPassword.value"
               @keydown.enter.prevent
-              @keyup.enter="state.showPassword.value = !state.showPassword.value"
+              @keyup.enter="
+                state.showPassword.value = !state.showPassword.value
+              "
             />
           </div>
 

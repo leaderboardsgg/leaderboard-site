@@ -96,7 +96,9 @@ function login() {
               data-testid="hide-show-button"
               @click="state.showPassword.value = !state.showPassword.value"
               @keydown.enter="$event.preventDefault()"
-              @keyup.enter="state.showPassword.value = !state.showPassword.value"
+              @keyup.enter="
+                state.showPassword.value = !state.showPassword.value
+              "
             />
           </div>
         </div>

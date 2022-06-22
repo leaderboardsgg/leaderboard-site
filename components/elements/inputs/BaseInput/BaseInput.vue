@@ -10,11 +10,7 @@ const model = toRef(props, 'model')
 </script>
 
 <template>
-  <input
-    v-model="model"
-    class="input"
-    v-bind="$attrs"
-  />
+  <input v-model="model" class="input" v-bind="$attrs" />
 </template>
 
 <style lang="postcss" scoped>
