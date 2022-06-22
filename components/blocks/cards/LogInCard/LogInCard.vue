@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, withDefaults } from 'vue'
+import { ref, withDefaults, Ref } from 'vue'
 import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
 import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
 import Card from '@/components/elements/cards/Card/Card.vue'
@@ -14,9 +14,9 @@ interface LogInCardProps {
 }
 
 interface LogInCardState {
-  email: string
-  password: string
-  showPassword: boolean
+  email: Ref<string>
+  password: Ref<string>
+  showPassword: Ref<boolean>
 }
 
 const emit = defineEmits(['close', 'signUpClick'])
@@ -25,21 +25,21 @@ const props = withDefaults(defineProps<LogInCardProps>(), {
   modal: false,
 })
 
-const state = reactive<LogInCardState>({
-  email: '',
-  password: '',
-  showPassword: false,
-})
+const state: LogInCardState = {
+  email: ref<string>(''),
+  password: ref<string>(''),
+  showPassword: ref<boolean>(false),
+}
 
 function login() {
   useLoginUser({
-    email: state.email,
-    password: state.password,
+    email: state.email.value,
+    password: state.password.value,
   })
 
-  state.email = ''
-  state.password = ''
-  state.showPassword = false
+  state.email.value = ''
+  state.password.value = ''
+  state.showPassword.value = false
 
   emit('close')
 }
@@ -69,7 +69,7 @@ function login() {
     <CardBody>
       <div class="login-card__body-wrapper">
         <BaseInput
-          v-model="state.email"
+          :model="state.email"
           name="email"
           type="text"
           placeholder="Email"
@@ -79,10 +79,10 @@ function login() {
 
         <div class="login-card__input-wrapper">
           <BaseInput
-            v-model="state.password"
+            :model="state.password"
             class="login-card__password-field"
             name="password"
-            :type="state.showPassword ? 'text' : 'password'"
+            :type="state.showPassword.value ? 'text' : 'password'"
             placeholder="Password"
             autocomplete="password"
             data-testid="password-input"
@@ -94,9 +94,9 @@ function login() {
               id="hide-show-button"
               type="button"
               data-testid="hide-show-button"
-              @click="state.showPassword = !state.showPassword"
+              @click="state.showPassword.value = !state.showPassword.value"
               @keydown.enter="$event.preventDefault()"
-              @keyup.enter="state.showPassword = !state.showPassword"
+              @keyup.enter="state.showPassword.value = !state.showPassword.value"
             />
           </div>
         </div>

@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { ref, withDefaults } from 'vue'
+import { toRef, Ref } from 'vue'
 
-type BaseInputValueType = number | string
 interface BaseInputProps {
-  value?: BaseInputValueType
+  model: Ref<string | number>
 }
 
-const props = withDefaults(defineProps<BaseInputProps>(), {
-  value: '',
-})
-
-const model = ref<BaseInputValueType>(props.value)
+const props = defineProps<BaseInputProps>()
+const model = toRef(props, 'model')
 </script>
 
 <template>
-  <input v-model="model" class="input" v-bind="$attrs" />
+  <input
+    v-model="model"
+    class="input"
+    v-bind="$attrs"
+  />
 </template>
 
 <style lang="postcss" scoped>

@@ -73,8 +73,7 @@ describe('<SignUpCard />', () => {
       expect(emitted().signUpClick).toBeTruthy()
     })
 
-    // TODO: This is currently failing, and I don't know why
-    it.skip('clears the state', async () => {
+    it('clears the state', async () => {
       const { getByTestId } = stubbedRender(SignUpCard)
 
       const emailInput: HTMLInputElement = getByTestId('email-input')

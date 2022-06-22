@@ -4,6 +4,7 @@ import LogInCard from './LogInCard.vue'
 import { FullRequestParams } from '@/lib/api/http-client'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
+const token = 'jwt-token'
 const fetchMock = createFetchMock(vi)
 fetchMock.enableMocks()
 
@@ -24,6 +25,10 @@ afterEach(() => {
 })
 
 describe('<LogInCard />', () => {
+  beforeEach(() => {
+    fetchMock.mockResponseOnce(JSON.stringify({ token }))
+  })
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(LogInCard)
 
@@ -75,8 +80,7 @@ describe('<LogInCard />', () => {
       expect(emitted().close).toBeTruthy()
     })
 
-    // TODO: This is currently failing, and I don't know why
-    it.skip('clears the state', async () => {
+    it('clears the state', async () => {
       const { getByTestId } = stubbedRender(LogInCard)
 
       const emailInput: HTMLInputElement = getByTestId('email-input')
@@ -95,9 +99,6 @@ describe('<LogInCard />', () => {
     })
 
     it('calls the api', async () => {
-      const token = 'jwt-token'
-      fetchMock.mockResponseOnce(JSON.stringify({ token }))
-
       const { getByTestId } = stubbedRender(LogInCard)
 
       const emailInput: HTMLInputElement = getByTestId('email-input')
