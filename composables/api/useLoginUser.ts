@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { useRuntimeConfig } from '#app'
 import { useCurrentUser, useSessionToken } from '@/composables'
-import { LoginRequest, ProblemDetails } from '@/lib/api/data-contracts'
+import type { LoginRequest, ProblemDetails } from '@/lib/api/data-contracts'
 import { Users } from '@/lib/api/Users'
 
 interface LoginUserResponse {

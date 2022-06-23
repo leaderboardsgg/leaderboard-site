@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
+import { ref } from 'vue'
+import type { Ref } from 'vue'
 import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
 import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
 

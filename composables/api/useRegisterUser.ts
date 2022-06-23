@@ -1,6 +1,10 @@
 import { ref } from 'vue'
 import { useRuntimeConfig } from '#app'
-import { ProblemDetails, RegisterRequest, User } from '@/lib/api/data-contracts'
+import type {
+  ProblemDetails,
+  RegisterRequest,
+  User,
+} from '@/lib/api/data-contracts'
 import { Users } from '@/lib/api/Users'
 
 interface RegisterUserResponse {
