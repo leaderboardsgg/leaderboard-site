@@ -32,14 +32,14 @@ const props = withDefaults(defineProps<SignUpCardProps>(), {
 })
 
 const register: UserRegister = {
-  email: ref<string>(''),
-  password: ref<string>(''),
-  passwordConfirm: ref<string>(''),
-  username: ref<string>(''),
+  email: ref(''),
+  password: ref(''),
+  passwordConfirm: ref(''),
+  username: ref(''),
 }
 
 const state: SignUpCardState = {
-  showPassword: ref<boolean>(false),
+  showPassword: ref(false),
 }
 
 function signup() {

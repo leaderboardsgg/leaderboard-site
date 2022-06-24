@@ -9,7 +9,7 @@ interface SearchBarState {
 }
 
 const state: SearchBarState = {
-  input: ref<string>(''),
+  input: ref(''),
 }
 
 const emit = defineEmits(['search'])

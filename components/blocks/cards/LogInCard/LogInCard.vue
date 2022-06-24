@@ -27,9 +27,9 @@ const props = withDefaults(defineProps<LogInCardProps>(), {
 })
 
 const state: LogInCardState = {
-  email: ref<string>(''),
-  password: ref<string>(''),
-  showPassword: ref<boolean>(false),
+  email: ref(''),
+  password: ref(''),
+  showPassword: ref(false),
 }
 
 function login() {
