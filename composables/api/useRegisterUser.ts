@@ -6,6 +6,7 @@ import type {
   User,
 } from '@/lib/api/data-contracts'
 import { Users } from '@/lib/api/Users'
+import { isProblemDetails } from '@/lib/helpers'
 
 interface RegisterUserResponse {
   data: User
@@ -13,9 +14,9 @@ interface RegisterUserResponse {
   error: ProblemDetails | null
 }
 
-export const useRegisterUser = (
+export const useRegisterUser = async (
   requestData: RegisterRequest,
-): RegisterUserResponse => {
+): Promise<RegisterUserResponse> => {
   const responseData = ref<User>({
     admin: false,
     email: '',
@@ -27,21 +28,27 @@ export const useRegisterUser = (
   const userClient = new Users({
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
   })
-  userClient
-    .usersRegisterCreate(requestData)
-    .then((response) => {
-      if (response.ok) {
-        responseData.value = response.data
-      } else {
-        throw response.error
-      }
-      responseLoading.value = false
-    })
-    .catch((error: ProblemDetails) => {
-      console.error(error) // eslint-disable-line no-console
-      responseLoading.value = false
+
+  try {
+    const { data, ok, error } = await userClient.usersRegisterCreate(
+      requestData,
+    )
+
+    if (ok) {
+      responseData.value = data
+    } else {
       responseError.value = error
-    })
+    }
+  } catch (e: unknown) {
+    if (isProblemDetails(e)) {
+      const error = e as ProblemDetails
+
+      console.error(error) // eslint-disable-line no-console
+      responseError.value = error
+    }
+  } finally {
+    responseLoading.value = false
+  }
 
   return {
     data: responseData.value,
