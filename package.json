@@ -25,11 +25,14 @@
     "test:watch": "vitest --watch"
   },
   "dependencies": {
+    "@intlify/nuxt3": "^0.2.2",
     "nuxt": "3.0.0-rc.3",
     "unplugin-icons": "^0.14.3",
     "unplugin-vue-components": "^0.19.6"
   },
   "devDependencies": {
+    "@intlify/vite-plugin-vue-i18n": "^3.4.0",
+    "@intlify/vue-i18n-loader": "^4.2.0",
     "@nuxt/test-utils-edge": "3.0.0-rc.3-27550969.a4a3cff",
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
@@ -66,12 +69,16 @@
     "vite": "^2.9.9",
     "vitest": "^0.12.9",
     "vue": "3.2.36",
+    "vue-i18n": "9.2.0-beta.36",
     "webpack": "^5.72.1"
   },
   "peerDepsInDevDeps": {
+    "@intlify/vite-plugin-vue-i18n": "^3.4.0",
+    "@intlify/vue-i18n-loader": "^4.2.0",
     "@vue/compiler-sfc": "^3.2.36",
     "vite": "^2.9.9",
     "vue": "3.2.36",
+    "vue-i18n": "9.2.0-beta.36",
     "webpack": "^5.72.1"
   }
 }
