@@ -30,12 +30,18 @@ export default defineNuxtConfig({
     '**/__tests__',
   ],
 
+  // https://github.com/intlify/nuxt3
+  intlify: {
+    vueI18n: 'i18n/vue-i18n.ts',
+  },
+
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
+    '@intlify/nuxt3',
     'unplugin-icons/nuxt',
   ],
 })
