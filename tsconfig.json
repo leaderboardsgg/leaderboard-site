@@ -22,9 +22,6 @@
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./*"]
-    },
     "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "types": [
@@ -33,6 +30,7 @@
       "@testing-library/dom",
       "@testing-library/jest-dom",
       "@testing-library/vue",
+      "@types/dotenv-safe",
       "@types/jest",
       "@types/node",
       "unplugin-icons/types/vue3",

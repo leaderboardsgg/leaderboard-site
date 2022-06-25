@@ -1,5 +1,19 @@
+import createFetchMock from 'vitest-fetch-mock'
 import SignUpCard from './SignUpCard.vue'
 import { fireEvent, stubbedRender } from '@/testUtils'
+
+const fetchMock = createFetchMock(vi)
+fetchMock.enableMocks()
+
+vi.mock('#app', () => ({
+  useRuntimeConfig: () => ({
+    public: {
+      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+    },
+  }),
+}))
+
+afterEach(fetchMock.resetMocks)
 
 describe('<SignUpCard />', () => {
   it('should render without crashing', () => {
@@ -47,6 +61,10 @@ describe('<SignUpCard />', () => {
   })
 
   describe('when the sign up button is clicked', () => {
+    const emailAddress = 'strongbad@homestarrunner.com'
+    const password = 'homestarsux'
+    const username = 'strongbad'
+
     it('emits the sign up click event', async () => {
       const { emitted, getByTestId } = stubbedRender(SignUpCard)
 
@@ -55,12 +73,8 @@ describe('<SignUpCard />', () => {
       expect(emitted().signUpClick).toBeTruthy()
     })
 
-    // TODO: This is currently failing, and I don't know why
-    it.skip('clears the state', async () => {
+    it('clears the state', async () => {
       const { getByTestId } = stubbedRender(SignUpCard)
-      const emailAddress = 'strongbad@homestarrunner.com'
-      const password = 'homestarsux'
-      const username = 'strongbad'
 
       const emailInput: HTMLInputElement = getByTestId('email-input')
       const passwordInput: HTMLInputElement = getByTestId('password-input')
@@ -85,6 +99,38 @@ describe('<SignUpCard />', () => {
       expect(usernameInput.value).toBe('')
       expect(passwordInput.value).toBe('')
       expect(passwordConfirmInput.value).toBe('')
+    })
+
+    it('calls the api', async () => {
+      const { getByTestId } = stubbedRender(SignUpCard)
+
+      const emailInput: HTMLInputElement = getByTestId('email-input')
+      const passwordInput: HTMLInputElement = getByTestId('password-input')
+      const passwordConfirmInput: HTMLInputElement = getByTestId(
+        'password-confirm-input',
+      )
+      const usernameInput: HTMLInputElement = getByTestId('username-input')
+
+      await fireEvent.type(emailInput, emailAddress)
+      await fireEvent.type(usernameInput, username)
+      await fireEvent.type(passwordInput, password)
+      await fireEvent.type(passwordConfirmInput, password)
+
+      await fireEvent.click(getByTestId('sign-up-button'))
+
+      const apiCall = fetchMock.mock.calls[0]
+      expect(apiCall?.[0]).toEqual(
+        `${process.env.BACKEND_BASE_URL}/api/Users/register`,
+      )
+      expect(apiCall?.[1]?.method).toEqual('POST')
+      expect(apiCall?.[1]?.body).toEqual(
+        JSON.stringify({
+          email: emailAddress,
+          password,
+          passwordConfirm: password,
+          username,
+        }),
+      )
     })
   })
 })

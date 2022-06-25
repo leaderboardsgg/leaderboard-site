@@ -1,25 +1,32 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import type { Ref } from 'vue'
 import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
 import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
 
-const inputValue = ref<string>('')
-// TODO: Find a fix for this prettier issue
-const emit = defineEmits<{(e: 'search', value: string): void}>() // prettier-ignore
+interface SearchBarState {
+  input: Ref<string>
+}
+
+const state: SearchBarState = {
+  input: ref(''),
+}
+
+const emit = defineEmits(['search'])
 
 function onClick() {
-  emit('search', inputValue.value)
+  emit('search', state.input.value)
 }
 
 function onEnter() {
-  emit('search', inputValue.value)
+  emit('search', state.input.value)
 }
 </script>
 
 <template>
   <div class="search-bar">
     <BaseInput
-      v-model="inputValue"
+      :model="state.input"
       data-testid="search-input"
       name="search"
       placeholder="search..."

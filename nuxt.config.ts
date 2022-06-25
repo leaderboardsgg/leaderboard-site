@@ -1,4 +1,8 @@
 import { defineNuxtConfig } from 'nuxt'
+import { config } from 'dotenv-safe'
+
+// Safely loads the .env file, making sure all the variables are defined
+config()
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
@@ -38,4 +42,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
   ],
+
+  runtimeConfig: {
+    public: {
+      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+    }
+  }
 })

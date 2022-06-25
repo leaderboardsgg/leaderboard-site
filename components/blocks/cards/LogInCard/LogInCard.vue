@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { reactive, withDefaults } from 'vue'
+import { ref, withDefaults } from 'vue'
+import type { Ref } from 'vue'
 import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
 import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
 import Card from '@/components/elements/cards/Card/Card.vue'
@@ -7,15 +8,16 @@ import CardBody from '@/components/elements/cards/CardBody/CardBody.vue'
 import CardHeader from '@/components/elements/cards/CardHeader/CardHeader.vue'
 import CloseButton from '@/components/elements/buttons/CloseButton/CloseButton.vue'
 import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue'
+import { useLoginUser } from '@/composables/api'
 
 interface LogInCardProps {
   modal?: boolean
 }
 
 interface LogInCardState {
-  email: string
-  password: string
-  showPassword: boolean
+  email: Ref<string>
+  password: Ref<string>
+  showPassword: Ref<boolean>
 }
 
 const emit = defineEmits(['close', 'signUpClick'])
@@ -24,16 +26,21 @@ const props = withDefaults(defineProps<LogInCardProps>(), {
   modal: false,
 })
 
-const state = reactive<LogInCardState>({
-  email: '',
-  password: '',
-  showPassword: false,
-})
+const state: LogInCardState = {
+  email: ref(''),
+  password: ref(''),
+  showPassword: ref(false),
+}
 
 function login() {
-  state.email = ''
-  state.password = ''
-  state.showPassword = false
+  useLoginUser({
+    email: state.email.value,
+    password: state.password.value,
+  })
+
+  state.email.value = ''
+  state.password.value = ''
+  state.showPassword.value = false
 
   emit('close')
 }
@@ -63,7 +70,7 @@ function login() {
     <CardBody>
       <div class="login-card__body-wrapper">
         <BaseInput
-          v-model="state.email"
+          :model="state.email"
           name="email"
           type="text"
           placeholder="Email"
@@ -73,13 +80,14 @@ function login() {
 
         <div class="login-card__input-wrapper">
           <BaseInput
-            v-model="state.password"
+            :model="state.password"
             class="login-card__password-field"
             name="password"
-            :type="state.showPassword ? 'text' : 'password'"
+            :type="state.showPassword.value ? 'text' : 'password'"
             placeholder="Password"
             autocomplete="password"
             data-testid="password-input"
+            @keyup.enter="login"
           />
 
           <div class="login-card__button-wrapper">
@@ -87,9 +95,11 @@ function login() {
               id="hide-show-button"
               type="button"
               data-testid="hide-show-button"
-              @click="state.showPassword = !state.showPassword"
-              @keydown.enter.prevent
-              @keyup.enter="state.showPassword = !state.showPassword"
+              @click="state.showPassword.value = !state.showPassword.value"
+              @keydown.enter="$event.preventDefault()"
+              @keyup.enter="
+                state.showPassword.value = !state.showPassword.value
+              "
             />
           </div>
         </div>
