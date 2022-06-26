@@ -1,7 +1,34 @@
+import { ref } from 'vue'
+import createFetchMock from 'vitest-fetch-mock'
 import LogInCard from './LogInCard.vue'
+import { FullRequestParams } from '@/lib/api/http-client'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
+const token = 'jwt-token'
+const fetchMock = createFetchMock(vi)
+fetchMock.enableMocks()
+
+type fetchMockCall = [string, FullRequestParams]
+
+vi.mock('#app', () => ({
+  useRuntimeConfig: () => ({
+    public: {
+      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+    },
+  }),
+  useState: vi.fn(ref),
+}))
+
+afterEach(() => {
+  fetchMock.resetMocks()
+  vi.restoreAllMocks()
+})
+
 describe('<LogInCard />', () => {
+  beforeEach(() => {
+    fetchMock.mockResponseOnce(JSON.stringify({ token }))
+  })
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(LogInCard)
 
@@ -31,7 +58,20 @@ describe('<LogInCard />', () => {
     })
   })
 
+  describe('when enter key is released on the password input field', () => {
+    it('emits the close event', async () => {
+      const { emitted, getByTestId } = stubbedRender(LogInCard)
+
+      await fireEvent.type(getByTestId('password-input'), '{enter}')
+
+      expect(emitted().close).toBeTruthy()
+    })
+  })
+
   describe('when the login button is clicked', () => {
+    const emailAddress = 'strongbad@homestarrunner.com'
+    const password = 'homestarsux'
+
     it('emits the close event', async () => {
       const { emitted, getByTestId } = stubbedRender(LogInCard)
 
@@ -40,11 +80,8 @@ describe('<LogInCard />', () => {
       expect(emitted().close).toBeTruthy()
     })
 
-    // TODO: This is currently failing, and I don't know why
-    it.skip('clears the state', async () => {
+    it('clears the state', async () => {
       const { getByTestId } = stubbedRender(LogInCard)
-      const emailAddress = 'strongbad@homestarrunner.com'
-      const password = 'homestarsux'
 
       const emailInput: HTMLInputElement = getByTestId('email-input')
       const passwordInput: HTMLInputElement = getByTestId('password-input')
@@ -59,6 +96,44 @@ describe('<LogInCard />', () => {
 
       expect(emailInput.value).toBe('')
       expect(passwordInput.value).toBe('')
+    })
+
+    it('calls the api', async () => {
+      const { getByTestId } = stubbedRender(LogInCard)
+
+      const emailInput: HTMLInputElement = getByTestId('email-input')
+      const passwordInput: HTMLInputElement = getByTestId('password-input')
+
+      await fireEvent.type(emailInput, emailAddress)
+      await fireEvent.type(passwordInput, password)
+
+      await fireEvent.click(getByTestId('login-button'))
+
+      const apiCalls = fetchMock.mock.calls as fetchMockCall[]
+      expect(apiCalls.length).toBe(2)
+
+      const loginApiCall = apiCalls[0]
+      expect(loginApiCall?.[0]).toBe(
+        `${process.env.BACKEND_BASE_URL}/api/Users/login`,
+      )
+      expect(loginApiCall?.[1].method).toBe('POST')
+      expect(loginApiCall?.[1].body).toEqual(
+        JSON.stringify({
+          email: emailAddress,
+          password,
+        }),
+      )
+
+      const meApiCall = apiCalls[1]
+      expect(meApiCall?.[0]).toBe(
+        `${process.env.BACKEND_BASE_URL}/api/Users/me`,
+      )
+      expect(meApiCall?.[1].method).toBe('GET')
+
+      const headers = meApiCall?.[1]?.headers as Record<string, string>
+      expect(headers).toBeDefined()
+      expect(Object.keys(headers)).toContain('Authorization')
+      expect(headers.Authorization).toEqual(`Bearer ${token}`)
     })
   })
 

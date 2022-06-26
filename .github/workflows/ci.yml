@@ -45,6 +45,9 @@ jobs:
       - name: Install `node_modules`
         run: pnpm install
 
+      - name: Copy `.env.test` -> `.env`
+        run: cp .env.test .env
+
       - name: Build the `.nuxt` directory
         run: pnpm build
 

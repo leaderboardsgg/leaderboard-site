@@ -4,14 +4,14 @@ interface SignUpCardProps {
 }
 
 interface SignUpCardState {
-  showPassword: boolean
+  showPassword: Ref<boolean>
 }
 
 interface UserRegister {
-  email: string
-  password: string
-  passwordConfirm: string
-  username: string
+  email: Ref<string>
+  password: Ref<string>
+  passwordConfirm: Ref<string>
+  username: Ref<string>
 }
 
 const emit = defineEmits(['close', 'logInClick', 'signUpClick'])
@@ -20,23 +20,30 @@ const props = withDefaults(defineProps<SignUpCardProps>(), {
   modal: false,
 })
 
-const register = reactive<UserRegister>({
-  email: '',
-  password: '',
-  passwordConfirm: '',
-  username: '',
-})
+const register: UserRegister = {
+  email: ref(''),
+  password: ref(''),
+  passwordConfirm: ref(''),
+  username: ref(''),
+}
 
-const state = reactive<SignUpCardState>({
-  showPassword: false,
-})
+const state: SignUpCardState = {
+  showPassword: ref(false),
+}
 
 function signup() {
-  register.email = ''
-  register.password = ''
-  register.passwordConfirm = ''
-  register.username = ''
-  state.showPassword = false
+  useRegisterUser({
+    email: register.email.value,
+    password: register.password.value,
+    passwordConfirm: register.passwordConfirm.value,
+    username: register.username.value,
+  })
+
+  register.email.value = ''
+  register.password.value = ''
+  register.passwordConfirm.value = ''
+  register.username.value = ''
+  state.showPassword.value = false
 
   emit('signUpClick')
 }
@@ -66,7 +73,7 @@ function signup() {
     <CardBody>
       <div class="signup-card__body-wrapper">
         <BaseInput
-          v-model="register.email"
+          :model="register.email"
           name="email"
           type="text"
           placeholder="Email"
@@ -76,7 +83,7 @@ function signup() {
 
         <div class="signup-card__input-wrapper">
           <BaseInput
-            v-model="register.username"
+            :model="register.username"
             name="username"
             type="text"
             placeholder="Username"
@@ -89,20 +96,20 @@ function signup() {
         <div class="signup-card__input-wrapper">
           <div class="signup-card__password-wrapper">
             <BaseInput
-              v-model="register.password"
+              :model="register.password"
               name="password"
               class="signup-card__password-field"
-              :type="state.showPassword ? 'text' : 'password'"
+              :type="state.showPassword.value ? 'text' : 'password'"
               placeholder="Password"
               autocomplete="password"
               data-testid="password-input"
             />
 
             <BaseInput
-              v-model="register.passwordConfirm"
+              :model="register.passwordConfirm"
               name="passwordConfirm"
               class="signup-card__password-field"
-              :type="state.showPassword ? 'text' : 'password'"
+              :type="state.showPassword.value ? 'text' : 'password'"
               placeholder="Confirm"
               autocomplete="password"
               data-testid="password-confirm-input"
@@ -112,9 +119,11 @@ function signup() {
               id="hide-show-password"
               type="button"
               data-testid="hide-show-button"
-              @click="state.showPassword = !state.showPassword"
+              @click="state.showPassword.value = !state.showPassword.value"
               @keydown.enter.prevent
-              @keyup.enter="state.showPassword = !state.showPassword"
+              @keyup.enter="
+                state.showPassword.value = !state.showPassword.value
+              "
             />
           </div>
 
