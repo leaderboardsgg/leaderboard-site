@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type BaseInputValueType = number | string
+import { type Ref } from 'vue'
 
 interface BaseInputProps {
   model: Ref<string | number>

@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
-import { config } from 'dotenv-safe';
+import '@testing-library/jest-dom'
+import { config } from 'dotenv-safe'
 
-config({ path: '.env.test' });
+config({ path: '.env.test' })

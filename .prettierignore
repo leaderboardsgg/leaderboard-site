@@ -4,6 +4,7 @@ dist
 build
 .husky
 .nuxt
+.output
 coverage
 node_modules/
 pnpm-lock.yaml

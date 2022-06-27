@@ -12,7 +12,7 @@ describe('<SearchBar />', () => {
     const inputValue = 'test'
 
     test('when the search button is clicked', async () => {
-      const { debug, emitted, getByTestId } = stubbedRender(SearchBar)
+      const { emitted, getByTestId } = stubbedRender(SearchBar)
       const searchInput: HTMLInputElement = getByTestId('search-input')
 
       await fireEvent.type(searchInput, inputValue)

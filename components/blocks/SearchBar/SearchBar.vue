@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const inputValue = ref<string>('')
+import { type Ref } from 'vue'
+
 // TODO: Find a fix for this prettier issue
 const emit = defineEmits<{(e: 'search', value: string): void}>() // prettier-ignore
 
@@ -10,8 +11,6 @@ interface SearchBarState {
 const state: SearchBarState = {
   input: ref(''),
 }
-
-const emit = defineEmits(['search'])
 
 function onClick() {
   emit('search', state.input.value)
