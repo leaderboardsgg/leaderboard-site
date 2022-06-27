@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-
 const emit = defineEmits(['close'])
 </script>
 

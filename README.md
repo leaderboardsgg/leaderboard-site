@@ -12,6 +12,12 @@ Board Customization and good management tools.
 
 If you'd like to start contributing to the project please check [`CONTRIBUTING.md`](https://github.com/leaderboardsgg/leaderboard-site/blob/main/CONTRIBUTING.md) first to make sure things go as smoothly as possible!
 
+## VSCode Setup
+
+- Install the reccomended extensions see `/.vscode/settings.json`
+- Make sure if you have done Vue 2 dev in VSCode to disable Vetur extension for the workspace
+- Enable Volar [Takeover mode](https://vuejs.org/guide/typescript/overview.html#takeover-mode)
+
 ## Build Setup
 
 - set node version with nvm

@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-</script>
+<script setup lang="ts" />
 
 <template>
   <BaseButton class="logout-button" v-bind="$attrs"> Log Out </BaseButton>

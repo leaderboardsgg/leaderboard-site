@@ -1,16 +1,18 @@
 {
+  "root": true,
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": [
-    "prettier",
-    "eslint:recommended",
     "@nuxtjs/eslint-config-typescript",
-    "plugin:nuxt/recommended",
-    "plugin:vue/recommended",
-    "plugin:vuejs-accessibility/recommended",
+    "plugin:vue/vue3-recommended",
     "plugin:@typescript-eslint/recommended",
+    "plugin:nuxt/recommended",
+    "@vue/eslint-config-typescript",
+    "plugin:prettier/recommended",
+    "plugin:vuejs-accessibility/recommended",
     "plugin:tailwindcss/recommended"
   ],
   "ignorePatterns": [
@@ -26,22 +28,21 @@
     "vite*.ts"
   ],
   "plugins": [
-    "prettier",
-    "vue",
+    // put these in the same order as they appear in devDeps for my own sanity :)
     "@typescript-eslint",
-    "vuejs-accessibility",
-    "tailwindcss"
+    "nuxt",
+    "prettier",
+    "tailwindcss",
+    "vue",
+    "vuejs-accessibility"
   ],
-  "parser": "vue-eslint-parser",
+  // "parser": "vue-eslint-parser",
+  // Parser is defined by @nuxtjs eslint config
   "parserOptions": {
-    "parser": "@typescript-eslint/parser",
-    "ecmaFeatures": {
-      "jsx": false
-    },
+    // "parser": "@typescript-eslint/parser",
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
-  "root": true,
   // add your custom rules here
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
