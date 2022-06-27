@@ -21,7 +21,7 @@ describe('<SearchBar />', () => {
       await fireEvent.click(getByTestId('search-button'))
 
       expect(emitted().search).toBeTruthy()
-      expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
+      expect((emitted() as any).search?.[0]?.[0]).toEqual(inputValue)
     })
 
     test('when the enter key is released', async () => {
@@ -34,7 +34,7 @@ describe('<SearchBar />', () => {
       await fireEvent.type(getByTestId('search-input'), '{enter}')
 
       expect(emitted().search).toBeTruthy()
-      expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
+      expect((emitted() as any).search?.[0]?.[0]).toEqual(inputValue)
     })
   })
 })
