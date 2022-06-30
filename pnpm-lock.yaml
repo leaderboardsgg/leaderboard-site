@@ -41,7 +41,7 @@ specifiers:
   eslint-config-prettier: 8.5.0
   eslint-plugin-jest: 26.5.3
   eslint-plugin-nuxt: 3.2.0
-  eslint-plugin-prettier: 4.2.0
+  eslint-plugin-prettier: 4.2.1
   eslint-plugin-tailwindcss: 3.6.0
   eslint-plugin-vue: 8.7.1
   eslint-plugin-vuejs-accessibility: 1.2.0
@@ -108,7 +108,7 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.18.0
   eslint-plugin-jest: 26.5.3_d9571bcd078a199deae5dbefe7dc2df4
   eslint-plugin-nuxt: 3.2.0_eslint@8.18.0
-  eslint-plugin-prettier: 4.2.0_bd3c4b21319ad16ec3ab54a1da22f60e
+  eslint-plugin-prettier: 4.2.1_bd3c4b21319ad16ec3ab54a1da22f60e
   eslint-plugin-tailwindcss: 3.6.0_ts-node@10.8.1
   eslint-plugin-vue: 8.7.1_eslint@8.18.0
   eslint-plugin-vuejs-accessibility: 1.2.0_eslint@8.18.0
@@ -6481,8 +6481,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-prettier/4.2.0_bd3c4b21319ad16ec3ab54a1da22f60e:
-    resolution: {integrity: sha512-w+EYWwMltYqlsirUG2LXROmC8cBIUSEpR4s/Oft8wX8Xm99FTfU+M+ehv47ZQbYPqD9ZAuCtZI6IuWw3Q004dw==}
+  /eslint-plugin-prettier/4.2.1_bd3c4b21319ad16ec3ab54a1da22f60e:
+    resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
       eslint: '>=7.28.0'
