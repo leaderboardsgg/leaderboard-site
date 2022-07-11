@@ -15,7 +15,7 @@ specifiers:
   '@nuxtjs/i18n': 7.2.2
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
-  '@nuxtjs/tailwindcss': 5.1.3
+  '@nuxtjs/tailwindcss': 5.2.0
   '@testing-library/dom': 8.16.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.2.1
@@ -83,7 +83,7 @@ devDependencies:
   '@nuxt/vue-app': 2.15.8
   '@nuxtjs/eslint-config-typescript': 10.0.0_eslint@8.18.0+typescript@4.7.4
   '@nuxtjs/eslint-module': 3.1.0_eslint@8.18.0+webpack@5.72.0
-  '@nuxtjs/tailwindcss': 5.1.3_ts-node@10.8.2+webpack@5.72.0
+  '@nuxtjs/tailwindcss': 5.2.0_ts-node@10.8.2+webpack@5.72.0
   '@testing-library/dom': 8.16.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.2.1_@testing-library+dom@8.16.0
@@ -2507,12 +2507,12 @@ packages:
       vue-functional-data-merge: 3.1.0
     dev: false
 
-  /@nuxtjs/tailwindcss/5.1.3_ts-node@10.8.2+webpack@5.72.0:
-    resolution: {integrity: sha512-JEL192mo8bwz8MK18pqU0vIEIkNQk7qBJ4TkJpLd9cYFbfCGWOhZZVPrtIHALvjn80dzNg6KA9IxHWKxkkleaw==}
+  /@nuxtjs/tailwindcss/5.2.0_ts-node@10.8.2+webpack@5.72.0:
+    resolution: {integrity: sha512-eUXxYz/1Nu5c05889eewBFukzXegDbYaBQ/yVEA4ybhBs5TXj8U2vIZuzj+A7ZROifv0NmLIS7ZnMfD3GvE73g==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.4_webpack@5.72.0
       '@nuxt/postcss8': 1.1.3_webpack@5.72.0
-      '@types/tailwindcss': 3.0.10
+      '@types/tailwindcss': 3.1.0_ts-node@10.8.2
       autoprefixer: 10.4.7_postcss@8.4.14
       chalk: 5.0.1
       clear-module: 4.1.2
@@ -2520,10 +2520,10 @@ packages:
       defu: 6.0.0
       postcss: 8.4.14
       postcss-custom-properties: 12.1.8_postcss@8.4.14
-      postcss-nesting: 10.1.8_postcss@8.4.14
+      postcss-nesting: 10.1.10_postcss@8.4.14
       tailwind-config-viewer: 1.7.1_tailwindcss@3.1.5
       tailwindcss: 3.1.5_ts-node@10.8.2
-      ufo: 0.8.4
+      ufo: 0.8.5
     transitivePeerDependencies:
       - esbuild
       - rollup
@@ -2975,8 +2975,13 @@ packages:
     resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
     dev: true
 
-  /@types/tailwindcss/3.0.10:
-    resolution: {integrity: sha512-1UnZIHO0NOPyPlPFV0HuMjki2SHkvG9uBA1ZehWj/OQMSROk503nuNyyfmJSIT289yewxTbKoPG+KLxYRvfIIg==}
+  /@types/tailwindcss/3.1.0_ts-node@10.8.2:
+    resolution: {integrity: sha512-JxPzrm609hzvF4nmOI3StLjbBEP3WWQxDDJESqR1nh94h7gyyy3XSl0hn5RBMJ9mPudlLjtaXs5YEBtLw7CnPA==}
+    deprecated: This is a stub types definition. tailwindcss provides its own type definitions, so you do not need this installed.
+    dependencies:
+      tailwindcss: 3.1.5_ts-node@10.8.2
+    transitivePeerDependencies:
+      - ts-node
     dev: true
 
   /@types/tapable/1.0.8:
@@ -7844,7 +7849,7 @@ packages:
     dev: false
 
   /is-arrayish/0.2.1:
-    resolution: {integrity: sha1-d8mYQFJ6qOyxqLppe4BkWnqSap0=}
+    resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
 
   /is-arrayish/0.3.2:
     resolution: {integrity: sha512-eVRqCvVlZbuw3GrM63ovNSNAeA1K16kaR/LRY/92w0zxQ5/1YzwblUX652i4Xs9RwAGjW9d9y6X88t8OaAJfWQ==}
@@ -10114,7 +10119,7 @@ packages:
     engines: {node: '>=8'}
 
   /path-is-absolute/1.0.1:
-    resolution: {integrity: sha1-F0uSaHNVNP+8es5r9TpanhtcX18=}
+    resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
     engines: {node: '>=0.10.0'}
 
   /path-key/3.1.1:
@@ -10706,11 +10711,11 @@ packages:
       postcss-selector-parser: 6.0.10
     dev: true
 
-  /postcss-nesting/10.1.8_postcss@8.4.14:
-    resolution: {integrity: sha512-txdb3/idHYsBbNDFo1PFY0ExCgH5nfWi8G5lO49e6iuU42TydbODTzJgF5UuL5bhgeSlnAtDgfFTDG0Cl1zaSQ==}
+  /postcss-nesting/10.1.10_postcss@8.4.14:
+    resolution: {integrity: sha512-lqd7LXCq0gWc0wKXtoKDru5wEUNjm3OryLVNRZ8OnW8km6fSNUuFrjEhU3nklxXE2jvd4qrox566acgh+xQt8w==}
     engines: {node: ^12 || ^14 || >=16}
     peerDependencies:
-      postcss: ^8.4
+      postcss: ^8.2
     dependencies:
       '@csstools/selector-specificity': 2.0.1_e73911252e8c76a7ba13ab9c39479e7d
       postcss: 8.4.14
@@ -12866,10 +12871,6 @@ packages:
   /ufo/0.8.3:
     resolution: {integrity: sha512-AIkk06G21y/P+NCatfU+1qldCmI0XCszZLn8AkuKotffF3eqCvlce0KuwM7ZemLE/my0GSYADOAeM5zDYWMB+A==}
     dev: false
-
-  /ufo/0.8.4:
-    resolution: {integrity: sha512-/+BmBDe8GvlB2nIflWasLLAInjYG0bC9HRnfEpNi4sw77J2AJNnEVnTDReVrehoh825+Q/evF3THXTAweyam2g==}
-    dev: true
 
   /ufo/0.8.5:
     resolution: {integrity: sha512-e4+UtA5IRO+ha6hYklwj6r7BjiGMxS0O+UaSg9HbaTefg4kMkzj4tXzEBajRR+wkxf+golgAWKzLbytCUDMJAA==}
