@@ -57,7 +57,7 @@ specifiers:
   pretty-quick: 3.1.3
   tailwindcss: 3.1.6
   ts-jest: 28.0.5
-  ts-node: 10.8.2
+  ts-node: 10.9.1
   typescript: 4.7.4
   vue: 2.7.5
   vue-jest: 3.0.7
@@ -83,7 +83,7 @@ devDependencies:
   '@nuxt/vue-app': 2.15.8
   '@nuxtjs/eslint-config-typescript': 10.0.0_eslint@8.18.0+typescript@4.7.4
   '@nuxtjs/eslint-module': 3.1.0_eslint@8.18.0+webpack@5.72.0
-  '@nuxtjs/tailwindcss': 5.3.0_ts-node@10.8.2+webpack@5.72.0
+  '@nuxtjs/tailwindcss': 5.3.0_ts-node@10.9.1+webpack@5.72.0
   '@testing-library/dom': 8.16.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.2.1_@testing-library+dom@8.16.0
@@ -109,21 +109,21 @@ devDependencies:
   eslint-plugin-jest: 26.5.3_67dce7dc642380ce1469ce9f827671ed
   eslint-plugin-nuxt: 3.2.0_eslint@8.18.0
   eslint-plugin-prettier: 4.2.1_bd3c4b21319ad16ec3ab54a1da22f60e
-  eslint-plugin-tailwindcss: 3.6.0_ts-node@10.8.2
+  eslint-plugin-tailwindcss: 3.6.0_ts-node@10.9.1
   eslint-plugin-vue: 8.7.1_eslint@8.18.0
   eslint-plugin-vuejs-accessibility: 1.2.0_eslint@8.18.0
   glob: 8.0.3
   husky: 7.0.4
-  jest: 28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b
+  jest: 28.1.3_c2586b085e20f8c5e775c1415f0e7be8
   jest-environment-jsdom: 28.1.3
   jest-serializer-vue: 2.0.2
   lodash: 4.17.21
   postcss: 8.4.14
   prettier: 2.7.1
   pretty-quick: 3.1.3_prettier@2.7.1
-  tailwindcss: 3.1.6_ts-node@10.8.2
+  tailwindcss: 3.1.6_ts-node@10.9.1
   ts-jest: 28.0.5_56a1a1a095deff238ca2df5e77644744
-  ts-node: 10.8.2_f4af56db12aadddd90c96a09f3ce57e8
+  ts-node: 10.9.1_f4af56db12aadddd90c96a09f3ce57e8
   typescript: 4.7.4
   vue: 2.7.5
   vue-jest: 3.0.7_1ee16e303a4387589d8e8f867d16c0e8
@@ -1494,7 +1494,7 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /@jest/core/28.1.3_ts-node@10.8.2:
+  /@jest/core/28.1.3_ts-node@10.9.1:
     resolution: {integrity: sha512-CIKBrlaKOzA7YG19BEqCw3SLIsEwjZkeJzf5bdooVnW4bH5cktqe3JX+G2YV1aK5vP8N9na1IGWFzYaTp6k6NA==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     peerDependencies:
@@ -1515,7 +1515,7 @@ packages:
       exit: 0.1.2
       graceful-fs: 4.2.10
       jest-changed-files: 28.1.3
-      jest-config: 28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b
+      jest-config: 28.1.3_c2586b085e20f8c5e775c1415f0e7be8
       jest-haste-map: 28.1.3
       jest-message-util: 28.1.3
       jest-regex-util: 28.0.2
@@ -2507,12 +2507,12 @@ packages:
       vue-functional-data-merge: 3.1.0
     dev: false
 
-  /@nuxtjs/tailwindcss/5.3.0_ts-node@10.8.2+webpack@5.72.0:
+  /@nuxtjs/tailwindcss/5.3.0_ts-node@10.9.1+webpack@5.72.0:
     resolution: {integrity: sha512-cS4P5L09ndgWXUsN1FHBPb7m2JhXS7c26d3otfwgNHLlNdUC8qjDRp83wpvkOBOgV+AOH8auZM3fSAuXNklMyA==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.5_webpack@5.72.0
       '@nuxt/postcss8': 1.1.3_webpack@5.72.0
-      '@types/tailwindcss': 3.1.0_ts-node@10.8.2
+      '@types/tailwindcss': 3.1.0_ts-node@10.9.1
       autoprefixer: 10.4.7_postcss@8.4.14
       chalk: 5.0.1
       clear-module: 4.1.2
@@ -2522,7 +2522,7 @@ packages:
       postcss-custom-properties: 12.1.8_postcss@8.4.14
       postcss-nesting: 10.1.10_postcss@8.4.14
       tailwind-config-viewer: 1.7.1_tailwindcss@3.1.6
-      tailwindcss: 3.1.6_ts-node@10.8.2
+      tailwindcss: 3.1.6_ts-node@10.9.1
       ufo: 0.8.5
     transitivePeerDependencies:
       - esbuild
@@ -2975,11 +2975,11 @@ packages:
     resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
     dev: true
 
-  /@types/tailwindcss/3.1.0_ts-node@10.8.2:
+  /@types/tailwindcss/3.1.0_ts-node@10.9.1:
     resolution: {integrity: sha512-JxPzrm609hzvF4nmOI3StLjbBEP3WWQxDDJESqR1nh94h7gyyy3XSl0hn5RBMJ9mPudlLjtaXs5YEBtLw7CnPA==}
     deprecated: This is a stub types definition. tailwindcss provides its own type definitions, so you do not need this installed.
     dependencies:
-      tailwindcss: 3.1.6_ts-node@10.8.2
+      tailwindcss: 3.1.6_ts-node@10.9.1
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -6401,7 +6401,7 @@ packages:
       '@typescript-eslint/eslint-plugin': 5.30.0_eb27092288e495ddbd8abfd1fa139db3
       '@typescript-eslint/utils': 5.27.0_eslint@8.18.0+typescript@4.7.4
       eslint: 8.18.0
-      jest: 28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b
+      jest: 28.1.3_c2586b085e20f8c5e775c1415f0e7be8
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -6476,13 +6476,13 @@ packages:
       eslint: 8.18.0
     dev: true
 
-  /eslint-plugin-tailwindcss/3.6.0_ts-node@10.8.2:
+  /eslint-plugin-tailwindcss/3.6.0_ts-node@10.9.1:
     resolution: {integrity: sha512-gWLGNWHuhh5ngwkJ2sgSByanpRw2s5GdrM2ff2/w8Ho2mWh2MyGvpnFZpL4b0XT/C0WF9zlq57+vFHJOeFhMkg==}
     engines: {node: '>=12.13.0'}
     dependencies:
       fast-glob: 3.2.11
       postcss: 8.4.14
-      tailwindcss: 3.1.6_ts-node@10.8.2
+      tailwindcss: 3.1.6_ts-node@10.9.1
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -8224,7 +8224,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-cli/28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b:
+  /jest-cli/28.1.3_c2586b085e20f8c5e775c1415f0e7be8:
     resolution: {integrity: sha512-roY3kvrv57Azn1yPgdTebPAXvdR2xfezaKKYzVxZ6It/5NCxzJym6tUI5P1zkdWhfUYkxEI9uZWcQdaFLo8mJQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     hasBin: true
@@ -8234,14 +8234,14 @@ packages:
       node-notifier:
         optional: true
     dependencies:
-      '@jest/core': 28.1.3_ts-node@10.8.2
+      '@jest/core': 28.1.3_ts-node@10.9.1
       '@jest/test-result': 28.1.3
       '@jest/types': 28.1.3
       chalk: 4.1.2
       exit: 0.1.2
       graceful-fs: 4.2.10
       import-local: 3.1.0
-      jest-config: 28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b
+      jest-config: 28.1.3_c2586b085e20f8c5e775c1415f0e7be8
       jest-util: 28.1.3
       jest-validate: 28.1.3
       prompts: 2.4.2
@@ -8252,7 +8252,7 @@ packages:
       - ts-node
     dev: true
 
-  /jest-config/28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b:
+  /jest-config/28.1.3_c2586b085e20f8c5e775c1415f0e7be8:
     resolution: {integrity: sha512-MG3INjByJ0J4AsNBm7T3hsuxKQqFIiRo/AUqb1q9LRKI5UU6Aar9JHbr9Ivn1TVwfUD9KirRoM/T6u8XlcQPHQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     peerDependencies:
@@ -8287,7 +8287,7 @@ packages:
       pretty-format: 28.1.3
       slash: 3.0.0
       strip-json-comments: 3.1.1
-      ts-node: 10.8.2_f4af56db12aadddd90c96a09f3ce57e8
+      ts-node: 10.9.1_f4af56db12aadddd90c96a09f3ce57e8
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8656,7 +8656,7 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /jest/28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b:
+  /jest/28.1.3_c2586b085e20f8c5e775c1415f0e7be8:
     resolution: {integrity: sha512-N4GT5on8UkZgH0O5LUavMRV1EDEhNTL0KEfRmDIeZHSV7p2XgLoY9t9VDUgL6o+yfdgYHVxuz81G8oB9VG5uyA==}
     engines: {node: ^12.13.0 || ^14.15.0 || ^16.10.0 || >=17.0.0}
     hasBin: true
@@ -8666,10 +8666,10 @@ packages:
       node-notifier:
         optional: true
     dependencies:
-      '@jest/core': 28.1.3_ts-node@10.8.2
+      '@jest/core': 28.1.3_ts-node@10.9.1
       '@jest/types': 28.1.3
       import-local: 3.1.0
-      jest-cli: 28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b
+      jest-cli: 28.1.3_c2586b085e20f8c5e775c1415f0e7be8
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
@@ -10511,7 +10511,7 @@ packages:
       import-cwd: 2.1.0
     dev: false
 
-  /postcss-load-config/3.1.4_postcss@8.4.14+ts-node@10.8.2:
+  /postcss-load-config/3.1.4_postcss@8.4.14+ts-node@10.9.1:
     resolution: {integrity: sha512-6DiM4E7v4coTE4uzA8U//WhtPwyhiim3eyjEMFCnUpzbrkK9wJHgKDT2mR+HbtSrd/NubVaYTOpSpjUl8NQeRg==}
     engines: {node: '>= 10'}
     peerDependencies:
@@ -10525,7 +10525,7 @@ packages:
     dependencies:
       lilconfig: 2.0.5
       postcss: 8.4.14
-      ts-node: 10.8.2_f4af56db12aadddd90c96a09f3ce57e8
+      ts-node: 10.9.1_f4af56db12aadddd90c96a09f3ce57e8
       yaml: 1.10.2
     dev: true
 
@@ -12363,12 +12363,12 @@ packages:
       open: 7.4.2
       portfinder: 1.0.28
       replace-in-file: 6.3.2
-      tailwindcss: 3.1.6_ts-node@10.8.2
+      tailwindcss: 3.1.6_ts-node@10.9.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /tailwindcss/3.1.6_ts-node@10.8.2:
+  /tailwindcss/3.1.6_ts-node@10.9.1:
     resolution: {integrity: sha512-7skAOY56erZAFQssT1xkpk+kWt2NrO45kORlxFPXUt3CiGsVPhH1smuH5XoDH6sGPXLyBv+zgCKA2HWBsgCytg==}
     engines: {node: '>=12.13.0'}
     hasBin: true
@@ -12389,7 +12389,7 @@ packages:
       postcss: 8.4.14
       postcss-import: 14.1.0_postcss@8.4.14
       postcss-js: 4.0.0_postcss@8.4.14
-      postcss-load-config: 3.1.4_postcss@8.4.14+ts-node@10.8.2
+      postcss-load-config: 3.1.4_postcss@8.4.14+ts-node@10.9.1
       postcss-nested: 5.0.6_postcss@8.4.14
       postcss-selector-parser: 6.0.10
       postcss-value-parser: 4.2.0
@@ -12689,7 +12689,7 @@ packages:
       babel-jest: 28.1.3_@babel+core@7.18.6
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 28.1.3_dab34a7590ce4bc4ef0311dc9cb1133b
+      jest: 28.1.3_c2586b085e20f8c5e775c1415f0e7be8
       jest-util: 28.1.1
       json5: 2.2.1
       lodash.memoize: 4.1.2
@@ -12715,8 +12715,8 @@ packages:
       webpack: 5.72.0
     dev: true
 
-  /ts-node/10.8.2_f4af56db12aadddd90c96a09f3ce57e8:
-    resolution: {integrity: sha512-LYdGnoGddf1D6v8REPtIH+5iq/gTDuZqv2/UJUU7tKjuEU8xVZorBM+buCGNjj+pGEud+sOoM4CX3/YzINpENA==}
+  /ts-node/10.9.1_f4af56db12aadddd90c96a09f3ce57e8:
+    resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
       '@swc/core': '>=1.2.50'
