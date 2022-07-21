@@ -72,7 +72,7 @@
     "eslint-plugin-vue": "8.7.1",
     "eslint-plugin-vuejs-accessibility": "1.2.0",
     "glob": "8.0.3",
-    "husky": "7.0.4",
+    "husky": "8.0.1",
     "jest": "28.1.3",
     "jest-environment-jsdom": "28.1.3",
     "jest-serializer-vue": "2.0.2",
