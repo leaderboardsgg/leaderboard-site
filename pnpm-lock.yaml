@@ -15,7 +15,7 @@ specifiers:
   '@nuxtjs/i18n': 7.2.2
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
-  '@nuxtjs/tailwindcss': 5.3.0
+  '@nuxtjs/tailwindcss': 5.3.1
   '@testing-library/dom': 8.16.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.3.0
@@ -83,7 +83,7 @@ devDependencies:
   '@nuxt/vue-app': 2.15.8
   '@nuxtjs/eslint-config-typescript': 10.0.0_eslint@8.18.0+typescript@4.7.4
   '@nuxtjs/eslint-module': 3.1.0_eslint@8.18.0+webpack@5.72.0
-  '@nuxtjs/tailwindcss': 5.3.0_ts-node@10.9.1+webpack@5.72.0
+  '@nuxtjs/tailwindcss': 5.3.1_ts-node@10.9.1+webpack@5.72.0
   '@testing-library/dom': 8.16.0
   '@testing-library/jest-dom': 5.16.4
   '@testing-library/user-event': 14.3.0_@testing-library+dom@8.16.0
@@ -2518,8 +2518,8 @@ packages:
       vue-functional-data-merge: 3.1.0
     dev: false
 
-  /@nuxtjs/tailwindcss/5.3.0_ts-node@10.9.1+webpack@5.72.0:
-    resolution: {integrity: sha512-cS4P5L09ndgWXUsN1FHBPb7m2JhXS7c26d3otfwgNHLlNdUC8qjDRp83wpvkOBOgV+AOH8auZM3fSAuXNklMyA==}
+  /@nuxtjs/tailwindcss/5.3.1_ts-node@10.9.1+webpack@5.72.0:
+    resolution: {integrity: sha512-NrnYUA65DWG9cB6wLdK7NMhaDIIAbqxmMueGIvqy8xuTfHGNvtjFZQY2ywu60N70cjIYqYnbyJURj+PQoNN9Ew==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.5_webpack@5.72.0
       '@nuxt/postcss8': 1.1.3_webpack@5.72.0
@@ -12953,7 +12953,7 @@ packages:
       chokidar: 3.5.3
       webpack: 5.72.0
       webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.4.3
+      webpack-virtual-modules: 0.4.4
     dev: true
 
   /unplugin/0.7.2_webpack@5.72.0:
@@ -13475,10 +13475,6 @@ packages:
   /webpack-sources/3.2.3:
     resolution: {integrity: sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==}
     engines: {node: '>=10.13.0'}
-    dev: true
-
-  /webpack-virtual-modules/0.4.3:
-    resolution: {integrity: sha512-5NUqC2JquIL2pBAAo/VfBP6KuGkHIZQXW/lNKupLPfhViwh8wNsu0BObtl09yuKZszeEUfbXz8xhrHvSG16Nqw==}
     dev: true
 
   /webpack-virtual-modules/0.4.4:
