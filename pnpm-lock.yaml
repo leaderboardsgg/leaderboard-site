@@ -12,7 +12,7 @@ specifiers:
   '@nuxtjs/composition-api': 0.33.1
   '@nuxtjs/eslint-config-typescript': 10.0.0
   '@nuxtjs/eslint-module': 3.1.0
-  '@nuxtjs/i18n': 7.2.2
+  '@nuxtjs/i18n': 7.2.3
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
   '@nuxtjs/tailwindcss': 5.3.1
@@ -68,7 +68,7 @@ dependencies:
   '@nuxtjs/auth-next': 5.0.0-1648802546.c9880dc_vue@2.7.8
   '@nuxtjs/axios': 5.13.6
   '@nuxtjs/composition-api': 0.33.1_68cdd3787a8ab0484f90dcd71afbd34b
-  '@nuxtjs/i18n': 7.2.2
+  '@nuxtjs/i18n': 7.2.3
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
   core-js: 3.24.1
@@ -409,14 +409,6 @@ packages:
       '@babel/helper-validator-identifier': 7.18.6
       chalk: 2.4.2
       js-tokens: 4.0.0
-
-  /@babel/parser/7.17.10:
-    resolution: {integrity: sha512-n2Q6i+fnJqzOaq2VkdXxy2TCPCWQZHiCo0XqmrCvDWcZQKRyZzYi4Z0yxlBuN0w+r2ZHmre+Q087DSrw3pbJDQ==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      '@babel/types': 7.18.10
-    dev: false
 
   /@babel/parser/7.18.10:
     resolution: {integrity: sha512-TYk3OA0HKL6qNryUayb5UUEhM/rkOQozIBEA5ITXh5DWrSp0TlUQXMyZmnWxG/DizSWBeeQ0Zbc5z8UGaaqoeg==}
@@ -1343,24 +1335,6 @@ packages:
       '@babel/code-frame': 7.18.6
       '@babel/parser': 7.18.10
       '@babel/types': 7.18.10
-
-  /@babel/traverse/7.17.10:
-    resolution: {integrity: sha512-VmbrTHQteIdUUQNTb+zE12SHS/xQVIShmBPhlNP12hD5poF2pbITW1Z4172d03HegaQWhLffdkRJYtAzp0AGcw==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/code-frame': 7.18.6
-      '@babel/generator': 7.18.10
-      '@babel/helper-environment-visitor': 7.18.9
-      '@babel/helper-function-name': 7.18.9
-      '@babel/helper-hoist-variables': 7.18.6
-      '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/parser': 7.18.10
-      '@babel/types': 7.18.10
-      debug: 4.3.4
-      globals: 11.12.0
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
 
   /@babel/traverse/7.18.10:
     resolution: {integrity: sha512-J7ycxg0/K9XCtLyHf0cz2DqDihonJeIo+z+HEdRe9YuT8TY4A66i+Ab2/xZCEW7Ro60bPCBBfqqboHSamoV3+g==}
@@ -2458,11 +2432,12 @@ packages:
       - webpack
     dev: true
 
-  /@nuxtjs/i18n/7.2.2:
-    resolution: {integrity: sha512-rLbJ1Mn22QeDXa0znWag4RiNafUTnYFO2+F4z/+gYOuJuOzLWMJJXtCGkVP2U0Jaq8xF1hvfpJzfGTVIv0Ik+Q==}
+  /@nuxtjs/i18n/7.2.3:
+    resolution: {integrity: sha512-Zi/1df2ISXtsPs5+IhdHbh3ebWLq4V+tU71SkAuB2F9Es2qANF5EIq2dT9rCDW/1bbfO48MQU/eUWectDX6D7g==}
+    engines: {node: '>=14.16'}
     dependencies:
-      '@babel/parser': 7.17.10
-      '@babel/traverse': 7.17.10
+      '@babel/parser': 7.18.10
+      '@babel/traverse': 7.18.10
       '@intlify/vue-i18n-extensions': 1.0.2
       '@intlify/vue-i18n-loader': 1.1.0
       cookie: 0.5.0
@@ -2471,8 +2446,8 @@ packages:
       js-cookie: 3.0.1
       klona: 2.0.5
       lodash.merge: 4.6.2
-      ufo: 0.8.3
-      vue-i18n: 8.27.1
+      ufo: 0.8.5
+      vue-i18n: 8.27.2
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -5267,7 +5242,7 @@ packages:
       safe-buffer: 5.1.2
 
   /cookie/0.3.1:
-    resolution: {integrity: sha1-5+Ch+e9DtMi6klxcWpboBtFoc7s=}
+    resolution: {integrity: sha512-+IJOX0OqlHCszo2mBUq+SrEbCj6w7Kpffqx60zYbPTFaO4+yYgRjHwcZNpWvaTylDHaV7PPmBHzSecZiMhtPgw==}
     engines: {node: '>= 0.6'}
     dev: false
 
@@ -12814,10 +12789,6 @@ packages:
   /ufo/0.7.11:
     resolution: {integrity: sha512-IT3q0lPvtkqQ8toHQN/BkOi4VIqoqheqM1FnkNWT9y0G8B3xJhwnoKBu5OHx8zHDOvveQzfKuFowJ0VSARiIDg==}
 
-  /ufo/0.8.3:
-    resolution: {integrity: sha512-AIkk06G21y/P+NCatfU+1qldCmI0XCszZLn8AkuKotffF3eqCvlce0KuwM7ZemLE/my0GSYADOAeM5zDYWMB+A==}
-    dev: false
-
   /ufo/0.8.5:
     resolution: {integrity: sha512-e4+UtA5IRO+ha6hYklwj6r7BjiGMxS0O+UaSg9HbaTefg4kMkzj4tXzEBajRR+wkxf+golgAWKzLbytCUDMJAA==}
 
@@ -13209,8 +13180,8 @@ packages:
     resolution: {integrity: sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==}
     dev: false
 
-  /vue-i18n/8.27.1:
-    resolution: {integrity: sha512-lWrGm4F25qReJ7XxSnFVb2h3PfW54ldnM4C+YLBGGJ75+Myt/kj4hHSTKqsyDLamvNYpvINMicSOdW+7yuqgIQ==}
+  /vue-i18n/8.27.2:
+    resolution: {integrity: sha512-QVzn7u2WVH8F7eSKIM00lujC7x1mnuGPaTnDTmB01Hd709jDtB9kYtBqM+MWmp5AJRx3gnqAdZbee9MelqwFBg==}
     dev: false
 
   /vue-jest/3.0.7_d9ad252387dfff5ff33fe9f20348a0d3:
