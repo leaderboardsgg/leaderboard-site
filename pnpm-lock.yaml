@@ -9,7 +9,7 @@ specifiers:
   '@nuxt/vue-app': ^2.15.8
   '@nuxtjs/auth-next': 5.0.0-1648802546.c9880dc
   '@nuxtjs/axios': 5.13.6
-  '@nuxtjs/composition-api': 0.33.0
+  '@nuxtjs/composition-api': 0.33.1
   '@nuxtjs/eslint-config-typescript': 10.0.0
   '@nuxtjs/eslint-module': 3.1.0
   '@nuxtjs/i18n': 7.2.2
@@ -67,7 +67,7 @@ specifiers:
 dependencies:
   '@nuxtjs/auth-next': 5.0.0-1648802546.c9880dc_vue@2.7.8
   '@nuxtjs/axios': 5.13.6
-  '@nuxtjs/composition-api': 0.33.0_68cdd3787a8ab0484f90dcd71afbd34b
+  '@nuxtjs/composition-api': 0.33.1_68cdd3787a8ab0484f90dcd71afbd34b
   '@nuxtjs/i18n': 7.2.2
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
@@ -2033,7 +2033,7 @@ packages:
       knitwork: 0.1.2
       lodash.template: 4.5.0
       mlly: 0.5.4
-      pathe: 0.3.2
+      pathe: 0.3.3
       pkg-types: 0.3.3
       scule: 0.2.1
       semver: 7.3.7
@@ -2095,7 +2095,7 @@ packages:
       create-require: 1.1.1
       defu: 6.0.0
       jiti: 1.14.0
-      pathe: 0.3.2
+      pathe: 0.3.3
       postcss-import-resolver: 2.0.0
       scule: 0.2.1
       std-env: 3.1.1
@@ -2395,13 +2395,13 @@ packages:
       - debug
     dev: false
 
-  /@nuxtjs/composition-api/0.33.0_68cdd3787a8ab0484f90dcd71afbd34b:
-    resolution: {integrity: sha512-IHDHliPWS1o5whD6xgSB7hneJ6LVAU0xu8Thj5GmDx4VAAVA+6WRfDx+xKwh61SW36th4YHUcD28xYeqezW3+Q==}
-    engines: {node: '>=v14.20.0'}
+  /@nuxtjs/composition-api/0.33.1_68cdd3787a8ab0484f90dcd71afbd34b:
+    resolution: {integrity: sha512-dI0c5atKDsEIVycrsKw9T+aaos2VggscSJBPZpC1BXKzHR7+9Ilor+SHvnAEb5j2E2v+8x407Uo339oJzhlD1A==}
+    engines: {node: '>=v14.13.0'}
     peerDependencies:
       '@nuxt/vue-app': ^2.15
       nuxt: ^2.15
-      vue: ^2.7.4
+      vue: ^2.7.8
     dependencies:
       '@nuxt/vue-app': 2.15.8
       defu: 6.0.0
@@ -2409,7 +2409,7 @@ packages:
       fs-extra: 9.1.0
       magic-string: 0.26.2
       nuxt: 2.15.8_9c082b9fc3bbb0f0b4eab0853ea712aa
-      pathe: 0.3.2
+      pathe: 0.3.3
       ufo: 0.8.5
       vue: 2.7.8
     dev: false
@@ -4571,7 +4571,7 @@ packages:
       gittar: 0.1.1
       jiti: 1.14.0
       mlly: 0.5.4
-      pathe: 0.3.2
+      pathe: 0.3.3
       rc9: 1.2.2
     dev: true
 
@@ -9379,7 +9379,7 @@ packages:
   /mlly/0.5.4:
     resolution: {integrity: sha512-gFlsLWCjVwu/LM/ZfYUkmnbBoz7eyBIMUwVQYDqhd8IvtNFDeZ95uwAyxHE2Xx7tQwePQaCo4fECZ9MWFEUTgQ==}
     dependencies:
-      pathe: 0.3.2
+      pathe: 0.3.3
       pkg-types: 0.3.3
     dev: true
 
@@ -10094,8 +10094,8 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
-  /pathe/0.3.2:
-    resolution: {integrity: sha512-qhnmX0TOqlCvdWWTkoM83wh5J8fZ2yhbDEc9MlsnAEtEc+JCwxUKEwmd6pkY9hRe6JR1Uecbc14VcAKX2yFSTA==}
+  /pathe/0.3.3:
+    resolution: {integrity: sha512-x3nrPvG0HDSDzUiJ0WqtzhN4MD+h5B+dFJ3/qyxVuARlr4Y3aJv8gri2cZzp9Z8sGs2a+aG9gNbKngh3gme57A==}
 
   /pbkdf2/3.1.2:
     resolution: {integrity: sha512-iuh7L6jA7JEGu2WxDwtQP1ddOpaJNC4KlDEFfdQajSGgGPNi4OyDc2R7QnbY2bR9QjBVGwgvTdNJZoE7RaxUMA==}
@@ -10160,7 +10160,7 @@ packages:
     dependencies:
       jsonc-parser: 3.0.0
       mlly: 0.5.4
-      pathe: 0.3.2
+      pathe: 0.3.3
     dev: true
 
   /pluralize/8.0.0:
@@ -12890,7 +12890,7 @@ packages:
       local-pkg: 0.4.1
       magic-string: 0.26.2
       mlly: 0.5.4
-      pathe: 0.3.2
+      pathe: 0.3.3
       scule: 0.2.1
       strip-literal: 0.4.0
       unplugin: 0.7.2_webpack@5.72.0
