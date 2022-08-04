@@ -43,7 +43,7 @@
     "@nuxtjs/eslint-config-typescript": "10.0.0",
     "@nuxtjs/eslint-module": "3.1.0",
     "@nuxtjs/tailwindcss": "5.3.1",
-    "@testing-library/dom": "8.16.0",
+    "@testing-library/dom": "8.16.1",
     "@testing-library/jest-dom": "5.16.4",
     "@testing-library/user-event": "14.4.1",
     "@testing-library/vue": "5.8.3",
