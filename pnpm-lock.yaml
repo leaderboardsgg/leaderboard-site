@@ -55,7 +55,7 @@ specifiers:
   postcss: 8.4.14
   prettier: 2.7.1
   pretty-quick: 3.1.3
-  tailwindcss: 3.1.7
+  tailwindcss: 3.1.8
   ts-jest: 28.0.7
   ts-node: 10.9.1
   typescript: 4.7.4
@@ -121,7 +121,7 @@ devDependencies:
   postcss: 8.4.14
   prettier: 2.7.1
   pretty-quick: 3.1.3_prettier@2.7.1
-  tailwindcss: 3.1.7_ts-node@10.9.1
+  tailwindcss: 3.1.8_ts-node@10.9.1
   ts-jest: 28.0.7_983436067a82303f304f54c1f12c6796
   ts-node: 10.9.1_f4af56db12aadddd90c96a09f3ce57e8
   typescript: 4.7.4
@@ -2505,8 +2505,8 @@ packages:
       postcss: 8.4.14
       postcss-custom-properties: 12.1.8_postcss@8.4.14
       postcss-nesting: 10.1.10_postcss@8.4.14
-      tailwind-config-viewer: 1.7.1_tailwindcss@3.1.7
-      tailwindcss: 3.1.7_ts-node@10.9.1
+      tailwind-config-viewer: 1.7.1_tailwindcss@3.1.8
+      tailwindcss: 3.1.8_ts-node@10.9.1
       ufo: 0.8.5
     transitivePeerDependencies:
       - esbuild
@@ -2963,7 +2963,7 @@ packages:
     resolution: {integrity: sha512-JxPzrm609hzvF4nmOI3StLjbBEP3WWQxDDJESqR1nh94h7gyyy3XSl0hn5RBMJ9mPudlLjtaXs5YEBtLw7CnPA==}
     deprecated: This is a stub types definition. tailwindcss provides its own type definitions, so you do not need this installed.
     dependencies:
-      tailwindcss: 3.1.7_ts-node@10.9.1
+      tailwindcss: 3.1.8_ts-node@10.9.1
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -6409,7 +6409,7 @@ packages:
     dependencies:
       fast-glob: 3.2.11
       postcss: 8.4.14
-      tailwindcss: 3.1.7_ts-node@10.9.1
+      tailwindcss: 3.1.8_ts-node@10.9.1
     transitivePeerDependencies:
       - ts-node
     dev: true
@@ -12255,7 +12255,7 @@ packages:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
     dev: true
 
-  /tailwind-config-viewer/1.7.1_tailwindcss@3.1.7:
+  /tailwind-config-viewer/1.7.1_tailwindcss@3.1.8:
     resolution: {integrity: sha512-EtDwFzgQEMJ6dFmp/6K+QJSP7NWANrGDsbwkn/BEq7MVJd/dEIZ5BBZTxo5jx+opa3HNJu/CHtWanKSCrgNwpA==}
     engines: {node: '>=8'}
     hasBin: true
@@ -12270,13 +12270,13 @@ packages:
       open: 7.4.2
       portfinder: 1.0.28
       replace-in-file: 6.3.2
-      tailwindcss: 3.1.7_ts-node@10.9.1
+      tailwindcss: 3.1.8_ts-node@10.9.1
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /tailwindcss/3.1.7_ts-node@10.9.1:
-    resolution: {integrity: sha512-r7mgumZ3k0InfVPpGWcX8X/Ut4xBfv+1O/+C73ar/m01LxGVzWvPxF/w6xIUPEztrCoz7axfx0SMdh8FH8ZvRQ==}
+  /tailwindcss/3.1.8_ts-node@10.9.1:
+    resolution: {integrity: sha512-YSneUCZSFDYMwk+TGq8qYFdCA3yfBRdBlS7txSq0LUmzyeqRe3a8fBQzbz9M3WS/iFT4BNf/nmw9mEzrnSaC0g==}
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
