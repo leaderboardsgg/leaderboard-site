@@ -15,7 +15,7 @@ specifiers:
   '@nuxtjs/i18n': 7.2.3
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
-  '@nuxtjs/tailwindcss': 5.3.1
+  '@nuxtjs/tailwindcss': 5.3.2
   '@testing-library/dom': 8.17.1
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/user-event': 14.4.3
@@ -83,7 +83,7 @@ devDependencies:
   '@nuxt/vue-app': 2.15.8
   '@nuxtjs/eslint-config-typescript': 10.0.0_eslint@8.18.0+typescript@4.7.4
   '@nuxtjs/eslint-module': 3.1.0_eslint@8.18.0+webpack@5.72.0
-  '@nuxtjs/tailwindcss': 5.3.1_ts-node@10.9.1+webpack@5.72.0
+  '@nuxtjs/tailwindcss': 5.3.2_ts-node@10.9.1+webpack@5.72.0
   '@testing-library/dom': 8.17.1
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/user-event': 14.4.3_@testing-library+dom@8.17.1
@@ -2491,12 +2491,11 @@ packages:
       vue-functional-data-merge: 3.1.0
     dev: false
 
-  /@nuxtjs/tailwindcss/5.3.1_ts-node@10.9.1+webpack@5.72.0:
-    resolution: {integrity: sha512-NrnYUA65DWG9cB6wLdK7NMhaDIIAbqxmMueGIvqy8xuTfHGNvtjFZQY2ywu60N70cjIYqYnbyJURj+PQoNN9Ew==}
+  /@nuxtjs/tailwindcss/5.3.2_ts-node@10.9.1+webpack@5.72.0:
+    resolution: {integrity: sha512-otxYJ1uLf5O3xKUpdw8kZkyaAPKj7RRqygxBmjs6fWrLCGM1lg3kda610GdWZY4O9lDjgqtQfjK+13ByhYgsbg==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.5_webpack@5.72.0
       '@nuxt/postcss8': 1.1.3_webpack@5.72.0
-      '@types/tailwindcss': 3.1.0_ts-node@10.9.1
       autoprefixer: 10.4.8_postcss@8.4.14
       chalk: 5.0.1
       clear-module: 4.1.2
@@ -2957,15 +2956,6 @@ packages:
 
   /@types/strip-json-comments/0.0.30:
     resolution: {integrity: sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==}
-    dev: true
-
-  /@types/tailwindcss/3.1.0_ts-node@10.9.1:
-    resolution: {integrity: sha512-JxPzrm609hzvF4nmOI3StLjbBEP3WWQxDDJESqR1nh94h7gyyy3XSl0hn5RBMJ9mPudlLjtaXs5YEBtLw7CnPA==}
-    deprecated: This is a stub types definition. tailwindcss provides its own type definitions, so you do not need this installed.
-    dependencies:
-      tailwindcss: 3.1.8_ts-node@10.9.1
-    transitivePeerDependencies:
-      - ts-node
     dev: true
 
   /@types/tapable/1.0.8:
