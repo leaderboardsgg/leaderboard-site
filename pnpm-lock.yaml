@@ -39,7 +39,7 @@ specifiers:
   dotenv-safe: 8.2.0
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0
-  eslint-plugin-jest: 26.8.4
+  eslint-plugin-jest: 26.8.5
   eslint-plugin-nuxt: 3.2.0
   eslint-plugin-prettier: 4.2.1
   eslint-plugin-tailwindcss: 3.6.0
@@ -106,7 +106,7 @@ devDependencies:
   dotenv-safe: 8.2.0
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0_eslint@8.18.0
-  eslint-plugin-jest: 26.8.4_67dce7dc642380ce1469ce9f827671ed
+  eslint-plugin-jest: 26.8.5_67dce7dc642380ce1469ce9f827671ed
   eslint-plugin-nuxt: 3.2.0_eslint@8.18.0
   eslint-plugin-prettier: 4.2.1_bd3c4b21319ad16ec3ab54a1da22f60e
   eslint-plugin-tailwindcss: 3.6.0_ts-node@10.9.1
@@ -6290,8 +6290,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-jest/26.8.4_67dce7dc642380ce1469ce9f827671ed:
-    resolution: {integrity: sha512-+waIVSv2742wq7Y06jXikzRL5/wG+dDccmMnsLHjjwPDeccwbVQ7xpFoPCbd0k8qed/N2LSajjmBsw3D1C/xAQ==}
+  /eslint-plugin-jest/26.8.5_67dce7dc642380ce1469ce9f827671ed:
+    resolution: {integrity: sha512-DEaimuVhah/fx6jDkaP4oEPhH6VLr9skpZxYqbbmfeYvXzjos3AX61NpyMvq4aB4x6XJ3rsu/zcJfg0z0nytfw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^5.0.0
