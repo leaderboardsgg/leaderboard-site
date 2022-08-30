@@ -21,7 +21,7 @@ specifiers:
   '@testing-library/user-event': 14.4.3
   '@testing-library/vue': 5.8.3
   '@types/dotenv-safe': 8.1.2
-  '@types/glob': 7.2.0
+  '@types/glob': 8.0.0
   '@types/jest': 27.5.2
   '@types/lodash': 4.14.184
   '@types/node': 17.0.16
@@ -89,7 +89,7 @@ devDependencies:
   '@testing-library/user-event': 14.4.3_@testing-library+dom@8.17.1
   '@testing-library/vue': 5.8.3_e69f4c376315d116bc696ba4bfbc21f0
   '@types/dotenv-safe': 8.1.2
-  '@types/glob': 7.2.0
+  '@types/glob': 8.0.0
   '@types/jest': 27.5.2
   '@types/lodash': 4.14.184
   '@types/node': 17.0.16
@@ -2782,8 +2782,8 @@ packages:
       '@types/webpack': 4.41.28
     dev: true
 
-  /@types/glob/7.2.0:
-    resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
+  /@types/glob/8.0.0:
+    resolution: {integrity: sha512-l6NQsDDyQUVeoTynNpC9uRvCUint/gSUXQA2euwmTuWGvPY5LSDUu6tkCtJB2SvGQlJQzLaKqcGZP4//7EDveA==}
     dependencies:
       '@types/minimatch': 3.0.5
       '@types/node': 17.0.16
