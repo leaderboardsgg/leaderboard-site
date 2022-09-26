@@ -96,13 +96,13 @@ function login() {
 
       <div class="login-card__auth-buttons">
         <BaseButton class="login-button">
-          <i-svg-github class="mr-2 w-5 h-5" />
+          <i-svg-github class="mr-2 h-5 w-5" />
 
           <p>Log In with Github</p>
         </BaseButton>
 
         <BaseButton class="login-button">
-          <i-svg-google class="mr-2 w-5 h-5" />
+          <i-svg-google class="mr-2 h-5 w-5" />
           <p>Log In with Google</p>
         </BaseButton>
       </div>

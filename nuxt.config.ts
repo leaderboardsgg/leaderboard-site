@@ -35,11 +35,11 @@ export default defineNuxtConfig({
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
     // https://go.nuxtjs.dev/typescript
-    '@nuxt/typescript-build',
+    // '@nuxt/typescript-build',
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
   ],
 
   typescript: {

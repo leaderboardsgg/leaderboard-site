@@ -132,13 +132,13 @@ function signup() {
 
       <div class="signup-card__auth-buttons">
         <BaseButton class="signup-button">
-          <i-svg-github class="mr-2 w-5 h-5" />
+          <i-svg-github class="mr-2 h-5 w-5" />
 
           <p>Sign Up with Github</p>
         </BaseButton>
 
         <BaseButton class="signup-button">
-          <i-svg-google class="mr-2 w-5 h-5" />
+          <i-svg-google class="mr-2 h-5 w-5" />
 
           <p>Sign Up with Google</p>
         </BaseButton>

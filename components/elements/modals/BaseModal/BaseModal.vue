@@ -13,7 +13,7 @@ const emit = defineEmits(['close'])
           @click="emit('close')"
           @keypress.esc="emit('close')"
         >
-          <i-svg-close class="w-5 h-5" />
+          <i-svg-close class="h-5 w-5" />
         </BaseButton>
 
         <div class="modal__content">

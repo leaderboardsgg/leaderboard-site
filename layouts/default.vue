@@ -1,7 +1,7 @@
 <script setup lang="ts" />
 
 <template>
-  <div class="flex flex-col mx-auto h-screen">
+  <div class="mx-auto flex h-screen flex-col">
     <SiteNavbar />
     <slot />
     <SiteFooter />

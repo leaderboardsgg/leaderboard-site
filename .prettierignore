@@ -1,9 +1,22 @@
-.pnpm-store/
-.vuepress/dist
-dist
-build
-.husky
-.nuxt
-coverage
-node_modules/
+# Folders
+/.pnpm-store
+/.vuepress/dist
+/dist
+/build
+/.husky
+/.nuxt
+/coverage
+/node_modules
+/public
+/.output
+
+# files
 pnpm-lock.yaml
+.gitkeep
+*.svg
+.gitignore
+.npmrc
+.nvmrc
+.pnpmrc
+.prettierignore
+COPYING
