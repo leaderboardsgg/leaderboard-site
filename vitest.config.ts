@@ -9,6 +9,10 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './'),
+      '#app': path.resolve(
+        __dirname,
+        './node_modules/.pnpm/nuxt@3.0.0-rc.3_vite@2.9.10+webpack@5.73.0/node_modules/nuxt/dist/app',
+      ),
     },
   },
   test: {

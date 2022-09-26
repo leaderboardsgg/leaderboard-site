@@ -11,7 +11,14 @@ const state: NavbarState = reactive({
   showModal: false,
 })
 
-const $auth = { loggedIn: false }
+const currentUser = useState<User>('current_user', () => ({
+  admin: false,
+  email: '',
+  username: '',
+}))
+const loggedIn = computed(
+  () => !!currentUser.value?.username && currentUser.value?.username !== '',
+)
 
 function toggleMenu() {
   state.mobileNavIsActive = !state.mobileNavIsActive
@@ -28,7 +35,7 @@ function toggleSignUpModal() {
 }
 
 function logout() {
-  console.log('logout') // eslint-disable-line no-console
+  useLogoutUser()
 }
 </script>
 
@@ -47,19 +54,19 @@ function logout() {
       </div>
       <div class="mobile-navbar">
         <LoginButton
-          v-if="!$auth.loggedIn"
+          v-if="!loggedIn"
           data-testId="site-navbar-login-button"
           @click="toggleLoginModal"
           @keyup.enter="toggleLoginModal"
         />
         <SignUpButton
-          v-if="!$auth.loggedIn"
+          v-if="!loggedIn"
           data-testId="site-navbar-sign-up-button"
           @click="toggleSignUpModal"
           @keyup.enter="toggleSignUpModal"
         />
         <LogoutButton
-          v-if="$auth.loggedIn"
+          v-if="loggedIn"
           data-testId="site-navbar-logout-button"
           @click="logout"
           @keyup.enter="logout"
@@ -72,6 +79,7 @@ function logout() {
     </div>
 
     <transition
+      v-if="!loggedIn"
       enter-active-class="transition-opacity duration-200"
       leave-active-class="transition-opacity duration-200"
       enter-class="opacity-0"

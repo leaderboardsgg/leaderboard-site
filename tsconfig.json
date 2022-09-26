@@ -16,9 +16,11 @@
     "forceConsistentCasingInFileNames": true,
 
     // Other
+    "baseUrl": ".",
+    "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "types": [
-      "@types/node",
+      "node_modules/@types",
       "@nuxt/types",
       "@testing-library/dom",
       "@testing-library/vue",

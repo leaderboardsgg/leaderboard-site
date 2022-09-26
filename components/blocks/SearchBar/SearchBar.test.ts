@@ -13,22 +13,28 @@ describe('<SearchBar />', () => {
 
     test('when the search button is clicked', async () => {
       const { emitted, getByTestId } = stubbedRender(SearchBar)
+      const searchInput: HTMLInputElement = getByTestId('search-input')
 
-      await fireEvent.type(getByTestId('search-input'), inputValue)
+      await fireEvent.type(searchInput, inputValue)
+      expect(searchInput.value).toEqual(inputValue)
+
       await fireEvent.click(getByTestId('search-button'))
 
       expect(emitted().search).toBeTruthy()
-      expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
+      expect((emitted() as any).search?.[0]?.[0]).toEqual(inputValue)
     })
 
     test('when the enter key is released', async () => {
       const { emitted, getByTestId } = stubbedRender(SearchBar)
+      const searchInput: HTMLInputElement = getByTestId('search-input')
 
-      await fireEvent.type(getByTestId('search-input'), inputValue)
+      await fireEvent.type(searchInput, inputValue)
+      expect(searchInput.value).toEqual(inputValue)
+
       await fireEvent.type(getByTestId('search-input'), '{enter}')
 
       expect(emitted().search).toBeTruthy()
-      expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
+      expect((emitted() as any).search?.[0]?.[0]).toEqual(inputValue)
     })
   })
 })

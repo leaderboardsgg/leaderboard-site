@@ -31,7 +31,7 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
   $ `pnpm install --shamefully-hoist`
 
 - run and connect to backend
-  $ Create a `.env` file with `BACKEND_BASE_URL` the address of your backend.
+  $ Create a copy of `.env.example` named `.env` file with the `BACKEND_BASE_URL` set to the address of your backend.
   $ You can download the backend project and run it locally [here](https://github.com/leaderboardsgg/leaderboard-backend)
 
 - serve with hot reload at `localhost:3000`
@@ -72,6 +72,12 @@ The components directory contains your Vue.js components. Components make up the
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
 
+#### `composables`
+
+The composables directory contains your [Vue.js composables](https://vuejs.org/guide/reusability/composables.html).
+
+More information about the usage of this directory in [the documentation](https://v3.nuxtjs.org/guide/directory-structure/composables).
+
 #### `i18n`
 
 `i18n` (short for internationalizaion), is where we'll be storing our locales for translating this site into different languages.
@@ -81,6 +87,10 @@ More information about the usage of this directory in [the documentation](https:
 Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+
+#### `lib`
+
+This directory contains common files and utilities for the project. The subfolder `api` is extra special as the containing files are auto-generated with the `scripts/generate-api` script and `generate:api` package command (which calls that script).
 
 #### `pages`
 
@@ -101,6 +111,10 @@ This directory contains your static files. Each file inside this directory is ma
 Example: `/public/robots.txt` is mapped as `/robots.txt`.
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
+
+#### `scripts`
+
+This directory contains helpful scripts for the development of the project.
 
 #### `types`
 

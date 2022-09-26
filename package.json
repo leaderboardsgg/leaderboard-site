@@ -12,6 +12,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "generate:api": "node ./scripts/generate-api.js",
     "lint:fix": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore . --fix",
     "lint:all": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint": "pnpm lint:all",
