@@ -5,6 +5,7 @@ import IconResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import eslintPlugin from 'vite-plugin-eslint'
 
+// Used in Vitest
 export const ViteConfig = {
   plugins: [
     Icons({

@@ -1,7 +1,11 @@
+import { describe, test as it } from 'vitest'
+import { setup } from '@nuxt/test-utils-edge'
 import ButtonLink from './ButtonLink.vue'
 import { stubbedRender } from '@/testUtils'
 
-describe('<ButtonLink />', () => {
+describe('<ButtonLink />', async () => {
+  await setup({})
+
   const defaultAttrs = { class: 'custom-link' }
   const defaultProps = { to: 'https://www.test.com/' }
 

@@ -5,6 +5,12 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ISvgClose: typeof import('~icons/svg/close')['default']
+    ISvgEyeHidden: typeof import('~icons/svg/eye-hidden')['default']
+    ISvgEyeVisible: typeof import('~icons/svg/eye-visible')['default']
+    ISvgGithub: typeof import('~icons/svg/github')['default']
+    ISvgGoogle: typeof import('~icons/svg/google')['default']
+    ISvgSearch: typeof import('~icons/svg/search')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

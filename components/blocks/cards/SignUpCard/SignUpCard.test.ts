@@ -1,7 +1,11 @@
+import { describe, test as it } from 'vitest'
+import { setup } from '@nuxt/test-utils-edge'
 import SignUpCard from './SignUpCard.vue'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
-describe('<SignUpCard />', () => {
+describe('<SignUpCard />', async () => {
+  await setup({})
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(SignUpCard)
 

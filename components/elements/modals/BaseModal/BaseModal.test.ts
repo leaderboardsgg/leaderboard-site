@@ -1,7 +1,11 @@
+import { describe, test as it } from 'vitest'
+import { setup } from '@nuxt/test-utils-edge'
 import BaseModal from './BaseModal.vue'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
-describe('<BaseModal />', () => {
+describe('<BaseModal />', async () => {
+  await setup({})
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(BaseModal)
 

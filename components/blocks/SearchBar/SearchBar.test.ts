@@ -1,7 +1,11 @@
+import { describe, test as it } from 'vitest'
+import { setup } from '@nuxt/test-utils-edge'
 import SearchBar from './SearchBar.vue'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
-describe('<SearchBar />', () => {
+describe('<SearchBar />', async () => {
+  await setup({})
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(SearchBar)
 
@@ -18,6 +22,8 @@ describe('<SearchBar />', () => {
       await fireEvent.click(getByTestId('search-button'))
 
       expect(emitted().search).toBeTruthy()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
     })
 
@@ -28,6 +34,8 @@ describe('<SearchBar />', () => {
       await fireEvent.type(getByTestId('search-input'), '{enter}')
 
       expect(emitted().search).toBeTruthy()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
     })
   })

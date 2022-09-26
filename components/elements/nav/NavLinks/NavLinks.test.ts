@@ -1,7 +1,11 @@
+import { describe, test as it } from 'vitest'
+import { setup } from '@nuxt/test-utils-edge'
 import NavLinks from './NavLinks.vue'
 import { stubbedRender } from '@/testUtils'
 
-describe('<NavLinks />', () => {
+describe('<NavLinks />', async () => {
+  await setup({})
+
   const defaultProps = {
     navLinks: [
       { name: 'Home', to: '/' },

@@ -1,7 +1,11 @@
+import { describe, test as it } from 'vitest'
+import { setup } from '@nuxt/test-utils-edge'
 import HideShowPassword from './HideShowPassword.vue'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
-describe('<HideShowPassword />', () => {
+describe('<HideShowPassword />', async () => {
+  await setup({})
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(HideShowPassword)
 
