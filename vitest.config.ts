@@ -19,7 +19,7 @@ export default mergeConfig(
       environment: 'jsdom',
       deps: {
         // Needed otherwise usage in the test files throws an error
-        inline: [/@nuxt\/test-utils-edge/],
+        inline: [/@nuxt\/test-utils-edge/, /vitest/],
       },
       globals: true,
       setupFiles: ['vitest.setup.ts'],

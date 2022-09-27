@@ -21,8 +21,10 @@
     "pretty": "pretty-quick",
     "pretty:staged": "pretty-quick --staged",
     "preview": "nuxt preview",
-    "test": "vitest --run",
-    "test:watch": "vitest --watch"
+    "test": "echo Fix this",
+    "test:watch": "echo Fix this",
+    "test-original": "vitest --run",
+    "test:watch-original": "vitest --watch"
   },
   "dependencies": {
     "nuxt": "3.0.0-rc.11",
