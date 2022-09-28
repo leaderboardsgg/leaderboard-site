@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+
 const inputValue = ref<string>('')
-// TODO: Find a fix for this prettier issue
-const emit = defineEmits<{(e: 'search', value: string): void}>() // prettier-ignore
+const emit = defineEmits<{ (e: 'search', value: string): void }>()
 
 function onClick() {
   emit('search', inputValue.value)

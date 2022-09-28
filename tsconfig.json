@@ -24,8 +24,16 @@
       "@testing-library/vue",
       "unplugin-icons/types/vue3",
       "vite/client",
-      "vitest/globals"
-    ]
+      "vitest/globals",
+      ".nuxt"
+    ],
+    "paths": {
+      "blocks/*": ["./components/blocks/*"],
+      "elements/*": ["./components/elements/*"],
+      "layouts/*": ["./layouts/*"],
+      "pages/*": ["./pages/*"],
+      "root/*": ["./*"]
+    }
   },
   "exclude": ["node_modules"],
   // https://v3.nuxtjs.org/concepts/typescript

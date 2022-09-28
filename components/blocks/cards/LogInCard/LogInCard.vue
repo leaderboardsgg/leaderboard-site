@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
+import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
+import CardBody from 'elements/cards/CardBody/CardBody.vue'
+import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
+import Card from 'elements/cards/Card/Card.vue'
+
 interface LogInCardProps {
   modal?: boolean
 }
@@ -9,7 +17,10 @@ interface LogInCardState {
   showPassword: boolean
 }
 
-const emit = defineEmits(['close', 'signUpClick'])
+const emit = defineEmits<{
+  (event: 'close'): void
+  (event: 'signUpClick'): void
+}>()
 
 const props = withDefaults(defineProps<LogInCardProps>(), {
   modal: false,
@@ -79,7 +90,7 @@ function login() {
               type="button"
               data-testid="hide-show-button"
               @click="state.showPassword = !state.showPassword"
-              @keydown.enter.prevent
+              @keydown.enter.prevent=""
               @keyup.enter="state.showPassword = !state.showPassword"
             />
           </div>

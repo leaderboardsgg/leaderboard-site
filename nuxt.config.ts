@@ -1,5 +1,14 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
+import { resolve } from 'path'
+
 export default defineNuxtConfig({
+  alias: {
+    blocks: resolve(__dirname, './components/blocks'),
+    elements: resolve(__dirname, './components/elements'),
+    layouts: resolve(__dirname, './layouts'),
+    pages: resolve(__dirname, './pages'),
+    root: resolve(__dirname, './'),
+  },
   app: {
     // Global page headers: https://v3.nuxtjs.org/api/configuration/nuxt.config#head
     head: {
@@ -26,7 +35,7 @@ export default defineNuxtConfig({
   // https://v3.nuxtjs.org/guide/directory-structure/components/
 
   // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
-  css: ['@/assets/css/tailwind.css'],
+  css: ['assets/css/tailwind.css'],
 
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
   ignore: ['**/__tests__'],

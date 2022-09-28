@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import NavLink from './NavLink/NavLink.vue'
+
 interface NavLinksProps {
   navLinks?: {
     name: string

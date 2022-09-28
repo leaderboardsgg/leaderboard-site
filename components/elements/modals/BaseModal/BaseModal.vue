@@ -1,5 +1,9 @@
 <script setup lang="ts">
-const emit = defineEmits(['close'])
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+
+const emit = defineEmits<{
+  (event: 'close'): void
+}>()
 </script>
 
 <template>

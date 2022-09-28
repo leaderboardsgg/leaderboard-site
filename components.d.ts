@@ -5,11 +5,13 @@ import '@vue/runtime-core'
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    ISvgClock: typeof import('~icons/svg/clock')['default']
     ISvgClose: typeof import('~icons/svg/close')['default']
     ISvgEyeHidden: typeof import('~icons/svg/eye-hidden')['default']
     ISvgEyeVisible: typeof import('~icons/svg/eye-visible')['default']
     ISvgGithub: typeof import('~icons/svg/github')['default']
     ISvgGoogle: typeof import('~icons/svg/google')['default']
+    ISvgMenu: typeof import('~icons/svg/menu')['default']
     ISvgSearch: typeof import('~icons/svg/search')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

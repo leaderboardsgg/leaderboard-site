@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
+import Card from 'elements/cards/Card/Card.vue'
+import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
+import CardBody from 'elements/cards/CardBody/CardBody.vue'
+
 interface SignUpCardProps {
   modal?: boolean
 }
@@ -14,7 +22,11 @@ interface UserRegister {
   username: string
 }
 
-const emit = defineEmits(['close', 'logInClick', 'signUpClick'])
+const emit = defineEmits<{
+  (event: 'close'): void
+  (event: 'logInClick'): void
+  (event: 'signUpClick'): void
+}>()
 
 const props = withDefaults(defineProps<SignUpCardProps>(), {
   modal: false,
@@ -113,7 +125,7 @@ function signup() {
               type="button"
               data-testid="hide-show-button"
               @click="state.showPassword = !state.showPassword"
-              @keydown.enter.prevent
+              @keydown.enter.prevent=""
               @keyup.enter="state.showPassword = !state.showPassword"
             />
           </div>

@@ -1,4 +1,6 @@
-<script setup lang="ts" />
+<script setup lang="ts">
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+</script>
 
 <template>
   <BaseButton class="sign-up-button" v-bind="$attrs"> Sign Up </BaseButton>

@@ -1,4 +1,13 @@
 <script setup lang="ts">
+import NavLinks from 'elements/nav/NavLinks/NavLinks.vue'
+import LogoutButton from 'elements/buttons/LogoutButton/LogoutButton.vue'
+import SignUpButton from 'elements/buttons/SignUpButton/SignUpButton.vue'
+import LoginButton from 'elements/buttons/LoginButton/LoginButton.vue'
+import LogInCard from 'blocks/cards/LogInCard/LogInCard.vue'
+import SignUpCard from 'blocks/cards/SignUpCard/SignUpCard.vue'
+import BaseModal from 'elements/modals/BaseModal/BaseModal.vue'
+import SearchBar from 'blocks/SearchBar/SearchBar.vue'
+
 interface NavbarState {
   mobileNavIsActive: boolean
   showLogin: boolean

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+
 interface HideShowPasswordState {
   hidden: boolean
 }
