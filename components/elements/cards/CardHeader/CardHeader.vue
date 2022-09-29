@@ -1,5 +1,3 @@
-<script setup lang="ts" />
-
 <template>
   <div class="card-header" v-bind="$attrs">
     <slot />

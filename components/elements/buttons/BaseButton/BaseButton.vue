@@ -1,5 +1,3 @@
-<script setup lang="ts" />
-
 <template>
   <button class="button" v-bind="$attrs">
     <slot />
