@@ -1,22 +1,31 @@
 <script setup lang="ts">
+import type { Ref } from 'vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 
-const inputValue = ref<string>('')
 const emit = defineEmits<{ (e: 'search', value: string): void }>()
 
+interface SearchBarState {
+  input: Ref<string>
+}
+
+const state: SearchBarState = {
+  input: ref(''),
+}
+
 function onClick() {
-  emit('search', inputValue.value)
+  emit('search', state.input.value)
 }
 
 function onEnter() {
-  emit('search', inputValue.value)
+  emit('search', state.input.value)
 }
 </script>
 
 <template>
   <div class="search-bar">
     <BaseInput
-      v-model="inputValue"
+      :model="state.input"
       data-testid="search-input"
       name="search"
       placeholder="search..."

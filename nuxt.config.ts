@@ -49,6 +49,11 @@ export default defineNuxtConfig({
     // '@nuxtjs/eslint-module',
   ],
 
+  runtimeConfig: {
+    public: {
+      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+    },
+  },
   typescript: {
     // Disabled as using Volar take over mode is the reccomended way to do this
     shim: false,

@@ -5,7 +5,7 @@ import { setup, $fetch } from '@nuxt/test-utils-edge'
 
 import { describe, test as it } from 'vitest'
 import SearchBar from './SearchBar.vue'
-import { fireEvent, stubbedRender } from '@/testUtils'
+import { fireEvent, stubbedRender } from 'root/testUtils'
 
 describe('<SearchBar />', async () => {
   await setup({})
@@ -21,8 +21,11 @@ describe('<SearchBar />', async () => {
 
     test('when the search button is clicked', async () => {
       const { emitted, getByTestId } = stubbedRender(SearchBar)
+      const searchInput: HTMLInputElement = getByTestId('search-input')
 
-      await fireEvent.type(getByTestId('search-input'), inputValue)
+      await fireEvent.type(searchInput, inputValue)
+      expect(searchInput.value).toEqual(inputValue)
+
       await fireEvent.click(getByTestId('search-button'))
 
       expect(emitted().search).toBeTruthy()
@@ -33,8 +36,11 @@ describe('<SearchBar />', async () => {
 
     test('when the enter key is released', async () => {
       const { emitted, getByTestId } = stubbedRender(SearchBar)
+      const searchInput: HTMLInputElement = getByTestId('search-input')
 
-      await fireEvent.type(getByTestId('search-input'), inputValue)
+      await fireEvent.type(searchInput, inputValue)
+      expect(searchInput.value).toEqual(inputValue)
+
       await fireEvent.type(getByTestId('search-input'), '{enter}')
 
       expect(emitted().search).toBeTruthy()

@@ -1,14 +1,12 @@
 <script setup lang="ts">
-type BaseInputValueType = number | string
+import type { Ref } from 'vue'
+
 interface BaseInputProps {
-  value?: BaseInputValueType
+  model: Ref<string | number>
 }
 
-const props = withDefaults(defineProps<BaseInputProps>(), {
-  value: '',
-})
-
-const model = ref<BaseInputValueType>(props.value)
+const props = defineProps<BaseInputProps>()
+const model = toRef(props, 'model')
 </script>
 
 <template>

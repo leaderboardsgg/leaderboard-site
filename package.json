@@ -11,6 +11,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "generate:api": "node ./scripts/generate-api.js",
     "lint:fix": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore . --fix",
     "lint:all": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint": "pnpm lint:all",
@@ -54,6 +55,8 @@
     "@vue/eslint-config-typescript": "^11.0.2",
     "@vue/test-utils": "^2.0.2",
     "eslint": "^8.24.0",
+    "@types/dotenv-safe": "^8.1.2",
+    "dotenv-safe": "^8.2.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -71,6 +74,8 @@
     "vite-plugin-eslint": "^1.8.1",
     "vitest": "^0.23.4",
     "vue": "^3.2.39",
-    "webpack": "^5.74.0"
+    "webpack": "^5.74.0",
+    "swagger-typescript-api": "^9.3.1",
+    "vitest-fetch-mock": "^0.1.0"
   }
 }
