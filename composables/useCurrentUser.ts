@@ -1,5 +1,4 @@
-import { useState } from '#app'
-import type { User } from '@/lib/api/data-contracts'
+import type { User } from 'root/lib/api/data-contracts'
 
 export const useCurrentUser = () =>
   useState<User>('current_user', () => ({

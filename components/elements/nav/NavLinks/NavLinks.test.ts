@@ -1,7 +1,15 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { setup, fetch, $fetch } from '@nuxt/test-utils-edge'
+import { describe, test as it } from 'vitest'
+
 import NavLinks from './NavLinks.vue'
 import { stubbedRender } from '@/testUtils'
 
-describe('<NavLinks />', () => {
+describe('<NavLinks />', async () => {
+  await setup({})
+
   const defaultProps = {
     navLinks: [
       { name: 'Home', to: '/' },

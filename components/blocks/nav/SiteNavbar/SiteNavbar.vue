@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import { computed, reactive } from 'vue'
-import { useState } from '#app'
-import BaseModal from '@/components/elements/modals/BaseModal/BaseModal.vue'
-import LogInCard from '@/components/blocks/cards/LogInCard/LogInCard.vue'
-import LoginButton from '@/components/elements/buttons/LoginButton/LoginButton.vue'
-import LogoutButton from '@/components/elements/buttons/LogoutButton/LogoutButton.vue'
-import NavLinks from '@/components/elements/nav/NavLinks/NavLinks.vue'
-import SearchBar from '@/components/blocks/SearchBar/SearchBar.vue'
-import SignUpButton from '@/components/elements/buttons/SignUpButton/SignUpButton.vue'
-import SignUpCard from '@/components/blocks/cards/SignUpCard/SignUpCard.vue'
-import { useLogoutUser } from '@/composables/api'
-import { User } from '@/lib/api/data-contracts'
+import NavLinks from 'elements/nav/NavLinks/NavLinks.vue'
+import LogoutButton from 'elements/buttons/LogoutButton/LogoutButton.vue'
+import SignUpButton from 'elements/buttons/SignUpButton/SignUpButton.vue'
+import LoginButton from 'elements/buttons/LoginButton/LoginButton.vue'
+import LogInCard from 'blocks/cards/LogInCard/LogInCard.vue'
+import SignUpCard from 'blocks/cards/SignUpCard/SignUpCard.vue'
+import BaseModal from 'elements/modals/BaseModal/BaseModal.vue'
+import SearchBar from 'blocks/SearchBar/SearchBar.vue'
+import { useLogoutUser } from 'root/composables/api'
+import { User } from 'root/lib/api/data-contracts'
 
 interface NavbarState {
   mobileNavIsActive: boolean
@@ -57,7 +56,7 @@ function logout() {
     <div class="site-navbar__wrapper">
       <div class="site-logo">
         <NuxtLink class="site-navbar__homelink" to="/">
-          <i-svg-clock class="mx-1 w-10 h-10" />
+          <i-svg-clock class="mx-1 h-10 w-10" />
           <h1>leaderboards.gg</h1>
         </NuxtLink>
       </div>
@@ -86,7 +85,7 @@ function logout() {
         />
 
         <button class="mobile-menu__toggle" @click="toggleMenu">
-          <i-svg-menu class="mx-2 w-5 h-5 fill-current" />
+          <i-svg-menu class="mx-2 h-5 w-5 fill-current" />
         </button>
       </div>
     </div>
@@ -106,14 +105,14 @@ function logout() {
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"
-          @signUpClick="state.showLogin = false"
+          @sign-up-click="state.showLogin = false"
         />
         <SignUpCard
           v-show="!state.showLogin"
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"
-          @logInClick="state.showLogin = true"
+          @log-in-click="state.showLogin = true"
         />
       </BaseModal>
     </transition>

@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { ref, withDefaults } from 'vue'
 import type { Ref } from 'vue'
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
-import Card from '@/components/elements/cards/Card/Card.vue'
-import CardBody from '@/components/elements/cards/CardBody/CardBody.vue'
-import CardHeader from '@/components/elements/cards/CardHeader/CardHeader.vue'
-import CloseButton from '@/components/elements/buttons/CloseButton/CloseButton.vue'
-import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue'
-import { useLoginUser } from '@/composables/api'
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
+import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
+import CardBody from 'elements/cards/CardBody/CardBody.vue'
+import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
+import Card from 'elements/cards/Card/Card.vue'
+import { useLoginUser } from 'root/composables/api/useLoginUser'
 
 interface LogInCardProps {
   modal?: boolean
@@ -20,7 +19,10 @@ interface LogInCardState {
   showPassword: Ref<boolean>
 }
 
-const emit = defineEmits(['close', 'signUpClick'])
+const emit = defineEmits<{
+  (event: 'close'): void
+  (event: 'signUpClick'): void
+}>()
 
 const props = withDefaults(defineProps<LogInCardProps>(), {
   modal: false,
@@ -96,10 +98,11 @@ function login() {
               type="button"
               data-testid="hide-show-button"
               @click="state.showPassword.value = !state.showPassword.value"
-              @keydown.enter="$event.preventDefault()"
+              @keydown.enter.prevent=""
               @keyup.enter="
                 state.showPassword.value = !state.showPassword.value
               "
+              @keydown.enter="$event.preventDefault()"
             />
           </div>
         </div>
@@ -115,13 +118,13 @@ function login() {
 
       <div class="login-card__auth-buttons">
         <BaseButton class="login-button">
-          <i-svg-github class="mr-2 w-5 h-5" />
+          <i-svg-github class="mr-2 h-5 w-5" />
 
           <p>Log In with Github</p>
         </BaseButton>
 
         <BaseButton class="login-button">
-          <i-svg-google class="mr-2 w-5 h-5" />
+          <i-svg-google class="mr-2 h-5 w-5" />
           <p>Log In with Google</p>
         </BaseButton>
       </div>

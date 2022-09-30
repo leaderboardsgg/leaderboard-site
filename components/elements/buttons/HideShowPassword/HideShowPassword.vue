@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { reactive, toRef } from 'vue'
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 
 interface HideShowPasswordState {
   hidden: boolean
@@ -28,12 +27,12 @@ function toggleHidden() {
   >
     <i-svg-eye-hidden
       v-show="hiddenRef"
-      class="w-5 h-5"
+      class="h-5 w-5"
       data-testid="hidden-eye-icon"
     />
     <i-svg-eye-visible
       v-show="!hiddenRef"
-      class="w-5 h-5"
+      class="h-5 w-5"
       data-testid="visible-eye-icon"
     />
   </BaseButton>

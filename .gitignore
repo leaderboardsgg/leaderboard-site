@@ -93,3 +93,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# For buffet :) 
+ignore.json

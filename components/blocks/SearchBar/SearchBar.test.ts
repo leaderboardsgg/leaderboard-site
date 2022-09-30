@@ -1,7 +1,15 @@
-import SearchBar from './SearchBar.vue'
-import { fireEvent, stubbedRender } from '@/testUtils'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { setup, $fetch } from '@nuxt/test-utils-edge'
 
-describe('<SearchBar />', () => {
+import { describe, test as it } from 'vitest'
+import SearchBar from './SearchBar.vue'
+import { fireEvent, stubbedRender } from 'root/testUtils'
+
+describe('<SearchBar />', async () => {
+  await setup({})
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(SearchBar)
 
@@ -12,7 +20,7 @@ describe('<SearchBar />', () => {
     const inputValue = 'test'
 
     test('when the search button is clicked', async () => {
-      const { debug, emitted, getByTestId } = stubbedRender(SearchBar)
+      const { emitted, getByTestId } = stubbedRender(SearchBar)
       const searchInput: HTMLInputElement = getByTestId('search-input')
 
       await fireEvent.type(searchInput, inputValue)
@@ -21,6 +29,8 @@ describe('<SearchBar />', () => {
       await fireEvent.click(getByTestId('search-button'))
 
       expect(emitted().search).toBeTruthy()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
     })
 
@@ -34,6 +44,8 @@ describe('<SearchBar />', () => {
       await fireEvent.type(getByTestId('search-input'), '{enter}')
 
       expect(emitted().search).toBeTruthy()
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
       expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
     })
   })

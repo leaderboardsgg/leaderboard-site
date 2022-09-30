@@ -1,8 +1,14 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { setup, $fetch } from '@nuxt/test-utils-edge'
+
+import { describe, test as it } from 'vitest'
 import { ref } from 'vue'
 import createFetchMock from 'vitest-fetch-mock'
 import LogInCard from './LogInCard.vue'
-import { FullRequestParams } from '@/lib/api/http-client'
-import { fireEvent, stubbedRender } from '@/testUtils'
+import { FullRequestParams } from 'root/lib/api/http-client'
+import { fireEvent, stubbedRender } from 'root/testUtils'
 
 const token = 'jwt-token'
 const fetchMock = createFetchMock(vi)
@@ -24,7 +30,8 @@ afterEach(() => {
   vi.restoreAllMocks()
 })
 
-describe('<LogInCard />', () => {
+describe('<LogInCard />', async () => {
+  await setup({})
   beforeEach(() => {
     fetchMock.mockResponseOnce(JSON.stringify({ token }))
   })

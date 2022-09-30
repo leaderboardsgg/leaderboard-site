@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import type { Ref } from 'vue'
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+
+const emit = defineEmits<{ (e: 'search', value: string): void }>()
 
 interface SearchBarState {
   input: Ref<string>
@@ -11,8 +12,6 @@ interface SearchBarState {
 const state: SearchBarState = {
   input: ref(''),
 }
-
-const emit = defineEmits(['search'])
 
 function onClick() {
   emit('search', state.input.value)

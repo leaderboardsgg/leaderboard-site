@@ -1,7 +1,15 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { setup, $fetch } from '@nuxt/test-utils-edge'
+
+import { describe, test as it } from 'vitest'
 import HideShowPassword from './HideShowPassword.vue'
 import { fireEvent, stubbedRender } from '@/testUtils'
 
-describe('<HideShowPassword />', () => {
+describe('<HideShowPassword />', async () => {
+  await setup({})
+
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(HideShowPassword)
 

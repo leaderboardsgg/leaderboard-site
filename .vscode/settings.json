@@ -1,13 +1,20 @@
 {
-  "typescript.tsdk": "node_modules\\typescript\\lib",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "javascript.format.semicolons": "remove",
-  "typescript.format.semicolons": "remove",
+  // blargh
   "editor.formatOnSave": true,
-  "eslint.validate": ["javascript", "vue"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": ["javascript", "typescript", "vue"],
+
+  // Spaces, 2 space size, and LF line endings, and ensure it works
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "files.eol": "\n",
+
+  // Excludes these directories from VSC search
+  // This is to keep our searches from being muddied
+  // with garbage and taking longer than is reasonable
   "search.exclude": {
     "**/.github": true,
     "**/.husky": true,
@@ -20,5 +27,9 @@
     "pnpm-lock.yaml": true,
     ".gitignore": true,
     ".eslintrc.json": true
-  }
+  },
+  // Volar settings
+  "volar.takeOverMode.enabled": true,
+  "volar.icon.preview": true,
+  "volar.autoCompleteRefs": true
 }

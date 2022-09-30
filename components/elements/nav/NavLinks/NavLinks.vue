@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { withDefaults } from 'vue'
-import NavLink from '@/components/elements/nav/NavLinks/NavLink/NavLink.vue'
+import NavLink from './NavLink/NavLink.vue'
 
 interface NavLinksProps {
   navLinks?: {

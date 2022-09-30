@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { ref, withDefaults } from 'vue'
 import type { Ref } from 'vue'
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
-import BaseInput from '@/components/elements/inputs/BaseInput/BaseInput.vue'
-import Card from '@/components/elements/cards/Card/Card.vue'
-import CardBody from '@/components/elements/cards/CardBody/CardBody.vue'
-import CardHeader from '@/components/elements/cards/CardHeader/CardHeader.vue'
-import CloseButton from '@/components/elements/buttons/CloseButton/CloseButton.vue'
-import HideShowPassword from '@/components/elements/buttons/HideShowPassword/HideShowPassword.vue'
-import { useRegisterUser } from '@/composables/api'
+import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
+import Card from 'elements/cards/Card/Card.vue'
+import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
+import CardBody from 'elements/cards/CardBody/CardBody.vue'
+import { useRegisterUser } from 'root/composables/api'
 
 interface SignUpCardProps {
   modal?: boolean
@@ -25,7 +24,11 @@ interface UserRegister {
   username: Ref<string>
 }
 
-const emit = defineEmits(['close', 'logInClick', 'signUpClick'])
+const emit = defineEmits<{
+  (event: 'close'): void
+  (event: 'logInClick'): void
+  (event: 'signUpClick'): void
+}>()
 
 const props = withDefaults(defineProps<SignUpCardProps>(), {
   modal: false,
@@ -131,7 +134,7 @@ function signup() {
               type="button"
               data-testid="hide-show-button"
               @click="state.showPassword.value = !state.showPassword.value"
-              @keydown.enter.prevent
+              @keydown.enter.prevent=""
               @keyup.enter="
                 state.showPassword.value = !state.showPassword.value
               "
@@ -152,13 +155,13 @@ function signup() {
 
       <div class="signup-card__auth-buttons">
         <BaseButton class="signup-button">
-          <i-svg-github class="mr-2 w-5 h-5" />
+          <i-svg-github class="mr-2 h-5 w-5" />
 
           <p>Sign Up with Github</p>
         </BaseButton>
 
         <BaseButton class="signup-button">
-          <i-svg-google class="mr-2 w-5 h-5" />
+          <i-svg-google class="mr-2 h-5 w-5" />
 
           <p>Sign Up with Google</p>
         </BaseButton>

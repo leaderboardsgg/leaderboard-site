@@ -1,9 +1,8 @@
 import { ref } from 'vue'
-import { useState } from '#app'
 import SiteNavbar from './SiteNavbar.vue'
-import * as apiComposables from '@/composables/api'
-import { User } from '@/lib/api/data-contracts'
-import { fireEvent, stubbedRender } from '@/testUtils'
+import * as apiComposables from 'root/composables/api'
+import { User } from 'root/lib/api/data-contracts'
+import { fireEvent, stubbedRender } from 'root/testUtils'
 
 vi.mock('#app', () => ({
   useState: vi.fn(ref),

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import BaseButton from '@/components/elements/buttons/BaseButton/BaseButton.vue'
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 </script>
 
 <template>
   <BaseButton class="close-button" v-bind="$attrs">
-    <i-svg-close class="w-5 h-5" />
+    <i-svg-close class="h-5 w-5" />
   </BaseButton>
 </template>
 
