@@ -6,6 +6,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vitest/config'
 import { ViteConfig } from './vite.config'
 
+// TODO: https://github.com/leaderboardsgg/leaderboard-site/issues/503
+
 export default mergeConfig(
   ViteConfig,
   defineConfig({
