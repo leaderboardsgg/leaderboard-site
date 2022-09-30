@@ -1,5 +1,10 @@
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
 import { resolve } from 'path'
+import { config } from 'dotenv-safe'
+
+// https://v3.nuxtjs.org/api/configuration/nuxt.config
+
+// Safely loads the .env file, making sure all the variables are defined
+config()
 
 export default defineNuxtConfig({
   alias: {
@@ -46,7 +51,7 @@ export default defineNuxtConfig({
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
-    // '@nuxtjs/eslint-module',
+    '@nuxtjs/eslint-module',
   ],
 
   runtimeConfig: {

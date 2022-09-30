@@ -1,3 +1,7 @@
+# for mac
+.cache
+.DS_Store
+
 # Folders
 /.pnpm-store
 /.vuepress/dist

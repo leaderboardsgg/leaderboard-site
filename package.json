@@ -1,6 +1,6 @@
 {
   "name": "leaderboardsgg",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": ">=16.5.0",
