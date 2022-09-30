@@ -1,27 +1,27 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, fetch, $fetch } from '@nuxt/test-utils-edge'
+import { setup, $fetch } from '@nuxt/test-utils'
 
-import { describe, test as it } from 'vitest'
+import { describe, test } from 'vitest'
 import BaseModal from './BaseModal.vue'
-import { fireEvent, stubbedRender } from '@/testUtils'
+import { fireEvent, stubbedRender } from 'root/testUtils'
 
 describe('<BaseModal />', async () => {
   await setup({})
 
-  it('should render without crashing', () => {
+  test('should render without crashing', () => {
     const { unmount } = stubbedRender(BaseModal)
 
     unmount()
   })
 
-  it('renders the correct <slot />', () => {
+  test('renders the correct <slot />', () => {
     const { getByText } = stubbedRender(BaseModal, {
       slots: { default: 'Modal content' },
     })
 
-    expect(getByText('Modal content')).toBeInTheDocument()
+    expect(getByText('Modal content')).toBeTruthy()
   })
 
   describe('when the close event is emitted', () => {

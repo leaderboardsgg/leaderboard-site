@@ -1,22 +1,22 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, $fetch } from '@nuxt/test-utils-edge'
+import { setup, $fetch } from '@nuxt/test-utils'
 
-import { describe, test as it } from 'vitest'
+import { describe, test } from 'vitest'
 import SiteFooter from './SiteFooter.vue'
-import { stubbedRender } from '@/testUtils'
+import { stubbedRender } from 'root/testUtils'
 
 describe('<SiteFooter />', async () => {
   await setup({})
 
-  it('should render without crashing', () => {
+  test('should render without crashing', () => {
     const { unmount } = stubbedRender(SiteFooter)
 
     unmount()
   })
 
-  it('renders correctly with the copyright info', () => {
+  test('renders correctly with the copyright info', () => {
     const { getByText } = stubbedRender(SiteFooter)
     const currentYear = new Date().getFullYear()
 

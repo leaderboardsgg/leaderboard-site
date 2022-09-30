@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, $fetch } from '@nuxt/test-utils-edge'
+import { setup, $fetch } from '@nuxt/test-utils'
 
-import { describe, test as it } from 'vitest'
+import { describe, test } from 'vitest'
 import ButtonLink from './ButtonLink.vue'
-import { stubbedRender } from '@/testUtils'
+import { stubbedRender } from 'root/testUtils'
 
 describe('<ButtonLink />', async () => {
   await setup({})
@@ -13,7 +13,7 @@ describe('<ButtonLink />', async () => {
   const defaultAttrs = { class: 'custom-link' }
   const defaultProps = { to: 'https://www.test.com/' }
 
-  it('should render without crashing', () => {
+  test('should render without crashing', () => {
     const { unmount } = stubbedRender(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
@@ -23,7 +23,7 @@ describe('<ButtonLink />', async () => {
     unmount()
   })
 
-  it('renders with the correct <slot />', () => {
+  test('renders with the correct <slot />', () => {
     const { getByText } = stubbedRender(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
@@ -32,7 +32,7 @@ describe('<ButtonLink />', async () => {
     expect(getByText('Any%')).toBeInTheDocument()
   })
 
-  it('renders with the passed link', () => {
+  test('renders with the passed link', () => {
     const { getByText } = stubbedRender(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
@@ -43,7 +43,7 @@ describe('<ButtonLink />', async () => {
     expect(link.getAttribute('to')).toEqual('https://www.test.com/')
   })
 
-  it('renders with the custom classnames', () => {
+  test('renders with the custom classnames', () => {
     stubbedRender(ButtonLink, {
       attrs: {
         ...defaultAttrs,

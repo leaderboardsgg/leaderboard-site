@@ -1,19 +1,24 @@
 import { resolve } from 'path'
 import { config } from 'dotenv-safe'
 
+// Need to explicitly import this otherwise vite.config yells at us
+import { defineNuxtConfig } from 'nuxt/config'
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
 // Safely loads the .env file, making sure all the variables are defined
 config()
 
+export const nuxtAliases = {
+  blocks: resolve(__dirname, './components/blocks'),
+  elements: resolve(__dirname, './components/elements'),
+  layouts: resolve(__dirname, './layouts'),
+  pages: resolve(__dirname, './pages'),
+  root: resolve(__dirname, './'),
+}
+
 export default defineNuxtConfig({
-  alias: {
-    blocks: resolve(__dirname, './components/blocks'),
-    elements: resolve(__dirname, './components/elements'),
-    layouts: resolve(__dirname, './layouts'),
-    pages: resolve(__dirname, './pages'),
-    root: resolve(__dirname, './'),
-  },
+  alias: nuxtAliases,
   app: {
     // Global page headers: https://v3.nuxtjs.org/api/configuration/nuxt.config#head
     head: {

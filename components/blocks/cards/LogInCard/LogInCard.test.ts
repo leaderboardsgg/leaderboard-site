@@ -1,18 +1,15 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, $fetch } from '@nuxt/test-utils-edge'
+import { setup, $fetch } from '@nuxt/test-utils'
 
-import { describe, test as it } from 'vitest'
 import { ref } from 'vue'
-import createFetchMock from 'vitest-fetch-mock'
+import { describe, test } from 'vitest'
 import LogInCard from './LogInCard.vue'
-import { FullRequestParams } from 'root/lib/api/http-client'
 import { fireEvent, stubbedRender } from 'root/testUtils'
+import { FullRequestParams } from 'root/lib/api/http-client'
 
 const token = 'jwt-token'
-const fetchMock = createFetchMock(vi)
-fetchMock.enableMocks()
 
 type fetchMockCall = [string, FullRequestParams]
 
@@ -36,14 +33,14 @@ describe('<LogInCard />', async () => {
     fetchMock.mockResponseOnce(JSON.stringify({ token }))
   })
 
-  it('should render without crashing', () => {
+  test('should render without crashing', () => {
     const { unmount } = stubbedRender(LogInCard)
 
     unmount()
   })
 
   describe('when the close button is clicked', () => {
-    it('should emit the close event', async () => {
+    test('should emit the close event', async () => {
       const { emitted, getByTestId } = stubbedRender(LogInCard)
 
       await fireEvent.click(getByTestId('close-button'))
@@ -53,7 +50,7 @@ describe('<LogInCard />', async () => {
   })
 
   describe('when the hide/show button is clicked', () => {
-    it('changes the password input type to be text', async () => {
+    test('changes the password input type to be text', async () => {
       const { getByTestId } = stubbedRender(LogInCard)
       const passwordInput: HTMLInputElement = getByTestId('password-input')
 
@@ -66,7 +63,7 @@ describe('<LogInCard />', async () => {
   })
 
   describe('when enter key is released on the password input field', () => {
-    it('emits the close event', async () => {
+    test('emits the close event', async () => {
       const { emitted, getByTestId } = stubbedRender(LogInCard)
 
       await fireEvent.type(getByTestId('password-input'), '{enter}')
@@ -79,7 +76,7 @@ describe('<LogInCard />', async () => {
     const emailAddress = 'strongbad@homestarrunner.com'
     const password = 'homestarsux'
 
-    it('emits the close event', async () => {
+    test('emits the close event', async () => {
       const { emitted, getByTestId } = stubbedRender(LogInCard)
 
       await fireEvent.click(getByTestId('login-button'))
@@ -87,7 +84,7 @@ describe('<LogInCard />', async () => {
       expect(emitted().close).toBeTruthy()
     })
 
-    it('clears the state', async () => {
+    test('clears the state', async () => {
       const { getByTestId } = stubbedRender(LogInCard)
 
       const emailInput: HTMLInputElement = getByTestId('email-input')
@@ -105,7 +102,7 @@ describe('<LogInCard />', async () => {
       expect(passwordInput.value).toBe('')
     })
 
-    it('calls the api', async () => {
+    test('calls the api', async () => {
       const { getByTestId } = stubbedRender(LogInCard)
 
       const emailInput: HTMLInputElement = getByTestId('email-input')
@@ -145,7 +142,7 @@ describe('<LogInCard />', async () => {
   })
 
   describe('when the sign up button is clicked', () => {
-    it('emits the sign up click event', async () => {
+    test('emits the sign up click event', async () => {
       const { emitted, getByTestId } = stubbedRender(LogInCard)
 
       await fireEvent.click(getByTestId('sign-up-button'))

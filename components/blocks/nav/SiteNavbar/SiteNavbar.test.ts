@@ -1,8 +1,15 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import { setup, $fetch } from '@nuxt/test-utils'
+
+import { describe, expect, it } from 'vitest'
+
 import { ref } from 'vue'
 import SiteNavbar from './SiteNavbar.vue'
+import { fireEvent, stubbedRender } from 'root/testUtils'
 import * as apiComposables from 'root/composables/api'
 import { User } from 'root/lib/api/data-contracts'
-import { fireEvent, stubbedRender } from 'root/testUtils'
 
 vi.mock('#app', () => ({
   useState: vi.fn(ref),

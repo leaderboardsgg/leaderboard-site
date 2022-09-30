@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, fetch, $fetch } from '@nuxt/test-utils-edge'
-import { describe, test as it } from 'vitest'
+import { setup, $fetch } from '@nuxt/test-utils'
 
+import { describe, test } from 'vitest'
 import NavLinks from './NavLinks.vue'
-import { stubbedRender } from '@/testUtils'
+import { stubbedRender } from 'root/testUtils'
 
 describe('<NavLinks />', async () => {
   await setup({})
@@ -18,7 +18,7 @@ describe('<NavLinks />', async () => {
     ],
   }
 
-  it('should render without crashing', () => {
+  test('should render without crashing', () => {
     const { unmount } = stubbedRender(NavLinks, {
       props: defaultProps,
     })
@@ -26,7 +26,7 @@ describe('<NavLinks />', async () => {
     unmount()
   })
 
-  it('should render the same amount of <NavLink /> components as there are items in the navLinks props', () => {
+  test('should render the same amount of <NavLink /> components as there are items in the navLinks props', () => {
     const { getByText } = stubbedRender(NavLinks, {
       props: defaultProps,
     })

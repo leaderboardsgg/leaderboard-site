@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, fetch, $fetch } from '@nuxt/test-utils-edge'
+import { setup, $fetch } from '@nuxt/test-utils'
 
-import { describe, test as it } from 'vitest'
+import { describe, test } from 'vitest'
 import NavLink from './NavLink.vue'
-import { stubbedRender } from '@/testUtils'
+import { stubbedRender } from 'root/testUtils'
 
 describe('<NavLink />', async () => {
   await setup({})
@@ -13,7 +13,7 @@ describe('<NavLink />', async () => {
   const defaultAttrs = { class: 'custom-link' }
   const defaultProps = { to: '/games' }
 
-  it('should render without crashing', () => {
+  test('should render without crashing', () => {
     const { unmount } = stubbedRender(NavLink, {
       attrs: defaultAttrs,
       props: defaultProps,
