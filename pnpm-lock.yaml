@@ -35,7 +35,7 @@ specifiers:
   babel-core: 7.0.0-bridge.0
   babel-jest: 28.1.3
   consola: 2.15.3
-  core-js: 3.25.0
+  core-js: 3.25.5
   dotenv-safe: 8.2.0
   eslint: 8.18.0
   eslint-config-prettier: 8.5.0
@@ -71,7 +71,7 @@ dependencies:
   '@nuxtjs/i18n': 7.3.0
   '@nuxtjs/pwa': 3.3.5
   '@nuxtjs/svg-sprite': 0.5.2
-  core-js: 3.25.0
+  core-js: 3.25.5
   nuxt: 2.15.8_7507042f7b293e28cd0b320ea6341055
 
 devDependencies:
@@ -5593,8 +5593,8 @@ packages:
     deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
     requiresBuild: true
 
-  /core-js/3.25.0:
-    resolution: {integrity: sha512-CVU1xvJEfJGhyCpBrzzzU1kjCfgsGUxhEvwUV2e/cOedYWHdmluamx+knDnmhqALddMG16fZvIqvs9aijsHHaA==}
+  /core-js/3.25.5:
+    resolution: {integrity: sha512-nbm6eZSjm+ZuBQxCUPQKQCoUEfFOXjUZ8dTTyikyKaWrTYmAVbykQfwsKE5dBK88u3QCkCrzsx/PPlKfhsvgpw==}
     requiresBuild: true
     dev: false
 
