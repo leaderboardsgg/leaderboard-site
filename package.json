@@ -34,7 +34,6 @@
     "unplugin-vue-components": "^0.19.9"
   },
   "devDependencies": {
-    "@intlify/eslint-plugin-vue-i18n": "^2.0.0",
     "@nuxt/test-utils-edge": "^3.0.0-rc.9-27703329.537338f",
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",

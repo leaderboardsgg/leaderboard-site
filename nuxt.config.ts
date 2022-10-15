@@ -49,12 +49,14 @@ export default defineNuxtConfig({
   css: ['assets/css/tailwind.css'],
 
   // https://v8.i18n.nuxtjs.org/getting-started/setup
+
+  // TODO: someone who's brain lets them, figure out more proper setup with lazy loading
+  // i tried and couldn't figure it out unfortunately
   i18n: {
     vueI18n: {
       fallbackLocale: 'en',
       legacy: false,
       locale: 'en',
-      localeDir: './i18n',
       messages: {
         de: Deutsch,
         en: English,

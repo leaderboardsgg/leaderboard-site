@@ -13,8 +13,7 @@
     "@vue/eslint-config-typescript",
     "plugin:prettier/recommended",
     "plugin:vuejs-accessibility/recommended",
-    "plugin:tailwindcss/recommended",
-    "plugin:@intlify/vue-i18n/recommended"
+    "plugin:tailwindcss/recommended"
   ],
   "ignorePatterns": [
     ".nuxt",
