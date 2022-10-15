@@ -1,6 +1,6 @@
 {
   "extends": ["config:base"],
-  "compatibility": { "pnpm": "^6.0.0" },
+  "compatibility": { "pnpm": "^7.0.0" },
   "labels": ["dependencies"],
   "packageRules": [
     {
@@ -18,5 +18,6 @@
   "description": [
     "The usage of ignoreTests just means that Renovate will ignore its own internal checks of merge readiness,",
     "this means that we can disable this because we already lock the PRs to need to pass CI before it can succesfully merge."
-  ]
+  ],
+  "schedule": ["before 3am on the first day of the month"]
 }

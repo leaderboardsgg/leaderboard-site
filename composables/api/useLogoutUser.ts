@@ -1,4 +1,5 @@
-import { useCurrentUser, useSessionToken } from '@/composables'
+import { useCurrentUser } from 'composables/useCurrentUser'
+import { useSessionToken } from 'composables/useSessionToken'
 
 export const useLogoutUser = (): void => {
   const authToken = useSessionToken()

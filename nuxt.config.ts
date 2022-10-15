@@ -15,8 +15,10 @@ config()
 export default defineNuxtConfig({
   alias: {
     blocks: resolve(__dirname, './components/blocks'),
+    composables: resolve(__dirname, './composables'),
     elements: resolve(__dirname, './components/elements'),
     layouts: resolve(__dirname, './layouts'),
+    lib: resolve(__dirname, './lib'),
     pages: resolve(__dirname, './pages'),
     root: resolve(__dirname, './'),
   },
@@ -25,9 +27,7 @@ export default defineNuxtConfig({
     head: {
       link: [
         {
-          href: `${
-            process.env.NODE_ENV === 'production' ? '' : 'public'
-          }/favicon.ico`,
+          href: '/favicon.ico',
           rel: 'icon',
           type: 'image/x-icon',
         },
@@ -56,7 +56,7 @@ export default defineNuxtConfig({
     vueI18n: {
       fallbackLocale: 'en',
       legacy: false,
-      locale: 'en',
+      locale: 'de',
       messages: {
         de: Deutsch,
         en: English,
