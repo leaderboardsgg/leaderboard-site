@@ -1,2 +1,2 @@
-export { default as useCurrentUser } from './useCurrentUser'
-export { default as useSessionToken } from './useSessionToken'
+export { useCurrentUser } from './useCurrentUser'
+export { useSessionToken } from './useSessionToken'

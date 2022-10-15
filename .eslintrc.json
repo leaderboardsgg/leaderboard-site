@@ -13,7 +13,8 @@
     "@vue/eslint-config-typescript",
     "plugin:prettier/recommended",
     "plugin:vuejs-accessibility/recommended",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "plugin:@intlify/vue-i18n/recommended"
   ],
   "ignorePatterns": [
     ".nuxt",
@@ -76,5 +77,10 @@
     // disabled since this is only relevant for IE support
     // https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/issues/398#issuecomment-685442841
     "vuejs-accessibility/no-onchange": "off"
+  },
+  "settings": {
+    "vue-i18n": {
+      "localedir": ""
+    }
   }
 }

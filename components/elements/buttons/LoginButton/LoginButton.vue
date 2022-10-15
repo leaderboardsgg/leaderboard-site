@@ -3,7 +3,9 @@ import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 </script>
 
 <template>
-  <BaseButton class="login-button" v-bind="$attrs"> Log In </BaseButton>
+  <BaseButton class="login-button" v-bind="$attrs">
+    {{ $t('login') }}
+  </BaseButton>
 </template>
 
 <style lang="postcss" scoped>

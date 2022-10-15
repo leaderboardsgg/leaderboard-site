@@ -1,6 +1,12 @@
 import { resolve } from 'path'
 import { config } from 'dotenv-safe'
 
+import { Deutsch } from './i18n/de/index'
+import { English } from './i18n/en/index'
+import { Español } from './i18n/es/index'
+import { Français } from './i18n/fr/index'
+import { 日本語 } from './i18n/ja/index'
+
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
 // Safely loads the .env file, making sure all the variables are defined
@@ -42,6 +48,23 @@ export default defineNuxtConfig({
   // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
   css: ['assets/css/tailwind.css'],
 
+  // https://v8.i18n.nuxtjs.org/getting-started/setup
+  i18n: {
+    vueI18n: {
+      fallbackLocale: 'en',
+      legacy: false,
+      locale: 'en',
+      localeDir: './i18n',
+      messages: {
+        de: Deutsch,
+        en: English,
+        es: Español,
+        fr: Français,
+        ja: 日本語,
+      },
+    },
+  },
+
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
   ignore: ['**/__tests__'],
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
@@ -52,6 +75,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
     '@nuxtjs/eslint-module',
+    '@nuxtjs/i18n',
   ],
 
   runtimeConfig: {
