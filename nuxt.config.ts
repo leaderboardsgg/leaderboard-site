@@ -5,10 +5,15 @@ import { config } from 'dotenv-safe'
 // Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
 
-const require = createRequire(import.meta.url)
-const pathName = require.resolve('nuxt')
+import { Deutsch } from './i18n/de/index'
+import { English } from './i18n/en/index'
+import { Español } from './i18n/es/index'
+import { Français } from './i18n/fr/index'
+import { 日本語 } from './i18n/ja/index'
 
 // console.log(resolve('nuxt/dist/app'))
+const require = createRequire(import.meta.url)
+const pathName = require.resolve('nuxt')
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
@@ -31,9 +36,7 @@ export default defineNuxtConfig({
     head: {
       link: [
         {
-          href: `${
-            process.env.NODE_ENV === 'production' ? '' : 'public'
-          }/favicon.ico`,
+          href: '/favicon.ico',
           rel: 'icon',
           type: 'image/x-icon',
         },
@@ -54,6 +57,25 @@ export default defineNuxtConfig({
   // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
   css: ['assets/css/tailwind.css'],
 
+  // https://v8.i18n.nuxtjs.org/getting-started/setup
+
+  // TODO: someone who's brain lets them, figure out more proper setup with lazy loading
+  // i tried and couldn't figure it out unfortunately
+  i18n: {
+    vueI18n: {
+      fallbackLocale: 'en',
+      legacy: false,
+      locale: 'de',
+      messages: {
+        de: Deutsch,
+        en: English,
+        es: Español,
+        fr: Français,
+        ja: 日本語,
+      },
+    },
+  },
+
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
   ignore: ['**/__tests__'],
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
@@ -64,6 +86,7 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
     '@nuxtjs/eslint-module',
+    '@nuxtjs/i18n',
   ],
 
   runtimeConfig: {

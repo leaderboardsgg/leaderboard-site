@@ -3,9 +3,9 @@ import type {
   ProblemDetails,
   RegisterRequest,
   User,
-} from 'root/lib/api/data-contracts'
-import { Users } from 'root/lib/api/Users'
-import { isProblemDetails } from 'root/lib/helpers'
+} from 'lib/api/data-contracts'
+import { Users } from 'lib/api/Users'
+import { isProblemDetails } from 'lib/helpers'
 
 interface RegisterUserResponse {
   data: User
