@@ -10,8 +10,8 @@ import { ref } from 'vue'
 import SiteNavbar from './SiteNavbar.vue'
 // import 'root/vitest.setup'
 import { fireEvent, stubbedRender } from 'root/testUtils'
-import * as apiComposables from 'root/composables/api'
-import { User } from 'root/lib/api/data-contracts'
+import * as apiComposables from 'composables/api'
+import { User } from 'lib/api/data-contracts'
 
 vi.doMock(`${url('#app')}`, () => ({
   useRuntimeConfig: () => ({

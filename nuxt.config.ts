@@ -23,8 +23,10 @@ config()
 export const nuxtAliases = {
   '#app': resolve(pathName, './dist/app'),
   blocks: resolve(__dirname, './components/blocks'),
+  composables: resolve(__dirname, './composables'),
   elements: resolve(__dirname, './components/elements'),
   layouts: resolve(__dirname, './layouts'),
+  lib: resolve(__dirname, './lib'),
   pages: resolve(__dirname, './pages'),
   root: resolve(__dirname, './'),
 }
