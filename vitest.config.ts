@@ -1,8 +1,6 @@
 /// <reference types="vitest" />
+// import vueJsx from '@vitejs/plugin-vue-jsx'
 import { mergeConfig } from 'vite'
-import { resolve } from 'path'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig } from 'vitest/config'
 import { ViteConfig } from './vite.config'
 
@@ -11,12 +9,6 @@ import { ViteConfig } from './vite.config'
 export default mergeConfig(
   ViteConfig,
   defineConfig({
-    plugins: [vue(), vueJsx()],
-    resolve: {
-      alias: {
-        '@': resolve(__dirname, './'),
-      },
-    },
     test: {
       environment: 'jsdom',
       // deps: {

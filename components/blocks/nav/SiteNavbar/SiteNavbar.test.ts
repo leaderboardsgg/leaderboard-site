@@ -2,7 +2,6 @@
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { setup, $fetch } from '@nuxt/test-utils'
-
 import { describe, expect, it } from 'vitest'
 
 import { ref } from 'vue'
@@ -12,7 +11,11 @@ import * as apiComposables from 'root/composables/api'
 import { User } from 'root/lib/api/data-contracts'
 
 vi.mock('#app', () => ({
-  useState: vi.fn(ref),
+  useRuntimeConfig: () => ({
+    public: {
+      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+    },
+  }),
 }))
 
 afterEach(() => {
@@ -20,7 +23,8 @@ afterEach(() => {
   vi.clearAllMocks()
 })
 
-describe('<SiteNavbar />', () => {
+describe('<SiteNavbar />', async () => {
+  await setup({})
   it('should render without crashing', () => {
     const { unmount } = stubbedRender(SiteNavbar)
 
@@ -29,13 +33,11 @@ describe('<SiteNavbar />', () => {
 
   describe('when no user is logged in', () => {
     beforeEach(() => {
-      useState.mockImplementation((_stateId: string) =>
-        ref<User>({
-          admin: false,
-          email: '',
-          username: '',
-        }),
-      )
+      ref<User>({
+        admin: false,
+        email: '',
+        username: '',
+      })
     })
 
     it('should render the login/sign up buttons', () => {
@@ -68,13 +70,11 @@ describe('<SiteNavbar />', () => {
 
   describe('when a user is logged in', () => {
     beforeEach(() => {
-      useState.mockImplementation((_stateId: string) =>
-        ref<User>({
-          admin: true,
-          email: 'admin@leaderboards.gg',
-          username: 'lbgg_admin',
-        }),
-      )
+      ref<User>({
+        admin: true,
+        email: 'admin@leaderboards.gg',
+        username: 'lbgg_admin',
+      })
     })
 
     it('should render the logout button', () => {

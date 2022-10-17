@@ -2,9 +2,8 @@
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { setup, $fetch } from '@nuxt/test-utils'
-
-import { ref } from 'vue'
 import { describe, test } from 'vitest'
+
 import LogInCard from './LogInCard.vue'
 import { fireEvent, stubbedRender } from 'root/testUtils'
 import { FullRequestParams } from 'root/lib/api/http-client'
@@ -19,7 +18,6 @@ vi.mock('#app', () => ({
       BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
     },
   }),
-  useState: vi.fn(ref),
 }))
 
 afterEach(() => {

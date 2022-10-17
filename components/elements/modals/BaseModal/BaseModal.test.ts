@@ -2,8 +2,8 @@
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { setup, $fetch } from '@nuxt/test-utils'
-
 import { describe, test } from 'vitest'
+
 import BaseModal from './BaseModal.vue'
 import { fireEvent, stubbedRender } from 'root/testUtils'
 

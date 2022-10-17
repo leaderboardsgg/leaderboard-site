@@ -5,6 +5,7 @@ import Icons from 'unplugin-icons/vite'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import IconResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
+import vue from '@vitejs/plugin-vue'
 
 import type { UserConfigExport } from 'vitest/config'
 import { nuxtAliases } from './nuxt.config'
@@ -12,6 +13,7 @@ import { nuxtAliases } from './nuxt.config'
 // Used in Vitest
 export const ViteConfig: UserConfigExport = {
   plugins: [
+    vue(),
     Icons({
       autoInstall: true,
       compiler: 'vue3',
