@@ -1,16 +1,19 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, $fetch } from '@nuxt/test-utils'
-import { describe, expect, it } from 'vitest'
+import { setup, $fetch, url } from '@nuxt/test-utils-edge'
+import { describe, expect, it, vi } from 'vitest'
+
+// import from 'nuxt'
 
 import { ref } from 'vue'
 import SiteNavbar from './SiteNavbar.vue'
+// import 'root/vitest.setup'
 import { fireEvent, stubbedRender } from 'root/testUtils'
 import * as apiComposables from 'root/composables/api'
 import { User } from 'root/lib/api/data-contracts'
 
-vi.mock('#app', () => ({
+vi.doMock(`${url('#app')}`, () => ({
   useRuntimeConfig: () => ({
     public: {
       BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
@@ -31,7 +34,8 @@ describe('<SiteNavbar />', async () => {
     unmount()
   })
 
-  describe('when no user is logged in', () => {
+  describe('when no user is logged in', async () => {
+    await setup({})
     beforeEach(() => {
       ref<User>({
         admin: false,
@@ -47,7 +51,8 @@ describe('<SiteNavbar />', async () => {
       expect(getByTestId('site-navbar-sign-up-button')).toBeInTheDocument()
     })
 
-    describe('when the login button is clicked', () => {
+    describe('when the login button is clicked', async () => {
+      await setup({})
       it('should bring up the login card', async () => {
         const { container, getByTestId } = stubbedRender(SiteNavbar)
 
@@ -57,7 +62,8 @@ describe('<SiteNavbar />', async () => {
       })
     })
 
-    describe('when the sign up button is clicked', () => {
+    describe('when the sign up button is clicked', async () => {
+      await setup({})
       it('should bring up the signup card', async () => {
         const { container, getByTestId } = stubbedRender(SiteNavbar)
 
@@ -68,7 +74,8 @@ describe('<SiteNavbar />', async () => {
     })
   })
 
-  describe('when a user is logged in', () => {
+  describe('when a user is logged in', async () => {
+    await setup({})
     beforeEach(() => {
       ref<User>({
         admin: true,
@@ -83,7 +90,8 @@ describe('<SiteNavbar />', async () => {
       expect(getByTestId('site-navbar-logout-button')).toBeInTheDocument()
     })
 
-    describe('when the logout button is clicked', () => {
+    describe('when the logout button is clicked', async () => {
+      await setup({})
       const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
 
       it('should log out the user', async () => {

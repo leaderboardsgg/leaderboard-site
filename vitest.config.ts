@@ -11,10 +11,11 @@ export default mergeConfig(
   defineConfig({
     test: {
       environment: 'jsdom',
-      // deps: {
-      //   // Needed otherwise usage in the test files throws an error
-      //   inline: [/@nuxt\/test-utils-edge/, /vitest/],
-      // },
+      deps: {
+        // but is it needed tho???
+        // Needed otherwise usage in the test files throws an error
+        inline: [/@nuxt\/test-utils-edge/],
+      },
       globals: true,
       setupFiles: ['vitest.setup.ts'],
     },

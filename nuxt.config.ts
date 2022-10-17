@@ -1,8 +1,14 @@
 import { resolve } from 'path'
+import { createRequire } from 'module'
 import { config } from 'dotenv-safe'
 
 // Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
+
+const require = createRequire(import.meta.url)
+const pathName = require.resolve('nuxt')
+
+// console.log(resolve('nuxt/dist/app'))
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
@@ -10,6 +16,7 @@ import { defineNuxtConfig } from 'nuxt/config'
 config()
 
 export const nuxtAliases = {
+  '#app': resolve(pathName, './dist/app'),
   blocks: resolve(__dirname, './components/blocks'),
   elements: resolve(__dirname, './components/elements'),
   layouts: resolve(__dirname, './layouts'),
