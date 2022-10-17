@@ -33,8 +33,10 @@
     ],
     "paths": {
       "blocks/*": ["./components/blocks/*"],
+      "composables/*": ["./composables/*"],
       "elements/*": ["./components/elements/*"],
       "layouts/*": ["./layouts/*"],
+      "lib/*": ["./lib/*"],
       "pages/*": ["./pages/*"],
       "root/*": ["./*"]
     }

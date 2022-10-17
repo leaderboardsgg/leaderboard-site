@@ -8,8 +8,8 @@ import LogInCard from 'blocks/cards/LogInCard/LogInCard.vue'
 import SignUpCard from 'blocks/cards/SignUpCard/SignUpCard.vue'
 import BaseModal from 'elements/modals/BaseModal/BaseModal.vue'
 import SearchBar from 'blocks/SearchBar/SearchBar.vue'
-import { useLogoutUser } from 'root/composables/api'
-import { User } from 'root/lib/api/data-contracts'
+import { useLogoutUser } from 'composables/api'
+import { User } from 'lib/api/data-contracts'
 
 interface NavbarState {
   mobileNavIsActive: boolean
