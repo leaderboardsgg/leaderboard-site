@@ -18,6 +18,6 @@ export const stubbedRender = (
 }
 
 export * from '@testing-library/vue'
-export * from '@nuxt/test-utils-edge'
+export * from '@nuxt/test-utils'
 export * from '@vue/test-utils'
 export { userEvent as fireEvent }

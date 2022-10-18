@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// blargh
+</script>
+
 <template>
   <NuxtLink class="button-link" v-bind="$attrs">
     <slot>Placeholder Link Text</slot>

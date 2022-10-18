@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// blargh
+</script>
+
 <template>
   <button class="button" v-bind="$attrs">
     <slot />

@@ -14,10 +14,11 @@ export default mergeConfig(
       deps: {
         // but is it needed tho???
         // Needed otherwise usage in the test files throws an error
-        inline: [/@nuxt\/test-utils-edge/],
+        inline: [/@nuxt\/test-utils/],
       },
       globals: true,
       setupFiles: ['vitest.setup.ts'],
+      // env: { BACKEND_BASE_URL: 'localhost:8080/' },
     },
   }),
 )

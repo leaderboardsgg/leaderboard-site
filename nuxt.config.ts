@@ -79,7 +79,7 @@ export default defineNuxtConfig({
   },
 
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
-  ignore: ['**/__tests__'],
+  ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
     // https://go.nuxtjs.dev/typescript

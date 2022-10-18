@@ -1,3 +1,7 @@
+<script setup lang="ts">
+// blargh
+</script>
+
 <template>
   <div class="card-body" v-bind="$attrs">
     <slot />
