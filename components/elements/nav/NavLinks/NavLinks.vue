@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineProps, withDefaults } from 'vue'
 import NavLink from './NavLink/NavLink.vue'
 
 interface NavLinksProps {

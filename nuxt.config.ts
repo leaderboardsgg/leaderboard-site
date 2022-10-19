@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import { createRequire } from 'module'
 import { config } from 'dotenv-safe'
 
 // Need to explicitly import this otherwise vite.config yells at us
@@ -11,24 +10,19 @@ import { Español } from './i18n/es/index'
 import { Français } from './i18n/fr/index'
 import { 日本語 } from './i18n/ja/index'
 
-// console.log(resolve('nuxt/dist/app'))
-const require = createRequire(import.meta.url)
-const pathName = require.resolve('nuxt')
-
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
 // Safely loads the .env file, making sure all the variables are defined
 config()
 
 export const nuxtAliases = {
-  '#app': resolve(pathName, './dist/app'),
   blocks: resolve(__dirname, './components/blocks'),
   composables: resolve(__dirname, './composables'),
   elements: resolve(__dirname, './components/elements'),
   layouts: resolve(__dirname, './layouts'),
   lib: resolve(__dirname, './lib'),
   pages: resolve(__dirname, './pages'),
-  root: resolve(__dirname, './'),
+  public: '/<rootDir>/public',
 }
 
 export default defineNuxtConfig({
@@ -56,9 +50,6 @@ export default defineNuxtConfig({
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#components
   // https://v3.nuxtjs.org/guide/directory-structure/components/
 
-  // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
-  css: ['assets/css/tailwind.css'],
-
   // https://v8.i18n.nuxtjs.org/getting-started/setup
 
   // TODO: someone who's brain lets them, figure out more proper setup with lazy loading
@@ -66,6 +57,7 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: {
       fallbackLocale: 'en',
+      // globalInjection: true,
       legacy: false,
       locale: 'de',
       messages: {
@@ -82,8 +74,6 @@ export default defineNuxtConfig({
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
-    // https://go.nuxtjs.dev/typescript
-    // '@nuxt/typescript-build',
     // https://tailwindcss.com
     '@nuxtjs/tailwindcss',
     'unplugin-icons/nuxt',
@@ -95,6 +85,13 @@ export default defineNuxtConfig({
     public: {
       BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
     },
+  },
+
+  // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
+  // css: ['assets/css/tailwind.css'],
+  tailwindcss: {
+    configPath: 'tailwind.config.ts',
+    cssPath: './assets/css/tailwind.css',
   },
   typescript: {
     // Disabled as using Volar take over mode is the reccomended way to do this

@@ -4,8 +4,8 @@
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, test } from 'vitest'
 
-import SearchBar from './SearchBar.vue'
 import { fireEvent, stubbedRender } from 'root/testUtils'
+import SearchBar from './SearchBar.vue'
 
 describe('<SearchBar />', async () => {
   await setup({})

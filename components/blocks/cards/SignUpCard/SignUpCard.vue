@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Ref } from 'vue'
+import { type Ref, defineEmits, withDefaults, defineProps, ref } from 'vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
@@ -69,7 +69,7 @@ function signup() {
       <BaseButton
         id="login-button"
         class="signup-card__login-button"
-        data-testid="login-button"
+        data-testId="login-button"
         @click="emit('logInClick')"
       >
         Log In
@@ -79,7 +79,7 @@ function signup() {
 
       <CloseButton
         v-show="props.modal"
-        data-testid="close-button"
+        data-testId="close-button"
         @click.prevent="emit('close')"
       />
     </CardHeader>

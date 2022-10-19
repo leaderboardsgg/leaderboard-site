@@ -4,8 +4,8 @@
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, test } from 'vitest'
 
-import BaseModal from './BaseModal.vue'
 import { fireEvent, stubbedRender } from 'root/testUtils'
+import BaseModal from './BaseModal.vue'
 
 describe('<BaseModal />', async () => {
   await setup({})

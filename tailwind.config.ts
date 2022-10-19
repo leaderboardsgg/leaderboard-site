@@ -1,5 +1,5 @@
 /* eslint-disable vue/sort-keys */
-module.exports = {
+export default {
   plugins: [],
   content: [
     './components/**/*.{vue,js}',
@@ -7,7 +7,7 @@ module.exports = {
     './pages/**/*.vue',
   ],
   theme: {
-    extend: {},
+    // extend: {},
     screens: {
       sm: '640px',
       md: '768px',

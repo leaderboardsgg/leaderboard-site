@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive } from 'vue'
+import { computed, reactive, ref } from 'vue'
 import NavLinks from 'elements/nav/NavLinks/NavLinks.vue'
 import LogoutButton from 'elements/buttons/LogoutButton/LogoutButton.vue'
 import SignUpButton from 'elements/buttons/SignUpButton/SignUpButton.vue'
@@ -23,11 +23,11 @@ const state: NavbarState = reactive({
   showModal: false,
 })
 
-const currentUser = useState<User>('current_user', () => ({
+const currentUser = ref<User>({
   admin: false,
   email: '',
   username: '',
-}))
+})
 const loggedIn = computed(
   () => !!currentUser.value?.username && currentUser.value?.username !== '',
 )
@@ -102,6 +102,7 @@ function logout() {
       <BaseModal v-show="state.showModal" @close="state.showModal = false">
         <LogInCard
           v-show="state.showLogin"
+          data-testId="log-in-card"
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"
@@ -109,6 +110,7 @@ function logout() {
         />
         <SignUpCard
           v-show="!state.showLogin"
+          data-testId="sign-up-card"
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"

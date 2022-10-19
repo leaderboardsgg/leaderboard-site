@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": ">=16.5.0",
-    "pnpm": ">=6.32.0"
+    "node": ">=18.9.0",
+    "pnpm": ">=7.13.4"
   },
   "engineStrict": true,
   "scripts": {
@@ -27,20 +27,18 @@
   },
   "dependencies": {
     "@nuxtjs/i18n": "8.0.0-alpha.3",
-    "nuxt": "3.0.0-rc.12",
+    "nuxt": "3.0.0-rc.11",
     "unplugin-icons": "^0.14.12",
     "unplugin-vue-components": "^0.22.8"
   },
   "devDependencies": {
-    "@nuxt/test-utils": "^3.0.0-rc.12",
     "@nuxt/types": "^2.15.8",
     "@nuxt/typescript-build": "^2.1.0",
-    "@nuxt/vite-builder": "3.0.0-rc.12",
+    "@nuxt/vite-builder": "3.0.0-rc.11",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@nuxtjs/eslint-module": "^3.1.0",
     "@nuxtjs/tailwindcss": "^5.3.3",
     "@testing-library/dom": "^8.19.0",
-    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/user-event": "^14.4.3",
     "@testing-library/vue": "^6.6.1",
     "@types/dotenv-safe": "^8.1.2",
@@ -74,7 +72,7 @@
     "vite-plugin-eslint": "^1.8.1",
     "vitest": "^0.24.3",
     "vitest-fetch-mock": "^0.2.1",
-    "vue": "^3.2.41",
+    "vue": "^3.2.40",
     "webpack": "^5.74.0"
   }
 }

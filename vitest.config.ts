@@ -1,5 +1,4 @@
 /// <reference types="vitest" />
-// import vueJsx from '@vitejs/plugin-vue-jsx'
 import { mergeConfig } from 'vite'
 import { defineConfig } from 'vitest/config'
 import { ViteConfig } from './vite.config'
@@ -10,15 +9,10 @@ export default mergeConfig(
   ViteConfig,
   defineConfig({
     test: {
+      // TODO: test using happy-dom, if it works for us its really fast!
       environment: 'jsdom',
-      deps: {
-        // but is it needed tho???
-        // Needed otherwise usage in the test files throws an error
-        inline: [/@nuxt\/test-utils/],
-      },
       globals: true,
       setupFiles: ['vitest.setup.ts'],
-      // env: { BACKEND_BASE_URL: 'localhost:8080/' },
     },
   }),
 )

@@ -4,8 +4,8 @@
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, test } from 'vitest'
 
-import HideShowPassword from './HideShowPassword.vue'
 import { fireEvent, stubbedRender } from 'root/testUtils'
+import HideShowPassword from './HideShowPassword.vue'
 
 describe('<HideShowPassword />', async () => {
   await setup({})

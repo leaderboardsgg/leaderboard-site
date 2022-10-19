@@ -4,8 +4,8 @@
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, test } from 'vitest'
 
-import LogInCard from './LogInCard.vue'
 import { fireEvent, stubbedRender } from 'root/testUtils'
+import LogInCard from './LogInCard.vue'
 import { FullRequestParams } from 'root/lib/api/http-client'
 
 const token = 'jwt-token'

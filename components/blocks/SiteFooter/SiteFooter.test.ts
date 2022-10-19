@@ -4,8 +4,8 @@
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, test } from 'vitest'
 
-import SiteFooter from './SiteFooter.vue'
 import { stubbedRender } from 'root/testUtils'
+import SiteFooter from './SiteFooter.vue'
 
 describe('<SiteFooter />', async () => {
   await setup({})

@@ -4,8 +4,8 @@
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, test } from 'vitest'
 
-import ButtonLink from './ButtonLink.vue'
 import { stubbedRender } from 'root/testUtils'
+import ButtonLink from './ButtonLink.vue'
 
 describe('<ButtonLink />', async () => {
   await setup({})

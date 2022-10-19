@@ -4,8 +4,8 @@
 import { setup, $fetch } from '@nuxt/test-utils'
 import { describe, test } from 'vitest'
 
-import NavLinks from './NavLinks.vue'
 import { stubbedRender } from 'root/testUtils'
+import NavLinks from './NavLinks.vue'
 
 describe('<NavLinks />', async () => {
   await setup({})
