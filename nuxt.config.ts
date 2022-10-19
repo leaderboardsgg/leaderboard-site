@@ -22,7 +22,7 @@ export const nuxtAliases = {
   layouts: resolve(__dirname, './layouts'),
   lib: resolve(__dirname, './lib'),
   pages: resolve(__dirname, './pages'),
-  public: '/<rootDir>/public',
+  root: resolve(__dirname, './'),
 }
 
 export default defineNuxtConfig({
