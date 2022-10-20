@@ -28,7 +28,10 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
   $ `npm install -g pnpm`
 
 - install dependencies
-  $ `pnpm install --shamefully-hoist`
+  $ `pnpm install`
+
+- run `nuxt generate`
+  $ `pnpm generate`
 
 - run and connect to backend
   $ Create a copy of `.env.example` named `.env` file with the `BACKEND_BASE_URL` set to the address of your backend.

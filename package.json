@@ -16,7 +16,7 @@
     "lint:all": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint": "pnpm lint:all",
     "precommit": "pnpm lint:all && pnpm test && pnpm pretty:staged ",
-    "prepare": "husky install && pnpm generate",
+    "prepare": "husky install",
     "prettier:check": "prettier --check --ignore-path .prettierignore .",
     "prettier:fix": "prettier --check --write --ignore-path .prettierignore .",
     "pretty": "pretty-quick",
