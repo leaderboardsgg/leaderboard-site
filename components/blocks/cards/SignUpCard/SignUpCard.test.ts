@@ -1,24 +1,22 @@
 import { describe, expect, test } from 'vitest'
-import { mount, type VueWrapper } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 
 import SignUpCard from './SignUpCard.vue'
 
 describe('<SignUpCard />', () => {
-  let SignUpCardWrapper: VueWrapper<any>
+  const SignUpCardWrapper = mount(SignUpCard)
 
   test('should render without crashing', () => {
-    SignUpCardWrapper = mount(SignUpCard)
+    expect(SignUpCardWrapper.isVisible()).toBe(true)
   })
 
-  describe('when the close button is clicked', () => {
-    test('should close the SignUpCard', () => {
-      SignUpCardWrapper.get('[data-testId="close-button"]').trigger(
-        'click.left',
-      )
+  // describe('when the close button is clicked', () => {
+  //   test('should close the SignUpCard', () => {
+  //     SignUpCardWrapper.get('[data-testId="close-button"]').trigger('click')
 
-      expect(!SignUpCardWrapper.isVisible())
-    })
-  })
+  //     expect(SignUpCardWrapper.isVisible())
+  //   })
+  // })
 
   // describe('when the hide/show button is clicked', () => {
   //   test('changes the password input type to be text', async () => {

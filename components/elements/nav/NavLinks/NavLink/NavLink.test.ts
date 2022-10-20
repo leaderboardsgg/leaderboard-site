@@ -1,25 +1,21 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, $fetch } from '@nuxt/test-utils'
-import { describe, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
+import { mount } from '@vue/test-utils'
 
-import { stubbedRender } from 'root/testUtils'
 import NavLink from './NavLink.vue'
 
-describe('<NavLink />', async () => {
-  await setup({})
+describe('<NavLink />', () => {
+  const NavLinkWrapper = mount(NavLink)
 
-  const defaultAttrs = { class: 'custom-link' }
-  const defaultProps = { to: '/games' }
+  // const defaultAttrs = { class: 'custom-link' }
+  // const defaultProps = { to: '/games' }
 
   test('should render without crashing', () => {
-    const { unmount } = stubbedRender(NavLink, {
-      attrs: defaultAttrs,
-      props: defaultProps,
-      slots: { default: 'Games' },
-    })
+    // const { unmount } = stubbedRender(NavLink, {
+    //   attrs: defaultAttrs,
+    //   props: defaultProps,
+    //   slots: { default: 'Games' },
+    // })
 
-    unmount()
+    expect(NavLinkWrapper.isVisible()).toBe(true)
   })
 })

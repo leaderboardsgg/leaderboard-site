@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Ref, defineEmits, withDefaults, defineProps, ref } from 'vue'
+import { type Ref, withDefaults, ref } from 'vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'

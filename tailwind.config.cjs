@@ -1,11 +1,11 @@
 /* eslint-disable vue/sort-keys */
-export default {
-  plugins: [],
+module.exports = {
   content: [
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
   ],
+  plugins: [],
   theme: {
     // extend: {},
     screens: {

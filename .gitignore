@@ -95,4 +95,4 @@ sw.*
 *.swp
 
 # For buffet :) 
-ignore.json
+ignore.*

@@ -1,5 +1,5 @@
 import { describe, expect, test, vi, afterEach } from 'vitest'
-import { mount, type VueWrapper } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 
 import SiteNavbar from './SiteNavbar.vue'
 
@@ -9,16 +9,16 @@ afterEach(() => {
 })
 
 describe('<SiteNavbar />', () => {
-  let SiteNavbarWrapper: VueWrapper
+  const SiteNavbarWrapper = mount(SiteNavbar, {
+    global: {
+      mocks: {
+        $t: (msg: any) => msg,
+      },
+    },
+  })
 
   test('should render without crashing', () => {
-    SiteNavbarWrapper = mount(SiteNavbar, {
-      global: {
-        mocks: {
-          $t: (msg: any) => msg,
-        },
-      },
-    })
+    expect(SiteNavbarWrapper.isVisible()).toBe(true)
   })
 
   describe('when no user is logged in', () => {
@@ -27,22 +27,24 @@ describe('<SiteNavbar />', () => {
         SiteNavbarWrapper.get(
           '[data-testId="site-navbar-login-button"]',
         ).isVisible(),
-      )
+      ).toBe(true)
 
       expect(
         SiteNavbarWrapper.get(
           '[data-testId="site-navbar-sign-up-button"]',
         ).isVisible(),
-      )
+      ).toBe(true)
     })
 
     describe('when the login button is clicked', () => {
       test('should bring up the login card', () => {
         SiteNavbarWrapper.get(
           '[data-testId="site-navbar-login-button"]',
-        ).trigger('click.left')
+        ).trigger('click')
 
-        expect(SiteNavbarWrapper.get('[data-testId="log-in-card"]').isVisible())
+        expect(
+          SiteNavbarWrapper.get('[data-testId="log-in-card"]').isVisible(),
+        ).toBe(true)
       })
     })
 
@@ -50,11 +52,11 @@ describe('<SiteNavbar />', () => {
       test('should bring up the signup card', () => {
         SiteNavbarWrapper.get(
           '[data-testId="site-navbar-sign-up-button"]',
-        ).trigger('click.left')
+        ).trigger('click')
 
         expect(
           SiteNavbarWrapper.get('[data-testId="sign-up-card"]').isVisible(),
-        )
+        ).toBe(true)
       })
     })
   })
