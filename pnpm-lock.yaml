@@ -40,7 +40,7 @@ specifiers:
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0
   eslint-plugin-jest: 26.9.0
-  eslint-plugin-nuxt: 3.2.0
+  eslint-plugin-nuxt: 4.0.0
   eslint-plugin-prettier: 4.2.1
   eslint-plugin-tailwindcss: 3.6.2
   eslint-plugin-vue: 8.7.1
@@ -107,7 +107,7 @@ devDependencies:
   eslint: 8.26.0
   eslint-config-prettier: 8.5.0_eslint@8.26.0
   eslint-plugin-jest: 26.9.0_cb82de2af1abc48a8b1db34e60f9ff4f
-  eslint-plugin-nuxt: 3.2.0_eslint@8.26.0
+  eslint-plugin-nuxt: 4.0.0_eslint@8.26.0
   eslint-plugin-prettier: 4.2.1_03516513155bd96520649d3136b95513
   eslint-plugin-tailwindcss: 3.6.2_ts-node@10.9.1
   eslint-plugin-vue: 8.7.1_eslint@8.26.0
@@ -4439,7 +4439,7 @@ packages:
     dev: false
 
   /boolbase/1.0.0:
-    resolution: {integrity: sha1-aN/1++YMUes3cl6p4+0xDcwed24=}
+    resolution: {integrity: sha512-JZOSA7Mo9sNGB8+UjSgzdLtokWAky1zbztM3WRLCbZ70/3cTANmQmOdR7y2g+J0e2WXywy1yS468tY+IruqEww==}
 
   /boxen/5.1.2:
     resolution: {integrity: sha512-9gYgQKXx+1nP8mP7CzFyaUARhg7D3n1dF/FnErWmu9l6JvGpNUN278h0aSb+QjoiKSWG+iZ3uHrcqk0qrY9RQQ==}
@@ -6473,12 +6473,12 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-nuxt/3.2.0_eslint@8.26.0:
-    resolution: {integrity: sha512-SWpmJALwagdrlMooajFX9IFxFEKdBxD+e4NFOVw9FGc22HQpNKdiljRHchS/3O5e2R7sPZYv8xdCtoordqIXFQ==}
+  /eslint-plugin-nuxt/4.0.0_eslint@8.26.0:
+    resolution: {integrity: sha512-v3Vwdk8YKe52bAz8eSIDqQuTtfL/T1r9dSl1uhC5SyR5pgLxgKkQdxXVf/Bf6Ax7uyd9rHqiAuYVdqqDb7ILdA==}
     dependencies:
-      eslint-plugin-vue: 8.7.1_eslint@8.26.0
+      eslint-plugin-vue: 9.6.0_eslint@8.26.0
       semver: 7.3.7
-      vue-eslint-parser: 8.3.0_eslint@8.26.0
+      vue-eslint-parser: 9.1.0_eslint@8.26.0
     transitivePeerDependencies:
       - eslint
       - supports-color
@@ -6557,6 +6557,24 @@ packages:
       postcss-selector-parser: 6.0.10
       semver: 7.3.7
       vue-eslint-parser: 8.3.0_eslint@8.26.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /eslint-plugin-vue/9.6.0_eslint@8.26.0:
+    resolution: {integrity: sha512-zzySkJgVbFCylnG2+9MDF7N+2Rjze2y0bF8GyUNpFOnT8mCMfqqtLDJkHBuYu9N/psW1A6DVbQhPkP92E+qakA==}
+    engines: {node: ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: ^6.2.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      eslint: 8.26.0
+      eslint-utils: 3.0.0_eslint@8.26.0
+      natural-compare: 1.4.0
+      nth-check: 2.0.1
+      postcss-selector-parser: 6.0.10
+      semver: 7.3.7
+      vue-eslint-parser: 9.1.0_eslint@8.26.0
+      xml-name-validator: 4.0.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6693,15 +6711,6 @@ packages:
       text-table: 0.2.0
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /espree/9.3.2:
-    resolution: {integrity: sha512-D211tC7ZwouTIuY5x9XnS0E9sWNChB7IYKX/Xp5eQj3nFXhqmiUDB9q27y76oFl8jTg3pXcQx/bpxMfs3CIZbA==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
-    dependencies:
-      acorn: 8.8.0
-      acorn-jsx: 5.3.2_acorn@8.8.0
-      eslint-visitor-keys: 3.3.0
     dev: true
 
   /espree/9.4.0:
@@ -9588,7 +9597,7 @@ packages:
     dev: false
 
   /natural-compare/1.4.0:
-    resolution: {integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=}
+    resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
   /negotiator/0.6.3:
@@ -13296,7 +13305,25 @@ packages:
       eslint: 8.26.0
       eslint-scope: 7.1.1
       eslint-visitor-keys: 3.3.0
-      espree: 9.3.2
+      espree: 9.4.0
+      esquery: 1.4.0
+      lodash: 4.17.21
+      semver: 7.3.7
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /vue-eslint-parser/9.1.0_eslint@8.26.0:
+    resolution: {integrity: sha512-NGn/iQy8/Wb7RrRa4aRkokyCZfOUWk19OP5HP6JEozQFX5AoS/t+Z0ZN7FY4LlmWc4FNI922V7cvX28zctN8dQ==}
+    engines: {node: ^14.17.0 || >=16.0.0}
+    peerDependencies:
+      eslint: '>=6.0.0'
+    dependencies:
+      debug: 4.3.4
+      eslint: 8.26.0
+      eslint-scope: 7.1.1
+      eslint-visitor-keys: 3.3.0
+      espree: 9.4.0
       esquery: 1.4.0
       lodash: 4.17.21
       semver: 7.3.7
