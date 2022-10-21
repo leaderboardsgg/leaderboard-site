@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <NuxtLink class="button-link" v-bind="$attrs">
+  <NuxtLink class="button-link" v-bind="$attrs" data-testid="button-link">
     <slot>Placeholder Link Text</slot>
   </NuxtLink>
 </template>

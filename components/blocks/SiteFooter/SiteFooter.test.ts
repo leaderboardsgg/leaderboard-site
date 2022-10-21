@@ -10,10 +10,9 @@ describe('<SiteFooter />', () => {
     expect(SiteFooterWrapper.isVisible()).toBe(true)
   })
 
-  // test('renders correctly with the copyright info', () => {
-  //   const { getByText } = stubbedRender(SiteFooter)
-  //   const currentYear = new Date().getFullYear()
-
-  //   expect(getByText(`Copyright ${currentYear}`)).toBeInTheDocument()
-  // })
+  test('renders correctly with the copyright info', () => {
+    expect(SiteFooterWrapper.html()).toContain(
+      `Copyright ${new Date().getFullYear()}`,
+    )
+  })
 })
