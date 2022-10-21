@@ -10,33 +10,44 @@ describe('<HideShowPassword />', () => {
     expect(HideShowPasswordWrapper.isVisible()).toBe(true)
   })
 
-  // describe('when clicking the button', () => {
-  //   test('should toggle the state', async () => {
-  //     const { getByTestId } = stubbedRender(HideShowPassword)
-  //     const button = getByTestId('hide-show-password-button')
+  const passwordButton = HideShowPasswordWrapper.get(
+    '[data-testid="hide-show-password-button"]',
+  )
+  const hiddenEyeIcon = HideShowPasswordWrapper.get(
+    '[data-testid="hidden-eye-icon"]',
+  )
+  const visibleEyeIcon = HideShowPasswordWrapper.get(
+    '[data-testid="visible-eye-icon"]',
+  )
+  describe('Visible eye and hidden eye icons ', () => {
+    test('should render', () => {
+      expect(hiddenEyeIcon.isVisible()).toBe(true)
+      expect(visibleEyeIcon.isVisible()).toBe(true)
+    })
+  })
 
-  //     expect(getByTestId('hidden-eye-icon')).toBeVisible()
-  //     expect(getByTestId('visible-eye-icon')).not.toBeVisible()
+  // ree work
+  describe('when clicking the button', () => {
+    test('should toggle the state', async () => {
+      expect(hiddenEyeIcon.attributes('style')).toContain('display: block')
+      expect(visibleEyeIcon.attributes('style')).toContain('display: none')
 
-  //     await fireEvent.click(<HTMLElement>button)
+      await passwordButton.trigger('click')
 
-  //     expect(getByTestId('hidden-eye-icon')).not.toBeVisible()
-  //     expect(getByTestId('visible-eye-icon')).toBeVisible()
-  //   })
-  // })
+      expect(hiddenEyeIcon.attributes('style')).toContain('display: none')
+      expect(visibleEyeIcon.attributes('style')).toContain('display: block')
+    })
+  })
 
-  // describe('when the button is focus and the enter key up event is triggered', () => {
-  //   test('should toggle the state', async () => {
-  //     const { getByTestId } = stubbedRender(HideShowPassword)
-  //     const button = getByTestId('hide-show-password-button')
+  describe('when the button is focus and the enter key up event is triggered', () => {
+    test('should toggle the state', async () => {
+      expect(hiddenEyeIcon.attributes).toContain('display: block')
+      expect(visibleEyeIcon.attributes('style')).toContain('display: none')
 
-  //     expect(getByTestId('hidden-eye-icon')).toBeVisible()
-  //     expect(getByTestId('visible-eye-icon')).not.toBeVisible()
+      await passwordButton.trigger('keyup.enter')
 
-  //     await fireEvent.type(<HTMLElement>button, '{enter}')
-
-  //     expect(getByTestId('hidden-eye-icon')).not.toBeVisible()
-  //     expect(getByTestId('visible-eye-icon')).toBeVisible()
-  //   })
-  // })
+      expect(hiddenEyeIcon.attributes('style')).toContain('display: none')
+      expect(visibleEyeIcon.attributes('style')).toContain('display: block')
+    })
+  })
 })

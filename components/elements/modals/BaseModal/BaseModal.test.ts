@@ -4,35 +4,30 @@ import { mount } from '@vue/test-utils'
 import BaseModal from './BaseModal.vue'
 
 describe('<BaseModal />', () => {
-  const BaseModalWrapper = mount(BaseModal)
+  const BaseModalWrapper = mount(BaseModal, {
+    slots: { default: 'Modal content' },
+  })
 
   test('should render without crashing', () => {
     expect(BaseModalWrapper.isVisible()).toBe(true)
   })
 
-  // test('renders the correct <slot />', () => {
-  //   const { getByText } = stubbedRender(BaseModal, {
-  //     slots: { default: 'Modal content' },
-  //   })
+  test('renders the correct <slot />', () => {
+    expect(BaseModalWrapper.html()).toContain('Modal content')
+  })
 
-  //   expect(getByText('Modal content')).toBeTruthy()
-  // })
+  describe('when the close event is emitted', () => {
+    test('when the close button is clicked', async () => {
+      // fireEvent.click(getByTestId('modal-close-button'))
+      await BaseModalWrapper.find('button').trigger('click')
 
-  // describe('when the close event is emitted', () => {
-  //   test('when the close button is clicked', async () => {
-  //     const { emitted, getByTestId } = stubbedRender(BaseModal)
+      expect(BaseModalWrapper.emitted().close).toHaveLength(1)
+    })
 
-  //     await fireEvent.click(getByTestId('modal-close-button'))
+    test('when the escape key is released', async () => {
+      await BaseModalWrapper.find('button').trigger('keydown.esc')
 
-  //     expect(emitted().close).toBeTruthy()
-  //   })
-
-  //   test('when the escape key is released', async () => {
-  //     const { emitted, getByTestId } = stubbedRender(BaseModal)
-
-  //     await fireEvent.type(getByTestId('modal-close-button'), '{esc}')
-
-  //     expect(emitted().close).toBeTruthy()
-  //   })
-  // })
+      expect(BaseModalWrapper.emitted().close).toHaveLength(1)
+    })
+  })
 })
