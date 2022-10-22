@@ -26,7 +26,7 @@ describe('<BaseModal />', () => {
     test('when the escape key is released', async () => {
       await BaseModalWrapper.find('button').trigger('keydown.esc')
 
-      expect(BaseModalWrapper.emitted().close).toHaveLength(1)
+      expect(BaseModalWrapper.emitted().close).toHaveLength(2)
     })
   })
 })

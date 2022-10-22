@@ -15,7 +15,7 @@ const emit = defineEmits<{
           data-testid="modal-close-button"
           type="button"
           @click="emit('close')"
-          @keypress.esc="emit('close')"
+          @keydown.esc="emit('close')"
         >
           <i-svg-close class="h-5 w-5" />
         </BaseButton>
