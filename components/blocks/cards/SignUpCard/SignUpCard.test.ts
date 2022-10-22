@@ -11,10 +11,12 @@ describe('<SignUpCard />', () => {
   })
 
   // describe('when the close button is clicked', () => {
-  //   test('should close the SignUpCard', () => {
-  //     SignUpCardWrapper.get('[data-testId="close-button"]').trigger('click')
+  //   test('should close the SignUpCard', async () => {
+  //     await SignUpCardWrapper.get('[data-testId="close-button"]').trigger(
+  //       'click',
+  //     )
 
-  //     expect(SignUpCardWrapper.isVisible())
+  //     expect(SignUpCardWrapper.isVisible()).toBe(false)
   //   })
   // })
 
@@ -36,15 +38,15 @@ describe('<SignUpCard />', () => {
   //   })
   // })
 
-  // describe('when the login button is clicked', () => {
-  //   test('emits the log in click event', async () => {
-  //     const { emitted, getByTestId } = stubbedRender(SignUpCard)
+  describe('when the login button is clicked', () => {
+    test('emits the log in click event', async () => {
+      await SignUpCardWrapper.get('[data-testId="login-button"]').trigger(
+        'click',
+      )
 
-  //     await fireEvent.click(getByTestId('login-button'))
-
-  //     expect(emitted().logInClick).toBeTruthy()
-  //   })
-  // })
+      expect(SignUpCardWrapper.emitted()).toHaveProperty('logInClick')
+    })
+  })
 
   // describe('when the sign up button is clicked', () => {
   //   const emailAddress = 'strongbad@homestarrunner.com'

@@ -14,33 +14,34 @@ describe('<SearchBar />', () => {
   //   const inputValue = 'test'
 
   //   test('when the search button is clicked', async () => {
-  //     const { emitted, getByTestId } = stubbedRender(SearchBar)
-  //     const searchInput: HTMLInputElement = getByTestId('search-input')
+  //     const searchInput = SearchBarWrapper.get('[data-testid="search-input"]')
+  //     // const searchInput: HTMLInputElement = getByTestId('search-input')
 
-  //     await fireEvent.type(searchInput, inputValue)
-  //     expect(searchInput.value).toEqual(inputValue)
+  //     await searchInput.setValue(inputValue)
+  //     // await fireEvent.type(searchInput, inputValue)
+  //     expect(searchInput).toEqual(inputValue)
 
-  //     await fireEvent.click(getByTestId('search-button'))
+  //     // await fireEvent.click(getByTestId('search-button'))
 
-  //     expect(emitted().search).toBeTruthy()
-  //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //     // @ts-expect-error
-  //     expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
+  //     // expect(emitted().search).toBeTruthy()
+  //     // // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //     // // @ts-expect-error
+  //     // expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
   //   })
 
-  //   test('when the enter key is released', async () => {
-  //     const { emitted, getByTestId } = stubbedRender(SearchBar)
-  //     const searchInput: HTMLInputElement = getByTestId('search-input')
+  // test('when the enter key is released', async () => {
+  //   const { emitted, getByTestId } = stubbedRender(SearchBar)
+  //   const searchInput: HTMLInputElement = getByTestId('search-input')
 
-  //     await fireEvent.type(searchInput, inputValue)
-  //     expect(searchInput.value).toEqual(inputValue)
+  //   await fireEvent.type(searchInput, inputValue)
+  //   expect(searchInput.value).toEqual(inputValue)
 
-  //     await fireEvent.type(getByTestId('search-input'), '{enter}')
+  //   await fireEvent.type(getByTestId('search-input'), '{enter}')
 
-  //     expect(emitted().search).toBeTruthy()
-  //     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  //     // @ts-expect-error
-  //     expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
-  //   })
+  //   expect(emitted().search).toBeTruthy()
+  //   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  //   // @ts-expect-error
+  //   expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
+  // })
   // })
 })

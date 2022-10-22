@@ -27,28 +27,28 @@ describe('<HideShowPassword />', () => {
     })
   })
 
-  // TODO get these working :)
-  // describe('when clicking the button', () => {
-  //   test('should toggle the state', async () => {
-  //     expect(hiddenEyeIcon.attributes('style')).toContain('display: block')
-  //     expect(visibleEyeIcon.attributes('style')).toContain('display: none')
+  describe('when clicking the button', () => {
+    test('should toggle the state', async () => {
+      expect(hiddenEyeIcon.html()).not.toContain('style="display: none;')
+      expect(visibleEyeIcon.html()).toContain('style="display: none;')
 
-  //     await passwordButton.trigger('click')
+      await passwordButton.trigger('click')
 
-  //     expect(hiddenEyeIcon.attributes('style')).toContain('display: none')
-  //     expect(visibleEyeIcon.attributes('style')).toContain('display: block')
-  //   })
-  // })
+      expect(hiddenEyeIcon.html()).toContain('style="display: none;')
+      expect(visibleEyeIcon.html()).not.toContain('style="display: none;')
+    })
+  })
 
-  // describe('when the button is focus and the enter key up event is triggered', () => {
-  //   test('should toggle the state', async () => {
-  //     expect(hiddenEyeIcon.attributes).toContain('display: block')
-  //     expect(visibleEyeIcon.attributes('style')).toContain('display: none')
+  //  this contains the previous flip so we need to do the opposite
+  describe('when the button is focus and the enter key up event is triggered', () => {
+    test('should toggle the state', async () => {
+      expect(hiddenEyeIcon.html()).toContain('style="display: none;')
+      expect(visibleEyeIcon.html()).not.toContain('style="display: none;')
 
-  //     await passwordButton.trigger('keyup.enter')
+      await passwordButton.trigger('keyup.enter')
 
-  //     expect(hiddenEyeIcon.attributes('style')).toContain('display: none')
-  //     expect(visibleEyeIcon.attributes('style')).toContain('display: block')
-  //   })
-  // })
+      expect(hiddenEyeIcon.html()).not.toContain('style="display: none;')
+      expect(visibleEyeIcon.html()).toContain('style="display: none;')
+    })
+  })
 })

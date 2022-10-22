@@ -62,34 +62,36 @@ describe('<SiteNavbar />', () => {
   })
 
   // Needs to be changed in the future anyways so 😬😬😬
-  // describe('when a user is logged in', () => {
-  //   beforeEach(() => {
-  //     const Currentuser = SiteNavbarWrapper.getCurrentComponent().refs
-  //     Currentuser.value = {
+  // describe('when a user is logged in', async () => {
+  //   await SiteNavbarWrapper.setre({
+  //     currentUser: {
   //       admin: true,
   //       email: 'admin@leaderboards.gg',
   //       username: 'lbgg_admin',
-  //     }
+  //     },
   //   })
 
   //   test('should render the logout button', () => {
   //     expect(
+  //       /* eslint-disable */
+  //       // prettier-ignore
   //       SiteNavbarWrapper.get(
-  //         '[data-testId="site-navbar-logout-button"]',
+  //         '[data-testId="site-navbar-logout-button"]'
+  //         /* eslint-enable */
   //       ).isVisible(),
-  //     )
+  //     ).toBe(true)
   //   })
 
-  //   describe('when the logout button is clicked', () => {
-  //     const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
+  // describe('when the logout button is clicked', () => {
+  //   const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
 
-  //     test('should log out the user', async () => {
-  //       const { getByTestId } = stubbedRender(SiteNavbar)
+  //   test('should log out the user', async () => {
+  //     const { getByTestId } = stubbedRender(SiteNavbar)
 
-  //       await fireEvent.click(getByTestId('site-navbar-logout-button'))
+  //     await fireEvent.click(getByTestId('site-navbar-logout-button'))
 
-  //       expect(useLogoutUserSpy).toHaveBeenCalled()
-  //     })
+  //     expect(useLogoutUserSpy).toHaveBeenCalled()
   //   })
+  // })
   // })
 })
