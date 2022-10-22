@@ -67,19 +67,19 @@ function logout() {
       <div class="mobile-navbar">
         <LoginButton
           v-if="!loggedIn"
-          data-testId="site-navbar-login-button"
+          data-testid="site-navbar-login-button"
           @click="toggleLoginModal"
           @keyup.enter="toggleLoginModal"
         />
         <SignUpButton
           v-if="!loggedIn"
-          data-testId="site-navbar-sign-up-button"
+          data-testid="site-navbar-sign-up-button"
           @click="toggleSignUpModal"
           @keyup.enter="toggleSignUpModal"
         />
         <LogoutButton
           v-if="loggedIn"
-          data-testId="site-navbar-logout-button"
+          data-testid="site-navbar-logout-button"
           @click="logout"
           @keyup.enter="logout"
         />
@@ -102,7 +102,7 @@ function logout() {
       <BaseModal v-show="state.showModal" @close="state.showModal = false">
         <LogInCard
           v-show="state.showLogin"
-          data-testId="log-in-card"
+          data-testid="log-in-card"
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"
@@ -110,7 +110,7 @@ function logout() {
         />
         <SignUpCard
           v-show="!state.showLogin"
-          data-testId="sign-up-card"
+          data-testid="sign-up-card"
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"

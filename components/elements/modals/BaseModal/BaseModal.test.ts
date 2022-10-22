@@ -18,7 +18,6 @@ describe('<BaseModal />', () => {
 
   describe('when the close event is emitted', () => {
     test('when the close button is clicked', async () => {
-      // fireEvent.click(getByTestId('modal-close-button'))
       await BaseModalWrapper.find('button').trigger('click')
 
       expect(BaseModalWrapper.emitted().close).toHaveLength(1)

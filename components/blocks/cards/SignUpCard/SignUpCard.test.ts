@@ -12,7 +12,7 @@ describe('<SignUpCard />', () => {
 
   // describe('when the close button is clicked', () => {
   //   test('should close the SignUpCard', async () => {
-  //     await SignUpCardWrapper.get('[data-testId="close-button"]').trigger(
+  //     await SignUpCardWrapper.get('[data-testid="close-button"]').trigger(
   //       'click',
   //     )
 
@@ -43,7 +43,7 @@ describe('<SignUpCard />', () => {
 
   describe('when the login button is clicked', () => {
     test('emits the log in click event', async () => {
-      await SignUpCardWrapper.get('[data-testId="login-button"]').trigger(
+      await SignUpCardWrapper.get('[data-testid="login-button"]').trigger(
         'click',
       )
 

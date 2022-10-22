@@ -8,7 +8,7 @@ import type { UserConfigExport } from 'vitest/config'
 import { nuxtAliases } from './nuxt.config'
 
 // Used in Vitest
-export const ViteConfig: UserConfigExport = {
+const ViteConfig: UserConfigExport = {
   plugins: [
     Icons({
       autoInstall: true,

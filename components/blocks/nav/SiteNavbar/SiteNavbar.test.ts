@@ -25,13 +25,13 @@ describe('<SiteNavbar />', () => {
     test('should render the login/sign up buttons', () => {
       expect(
         SiteNavbarWrapper.get(
-          '[data-testId="site-navbar-login-button"]',
+          '[data-testid="site-navbar-login-button"]',
         ).isVisible(),
       ).toBe(true)
 
       expect(
         SiteNavbarWrapper.get(
-          '[data-testId="site-navbar-sign-up-button"]',
+          '[data-testid="site-navbar-sign-up-button"]',
         ).isVisible(),
       ).toBe(true)
     })
@@ -39,11 +39,11 @@ describe('<SiteNavbar />', () => {
     describe('when the login button is clicked', () => {
       test('should bring up the login card', () => {
         SiteNavbarWrapper.get(
-          '[data-testId="site-navbar-login-button"]',
+          '[data-testid="site-navbar-login-button"]',
         ).trigger('click')
 
         expect(
-          SiteNavbarWrapper.get('[data-testId="log-in-card"]').isVisible(),
+          SiteNavbarWrapper.get('[data-testid="log-in-card"]').isVisible(),
         ).toBe(true)
       })
     })
@@ -51,11 +51,11 @@ describe('<SiteNavbar />', () => {
     describe('when the sign up button is clicked', () => {
       test('should bring up the signup card', () => {
         SiteNavbarWrapper.get(
-          '[data-testId="site-navbar-sign-up-button"]',
+          '[data-testid="site-navbar-sign-up-button"]',
         ).trigger('click')
 
         expect(
-          SiteNavbarWrapper.get('[data-testId="sign-up-card"]').isVisible(),
+          SiteNavbarWrapper.get('[data-testid="sign-up-card"]').isVisible(),
         ).toBe(true)
       })
     })
@@ -76,7 +76,7 @@ describe('<SiteNavbar />', () => {
   //       /* eslint-disable */
   //       // prettier-ignore
   //       SiteNavbarWrapper.get(
-  //         '[data-testId="site-navbar-logout-button"]'
+  //         '[data-testid="site-navbar-logout-button"]'
   //         /* eslint-enable */
   //       ).isVisible(),
   //     ).toBe(true)

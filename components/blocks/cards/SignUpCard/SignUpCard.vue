@@ -69,7 +69,7 @@ function signup() {
       <BaseButton
         id="login-button"
         class="signup-card__login-button"
-        data-testId="login-button"
+        data-testid="login-button"
         @click="emit('logInClick')"
       >
         Log In
@@ -79,7 +79,7 @@ function signup() {
 
       <CloseButton
         v-show="props.modal"
-        data-testId="close-button"
+        data-testid="close-button"
         @click.prevent="emit('close')"
       />
     </CardHeader>
