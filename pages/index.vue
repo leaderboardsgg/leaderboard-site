@@ -1,6 +1,4 @@
-<script setup lang="ts">
-// blargh
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="flex grow justify-center p-5">

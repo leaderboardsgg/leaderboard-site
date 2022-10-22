@@ -1,6 +1,4 @@
-<script setup lang="ts">
-// blargh
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <NuxtLink class="button-link" v-bind="$attrs" data-testid="button-link">
