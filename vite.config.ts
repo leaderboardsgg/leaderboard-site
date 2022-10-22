@@ -1,9 +1,8 @@
-import eslintPlugin from 'vite-plugin-eslint'
-
 import Icons from 'unplugin-icons/vite'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import IconResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
+import eslintPlugin from 'vite-plugin-eslint'
 
 import type { UserConfigExport } from 'vitest/config'
 import { nuxtAliases } from './nuxt.config'

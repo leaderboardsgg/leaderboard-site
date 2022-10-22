@@ -1,5 +1,8 @@
 import createFetchMock from 'vitest-fetch-mock'
 import { vi } from 'vitest'
+// import { config } from 'dotenv-safe'
+
+// config({ path: '.env.test' })
 
 const fetchMock = createFetchMock(vi)
 
