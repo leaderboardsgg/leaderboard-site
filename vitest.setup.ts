@@ -1,7 +1,8 @@
 import createFetchMock from 'vitest-fetch-mock'
 import { vi } from 'vitest'
-// import { config } from 'dotenv-safe'
 
+// TODO: use this/ change this when we need to add environment variables into the tests
+// import { config } from 'dotenv-safe'
 // config({ path: '.env.test' })
 
 const fetchMock = createFetchMock(vi)

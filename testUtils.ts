@@ -1,3 +1,5 @@
+// TODO: either use and expand this for testing or remove this if we decide against it
+
 // import { createElementBlock, Component, ComponentOptions } from 'vue'
 // import { MountingOptions } from '@vue/test-utils'
 // import userEvent from '@testing-library/user-event'
