@@ -1,16 +1,10 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, fetch, $fetch } from '@nuxt/test-utils-edge'
-import { describe, test as it } from 'vitest'
+import { describe, expect, test } from 'vitest'
+import { mount } from '@vue/test-utils'
 
 import NavLinks from './NavLinks.vue'
-import { stubbedRender } from '@/testUtils'
 
-describe('<NavLinks />', async () => {
-  await setup({})
-
-  const defaultProps = {
+describe('<NavLinks />', () => {
+  const props = {
     navLinks: [
       { name: 'Home', to: '/' },
       { name: 'About', to: '/about' },
@@ -18,21 +12,17 @@ describe('<NavLinks />', async () => {
     ],
   }
 
-  it('should render without crashing', () => {
-    const { unmount } = stubbedRender(NavLinks, {
-      props: defaultProps,
-    })
-
-    unmount()
+  const NavLinksWrapper = mount(NavLinks, {
+    props,
   })
 
-  it('should render the same amount of <NavLink /> components as there are items in the navLinks props', () => {
-    const { getByText } = stubbedRender(NavLinks, {
-      props: defaultProps,
-    })
+  test('should render without crashing', () => {
+    expect(NavLinksWrapper.isVisible()).toBe(true)
+  })
 
-    defaultProps.navLinks.forEach((navLink) => {
-      expect(getByText(navLink.name)).toBeInTheDocument()
+  test('should render the same amount of <NavLink /> components as there are items in the navLinks props', () => {
+    props.navLinks.forEach((navLink) => {
+      expect(NavLinksWrapper.html()).toContain(navLink.name)
     })
   })
 })

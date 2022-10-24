@@ -22,10 +22,7 @@
     "types": [
       "@types/node",
       "@nuxt/types",
-      "@testing-library/dom",
-      "@testing-library/vue",
       "@types/dotenv-safe",
-      "@types/jest",
       "unplugin-icons/types/vue3",
       "vite/client",
       "vitest/globals",

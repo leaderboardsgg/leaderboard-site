@@ -1,13 +1,13 @@
 /* eslint-disable vue/sort-keys */
 module.exports = {
-  plugins: [],
   content: [
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
   ],
+  plugins: [],
   theme: {
-    extend: {},
+    // extend: {},
     screens: {
       sm: '640px',
       md: '768px',

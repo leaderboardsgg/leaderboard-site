@@ -1,50 +1,45 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, $fetch } from '@nuxt/test-utils-edge'
+import { describe, expect, test } from 'vitest'
+import { mount } from '@vue/test-utils'
 
-import { describe, test as it } from 'vitest'
 import ButtonLink from './ButtonLink.vue'
-import { stubbedRender } from '@/testUtils'
 
-describe('<ButtonLink />', async () => {
-  await setup({})
-
+describe('<ButtonLink />', () => {
   const defaultAttrs = { class: 'custom-link' }
   const defaultProps = { to: 'https://www.test.com/' }
 
-  it('should render without crashing', () => {
-    const { unmount } = stubbedRender(ButtonLink, {
+  test('should render without crashing', () => {
+    const ButtonLinkWrapper = mount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
       slots: { default: 'Button' },
     })
 
-    unmount()
+    expect(ButtonLinkWrapper.isVisible()).toBe(true)
   })
 
-  it('renders with the correct <slot />', () => {
-    const { getByText } = stubbedRender(ButtonLink, {
+  test('renders with the correct <slot />', () => {
+    const ButtonLinkWrapper = mount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
       slots: { default: 'Any%' },
     })
-    expect(getByText('Any%')).toBeInTheDocument()
+    expect(ButtonLinkWrapper.html()).toContain('Any%')
   })
 
-  it('renders with the passed link', () => {
-    const { getByText } = stubbedRender(ButtonLink, {
+  test('renders with the passed link', () => {
+    const ButtonLinkWrapper = mount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
     })
 
-    const link = getByText('Placeholder Link Text')
-    expect(link.tagName).toEqual('A')
-    expect(link.getAttribute('to')).toEqual('https://www.test.com/')
+    const link = ButtonLinkWrapper.get('[data-testid="button-link"]')
+
+    expect(link.element.tagName).toBe('NUXTLINK')
+    expect(link.attributes('to')).toBe('https://www.test.com/')
   })
 
-  it('renders with the custom classnames', () => {
-    stubbedRender(ButtonLink, {
+  test('renders with the custom classnames', () => {
+    const ButtonLinkWrapper = mount(ButtonLink, {
       attrs: {
         ...defaultAttrs,
         class: 'go-fast',
@@ -52,6 +47,6 @@ describe('<ButtonLink />', async () => {
       props: defaultProps,
     })
 
-    expect(document.querySelector('.go-fast')).toBeInTheDocument()
+    expect(ButtonLinkWrapper.classes('go-fast')).toBe(true)
   })
 })

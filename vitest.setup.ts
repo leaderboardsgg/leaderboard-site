@@ -1,4 +1,11 @@
-import '@testing-library/jest-dom'
-import { config } from 'dotenv-safe'
+import createFetchMock from 'vitest-fetch-mock'
+import { vi } from 'vitest'
 
-config({ path: '.env.test' })
+// TODO: use this/ change this when we need to add environment variables into the tests
+// import { config } from 'dotenv-safe'
+// config({ path: '.env.test' })
+
+const fetchMock = createFetchMock(vi)
+
+// sets globalThis.fetch and globalThis.fetchMock to our mocked version
+fetchMock.enableMocks()

@@ -1,52 +1,44 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, $fetch } from '@nuxt/test-utils-edge'
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { describe, expect, test } from 'vitest'
+import { mount } from '@vue/test-utils'
 
-import { describe, test as it } from 'vitest'
+// import { VueNode } from '@vue/test-utils/dist/types'
 import SearchBar from './SearchBar.vue'
-import { fireEvent, stubbedRender } from 'root/testUtils'
 
-describe('<SearchBar />', async () => {
-  await setup({})
+describe('<SearchBar />', () => {
+  const SearchBarWrapper = mount(SearchBar)
 
-  it('should render without crashing', () => {
-    const { unmount } = stubbedRender(SearchBar)
-
-    unmount()
+  test('should render without crashing', () => {
+    expect(SearchBarWrapper.isVisible()).toBe(true)
   })
 
   describe('when the search event is emitted', () => {
     const inputValue = 'test'
 
     test('when the search button is clicked', async () => {
-      const { emitted, getByTestId } = stubbedRender(SearchBar)
-      const searchInput: HTMLInputElement = getByTestId('search-input')
-
-      await fireEvent.type(searchInput, inputValue)
-      expect(searchInput.value).toEqual(inputValue)
-
-      await fireEvent.click(getByTestId('search-button'))
-
-      expect(emitted().search).toBeTruthy()
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // on `wrapper.vm` we can access any method or value
       // @ts-expect-error
-      expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
+      SearchBarWrapper.vm.state.input.value = inputValue
+
+      await SearchBarWrapper.get('[data-testid="search-button"]').trigger(
+        'click',
+      )
+
+      // @ts-expect-error
+      expect(SearchBarWrapper.emitted()?.search[0][0]).toBe(inputValue)
     })
 
     test('when the enter key is released', async () => {
-      const { emitted, getByTestId } = stubbedRender(SearchBar)
-      const searchInput: HTMLInputElement = getByTestId('search-input')
-
-      await fireEvent.type(searchInput, inputValue)
-      expect(searchInput.value).toEqual(inputValue)
-
-      await fireEvent.type(getByTestId('search-input'), '{enter}')
-
-      expect(emitted().search).toBeTruthy()
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // on `wrapper.vm` we can access any method or value
       // @ts-expect-error
-      expect(emitted().search?.[0]?.[0]).toEqual(inputValue)
+      SearchBarWrapper.vm.state.input.value = inputValue
+
+      await SearchBarWrapper.get('[data-testid="search-button"]').trigger(
+        'keyup.enter',
+      )
+
+      // @ts-expect-error
+      expect(SearchBarWrapper.emitted()?.search[0][0]).toBe(inputValue)
     })
   })
 })

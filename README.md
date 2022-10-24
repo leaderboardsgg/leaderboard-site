@@ -14,7 +14,11 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 
 ## VSCode Setup
 
-- Install the reccomended extensions see `/.vscode/settings.json`
+- Install the reccomended extensions
+
+  - These come from `/.vscode/extensions.json`
+  - They will also appear in the extensions tab in the recommended dropdown alongside some automatically suggested extensions from VSCode itself.
+
 - Make sure if you have done Vue 2 dev in VSCode to disable Vetur extension for the workspace
 - Enable Volar [Takeover mode](https://vuejs.org/guide/typescript/overview.html#takeover-mode)
 
@@ -28,7 +32,10 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
   $ `npm install -g pnpm`
 
 - install dependencies
-  $ `pnpm install --shamefully-hoist`
+  $ `pnpm install`
+
+- run `nuxt generate`
+  $ `pnpm generate`
 
 - run and connect to backend
   $ Create a copy of `.env.example` named `.env` file with the `BACKEND_BASE_URL` set to the address of your backend.

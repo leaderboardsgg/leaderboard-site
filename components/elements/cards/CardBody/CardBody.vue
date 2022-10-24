@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
   <div class="card-body" v-bind="$attrs">
     <slot />

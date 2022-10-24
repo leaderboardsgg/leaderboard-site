@@ -1,44 +1,32 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { setup, fetch, $fetch } from '@nuxt/test-utils-edge'
+import { describe, expect, test } from 'vitest'
+import { mount } from '@vue/test-utils'
 
-import { describe, test as it } from 'vitest'
 import BaseModal from './BaseModal.vue'
-import { fireEvent, stubbedRender } from '@/testUtils'
 
-describe('<BaseModal />', async () => {
-  await setup({})
-
-  it('should render without crashing', () => {
-    const { unmount } = stubbedRender(BaseModal)
-
-    unmount()
+describe('<BaseModal />', () => {
+  const BaseModalWrapper = mount(BaseModal, {
+    slots: { default: 'Modal content' },
   })
 
-  it('renders the correct <slot />', () => {
-    const { getByText } = stubbedRender(BaseModal, {
-      slots: { default: 'Modal content' },
-    })
+  test('should render without crashing', () => {
+    expect(BaseModalWrapper.isVisible()).toBe(true)
+  })
 
-    expect(getByText('Modal content')).toBeInTheDocument()
+  test('renders the correct <slot />', () => {
+    expect(BaseModalWrapper.html()).toContain('Modal content')
   })
 
   describe('when the close event is emitted', () => {
     test('when the close button is clicked', async () => {
-      const { emitted, getByTestId } = stubbedRender(BaseModal)
+      await BaseModalWrapper.find('button').trigger('click')
 
-      await fireEvent.click(getByTestId('modal-close-button'))
-
-      expect(emitted().close).toBeTruthy()
+      expect(BaseModalWrapper.emitted().close).toHaveLength(1)
     })
 
     test('when the escape key is released', async () => {
-      const { emitted, getByTestId } = stubbedRender(BaseModal)
+      await BaseModalWrapper.find('button').trigger('keydown.esc')
 
-      await fireEvent.type(getByTestId('modal-close-button'), '{esc}')
-
-      expect(emitted().close).toBeTruthy()
+      expect(BaseModalWrapper.emitted().close).toHaveLength(2)
     })
   })
 })
