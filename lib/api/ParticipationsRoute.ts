@@ -20,13 +20,20 @@ export namespace Participations {
    * No description
    * @tags Participations
    * @name ParticipationsDetail
+   * @summary Gets a Participation by its ID.
    * @request GET:/api/Participations/{id}
-   * @response `200` `Participation` Success
+   * @response `200` `Participation` The `Participation` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` Not Found
+   * @response `404` `ProblemDetails` No `Participation` with the requested ID could be found.
    */
   export namespace ParticipationsDetail {
-    export type RequestParams = { id: number }
+    export type RequestParams = {
+      /**
+       * The ID of the `Participation` which should be retrieved.
+       * @format int64
+       */
+      id: number
+    }
     export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
@@ -37,10 +44,13 @@ export namespace Participations {
    * No description
    * @tags Participations
    * @name ParticipationsCreate
+   * @summary Creates a Participation for a User.
    * @request POST:/api/Participations
-   * @response `201` `void` Success
+   * @response `201` `void` The `Participation` was created and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` Not Found
+   * @response `401` `ProblemDetails` Unauthorized
+   * @response `403` `ProblemDetails` Forbidden
+   * @response `404` `ProblemDetails` No `User` or `Run` with the requested IDs could be found.
    */
   export namespace ParticipationsCreate {
     export type RequestParams = {}
@@ -51,14 +61,15 @@ export namespace Participations {
   }
 
   /**
-   * No description
+   * @description A comment and VOD link must be provided.
    * @tags Participations
    * @name ParticipationsUpdate
+   * @summary Updates the Participation of a User for a Run.
    * @request PUT:/api/Participations
-   * @response `200` `void` Success
+   * @response `200` `void` The `Participation` was updated successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `403` `ProblemDetails` Forbidden
-   * @response `404` `ProblemDetails` Not Found
+   * @response `404` `ProblemDetails` No `Participation` with the requested ID could be found.
    */
   export namespace ParticipationsUpdate {
     export type RequestParams = {}

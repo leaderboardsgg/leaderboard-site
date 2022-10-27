@@ -26,11 +26,11 @@ export class Users<
    *
    * @tags Users
    * @name UsersDetail
-   * @summary Gets a User by ID.
+   * @summary Gets a User by their ID.
    * @request GET:/api/Users/{id}
-   * @response `200` `User` The User with the provided ID.
+   * @response `200` `User` The `User` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` If no User is found with the provided ID.
+   * @response `404` `ProblemDetails` No `User` with the requested ID could be found.
    */
   usersDetail = (id: string, params: RequestParams = {}) =>
     this.request<User, ProblemDetails>({
@@ -44,11 +44,11 @@ export class Users<
    *
    * @tags Users
    * @name UsersRegisterCreate
-   * @summary Registers a new user.
+   * @summary Registers a new User.
    * @request POST:/api/Users/register
-   * @response `201` `User` The created User object.
-   * @response `400` `ProblemDetails` If the passwords don't match, or if the request is otherwise malformed.
-   * @response `409` `ProblemDetails` If login details can't be found.
+   * @response `201` `User` The `User` was registered and returned successfully.
+   * @response `400` `ProblemDetails` The passwords did not match or the request was otherwise malformed.
+   * @response `409` `ProblemDetails` A `User` with the specified username or email already exists.
    */
   usersRegisterCreate = (data: RegisterRequest, params: RequestParams = {}) =>
     this.request<User, ProblemDetails>({
@@ -64,12 +64,12 @@ export class Users<
    *
    * @tags Users
    * @name UsersLoginCreate
-   * @summary Logs a new user in.
+   * @summary Logs a User in.
    * @request POST:/api/Users/login
-   * @response `200` `LoginResponse` A <code>LoginResponse</code> object.
-   * @response `400` `ProblemDetails` If the request is malformed.
-   * @response `401` `ProblemDetails` If the wrong details were passed.
-   * @response `404` `ProblemDetails` If a User can't be found.
+   * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned.
+   * @response `400` `ProblemDetails` The request was malformed.
+   * @response `401` `ProblemDetails` The password passed was incorrect.
+   * @response `404` `ProblemDetails` No `User` with the requested details could be found.
    */
   usersLoginCreate = (data: LoginRequest, params: RequestParams = {}) =>
     this.request<LoginResponse, ProblemDetails>({
@@ -81,14 +81,14 @@ export class Users<
       ...params,
     })
   /**
-   * @description <p>You <em>must</em> call this with the 'Authorization' header, passing a valid JWT bearer token. </p> <p>I.e. <code>{ 'Authorization': 'Bearer JWT' }</code></p>
+   * @description Call this method with the 'Authorization' header. A valid JWT bearer token must be passed.<br /> Example: `{ 'Authorization': 'Bearer JWT' }`.
    *
    * @tags Users
    * @name UsersMeList
-   * @summary Gets the currently logged-in user.
+   * @summary Gets the currently logged-in User.
    * @request GET:/api/Users/me
-   * @response `200` `User` Returns with the User's details.
-   * @response `403` `ProblemDetails` If an invalid JWT was passed in.
+   * @response `200` `User` The `User` was found and returned successfully..
+   * @response `403` `ProblemDetails` An invalid JWT was passed in.
    */
   usersMeList = (params: RequestParams = {}) =>
     this.request<User, ProblemDetails>({

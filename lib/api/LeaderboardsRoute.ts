@@ -16,14 +16,20 @@ export namespace Leaderboards {
    * No description
    * @tags Leaderboards
    * @name LeaderboardsDetail
-   * @summary Gets a leaderboard.
+   * @summary Gets a Leaderboard by its ID.
    * @request GET:/api/Leaderboards/{id}
-   * @response `200` `Leaderboard` The Leaderboard.
+   * @response `200` `Leaderboard` The `Leaderboard` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` If no Leaderboard can be found.
+   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID could be found.
    */
   export namespace LeaderboardsDetail {
-    export type RequestParams = { id: number }
+    export type RequestParams = {
+      /**
+       * The ID of the `Leaderboard` which should be retrieved.
+       * @format int64
+       */
+      id: number
+    }
     export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
@@ -34,28 +40,34 @@ export namespace Leaderboards {
    * No description
    * @tags Leaderboards
    * @name LeaderboardsList
-   * @summary Gets leaderboards. Can be an empty array.
+   * @summary Gets Leaderboards by their IDs.
    * @request GET:/api/Leaderboards
-   * @response `200` `(Leaderboard)[]` An array of Leaderboards. Can be empty.
+   * @response `200` `(Leaderboard)[]` The list of `Leaderboard`s was retrieved successfully. The result can be an empty collection.
    */
   export namespace LeaderboardsList {
     export type RequestParams = {}
-    export type RequestQuery = { ids?: number[] }
+    export type RequestQuery = {
+      /** The IDs of the `Leaderboard`s which should be retrieved. */
+      ids?: number[]
+    }
     export type RequestBody = never
     export type RequestHeaders = {}
     export type ResponseBody = Leaderboard[]
   }
 
   /**
-   * No description
-   * @tags Leaderboards
-   * @name LeaderboardsCreate
-   * @summary Creates a new Leaderboard. Admin-only.
-   * @request POST:/api/Leaderboards
-   * @response `201` `Leaderboard` The created Leaderboard.
-   * @response `400` `ProblemDetails` If the request is malformed.
-   * @response `404` `ProblemDetails` If a non-admin calls this.
-   */
+ * No description
+ * @tags Leaderboards
+ * @name LeaderboardsCreate
+ * @summary Creates a new Leaderboard.
+This request is restricted to Administrators.
+ * @request POST:/api/Leaderboards
+ * @response `201` `Leaderboard` The `Leaderboard` was created and returned successfully.
+ * @response `400` `ProblemDetails` The request was malformed.
+ * @response `401` `ProblemDetails` Unauthorized
+ * @response `403` `ProblemDetails` Forbidden
+ * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create `Leaderboard`s.
+*/
   export namespace LeaderboardsCreate {
     export type RequestParams = {}
     export type RequestQuery = {}
