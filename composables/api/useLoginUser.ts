@@ -25,12 +25,17 @@ export const useLoginUser = async (
   try {
     const authResponse = await userClient.usersLoginCreate(requestData)
 
+    /* eslint-disable no-console */
+    console.table(authResponse)
+
     if (authResponse.ok) {
       authToken.value = authResponse.data.token
 
       const userResponse = await userClient.usersMeList({
         headers: { Authorization: `Bearer ${authToken.value}` },
       })
+
+      console.table(userResponse)
 
       if (userResponse.ok) {
         currentUser.value = userResponse.data

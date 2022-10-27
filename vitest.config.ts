@@ -1,8 +1,10 @@
 /// <reference types="vitest" />
+import { resolve } from 'path'
 import { mergeConfig } from 'vite'
 import { defineConfig } from 'vitest/config'
 import ViteConfig from './vite.config'
 import Vue from '@vitejs/plugin-vue'
+import VueJsx from '@vitejs/plugin-vue-jsx'
 
 // TODO: https://github.com/leaderboardsgg/leaderboard-site/issues/503
 
@@ -25,7 +27,17 @@ export default mergeConfig(
           },
         },
       }),
+      VueJsx(),
     ],
+    resolve: {
+      alias: {
+        // '#app': resolve(__dirname, './node_modules/.pnpm/nuxt@3.0.0-rc.12_wyqvi574yv7oiwfeinomdzmc3m/node_modules/nuxt/dist/app'),
+        '#app': resolve(__dirname, './node_modules/nuxt/dist/app'),
+        // '#app': resolve(__dirname, './.nuxt/app'),
+        // '#build': resolve(__dirname, './.nuxt'),
+        // ...baseTsConfig.compilerOptions.paths,
+      },
+    },
     test: {
       environment: 'happy-dom',
       globals: true,
