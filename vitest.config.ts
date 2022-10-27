@@ -28,6 +28,10 @@ export default mergeConfig(
     ],
     test: {
       environment: 'happy-dom',
+      globals: true,
+      sequence: {
+        shuffle: false, // change back to true later
+      },
       setupFiles: ['vitest.setup.ts'],
     },
   }),

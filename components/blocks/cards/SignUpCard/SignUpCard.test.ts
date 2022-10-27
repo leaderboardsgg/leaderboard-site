@@ -1,4 +1,3 @@
-import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import SignUpCard from './SignUpCard.vue'
@@ -6,12 +5,12 @@ import SignUpCard from './SignUpCard.vue'
 describe('<SignUpCard />', () => {
   const SignUpCardWrapper = mount(SignUpCard)
 
-  test('should render without crashing', () => {
+  it('should render without crashing', () => {
     expect(SignUpCardWrapper.isVisible()).toBe(true)
   })
 
   // describe('when the close button is clicked', () => {
-  //   test('should close the SignUpCard', async () => {
+  //   it('should close the SignUpCard', async () => {
   //     await SignUpCardWrapper.get('[data-testid="close-button"]').trigger(
   //       'click',
   //     )
@@ -21,7 +20,7 @@ describe('<SignUpCard />', () => {
   // })
 
   describe('when the hide/show button is clicked', () => {
-    test('changes the password input type to be text', async () => {
+    it('changes the password input type to be text', async () => {
       const passwordInput = SignUpCardWrapper.get(
         '[data-testid="password-input"]',
       )
@@ -42,7 +41,7 @@ describe('<SignUpCard />', () => {
   })
 
   describe('when the login button is clicked', () => {
-    test('emits the log in click event', async () => {
+    it('emits the log in click event', async () => {
       await SignUpCardWrapper.get('[data-testid="login-button"]').trigger(
         'click',
       )
@@ -56,7 +55,7 @@ describe('<SignUpCard />', () => {
   //   // const password = 'homestarsux'
   //   // const username = 'strongbad'
 
-  //   test('emits the sign up click event', async () => {
+  //   it('emits the sign up click event', async () => {
   //     await SignUpCardWrapper.get('[data-testid="sign-up-button"]').trigger(
   //       'click',
   //     )
@@ -65,7 +64,7 @@ describe('<SignUpCard />', () => {
   //     // expect(emitted().signUpClick).toBeTruthy()
   //   })
 
-  //   test('clears the state', async () => {
+  //   it('clears the state', async () => {
   //     const { getByTestId } = stubbedRender(SignUpCard)
   //     const emailInput: HTMLInputElement = getByTestId('email-input')
   //     const passwordInput: HTMLInputElement = getByTestId('password-input')
@@ -87,7 +86,7 @@ describe('<SignUpCard />', () => {
   //     expect(passwordInput.value).toBe('')
   //     expect(passwordConfirmInput.value).toBe('')
   //   })
-  //   test('calls the api', async () => {
+  //   it('calls the api', async () => {
   //     const { getByTestId } = stubbedRender(SignUpCard)
   //     const emailInput: HTMLInputElement = getByTestId('email-input')
   //     const passwordInput: HTMLInputElement = getByTestId('password-input')

@@ -1,4 +1,3 @@
-import { describe, expect, test, vi, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import SiteNavbar from './SiteNavbar.vue'
@@ -17,12 +16,12 @@ describe('<SiteNavbar />', () => {
     },
   })
 
-  test('should render without crashing', () => {
+  it('should render without crashing', () => {
     expect(SiteNavbarWrapper.isVisible()).toBe(true)
   })
 
   describe('when no user is logged in', () => {
-    test('should render the login/sign up buttons', () => {
+    it('should render the login/sign up buttons', () => {
       expect(
         SiteNavbarWrapper.get(
           '[data-testid="site-navbar-login-button"]',
@@ -37,7 +36,7 @@ describe('<SiteNavbar />', () => {
     })
 
     describe('when the login button is clicked', () => {
-      test('should bring up the login card', () => {
+      it('should bring up the login card', () => {
         SiteNavbarWrapper.get(
           '[data-testid="site-navbar-login-button"]',
         ).trigger('click')
@@ -49,7 +48,7 @@ describe('<SiteNavbar />', () => {
     })
 
     describe('when the sign up button is clicked', () => {
-      test('should bring up the signup card', () => {
+      it('should bring up the signup card', () => {
         SiteNavbarWrapper.get(
           '[data-testid="site-navbar-sign-up-button"]',
         ).trigger('click')
@@ -71,7 +70,7 @@ describe('<SiteNavbar />', () => {
   //     },
   //   })
 
-  //   test('should render the logout button', () => {
+  //   it('should render the logout button', () => {
   //     expect(
   //       /* eslint-disable */
   //       // prettier-ignore
@@ -85,7 +84,7 @@ describe('<SiteNavbar />', () => {
   // describe('when the logout button is clicked', () => {
   //   const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
 
-  //   test('should log out the user', async () => {
+  //   it('should log out the user', async () => {
   //     const { getByTestId } = stubbedRender(SiteNavbar)
 
   //     await fireEvent.click(getByTestId('site-navbar-logout-button'))

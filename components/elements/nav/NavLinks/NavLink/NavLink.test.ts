@@ -1,4 +1,3 @@
-import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import NavLink from './NavLink.vue'
@@ -12,7 +11,7 @@ describe('<NavLink />', () => {
     slots: { default: 'Games' },
   })
 
-  test('should render without crashing', () => {
+  it('should render without crashing', () => {
     expect(NavLinkWrapper.isVisible()).toBe(true)
   })
 })

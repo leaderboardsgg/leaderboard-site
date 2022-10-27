@@ -1,4 +1,3 @@
-import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import HideShowPassword from './HideShowPassword.vue'
@@ -6,7 +5,7 @@ import HideShowPassword from './HideShowPassword.vue'
 describe('<HideShowPassword />', () => {
   const HideShowPasswordWrapper = mount(HideShowPassword)
 
-  test('should render without crashing', () => {
+  it('should render without crashing', () => {
     expect(HideShowPasswordWrapper.isVisible()).toBe(true)
   })
 
@@ -20,7 +19,7 @@ describe('<HideShowPassword />', () => {
     '[data-testid="visible-eye-icon"]',
   )
   describe('Visible eye, hidden eye, and the button', () => {
-    test('should render without crashing', () => {
+    it('should render without crashing', () => {
       expect(passwordButton.isVisible()).toBe(true)
       expect(hiddenEyeIcon.isVisible()).toBe(true)
       expect(visibleEyeIcon.isVisible()).toBe(true)
@@ -28,7 +27,7 @@ describe('<HideShowPassword />', () => {
   })
 
   describe('when clicking the button', () => {
-    test('should toggle the state', async () => {
+    it('should toggle the state', async () => {
       expect(hiddenEyeIcon.html()).not.toContain('style="display: none;')
       expect(visibleEyeIcon.html()).toContain('style="display: none;')
 
@@ -41,7 +40,7 @@ describe('<HideShowPassword />', () => {
 
   //  this contains the previous flip so we need to do the opposite
   describe('when the button is focus and the enter key up event is triggered', () => {
-    test('should toggle the state', async () => {
+    it('should toggle the state', async () => {
       expect(hiddenEyeIcon.html()).toContain('style="display: none;')
       expect(visibleEyeIcon.html()).not.toContain('style="display: none;')
 
