@@ -4,10 +4,6 @@ import { vi } from 'vitest'
 import type { Ref } from 'vue'
 import { reactive, isRef, toRef } from 'vue'
 
-// TODO: use this/ change this when we need to add environment variables into the tests
-// import { config } from 'dotenv-safe'
-// config({ path: '.env.test' })
-
 const fetchMock = createFetchMock(vi)
 
 // sets globalThis.fetch and globalThis.fetchMock to our mocked version
