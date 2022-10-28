@@ -1,7 +1,11 @@
-/* eslint-disable no-console */
 import { mount } from '@vue/test-utils'
-import SignUpCard from './SignUpCard.vue'
 import { getByTestId, getHTMLElement } from 'testUtils'
+import SignUpCard from './SignUpCard.vue'
+
+afterEach(() => {
+  fetchMock.resetMocks()
+  vi.restoreAllMocks()
+})
 
 describe('<SignUpCard />', () => {
   it('should render without crashing', () => {
@@ -98,8 +102,7 @@ describe('<SignUpCard />', () => {
       expect(passwordConfirmInputElement.value).toBe('')
     })
 
-    // this test is still failing
-    it.skip('calls the api', async () => {
+    it('calls the api', async () => {
       const wrapper = mount(SignUpCard)
 
       await getByTestId(wrapper, 'email-input').setValue(emailAddress)
