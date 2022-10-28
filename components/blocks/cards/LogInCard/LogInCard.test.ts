@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
 import { mount } from '@vue/test-utils'
-
 import LogInCard from './LogInCard.vue'
-import { FullRequestParams } from 'root/lib/api/http-client'
+import { FullRequestParams } from 'lib/api/http-client'
+import { getByTestId, getHTMLElement } from 'testUtils'
 
 const token = 'jwt-token'
 type fetchMockCall = [string, FullRequestParams]
@@ -17,17 +17,17 @@ describe('<LogInCard />', () => {
     fetchMock.mockResponseOnce(JSON.stringify({ token }))
   })
 
-  const LogInCardWrapper = mount(LogInCard)
-
   it('should render without crashing', () => {
-    expect(LogInCardWrapper.isVisible()).toBe(true)
+    const wrapper = mount(LogInCard)
+
+    expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('when the close button is clicked', () => {
     it('should emit the close event', async () => {
       const wrapper = mount(LogInCard)
 
-      const closeButton = wrapper.get('[data-testid="close-button"]')
+      const closeButton = getByTestId(wrapper, 'close-button')
 
       await closeButton.trigger('click')
 
@@ -38,13 +38,15 @@ describe('<LogInCard />', () => {
   describe('when the hide/show button is clicked', () => {
     it('changes the password input type to be text', async () => {
       const wrapper = mount(LogInCard)
-      const passwordInput = wrapper.get('[data-testid="password-input"]')
+      const passwordInputElement = getHTMLElement(
+        getByTestId(wrapper, 'password-input'),
+      ) as HTMLInputElement
 
-      expect(passwordInput.attributes('type')).toBe('password')
+      expect(passwordInputElement.type).toBe('password')
 
-      await wrapper.get('[data-testid="hide-show-button"]').trigger('click')
+      await getByTestId(wrapper, 'hide-show-button').trigger('click')
 
-      expect(passwordInput.attributes('type')).toBe('text')
+      expect(passwordInputElement.type).toBe('text')
     })
   })
 
@@ -52,7 +54,7 @@ describe('<LogInCard />', () => {
     it('emits the close event', async () => {
       const wrapper = mount(LogInCard)
 
-      await wrapper.get('[data-testid="password-input"]').trigger('keyup.enter')
+      await getByTestId(wrapper, 'password-input').trigger('keyup.enter')
 
       expect(wrapper.emitted().close).toBeTruthy()
     })
@@ -65,7 +67,7 @@ describe('<LogInCard />', () => {
     it('emits the close event', async () => {
       const wrapper = mount(LogInCard)
 
-      await wrapper.get('[data-testid="login-button"]').trigger('click')
+      await getByTestId(wrapper, 'login-button').trigger('click')
 
       expect(wrapper.emitted().close).toBeTruthy()
     })
@@ -73,20 +75,21 @@ describe('<LogInCard />', () => {
     it('clears the state', async () => {
       const wrapper = mount(LogInCard)
 
-      const emailInput = wrapper.get('[data-testid="email-input"]')
-      const passwordInput = wrapper.get('[data-testid="password-input"]')
+      const emailInput = getByTestId(wrapper, 'email-input')
+      const passwordInput = getByTestId(wrapper, 'password-input')
 
       await emailInput.setValue(emailAddress)
       await passwordInput.setValue(password)
 
-      const emailInputElement = emailInput.getRootNodes()[0] as HTMLInputElement
-      const passwordInputElement =
-        passwordInput.getRootNodes()[0] as HTMLInputElement
+      const emailInputElement = getHTMLElement(emailInput) as HTMLInputElement
+      const passwordInputElement = getHTMLElement(
+        passwordInput,
+      ) as HTMLInputElement
 
       expect(emailInputElement.value).toBe(emailAddress)
       expect(passwordInputElement.value).toBe(password)
 
-      await wrapper.get('[data-testid="login-button"]').trigger('click')
+      await getByTestId(wrapper, 'login-button').trigger('click')
 
       expect(emailInputElement.value).toBe('')
       expect(passwordInputElement.value).toBe('')
@@ -96,16 +99,16 @@ describe('<LogInCard />', () => {
     it.skip('calls the api', async () => {
       const wrapper = mount(LogInCard)
 
-      const emailInput = wrapper.get('[data-testid="email-input"]')
-      const passwordInput = wrapper.get('[data-testid="password-input"]')
+      const emailInput = getByTestId(wrapper, 'email-input')
+      const passwordInput = getByTestId(wrapper, 'password-input')
 
       await emailInput.setValue(emailAddress)
       await passwordInput.setValue(password)
 
-      await wrapper.get('[data-testid="login-button"]').trigger('click')
+      await getByTestId(wrapper, 'login-button').trigger('click')
 
       const apiCalls = fetchMock.mock.calls as fetchMockCall[]
-      console.log(apiCalls)
+      // console.log(apiCalls)
       expect(apiCalls?.[0]?.length).toBe(2)
 
       const loginApiCall = apiCalls[0]
@@ -137,7 +140,7 @@ describe('<LogInCard />', () => {
     it('emits the sign up click event', async () => {
       const wrapper = mount(LogInCard)
 
-      await wrapper.get('[data-testid="sign-up-button"]').trigger('click')
+      await getByTestId(wrapper, 'sign-up-button').trigger('click')
 
       expect(wrapper.emitted().signUpClick).toBeTruthy()
     })

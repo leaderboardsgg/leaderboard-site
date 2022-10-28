@@ -1,117 +1,126 @@
+/* eslint-disable no-console */
 import { mount } from '@vue/test-utils'
-
 import SignUpCard from './SignUpCard.vue'
+import { getByTestId, getHTMLElement } from 'testUtils'
 
 describe('<SignUpCard />', () => {
-  const SignUpCardWrapper = mount(SignUpCard)
-
   it('should render without crashing', () => {
-    expect(SignUpCardWrapper.isVisible()).toBe(true)
+    const wrapper = mount(SignUpCard)
+
+    expect(wrapper.isVisible()).toBe(true)
   })
 
-  // describe('when the close button is clicked', () => {
-  //   it('should close the SignUpCard', async () => {
-  //     await SignUpCardWrapper.get('[data-testid="close-button"]').trigger(
-  //       'click',
-  //     )
+  describe('when the close button is clicked', () => {
+    it('should emit the close event', async () => {
+      const wrapper = mount(SignUpCard)
 
-  //     expect(SignUpCardWrapper.isVisible()).toBe(false)
-  //   })
-  // })
+      await getByTestId(wrapper, 'close-button').trigger('click')
+
+      expect(wrapper.emitted().close).toBeTruthy()
+    })
+  })
 
   describe('when the hide/show button is clicked', () => {
     it('changes the password input type to be text', async () => {
-      const passwordInput = SignUpCardWrapper.get(
-        '[data-testid="password-input"]',
-      )
-      const passwordConfirmInput = SignUpCardWrapper.get(
-        '[data-testid="password-confirm-input"]',
-      )
+      const wrapper = mount(SignUpCard)
 
-      expect(passwordInput.attributes('type')).toBe('password')
-      expect(passwordConfirmInput.attributes('type')).toBe('password')
+      const passwordInputElement = getHTMLElement(
+        getByTestId(wrapper, 'password-input'),
+      ) as HTMLInputElement
+      const passwordConfirmInputElement = getHTMLElement(
+        getByTestId(wrapper, 'password-confirm-input'),
+      ) as HTMLInputElement
 
-      await SignUpCardWrapper.get('[data-testid="hide-show-button"]').trigger(
-        'click',
-      )
+      expect(passwordInputElement.type).toBe('password')
+      expect(passwordConfirmInputElement.type).toBe('password')
 
-      expect(passwordInput.attributes('type')).toBe('text')
-      expect(passwordConfirmInput.attributes('type')).toBe('text')
+      await getByTestId(wrapper, 'hide-show-button').trigger('click')
+
+      expect(passwordInputElement.type).toBe('text')
+      expect(passwordConfirmInputElement.type).toBe('text')
     })
   })
 
   describe('when the login button is clicked', () => {
     it('emits the log in click event', async () => {
-      await SignUpCardWrapper.get('[data-testid="login-button"]').trigger(
-        'click',
-      )
+      const wrapper = mount(SignUpCard)
 
-      expect(SignUpCardWrapper.emitted()).toHaveProperty('logInClick')
+      await getByTestId(wrapper, 'login-button').trigger('click')
+
+      expect(wrapper.emitted()).toHaveProperty('logInClick')
     })
   })
 
-  // describe('when the sign up button is clicked', () => {
-  //   // const emailAddress = 'strongbad@homestarrunner.com'
-  //   // const password = 'homestarsux'
-  //   // const username = 'strongbad'
+  describe('when the sign up button is clicked', () => {
+    const emailAddress = 'strongbad@homestarrunner.com'
+    const password = 'homestarsux'
+    const username = 'strongbad'
 
-  //   it('emits the sign up click event', async () => {
-  //     await SignUpCardWrapper.get('[data-testid="sign-up-button"]').trigger(
-  //       'click',
-  //     )
+    it('emits the sign up click event', async () => {
+      const wrapper = mount(SignUpCard)
 
-  //     expect(SignUpCardWrapper.emitted().signUpClick).toBeTruthy()
-  //     // expect(emitted().signUpClick).toBeTruthy()
-  //   })
+      await getByTestId(wrapper, 'sign-up-button').trigger('click')
 
-  //   it('clears the state', async () => {
-  //     const { getByTestId } = stubbedRender(SignUpCard)
-  //     const emailInput: HTMLInputElement = getByTestId('email-input')
-  //     const passwordInput: HTMLInputElement = getByTestId('password-input')
-  //     const passwordConfirmInput: HTMLInputElement = getByTestId(
-  //       'password-confirm-input',
-  //     )
-  //     const usernameInput: HTMLInputElement = getByTestId('username-input')
-  //     await fireEvent.type(emailInput, emailAddress)
-  //     await fireEvent.type(usernameInput, username)
-  //     await fireEvent.type(passwordInput, password)
-  //     await fireEvent.type(passwordConfirmInput, password)
-  //     expect(emailInput.value).toBe(emailAddress)
-  //     expect(usernameInput.value).toBe(username)
-  //     expect(passwordInput.value).toBe(password)
-  //     expect(passwordConfirmInput.value).toBe(password)
-  //     await fireEvent.click(getByTestId('sign-up-button'))
-  //     expect(emailInput.value).toBe('')
-  //     expect(usernameInput.value).toBe('')
-  //     expect(passwordInput.value).toBe('')
-  //     expect(passwordConfirmInput.value).toBe('')
-  //   })
-  //   it('calls the api', async () => {
-  //     const { getByTestId } = stubbedRender(SignUpCard)
-  //     const emailInput: HTMLInputElement = getByTestId('email-input')
-  //     const passwordInput: HTMLInputElement = getByTestId('password-input')
-  //     const passwordConfirmInput: HTMLInputElement = getByTestId(
-  //       'password-confirm-input',
-  //     )
-  //     const usernameInput: HTMLInputElement = getByTestId('username-input')
-  //     await fireEvent.type(emailInput, emailAddress)
-  //     await fireEvent.type(usernameInput, username)
-  //     await fireEvent.type(passwordInput, password)
-  //     await fireEvent.type(passwordConfirmInput, password)
-  //     await fireEvent.click(getByTestId('sign-up-button'))
-  //     const apiCall = fetchMock.mock.calls[0]
-  //     expect(apiCall?.[0]).toEqual(
-  //       `${process.env.BACKEND_BASE_URL}/api/Users/register`,
-  //     )
-  //     expect(apiCall?.[1]?.method).toEqual('POST')
-  //     expect(apiCall?.[1]?.body).toEqual(
-  //       JSON.stringify({
-  //         email: emailAddress,
-  //         password,
-  //         passwordConfirm: password,
-  //         username,
-  //       }),
-  //     )
-  //   })
-  //   })
+      expect(wrapper.emitted().signUpClick).toBeTruthy()
+    })
+
+    it('clears the state', async () => {
+      const wrapper = mount(SignUpCard)
+
+      const emailInputElement = getHTMLElement(
+        getByTestId(wrapper, 'email-input'),
+      ) as HTMLInputElement
+      const passwordInputElement = getHTMLElement(
+        getByTestId(wrapper, 'password-input'),
+      ) as HTMLInputElement
+      const passwordConfirmInputElement = getHTMLElement(
+        getByTestId(wrapper, 'password-confirm-input'),
+      ) as HTMLInputElement
+      const usernameInputElement = getHTMLElement(
+        getByTestId(wrapper, 'username-input'),
+      ) as HTMLInputElement
+
+      await getByTestId(wrapper, 'email-input').setValue(emailAddress)
+      await getByTestId(wrapper, 'username-input').setValue(username)
+      await getByTestId(wrapper, 'password-input').setValue(password)
+      await getByTestId(wrapper, 'password-confirm-input').setValue(password)
+
+      expect(emailInputElement.value).toBe(emailAddress)
+      expect(usernameInputElement.value).toBe(username)
+      expect(passwordInputElement.value).toBe(password)
+      expect(passwordConfirmInputElement.value).toBe(password)
+
+      await getByTestId(wrapper, 'sign-up-button').trigger('click')
+
+      expect(emailInputElement.value).toBe('')
+      expect(usernameInputElement.value).toBe('')
+      expect(passwordInputElement.value).toBe('')
+      expect(passwordConfirmInputElement.value).toBe('')
+    })
+
+    // this test is still failing
+    it.skip('calls the api', async () => {
+      const wrapper = mount(SignUpCard)
+
+      await getByTestId(wrapper, 'email-input').setValue(emailAddress)
+      await getByTestId(wrapper, 'username-input').setValue(username)
+      await getByTestId(wrapper, 'password-input').setValue(password)
+      await getByTestId(wrapper, 'password-confirm-input').setValue(password)
+      await getByTestId(wrapper, 'sign-up-button').trigger('click')
+
+      const apiCall = fetchMock.mock.calls[0]
+      expect(apiCall?.[0]).toEqual(
+        `${process.env.BACKEND_BASE_URL}/api/Users/register`,
+      )
+      expect(apiCall?.[1]?.method).toEqual('POST')
+      expect(apiCall?.[1]?.body).toEqual(
+        JSON.stringify({
+          email: emailAddress,
+          password,
+          passwordConfirm: password,
+          username,
+        }),
+      )
+    })
+  })
 })
