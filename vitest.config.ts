@@ -4,7 +4,6 @@ import { mergeConfig } from 'vite'
 import { defineConfig } from 'vitest/config'
 import ViteConfig from './vite.config'
 import Vue from '@vitejs/plugin-vue'
-import VueJsx from '@vitejs/plugin-vue-jsx'
 
 // TODO: https://github.com/leaderboardsgg/leaderboard-site/issues/503
 
@@ -27,7 +26,6 @@ export default mergeConfig(
           },
         },
       }),
-      VueJsx(),
     ],
     resolve: {
       alias: {

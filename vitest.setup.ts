@@ -1,4 +1,4 @@
-// import { enableAutoUnmount } from '@vue/test-utils'
+import { config } from '@vue/test-utils'
 import createFetchMock from 'vitest-fetch-mock'
 import { vi } from 'vitest'
 import type { Ref } from 'vue'
@@ -25,7 +25,7 @@ fetchMock.enableMocks()
 const payload = reactive<{ state: Record<string, any> }>({
   state: {},
 })
-const useStateMock = vi.fn((key: string, init?: () => any) => {
+export const useStateMock = vi.fn((key: string, init?: () => any) => {
   const state = toRef(payload.state, key)
   if (state.value === undefined && init) {
     const initialValue = init()
@@ -44,3 +44,7 @@ vi.stubGlobal('useRuntimeConfig', () => ({
     BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
   },
 }))
+
+config.global.mocks = {
+  $t: (msg: any) => msg,
+}

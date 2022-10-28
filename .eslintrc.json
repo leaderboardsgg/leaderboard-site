@@ -49,6 +49,18 @@
     "arrow-parens": ["error", "always"],
     "comma-dangle": "off",
     "eol-last": ["error", "always"],
+    "import/order": ["error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          ["internal", "parent", "sibling"],
+          "index",
+          "object",
+          "type"
+        ]
+      }
+    ],
     "semi": "off",
     "space-before-function-paren": "off",
     "tailwindcss/no-custom-classname": "off",
