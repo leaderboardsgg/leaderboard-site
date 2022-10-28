@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive } from 'vue'
 import NavLinks from 'elements/nav/NavLinks/NavLinks.vue'
 import LogoutButton from 'elements/buttons/LogoutButton/LogoutButton.vue'
 import SignUpButton from 'elements/buttons/SignUpButton/SignUpButton.vue'
@@ -9,7 +9,7 @@ import SignUpCard from 'blocks/cards/SignUpCard/SignUpCard.vue'
 import BaseModal from 'elements/modals/BaseModal/BaseModal.vue'
 import SearchBar from 'blocks/SearchBar/SearchBar.vue'
 import { useLogoutUser } from 'composables/api'
-import { User } from 'lib/api/data-contracts'
+import { useCurrentUser } from 'composables/useCurrentUser'
 
 interface NavbarState {
   mobileNavIsActive: boolean
@@ -23,11 +23,7 @@ const state: NavbarState = reactive({
   showModal: false,
 })
 
-const currentUser = ref<User>({
-  admin: false,
-  email: '',
-  username: '',
-})
+const currentUser = useCurrentUser()
 const loggedIn = computed(
   () => !!currentUser.value?.username && currentUser.value?.username !== '',
 )

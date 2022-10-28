@@ -1,9 +1,6 @@
-/* eslint-disable no-console */
-// import { ref } from 'vue'
 import { mount } from '@vue/test-utils'
 import * as apiComposables from 'composables/api'
 import { useCurrentUser } from 'composables/useCurrentUser'
-// import { User } from 'lib/api/data-contracts'
 import { getByTestId } from 'testUtils'
 import SiteNavbar from './SiteNavbar.vue'
 
@@ -53,19 +50,8 @@ describe('<SiteNavbar />', () => {
     })
   })
 
-  // this is failing
-  describe.skip('when a user is logged in', () => {
+  describe('when a user is logged in', () => {
     beforeEach(() => {
-      // vi.stubGlobal(
-      //   'useState',
-      //   () => (_stateId: string) =>
-      //     ref<User>({
-      //       admin: true,
-      //       email: 'admin@leaderboards.gg',
-      //       username: 'lbgg_admin',
-      //     }),
-      // )
-
       const currentUser = useCurrentUser()
       currentUser.value = {
         admin: true,
