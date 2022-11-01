@@ -4,7 +4,7 @@ specifiers:
   '@nuxt/vite-builder': 3.0.0-rc.12
   '@nuxtjs/eslint-config-typescript': ^11.0.0
   '@nuxtjs/eslint-module': ^3.1.0
-  '@nuxtjs/i18n': 8.0.0-alpha.3
+  '@nuxtjs/i18n': 8.0.0-beta.3
   '@nuxtjs/tailwindcss': ^6.1.1
   '@types/dotenv-safe': ^8.1.2
   '@types/eslint': ^8.4.8
@@ -45,7 +45,7 @@ devDependencies:
   '@nuxt/vite-builder': 3.0.0-rc.12_5phhjlepx6uce62n7km5sehevq
   '@nuxtjs/eslint-config-typescript': 11.0.0_wyqvi574yv7oiwfeinomdzmc3m
   '@nuxtjs/eslint-module': 3.1.0_dunuix3aagubcaxghlf2nuxzgy
-  '@nuxtjs/i18n': 8.0.0-alpha.3_hinmbrrgvgbaob4re6mmoycpre
+  '@nuxtjs/i18n': 8.0.0-beta.3_hinmbrrgvgbaob4re6mmoycpre
   '@nuxtjs/tailwindcss': 6.1.1_webpack@5.74.0
   '@types/dotenv-safe': 8.1.2
   '@types/eslint': 8.4.8
@@ -938,9 +938,9 @@ packages:
       - webpack
     dev: true
 
-  /@nuxtjs/i18n/8.0.0-alpha.3_hinmbrrgvgbaob4re6mmoycpre:
-    resolution: {integrity: sha512-owbjvQfF5Fd2cyGAXdCqGg3FrDCgrtQ7urdHsp7tpqTocSemjG+X4uLNgH/hT/wzhyvbON0+6pPYJn2D8g/v5g==}
-    engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0}
+  /@nuxtjs/i18n/8.0.0-beta.3_hinmbrrgvgbaob4re6mmoycpre:
+    resolution: {integrity: sha512-W109n/O9bxM/kX0PGlmVOdYnCROs8oKo+/Nuayat+FCyOBtOON8wnbBWHo3Q7B9mMrICr6LyDYxAJWRYReXVZA==}
+    engines: {node: ^14.16.0 || ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0}
     dependencies:
       '@intlify/bundle-utils': 3.2.1_vue-i18n@9.3.0-beta.6
       '@intlify/shared': 9.3.0-beta.6
@@ -948,7 +948,6 @@ packages:
       '@nuxt/kit': 3.0.0-rc.12
       cookie-es: 0.5.0
       debug: 4.3.4
-      defu: 6.1.0
       is-https: 4.0.0
       js-cookie: 3.0.1
       knitwork: 0.1.2
@@ -958,7 +957,7 @@ packages:
       ufo: 0.8.6
       unplugin: 0.9.6
       vue-i18n: 9.3.0-beta.6_vue@3.2.41
-      vue-i18n-routing: 0.6.0_dybyk3kyl7g34srrts4qxm2bxi
+      vue-i18n-routing: 0.8.1_dybyk3kyl7g34srrts4qxm2bxi
     transitivePeerDependencies:
       - esbuild
       - petite-vue-i18n
@@ -8000,8 +7999,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-i18n-routing/0.6.0_dybyk3kyl7g34srrts4qxm2bxi:
-    resolution: {integrity: sha512-uijhq4ZbhA1+0CiQnGmbs4c6+Ej+wfEo+4j8/T2hQzp9Ne2Aw0zlf7ivGrVFVeIFEoQ13uIYSE+crUGWAP+hSg==}
+  /vue-i18n-routing/0.8.1_dybyk3kyl7g34srrts4qxm2bxi:
+    resolution: {integrity: sha512-oy4oLlyzFRjcAhilmbyT+Awaj/LjRlz2LBpJOBjtrzLRjSnG4Y6ulyKSESDHQ418pQaVJ1ZqeibtuA+V6/TOug==}
     engines: {node: '>= 14.6'}
     peerDependencies:
       vue: ^2.6.14 || ^2.7.0 || ^3.2.0
@@ -8009,6 +8008,8 @@ packages:
       vue-i18n-bridge: ^9.2.0 || ^9.3.0-beta.6
       vue-router: ^3.5.3 || ^3.6.0 || ^4.0.0
     peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
       vue:
         optional: true
       vue-i18n:
