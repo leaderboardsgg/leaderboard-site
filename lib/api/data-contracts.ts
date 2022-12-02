@@ -9,413 +9,481 @@
  * ---------------------------------------------------------------
  */
 
+/**
+ * Represents a site-scoped or `Leaderboard`-scoped `Ban` tied to a `User`.
+ */
 export interface Ban {
   /**
+   * The unique identifier of the `Ban`.<br />
    * Generated on creation.
    * @format int64
    */
   id?: number
-
-  /** Can't be <code>null</code>. */
-  reason: string
-
+  createdAt: Instant
+  deletedAt?: Instant
   /**
-   * Generated on creation.
-   * @format date-time
-   */
-  time: string
-
-  /**
-   * ID of User who set the Ban. Must be either an admin or a mod.
+   * The ID of the `User` who issued the `Ban`.<br />
+   * Must be a *Moderator* or *Administrator*.
    * @format uuid
    */
   banningUserId?: string | null
-
   /**
-   * ID of User who received the Ban.
+   * The ID of the `User` who received the `Ban`.
    * @format uuid
    */
   bannedUserId: string
-
   /**
-   * ID of Leaderboard this Ban belongs to. If <code>null</code>, then this Ban is site-wide.
+   * ID of the `Leaderboard` the `Ban` belongs to.<br />
+   * If this value is null, the `Ban` is site-wide.
    * @format int64
    */
   leaderboardId?: number | null
+  /**
+   * The reason for the issued `Ban`.<br />
+   * Must not be null.
+   */
+  reason: string
+}
+
+export interface CalendarSystem {
+  id?: string | null
+  name?: string | null
+  /** @format int32 */
+  minYear?: number
+  /** @format int32 */
+  maxYear?: number
+  eras?: Era[] | null
 }
 
 /**
- * A Category tied to a Leaderboard.
+ * Represents a `Category` tied to a `Leaderboard`.
  */
 export interface Category {
   /**
-   * The Category's ID. Generated on creation.
+   * The unique identifier of the `Category`.<br />
+   * Generated on creation.
    * @format int64
    */
   id?: number
-
   /**
-   * The Category's name.
-   * @example Mongolian Throat Singing%
-   */
-  name: string
-
-  /**
-   * The Category's slug. <br />
-   * Must be 2-25 characters inclusive and only consist of letters, numbers, and
-   * hyphens.
-   * @example mongolian-throat-singing
-   */
-  slug: string
-
-  /** Category-specific rules. */
-  rules?: string | null
-
-  /**
-   * Minimum player count for this Category. Defaults to 1.
-   * @format int32
-   */
-  playersMin: number
-
-  /**
-   * Maximum player count for this Category. Defaults to PlayersMin.
-   * @format int32
-   */
-  playersMax: number
-
-  /**
-   * ID of the Leaderboard this Category belongs to.
+   * The ID of the `Leaderboard` the `Category` is a part of.
    * @format int64
    */
   leaderboardId: number
+  /**
+   * The display name of the `Category`.
+   * @example Foo Bar Baz%
+   */
+  name: string
+  /**
+   * The URL-scoped unique identifier of the `Category`.<br />
+   * Must be [2, 25] in length and consist only of alphanumeric characters and hyphens.
+   * @example foo-bar-baz
+   */
+  slug: string
+  /**
+   * The rules of the `Category`.
+   * @example Video proof is required.
+   */
+  rules?: string | null
+  /**
+   * The minimum player count of the `Category`. The default is 1.
+   * @format int32
+   */
+  playersMin: number
+  /**
+   * The maximum player count of the `Category`. The default is `PlayersMin`.
+   * @format int32
+   */
+  playersMax: number
 }
 
 /**
- * Request object sent when creating a Category.
+ * This request object is sent when creating a `Category`.
  */
 export interface CreateCategoryRequest {
   /**
-   * Name for the new Category.
-   * @example Mongolian Throat Singing%
+   * The display name of the `Category`.
+   * @example Foo Bar Baz%
    */
   name: string
-
   /**
-   * The bit in the URL that uniquely identifies this Category. <br />
-   * E.g.: https://leaderboards.gg/slug-for-board/slug-for-category <br />
-   * Must be 2-25 characters inclusive and only consist of letters, numbers, and
-   * hyphens.
-   * @example mongolian-throat-singing
+   * The URL-scoped unique identifier of the `Category`.<br />
+   * Must be [2, 25] in length and consist only of alphanumeric characters and hyphens.
+   * @example foo-bar-baz
    */
   slug: string
-
-  /** Category-specific rules. */
-  rules?: string | null
-
   /**
-   * Minimum player count for this Category. Defaults to 1.
+   * The rules of the `Category`.
+   * @example Video proof is required.
+   */
+  rules?: string | null
+  /**
+   * The minimum player count of the `Category`. The default is 1.
    * @format int32
    * @min 1
    * @max 2147483647
    */
   playersMin?: number | null
-
   /**
-   * Maximum player count for this Category. Defaults to PlayersMin.
+   * The maximum player count of the `Category`. The default is `PlayersMin`.
    * @format int32
    * @min 1
    * @max 2147483647
    */
   playersMax?: number | null
-
   /**
-   * ID of the Leaderboard this Category belongs to.
+   * The ID of the `Leaderboard` the `Category` is a part of.
    * @format int64
    */
   leaderboardId: number
 }
 
 /**
- * Request object sent when creating a Judgement.
+ * This request object is sent when creating a `Judgement`.
  */
 export interface CreateJudgementRequest {
   /**
-   * GUID of the run.
+   * The ID of the `Run` that is being judged.
    * @format uuid
-   * @example e1c010d7-b499-4196-be17-aa27a053f3dc
    */
   runId?: string
-
   /**
-   * Judgement comments. Must be provided if not outright approving a run ("Approved" is false or null).
-   * Acts as mod feedback for the runner.
-   * @example e1c010d7-b499-4196-be17-aa27a053f3dc
+   * A comment elaborating on the `Judgement`'s decision. Must have a value when the
+   * affected `Run` is not approved (`Approved` is null or false).
+   * @example The video proof is not of sufficient quality.
    */
   note?: string | null
-
-  /** The judgement result. Can be true, false, or null. For the latter two, "Note" must be non-empty. */
+  /** The `Judgement`'s decision. May be null, true, or false. */
   approved?: boolean | null
 }
 
+/**
+ * This request object is sent when banning a `User` from a `Leaderboard`.
+ */
 export interface CreateLeaderboardBanRequest {
   /**
-   * The ID of the user, who should be banned.
+   * The ID of the `User` which is banned.
    * @format uuid
    */
   userId: string
-
-  /** The reason why the user is banned. */
-  reason: string
-
   /**
-   * The ID of the leaderboard on which the user should be banned.
+   * The reason for the `User`'s ban.
+   * @example Abusive or hateful conduct.
+   */
+  reason: string
+  /**
+   * The ID of the `Leaderboard` from which the `User` is banned.
    * @format int64
    */
-  leaderboardId?: number
+  leaderboardId: number
 }
 
+/**
+ * This request object is sent when creating a `Leaderboard`.
+ */
 export interface CreateLeaderboardRequest {
+  /**
+   * The display name of the `Leaderboard` to create.
+   * @example Foo Bar
+   */
   name?: string | null
+  /**
+   * The URL-scoped unique identifier of the `Leaderboard`.<br />
+   * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
+   * @example foo-bar
+   */
   slug?: string | null
 }
 
 /**
- * Request object sent when setting a User as mod for a Leaderboard.
+ * This request object is sent when promoting a `User` to *Moderator* for a `Leaderboard`.
  */
 export interface CreateModshipRequest {
   /**
-   * The Leaderboard ID.
+   * The ID of the `Leaderboard` the `User` should become a *Moderator* for.
    * @format int64
    */
   leaderboardId: number
-
   /**
-   * The User ID.
+   * The ID of the `User` who should be promoted.
    * @format uuid
    */
   userId: string
-}
-
-export interface CreateParticipationRequest {
-  comment?: string | null
-  vod?: string | null
-
-  /** @format uuid */
-  runnerId: string
-
-  /** @format uuid */
-  runId: string
-  isSubmitter: boolean
-}
-
-export interface CreateRunRequest {
-  /** @format date-time */
-  played: string
-
-  /** @format date-time */
-  submitted: string
-
-  /**
-   * 0: Created
-   * 1: Submitted
-   * 2: Pending
-   * 3: Approved
-   * 4: Rejected
-   */
-  status: RunStatus
-}
-
-export interface CreateSiteBanRequest {
-  /**
-   * The ID of the user, who should be banned.
-   * @format uuid
-   */
-  userId: string
-
-  /** The reason why the user is banned. */
-  reason: string
 }
 
 /**
- * A decision by a mod on a run submission.
+ * This request object is sent when creating a `Participation` for a `User` on a `Run`.
+ */
+export interface CreateParticipationRequest {
+  /** An optional comment about the `Participation`. */
+  comment?: string | null
+  /** An optional link to video proof of the `Run`. */
+  vod?: string | null
+  /**
+   * The ID of the `User` who is participating.
+   * @format uuid
+   */
+  runnerId: string
+  /**
+   * The ID of the `Run` the `Participation` is created on.
+   * @format uuid
+   */
+  runId: string
+  /** Indicates whether the `Participation` is for the `User` who is creating it. */
+  isSubmitter: boolean
+}
+
+/**
+ * This request object is sent when creating a `Run`.
+ */
+export interface CreateRunRequest {
+  playedOn: LocalDate
+  submittedAt: Instant
+  /**
+   * The status of the `Run`.<br />
+   *     - 0: Created<br />
+   *     - 1: Submitted<br />
+   *     - 2: Pending<br />
+   *     - 3: Approved<br />
+   *     - 4: Rejected
+   */
+  status: RunStatus
+  /**
+   * The ID of the `Category` for the `Run`.
+   * @format int64
+   */
+  categoryId: number
+}
+
+/**
+ * This request object is sent when banning a `User` from the site.
+ */
+export interface CreateSiteBanRequest {
+  /**
+   * The ID of the `User` which is banned.
+   * @format uuid
+   */
+  userId: string
+  /**
+   * The reason as to the `User`'s ban.
+   * @example Abusive or hateful conduct.
+   */
+  reason: string
+}
+
+export interface Era {
+  name?: string | null
+}
+
+export type Instant = object
+
+/**
+ * @format int32
+ */
+export type IsoDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+
+/**
+ * Represents a decision made by a *Moderator* (`User`) about a `Run`.
  */
 export interface Judgement {
   /**
+   * The unique identifier of the `Judgement`.<br />
    * Generated on creation.
    * @format int64
    */
   id?: number
-
+  createdAt: Instant
   /**
-   * Defines this judgement, which in turn defines the status of its related run. <br />
-   * If:
-   *   <ul><li>true, run is approved;</li><li>false, run is rejected;</li><li>null, run is commented on.</li></ul>
-   * For the latter two, Note MUST be non-empty.
-   */
-  approved?: boolean | null
-
-  /**
-   * When the judgement was made.
-   * @format date-time
-   */
-  createdAt: string
-
-  /**
-   * Comments on the judgement.
-   * MUST be non-empty for rejections or comments (Approved ∈ {false, null}).
-   */
-  note: string
-
-  /**
-   * ID of the mod that made this judgement.
-   * @format uuid
-   */
-  modId: string
-  mod: User
-
-  /**
-   * ID of the related run.
+   * The ID of the `Run` which is being judged.
    * @format uuid
    */
   runId: string
+  /** Represents an entry on a `Category`. */
   run: Run
+  /**
+   * The ID of the *Moderator* (`User`) who is making the `Judgement`.
+   * @format uuid
+   */
+  judgeId: string
+  /** Represents a user account registered on the website. */
+  judge: User
+  /** The `Judgement`'s decision. May be null, true, or false. */
+  approved?: boolean | null
+  /**
+   * A comment elaborating on the `Judgement`'s decision. Must have a value when the
+   * affected `Run` is not approved (`Approved` is null or false).
+   * @example The video proof is not of sufficient quality.
+   */
+  note: string
 }
 
 /**
- * A decision by a mod on a run submission. See Models/Entities/Judgement.cs.
- */
+* Represents a decision made by a *Moderator* (`User`) about a `Run`.<br />
+See: LeaderboardBackend.Models.Entities.Judgement.
+*/
 export interface JudgementViewModel {
   /**
-   * The newly-made judgement's ID.
+   * The unique identifier of the `Judgement`.
    * @format int64
    */
   id?: number
-
-  /** The judgement result. Can be true, false, or null. In the latter two, <code>Note</code> will be non-empty. */
-  approved?: boolean | null
-
   /**
-   * When the judgement was made. Follows <a href="https://www.ietf.org/rfc/rfc3339.txt">RFC 3339</a>.
+   * The `Judgement`'s decision. May be null, true, or false.<br />
+   * `Note` will be non-empty when the decision is null or false.
+   */
+  approved?: boolean | null
+  /**
+   * The time the `Judgement` was made.
    * @example 2022-01-01T12:34:56Z / 2022-01-01T12:34:56+01:00
    */
   createdAt?: string | null
-
   /**
-   * Judgement comments. Acts as mod feedback for the runner. Will be non-empty for
-   * non-approval judgements (Approved is false or null).
+   * A comment elaborating on the `Judgement`'s decision. Will have a value when the
+   * affected `Run` is not approved (`Approved` is null or false).
    */
   note?: string | null
-
   /**
-   * ID of mod who made this judgement.
+   * The ID of the *Moderator* (`User`) who made the `Judgement`.
    * @format uuid
    */
   modId?: string
-
   /**
-   * ID of run this judgement's for.
+   * The ID of the `Run` which was judged.
    * @format uuid
    */
   runId?: string
 }
 
+/**
+ * Represents a collection of `Category` entities.
+ */
 export interface Leaderboard {
   /**
+   * The unique identifier of the `Leaderboard`.<br />
    * Generated on creation.
    * @format int64
    */
   id?: number
-
   /**
-   * The Leaderboard's aka game's name. Pretty straightforward.
-   * @example Mario Goes to Jail II
+   * The display name of the `Leaderboard` to create.
+   * @example Foo Bar
    */
   name: string
-
   /**
-   * The bit in the URL after the domain that can be used to identify a Leaderboard.
-   * Meant to be human-readable. It must be:
-   * <ul><li>between 2-80 characters, inclusive</li><li>a string of characters separated by hyphens, if desired</li></ul>
-   * @example mario-goes-to-jail-ii
+   * The URL-scoped unique identifier of the `Leaderboard`.<br />
+   * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
+   * @example foo-bar
    */
   slug: string
-
   /**
-   * The general rules for the Leaderboard.<br />
-   * Category-specific rules are tied to the Category.
-   * @example Timer starts on selecting New Game and ends when the first tear drops.
+   * The general rules for the Leaderboard.
+   * @example Timer starts on selecting New Game and ends when the final boss is beaten.
    */
   rules?: string | null
 }
 
+export interface LocalDate {
+  calendar?: CalendarSystem
+  /** @format int32 */
+  year?: number
+  /** @format int32 */
+  month?: number
+  /** @format int32 */
+  day?: number
+  dayOfWeek?: IsoDayOfWeek
+  /** @format int32 */
+  yearOfEra?: number
+  era?: Era
+  /** @format int32 */
+  dayOfYear?: number
+}
+
 /**
- * Request object sent when logging a User in.
+ * This request object is sent when a `User` is attempting to log in.
  */
 export interface LoginRequest {
   /**
-   * User's email.
+   * The `User`'s email address.
    * @format email
-   * @example ayylmao.gaming@alg.gg
+   * @example john.doe@example.com
    */
   email: string
-
   /**
-   * User's password. It:
-   * <ul><li>must be 8-80 characters long, inclusive;</li><li>must have at least:</li><ul><li>an uppercase letter;</li><li>a lowercase letter; and</li><li>a number.</li></ul><li>supports Unicode.</li></ul>
+   * The `User`'s password. It:
+   * <ul><li>supports Unicode;</li><li>must be [8, 80] in length;</li><li>must have at least:</li><ul><li>one uppercase letter;</li><li>one lowercase letter; and</li><li>one number.</li></ul></ul>
    * @example P4ssword
    */
   password: string
 }
 
 /**
- * Response object received on a successful login.
+ * This response object is received upon a successful log-in request.
  */
 export interface LoginResponse {
-  /** A JWT to authenticate and authorize future queries with. */
+  /** A JSON Web Token to authenticate and authorize queries with. */
   token: string
 }
 
+/**
+ * Represents the *Moderator* status of a `User`.
+ */
 export interface Modship {
   /**
+   * The unique identifier of the `Modship`.<br />
    * Generated on creation.
    * @format int64
    */
   id?: number
-
   /**
-   * The mod's ID.
+   * The ID of the *Moderator* (`User`).
    * @format uuid
    */
   userId: string
+  /** Represents a user account registered on the website. */
   user?: User
-
   /**
-   * ID of the Leaderboard the User is a mod for.
+   * The ID of the `Leaderboard` the `User` is a *Moderator* for.
    * @format int64
    */
   leaderboardId: number
+  /** Represents a collection of `Category` entities. */
   leaderboard?: Leaderboard
 }
 
+/**
+ * Represents the participation of a `User` on a `Run`.
+ */
 export interface Participation {
-  /** @format int64 */
+  /**
+   * The unique identifier of the `Participation`.<br />
+   * Generated on creation.
+   * @format int64
+   */
   id?: number
-  comment?: string | null
-  vod?: string | null
-
-  /** @format uuid */
+  /**
+   * The ID of the `User` who is participating.
+   * @format uuid
+   */
   runnerId: string
+  /** Represents a user account registered on the website. */
   runner: User
-
-  /** @format uuid */
+  /**
+   * The ID of the `Run` the `Participation` is created on.
+   * @format uuid
+   */
   runId: string
+  /** Represents an entry on a `Category`. */
   run: Run
+  /** An optional comment about the `Participation`. */
+  comment?: string | null
+  /** An optional link to video proof of the `Run`. */
+  vod?: string | null
 }
 
 export interface ProblemDetails {
   type?: string | null
   title?: string | null
-
   /** @format int32 */
   status?: number | null
   detail?: string | null
@@ -423,128 +491,145 @@ export interface ProblemDetails {
 }
 
 /**
- * Request object sent when registering a User.
+ * This request object is sent when a `User` is attempting to register.
  */
 export interface RegisterRequest {
   /**
-   * The username to register with. It must be:
-   *   <ul><li>2-25 characters long, inclusive;</li><li>made up of letters sandwiching zero or one of:</li><ul><li>hyphen;</li><li>underscore; or</li><li>apostrophe</li></ul></ul>
-   * Usernames are also saved with casing, but matched without. This means you won't
-   * be able to register as "Cool" if someone already called "cool" exists.
+   * The username of the `User`. It:
+   * <ul><li>must be [2, 25] in length;</li><li>must be made up of letters sandwiching zero or one of:</li><ul><li>hyphen;</li><li>underscore; or</li><li>apostrophe</li></ul></ul>
+   * Usernames are saved case-sensitively, but matcehd against case-insensitively.
+   * A `User` may not register with the name 'Cool' when another `User` with the name 'cool'
+   * exists.
    * @pattern (?:[a-zA-Z0-9][-_']?){1,12}[a-zA-Z0-9]
-   * @example Ayy-l'maoGaming
+   * @example J'on-Doe
    */
   username: string
-
   /**
-   * User's email.
+   * The `User`'s email address.
    * @format email
-   * @example ayylmao.gaming@alg.gg
+   * @example john.doe@example.com
    */
   email: string
-
   /**
-   * User's password. It:
-   * <ul><li>must be 8-80 characters long, inclusive;</li><li>must have at least:</li><ul><li>an uppercase letter;</li><li>a lowercase letter; and</li><li>a number.</li></ul><li>supports Unicode.</li></ul>
+   * The `User`'s password. It:
+   * <ul><li>supports Unicode;</li><li>must be [8, 80] in length;</li><li>must have at least:</li><ul><li>one uppercase letter;</li><li>one lowercase letter; and</li><li>one number.</li></ul></ul>
    * @example P4ssword
    */
   password: string
-
-  /**
-   * Password confirmation. It must match <code>password</code>.
-   * @example P4ssword
-   */
+  /** The password confirmation. This value must match `Password`. */
   passwordConfirm: string
 }
 
 /**
- * Request object sent when removing a User as mod for a Leaderboard.
+ * This request object is sent when demoting a `User` as a *Moderator* from a `Leaderboard`.
  */
 export interface RemoveModshipRequest {
   /**
-   * The Leaderboard ID.
+   * The ID of the `Leaderboard` the `User` should be demoted from.
    * @format int64
    */
   leaderboardId: number
-
   /**
-   * The User ID.
+   * The ID of the `User` who should be demoted.
    * @format uuid
    */
   userId: string
 }
 
+/**
+ * Represents an entry on a `Category`.
+ */
 export interface Run {
-  /** @format uuid */
-  id?: string
-
-  /** @format date-time */
-  played: string
-
-  /** @format date-time */
-  submitted: string
-
   /**
-   * 0: Created
-   * 1: Submitted
-   * 2: Pending
-   * 3: Approved
-   * 4: Rejected
+   * The unique identifier of the `Run`.<br />
+   * Generated on creation.
+   * @format uuid
+   */
+  id?: string
+  playedOn: LocalDate
+  submittedAt: Instant
+  /**
+   * The status of the `Run`.<br />
+   *     - 0: Created<br />
+   *     - 1: Submitted<br />
+   *     - 2: Pending<br />
+   *     - 3: Approved<br />
+   *     - 4: Rejected
    */
   status: RunStatus
+  /** A collection of `Judgement`s made about the `Run`. */
   judgements?: Judgement[] | null
+  /** A collection of `Participation`s on the `Run`. */
   participations: Participation[]
+  /**
+   * The ID of the `Category` for `Run`.
+   * @format int64
+   */
+  categoryId: number
+  /** Represents a `Category` tied to a `Leaderboard`. */
+  category?: Category
 }
 
 /**
-* 0: Created
-1: Submitted
-2: Pending
-3: Approved
-4: Rejected
+* The status of the `Run`.<br />
+    - 0: Created<br />
+    - 1: Submitted<br />
+    - 2: Pending<br />
+    - 3: Approved<br />
+    - 4: Rejected
 * @format int32
 */
 export type RunStatus = 0 | 1 | 2 | 3 | 4
 
+/**
+ * This request object is sent when updating a `Participation`.
+ */
 export interface UpdateParticipationRequest {
+  /** A comment about the `Participation`. */
   comment?: string | null
+  /** A link to video proof of the `Run`. */
   vod: string
 }
 
+/**
+ * Represents a user account registered on the website.
+ */
 export interface User {
   /**
-   * A GUID that identifies the User. Generated on creation.
+   * The unique identifier of the `User`.<br />
+   * Generated on creation.
    * @format uuid
-   * @example 4b3835ca-dee1-4019-82b4-d2d26a7cce74
    */
   id?: string
-
   /**
-   * The User's name. Must be:
-   * <ul><li>between 2 - 25 characters inclusive; and</li><li>an alphanumeric sequence, each separated by zero or one of:</li><ul><li>an underscore;</li><li>a hyphen; or</li><li>an apostrophe</li></ul></ul>
-   * Saving a name is case-sensitive, but matching against existing Users won't be.
-   * @example Ayylmao Gaming
+   * The username of the `User`. It:
+   * <ul><li>must be [2, 25] in length;</li><li>must be made up of alphanumeric characters around zero or one of:</li><ul><li>hyphen;</li><li>underscore; or</li><li>apostrophe</li></ul></ul>
+   * Usernames are saved case-sensitively, but matcehd against case-insensitively.
+   * A `User` may not register with the name 'Cool' when another `User` with the name 'cool'
+   * exists.
+   * @example J'on-Doe
    */
   username: string
-
   /**
-   * The User's email. Must be, well, an email.
-   * @example ayylmao.gaming@alg.gg
+   * The `User`'s email address.
+   * @example john.doe@example.com
    */
   email: string
-
-  /** User's about text. I.e. a personal description. */
+  /** The `User`'s personal description, displayed on their profile. */
   about?: string | null
-
-  /** User's admin status. */
+  /** The `User`'s administrator status. */
   admin: boolean
+  /** The `Ban`s the `User` has issued. */
   bansGiven?: Ban[] | null
+  /** The `Ban`s the `User` has received. */
   bansReceived?: Ban[] | null
+  /** The `Modship`s associated with the `User`. */
   modships?: Modship[] | null
+  /** The `Participation`s associated with the `User`. */
   participations?: Participation[] | null
 }
 
 export interface LeaderboardsListParams {
-  /** The IDs. */
+  /** The IDs of the `Leaderboard`s which should be retrieved. */
   ids?: number[]
 }

@@ -1,9 +1,9 @@
 import { ref } from 'vue'
 import { useCurrentUser } from 'composables/useCurrentUser'
 import { useSessionToken } from 'composables/useSessionToken'
-import type { LoginRequest, ProblemDetails } from 'lib/api/data-contracts'
 import { Users } from 'lib/api/Users'
 import { isProblemDetails } from 'lib/helpers'
+import type { LoginRequest, ProblemDetails } from 'lib/api/data-contracts'
 
 interface LoginUserResponse {
   loading: boolean

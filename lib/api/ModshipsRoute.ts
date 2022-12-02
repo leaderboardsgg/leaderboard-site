@@ -20,14 +20,22 @@ export namespace Modships {
    * No description
    * @tags Modships
    * @name ModshipsDetail
-   * @summary Gets a Modship.
+   * @summary Gets a Modship by its ID.
    * @request GET:/api/Modships/{id}
-   * @response `200` `Modship` The Modship.
+   * @response `200` `Modship` The `Modship` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` If no Modship can be found.
+   * @response `401` `ProblemDetails` Unauthorized
+   * @response `403` `ProblemDetails` Forbidden
+   * @response `404` `ProblemDetails` No `User` with the requested ID could be found.
    */
   export namespace ModshipsDetail {
-    export type RequestParams = { id: string }
+    export type RequestParams = {
+      /**
+       * The ID of the *Moderator* (`User`) which should be retrieved.
+       * @format uuid
+       */
+      id: string
+    }
     export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
@@ -35,15 +43,18 @@ export namespace Modships {
   }
 
   /**
-   * No description
-   * @tags Modships
-   * @name ModshipsCreate
-   * @summary Makes a User a Mod for a Leaderboard. Admin-only.
-   * @request POST:/api/Modships
-   * @response `201` `void` An object containing the Modship ID.
-   * @response `400` `ProblemDetails` If the request is malformed.
-   * @response `404` `ProblemDetails` If a non-admin calls this.
-   */
+ * No description
+ * @tags Modships
+ * @name ModshipsCreate
+ * @summary Promotes a User to Moderator for a Leaderboard.
+This request is restricted to Administrators.
+ * @request POST:/api/Modships
+ * @response `201` `void` The `User` was promoted successfully. The `Modship` is returned.
+ * @response `400` `ProblemDetails` The request was malformed.
+ * @response `401` `ProblemDetails` Unauthorized
+ * @response `403` `ProblemDetails` Forbidden
+ * @response `404` `ProblemDetails` The requesting `User` is unauthorized to promote other `User`s.
+*/
   export namespace ModshipsCreate {
     export type RequestParams = {}
     export type RequestQuery = {}
@@ -53,15 +64,18 @@ export namespace Modships {
   }
 
   /**
-   * No description
-   * @tags Modships
-   * @name ModshipsDelete
-   * @summary Removes a User as a Mod from a Leaderboard. Admin-only.
-   * @request DELETE:/api/Modships
-   * @response `204` `void` Request was successfull.
-   * @response `400` `ProblemDetails` If the request is malformed.
-   * @response `404` `ProblemDetails` The User, Leaderboard or Modship was not found.
-   */
+ * No description
+ * @tags Modships
+ * @name ModshipsDelete
+ * @summary Demotes a Moderator to User for a Leaderboard.
+This request is restricted to Administrators.
+ * @request DELETE:/api/Modships
+ * @response `204` `void` The `User` was demoted successfully.
+ * @response `400` `ProblemDetails` The request was malformed.
+ * @response `401` `ProblemDetails` Unauthorized
+ * @response `403` `ProblemDetails` Forbidden
+ * @response `404` `ProblemDetails` No `User`, `Leaderboard`, or `Modship` with the requested IDs could be found, or the requesting `User` is unauthorized to demote other `User`s.
+*/
   export namespace ModshipsDelete {
     export type RequestParams = {}
     export type RequestQuery = {}

@@ -25,11 +25,11 @@ export class Leaderboards<
    *
    * @tags Leaderboards
    * @name LeaderboardsDetail
-   * @summary Gets a leaderboard.
+   * @summary Gets a Leaderboard by its ID.
    * @request GET:/api/Leaderboards/{id}
-   * @response `200` `Leaderboard` The Leaderboard.
+   * @response `200` `Leaderboard` The `Leaderboard` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` If no Leaderboard can be found.
+   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID could be found.
    */
   leaderboardsDetail = (id: number, params: RequestParams = {}) =>
     this.request<Leaderboard, ProblemDetails>({
@@ -43,9 +43,9 @@ export class Leaderboards<
    *
    * @tags Leaderboards
    * @name LeaderboardsList
-   * @summary Gets leaderboards. Can be an empty array.
+   * @summary Gets Leaderboards by their IDs.
    * @request GET:/api/Leaderboards
-   * @response `200` `(Leaderboard)[]` An array of Leaderboards. Can be empty.
+   * @response `200` `(Leaderboard)[]` The list of `Leaderboard`s was retrieved successfully. The result can be an empty collection.
    */
   leaderboardsList = (
     query: LeaderboardsListParams,
@@ -59,16 +59,19 @@ export class Leaderboards<
       ...params,
     })
   /**
-   * No description
-   *
-   * @tags Leaderboards
-   * @name LeaderboardsCreate
-   * @summary Creates a new Leaderboard. Admin-only.
-   * @request POST:/api/Leaderboards
-   * @response `201` `Leaderboard` The created Leaderboard.
-   * @response `400` `ProblemDetails` If the request is malformed.
-   * @response `404` `ProblemDetails` If a non-admin calls this.
-   */
+ * No description
+ *
+ * @tags Leaderboards
+ * @name LeaderboardsCreate
+ * @summary Creates a new Leaderboard.
+This request is restricted to Administrators.
+ * @request POST:/api/Leaderboards
+ * @response `201` `Leaderboard` The `Leaderboard` was created and returned successfully.
+ * @response `400` `ProblemDetails` The request was malformed.
+ * @response `401` `ProblemDetails` Unauthorized
+ * @response `403` `ProblemDetails` Forbidden
+ * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create `Leaderboard`s.
+ */
   leaderboardsCreate = (
     data: CreateLeaderboardRequest,
     params: RequestParams = {},

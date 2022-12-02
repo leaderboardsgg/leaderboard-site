@@ -1,11 +1,11 @@
 import { ref } from 'vue'
+import { Users } from 'lib/api/Users'
+import { isProblemDetails } from 'lib/helpers'
 import type {
   ProblemDetails,
   RegisterRequest,
   User,
 } from 'lib/api/data-contracts'
-import { Users } from 'lib/api/Users'
-import { isProblemDetails } from 'lib/helpers'
 
 interface RegisterUserResponse {
   data: User

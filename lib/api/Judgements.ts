@@ -24,11 +24,11 @@ export class Judgements<
    *
    * @tags Judgements
    * @name JudgementsDetail
-   * @summary Gets a Judgement from its ID.
+   * @summary Gets a Judgement by its ID.
    * @request GET:/api/Judgements/{id}
-   * @response `200` `JudgementViewModel` The Judgement with the provided ID.
+   * @response `200` `JudgementViewModel` The `Judgement` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` If no Judgement can be found.
+   * @response `404` `ProblemDetails` No `Judgement` with the requested ID could be found.
    */
   judgementsDetail = (id: number, params: RequestParams = {}) =>
     this.request<JudgementViewModel, ProblemDetails>({
@@ -38,16 +38,19 @@ export class Judgements<
       ...params,
     })
   /**
-   * No description
-   *
-   * @tags Judgements
-   * @name JudgementsCreate
-   * @summary Creates a judgement for a run.
-   * @request POST:/api/Judgements
-   * @response `201` `JudgementViewModel` The created judgement.
-   * @response `400` `ProblemDetails` The request body is malformed.
-   * @response `404` `ProblemDetails` For an invalid judgement.
-   */
+ * No description
+ *
+ * @tags Judgements
+ * @name JudgementsCreate
+ * @summary Creates a new Judgement for a Run.
+This request is restricted to Moderators.
+ * @request POST:/api/Judgements
+ * @response `201` `JudgementViewModel` The `Judgement` was created and returned successfully.
+ * @response `400` `ProblemDetails` The request was malformed.
+ * @response `401` `ProblemDetails` Unauthorized
+ * @response `403` `ProblemDetails` The requesting `User` is unauthorized to create `Judgement`s.
+ * @response `404` `ProblemDetails` No `Run` with the ID from the request could be found.
+ */
   judgementsCreate = (
     data: CreateJudgementRequest,
     params: RequestParams = {},

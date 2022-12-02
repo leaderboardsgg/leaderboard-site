@@ -1,10 +1,17 @@
 /// <reference types="vitest" />
+import { resolve } from 'path'
+import * as dotenv from 'dotenv-safe'
 import { mergeConfig } from 'vite'
 import { defineConfig } from 'vitest/config'
 import ViteConfig from './vite.config'
 import Vue from '@vitejs/plugin-vue'
 
 // TODO: https://github.com/leaderboardsgg/leaderboard-site/issues/503
+
+const { parsed } = dotenv.config({
+  example: resolve(__dirname, '.env.example'),
+  path: resolve(__dirname, '.env.test'),
+})
 
 export default mergeConfig(
   ViteConfig,
@@ -26,8 +33,18 @@ export default mergeConfig(
         },
       }),
     ],
+    resolve: {
+      alias: {
+        '#app': resolve(__dirname, './node_modules/nuxt/dist/app'),
+      },
+    },
     test: {
       environment: 'happy-dom',
+      env: parsed,
+      globals: true,
+      sequence: {
+        shuffle: false, // change back to true later
+      },
       setupFiles: ['vitest.setup.ts'],
     },
   }),

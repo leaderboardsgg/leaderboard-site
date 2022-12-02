@@ -24,11 +24,13 @@ export class Categories<
    *
    * @tags Categories
    * @name CategoriesDetail
-   * @summary Gets a Category from its ID.
+   * @summary Gets a Category by its ID.
    * @request GET:/api/Categories/{id}
-   * @response `200` `Category` The Category with the provided ID.
+   * @response `200` `Category` The `Category` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` If no Category can be found.
+   * @response `401` `ProblemDetails` Unauthorized
+   * @response `403` `ProblemDetails` Forbidden
+   * @response `404` `ProblemDetails` No `Category` with the requested ID could be found.
    */
   categoriesDetail = (id: number, params: RequestParams = {}) =>
     this.request<Category, ProblemDetails>({
@@ -38,16 +40,19 @@ export class Categories<
       ...params,
     })
   /**
-   * No description
-   *
-   * @tags Categories
-   * @name CategoriesCreate
-   * @summary Creates a new Category. Mod-only.
-   * @request POST:/api/Categories
-   * @response `201` `Category` The created Category.
-   * @response `400` `ProblemDetails` If the request is malformed.
-   * @response `404` `ProblemDetails` If a non-mod calls this.
-   */
+ * No description
+ *
+ * @tags Categories
+ * @name CategoriesCreate
+ * @summary Creates a new Category.
+This request is restricted to Moderators.
+ * @request POST:/api/Categories
+ * @response `201` `Category` The `Category` was created and returned successfully.
+ * @response `400` `ProblemDetails` The request was malformed.
+ * @response `401` `ProblemDetails` Unauthorized
+ * @response `403` `ProblemDetails` Forbidden
+ * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create a `Category`.
+ */
   categoriesCreate = (
     data: CreateCategoryRequest,
     params: RequestParams = {},

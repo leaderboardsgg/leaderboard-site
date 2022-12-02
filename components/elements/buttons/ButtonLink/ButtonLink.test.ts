@@ -1,4 +1,3 @@
-import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import ButtonLink from './ButtonLink.vue'
@@ -7,7 +6,7 @@ describe('<ButtonLink />', () => {
   const defaultAttrs = { class: 'custom-link' }
   const defaultProps = { to: 'https://www.test.com/' }
 
-  test('should render without crashing', () => {
+  it('should render without crashing', () => {
     const ButtonLinkWrapper = mount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
@@ -17,7 +16,7 @@ describe('<ButtonLink />', () => {
     expect(ButtonLinkWrapper.isVisible()).toBe(true)
   })
 
-  test('renders with the correct <slot />', () => {
+  it('renders with the correct <slot />', () => {
     const ButtonLinkWrapper = mount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
@@ -26,7 +25,7 @@ describe('<ButtonLink />', () => {
     expect(ButtonLinkWrapper.html()).toContain('Any%')
   })
 
-  test('renders with the passed link', () => {
+  it('renders with the passed link', () => {
     const ButtonLinkWrapper = mount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
@@ -38,7 +37,7 @@ describe('<ButtonLink />', () => {
     expect(link.attributes('to')).toBe('https://www.test.com/')
   })
 
-  test('renders with the custom classnames', () => {
+  it('renders with the custom classnames', () => {
     const ButtonLinkWrapper = mount(ButtonLink, {
       attrs: {
         ...defaultAttrs,

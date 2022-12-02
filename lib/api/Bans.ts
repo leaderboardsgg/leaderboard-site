@@ -25,11 +25,11 @@ export class Bans<
    *
    * @tags Bans
    * @name BansLeaderboardDetail
-   * @summary Get bans by leaderboard ID
+   * @summary Gets all Bans associated with a Leaderboard ID.
    * @request GET:/api/Bans/leaderboard/{leaderboardId}
-   * @response `200` `(Ban)[]` A list of bans. Can be an empty array.
+   * @response `200` `(Ban)[]` The list of `Ban`s was retrieved successfully. The result can be an empty collection.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No bans found for the Leaderboard.
+   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID could be found.
    */
   bansLeaderboardDetail = (leaderboardId: number, params: RequestParams = {}) =>
     this.request<Ban[], ProblemDetails>({
@@ -43,13 +43,13 @@ export class Bans<
    *
    * @tags Bans
    * @name BansLeaderboardDetail2
-   * @summary Get bans by user ID.
+   * @summary Gets all Bans associated with a User ID.
    * @request GET:/api/Bans/leaderboard/{bannedUserId}
    * @originalName bansLeaderboardDetail
    * @duplicate
-   * @response `200` `(Ban)[]` A list of bans. Can be an empty array.
+   * @response `200` `(Ban)[]` The list of `Ban`s was retrieved successfully. The result can be an empty collection.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No bans found for the User.
+   * @response `404` `ProblemDetails` No `User` with the requested ID could be found.
    */
   bansLeaderboardDetail2 = (bannedUserId: string, params: RequestParams = {}) =>
     this.request<Ban[], ProblemDetails>({
@@ -63,11 +63,13 @@ export class Bans<
    *
    * @tags Bans
    * @name BansDetail
-   * @summary Get a Ban from its ID.
+   * @summary Gets a Ban by its ID.
    * @request GET:/api/Bans/{id}
-   * @response `200` `Ban` The found Ban.
+   * @response `200` `Ban` The `Ban` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` If no Ban can be found.
+   * @response `401` `ProblemDetails` Unauthorized
+   * @response `403` `ProblemDetails` Forbidden
+   * @response `404` `ProblemDetails` No `Ban` with the requested ID could be found.
    */
   bansDetail = (id: number, params: RequestParams = {}) =>
     this.request<Ban, ProblemDetails>({
@@ -77,18 +79,39 @@ export class Bans<
       ...params,
     })
   /**
-   * No description
-   *
-   * @tags Bans
-   * @name BansCreate
-   * @summary Creates a side-wide ban. Admin-only.
-   * @request POST:/api/Bans
-   * @response `201` `Ban` The created Ban.
-   * @response `400` `ProblemDetails` If the request is malformed.
-   * @response `401` `ProblemDetails` If a non-admin calls this.
-   * @response `403` `ProblemDetails` If the banned user is also an admin.
-   * @response `404` `ProblemDetails` If the banned user is not found.
-   */
+ * No description
+ *
+ * @tags Bans
+ * @name BansDelete
+ * @summary Lifts a Leaderboard-scoped or site-scoped Ban.
+This request is restricted to Administrators.
+ * @request DELETE:/api/Bans/{id}
+ * @response `204` `void` The `Ban` was removed successfully.
+ * @response `400` `ProblemDetails` Bad Request
+ * @response `401` `ProblemDetails` The requesting `User` is not logged-in.
+ * @response `403` `ProblemDetails` The requesting `User` is unauthorized to lift `Ban`s.
+ * @response `404` `ProblemDetails` No `Ban` with the requested ID could be found.
+ */
+  bansDelete = (id: number, params: RequestParams = {}) =>
+    this.request<void, ProblemDetails>({
+      path: `/api/Bans/${id}`,
+      method: 'DELETE',
+      ...params,
+    })
+  /**
+ * No description
+ *
+ * @tags Bans
+ * @name BansCreate
+ * @summary Issues a site-scoped Ban.
+This request is restricted to Administrators.
+ * @request POST:/api/Bans
+ * @response `201` `Ban` The `Ban` was created and returned successfully.
+ * @response `400` `ProblemDetails` The request was malformed.
+ * @response `401` `ProblemDetails` The requesting `User` is unauthorized to issue site-scoped `Ban`s.
+ * @response `403` `ProblemDetails` The `User` to be banned was also an Administrator. This operation is forbidden.
+ * @response `404` `ProblemDetails` The `User` to be banned was not found.
+ */
   bansCreate = (data: CreateSiteBanRequest, params: RequestParams = {}) =>
     this.request<Ban, ProblemDetails>({
       path: `/api/Bans`,
@@ -99,18 +122,19 @@ export class Bans<
       ...params,
     })
   /**
-   * No description
-   *
-   * @tags Bans
-   * @name BansLeaderboardCreate
-   * @summary Creates a leaderboard-wide ban. Mod-only.
-   * @request POST:/api/Bans/leaderboard
-   * @response `201` `Ban` The created Ban.
-   * @response `400` `ProblemDetails` If the request is malformed.
-   * @response `401` `ProblemDetails` If a non-admin or mod calls this.
-   * @response `403` `ProblemDetails` If the banned user is an admin or a mod.
-   * @response `404` `ProblemDetails` If the banned user is not found.
-   */
+ * No description
+ *
+ * @tags Bans
+ * @name BansLeaderboardCreate
+ * @summary Issues a Leaderboard-scoped Ban.
+This request is restricted to Moderators and Administrators.
+ * @request POST:/api/Bans/leaderboard
+ * @response `201` `Ban` The `Ban` was created and returned successfully.
+ * @response `400` `ProblemDetails` The request was malformed.
+ * @response `401` `ProblemDetails` The requesting `User` is unauthorized to issue `Leaderboard`-scoped `Ban`s.
+ * @response `403` `ProblemDetails` The `User` to be banned was also an Administrator. This operation is forbidden.
+ * @response `404` `ProblemDetails` The `User` to be banned was not found.
+ */
   bansLeaderboardCreate = (
     data: CreateLeaderboardBanRequest,
     params: RequestParams = {},
@@ -121,6 +145,30 @@ export class Bans<
       body: data,
       type: ContentType.Json,
       format: 'json',
+      ...params,
+    })
+  /**
+ * No description
+ *
+ * @tags Bans
+ * @name BansLeaderboardsDelete
+ * @summary Lift a Leaderboard-scoped Ban.
+This request is restricted to Moderators and Administrators.
+ * @request DELETE:/api/Bans/{id}/leaderboards/{leaderboardId}
+ * @response `204` `void` The `Ban` was removed successfully.
+ * @response `400` `ProblemDetails` Bad Request
+ * @response `401` `ProblemDetails` The requesting `User` is not logged-in.
+ * @response `403` `ProblemDetails` The requesting `User` is unauthorized to lift `Ban`s.
+ * @response `404` `ProblemDetails` No `Ban` with the requested ID could be found.
+ */
+  bansLeaderboardsDelete = (
+    id: number,
+    leaderboardId: number,
+    params: RequestParams = {},
+  ) =>
+    this.request<void, ProblemDetails>({
+      path: `/api/Bans/${id}/leaderboards/${leaderboardId}`,
+      method: 'DELETE',
       ...params,
     })
 }

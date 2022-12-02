@@ -82,18 +82,18 @@ export class HttpClient<SecurityDataType = unknown> {
     this.securityData = data
   }
 
-  private encodeQueryParam(key: string, value: any) {
+  protected encodeQueryParam(key: string, value: any) {
     const encodedKey = encodeURIComponent(key)
     return `${encodedKey}=${encodeURIComponent(
       typeof value === 'number' ? value : `${value}`,
     )}`
   }
 
-  private addQueryParam(query: QueryParamsType, key: string) {
+  protected addQueryParam(query: QueryParamsType, key: string) {
     return this.encodeQueryParam(key, query[key])
   }
 
-  private addArrayQueryParam(query: QueryParamsType, key: string) {
+  protected addArrayQueryParam(query: QueryParamsType, key: string) {
     const value = query[key]
     return value.map((v: any) => this.encodeQueryParam(key, v)).join('&')
   }
@@ -138,7 +138,7 @@ export class HttpClient<SecurityDataType = unknown> {
     [ContentType.UrlEncoded]: (input: any) => this.toQueryString(input),
   }
 
-  private mergeRequestParams(
+  protected mergeRequestParams(
     params1: RequestParams,
     params2?: RequestParams,
   ): RequestParams {
@@ -154,7 +154,7 @@ export class HttpClient<SecurityDataType = unknown> {
     }
   }
 
-  private createAbortSignal = (
+  protected createAbortSignal = (
     cancelToken: CancelToken,
   ): AbortSignal | undefined => {
     if (this.abortControllers.has(cancelToken)) {
@@ -207,12 +207,14 @@ export class HttpClient<SecurityDataType = unknown> {
       {
         ...requestParams,
         headers: {
+          ...(requestParams.headers || {}),
           ...(type && type !== ContentType.FormData
             ? { 'Content-Type': type }
             : {}),
-          ...(requestParams.headers || {}),
         },
-        signal: cancelToken ? this.createAbortSignal(cancelToken) : void 0,
+        signal: cancelToken
+          ? this.createAbortSignal(cancelToken)
+          : requestParams.signal,
         body:
           typeof body === 'undefined' || body === null
             ? null

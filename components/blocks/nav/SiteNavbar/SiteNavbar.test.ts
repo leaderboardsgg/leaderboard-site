@@ -1,6 +1,7 @@
-import { describe, expect, test, vi, afterEach } from 'vitest'
 import { mount } from '@vue/test-utils'
-
+import * as apiComposables from 'composables/api'
+import { useCurrentUser } from 'composables/useCurrentUser'
+import { getByTestId } from 'testUtils'
 import SiteNavbar from './SiteNavbar.vue'
 
 afterEach(() => {
@@ -9,89 +10,74 @@ afterEach(() => {
 })
 
 describe('<SiteNavbar />', () => {
-  const SiteNavbarWrapper = mount(SiteNavbar, {
-    global: {
-      mocks: {
-        $t: (msg: any) => msg,
-      },
-    },
-  })
+  it('should render without crashing', () => {
+    const wrapper = mount(SiteNavbar)
 
-  test('should render without crashing', () => {
-    expect(SiteNavbarWrapper.isVisible()).toBe(true)
+    expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('when no user is logged in', () => {
-    test('should render the login/sign up buttons', () => {
-      expect(
-        SiteNavbarWrapper.get(
-          '[data-testid="site-navbar-login-button"]',
-        ).isVisible(),
-      ).toBe(true)
+    it('should render the login/sign up buttons', () => {
+      const wrapper = mount(SiteNavbar)
+
+      expect(getByTestId(wrapper, 'site-navbar-login-button').isVisible()).toBe(
+        true,
+      )
 
       expect(
-        SiteNavbarWrapper.get(
-          '[data-testid="site-navbar-sign-up-button"]',
-        ).isVisible(),
+        getByTestId(wrapper, 'site-navbar-sign-up-button').isVisible(),
       ).toBe(true)
     })
 
     describe('when the login button is clicked', () => {
-      test('should bring up the login card', () => {
-        SiteNavbarWrapper.get(
-          '[data-testid="site-navbar-login-button"]',
-        ).trigger('click')
+      it('should bring up the login card', () => {
+        const wrapper = mount(SiteNavbar)
 
-        expect(
-          SiteNavbarWrapper.get('[data-testid="log-in-card"]').isVisible(),
-        ).toBe(true)
+        getByTestId(wrapper, 'site-navbar-login-button').trigger('click')
+
+        expect(getByTestId(wrapper, 'log-in-card').isVisible()).toBe(true)
       })
     })
 
     describe('when the sign up button is clicked', () => {
-      test('should bring up the signup card', () => {
-        SiteNavbarWrapper.get(
-          '[data-testid="site-navbar-sign-up-button"]',
-        ).trigger('click')
+      it('should bring up the signup card', () => {
+        const wrapper = mount(SiteNavbar)
 
-        expect(
-          SiteNavbarWrapper.get('[data-testid="sign-up-card"]').isVisible(),
-        ).toBe(true)
+        getByTestId(wrapper, 'site-navbar-sign-up-button').trigger('click')
+
+        expect(getByTestId(wrapper, 'sign-up-card').isVisible()).toBe(true)
       })
     })
   })
 
-  // Needs to be changed in the future anyways so 😬😬😬
-  // describe('when a user is logged in', async () => {
-  //   await SiteNavbarWrapper.setre({
-  //     currentUser: {
-  //       admin: true,
-  //       email: 'admin@leaderboards.gg',
-  //       username: 'lbgg_admin',
-  //     },
-  //   })
+  describe('when a user is logged in', () => {
+    beforeEach(() => {
+      const currentUser = useCurrentUser()
+      currentUser.value = {
+        admin: true,
+        email: 'admin@leaderboards.gg',
+        username: 'lbgg_admin',
+      }
+    })
 
-  //   test('should render the logout button', () => {
-  //     expect(
-  //       /* eslint-disable */
-  //       // prettier-ignore
-  //       SiteNavbarWrapper.get(
-  //         '[data-testid="site-navbar-logout-button"]'
-  //         /* eslint-enable */
-  //       ).isVisible(),
-  //     ).toBe(true)
-  //   })
+    it('should render the logout button', () => {
+      const wrapper = mount(SiteNavbar)
 
-  // describe('when the logout button is clicked', () => {
-  //   const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
+      expect(
+        getByTestId(wrapper, 'site-navbar-logout-button').isVisible(),
+      ).toBe(true)
+    })
 
-  //   test('should log out the user', async () => {
-  //     const { getByTestId } = stubbedRender(SiteNavbar)
+    describe('when the logout button is clicked', () => {
+      const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
 
-  //     await fireEvent.click(getByTestId('site-navbar-logout-button'))
+      it('should log out the user', async () => {
+        const wrapper = mount(SiteNavbar)
 
-  //     expect(useLogoutUserSpy).toHaveBeenCalled()
-  //   })
-  // })
-  // })
+        await getByTestId(wrapper, 'site-navbar-logout-button').trigger('click')
+
+        expect(useLogoutUserSpy).toHaveBeenCalled()
+      })
+    })
+  })
 })

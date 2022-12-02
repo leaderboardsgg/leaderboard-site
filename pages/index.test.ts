@@ -1,4 +1,3 @@
-import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import index from 'pages/index.vue'
@@ -12,11 +11,11 @@ describe('/index', () => {
     },
   })
 
-  test('should render without crashing', () => {
+  it('should render without crashing', () => {
     expect(IndexWrapper.isVisible()).toBe(true)
   })
 
-  test('should render the placeholder text', () => {
+  it('should render the placeholder text', () => {
     expect(
       IndexWrapper.html().includes(
         'This is just a primary content placeholder.',
