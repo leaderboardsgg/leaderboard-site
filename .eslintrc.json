@@ -49,7 +49,8 @@
     "arrow-parens": ["error", "always"],
     "comma-dangle": "off",
     "eol-last": ["error", "always"],
-    "import/order": ["error",
+    "import/order": [
+      "error",
       {
         "groups": [
           "builtin",
