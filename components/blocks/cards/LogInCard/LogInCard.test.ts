@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { mount } from '@vue/test-utils'
 import LogInCard from './LogInCard.vue'
 import { FullRequestParams } from 'lib/api/http-client'
@@ -108,7 +107,6 @@ describe('<LogInCard />', () => {
       await getByTestId(wrapper, 'login-button').trigger('click')
 
       const apiCalls = fetchMock.mock.calls as fetchMockCall[]
-      // console.log(apiCalls)
       expect(apiCalls?.[0]?.length).toBe(2)
 
       const loginApiCall = apiCalls[0]

@@ -35,11 +35,7 @@ export default mergeConfig(
     ],
     resolve: {
       alias: {
-        // '#app': resolve(__dirname, './node_modules/.pnpm/nuxt@3.0.0-rc.12_wyqvi574yv7oiwfeinomdzmc3m/node_modules/nuxt/dist/app'),
         '#app': resolve(__dirname, './node_modules/nuxt/dist/app'),
-        // '#app': resolve(__dirname, './.nuxt/app'),
-        // '#build': resolve(__dirname, './.nuxt'),
-        // ...baseTsConfig.compilerOptions.paths,
       },
     },
     test: {

@@ -9,13 +9,6 @@ const fetchMock = createFetchMock(vi)
 // sets globalThis.fetch and globalThis.fetchMock to our mocked version
 fetchMock.enableMocks()
 
-// enableAutoUnmount(afterEach)
-
-// export * from './node_modules/nuxt/dist/app/composables'
-// export { useState } from './node_modules/nuxt/dist/app/composables/state'
-// export { useState } from '.nuxt/imports'
-// export { useState } from 'nuxt/app'
-
 // Stolen from here:
 // https://zenn.dev/ninebolt6/articles/cadc924cb2416d
 const payload = reactive<{ state: Record<string, any> }>({
