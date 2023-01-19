@@ -46,6 +46,7 @@ export default defineNuxtConfig({
       title: 'leaderboards.gg',
     },
   },
+  devServerHandlers: [],
 
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#components
   // https://v3.nuxtjs.org/guide/directory-structure/components/
@@ -54,32 +55,41 @@ export default defineNuxtConfig({
 
   // TODO: someone who's brain lets them, figure out more proper setup with lazy loading
   // i tried and couldn't figure it out unfortunately
-  i18n: {
-    vueI18n: {
-      fallbackLocale: 'en',
-      legacy: false,
-      locale: 'de',
-      messages: {
-        // typing this properly is a hassle right now but come TS 4.9 it should be trivial.
-        // These anys are safe and can be confirmed by pasting the exact object into the place its used
-        de: Deutsch as any,
-        en: English as any,
-        es: Español as any,
-        fr: Français as any,
-        ja: 日本語 as any,
-      },
-    },
-  },
 
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
     // https://tailwindcss.com
-    '@nuxtjs/tailwindcss',
+    [
+      '@nuxtjs/tailwindcss',
+      // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
+      // css: ['assets/css/tailwind.css'],
+      {
+        configPath: 'tailwind.config.ts',
+        cssPath: './assets/css/tailwind.css',
+      },
+    ],
     'unplugin-icons/nuxt',
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/i18n',
+    [
+      '@nuxtjs/i18n',
+      {
+        vueI18n: {
+          fallbackLocale: 'en',
+          legacy: false,
+          locale: 'de',
+          messages: {
+            // typing this properly is a hassle right now but come TS 4.9 it should be trivial.
+            // These anys are safe and can be confirmed by pasting the exact object into the place its used
+            de: Deutsch as any,
+            en: English as any,
+            es: Español as any,
+            fr: Français as any,
+            ja: 日本語 as any,
+          },
+        },
+      },
+    ],
   ],
 
   runtimeConfig: {
@@ -88,12 +98,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
-  // css: ['assets/css/tailwind.css'],
-  tailwindcss: {
-    configPath: 'tailwind.config.ts',
-    cssPath: './assets/css/tailwind.css',
-  },
   typescript: {
     // Disabled as using Volar take over mode is the reccomended way to do this
     shim: false,

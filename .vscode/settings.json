@@ -30,5 +30,6 @@
   // Volar settings
   "volar.takeOverMode.enabled": true,
   "volar.icon.preview": true,
-  "volar.autoCompleteRefs": true
+  "volar.autoCompleteRefs": true,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
