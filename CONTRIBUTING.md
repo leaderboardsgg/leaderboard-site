@@ -50,7 +50,7 @@ Filing issues is as simple as going to [the issue tracker](https://github.com/le
 
 ### Git
 
-- Try to have an informative branch name for others eg. `SRW-{issue number}-{ghusername}`.
+- Try to have an informative branch name for others eg. `LBGG-{issue number}-{ghusername}`.
   - Do not make pull requests from `main`.
   - Do not include slashes in your branch name.
     - Nested paths can act strange when other people start looking at your branch.
