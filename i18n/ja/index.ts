@@ -1,5 +1,5 @@
 import type { LanguageIndexFile } from '../language'
 
-export const 日本語: LanguageIndexFile = {
+export const 日本語 = {
   welcome: 'ようこそ!',
-}
+} satisfies LanguageIndexFile

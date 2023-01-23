@@ -37,6 +37,7 @@ Filing issues is as simple as going to [the issue tracker](https://github.com/le
 - Be inclusive, this is a project for everyone.
 - Be descriptive, it can be hard to understand abbreviations or short-hand.
 - Make sure that your components are _responsive_.
+- Two major philosphies we adhere to are KISS (keep it super simple) and DRY (don't repeat yourself)
 
 ### Nuxt/Vue
 

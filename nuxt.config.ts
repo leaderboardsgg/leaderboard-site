@@ -81,11 +81,11 @@ export default defineNuxtConfig({
           messages: {
             // typing this properly is a hassle right now but come TS 4.9 it should be trivial.
             // These anys are safe and can be confirmed by pasting the exact object into the place its used
-            de: Deutsch as any,
-            en: English as any,
-            es: Español as any,
-            fr: Français as any,
-            ja: 日本語 as any,
+            de: Deutsch,
+            en: English,
+            es: Español,
+            fr: Français,
+            ja: 日本語,
           },
         },
       },
