@@ -57,6 +57,45 @@ export default defineNuxtConfig({
   // i tried and couldn't figure it out unfortunately
 
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
+  i18n: {
+    defaultLocale: 'de',
+    locales: [
+      {
+        code: 'de',
+        name: 'Deutsch',
+      },
+      {
+        code: 'en',
+        name: 'English',
+      },
+      {
+        code: 'es',
+        name: 'Español',
+      },
+      {
+        code: 'fr',
+        name: 'Français',
+      },
+      {
+        code: 'ja',
+        name: '日本語',
+      },
+    ],
+    vueI18n: {
+      fallbackLocale: 'en',
+      legacy: false,
+      locale: 'de',
+      // TODO: can this be cleaner via some sort of iteration? (not sure)
+      messages: {
+        de: Deutsch,
+        en: English,
+        es: Español,
+        fr: Français,
+        ja: 日本語,
+      },
+    },
+  },
+
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
@@ -71,25 +110,7 @@ export default defineNuxtConfig({
       },
     ],
     'unplugin-icons/nuxt',
-    [
-      '@nuxtjs/i18n',
-      {
-        vueI18n: {
-          fallbackLocale: 'en',
-          legacy: false,
-          locale: 'de',
-          messages: {
-            // typing this properly is a hassle right now but come TS 4.9 it should be trivial.
-            // These anys are safe and can be confirmed by pasting the exact object into the place its used
-            de: Deutsch,
-            en: English,
-            es: Español,
-            fr: Français,
-            ja: 日本語,
-          },
-        },
-      },
-    ],
+    '@nuxtjs/i18n',
   ],
 
   runtimeConfig: {

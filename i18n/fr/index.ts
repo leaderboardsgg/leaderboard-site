@@ -1,5 +1,5 @@
 import type { LanguageIndexFile } from '../language'
 
-export const Français: LanguageIndexFile = {
+export const Français = {
   welcome: 'Bonjour!',
 } satisfies LanguageIndexFile
