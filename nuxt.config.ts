@@ -90,12 +90,12 @@ export default defineNuxtConfig({
 
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
   i18n: {
-    defaultLocale: 'de',
+    defaultLocale: 'en',
     locales: supportedLocales,
     vueI18n: {
       fallbackLocale: 'en',
       legacy: false,
-      locale: 'de',
+      locale: 'en',
       // TODO: can this be cleaner via some sort of iteration? (not sure)
       messages: localeMessages,
     },
