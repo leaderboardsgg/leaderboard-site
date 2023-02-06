@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { type ComputedRef } from 'vue'
 import { type LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
-import { useI18n } from 'vue-i18n'
 
 const NuxtI18n = useI18n()
 const locale = NuxtI18n.locale
@@ -20,8 +19,6 @@ const locales = NuxtI18n.locales as ComputedRef<LocaleObject[]>
       {{ currentLocale.name }}
     </option>
   </select>
-
-  {{ NuxtI18n }}
 </template>
 
 <style lang="postcss" scoped>

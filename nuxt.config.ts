@@ -1,5 +1,6 @@
 import { resolve } from 'path'
 import { config } from 'dotenv-safe'
+import { type LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
 
 // Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
@@ -9,6 +10,37 @@ import { English } from './i18n/en/index'
 import { Español } from './i18n/es/index'
 import { Français } from './i18n/fr/index'
 import { 日本語 } from './i18n/ja/index'
+
+export const localeMessages = {
+  de: Deutsch,
+  en: English,
+  es: Español,
+  fr: Français,
+  ja: 日本語,
+}
+
+export const supportedLocales = [
+  {
+    code: 'de',
+    name: 'Deutsch',
+  },
+  {
+    code: 'en',
+    name: 'English',
+  },
+  {
+    code: 'es',
+    name: 'Español',
+  },
+  {
+    code: 'fr',
+    name: 'Français',
+  },
+  {
+    code: 'ja',
+    name: '日本語',
+  },
+] satisfies LocaleObject[]
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
@@ -59,40 +91,13 @@ export default defineNuxtConfig({
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
   i18n: {
     defaultLocale: 'de',
-    locales: [
-      {
-        code: 'de',
-        name: 'Deutsch',
-      },
-      {
-        code: 'en',
-        name: 'English',
-      },
-      {
-        code: 'es',
-        name: 'Español',
-      },
-      {
-        code: 'fr',
-        name: 'Français',
-      },
-      {
-        code: 'ja',
-        name: '日本語',
-      },
-    ],
+    locales: supportedLocales,
     vueI18n: {
       fallbackLocale: 'en',
       legacy: false,
       locale: 'de',
       // TODO: can this be cleaner via some sort of iteration? (not sure)
-      messages: {
-        de: Deutsch,
-        en: English,
-        es: Español,
-        fr: Français,
-        ja: 日本語,
-      },
+      messages: localeMessages,
     },
   },
 
