@@ -44,13 +44,6 @@ export const mockI18n = vi.fn((options?: NuxtI18nOptions) => ({
 }))
 vi.stubGlobal('useI18n', mockI18n)
 
-const i18n = createI18n({
-  locale: 'en',
-  legacy: false,
-  messages: localeMessages,
-})
-
-config.global.plugins = [i18n]
 config.global.mocks = {
   $t: (key: string) => key,
 }
