@@ -3,7 +3,7 @@ import createFetchMock from 'vitest-fetch-mock'
 import { vi } from 'vitest'
 import type { Ref } from 'vue'
 import { reactive, isRef, toRef } from 'vue'
-import { localeMessages, supportedLocales } from './nuxt.config'
+import { localeMessages, supportedLocales } from './configUtils'
 import { NuxtI18nOptions } from '@nuxtjs/i18n'
 
 const fetchMock = createFetchMock(vi)
