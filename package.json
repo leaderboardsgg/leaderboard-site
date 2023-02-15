@@ -61,6 +61,7 @@
     "unplugin-vue-components": "^0.22.12",
     "vite": "^4.0.4",
     "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-top-level-await": "^1.2.4",
     "vitest": "^0.27.3",
     "vitest-fetch-mock": "^0.2.1",
     "vue": "^3.2.45",
