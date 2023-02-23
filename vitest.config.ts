@@ -5,7 +5,6 @@ import { mergeConfig } from 'vite'
 import { defineConfig } from 'vitest/config'
 import ViteConfig from './vite.config'
 import Vue from '@vitejs/plugin-vue'
-// import AutoImport from 'unplugin-auto-import/vite'
 
 // TODO: https://github.com/leaderboardsgg/leaderboard-site/issues/503
 
@@ -18,13 +17,6 @@ export default mergeConfig(
   ViteConfig,
   defineConfig({
     plugins: [
-      // AutoImport({
-      //   dts: true,
-      //   eslintrc: {
-      //     enabled: true, // <-- this
-      //   },
-      //   imports: ['vue', 'vue-i18n'],
-      // }),
       Vue({
         template: {
           compilerOptions: {
