@@ -3,12 +3,7 @@ import { config } from 'dotenv-safe'
 
 // Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
-
-import { Deutsch } from './i18n/de/index'
-import { English } from './i18n/en/index'
-import { Español } from './i18n/es/index'
-import { Français } from './i18n/fr/index'
-import { 日本語 } from './i18n/ja/index'
+import { supportedLocales, localeMessages } from './configUtils'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
@@ -57,6 +52,18 @@ export default defineNuxtConfig({
   // i tried and couldn't figure it out unfortunately
 
   // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
+  i18n: {
+    defaultLocale: 'en',
+    locales: supportedLocales,
+    vueI18n: {
+      fallbackLocale: 'en',
+      legacy: false,
+      locale: 'en',
+      // TODO: can this be cleaner via some sort of iteration? (not sure)
+      messages: localeMessages,
+    },
+  },
+
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
@@ -71,25 +78,7 @@ export default defineNuxtConfig({
       },
     ],
     'unplugin-icons/nuxt',
-    [
-      '@nuxtjs/i18n',
-      {
-        vueI18n: {
-          fallbackLocale: 'en',
-          legacy: false,
-          locale: 'de',
-          messages: {
-            // typing this properly is a hassle right now but come TS 4.9 it should be trivial.
-            // These anys are safe and can be confirmed by pasting the exact object into the place its used
-            de: Deutsch,
-            en: English,
-            es: Español,
-            fr: Français,
-            ja: 日本語,
-          },
-        },
-      },
-    ],
+    '@nuxtjs/i18n',
   ],
 
   runtimeConfig: {

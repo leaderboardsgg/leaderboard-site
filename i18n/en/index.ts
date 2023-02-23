@@ -1,6 +1,6 @@
 import type { LanguageIndexFile } from '../language'
 
-export const English: LanguageIndexFile = {
+export const English = {
   login: 'Log In',
   signup: 'Sign Up',
   welcome: 'Welcome',

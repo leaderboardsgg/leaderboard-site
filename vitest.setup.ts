@@ -3,6 +3,8 @@ import createFetchMock from 'vitest-fetch-mock'
 import { vi } from 'vitest'
 import type { Ref } from 'vue'
 import { reactive, isRef, toRef } from 'vue'
+import { localeMessages, supportedLocales } from './configUtils'
+import { NuxtI18nOptions } from '@nuxtjs/i18n'
 
 const fetchMock = createFetchMock(vi)
 
@@ -34,6 +36,16 @@ vi.stubGlobal('useRuntimeConfig', () => ({
   },
 }))
 
+export const mockI18n = vi.fn((options?: NuxtI18nOptions) => ({
+  ...options,
+  locale: options?.defaultLocale || 'en',
+  locales: options?.locales || supportedLocales,
+  vueI18n: {
+    messages: localeMessages,
+  },
+}))
+vi.stubGlobal('useI18n', mockI18n)
+
 config.global.mocks = {
-  $t: (msg: any) => msg,
+  $t: (key: string) => key,
 }
