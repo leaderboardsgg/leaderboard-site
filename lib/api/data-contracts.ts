@@ -9,9 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-/**
- * Represents a site-scoped or `Leaderboard`-scoped `Ban` tied to a `User`.
- */
+/** Represents a site-scoped or `Leaderboard`-scoped `Ban` tied to a `User`. */
 export interface Ban {
   /**
    * The unique identifier of the `Ban`.<br />
@@ -41,6 +39,7 @@ export interface Ban {
   /**
    * The reason for the issued `Ban`.<br />
    * Must not be null.
+   * @minLength 1
    */
   reason: string
 }
@@ -55,9 +54,7 @@ export interface CalendarSystem {
   eras?: Era[] | null
 }
 
-/**
- * Represents a `Category` tied to a `Leaderboard`.
- */
+/** Represents a `Category` tied to a `Leaderboard`. */
 export interface Category {
   /**
    * The unique identifier of the `Category`.<br />
@@ -72,18 +69,20 @@ export interface Category {
   leaderboardId: number
   /**
    * The display name of the `Category`.
-   * @example Foo Bar Baz%
+   * @minLength 1
+   * @example "Foo Bar Baz%"
    */
   name: string
   /**
    * The URL-scoped unique identifier of the `Category`.<br />
    * Must be [2, 25] in length and consist only of alphanumeric characters and hyphens.
-   * @example foo-bar-baz
+   * @minLength 1
+   * @example "foo-bar-baz"
    */
   slug: string
   /**
    * The rules of the `Category`.
-   * @example Video proof is required.
+   * @example "Video proof is required."
    */
   rules?: string | null
   /**
@@ -98,24 +97,24 @@ export interface Category {
   playersMax: number
 }
 
-/**
- * This request object is sent when creating a `Category`.
- */
+/** This request object is sent when creating a `Category`. */
 export interface CreateCategoryRequest {
   /**
    * The display name of the `Category`.
-   * @example Foo Bar Baz%
+   * @minLength 1
+   * @example "Foo Bar Baz%"
    */
   name: string
   /**
    * The URL-scoped unique identifier of the `Category`.<br />
    * Must be [2, 25] in length and consist only of alphanumeric characters and hyphens.
-   * @example foo-bar-baz
+   * @minLength 1
+   * @example "foo-bar-baz"
    */
   slug: string
   /**
    * The rules of the `Category`.
-   * @example Video proof is required.
+   * @example "Video proof is required."
    */
   rules?: string | null
   /**
@@ -139,9 +138,7 @@ export interface CreateCategoryRequest {
   leaderboardId: number
 }
 
-/**
- * This request object is sent when creating a `Judgement`.
- */
+/** This request object is sent when creating a `Judgement`. */
 export interface CreateJudgementRequest {
   /**
    * The ID of the `Run` that is being judged.
@@ -151,16 +148,14 @@ export interface CreateJudgementRequest {
   /**
    * A comment elaborating on the `Judgement`'s decision. Must have a value when the
    * affected `Run` is not approved (`Approved` is null or false).
-   * @example The video proof is not of sufficient quality.
+   * @example "The video proof is not of sufficient quality."
    */
   note?: string | null
   /** The `Judgement`'s decision. May be null, true, or false. */
   approved?: boolean | null
 }
 
-/**
- * This request object is sent when banning a `User` from a `Leaderboard`.
- */
+/** This request object is sent when banning a `User` from a `Leaderboard`. */
 export interface CreateLeaderboardBanRequest {
   /**
    * The ID of the `User` which is banned.
@@ -169,7 +164,8 @@ export interface CreateLeaderboardBanRequest {
   userId: string
   /**
    * The reason for the `User`'s ban.
-   * @example Abusive or hateful conduct.
+   * @minLength 1
+   * @example "Abusive or hateful conduct."
    */
   reason: string
   /**
@@ -179,26 +175,22 @@ export interface CreateLeaderboardBanRequest {
   leaderboardId: number
 }
 
-/**
- * This request object is sent when creating a `Leaderboard`.
- */
+/** This request object is sent when creating a `Leaderboard`. */
 export interface CreateLeaderboardRequest {
   /**
    * The display name of the `Leaderboard` to create.
-   * @example Foo Bar
+   * @example "Foo Bar"
    */
   name?: string | null
   /**
    * The URL-scoped unique identifier of the `Leaderboard`.<br />
    * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
-   * @example foo-bar
+   * @example "foo-bar"
    */
   slug?: string | null
 }
 
-/**
- * This request object is sent when promoting a `User` to *Moderator* for a `Leaderboard`.
- */
+/** This request object is sent when promoting a `User` to *Moderator* for a `Leaderboard`. */
 export interface CreateModshipRequest {
   /**
    * The ID of the `Leaderboard` the `User` should become a *Moderator* for.
@@ -212,9 +204,7 @@ export interface CreateModshipRequest {
   userId: string
 }
 
-/**
- * This request object is sent when creating a `Participation` for a `User` on a `Run`.
- */
+/** This request object is sent when creating a `Participation` for a `User` on a `Run`. */
 export interface CreateParticipationRequest {
   /** An optional comment about the `Participation`. */
   comment?: string | null
@@ -234,9 +224,7 @@ export interface CreateParticipationRequest {
   isSubmitter: boolean
 }
 
-/**
- * This request object is sent when creating a `Run`.
- */
+/** This request object is sent when creating a `Run`. */
 export interface CreateRunRequest {
   playedOn: LocalDate
   submittedAt: Instant
@@ -256,9 +244,7 @@ export interface CreateRunRequest {
   categoryId: number
 }
 
-/**
- * This request object is sent when banning a `User` from the site.
- */
+/** This request object is sent when banning a `User` from the site. */
 export interface CreateSiteBanRequest {
   /**
    * The ID of the `User` which is banned.
@@ -267,7 +253,8 @@ export interface CreateSiteBanRequest {
   userId: string
   /**
    * The reason as to the `User`'s ban.
-   * @example Abusive or hateful conduct.
+   * @minLength 1
+   * @example "Abusive or hateful conduct."
    */
   reason: string
 }
@@ -278,14 +265,10 @@ export interface Era {
 
 export type Instant = object
 
-/**
- * @format int32
- */
+/** @format int32 */
 export type IsoDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
 
-/**
- * Represents a decision made by a *Moderator* (`User`) about a `Run`.
- */
+/** Represents a decision made by a *Moderator* (`User`) about a `Run`. */
 export interface Judgement {
   /**
    * The unique identifier of the `Judgement`.<br />
@@ -313,15 +296,16 @@ export interface Judgement {
   /**
    * A comment elaborating on the `Judgement`'s decision. Must have a value when the
    * affected `Run` is not approved (`Approved` is null or false).
-   * @example The video proof is not of sufficient quality.
+   * @minLength 1
+   * @example "The video proof is not of sufficient quality."
    */
   note: string
 }
 
 /**
-* Represents a decision made by a *Moderator* (`User`) about a `Run`.<br />
-See: LeaderboardBackend.Models.Entities.Judgement.
-*/
+ * Represents a decision made by a *Moderator* (`User`) about a `Run`.<br />
+ * See: LeaderboardBackend.Models.Entities.Judgement.
+ */
 export interface JudgementViewModel {
   /**
    * The unique identifier of the `Judgement`.
@@ -335,7 +319,7 @@ export interface JudgementViewModel {
   approved?: boolean | null
   /**
    * The time the `Judgement` was made.
-   * @example 2022-01-01T12:34:56Z / 2022-01-01T12:34:56+01:00
+   * @example "2022-01-01T12:34:56Z / 2022-01-01T12:34:56+01:00"
    */
   createdAt?: string | null
   /**
@@ -355,9 +339,7 @@ export interface JudgementViewModel {
   runId?: string
 }
 
-/**
- * Represents a collection of `Category` entities.
- */
+/** Represents a collection of `Category` entities. */
 export interface Leaderboard {
   /**
    * The unique identifier of the `Leaderboard`.<br />
@@ -367,18 +349,20 @@ export interface Leaderboard {
   id?: number
   /**
    * The display name of the `Leaderboard` to create.
-   * @example Foo Bar
+   * @minLength 1
+   * @example "Foo Bar"
    */
   name: string
   /**
    * The URL-scoped unique identifier of the `Leaderboard`.<br />
    * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
-   * @example foo-bar
+   * @minLength 1
+   * @example "foo-bar"
    */
   slug: string
   /**
    * The general rules for the Leaderboard.
-   * @example Timer starts on selecting New Game and ends when the final boss is beaten.
+   * @example "Timer starts on selecting New Game and ends when the final boss is beaten."
    */
   rules?: string | null
 }
@@ -399,35 +383,34 @@ export interface LocalDate {
   dayOfYear?: number
 }
 
-/**
- * This request object is sent when a `User` is attempting to log in.
- */
+/** This request object is sent when a `User` is attempting to log in. */
 export interface LoginRequest {
   /**
    * The `User`'s email address.
    * @format email
-   * @example john.doe@example.com
+   * @minLength 1
+   * @example "john.doe@example.com"
    */
   email: string
   /**
    * The `User`'s password. It:
    * <ul><li>supports Unicode;</li><li>must be [8, 80] in length;</li><li>must have at least:</li><ul><li>one uppercase letter;</li><li>one lowercase letter; and</li><li>one number.</li></ul></ul>
-   * @example P4ssword
+   * @minLength 1
+   * @example "P4ssword"
    */
   password: string
 }
 
-/**
- * This response object is received upon a successful log-in request.
- */
+/** This response object is received upon a successful log-in request. */
 export interface LoginResponse {
-  /** A JSON Web Token to authenticate and authorize queries with. */
+  /**
+   * A JSON Web Token to authenticate and authorize queries with.
+   * @minLength 1
+   */
   token: string
 }
 
-/**
- * Represents the *Moderator* status of a `User`.
- */
+/** Represents the *Moderator* status of a `User`. */
 export interface Modship {
   /**
    * The unique identifier of the `Modship`.<br />
@@ -451,9 +434,7 @@ export interface Modship {
   leaderboard?: Leaderboard
 }
 
-/**
- * Represents the participation of a `User` on a `Run`.
- */
+/** Represents the participation of a `User` on a `Run`. */
 export interface Participation {
   /**
    * The unique identifier of the `Participation`.<br />
@@ -488,11 +469,10 @@ export interface ProblemDetails {
   status?: number | null
   detail?: string | null
   instance?: string | null
+  [key: string]: any
 }
 
-/**
- * This request object is sent when a `User` is attempting to register.
- */
+/** This request object is sent when a `User` is attempting to register. */
 export interface RegisterRequest {
   /**
    * The username of the `User`. It:
@@ -500,29 +480,33 @@ export interface RegisterRequest {
    * Usernames are saved case-sensitively, but matcehd against case-insensitively.
    * A `User` may not register with the name 'Cool' when another `User` with the name 'cool'
    * exists.
+   * @minLength 1
    * @pattern (?:[a-zA-Z0-9][-_']?){1,12}[a-zA-Z0-9]
-   * @example J'on-Doe
+   * @example "J'on-Doe"
    */
   username: string
   /**
    * The `User`'s email address.
    * @format email
-   * @example john.doe@example.com
+   * @minLength 1
+   * @example "john.doe@example.com"
    */
   email: string
   /**
    * The `User`'s password. It:
    * <ul><li>supports Unicode;</li><li>must be [8, 80] in length;</li><li>must have at least:</li><ul><li>one uppercase letter;</li><li>one lowercase letter; and</li><li>one number.</li></ul></ul>
-   * @example P4ssword
+   * @minLength 1
+   * @example "P4ssword"
    */
   password: string
-  /** The password confirmation. This value must match `Password`. */
+  /**
+   * The password confirmation. This value must match `Password`.
+   * @minLength 1
+   */
   passwordConfirm: string
 }
 
-/**
- * This request object is sent when demoting a `User` as a *Moderator* from a `Leaderboard`.
- */
+/** This request object is sent when demoting a `User` as a *Moderator* from a `Leaderboard`. */
 export interface RemoveModshipRequest {
   /**
    * The ID of the `Leaderboard` the `User` should be demoted from.
@@ -536,9 +520,7 @@ export interface RemoveModshipRequest {
   userId: string
 }
 
-/**
- * Represents an entry on a `Category`.
- */
+/** Represents an entry on a `Category`. */
 export interface Run {
   /**
    * The unique identifier of the `Run`.<br />
@@ -571,29 +553,28 @@ export interface Run {
 }
 
 /**
-* The status of the `Run`.<br />
-    - 0: Created<br />
-    - 1: Submitted<br />
-    - 2: Pending<br />
-    - 3: Approved<br />
-    - 4: Rejected
-* @format int32
-*/
+ * The status of the `Run`.<br />
+ *     - 0: Created<br />
+ *     - 1: Submitted<br />
+ *     - 2: Pending<br />
+ *     - 3: Approved<br />
+ *     - 4: Rejected
+ * @format int32
+ */
 export type RunStatus = 0 | 1 | 2 | 3 | 4
 
-/**
- * This request object is sent when updating a `Participation`.
- */
+/** This request object is sent when updating a `Participation`. */
 export interface UpdateParticipationRequest {
   /** A comment about the `Participation`. */
   comment?: string | null
-  /** A link to video proof of the `Run`. */
+  /**
+   * A link to video proof of the `Run`.
+   * @minLength 1
+   */
   vod: string
 }
 
-/**
- * Represents a user account registered on the website.
- */
+/** Represents a user account registered on the website. */
 export interface User {
   /**
    * The unique identifier of the `User`.<br />
@@ -607,12 +588,14 @@ export interface User {
    * Usernames are saved case-sensitively, but matcehd against case-insensitively.
    * A `User` may not register with the name 'Cool' when another `User` with the name 'cool'
    * exists.
-   * @example J'on-Doe
+   * @minLength 1
+   * @example "J'on-Doe"
    */
   username: string
   /**
    * The `User`'s email address.
-   * @example john.doe@example.com
+   * @minLength 1
+   * @example "john.doe@example.com"
    */
   email: string
   /** The `User`'s personal description, displayed on their profile. */
