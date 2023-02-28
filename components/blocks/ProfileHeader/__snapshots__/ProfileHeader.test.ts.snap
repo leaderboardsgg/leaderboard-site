@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfileHeader /> renders correctly 1`] = `
+<div
+  class="profile-header"
+>
+  <div
+    class="profile-banner"
+  >
+    <img
+      alt="profile banner"
+      src="https://via.placeholder.com/885x120"
+    />
+  </div>
+   
+  <div
+    class="profile-info-container"
+  >
+    <div
+      class="profile-info"
+    >
+      <div
+        class="profile-info__header"
+      >
+        <div
+          class="user-activity profile-header__user-activity"
+        >
+          <p>
+            <span>
+              Runs: 
+            </span>
+            42
+          </p>
+           
+          <p>
+            <span>
+              Games: 
+            </span>
+            6
+          </p>
+        </div>
+         
+        <div
+          class="profile-info__picture-container"
+        >
+          <img
+            alt="profile picture"
+            src="https://via.placeholder.com/120"
+          />
+        </div>
+         
+        <div
+          class="profile-info__user-badges"
+        >
+          <div
+            badges=""
+            class="user-badges__container"
+          />
+        </div>
+      </div>
+       
+      <div
+        class="profile-info__user-bio"
+      >
+        <h1>
+          JohnSmithRuns
+        </h1>
+         
+        <h2>
+          Olympus Mons, Mars
+        </h2>
+         
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.
+        </p>
+      </div>
+       
+      <div
+        class="profile-info__follow"
+      >
+        <button
+          class="follow-button"
+        >
+          
+  Follow
+
+        </button>
+      </div>
+       
+      <div
+        class="user-activity profile-info__user-activity"
+      >
+        <p>
+          <span>
+            Runs: 
+          </span>
+          42
+        </p>
+         
+        <p>
+          <span>
+            Games: 
+          </span>
+          6
+        </p>
+      </div>
+       
+      <div
+        class="profile-info__socials"
+      >
+        <div
+          class="social-buttons"
+        >
+          <a
+            alt="Discord"
+            class="social-button"
+            href="https://discord.com/"
+          >
+            
+    dscrd
+  
+          </a>
+          <a
+            alt="Twitch"
+            class="social-button"
+            href="https://twitch.tv/"
+          >
+            
+    twch
+  
+          </a>
+          <a
+            alt="Twitter"
+            class="social-button"
+            href="https://twitter.com/"
+          >
+            
+    twtr
+  
+          </a>
+          <a
+            alt="Youtube"
+            class="social-button"
+            href="https://youtube.com/"
+          >
+            
+    yt
+  
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

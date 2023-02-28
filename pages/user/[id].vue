@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ProfileHeader from 'blocks/ProfileHeader/ProfileHeader.vue'
 import { useGetUserDetail } from 'composables/api/useGetUserDetail'
 
 const route = useRoute()
@@ -7,5 +8,5 @@ const userDetail = await useGetUserDetail(userId)
 </script>
 
 <template>
-  <p>Username: {{ userDetail.data?.username }}</p>
+  <ProfileHeader :username="userDetail.data?.username" />
 </template>
