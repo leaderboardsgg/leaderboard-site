@@ -1,3 +1,15 @@
+<script setup lang="ts">
+import { withDefaults } from 'vue'
+
+interface FollowButtonProps {
+  onClick: () => void
+}
+
+withDefaults(defineProps<FollowButtonProps>(), {
+  onClick: () => () => 2,
+})
+</script>
+
 <template>
   <button
     class="follow-button"
@@ -8,17 +20,6 @@
     Follow
   </button>
 </template>
-
-<script lang="ts">
-export default defineComponent({
-  props: {
-    onClick: {
-      default: () => console.log('follow'), // eslint-disable-line no-console
-      type: Function,
-    },
-  },
-})
-</script>
 
 <style lang="postcss" scoped>
 .follow-button {

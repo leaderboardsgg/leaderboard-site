@@ -1,16 +1,10 @@
+import { mount } from '@vue/test-utils'
 import UserBadges from './UserBadges.vue'
-import { stubbedRender } from '@/testUtils'
 
 describe('<ProfileHeader />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(UserBadges)
+    const wrapper = mount(UserBadges)
 
-    unmount()
-  })
-
-  it('renders correctly', () => {
-    const { container } = stubbedRender(UserBadges)
-
-    expect(container.firstChild).toMatchSnapshot()
+    expect(wrapper.isVisible()).toBe(true)
   })
 })

@@ -1,3 +1,53 @@
+<script setup lang="ts">
+import { withDefaults } from 'vue'
+import UserActivity from 'blocks/ProfileHeader/UserActivity/UserActivity.vue'
+import UserBadges from 'blocks/ProfileHeader/UserBadges/UserBadges.vue'
+import SocialButtons from 'elements/buttons/SocialButtons/SocialButtons.vue'
+import FollowButton from 'elements/buttons/FollowButton/FollowButton.vue'
+
+interface ProfileHeaderProps {
+  badges: any[]
+  bio: string
+  gameCount: number
+  location: string
+  runCount: number
+  socials: Socials[]
+  username: string
+}
+
+withDefaults(defineProps<ProfileHeaderProps>(), {
+  badges: () => [],
+  bio: () =>
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.',
+  gameCount: () => 6,
+  location: () => 'Olympus Mons, Mars',
+  runCount: () => 42,
+  socials: () => [
+    {
+      icon: 'discord',
+      name: 'Discord',
+      url: 'https://discord.com/',
+    },
+    {
+      icon: 'twitch',
+      name: 'Twitch',
+      url: 'https://twitch.tv/',
+    },
+    {
+      icon: 'twitter',
+      name: 'Twitter',
+      url: 'https://twitter.com/',
+    },
+    {
+      icon: 'youtube',
+      name: 'Youtube',
+      url: 'https://youtube.com/',
+    },
+  ],
+  username: () => 'JohnSmithRuns',
+})
+</script>
+
 <template>
   <div class="profile-header">
     <div class="profile-banner">
@@ -38,75 +88,6 @@
     </div>
   </div>
 </template>
-
-<script lang="ts">
-import UserActivity from '@/components/blocks/ProfileHeader/UserActivity/UserActivity.vue'
-import UserBadges from '@/components/blocks/ProfileHeader/UserBadges/UserBadges.vue'
-import SocialButtons from '@/components/elements/buttons/SocialButtons/SocialButtons.vue'
-import FollowButton from '@/components/elements/buttons/FollowButton/FollowButton.vue'
-
-export default defineComponent({
-  name: 'ProfileHeader',
-  components: {
-    FollowButton,
-    SocialButtons,
-    UserActivity,
-    UserBadges,
-  },
-  props: {
-    badges: {
-      default: () => [],
-      type: Array,
-    },
-    bio: {
-      default: () =>
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget dapibus libero. Morbi ultricies varius accumsan.',
-      type: String,
-    },
-    gameCount: {
-      default: () => 6,
-      type: Number,
-    },
-    location: {
-      default: () => 'Olympus Mons, Mars',
-      type: String,
-    },
-    runCount: {
-      default: () => 42,
-      type: Number,
-    },
-    socials: {
-      default: () => [
-        {
-          icon: 'discord',
-          name: 'Discord',
-          url: 'https://discord.com/',
-        },
-        {
-          icon: 'twitch',
-          name: 'Twitch',
-          url: 'https://twitch.tv/',
-        },
-        {
-          icon: 'twitter',
-          name: 'Twitter',
-          url: 'https://twitter.com/',
-        },
-        {
-          icon: 'youtube',
-          name: 'Youtube',
-          url: 'https://youtube.com/',
-        },
-      ],
-      type: Array,
-    },
-    username: {
-      default: () => 'JohnSmithRuns',
-      type: String,
-    },
-  },
-})
-</script>
 
 <style lang="postcss" scoped>
 .profile-header {
