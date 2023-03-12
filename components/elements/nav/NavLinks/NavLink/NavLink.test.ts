@@ -1,17 +1,19 @@
-import { mount } from '@vue/test-utils'
+import { mount, enableAutoUnmount } from '@vue/test-utils'
 
 import NavLink from './NavLink.vue'
 
-describe('<NavLink />', () => {
-  const NavLinkWrapper = mount(NavLink, {
-    attrs: { class: 'custom-link' },
-    props: {
-      to: '/games',
-    },
-    slots: { default: 'Games' },
-  })
+enableAutoUnmount(afterEach)
 
+describe('<NavLink />', () => {
   it('should render without crashing', () => {
+    const NavLinkWrapper = mount(NavLink, {
+      attrs: { class: 'custom-link' },
+      props: {
+        to: '/games',
+      },
+      slots: { default: 'Games' },
+    })
+
     expect(NavLinkWrapper.isVisible()).toBe(true)
   })
 })

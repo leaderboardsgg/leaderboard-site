@@ -1,21 +1,27 @@
-import { mount } from '@vue/test-utils'
+import { mount, enableAutoUnmount } from '@vue/test-utils'
 
 import index from 'pages/index.vue'
 
-describe('/index', () => {
-  const IndexWrapper = mount(index, {
+function getIndexWrapper() {
+  return mount(index, {
     global: {
       mocks: {
         $t: (msg: any) => msg,
       },
     },
   })
+}
 
+enableAutoUnmount(afterEach)
+
+describe('/index', () => {
   it('should render without crashing', () => {
+    const IndexWrapper = getIndexWrapper()
     expect(IndexWrapper.isVisible()).toBe(true)
   })
 
   it('should render the placeholder text', () => {
+    const IndexWrapper = getIndexWrapper()
     expect(
       IndexWrapper.html().includes(
         'This is just a primary content placeholder.',
