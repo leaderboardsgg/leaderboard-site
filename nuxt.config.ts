@@ -73,7 +73,7 @@ export default defineNuxtConfig({
       // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
       // css: ['assets/css/tailwind.css'],
       {
-        configPath: 'tailwind.config.ts',
+        configPath: 'tailwind.config.js',
         cssPath: './assets/css/tailwind.css',
       },
     ],
