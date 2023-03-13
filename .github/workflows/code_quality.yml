@@ -27,6 +27,7 @@ jobs:
 
       - name: Cache PNPM modules
         uses: actions/cache@v3
+        id: cache-modules
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -47,9 +48,19 @@ jobs:
           cache: 'pnpm'
 
       - name: Install `node_modules`
+        if: steps.cache-modules.outputs.cache-hit != 'true'
         run: pnpm install
 
+      - name: Cache build
+        uses: actions/cache@v3
+        id: cache-build
+        with:
+          path: .nuxt/
+          key: ${{ runner.os }}-build-${{ hashFiles('**/.nuxt') }}
+          restore-keys: ${{ runner.os }}-build-
+
       - name: Build the `.nuxt` directory
+        if: steps.cache-build.outputs.cache-hit != 'true'
         run: pnpm build
 
       - name: Linting
