@@ -1,12 +1,16 @@
-name: CI - Linting
+name: CI - Build & Linting
 on:
   push:
     branches: [main]
   pull_request:
 
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  lint:
+  build_and_lint:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -44,6 +48,9 @@ jobs:
 
       - name: Install `node_modules`
         run: pnpm install
+
+      - name: Build the `.nuxt` directory
+        run: pnpm build
 
       - name: Linting
         run: pnpm run lint
