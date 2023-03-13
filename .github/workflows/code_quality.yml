@@ -25,10 +25,6 @@ jobs:
         with:
           path: ./.pnpmrc
 
-      # Read node version from `.nvmrc` file
-      - id: nvmrc
-        uses: browniebroke/read-nvmrc-action@v1
-
       - name: Cache PNPM modules
         uses: actions/cache@v3
         id: cache-modules
@@ -45,8 +41,8 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          # use the output from the action
-          node-version: '${{ steps.nvmrc.outputs.node_version }}'
+          # use the version found in `.nvmrc`
+          node-version-file: '.nvmrc'
           cache: 'pnpm'
 
       - name: Install `node_modules`
