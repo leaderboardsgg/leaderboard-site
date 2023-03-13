@@ -53,6 +53,9 @@ jobs:
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: pnpm install
 
+      - name: Copy `.env.test` -> `.env`
+        run: cp .env.test .env
+
       - name: Cache build
         uses: actions/cache@v3
         id: cache-build
