@@ -34,6 +34,10 @@ jobs:
         with:
           path: ./.pnpmrc
 
+      # Read node version from `.nvmrc` file
+      - id: nvmrc
+        uses: browniebroke/read-nvmrc-action@v1
+
       - name: Cache PNPM modules
         uses: actions/cache@v3
         id: cache-modules
@@ -44,13 +48,9 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-node-
 
-      - uses: pnpm/action-setup@v2.2.1
+      - uses: pnpm/action-setup@v2.2.4
         with:
           version: '${{ steps.pnpm_version.outputs.content }}'
-
-      # Read node version from `.nvmrc` file
-      - id: nvmrc
-        uses: browniebroke/read-nvmrc-action@v1
 
       - uses: actions/setup-node@v3
         with:
