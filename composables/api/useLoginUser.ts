@@ -1,20 +1,12 @@
-import { ref } from 'vue'
+import { ApiResponse, useApi } from 'composables/useApi'
 import { useCurrentUser } from 'composables/useCurrentUser'
 import { useSessionToken } from 'composables/useSessionToken'
 import { Users } from 'lib/api/Users'
-import { isProblemDetails } from 'lib/helpers'
-import type { LoginRequest, ProblemDetails } from 'lib/api/data-contracts'
-
-interface LoginUserResponse {
-  loading: boolean
-  error: ProblemDetails | null
-}
+import type { LoginRequest, LoginResponse, User } from 'lib/api/data-contracts'
 
 export const useLoginUser = async (
   requestData: LoginRequest,
-): Promise<LoginUserResponse> => {
-  const responseLoading = ref(true)
-  const responseError = ref<ProblemDetails | null>(null)
+): Promise<ApiResponse<LoginResponse>> => {
   const authToken = useSessionToken()
   const currentUser = useCurrentUser()
 
@@ -22,39 +14,24 @@ export const useLoginUser = async (
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
   })
 
-  try {
-    const authResponse = await userClient.usersLoginCreate(requestData)
+  return await useApi<LoginResponse>(
+    async () => await userClient.usersLoginCreate(requestData),
+    {
+      onOkay: async (d: LoginResponse) => {
+        authToken.value = d.token
 
-    if (authResponse.ok) {
-      authToken.value = authResponse.data.token
-
-      const userResponse = await userClient.usersMeList({
-        headers: { Authorization: `Bearer ${authToken.value}` },
-      })
-
-      if (userResponse.ok) {
-        currentUser.value = userResponse.data
-      } else {
-        responseError.value = userResponse.error
-      }
-    } else {
-      responseError.value = authResponse.error
-    }
-  } catch (e: unknown) {
-    if (isProblemDetails(e)) {
-      const error = e as ProblemDetails
-
-      console.error(error) // eslint-disable-line no-console
-      responseError.value = error
-    }
-  } finally {
-    responseLoading.value = false
-  }
-
-  return {
-    error: responseError.value,
-    loading: responseLoading.value,
-  }
+        await useApi<User>(
+          async () =>
+            await userClient.usersMeList({
+              headers: { Authorization: `Bearer ${d.token}` },
+            }),
+          {
+            responseData: currentUser,
+          },
+        )
+      },
+    },
+  )
 }
 
 export default useLoginUser
