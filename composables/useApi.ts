@@ -16,12 +16,12 @@ interface optionalParameters<T> {
 
 export const useApi = async <T>(
   apiRequest: () => Promise<HttpResponse<T, ProblemDetails>>,
-  params: optionalParameters<T>,
+  opts: optionalParameters<T>,
 ): Promise<ApiResponse<T>> => {
   const responseError = ref<ProblemDetails | null>(null)
   const responseLoading = ref(true)
 
-  const { responseData, onOkay } = params
+  const { responseData, onOkay } = opts
 
   try {
     const { data, ok, error } = await apiRequest()
