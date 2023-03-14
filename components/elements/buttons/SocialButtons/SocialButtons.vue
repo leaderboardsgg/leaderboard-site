@@ -1,3 +1,11 @@
+<script setup lang="ts">
+interface NavLinksProps {
+  socials: Socials[]
+}
+
+defineProps<NavLinksProps>()
+</script>
+
 <template>
   <div class="social-buttons">
     <a
@@ -11,18 +19,6 @@
     </a>
   </div>
 </template>
-
-<script lang="ts">
-export default defineComponent({
-  name: 'SocialButtons',
-  props: {
-    socials: {
-      required: true,
-      type: Array,
-    },
-  },
-})
-</script>
 
 <style lang="postcss" scoped>
 .social-buttons {

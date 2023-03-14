@@ -1,16 +1,15 @@
+import { mount } from '@vue/test-utils'
 import UserActivity from './UserActivity.vue'
-import { stubbedRender } from '@/testUtils'
 
 describe('<UserActivity />', () => {
   it('should render without crashing', () => {
-    const { unmount } = stubbedRender(UserActivity)
+    const wrapper = mount(UserActivity, {
+      props: {
+        gameCount: 69,
+        runCount: 420,
+      },
+    })
 
-    unmount()
-  })
-
-  it('renders correctly', () => {
-    const { container } = stubbedRender(UserActivity)
-
-    expect(container.firstChild).toMatchSnapshot()
+    expect(wrapper.isVisible()).toBe(true)
   })
 })
