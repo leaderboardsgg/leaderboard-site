@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils'
+import { mount, enableAutoUnmount } from '@vue/test-utils'
 import LogInCard from './LogInCard.vue'
 import { FullRequestParams } from 'lib/api/http-client'
 import { getByTestId, getHTMLElement } from 'testUtils'
@@ -6,10 +6,16 @@ import { getByTestId, getHTMLElement } from 'testUtils'
 const token = 'jwt-token'
 type fetchMockCall = [string, FullRequestParams]
 
+function getLogInCardWrapper() {
+  return mount(LogInCard)
+}
+
 afterEach(() => {
   fetchMock.resetMocks()
   vi.restoreAllMocks()
 })
+
+enableAutoUnmount(afterEach)
 
 describe('<LogInCard />', () => {
   beforeEach(() => {
@@ -17,14 +23,14 @@ describe('<LogInCard />', () => {
   })
 
   it('should render without crashing', () => {
-    const wrapper = mount(LogInCard)
+    const wrapper = getLogInCardWrapper()
 
     expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('when the close button is clicked', () => {
     it('should emit the close event', async () => {
-      const wrapper = mount(LogInCard)
+      const wrapper = getLogInCardWrapper()
 
       const closeButton = getByTestId(wrapper, 'close-button')
 
@@ -36,7 +42,7 @@ describe('<LogInCard />', () => {
 
   describe('when the hide/show button is clicked', () => {
     it('changes the password input type to be text', async () => {
-      const wrapper = mount(LogInCard)
+      const wrapper = getLogInCardWrapper()
       const passwordInputElement = getHTMLElement(
         getByTestId(wrapper, 'password-input'),
       ) as HTMLInputElement
@@ -51,7 +57,7 @@ describe('<LogInCard />', () => {
 
   describe('when enter key is released on the password input field', () => {
     it('emits the close event', async () => {
-      const wrapper = mount(LogInCard)
+      const wrapper = getLogInCardWrapper()
 
       await getByTestId(wrapper, 'password-input').trigger('keyup.enter')
 
@@ -64,7 +70,7 @@ describe('<LogInCard />', () => {
     const password = 'homestarsux'
 
     it('emits the close event', async () => {
-      const wrapper = mount(LogInCard)
+      const wrapper = getLogInCardWrapper()
 
       await getByTestId(wrapper, 'login-button').trigger('click')
 
@@ -72,7 +78,7 @@ describe('<LogInCard />', () => {
     })
 
     it('clears the state', async () => {
-      const wrapper = mount(LogInCard)
+      const wrapper = getLogInCardWrapper()
 
       const emailInput = getByTestId(wrapper, 'email-input')
       const passwordInput = getByTestId(wrapper, 'password-input')
@@ -96,7 +102,7 @@ describe('<LogInCard />', () => {
 
     // this test is still failing
     it.skip('calls the api', async () => {
-      const wrapper = mount(LogInCard)
+      const wrapper = getLogInCardWrapper()
 
       const emailInput = getByTestId(wrapper, 'email-input')
       const passwordInput = getByTestId(wrapper, 'password-input')
@@ -136,7 +142,7 @@ describe('<LogInCard />', () => {
 
   describe('when the sign up button is clicked', () => {
     it('emits the sign up click event', async () => {
-      const wrapper = mount(LogInCard)
+      const wrapper = getLogInCardWrapper()
 
       await getByTestId(wrapper, 'sign-up-button').trigger('click')
 

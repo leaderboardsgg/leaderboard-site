@@ -1,6 +1,8 @@
-import { mount } from '@vue/test-utils'
+import { mount, enableAutoUnmount } from '@vue/test-utils'
 
 import ButtonLink from './ButtonLink.vue'
+
+enableAutoUnmount(afterEach)
 
 describe('<ButtonLink />', () => {
   const defaultAttrs = { class: 'custom-link' }
