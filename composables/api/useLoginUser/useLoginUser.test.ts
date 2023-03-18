@@ -6,9 +6,10 @@ const mockSuccessUsersLoginCreate = vi.fn(() =>
 const mockSuccessUsersMeList = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useLoginUser', () => {
-  afterEach(() => vi.unmock('lib/api/Users'))
-
   describe('when everything is successful', () => {
+    const email = 'test@lb.gg'
+    const password = 'Password1'
+
     it('creates a login session and returns the user information', async () => {
       vi.mock('lib/api/Users', () => ({
         Users: function Users() {
@@ -17,10 +18,15 @@ describe('useLoginUser', () => {
         },
       }))
 
-      await useLoginUser({ email: 'test@lb.gg', password: 'Password1' })
+      await useLoginUser({ email, password })
 
       expect(mockSuccessUsersLoginCreate).toBeCalledTimes(1)
+      expect(mockSuccessUsersLoginCreate).toBeCalledWith({ email, password })
+
       expect(mockSuccessUsersMeList).toBeCalledTimes(1)
+      expect(mockSuccessUsersMeList).toBeCalledWith({
+        headers: { Authorization: 'Bearer token' },
+      })
     })
   })
 })
