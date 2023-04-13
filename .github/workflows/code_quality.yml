@@ -24,9 +24,6 @@ jobs:
         with:
           path: ./package.json
 
-      - name: Echo package.json
-        run: echo "${{ fromJson(steps.package.outputs.content).engines.pnpm }}"
-
       # Ensures pnpm version is consistent and gets back the value to be used in pnpm setup action
       - name: Get PNPM version
         id: pnpm-version
