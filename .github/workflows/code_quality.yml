@@ -21,8 +21,9 @@ jobs:
       # checks consistent PNPM version
       - name: Ensure consistent PNPM version usage
         id: pnpm-version
-        using: 'node16'
-        run: ./.github/scripts/pnpmVersions.js
+        runs:
+          using: 'node16'
+          main: ./.github/scripts/pnpmVersions.js
 
       - name: Echo pnpm version
         run: echo "${{ steps.pnpm-version.outputs.content }}"
