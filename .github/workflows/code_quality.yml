@@ -22,17 +22,21 @@ jobs:
         id: package
         uses: juliangruber/read-file-action@v1
         with:
-          path: ./package.json
-      - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content }}"
+          path: ./package.json'
+
+      # - name: Echo package.json
+      #   run: echo "${{ steps.package.outputs.content }}"
 
       # Ensures pnpm version is consistent and gets back the value to be used in pnpm setup action
       - name: Get PNPM version
         id: pnpm-version
         uses: buffet-time/pnpm-versions-check-action@v1.0
         with:
-          packageJson-engines-pnpm: 'stringhere'
-          packageJson-packageManager: 'stringhere'
+          # engines.pnpm
+          packageJson-engines-pnpm: ${{ steps.package.outputs.content.engines.pnpm }}
+
+          # packageManager
+          packageJson-packageManager: ${{ steps.package.outputs.content.packageManager }}
 
       - name: Echo pnpm version
         run: echo "${{ steps.pnpm-version.outputs.content }}"
