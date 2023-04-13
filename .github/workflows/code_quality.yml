@@ -25,7 +25,7 @@ jobs:
           path: ./package.json
 
       - name: Echo package.json
-        run: echo "${{ fromJson(steps.package.outputs.content) }}"
+        run: echo "${{ fromJson(steps.package.outputs.content).engines.pnpm }}"
 
       # Ensures pnpm version is consistent and gets back the value to be used in pnpm setup action
       - name: Get PNPM version
@@ -33,10 +33,10 @@ jobs:
         uses: buffet-time/pnpm-versions-check-action@v1.0
         with:
           # engines.pnpm
-          packageJson-engines-pnpm: ${{ fromJson(steps.package.outputs.content).engines.pnpm }}
+          packageJson-engines-pnpm: '${{ fromJson(steps.package.outputs.content).engines.pnpm }}'
 
           # packageManager
-          packageJson-packageManager: ${{ fromJson(steps.package.outputs.content).packageManager }}
+          packageJson-packageManager: '${{ fromJson(steps.package.outputs.content).packageManager }}'
 
       - name: Cache PNPM modules
         uses: actions/cache@v3
