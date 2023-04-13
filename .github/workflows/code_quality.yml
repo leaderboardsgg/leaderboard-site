@@ -24,9 +24,6 @@ jobs:
         with:
           path: ./package.json
 
-      - name: Echo package.json
-        run: echo "${{ steps.package.outputs.content }}"
-
       # Ensures pnpm version is consistent and gets back the value to be used in pnpm setup action
       - name: Get PNPM version
         id: pnpm-version
@@ -57,6 +54,9 @@ jobs:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
           cache: 'pnpm'
+
+      - name: check pnpm version
+        run: pnpm -v
 
       - name: Install `node_modules`
         if: steps.cache-modules.outputs.cache-hit != 'true'
