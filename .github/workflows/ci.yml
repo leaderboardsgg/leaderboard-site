@@ -27,12 +27,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Read the pnpm version from the `.pnpmrc` file
-      - name: Read .pnpmrc
-        id: pnpm_version
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./.pnpmrc
+      # Thanks to this guy: https://stackoverflow.com/a/61919791/4830093
+      - name: Ensure consistent PNPM version usage
+        id: consistent-pnpm
+        using: 'node18'
+        run: ./.github/scripts/pnpmVersions.js
+
+      # possibly not needed?
+      # # Read the pnpm version from the `.pnpmrc` file
+      # - name: Read .pnpmrc
+      #   id: pnpm_version
+      #   uses: juliangruber/read-file-action@v1
+      #   with:
+      #     path: ./.pnpmrc
 
       - name: Cache PNPM modules
         uses: actions/cache@v3
