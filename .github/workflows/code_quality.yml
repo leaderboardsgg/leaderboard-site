@@ -39,7 +39,7 @@ jobs:
           packageJson-packageManager: ${{ steps.package.outputs.content.packageManager }}
 
       - name: Echo pnpm version
-        run: echo "${{ steps.pnpm-version.outputs.content }}"
+        run: echo "${{ steps.pnpm-version.outputs.version }}"
 
       - name: Cache PNPM modules
         uses: actions/cache@v3
