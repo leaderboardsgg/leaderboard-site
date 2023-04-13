@@ -5,8 +5,10 @@ const massagegPackageManager = packageJson.packageManager.slice(5)
 
 if (massagedPnpmEngine === massagegPackageManager) {
   console.log('PNPM version check passed!')
+  console.log(massagedPnpmEngine)
+  return massagedPnpmEngine
 } else {
-  console.error(
+  return console.error(
     "PNPM version in package.json engine.pnpm & packageManager don't match!",
   )
 }
