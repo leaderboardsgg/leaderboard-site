@@ -18,12 +18,21 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # checks consistent PNPM version
-      - name: Ensure consistent PNPM version usage
+      - name: Read package.json
+        id: package
+        uses: juliangruber/read-file-action@v1
+        with:
+        path: ./package.json
+      - name: Echo package.json
+        run: echo "${{ steps.package.outputs.content }}"
+
+      # Ensures pnpm version is consistent and gets back the value to be used in pnpm setup action
+      - name: Get PNPM version
         id: pnpm-version
-        runs:
-          using: 'node16'
-          main: ./.github/scripts/pnpmVersions.js
+        uses: buffet-time/pnpm-versions-check-action@v1.0
+        with:
+          packageJson-engines-pnpm: 'stringhere'
+          packageJson-packageManager: 'stringhere'
 
       - name: Echo pnpm version
         run: echo "${{ steps.pnpm-version.outputs.content }}"
