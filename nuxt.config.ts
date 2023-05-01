@@ -3,7 +3,7 @@ import { config } from 'dotenv-safe'
 
 // Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
-import { supportedLocales, localeMessages } from './configUtils'
+import { supportedLocales } from './configUtils'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
@@ -55,13 +55,6 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'en',
     locales: supportedLocales,
-    vueI18n: {
-      fallbackLocale: 'en',
-      legacy: false,
-      locale: 'en',
-      // TODO: can this be cleaner via some sort of iteration? (not sure)
-      messages: localeMessages,
-    },
   },
 
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
