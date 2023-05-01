@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { Category, CreateCategoryRequest } from './data-contracts'
+import { CategoryViewModel, CreateCategoryRequest } from './data-contracts'
 
 export namespace Categories {
   /**
@@ -18,7 +18,8 @@ export namespace Categories {
    * @name CategoriesDetail
    * @summary Gets a Category by its ID.
    * @request GET:/api/Categories/{id}
-   * @response `200` `Category` The `Category` was found and returned successfully.
+   * @secure
+   * @response `200` `CategoryViewModel` The `Category` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
    * @response `403` `ProblemDetails` Forbidden
@@ -35,7 +36,7 @@ export namespace Categories {
     export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = Category
+    export type ResponseBody = CategoryViewModel
   }
 
   /**
@@ -45,7 +46,8 @@ export namespace Categories {
  * @summary Creates a new Category.
 This request is restricted to Moderators.
  * @request POST:/api/Categories
- * @response `201` `Category` The `Category` was created and returned successfully.
+ * @secure
+ * @response `201` `CategoryViewModel` The `Category` was created and returned successfully.
  * @response `400` `ProblemDetails` The request was malformed.
  * @response `401` `ProblemDetails` Unauthorized
  * @response `403` `ProblemDetails` Forbidden
@@ -56,6 +58,6 @@ This request is restricted to Moderators.
     export type RequestQuery = {}
     export type RequestBody = CreateCategoryRequest
     export type RequestHeaders = {}
-    export type ResponseBody = Category
+    export type ResponseBody = CategoryViewModel
   }
 }

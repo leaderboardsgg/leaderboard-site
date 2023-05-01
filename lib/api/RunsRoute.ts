@@ -23,6 +23,7 @@ export namespace Runs {
    * @name RunsDetail
    * @summary Gets a Run by its ID.
    * @request GET:/api/Runs/{id}
+   * @secure
    * @response `200` `Run` The `Run` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -50,6 +51,7 @@ export namespace Runs {
    * @name RunsCreate
    * @summary Creates a new Run.
    * @request POST:/api/Runs
+   * @secure
    * @response `201` `void` The `Run` was created and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -70,6 +72,7 @@ export namespace Runs {
    * @name RunsParticipationsDetail
    * @summary Gets all Participations associated with a Run ID.
    * @request GET:/api/Runs/{id}/participations
+   * @secure
    * @response `200` `(Participation)[]` The list of `Participation`s was retrieved successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -96,6 +99,7 @@ export namespace Runs {
    * @tags Runs
    * @name RunsCategoryDetail
    * @request GET:/api/Runs/{id}/category
+   * @secure
    * @response `200` `Category` Success
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized

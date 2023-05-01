@@ -9,7 +9,10 @@
  * ---------------------------------------------------------------
  */
 
-import { CreateLeaderboardRequest, Leaderboard } from './data-contracts'
+import {
+  CreateLeaderboardRequest,
+  LeaderboardViewModel,
+} from './data-contracts'
 
 export namespace Leaderboards {
   /**
@@ -18,9 +21,10 @@ export namespace Leaderboards {
    * @name LeaderboardsDetail
    * @summary Gets a Leaderboard by its ID.
    * @request GET:/api/Leaderboards/{id}
-   * @response `200` `Leaderboard` The `Leaderboard` was found and returned successfully.
+   * @secure
+   * @response `200` `LeaderboardViewModel` The `Leaderboard` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID could be found.
+   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID or slug could be found.
    */
   export namespace LeaderboardsDetail {
     export type RequestParams = {
@@ -33,7 +37,31 @@ export namespace Leaderboards {
     export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = Leaderboard
+    export type ResponseBody = LeaderboardViewModel
+  }
+
+  /**
+   * No description
+   * @tags Leaderboards
+   * @name LeaderboardsDetail2
+   * @summary Gets a Leaderboard by its slug.
+   * @request GET:/api/Leaderboards/{slug}
+   * @originalName leaderboardsDetail
+   * @duplicate
+   * @secure
+   * @response `200` `LeaderboardViewModel` The `Leaderboard` was found and returned successfully.
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID or slug could be found.
+   */
+  export namespace LeaderboardsDetail2 {
+    export type RequestParams = {
+      /** The slug of the `Leaderboard` which should be retrieved. */
+      slug: string
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = LeaderboardViewModel
   }
 
   /**
@@ -42,7 +70,8 @@ export namespace Leaderboards {
    * @name LeaderboardsList
    * @summary Gets Leaderboards by their IDs.
    * @request GET:/api/Leaderboards
-   * @response `200` `(Leaderboard)[]` The list of `Leaderboard`s was retrieved successfully. The result can be an empty collection.
+   * @secure
+   * @response `200` `(LeaderboardViewModel)[]` The list of `Leaderboard`s was retrieved successfully. The result can be an empty collection.
    */
   export namespace LeaderboardsList {
     export type RequestParams = {}
@@ -52,7 +81,7 @@ export namespace Leaderboards {
     }
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = Leaderboard[]
+    export type ResponseBody = LeaderboardViewModel[]
   }
 
   /**
@@ -62,7 +91,8 @@ export namespace Leaderboards {
  * @summary Creates a new Leaderboard.
 This request is restricted to Administrators.
  * @request POST:/api/Leaderboards
- * @response `201` `Leaderboard` The `Leaderboard` was created and returned successfully.
+ * @secure
+ * @response `201` `LeaderboardViewModel` The `Leaderboard` was created and returned successfully.
  * @response `400` `ProblemDetails` The request was malformed.
  * @response `401` `ProblemDetails` Unauthorized
  * @response `403` `ProblemDetails` Forbidden
@@ -73,6 +103,6 @@ This request is restricted to Administrators.
     export type RequestQuery = {}
     export type RequestBody = CreateLeaderboardRequest
     export type RequestHeaders = {}
-    export type ResponseBody = Leaderboard
+    export type ResponseBody = LeaderboardViewModel
   }
 }

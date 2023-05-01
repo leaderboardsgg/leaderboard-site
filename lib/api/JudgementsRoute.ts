@@ -18,6 +18,7 @@ export namespace Judgements {
    * @name JudgementsDetail
    * @summary Gets a Judgement by its ID.
    * @request GET:/api/Judgements/{id}
+   * @secure
    * @response `200` `JudgementViewModel` The `Judgement` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` No `Judgement` with the requested ID could be found.
@@ -43,6 +44,7 @@ export namespace Judgements {
  * @summary Creates a new Judgement for a Run.
 This request is restricted to Moderators.
  * @request POST:/api/Judgements
+ * @secure
  * @response `201` `JudgementViewModel` The `Judgement` was created and returned successfully.
  * @response `400` `ProblemDetails` The request was malformed.
  * @response `401` `ProblemDetails` Unauthorized
