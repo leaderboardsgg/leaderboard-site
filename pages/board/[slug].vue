@@ -2,7 +2,7 @@
 import { useGetLeaderboardDetail } from 'composables/api/useGetLeaderboardDetail'
 
 const route = useRoute()
-const leaderboardSlug = parseInt(route.params.slug as string)
+const leaderboardSlug = route.params.slug as string
 const leaderboardDetail = await useGetLeaderboardDetail(leaderboardSlug)
 </script>
 

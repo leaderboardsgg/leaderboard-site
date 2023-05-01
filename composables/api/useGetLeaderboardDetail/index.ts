@@ -1,12 +1,12 @@
 import { ref } from 'vue'
 import { ApiResponse, useApi } from 'composables/useApi'
 import { Leaderboards } from 'lib/api/Leaderboards'
-import type { Leaderboard } from 'lib/api/data-contracts'
+import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 
 export const useGetLeaderboardDetail = async (
-  leaderboardSlug: number,
-): Promise<ApiResponse<Leaderboard>> => {
-  const responseData = ref<Leaderboard>({
+  leaderboardSlug: string,
+): Promise<ApiResponse<LeaderboardViewModel>> => {
+  const responseData = ref<LeaderboardViewModel>({
     name: '',
     rules: '',
     slug: '',
@@ -16,8 +16,8 @@ export const useGetLeaderboardDetail = async (
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
   })
 
-  return await useApi<Leaderboard>(
-    async () => await leaderboardClient.leaderboardsDetail(leaderboardSlug),
+  return await useApi<LeaderboardViewModel>(
+    async () => await leaderboardClient.leaderboardsDetail2(leaderboardSlug),
     {
       responseData,
     },

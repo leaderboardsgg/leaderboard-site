@@ -4,12 +4,12 @@ const mockSuccessLeaderboardsDetail = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useGetLeaderboardDetail', () => {
   describe('when everything is successful', () => {
-    const slug = 14652
+    const slug = 'pieces'
 
     it('creates a GET request to fetch the leaderboard details', async () => {
       vi.mock('lib/api/Leaderboards', () => ({
         Leaderboards: function Leaderboards() {
-          this.leaderboardsDetail = mockSuccessLeaderboardsDetail
+          this.leaderboardsDetail2 = mockSuccessLeaderboardsDetail
         },
       }))
 
