@@ -45,13 +45,13 @@ export interface Ban {
 }
 
 export interface CalendarSystem {
-  id?: string | null
-  name?: string | null
+  id?: string
+  name?: string
   /** @format int32 */
   minYear?: number
   /** @format int32 */
   maxYear?: number
-  eras?: Era[] | null
+  eras?: Era[]
 }
 
 /** Represents a `Category` tied to a `Leaderboard`. */
@@ -95,6 +95,40 @@ export interface Category {
    * @format int32
    */
   playersMax: number
+}
+
+/** Represents a `Category` tied to a `Leaderboard`. */
+export interface CategoryViewModel {
+  /**
+   * The unique identifier of the `Category`.<br />
+   * @format int64
+   */
+  id?: number
+  /**
+   * The display name of the `Category`.
+   * @example "Foo Bar Baz%"
+   */
+  name?: string
+  /**
+   * The URL-scoped unique identifier of the `Category`.<br />
+   * @example "foo-bar-baz"
+   */
+  slug?: string
+  /**
+   * The rules of the `Category`.
+   * @example "Video proof is required."
+   */
+  rules?: string | null
+  /**
+   * The minimum player count of the `Category`. The default is 1.
+   * @format int32
+   */
+  playersMin?: number
+  /**
+   * The maximum player count of the `Category`. The default is `PlayersMin`.
+   * @format int32
+   */
+  playersMax?: number
 }
 
 /** This request object is sent when creating a `Category`. */
@@ -150,7 +184,7 @@ export interface CreateJudgementRequest {
    * affected `Run` is not approved (`Approved` is null or false).
    * @example "The video proof is not of sufficient quality."
    */
-  note?: string | null
+  note?: string
   /** The `Judgement`'s decision. May be null, true, or false. */
   approved?: boolean | null
 }
@@ -181,13 +215,13 @@ export interface CreateLeaderboardRequest {
    * The display name of the `Leaderboard` to create.
    * @example "Foo Bar"
    */
-  name?: string | null
+  name?: string
   /**
    * The URL-scoped unique identifier of the `Leaderboard`.<br />
    * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
    * @example "foo-bar"
    */
-  slug?: string | null
+  slug?: string
 }
 
 /** This request object is sent when promoting a `User` to *Moderator* for a `Leaderboard`. */
@@ -260,7 +294,7 @@ export interface CreateSiteBanRequest {
 }
 
 export interface Era {
-  name?: string | null
+  name?: string
 }
 
 export type Instant = object
@@ -339,8 +373,8 @@ export interface JudgementViewModel {
   runId?: string
 }
 
-/** Represents a collection of `Category` entities. */
-export interface Leaderboard {
+/** Represents a collection of `Leaderboard` entities. */
+export interface LeaderboardViewModel {
   /**
    * The unique identifier of the `Leaderboard`.<br />
    * Generated on creation.
@@ -349,22 +383,22 @@ export interface Leaderboard {
   id?: number
   /**
    * The display name of the `Leaderboard` to create.
-   * @minLength 1
    * @example "Foo Bar"
    */
-  name: string
+  name?: string
   /**
    * The URL-scoped unique identifier of the `Leaderboard`.<br />
    * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
-   * @minLength 1
    * @example "foo-bar"
    */
-  slug: string
+  slug?: string
   /**
    * The general rules for the Leaderboard.
    * @example "Timer starts on selecting New Game and ends when the final boss is beaten."
    */
   rules?: string | null
+  /** A collection of `Category` entities for the `Leaderboard`. */
+  categories?: CategoryViewModel[]
 }
 
 export interface LocalDate {
@@ -430,8 +464,6 @@ export interface Modship {
    * @format int64
    */
   leaderboardId: number
-  /** Represents a collection of `Category` entities. */
-  leaderboard?: Leaderboard
 }
 
 /** Represents the participation of a `User` on a `Run`. */
@@ -566,7 +598,7 @@ export type RunStatus = 0 | 1 | 2 | 3 | 4
 /** This request object is sent when updating a `Participation`. */
 export interface UpdateParticipationRequest {
   /** A comment about the `Participation`. */
-  comment?: string | null
+  comment?: string
   /**
    * A link to video proof of the `Run`.
    * @minLength 1

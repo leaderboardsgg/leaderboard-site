@@ -10,7 +10,7 @@
  */
 
 import {
-  Category,
+  CategoryViewModel,
   CreateCategoryRequest,
   ProblemDetails,
 } from './data-contracts'
@@ -26,16 +26,18 @@ export class Categories<
    * @name CategoriesDetail
    * @summary Gets a Category by its ID.
    * @request GET:/api/Categories/{id}
-   * @response `200` `Category` The `Category` was found and returned successfully.
+   * @secure
+   * @response `200` `CategoryViewModel` The `Category` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
    * @response `403` `ProblemDetails` Forbidden
    * @response `404` `ProblemDetails` No `Category` with the requested ID could be found.
    */
   categoriesDetail = (id: number, params: RequestParams = {}) =>
-    this.request<Category, ProblemDetails>({
+    this.request<CategoryViewModel, ProblemDetails>({
       path: `/api/Categories/${id}`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
@@ -47,7 +49,8 @@ export class Categories<
  * @summary Creates a new Category.
 This request is restricted to Moderators.
  * @request POST:/api/Categories
- * @response `201` `Category` The `Category` was created and returned successfully.
+ * @secure
+ * @response `201` `CategoryViewModel` The `Category` was created and returned successfully.
  * @response `400` `ProblemDetails` The request was malformed.
  * @response `401` `ProblemDetails` Unauthorized
  * @response `403` `ProblemDetails` Forbidden
@@ -57,10 +60,11 @@ This request is restricted to Moderators.
     data: CreateCategoryRequest,
     params: RequestParams = {},
   ) =>
-    this.request<Category, ProblemDetails>({
+    this.request<CategoryViewModel, ProblemDetails>({
       path: `/api/Categories`,
       method: 'POST',
       body: data,
+      secure: true,
       type: ContentType.Json,
       format: 'json',
       ...params,

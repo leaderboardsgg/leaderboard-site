@@ -22,6 +22,7 @@ export namespace Participations {
    * @name ParticipationsDetail
    * @summary Gets a Participation by its ID.
    * @request GET:/api/Participations/{id}
+   * @secure
    * @response `200` `Participation` The `Participation` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` No `Participation` with the requested ID could be found.
@@ -46,6 +47,7 @@ export namespace Participations {
    * @name ParticipationsCreate
    * @summary Creates a Participation for a User.
    * @request POST:/api/Participations
+   * @secure
    * @response `201` `void` The `Participation` was created and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -66,6 +68,7 @@ export namespace Participations {
    * @name ParticipationsUpdate
    * @summary Updates the Participation of a User for a Run.
    * @request PUT:/api/Participations
+   * @secure
    * @response `200` `void` The `Participation` was updated successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `403` `ProblemDetails` Forbidden

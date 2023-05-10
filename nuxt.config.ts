@@ -87,6 +87,8 @@ export default defineNuxtConfig({
     },
   },
 
+  ssr: false,
+
   typescript: {
     // Disabled as using Volar take over mode is the reccomended way to do this
     shim: false,

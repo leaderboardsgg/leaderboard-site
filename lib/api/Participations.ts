@@ -27,6 +27,7 @@ export class Participations<
    * @name ParticipationsDetail
    * @summary Gets a Participation by its ID.
    * @request GET:/api/Participations/{id}
+   * @secure
    * @response `200` `Participation` The `Participation` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` No `Participation` with the requested ID could be found.
@@ -35,6 +36,7 @@ export class Participations<
     this.request<Participation, ProblemDetails>({
       path: `/api/Participations/${id}`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
@@ -45,6 +47,7 @@ export class Participations<
    * @name ParticipationsCreate
    * @summary Creates a Participation for a User.
    * @request POST:/api/Participations
+   * @secure
    * @response `201` `void` The `Participation` was created and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -59,6 +62,7 @@ export class Participations<
       path: `/api/Participations`,
       method: 'POST',
       body: data,
+      secure: true,
       type: ContentType.Json,
       ...params,
     })
@@ -69,6 +73,7 @@ export class Participations<
    * @name ParticipationsUpdate
    * @summary Updates the Participation of a User for a Run.
    * @request PUT:/api/Participations
+   * @secure
    * @response `200` `void` The `Participation` was updated successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `403` `ProblemDetails` Forbidden
@@ -82,6 +87,7 @@ export class Participations<
       path: `/api/Participations`,
       method: 'PUT',
       body: data,
+      secure: true,
       type: ContentType.Json,
       ...params,
     })

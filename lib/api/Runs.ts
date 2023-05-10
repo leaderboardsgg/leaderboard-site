@@ -28,6 +28,7 @@ export class Runs<
    * @name RunsDetail
    * @summary Gets a Run by its ID.
    * @request GET:/api/Runs/{id}
+   * @secure
    * @response `200` `Run` The `Run` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -38,6 +39,7 @@ export class Runs<
     this.request<Run, ProblemDetails>({
       path: `/api/Runs/${id}`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
@@ -48,6 +50,7 @@ export class Runs<
    * @name RunsCreate
    * @summary Creates a new Run.
    * @request POST:/api/Runs
+   * @secure
    * @response `201` `void` The `Run` was created and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -59,6 +62,7 @@ export class Runs<
       path: `/api/Runs`,
       method: 'POST',
       body: data,
+      secure: true,
       type: ContentType.Json,
       ...params,
     })
@@ -69,6 +73,7 @@ export class Runs<
    * @name RunsParticipationsDetail
    * @summary Gets all Participations associated with a Run ID.
    * @request GET:/api/Runs/{id}/participations
+   * @secure
    * @response `200` `(Participation)[]` The list of `Participation`s was retrieved successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -79,6 +84,7 @@ export class Runs<
     this.request<Participation[], ProblemDetails>({
       path: `/api/Runs/${id}/participations`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
@@ -88,6 +94,7 @@ export class Runs<
    * @tags Runs
    * @name RunsCategoryDetail
    * @request GET:/api/Runs/{id}/category
+   * @secure
    * @response `200` `Category` Success
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -98,6 +105,7 @@ export class Runs<
     this.request<Category, ProblemDetails>({
       path: `/api/Runs/${id}/category`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
