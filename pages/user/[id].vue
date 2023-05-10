@@ -7,5 +7,5 @@ const userDetail = await useGetUserDetail(userId)
 </script>
 
 <template>
-  <p>Username: {{ userDetail.data?.username }}</p>
+  <p>Username: {{ userDetail?.data?.username || 'ERROR' }}</p>
 </template>

@@ -7,5 +7,5 @@ const leaderboardDetail = await useGetLeaderboardDetail(leaderboardSlug)
 </script>
 
 <template>
-  <p>Leaderboard Name: {{ leaderboardDetail.data?.name }}</p>
+  <p>Leaderboard Name: {{ leaderboardDetail?.data?.name || 'ERROR' }}</p>
 </template>
