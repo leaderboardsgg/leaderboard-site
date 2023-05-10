@@ -73,7 +73,7 @@ export default defineNuxtConfig({
       // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
       // css: ['assets/css/tailwind.css'],
       {
-        configPath: 'tailwind.config.ts',
+        configPath: 'tailwind.config.js',
         cssPath: './assets/css/tailwind.css',
       },
     ],
@@ -86,6 +86,8 @@ export default defineNuxtConfig({
       BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
     },
   },
+
+  ssr: false,
 
   typescript: {
     // Disabled as using Volar take over mode is the reccomended way to do this

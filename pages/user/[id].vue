@@ -8,5 +8,5 @@ const userDetail = await useGetUserDetail(userId)
 </script>
 
 <template>
-  <ProfileHeader :username="userDetail.data?.username" />
+  <ProfileHeader :username="userDetail?.data?.username || 'ERROR'" />
 </template>

@@ -1,8 +1,13 @@
 {
   "extends": ["config:base"],
-  "compatibility": { "pnpm": "^7.0.0" },
+  "compatibility": { "pnpm": "^8.1.0" },
   "labels": ["dependencies"],
   "packageRules": [
+    {
+      "matchPackageNames": ["@nuxtjs/i18n", "nuxt", "vue", "vite"],
+      "enabled": false,
+      "description": "for the above packages tells renovate to ignore them."
+    },
     {
       "description": "Automerge all non Major updates",
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],

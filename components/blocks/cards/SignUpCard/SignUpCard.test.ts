@@ -1,6 +1,12 @@
-import { mount } from '@vue/test-utils'
+import { mount, enableAutoUnmount } from '@vue/test-utils'
 import { getByTestId, getHTMLElement } from 'testUtils'
 import SignUpCard from './SignUpCard.vue'
+
+function getSignUpCardWrapper() {
+  return mount(SignUpCard)
+}
+
+enableAutoUnmount(afterEach)
 
 afterEach(() => {
   fetchMock.resetMocks()
@@ -9,14 +15,14 @@ afterEach(() => {
 
 describe('<SignUpCard />', () => {
   it('should render without crashing', () => {
-    const wrapper = mount(SignUpCard)
+    const wrapper = getSignUpCardWrapper()
 
     expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('when the close button is clicked', () => {
     it('should emit the close event', async () => {
-      const wrapper = mount(SignUpCard)
+      const wrapper = getSignUpCardWrapper()
 
       await getByTestId(wrapper, 'close-button').trigger('click')
 
@@ -26,7 +32,7 @@ describe('<SignUpCard />', () => {
 
   describe('when the hide/show button is clicked', () => {
     it('changes the password input type to be text', async () => {
-      const wrapper = mount(SignUpCard)
+      const wrapper = getSignUpCardWrapper()
 
       const passwordInputElement = getHTMLElement(
         getByTestId(wrapper, 'password-input'),
@@ -47,7 +53,7 @@ describe('<SignUpCard />', () => {
 
   describe('when the login button is clicked', () => {
     it('emits the log in click event', async () => {
-      const wrapper = mount(SignUpCard)
+      const wrapper = getSignUpCardWrapper()
 
       await getByTestId(wrapper, 'login-button').trigger('click')
 
@@ -61,7 +67,7 @@ describe('<SignUpCard />', () => {
     const username = 'strongbad'
 
     it('emits the sign up click event', async () => {
-      const wrapper = mount(SignUpCard)
+      const wrapper = getSignUpCardWrapper()
 
       await getByTestId(wrapper, 'sign-up-button').trigger('click')
 
@@ -69,7 +75,7 @@ describe('<SignUpCard />', () => {
     })
 
     it('clears the state', async () => {
-      const wrapper = mount(SignUpCard)
+      const wrapper = getSignUpCardWrapper()
 
       const emailInputElement = getHTMLElement(
         getByTestId(wrapper, 'email-input'),
@@ -103,7 +109,7 @@ describe('<SignUpCard />', () => {
     })
 
     it('calls the api', async () => {
-      const wrapper = mount(SignUpCard)
+      const wrapper = getSignUpCardWrapper()
 
       await getByTestId(wrapper, 'email-input').setValue(emailAddress)
       await getByTestId(wrapper, 'username-input').setValue(username)

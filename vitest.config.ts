@@ -43,7 +43,7 @@ export default mergeConfig(
       env: parsed,
       globals: true,
       sequence: {
-        shuffle: false, // change back to true later
+        shuffle: true,
       },
       setupFiles: ['vitest.setup.ts'],
     },

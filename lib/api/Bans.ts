@@ -27,6 +27,7 @@ export class Bans<
    * @name BansLeaderboardDetail
    * @summary Gets all Bans associated with a Leaderboard ID.
    * @request GET:/api/Bans/leaderboard/{leaderboardId}
+   * @secure
    * @response `200` `(Ban)[]` The list of `Ban`s was retrieved successfully. The result can be an empty collection.
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID could be found.
@@ -35,6 +36,7 @@ export class Bans<
     this.request<Ban[], ProblemDetails>({
       path: `/api/Bans/leaderboard/${leaderboardId}`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
@@ -47,6 +49,7 @@ export class Bans<
    * @request GET:/api/Bans/leaderboard/{bannedUserId}
    * @originalName bansLeaderboardDetail
    * @duplicate
+   * @secure
    * @response `200` `(Ban)[]` The list of `Ban`s was retrieved successfully. The result can be an empty collection.
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` No `User` with the requested ID could be found.
@@ -55,6 +58,7 @@ export class Bans<
     this.request<Ban[], ProblemDetails>({
       path: `/api/Bans/leaderboard/${bannedUserId}`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
@@ -65,6 +69,7 @@ export class Bans<
    * @name BansDetail
    * @summary Gets a Ban by its ID.
    * @request GET:/api/Bans/{id}
+   * @secure
    * @response `200` `Ban` The `Ban` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
@@ -75,6 +80,7 @@ export class Bans<
     this.request<Ban, ProblemDetails>({
       path: `/api/Bans/${id}`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
@@ -86,6 +92,7 @@ export class Bans<
  * @summary Lifts a Leaderboard-scoped or site-scoped Ban.
 This request is restricted to Administrators.
  * @request DELETE:/api/Bans/{id}
+ * @secure
  * @response `204` `void` The `Ban` was removed successfully.
  * @response `400` `ProblemDetails` Bad Request
  * @response `401` `ProblemDetails` The requesting `User` is not logged-in.
@@ -96,6 +103,7 @@ This request is restricted to Administrators.
     this.request<void, ProblemDetails>({
       path: `/api/Bans/${id}`,
       method: 'DELETE',
+      secure: true,
       ...params,
     })
   /**
@@ -106,6 +114,7 @@ This request is restricted to Administrators.
  * @summary Issues a site-scoped Ban.
 This request is restricted to Administrators.
  * @request POST:/api/Bans
+ * @secure
  * @response `201` `Ban` The `Ban` was created and returned successfully.
  * @response `400` `ProblemDetails` The request was malformed.
  * @response `401` `ProblemDetails` The requesting `User` is unauthorized to issue site-scoped `Ban`s.
@@ -117,6 +126,7 @@ This request is restricted to Administrators.
       path: `/api/Bans`,
       method: 'POST',
       body: data,
+      secure: true,
       type: ContentType.Json,
       format: 'json',
       ...params,
@@ -129,6 +139,7 @@ This request is restricted to Administrators.
  * @summary Issues a Leaderboard-scoped Ban.
 This request is restricted to Moderators and Administrators.
  * @request POST:/api/Bans/leaderboard
+ * @secure
  * @response `201` `Ban` The `Ban` was created and returned successfully.
  * @response `400` `ProblemDetails` The request was malformed.
  * @response `401` `ProblemDetails` The requesting `User` is unauthorized to issue `Leaderboard`-scoped `Ban`s.
@@ -143,6 +154,7 @@ This request is restricted to Moderators and Administrators.
       path: `/api/Bans/leaderboard`,
       method: 'POST',
       body: data,
+      secure: true,
       type: ContentType.Json,
       format: 'json',
       ...params,
@@ -155,6 +167,7 @@ This request is restricted to Moderators and Administrators.
  * @summary Lift a Leaderboard-scoped Ban.
 This request is restricted to Moderators and Administrators.
  * @request DELETE:/api/Bans/{id}/leaderboards/{leaderboardId}
+ * @secure
  * @response `204` `void` The `Ban` was removed successfully.
  * @response `400` `ProblemDetails` Bad Request
  * @response `401` `ProblemDetails` The requesting `User` is not logged-in.
@@ -169,6 +182,7 @@ This request is restricted to Moderators and Administrators.
     this.request<void, ProblemDetails>({
       path: `/api/Bans/${id}/leaderboards/${leaderboardId}`,
       method: 'DELETE',
+      secure: true,
       ...params,
     })
 }

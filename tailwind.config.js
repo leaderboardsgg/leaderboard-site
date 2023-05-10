@@ -1,5 +1,5 @@
 /* eslint-disable vue/sort-keys */
-module.exports = {
+export default {
   content: [
     './components/**/*.{vue,js}',
     './layouts/**/*.vue',

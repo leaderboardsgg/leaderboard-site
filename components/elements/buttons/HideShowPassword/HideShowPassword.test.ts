@@ -1,17 +1,23 @@
-import { mount } from '@vue/test-utils'
+import { mount, enableAutoUnmount } from '@vue/test-utils'
 import HideShowPassword from './HideShowPassword.vue'
 import { getByTestId, getHTMLElement } from 'testUtils'
 
+function getHideShowPassword() {
+  return mount(HideShowPassword)
+}
+
+enableAutoUnmount(afterEach)
+
 describe('<HideShowPassword />', () => {
   it('should render without crashing', () => {
-    const wrapper = mount(HideShowPassword)
+    const wrapper = getHideShowPassword()
 
     expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('Visible eye, hidden eye, and the button', () => {
     it('should render without crashing', () => {
-      const wrapper = mount(HideShowPassword)
+      const wrapper = getHideShowPassword()
       const passwordButton = getByTestId(wrapper, 'hide-show-password-button')
       const hiddenEyeIcon = getByTestId(wrapper, 'hidden-eye-icon')
       const visibleEyeIcon = getByTestId(wrapper, 'visible-eye-icon')
@@ -24,7 +30,7 @@ describe('<HideShowPassword />', () => {
 
   describe('when clicking the button', () => {
     it('should toggle the state', async () => {
-      const wrapper = mount(HideShowPassword)
+      const wrapper = getHideShowPassword()
       const hiddenEyeIconElement = getHTMLElement(
         getByTestId(wrapper, 'hidden-eye-icon'),
       )
@@ -44,7 +50,7 @@ describe('<HideShowPassword />', () => {
 
   describe('when the button is focus and the enter key up event is triggered', () => {
     it('should toggle the state', async () => {
-      const wrapper = mount(HideShowPassword)
+      const wrapper = getHideShowPassword()
       const hiddenEyeIconElement = getHTMLElement(
         getByTestId(wrapper, 'hidden-eye-icon'),
       )

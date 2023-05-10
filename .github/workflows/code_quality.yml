@@ -1,27 +1,18 @@
-name: CI
-
+name: CI - Build & Linting
 on:
   push:
     branches: [main]
   pull_request:
 
 concurrency:
-  group: ${{ github.head_ref || github.run_id }}-testing
+  group: ${{ github.head_ref || github.run_id }}-build-and-lint
   cancel-in-progress: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test:
+  build_and_lint:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    continue-on-error: true
-
-    strategy:
-      fail-fast: false
-      max-parallel: 2
-      matrix:
-        run_number: [1, 2, 3, 4, 5, 6, 7, 8]
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -64,6 +55,10 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
 
+      # shows current pnpm version
+      - name: check pnpm version
+        run: pnpm -v
+
       - name: Install `node_modules`
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: pnpm install
@@ -83,5 +78,8 @@ jobs:
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: pnpm build
 
-      - name: Tests
-        run: pnpm run test
+      - name: Linting
+        run: pnpm run lint
+
+      - name: Prettier
+        run: pnpm run prettier:check

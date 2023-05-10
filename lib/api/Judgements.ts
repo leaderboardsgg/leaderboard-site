@@ -26,6 +26,7 @@ export class Judgements<
    * @name JudgementsDetail
    * @summary Gets a Judgement by its ID.
    * @request GET:/api/Judgements/{id}
+   * @secure
    * @response `200` `JudgementViewModel` The `Judgement` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` No `Judgement` with the requested ID could be found.
@@ -34,6 +35,7 @@ export class Judgements<
     this.request<JudgementViewModel, ProblemDetails>({
       path: `/api/Judgements/${id}`,
       method: 'GET',
+      secure: true,
       format: 'json',
       ...params,
     })
@@ -45,6 +47,7 @@ export class Judgements<
  * @summary Creates a new Judgement for a Run.
 This request is restricted to Moderators.
  * @request POST:/api/Judgements
+ * @secure
  * @response `201` `JudgementViewModel` The `Judgement` was created and returned successfully.
  * @response `400` `ProblemDetails` The request was malformed.
  * @response `401` `ProblemDetails` Unauthorized
@@ -59,6 +62,7 @@ This request is restricted to Moderators.
       path: `/api/Judgements`,
       method: 'POST',
       body: data,
+      secure: true,
       type: ContentType.Json,
       format: 'json',
       ...params,
