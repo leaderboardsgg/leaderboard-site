@@ -6,7 +6,7 @@ interface FollowButtonProps {
 }
 
 withDefaults(defineProps<FollowButtonProps>(), {
-  onClick: () => () => 2,
+  onClick: () => 2,
 })
 </script>
 

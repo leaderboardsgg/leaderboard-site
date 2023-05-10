@@ -15,7 +15,7 @@ defineProps<NavLinksProps>()
       :alt="social.name"
       :href="social.url"
     >
-      <img :src="'/icons/social/' + social.icon + '.svg'" :alt="social.icon" />
+      <img :src="`/icons/social/${social.icon}.svg`" :alt="social.icon" />
     </a>
   </div>
 </template>
