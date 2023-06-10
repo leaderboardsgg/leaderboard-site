@@ -1,5 +1,5 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
-import { supportedLocales } from 'configUtils'
+import { supportedLocales } from 'root/configUtils'
 import LanguageSelector from './LanguageSelector.vue'
 
 function getLanguageSelectorWrapper() {

@@ -1,7 +1,7 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
 import * as apiComposables from 'composables/api'
 import { useCurrentUser } from 'composables/useCurrentUser'
-import { getByTestId } from 'testUtils'
+import { getByTestId } from 'root/testUtils'
 import SiteNavbar from './SiteNavbar.vue'
 
 function getSiteNavbarWrapper() {

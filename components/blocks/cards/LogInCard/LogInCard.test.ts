@@ -1,7 +1,7 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
 import LogInCard from './LogInCard.vue'
 import { FullRequestParams } from 'lib/api/http-client'
-import { getByTestId, getHTMLElement } from 'testUtils'
+import { getByTestId, getHTMLElement } from 'root/testUtils'
 
 const token = 'jwt-token'
 type fetchMockCall = [string, FullRequestParams]

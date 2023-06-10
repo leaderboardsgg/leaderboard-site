@@ -1,5 +1,5 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
-import { getByTestId, getHTMLElement } from 'testUtils'
+import { getByTestId, getHTMLElement } from 'root/testUtils'
 import SignUpCard from './SignUpCard.vue'
 
 function getSignUpCardWrapper() {
