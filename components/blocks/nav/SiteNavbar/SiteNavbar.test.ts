@@ -75,9 +75,8 @@ describe('<SiteNavbar />', () => {
     })
 
     describe('when the logout button is clicked', () => {
-      const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
-
       it('should log out the user', async () => {
+        const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
         const wrapper = getSiteNavbarWrapper()
 
         await getByTestId(wrapper, 'site-navbar-logout-button').trigger('click')
