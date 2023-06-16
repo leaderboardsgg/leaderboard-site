@@ -27,7 +27,7 @@ jobs:
       # Ensures pnpm version is consistent and gets back the value to be used in pnpm setup action
       - name: Get PNPM version
         id: pnpm-version
-        uses: buffet-time/pnpm-versions-check-action@v1.1
+        uses: buffet-time/pnpm-versions-check-action@v1.2
         with:
           # engines.pnpm
           packageJson-engines-pnpm: '${{ fromJson(steps.package.outputs.content).engines.pnpm }}'
