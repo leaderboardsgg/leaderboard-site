@@ -1,7 +1,7 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
 import * as apiComposables from 'composables/api'
 import { useCurrentUser } from 'composables/useCurrentUser'
-import { getByTestId } from 'testUtils'
+import { getByTestId } from 'root/testUtils'
 import SiteNavbar from './SiteNavbar.vue'
 
 function getSiteNavbarWrapper() {
@@ -75,9 +75,8 @@ describe('<SiteNavbar />', () => {
     })
 
     describe('when the logout button is clicked', () => {
-      const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
-
       it('should log out the user', async () => {
+        const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
         const wrapper = getSiteNavbarWrapper()
 
         await getByTestId(wrapper, 'site-navbar-logout-button').trigger('click')
