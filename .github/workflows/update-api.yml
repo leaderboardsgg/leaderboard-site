@@ -99,7 +99,7 @@ jobs:
       - name: Create PR
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.WORKFLOW_ACCESS_TOKEN }}
           script: |
             await github.rest.pulls.create({
               owner: 'erunks',
