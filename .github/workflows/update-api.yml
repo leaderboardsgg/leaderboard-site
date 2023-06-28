@@ -97,7 +97,7 @@ jobs:
           pnpm pretty:staged
           git add ./lib
           git commit -m 'chore: lib: update api' --no-verify
-          git remote set-url origin https://api-updater:${{ secrets.GITHUB_TOKEN }}@github.com/leaderboardsgg/leaderboard-site.git
+          git remote set-url origin https://api-updater:${{ secrets.GITHUB_TOKEN }}@github.com/erunks/leaderboard-site.git
           git push origin ${{ steps.branch.outputs.BRANCH_NAME }}
 
       - name: Create PR
