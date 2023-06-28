@@ -3,7 +3,10 @@ name: Update API
 on:
   workflow_dispatch:
 
-permissions: write-all
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
