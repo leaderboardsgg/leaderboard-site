@@ -106,7 +106,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             await github.rest.pulls.create({
-              owner: 'leaderboardsgg',
+              owner: 'erunks',
               repo: 'leaderboard-site',
               base: 'main',
               head: '${{ steps.branch.outputs.BRANCH_NAME }}',
