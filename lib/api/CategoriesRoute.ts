@@ -52,6 +52,7 @@ This request is restricted to Moderators.
  * @response `401` `ProblemDetails` Unauthorized
  * @response `403` `ProblemDetails` Forbidden
  * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create a `Category`.
+ * @response `422` `ValidationProblemDetails` Client Error
 */
   export namespace CategoriesCreate {
     export type RequestParams = {}

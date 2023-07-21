@@ -45,6 +45,7 @@
   },
   // add your custom rules here
   "rules": {
+    "no-console": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "arrow-parens": ["error", "always"],
     "comma-dangle": "off",

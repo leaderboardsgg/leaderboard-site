@@ -1,6 +1,9 @@
 import { ref, type Ref } from 'vue'
 import { isProblemDetails } from 'lib/helpers'
-import type { ProblemDetails } from 'lib/api/data-contracts'
+import type {
+  ProblemDetails,
+  ValidationProblemDetails,
+} from 'lib/api/data-contracts'
 import type { HttpResponse } from 'lib/api/http-client'
 
 /**
@@ -11,6 +14,7 @@ import type { HttpResponse } from 'lib/api/http-client'
 export interface ApiResponse<T> {
   data?: T
   error: ProblemDetails | null
+  errors: ValidationProblemDetails | null
   loading: boolean
 }
 
@@ -26,10 +30,10 @@ interface optionalParameters<T> {
  * @returns {Promise<ApiResponse<T>>} returns an `ApiResponse` object, but the `data` property is not guaranteed to be present
  */
 export const useApi = async <T>(
-  apiRequest: () => Promise<HttpResponse<T, ProblemDetails>>,
+  apiRequest: () => Promise<HttpResponse<T, void | ProblemDetails>>,
   opts: optionalParameters<T> = {},
 ): Promise<ApiResponse<T>> => {
-  const responseError = ref<ProblemDetails | null>(null)
+  const responseError = ref<ProblemDetails | null | void>(null)
   const responseLoading = ref(true)
 
   let { responseData } = opts
@@ -55,7 +59,7 @@ export const useApi = async <T>(
     if (isProblemDetails(e)) {
       const error = e as ProblemDetails
 
-      console.error(error) // eslint-disable-line no-console
+      console.error(error)
       responseError.value = error
     }
   } finally {

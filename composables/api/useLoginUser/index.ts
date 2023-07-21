@@ -1,37 +1,19 @@
-import { ApiResponse, useApi } from 'composables/useApi'
-import { useCurrentUser } from 'composables/useCurrentUser'
-import { useSessionToken } from 'composables/useSessionToken'
-import { Users } from 'lib/api/Users'
-import type { LoginRequest, LoginResponse, User } from 'lib/api/data-contracts'
+import { Account } from 'lib/api/Account'
+import { HttpResponse } from 'lib/api/http-client'
+import type {
+  LoginRequest,
+  LoginResponse,
+  ProblemDetails,
+} from 'lib/api/data-contracts'
 
 export const useLoginUser = async (
   requestData: LoginRequest,
-): Promise<ApiResponse<LoginResponse>> => {
-  const authToken = useSessionToken()
-  const currentUser = useCurrentUser()
-
-  const userClient = new Users({
+): Promise<HttpResponse<LoginResponse, ProblemDetails>> => {
+  const account = new Account({
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
   })
 
-  return await useApi<LoginResponse>(
-    async () => await userClient.usersLoginCreate(requestData),
-    {
-      onOkay: async (d: LoginResponse) => {
-        authToken.value = d.token
-
-        await useApi<User>(
-          async () =>
-            await userClient.usersMeList({
-              headers: { Authorization: `Bearer ${d.token}` },
-            }),
-          {
-            responseData: currentUser,
-          },
-        )
-      },
-    },
-  )
+  return await account.accountLoginCreate(requestData)
 }
 
 export default useLoginUser

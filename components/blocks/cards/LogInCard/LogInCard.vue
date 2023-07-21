@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Ref, ref, withDefaults } from 'vue'
+import { type Ref, ref } from 'vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
@@ -34,17 +34,24 @@ const state: LogInCardState = {
   showPassword: ref(false),
 }
 
+const showErrorText = ref(false)
+
 function login() {
+  showErrorText.value = false
   useLoginUser({
     email: state.email.value,
     password: state.password.value,
   })
+    .then(() => {
+      state.email.value = ''
+      state.password.value = ''
+      state.showPassword.value = false
 
-  state.email.value = ''
-  state.password.value = ''
-  state.showPassword.value = false
-
-  emit('close')
+      emit('close')
+    })
+    .catch(() => {
+      showErrorText.value = true
+    })
 }
 </script>
 
@@ -105,18 +112,23 @@ function login() {
               @keydown.enter="$event.preventDefault()"
             />
           </div>
+
+          <p v-if="showErrorText" class="text-red-600">
+            Error: Invalid Email, or Password for given email.
+          </p>
         </div>
 
         <BaseButton
           class="login-button"
           data-testid="login-button"
+          :disabled="!(state.email.value && state.password.value)"
           @click="login"
         >
           Log In
         </BaseButton>
       </div>
 
-      <div class="login-card__auth-buttons">
+      <!-- <div class="login-card__auth-buttons">
         <BaseButton class="login-button">
           <i-svg-github class="mr-2 h-5 w-5" />
 
@@ -127,7 +139,7 @@ function login() {
           <i-svg-google class="mr-2 h-5 w-5" />
           <p>Log In with Google</p>
         </BaseButton>
-      </div>
+      </div> -->
     </CardBody>
   </Card>
 </template>
@@ -145,7 +157,7 @@ function login() {
     @apply flex flex-1 justify-center bg-white text-gray-900 border border-gray-300;
   }
   & .login-card__body-wrapper {
-    @apply flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300;
+    @apply flex flex-col space-y-3 pb-3 mb-3;
   }
   & .login-card__input-wrapper {
     @apply relative flex flex-col w-full;

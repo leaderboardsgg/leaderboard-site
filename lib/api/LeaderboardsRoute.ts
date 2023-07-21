@@ -97,6 +97,7 @@ This request is restricted to Administrators.
  * @response `401` `ProblemDetails` Unauthorized
  * @response `403` `ProblemDetails` Forbidden
  * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create `Leaderboard`s.
+ * @response `422` `ValidationProblemDetails` Client Error
 */
   export namespace LeaderboardsCreate {
     export type RequestParams = {}

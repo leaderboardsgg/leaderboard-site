@@ -13,6 +13,7 @@ import {
   CategoryViewModel,
   CreateCategoryRequest,
   ProblemDetails,
+  ValidationProblemDetails,
 } from './data-contracts'
 import { ContentType, HttpClient, RequestParams } from './http-client'
 
@@ -55,12 +56,13 @@ This request is restricted to Moderators.
  * @response `401` `ProblemDetails` Unauthorized
  * @response `403` `ProblemDetails` Forbidden
  * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create a `Category`.
+ * @response `422` `ValidationProblemDetails` Client Error
  */
   categoriesCreate = (
     data: CreateCategoryRequest,
     params: RequestParams = {},
   ) =>
-    this.request<CategoryViewModel, ProblemDetails>({
+    this.request<CategoryViewModel, ProblemDetails | ValidationProblemDetails>({
       path: `/api/Categories`,
       method: 'POST',
       body: data,

@@ -11,9 +11,10 @@
 
 import {
   CreateLeaderboardRequest,
-  LeaderboardsListParams,
   LeaderboardViewModel,
+  LeaderboardsListParams,
   ProblemDetails,
+  ValidationProblemDetails,
 } from './data-contracts'
 import { ContentType, HttpClient, RequestParams } from './http-client'
 
@@ -98,12 +99,16 @@ This request is restricted to Administrators.
  * @response `401` `ProblemDetails` Unauthorized
  * @response `403` `ProblemDetails` Forbidden
  * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create `Leaderboard`s.
+ * @response `422` `ValidationProblemDetails` Client Error
  */
   leaderboardsCreate = (
     data: CreateLeaderboardRequest,
     params: RequestParams = {},
   ) =>
-    this.request<LeaderboardViewModel, ProblemDetails>({
+    this.request<
+      LeaderboardViewModel,
+      ProblemDetails | ValidationProblemDetails
+    >({
       path: `/api/Leaderboards`,
       method: 'POST',
       body: data,
