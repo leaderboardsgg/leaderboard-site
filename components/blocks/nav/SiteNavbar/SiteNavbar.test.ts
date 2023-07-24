@@ -60,8 +60,7 @@ describe('<SiteNavbar />', () => {
     beforeEach(() => {
       const currentUser = useCurrentUser()
       currentUser.value = {
-        admin: true,
-        email: 'admin@leaderboards.gg',
+        id: 'uuid-1234-56',
         username: 'lbgg_admin',
       }
     })
@@ -75,9 +74,8 @@ describe('<SiteNavbar />', () => {
     })
 
     describe('when the logout button is clicked', () => {
-      const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
-
       it('should log out the user', async () => {
+        const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
         const wrapper = getSiteNavbarWrapper()
 
         await getByTestId(wrapper, 'site-navbar-logout-button').trigger('click')

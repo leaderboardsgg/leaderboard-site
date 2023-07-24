@@ -90,24 +90,34 @@ function passwordsAreTheSame() {
 
 function signup() {
   showErrorsText.value = false
-  useRegisterUser({
-    email: register.email.value,
-    password: register.password.value,
-    username: register.username.value,
-  })
-    .then(() => {
-      // signup good do stuff here
-    })
-
-    .catch((val): any => {
-      errorText.value = `Error(s): ${(
-        Object.values(val.error.errors) as string[]
-      ).reduce(
-        (accumulator: string, val: string) => `${accumulator} ${val}`,
-        '',
-      )}`
-      showErrorsText.value = true
-    })
+  useRegisterUser(
+    {
+      email: register.email.value,
+      password: register.password.value,
+      username: register.username.value,
+    },
+    {
+      onError: (val): any => {
+        console.error(val)
+        errorText.value = `Error(s): ${(
+          Object.values(val.error.errors) as string[]
+        ).reduce(
+          (accumulator: string, val: string) => `${accumulator} ${val}`,
+          '',
+        )}`
+        showErrorsText.value = true
+      },
+      onOkay: () => {
+        register.email.value = ''
+        register.password.value = ''
+        register.passwordConfirm.value = ''
+        register.username.value = ''
+        state.showPassword.value = false
+        // signup good do stuff here
+        emit('close')
+      },
+    },
+  )
 
   emit('signUpClick')
 }

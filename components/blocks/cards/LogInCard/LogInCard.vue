@@ -38,20 +38,27 @@ const showErrorText = ref(false)
 
 function login() {
   showErrorText.value = false
-  useLoginUser({
-    email: state.email.value,
-    password: state.password.value,
-  })
-    .then(() => {
-      state.email.value = ''
-      state.password.value = ''
-      state.showPassword.value = false
+  useLoginUser(
+    {
+      email: state.email.value,
+      password: state.password.value,
+    },
+    {
+      onError: (val): any => {
+        console.error(val)
+        showErrorText.value = true
+      },
+      onOkay: () => {
+        state.email.value = ''
+        state.password.value = ''
+        state.showPassword.value = false
 
-      emit('close')
-    })
-    .catch(() => {
-      showErrorText.value = true
-    })
+        // debugger // eslint-disable-line
+
+        // emit('close')
+      },
+    },
+  )
 }
 </script>
 

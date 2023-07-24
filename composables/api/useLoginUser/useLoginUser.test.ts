@@ -1,15 +1,23 @@
 import { useLoginUser } from '.'
 
+// const mockFailureUsersLoginCreate = vi.fn(() => Promise.resolve({ ok: false }))
 const mockSuccessUsersLoginCreate = vi.fn(() =>
   Promise.resolve({ data: { token: 'token' }, ok: true }),
 )
 const mockSuccessUsersMeList = vi.fn(() => Promise.resolve({ ok: true }))
+// const onErrorSpy = vi.fn()
+const onOkaySpy = vi.fn()
+
+const password = 'Password1'
+const email = 'test@lb.gg'
+
+afterEach(() => {
+  vi.restoreAllMocks()
+  vi.clearAllMocks()
+})
 
 describe('useLoginUser', () => {
   describe('when everything is successful', () => {
-    const email = 'test@lb.gg'
-    const password = 'Password1'
-
     it('creates a login session and returns the user information', async () => {
       vi.mock('lib/api/Users', () => ({
         Users: function Users() {
@@ -18,7 +26,7 @@ describe('useLoginUser', () => {
         },
       }))
 
-      await useLoginUser({ email, password })
+      await useLoginUser({ email, password }, { onOkay: onOkaySpy })
 
       expect(mockSuccessUsersLoginCreate).toBeCalledTimes(1)
       expect(mockSuccessUsersLoginCreate).toBeCalledWith({ email, password })
@@ -27,6 +35,27 @@ describe('useLoginUser', () => {
       expect(mockSuccessUsersMeList).toBeCalledWith({
         headers: { Authorization: 'Bearer token' },
       })
+
+      expect(onOkaySpy).toBeCalledTimes(1)
     })
   })
+
+  // TODO: skip this for now
+  // describe('when the API call failed', () => {
+  //   it('calls the `onError` callback', async () => {
+  //     vi.mock('lib/api/Users', () => ({
+  //       Users: function Users() {
+  //         this.usersLoginCreate = mockFailureUsersLoginCreate
+  //         // this.usersMeList = mockSuccessUsersMeList
+  //       },
+  //     }))
+
+  //     await useLoginUser({ email, password }, { onError: onErrorSpy })
+
+  //     expect(mockFailureUsersLoginCreate).toBeCalledTimes(1)
+  //     expect(mockFailureUsersLoginCreate).toBeCalledWith({ email, password })
+
+  //     expect(onErrorSpy).toBeCalledTimes(1)
+  //   })
+  // })
 })
