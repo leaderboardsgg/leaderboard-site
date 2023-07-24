@@ -1,9 +1,8 @@
-import type { User } from 'lib/api/data-contracts'
+import type { UserViewModel } from 'lib/api/data-contracts'
 
 export const useCurrentUser = () =>
-  useState<User>('current_user', () => ({
-    admin: false,
-    email: '',
+  useState<UserViewModel>('current_user', () => ({
+    id: '',
     username: '',
   }))
 

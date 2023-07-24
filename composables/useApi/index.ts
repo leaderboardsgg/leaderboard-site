@@ -1,5 +1,5 @@
 import { ref, type Ref } from 'vue'
-import { isProblemDetails } from 'lib/helpers'
+import { isProblemDetails, isValidationProblemDetails } from 'lib/helpers'
 import type {
   ProblemDetails,
   ValidationProblemDetails,
@@ -18,7 +18,10 @@ export interface ApiResponse<T> {
   loading: boolean
 }
 
-interface optionalParameters<T> {
+export interface optionalParameters<T> {
+  onError?: (
+    d: ProblemDetails | ValidationProblemDetails | unknown | null,
+  ) => void | Promise<void> | unknown
   onOkay?: (d: T) => void | Promise<void> | unknown
   responseData?: Ref<T>
 }
@@ -34,10 +37,11 @@ export const useApi = async <T>(
   opts: optionalParameters<T> = {},
 ): Promise<ApiResponse<T>> => {
   const responseError = ref<ProblemDetails | null | void>(null)
+  const responseErrors = ref<ValidationProblemDetails | null | void>(null)
   const responseLoading = ref(true)
 
   let { responseData } = opts
-  const { onOkay } = opts
+  const { onError, onOkay } = opts
 
   try {
     const { data, error, ok } = await apiRequest()
@@ -54,20 +58,30 @@ export const useApi = async <T>(
       }
     } else {
       responseError.value = error
+
+      if (onError) {
+        await onError(error || null)
+      }
     }
   } catch (e: unknown) {
-    if (isProblemDetails(e)) {
-      const error = e as ProblemDetails
+    console.error(e)
 
-      console.error(error)
-      responseError.value = error
+    if (isProblemDetails(e)) {
+      responseError.value = e as ProblemDetails
+    } else if (isValidationProblemDetails(e)) {
+      responseErrors.value = e as ValidationProblemDetails
+    }
+
+    if (onError) {
+      await onError(e)
     }
   } finally {
     responseLoading.value = false
   }
 
   const apiResponse: ApiResponse<T> = {
-    error: responseError.value,
+    error: responseError.value || null,
+    errors: responseErrors.value || null,
     loading: responseLoading.value,
   }
 

@@ -5,8 +5,7 @@ import { useLogoutUser } from '.'
 
 const token = 'auth-token'
 const user = {
-  admin: false,
-  email: 'test@lb.gg',
+  id: 'uuid-1234-23-111',
   username: 'test',
 }
 
@@ -27,8 +26,7 @@ describe('useLogoutUser', () => {
 
     expect(authToken.value).toEqual('')
     expect(currentUser.value).toEqual({
-      admin: false,
-      email: '',
+      id: '',
       username: '',
     })
   })

@@ -1,16 +1,30 @@
+import { ref } from 'vue'
+import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
-import { UserViewModel, ValidationProblemDetails } from 'lib/api/data-contracts'
-import { HttpResponse } from 'lib/api/http-client'
-import type { RegisterRequest } from 'lib/api/data-contracts'
+import type { RegisterRequest, UserViewModel } from 'lib/api/data-contracts'
 
-export async function useRegisterUser(
+export const useRegisterUser = async (
   requestData: RegisterRequest,
-): Promise<HttpResponse<UserViewModel, void | ValidationProblemDetails>> {
-  const account = new Account({
+  opts: optionalParameters<UserViewModel> = {},
+): Promise<ApiResponse<UserViewModel>> => {
+  const { onError, onOkay } = opts
+  const responseData = ref<UserViewModel>({
+    id: '',
+    username: '',
+  })
+
+  const accountClient = new Account({
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
   })
 
-  return await account.accountRegisterCreate(requestData)
+  return await useApi<UserViewModel>(
+    async () => await accountClient.registerCreate(requestData),
+    {
+      onError,
+      onOkay,
+      responseData,
+    },
+  )
 }
 
 export default useRegisterUser

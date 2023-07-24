@@ -35,15 +35,41 @@ describe('useApi', () => {
   })
 
   describe('given the optional arguments', () => {
+    describe('onError', () => {
+      const error = { user: 'not found' }
+      const onErrorSpy = vi.fn()
+
+      it('should NOT call the `onError` method when ok is true', async () => {
+        onErrorSpy.mockClear()
+
+        await useApi(createApiCall({ error }), { onError: onErrorSpy })
+
+        expect(onErrorSpy).not.toBeCalled()
+      })
+
+      it('should call the `onError` method when ok is false', async () => {
+        onErrorSpy.mockClear()
+
+        await useApi(createApiCall({ error, ok: false }), {
+          onError: onErrorSpy,
+        })
+
+        expect(onErrorSpy).toBeCalledTimes(1)
+        expect(onErrorSpy.mock.calls[0][0]).toEqual(error)
+      })
+    })
+
     describe('onOkay', () => {
+      const data = { test: '123' }
       const onOkaySpy = vi.fn()
 
       it('should call the `onOkay` method when ok is true', async () => {
         onOkaySpy.mockClear()
 
-        await useApi(createApiCall(), { onOkay: onOkaySpy })
+        await useApi(createApiCall({ data }), { onOkay: onOkaySpy })
 
         expect(onOkaySpy).toBeCalledTimes(1)
+        expect(onOkaySpy.mock.calls[0][0]).toEqual(data)
       })
 
       it('should  NOT call the `onOkay` method when ok is false', async () => {

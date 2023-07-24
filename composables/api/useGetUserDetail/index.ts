@@ -1,14 +1,15 @@
 import { ref } from 'vue'
-import { ApiResponse, useApi } from 'composables/useApi'
+import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
 import { Users } from 'lib/api/Users'
-import type { User } from 'lib/api/data-contracts'
+import type { UserViewModel } from 'lib/api/data-contracts'
 
 export const useGetUserDetail = async (
   userId: string,
-): Promise<ApiResponse<User>> => {
-  const responseData = ref<User>({
-    admin: false,
-    email: '',
+  opts: optionalParameters<UserViewModel> = {},
+): Promise<ApiResponse<UserViewModel>> => {
+  const { onError, onOkay } = opts
+  const responseData = ref<UserViewModel>({
+    id: '',
     username: '',
   })
 
@@ -16,9 +17,14 @@ export const useGetUserDetail = async (
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
   })
 
-  return await useApi<User>(async () => await userClient.usersDetail(userId), {
-    responseData,
-  })
+  return await useApi<UserViewModel>(
+    async () => await userClient.usersDetail(userId),
+    {
+      onError,
+      onOkay,
+      responseData,
+    },
+  )
 }
 
 export default useGetUserDetail

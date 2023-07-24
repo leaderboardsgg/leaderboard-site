@@ -7,8 +7,7 @@ export const useLogoutUser = (): void => {
 
   authToken.value = ''
   currentUser.value = {
-    admin: false,
-    email: '',
+    id: '',
     username: '',
   }
 }
