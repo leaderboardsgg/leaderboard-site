@@ -10,9 +10,6 @@
  */
 
 import {
-  LoginRequest,
-  LoginResponse,
-  ProblemDetails,
   RegisterRequest,
   UserViewModel,
   ValidationProblemDetails,
@@ -26,41 +23,18 @@ export class Account<
    * No description
    *
    * @tags Account
-   * @name AccountRegisterCreate
+   * @name RegisterCreate
    * @summary Registers a new User.
-   * @request POST:/api/Account/register
+   * @request POST:/Account/register
    * @secure
    * @response `201` `UserViewModel` The `User` was registered and returned successfully.
    * @response `400` `void` The request was malformed.
    * @response `409` `ValidationProblemDetails` A `User` with the specified username or email already exists.<br /><br /> Validation error codes by property: - **Username**: - **UsernameTaken**: the username is already in use - **Email**: - **EmailAlreadyUsed**: the email is already in use
    * @response `422` `void` The request contains errors.<br /><br /> Validation error codes by property: - **Username**: - **UsernameFormat**: Invalid username format - **Password**: - **PasswordFormat**: Invalid password format - **Email**: - **EmailValidator**: Invalid email format
    */
-  accountRegisterCreate = (data: RegisterRequest, params: RequestParams = {}) =>
+  registerCreate = (data: RegisterRequest, params: RequestParams = {}) =>
     this.request<UserViewModel, void | ValidationProblemDetails>({
-      path: `/api/Account/register`,
-      method: 'POST',
-      body: data,
-      secure: true,
-      type: ContentType.Json,
-      format: 'json',
-      ...params,
-    })
-  /**
-   * No description
-   *
-   * @tags Account
-   * @name AccountLoginCreate
-   * @summary Logs a User in.
-   * @request POST:/api/Account/login
-   * @secure
-   * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned.
-   * @response `400` `ProblemDetails` The request was malformed.
-   * @response `401` `ProblemDetails` The password passed was incorrect.
-   * @response `404` `ProblemDetails` No `User` with the requested details could be found.
-   */
-  accountLoginCreate = (data: LoginRequest, params: RequestParams = {}) =>
-    this.request<LoginResponse, ProblemDetails>({
-      path: `/api/Account/login`,
+      path: `/Account/register`,
       method: 'POST',
       body: data,
       secure: true,

@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { UserViewModel } from './data-contracts'
+import { LoginRequest, LoginResponse, UserViewModel } from './data-contracts'
 
 export namespace Users {
   /**
@@ -35,6 +35,26 @@ export namespace Users {
     export type RequestBody = never
     export type RequestHeaders = {}
     export type ResponseBody = UserViewModel
+  }
+
+  /**
+   * No description
+   * @tags Users
+   * @name UsersLoginCreate
+   * @summary Logs a User in.
+   * @request POST:/api/Users/login
+   * @secure
+   * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned.
+   * @response `400` `ProblemDetails` The request was malformed.
+   * @response `401` `ProblemDetails` The password passed was incorrect.
+   * @response `404` `ProblemDetails` No `User` with the requested details could be found.
+   */
+  export namespace UsersLoginCreate {
+    export type RequestParams = {}
+    export type RequestQuery = {}
+    export type RequestBody = LoginRequest
+    export type RequestHeaders = {}
+    export type ResponseBody = LoginResponse
   }
 
   /**
