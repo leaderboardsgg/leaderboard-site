@@ -9,7 +9,12 @@
  * ---------------------------------------------------------------
  */
 
-import { RegisterRequest, UserViewModel } from './data-contracts'
+import {
+  LoginRequest,
+  LoginResponse,
+  RegisterRequest,
+  UserViewModel,
+} from './data-contracts'
 
 export namespace Account {
   /**
@@ -30,5 +35,27 @@ export namespace Account {
     export type RequestBody = RegisterRequest
     export type RequestHeaders = {}
     export type ResponseBody = UserViewModel
+  }
+
+  /**
+   * No description
+   * @tags Account
+   * @name LoginCreate
+   * @summary Logs a User in.
+   * @request POST:/login
+   * @secure
+   * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned, containing a token.
+   * @response `400` `void` The request was malformed.
+   * @response `401` `ProblemDetails` The password given was incorrect.
+   * @response `403` `ProblemDetails` The associated `User` is banned.
+   * @response `404` `ProblemDetails` No `User` with the requested details could be found.
+   * @response `422` `void` The request contains errors.<br /><br /> Validation error codes by property: - **Password**: - **NotEmptyValidator**: No password was passed - **PasswordFormat**: Invalid password format - **Email**: - **NotNullValidator**: No email was passed - **EmailValidator**: Invalid email format
+   */
+  export namespace LoginCreate {
+    export type RequestParams = {}
+    export type RequestQuery = {}
+    export type RequestBody = LoginRequest
+    export type RequestHeaders = {}
+    export type ResponseBody = LoginResponse
   }
 }

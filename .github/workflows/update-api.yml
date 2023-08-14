@@ -1,16 +1,16 @@
-name: CI - Build & Linting
-on:
-  push:
-    branches: [main]
-  pull_request:
+name: Update API
 
-concurrency:
-  group: ${{ github.head_ref || github.run_id }}-build-and-lint
-  cancel-in-progress: true
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: write
+  contents: write
+  pull-requests: write
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build_and_lint:
+  update-api:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -78,8 +78,36 @@ jobs:
         if: steps.cache-build.outputs.cache-hit != 'true'
         run: pnpm build
 
-      - name: Linting
-        run: pnpm run lint
+      - name: Run the API generation
+        run: pnpm run generate:api --url=${{ vars.OPENAPI_URL }}
 
-      - name: Prettier
-        run: pnpm run prettier:check
+      - name: Set git configs
+        run: |
+          git config user.email "api-updater@leaderboards.gg"
+          git config user.name "API Updater"
+
+      - name: Set branch name
+        id: branch
+        run: echo "BRANCH_NAME=chore-update-api-$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Add changes, commit, and push
+        run: |
+          git checkout -b ${{ steps.branch.outputs.BRANCH_NAME }}
+          pnpm pretty:staged
+          git add ./lib
+          git commit -m 'chore: lib: update api' --no-verify
+          git remote set-url origin https://api-updater:${{ secrets.GITHUB_TOKEN }}@github.com/leaderboardsgg/leaderboard-site.git
+          git push origin ${{ steps.branch.outputs.BRANCH_NAME }}
+
+      - name: Create PR
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.WORKFLOW_ACCESS_TOKEN }}
+          script: |
+            await github.rest.pulls.create({
+              owner: 'leaderboardsgg',
+              repo: 'leaderboard-site',
+              base: 'main',
+              head: '${{ steps.branch.outputs.BRANCH_NAME }}',
+              title: 'chore: Update API',
+            })

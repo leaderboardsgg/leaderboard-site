@@ -10,6 +10,9 @@
  */
 
 import {
+  LoginRequest,
+  LoginResponse,
+  ProblemDetails,
   RegisterRequest,
   UserViewModel,
   ValidationProblemDetails,
@@ -35,6 +38,31 @@ export class Account<
   registerCreate = (data: RegisterRequest, params: RequestParams = {}) =>
     this.request<UserViewModel, void | ValidationProblemDetails>({
       path: `/Account/register`,
+      method: 'POST',
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      format: 'json',
+      ...params,
+    })
+  /**
+   * No description
+   *
+   * @tags Account
+   * @name LoginCreate
+   * @summary Logs a User in.
+   * @request POST:/login
+   * @secure
+   * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned, containing a token.
+   * @response `400` `void` The request was malformed.
+   * @response `401` `ProblemDetails` The password given was incorrect.
+   * @response `403` `ProblemDetails` The associated `User` is banned.
+   * @response `404` `ProblemDetails` No `User` with the requested details could be found.
+   * @response `422` `void` The request contains errors.<br /><br /> Validation error codes by property: - **Password**: - **NotEmptyValidator**: No password was passed - **PasswordFormat**: Invalid password format - **Email**: - **NotNullValidator**: No email was passed - **EmailValidator**: Invalid email format
+   */
+  loginCreate = (data: LoginRequest, params: RequestParams = {}) =>
+    this.request<LoginResponse, void | ProblemDetails>({
+      path: `/login`,
       method: 'POST',
       body: data,
       secure: true,

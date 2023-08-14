@@ -9,13 +9,8 @@
  * ---------------------------------------------------------------
  */
 
-import {
-  LoginRequest,
-  LoginResponse,
-  ProblemDetails,
-  UserViewModel,
-} from './data-contracts'
-import { ContentType, HttpClient, RequestParams } from './http-client'
+import { ProblemDetails, UserViewModel } from './data-contracts'
+import { HttpClient, RequestParams } from './http-client'
 
 export class Users<
   SecurityDataType = unknown,
@@ -37,29 +32,6 @@ export class Users<
       path: `/api/Users/${id}`,
       method: 'GET',
       secure: true,
-      format: 'json',
-      ...params,
-    })
-  /**
-   * No description
-   *
-   * @tags Users
-   * @name UsersLoginCreate
-   * @summary Logs a User in.
-   * @request POST:/api/Users/login
-   * @secure
-   * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned.
-   * @response `400` `ProblemDetails` The request was malformed.
-   * @response `401` `ProblemDetails` The password passed was incorrect.
-   * @response `404` `ProblemDetails` No `User` with the requested details could be found.
-   */
-  usersLoginCreate = (data: LoginRequest, params: RequestParams = {}) =>
-    this.request<LoginResponse, ProblemDetails>({
-      path: `/api/Users/login`,
-      method: 'POST',
-      body: data,
-      secure: true,
-      type: ContentType.Json,
       format: 'json',
       ...params,
     })

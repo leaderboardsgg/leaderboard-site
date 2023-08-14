@@ -1,6 +1,7 @@
 import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
 import { useCurrentUser } from 'composables/useCurrentUser'
 import { useSessionToken } from 'composables/useSessionToken'
+import { Account } from 'lib/api/Account'
 import { Users } from 'lib/api/Users'
 import type {
   LoginRequest,
@@ -16,12 +17,16 @@ export const useLoginUser = async (
   const authToken = useSessionToken()
   const currentUser = useCurrentUser()
 
-  const userClient = new Users({
+  const account = new Account({
+    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+  })
+
+  const users = new Users({
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
   })
 
   return await useApi<LoginResponse>(
-    async () => await userClient.usersLoginCreate(requestData),
+    async () => await account.loginCreate(requestData),
     {
       onError,
       onOkay: async (d: LoginResponse) => {
@@ -29,7 +34,7 @@ export const useLoginUser = async (
 
         await useApi<UserViewModel>(
           async () =>
-            await userClient.usersMeList({
+            await users.usersMeList({
               headers: { Authorization: `Bearer ${d.token}` },
             }),
           {

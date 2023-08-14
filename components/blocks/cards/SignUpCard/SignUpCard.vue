@@ -7,7 +7,7 @@ import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
 import Card from 'elements/cards/Card/Card.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import CardBody from 'elements/cards/CardBody/CardBody.vue'
-import { useRegisterUser } from 'composables/api'
+import { useLoginUser, useRegisterUser } from 'composables/api'
 
 interface SignUpCardProps {
   modal?: boolean
@@ -88,9 +88,9 @@ function passwordsAreTheSame() {
   return register.password.value === register.passwordConfirm.value
 }
 
-function signup() {
+async function signup() {
   showErrorsText.value = false
-  useRegisterUser(
+  await useRegisterUser(
     {
       email: register.email.value,
       password: register.password.value,
@@ -108,12 +108,15 @@ function signup() {
         showErrorsText.value = true
       },
       onOkay: () => {
+        useLoginUser({
+          email: register.email.value,
+          password: register.password.value,
+        })
         register.email.value = ''
         register.password.value = ''
         register.passwordConfirm.value = ''
         register.username.value = ''
         state.showPassword.value = false
-        // signup good do stuff here
         emit('close')
       },
     },
