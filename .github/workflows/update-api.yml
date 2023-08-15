@@ -49,7 +49,7 @@ jobs:
         with:
           version: '${{ steps.pnpm-version.outputs.version }}'
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3.6.0
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'

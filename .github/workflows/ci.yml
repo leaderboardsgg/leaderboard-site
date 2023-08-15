@@ -58,12 +58,11 @@ jobs:
         with:
           version: '${{ steps.pnpm-version.outputs.version }}'
 
-      - uses: actions/setup-node@v3.8.0
+      - uses: actions/setup-node@v3.7.0
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
-          # cache: 'pnpm'
-          # cache-dependency-path: '**/pnpm-lock.yaml'
+          cache: 'pnpm'
 
       - name: Install `node_modules`
         if: steps.cache-modules.outputs.cache-hit != 'true'
