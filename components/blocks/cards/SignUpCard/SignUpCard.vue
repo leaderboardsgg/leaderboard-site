@@ -97,7 +97,7 @@ async function signup() {
       username: register.username.value,
     },
     {
-      onError: (val): any => {
+      onError: (val: any) => {
         console.error(val)
         errorText.value = `Error(s): ${(
           Object.values(val.error.errors) as string[]
@@ -259,20 +259,6 @@ async function signup() {
           Sign Up
         </BaseButton>
       </div>
-
-      <!-- <div class="signup-card__auth-buttons">
-        <BaseButton class="signup-button">
-          <i-svg-github class="mr-2 h-5 w-5" />
-
-          <p>Sign Up with Github</p>
-        </BaseButton>
-
-        <BaseButton class="signup-button">
-          <i-svg-google class="mr-2 h-5 w-5" />
-
-          <p>Sign Up with Google</p>
-        </BaseButton>
-      </div> -->
     </CardBody>
   </Card>
 </template>
@@ -307,10 +293,6 @@ async function signup() {
 
   & .signup-card__password-field {
     @apply grow sm:w-full md:w-9/12;
-  }
-
-  & .signup-card__auth-buttons {
-    @apply flex flex-col w-full space-y-2;
   }
 
   & p {

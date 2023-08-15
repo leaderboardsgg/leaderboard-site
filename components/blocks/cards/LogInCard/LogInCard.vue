@@ -52,10 +52,6 @@ function login() {
         state.email.value = ''
         state.password.value = ''
         state.showPassword.value = false
-
-        // debugger // eslint-disable-line
-
-        // emit('close')
       },
     },
   )
@@ -134,19 +130,6 @@ function login() {
           Log In
         </BaseButton>
       </div>
-
-      <!-- <div class="login-card__auth-buttons">
-        <BaseButton class="login-button">
-          <i-svg-github class="mr-2 h-5 w-5" />
-
-          <p>Log In with Github</p>
-        </BaseButton>
-
-        <BaseButton class="login-button">
-          <i-svg-google class="mr-2 h-5 w-5" />
-          <p>Log In with Google</p>
-        </BaseButton>
-      </div> -->
     </CardBody>
   </Card>
 </template>
@@ -171,9 +154,6 @@ function login() {
   }
   & .login-card__button-wrapper {
     @apply absolute top-0 right-0 flex items-center h-full;
-  }
-  & .login-card__auth-buttons {
-    @apply flex flex-col w-full space-y-2;
   }
   & .login-card__password-field {
     @apply bg-white pr-12;

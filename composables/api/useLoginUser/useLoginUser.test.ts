@@ -1,7 +1,7 @@
 import { useLoginUser } from '.'
 
 // const mockFailureUsersLoginCreate = vi.fn(() => Promise.resolve({ ok: false }))
-const mockSuccessUsersLoginCreate = vi.fn(() =>
+const mockSuccessAccountLoginCreate = vi.fn(() =>
   Promise.resolve({ data: { token: 'token' }, ok: true }),
 )
 const mockSuccessUsersMeList = vi.fn(() => Promise.resolve({ ok: true }))
@@ -21,15 +21,19 @@ describe('useLoginUser', () => {
     it('creates a login session and returns the user information', async () => {
       vi.mock('lib/api/Users', () => ({
         Users: function Users() {
-          this.usersLoginCreate = mockSuccessUsersLoginCreate
           this.usersMeList = mockSuccessUsersMeList
+        },
+      }))
+      vi.mock('lib/api/Account', () => ({
+        Account: function Account() {
+          this.loginCreate = mockSuccessAccountLoginCreate
         },
       }))
 
       await useLoginUser({ email, password }, { onOkay: onOkaySpy })
 
-      expect(mockSuccessUsersLoginCreate).toBeCalledTimes(1)
-      expect(mockSuccessUsersLoginCreate).toBeCalledWith({ email, password })
+      expect(mockSuccessAccountLoginCreate).toBeCalledTimes(1)
+      expect(mockSuccessAccountLoginCreate).toBeCalledWith({ email, password })
 
       expect(mockSuccessUsersMeList).toBeCalledTimes(1)
       expect(mockSuccessUsersMeList).toBeCalledWith({

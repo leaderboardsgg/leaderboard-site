@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable no-console */
+
 /* eslint-disable vue/sort-keys */
 
 /*
