@@ -36,7 +36,7 @@ jobs:
           packageJson-packageManager: '${{ fromJson(steps.package.outputs.content).packageManager }}'
 
       - name: Cache PNPM modules
-        uses: actions/cache@v3
+        uses: actions/cache@v3.7.0
         id: cache-modules
         with:
           path: |
