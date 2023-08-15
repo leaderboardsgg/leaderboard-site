@@ -62,8 +62,8 @@ jobs:
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
+          # cache: 'pnpm'
+          # cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Install `node_modules`
         if: steps.cache-modules.outputs.cache-hit != 'true'
