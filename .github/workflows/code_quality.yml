@@ -53,7 +53,6 @@ jobs:
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
 
       # shows current pnpm version
       - name: check pnpm version
