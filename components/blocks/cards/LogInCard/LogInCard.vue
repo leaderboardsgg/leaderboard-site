@@ -115,11 +115,10 @@ function login() {
               @keydown.enter="$event.preventDefault()"
             />
           </div>
-
-          <p v-if="showErrorText" class="text-red-600">
-            Error: Invalid Email, or Password for given email.
-          </p>
         </div>
+        <p v-if="showErrorText" class="text-red-600">
+          Error: Invalid Email, or Password for given email.
+        </p>
 
         <BaseButton
           class="login-button"
