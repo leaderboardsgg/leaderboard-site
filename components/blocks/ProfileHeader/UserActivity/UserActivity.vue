@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { withDefaults } from 'vue'
-
 interface UserActivityProps {
   gameCount: number
   runCount: number

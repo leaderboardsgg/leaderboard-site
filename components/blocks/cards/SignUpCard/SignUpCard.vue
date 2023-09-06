@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Ref, withDefaults, ref } from 'vue'
+import { type Ref, ref } from 'vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
@@ -7,7 +7,7 @@ import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
 import Card from 'elements/cards/Card/Card.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import CardBody from 'elements/cards/CardBody/CardBody.vue'
-import { useRegisterUser } from 'composables/api'
+import { useLoginUser, useRegisterUser } from 'composables/api'
 
 interface SignUpCardProps {
   modal?: boolean
@@ -45,19 +45,81 @@ const state: SignUpCardState = {
   showPassword: ref(false),
 }
 
-function signup() {
-  useRegisterUser({
-    email: register.email.value,
-    password: register.password.value,
-    passwordConfirm: register.passwordConfirm.value,
-    username: register.username.value,
-  })
+const errorText = ref('')
+const showErrorsText = ref(false)
+const emailValid = ref(true)
+const passwordInputValid = ref(true)
+const passwordConfirmValid = ref(true)
+const usernameValid = ref(true)
 
-  register.email.value = ''
-  register.password.value = ''
-  register.passwordConfirm.value = ''
-  register.username.value = ''
-  state.showPassword.value = false
+// Regex(s) //
+const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
+// Taken from: https://emailregex.com/index.html
+const emailRegex =
+  // eslint-disable-next-line
+  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+
+// Below is our username specification :)
+// A valid username must not contain fewer than 2 characters.
+// A valid username must not contain greater than 25 characters.
+// A valid username must not contain any single character that is not alphanumeric, a hyphen, an underscore, or an apostrophe.
+// A valid username must not contain any hyphens, underscores, or apostrophes that are not immediately and individually preceded and followed by one or more alphanumeric characters.
+const usernameRegex = /^(?:[a-zA-Z0-9]+[-_']?[a-zA-Z0-9]+)+$/
+
+function isPasswordValid() {
+  // password length between 8-80 characters
+  // must contain a number, uppercase, and lowercase letter
+  return (
+    passwordRegex.test(register.password.value) &&
+    register.password.value.length > 7 &&
+    register.password.value.length < 81
+  )
+}
+
+function isUsernameValid() {
+  return (
+    usernameRegex.test(register.username.value) &&
+    register.username.value.length > 1 &&
+    register.username.value.length < 26
+  )
+}
+
+function passwordsAreTheSame() {
+  return register.password.value === register.passwordConfirm.value
+}
+
+async function signup() {
+  showErrorsText.value = false
+  await useRegisterUser(
+    {
+      email: register.email.value,
+      password: register.password.value,
+      username: register.username.value,
+    },
+    {
+      onError: (val: any) => {
+        errorText.value = `Error(s): ${(
+          Object.values(val.error.errors) as string[]
+        ).reduce(
+          (accumulator: string, val: string) => `${accumulator} ${val}`,
+          '',
+        )}`
+        showErrorsText.value = true
+      },
+      onOkay: () => {
+        useLoginUser({
+          email: register.email.value,
+          password: register.password.value,
+        })
+        register.email.value = ''
+        register.password.value = ''
+        register.passwordConfirm.value = ''
+        register.username.value = ''
+        state.showPassword.value = false
+        emit('close')
+      },
+    },
+  )
 
   emit('signUpClick')
 }
@@ -93,6 +155,10 @@ function signup() {
           placeholder="Email"
           autocomplete="email"
           data-testid="email-input"
+          :style="{
+            'border-color': !emailValid ? 'rgb(185 28 28 / 1)' : '',
+          }"
+          @change="emailValid = emailRegex.test(register.email.value)"
         />
 
         <div class="signup-card__input-wrapper">
@@ -103,8 +169,13 @@ function signup() {
             placeholder="Username"
             autocomplete="nickname"
             data-testid="username-input"
+            minlength="2"
+            maxlength="25"
+            :style="{
+              'border-color': !usernameValid ? 'rgb(185 28 28 / 1)' : '',
+            }"
+            @change="usernameValid = isUsernameValid()"
           />
-          <p>This can be changed later</p>
         </div>
 
         <div class="signup-card__input-wrapper">
@@ -113,20 +184,37 @@ function signup() {
               :model="register.password"
               name="password"
               class="signup-card__password-field"
+              :style="{
+                'border-color': !passwordInputValid ? 'rgb(185 28 28 / 1)' : '',
+              }"
               :type="state.showPassword.value ? 'text' : 'password'"
               placeholder="Password"
               autocomplete="password"
               data-testid="password-input"
+              minlength="8"
+              maxlength="80"
+              @change="passwordInputValid = isPasswordValid()"
             />
 
             <BaseInput
               :model="register.passwordConfirm"
               name="passwordConfirm"
               class="signup-card__password-field"
+              :style="{
+                'border-color': !passwordConfirmValid
+                  ? 'rgb(185 28 28 / 1)'
+                  : '',
+              }"
               :type="state.showPassword.value ? 'text' : 'password'"
               placeholder="Confirm"
               autocomplete="password"
               data-testid="password-confirm-input"
+              minlength="8"
+              maxlength="80"
+              @change="
+                passwordConfirmValid =
+                  passwordsAreTheSame() && isPasswordValid()
+              "
             />
 
             <HideShowPassword
@@ -141,29 +229,33 @@ function signup() {
             />
           </div>
 
-          <p>* Must be 8 characters with a mix of letters and numbers</p>
+          <p>
+            * Must be 8-80 characters, contain a number, lowercase, and
+            uppercase letter
+          </p>
+
+          <p v-if="showErrorsText" class="text-red-600">{{ errorText }}</p>
         </div>
 
+        <!-- The disabled check is trivial because we're just checking already computed booleans -->
         <BaseButton
           class="signup-button"
           data-testid="sign-up-button"
+          :disabled="
+            !(
+              register.email.value &&
+              register.password.value &&
+              register.passwordConfirm.value &&
+              register.username.value &&
+              passwordConfirmValid &&
+              passwordInputValid &&
+              emailValid &&
+              usernameValid
+            )
+          "
           @click="signup"
         >
           Sign Up
-        </BaseButton>
-      </div>
-
-      <div class="signup-card__auth-buttons">
-        <BaseButton class="signup-button">
-          <i-svg-github class="mr-2 h-5 w-5" />
-
-          <p>Sign Up with Github</p>
-        </BaseButton>
-
-        <BaseButton class="signup-button">
-          <i-svg-google class="mr-2 h-5 w-5" />
-
-          <p>Sign Up with Google</p>
         </BaseButton>
       </div>
     </CardBody>
@@ -187,7 +279,7 @@ function signup() {
   }
 
   & .signup-card__body-wrapper {
-    @apply flex flex-col space-y-3 pb-3 mb-3 border-b border-gray-300;
+    @apply flex flex-col space-y-3 pb-3 mb-3;
   }
 
   & .signup-card__input-wrapper {
@@ -200,10 +292,6 @@ function signup() {
 
   & .signup-card__password-field {
     @apply grow sm:w-full md:w-9/12;
-  }
-
-  & .signup-card__auth-buttons {
-    @apply flex flex-col w-full space-y-2;
   }
 
   & p {

@@ -10,11 +10,11 @@
  */
 
 import {
-  Category,
+  CategoryViewModel,
   CreateRunRequest,
-  Participation,
   ProblemDetails,
-  Run,
+  RunViewModel,
+  ValidationProblemDetails,
 } from './data-contracts'
 import { ContentType, HttpClient, RequestParams } from './http-client'
 
@@ -29,14 +29,14 @@ export class Runs<
    * @summary Gets a Run by its ID.
    * @request GET:/api/Runs/{id}
    * @secure
-   * @response `200` `Run` The `Run` was found and returned successfully.
+   * @response `200` `RunViewModel` The `Run` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
    * @response `403` `ProblemDetails` Forbidden
    * @response `404` `ProblemDetails` No `Run` with the requested ID could be found.
    */
   runsDetail = (id: string, params: RequestParams = {}) =>
-    this.request<Run, ProblemDetails>({
+    this.request<RunViewModel, ProblemDetails>({
       path: `/api/Runs/${id}`,
       method: 'GET',
       secure: true,
@@ -56,9 +56,10 @@ export class Runs<
    * @response `401` `ProblemDetails` Unauthorized
    * @response `403` `ProblemDetails` Forbidden
    * @response `404` `ProblemDetails` Not Found
+   * @response `422` `ValidationProblemDetails` Client Error
    */
   runsCreate = (data: CreateRunRequest, params: RequestParams = {}) =>
-    this.request<void, ProblemDetails>({
+    this.request<void, ProblemDetails | ValidationProblemDetails>({
       path: `/api/Runs`,
       method: 'POST',
       body: data,
@@ -70,39 +71,17 @@ export class Runs<
    * No description
    *
    * @tags Runs
-   * @name RunsParticipationsDetail
-   * @summary Gets all Participations associated with a Run ID.
-   * @request GET:/api/Runs/{id}/participations
-   * @secure
-   * @response `200` `(Participation)[]` The list of `Participation`s was retrieved successfully.
-   * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `ProblemDetails` Unauthorized
-   * @response `403` `ProblemDetails` Forbidden
-   * @response `404` `ProblemDetails` No `Run` with the requested ID could be found or the `Run` does not contain any `Participation`s.
-   */
-  runsParticipationsDetail = (id: string, params: RequestParams = {}) =>
-    this.request<Participation[], ProblemDetails>({
-      path: `/api/Runs/${id}/participations`,
-      method: 'GET',
-      secure: true,
-      format: 'json',
-      ...params,
-    })
-  /**
-   * No description
-   *
-   * @tags Runs
    * @name RunsCategoryDetail
    * @request GET:/api/Runs/{id}/category
    * @secure
-   * @response `200` `Category` Success
+   * @response `200` `CategoryViewModel` Success
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `ProblemDetails` Unauthorized
    * @response `403` `ProblemDetails` Forbidden
    * @response `404` `ProblemDetails` Not Found
    */
   runsCategoryDetail = (id: string, params: RequestParams = {}) =>
-    this.request<Category, ProblemDetails>({
+    this.request<CategoryViewModel, ProblemDetails>({
       path: `/api/Runs/${id}/category`,
       method: 'GET',
       secure: true,

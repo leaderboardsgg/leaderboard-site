@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { withDefaults } from 'vue'
 import UserActivity from 'blocks/ProfileHeader/UserActivity/UserActivity.vue'
 import UserBadges from 'blocks/ProfileHeader/UserBadges/UserBadges.vue'
 import SocialButtons from 'elements/buttons/SocialButtons/SocialButtons.vue'

@@ -1,6 +1,9 @@
 import { ref, type Ref } from 'vue'
-import { isProblemDetails } from 'lib/helpers'
-import type { ProblemDetails } from 'lib/api/data-contracts'
+import { isProblemDetails, isValidationProblemDetails } from 'lib/helpers'
+import type {
+  ProblemDetails,
+  ValidationProblemDetails,
+} from 'lib/api/data-contracts'
 import type { HttpResponse } from 'lib/api/http-client'
 
 /**
@@ -11,10 +14,14 @@ import type { HttpResponse } from 'lib/api/http-client'
 export interface ApiResponse<T> {
   data?: T
   error: ProblemDetails | null
+  errors: ValidationProblemDetails | null
   loading: boolean
 }
 
-interface optionalParameters<T> {
+export interface optionalParameters<T> {
+  onError?: (
+    d: ProblemDetails | ValidationProblemDetails | unknown | null,
+  ) => void | Promise<void> | unknown
   onOkay?: (d: T) => void | Promise<void> | unknown
   responseData?: Ref<T>
 }
@@ -26,14 +33,15 @@ interface optionalParameters<T> {
  * @returns {Promise<ApiResponse<T>>} returns an `ApiResponse` object, but the `data` property is not guaranteed to be present
  */
 export const useApi = async <T>(
-  apiRequest: () => Promise<HttpResponse<T, ProblemDetails>>,
+  apiRequest: () => Promise<HttpResponse<T, void | ProblemDetails>>,
   opts: optionalParameters<T> = {},
 ): Promise<ApiResponse<T>> => {
-  const responseError = ref<ProblemDetails | null>(null)
+  const responseError = ref<ProblemDetails | null | void>(null)
+  const responseErrors = ref<ValidationProblemDetails | null | void>(null)
   const responseLoading = ref(true)
 
   let { responseData } = opts
-  const { onOkay } = opts
+  const { onError, onOkay } = opts
 
   try {
     const { data, error, ok } = await apiRequest()
@@ -50,20 +58,28 @@ export const useApi = async <T>(
       }
     } else {
       responseError.value = error
+
+      if (onError) {
+        await onError(error || null)
+      }
     }
   } catch (e: unknown) {
     if (isProblemDetails(e)) {
-      const error = e as ProblemDetails
+      responseError.value = e as ProblemDetails
+    } else if (isValidationProblemDetails(e)) {
+      responseErrors.value = e as ValidationProblemDetails
+    }
 
-      console.error(error) // eslint-disable-line no-console
-      responseError.value = error
+    if (onError) {
+      await onError(e)
     }
   } finally {
     responseLoading.value = false
   }
 
   const apiResponse: ApiResponse<T> = {
-    error: responseError.value,
+    error: responseError.value || null,
+    errors: responseErrors.value || null,
     loading: responseLoading.value,
   }
 

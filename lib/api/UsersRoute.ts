@@ -9,12 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import {
-  LoginRequest,
-  LoginResponse,
-  RegisterRequest,
-  User,
-} from './data-contracts'
+import { UserViewModel } from './data-contracts'
 
 export namespace Users {
   /**
@@ -24,7 +19,7 @@ export namespace Users {
    * @summary Gets a User by their ID.
    * @request GET:/api/Users/{id}
    * @secure
-   * @response `200` `User` The `User` was found and returned successfully.
+   * @response `200` `UserViewModel` The `User` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` No `User` with the requested ID could be found.
    */
@@ -39,46 +34,7 @@ export namespace Users {
     export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = User
-  }
-
-  /**
-   * No description
-   * @tags Users
-   * @name UsersRegisterCreate
-   * @summary Registers a new User.
-   * @request POST:/api/Users/register
-   * @secure
-   * @response `201` `User` The `User` was registered and returned successfully.
-   * @response `400` `ProblemDetails` The passwords did not match or the request was otherwise malformed.
-   * @response `409` `ProblemDetails` A `User` with the specified username or email already exists.
-   */
-  export namespace UsersRegisterCreate {
-    export type RequestParams = {}
-    export type RequestQuery = {}
-    export type RequestBody = RegisterRequest
-    export type RequestHeaders = {}
-    export type ResponseBody = User
-  }
-
-  /**
-   * No description
-   * @tags Users
-   * @name UsersLoginCreate
-   * @summary Logs a User in.
-   * @request POST:/api/Users/login
-   * @secure
-   * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned.
-   * @response `400` `ProblemDetails` The request was malformed.
-   * @response `401` `ProblemDetails` The password passed was incorrect.
-   * @response `404` `ProblemDetails` No `User` with the requested details could be found.
-   */
-  export namespace UsersLoginCreate {
-    export type RequestParams = {}
-    export type RequestQuery = {}
-    export type RequestBody = LoginRequest
-    export type RequestHeaders = {}
-    export type ResponseBody = LoginResponse
+    export type ResponseBody = UserViewModel
   }
 
   /**
@@ -88,7 +44,7 @@ export namespace Users {
    * @summary Gets the currently logged-in User.
    * @request GET:/api/Users/me
    * @secure
-   * @response `200` `User` The `User` was found and returned successfully..
+   * @response `200` `UserViewModel` The `User` was found and returned successfully..
    * @response `403` `ProblemDetails` An invalid JWT was passed in.
    */
   export namespace UsersMeList {
@@ -96,6 +52,6 @@ export namespace Users {
     export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = User
+    export type ResponseBody = UserViewModel
   }
 }

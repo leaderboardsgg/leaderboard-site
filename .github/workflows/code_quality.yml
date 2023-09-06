@@ -49,11 +49,10 @@ jobs:
         with:
           version: '${{ steps.pnpm-version.outputs.version }}'
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3.7.0
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
 
       # shows current pnpm version
       - name: check pnpm version
@@ -79,7 +78,7 @@ jobs:
         run: pnpm build
 
       - name: Linting
-        run: pnpm run lint
+        run: pnpm run lint:prod
 
       - name: Prettier
         run: pnpm run prettier:check

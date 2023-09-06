@@ -60,8 +60,7 @@ describe('<SiteNavbar />', () => {
     beforeEach(() => {
       const currentUser = useCurrentUser()
       currentUser.value = {
-        admin: true,
-        email: 'admin@leaderboards.gg',
+        id: 'uuid-1234-56',
         username: 'lbgg_admin',
       }
     })
