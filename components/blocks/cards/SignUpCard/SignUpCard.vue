@@ -98,7 +98,6 @@ async function signup() {
     },
     {
       onError: (val: any) => {
-        console.error(val)
         errorText.value = `Error(s): ${(
           Object.values(val.error.errors) as string[]
         ).reduce(

@@ -78,7 +78,7 @@ jobs:
         run: pnpm build
 
       - name: Linting
-        run: pnpm run lint
+        run: pnpm run lint:prod
 
       - name: Prettier
         run: pnpm run prettier:check

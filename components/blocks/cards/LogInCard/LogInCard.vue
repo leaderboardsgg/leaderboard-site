@@ -44,8 +44,7 @@ function login() {
       password: state.password.value,
     },
     {
-      onError: (val): any => {
-        console.error(val)
+      onError: () => {
         showErrorText.value = true
       },
       onOkay: () => {

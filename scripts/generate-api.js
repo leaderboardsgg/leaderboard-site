@@ -26,8 +26,6 @@ const { generateApi } = require('swagger-typescript-api')
 const url =
   args?.url ?? `${process.env.BACKEND_BASE_URL}/swagger/v1/swagger.json`
 
-console.log(`Generation url: ${url}`)
-
 generateApi({
   output: resolve(process.cwd(), './lib/api'),
   url,

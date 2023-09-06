@@ -64,8 +64,6 @@ export const useApi = async <T>(
       }
     }
   } catch (e: unknown) {
-    console.error(e)
-
     if (isProblemDetails(e)) {
       responseError.value = e as ProblemDetails
     } else if (isValidationProblemDetails(e)) {
