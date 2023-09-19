@@ -3,6 +3,14 @@ import { config } from 'dotenv-safe'
 
 // Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
+
+import Icons from 'unplugin-icons/vite'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+import IconResolver from 'unplugin-icons/resolver'
+import Components from 'unplugin-vue-components/vite'
+import eslintPlugin from 'vite-plugin-eslint'
+import topLevelAwait from 'vite-plugin-top-level-await'
+import { ViteConfig } from 'nuxt/schema'
 import { supportedLocales, localeMessages } from './configUtils'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -10,7 +18,7 @@ import { supportedLocales, localeMessages } from './configUtils'
 // Safely loads the .env file, making sure all the variables are defined
 config()
 
-export const nuxtAliases = {
+const nuxtAliases = {
   blocks: resolve(__dirname, './components/blocks'),
   composables: resolve(__dirname, './composables'),
   elements: resolve(__dirname, './components/elements'),
@@ -18,6 +26,40 @@ export const nuxtAliases = {
   lib: resolve(__dirname, './lib'),
   pages: resolve(__dirname, './pages'),
   root: resolve(__dirname, './'),
+}
+
+// Used in Vitest
+export const viteConfig: ViteConfig = {
+  plugins: [
+    Icons({
+      autoInstall: true,
+      compiler: 'vue3',
+      customCollections: {
+        svg: FileSystemIconLoader('./assets/sprite/svg'),
+      },
+    }),
+    Components({
+      dts: true,
+      resolvers: [
+        IconResolver({
+          customCollections: ['svg'],
+        }),
+      ],
+    }),
+    eslintPlugin({ cache: true, failOnWarning: true, fix: true }),
+    // Needed this on my machine to prevent this erroneous error of
+    // ✘ [ERROR] Top-level await is not available in the configured
+    // target environment ("chrome87", "edge88", "es2020", "firefox78", "safari13" + 2 overrides)
+    topLevelAwait({
+      // The export name of top-level await promise for each chunk module
+      promiseExportName: '__tla',
+      // The function to generate import names of top-level await promise in each chunk module
+      promiseImportName: (i) => `__tla_${i}`,
+    }),
+  ],
+  resolve: {
+    alias: nuxtAliases,
+  },
 }
 
 export default defineNuxtConfig({
@@ -94,4 +136,6 @@ export default defineNuxtConfig({
     shim: false,
     strict: true,
   },
+
+  vite: viteConfig,
 })

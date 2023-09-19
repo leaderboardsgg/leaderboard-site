@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import * as dotenv from 'dotenv-safe'
 import { mergeConfig } from 'vite'
 import { defineConfig } from 'vitest/config'
-import ViteConfig from './vite.config'
+import { viteConfig } from './nuxt.config'
 import Vue from '@vitejs/plugin-vue'
 
 // TODO: https://github.com/leaderboardsgg/leaderboard-site/issues/503
@@ -14,7 +14,7 @@ const { parsed } = dotenv.config({
 })
 
 export default mergeConfig(
-  ViteConfig,
+  viteConfig,
   defineConfig({
     plugins: [
       Vue({

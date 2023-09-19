@@ -70,4 +70,26 @@ export class Account<
       format: 'json',
       ...params,
     })
+  /**
+   * No description
+   *
+   * @tags Account
+   * @name ConfirmCreate
+   * @summary Resends the account confirmation link.
+   * @request POST:/Account/confirm
+   * @secure
+   * @response `200` `void` A new confirmation link was generated.
+   * @response `400` `ProblemDetails` The request was malformed.
+   * @response `401` `ProblemDetails` The request doesn't contain a valid session token.
+   * @response `409` `ProblemDetails` The `User`'s account has already been confirmed.
+   * @response `429` `ProblemDetails` Too Many Requests
+   * @response `500` `void` The account recovery email failed to be created.
+   */
+  confirmCreate = (params: RequestParams = {}) =>
+    this.request<void, ProblemDetails | void>({
+      path: `/Account/confirm`,
+      method: 'POST',
+      secure: true,
+      ...params,
+    })
 }

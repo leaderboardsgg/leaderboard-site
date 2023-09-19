@@ -214,7 +214,7 @@ export interface RunViewModel {
   /**
    * The unique identifier of the `Run`.<br />
    * Generated on creation.
-   * @format uuid
+   * @pattern ^[a-zA-Z0-9-_]{22}$
    */
   id: string
   submittedAt: Instant
@@ -229,7 +229,7 @@ export interface UserViewModel {
   /**
    * The unique identifier of the `User`.<br />
    * Generated on creation.
-   * @format uuid
+   * @pattern ^[a-zA-Z0-9-_]{22}$
    */
   id: string
   /**

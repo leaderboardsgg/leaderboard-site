@@ -34,7 +34,7 @@ export namespace Runs {
       /**
        * The ID of the `Run` which should be retrieved.<br />
        * It must be possible to parse this to `long` for this request to complete.
-       * @format uuid
+       * @pattern ^[a-zA-Z0-9-_]{22}$
        */
       id: string
     }
@@ -80,7 +80,7 @@ export namespace Runs {
    */
   export namespace RunsCategoryDetail {
     export type RequestParams = {
-      /** @format uuid */
+      /** @pattern ^[a-zA-Z0-9-_]{22}$ */
       id: string
     }
     export type RequestQuery = {}

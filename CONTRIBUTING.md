@@ -2,6 +2,10 @@
 
 We appreciate your help!
 
+## Discord
+
+- If you have any questions, comments, concerns that don't fit in GitHub please [direct them here!](https://discord.com/invite/TZvfau25Vb)
+
 ## Before filing an issue
 
 If you are unsure whether you have found a bug, please consider asking in [our discord](https://discord.gg/TZvfau25Vb) first.
@@ -36,8 +40,10 @@ Filing issues is as simple as going to [the issue tracker](https://github.com/le
 
 - Be inclusive, this is a project for everyone.
 - Be descriptive, it can be hard to understand abbreviations or short-hand.
+  - prefer `catch(error)` over `catch(e)`
 - Make sure that your components are _responsive_.
 - Two major philosphies we adhere to are KISS (keep it super simple) and DRY (don't repeat yourself)
+  - In general try not to make your code too "clever" if it's possible to do it in a less "clever" way so that it's easily read by other contributors.
 
 ### Nuxt/Vue
 
@@ -45,9 +51,11 @@ Filing issues is as simple as going to [the issue tracker](https://github.com/le
 - Comments above a function should start with the name of the thing being described.
 - Make sure any data and prop names are as descriptive as possible.
 - Try to move any repetitive elements into child components to reduce clutter in parent components.
-- Use `async await` for any asynchronous functions.
+- Prefer usage of `async/await` for asynchronous functions.
+  - only use Promise syntax for needed more advanced Async programminng that either can't be done or is harder to be done with `async/await`
+
 - Include proper error handling for any `async` functions.
-- Make all components compatible with server side rendering when possible.
+- Make all components compatible with server side rendering where possible.
 
 ### Git
 
