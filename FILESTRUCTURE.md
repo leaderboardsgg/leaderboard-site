@@ -26,7 +26,7 @@ More information about the usage of this directory in [the documentation](https:
 
 ### `i18n`
 
-`i18n` (short for internationalization), is where we'll be storing our locales for translating this site into different languages.
+`i18n` (short for internationalization), is where we store our locales for translating this site into different languages.
 
 ### `layouts`
 
