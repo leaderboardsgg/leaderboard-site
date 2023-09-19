@@ -31,5 +31,6 @@
   "volar.takeOverMode.enabled": true,
   "volar.icon.preview": true,
   "volar.autoCompleteRefs": true,
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.enableFiletypes": ["!html", "!jade", "!java", "!json", "!jsonc"]
 }

@@ -1,4 +1,4 @@
-# Vue File Structure
+# Nuxt File Structure
 
 You'll find our Vue files in `components` and `pages`. The files are structured in the order: template, script, and style. One thing to note; we want to keep any and all styling in `<style>`. This means that we try not to use Tailwind's classes directly in a file's `<template>`. Rather, we make a class name, and in the file's `<style>`, call `@apply` on top of any extra styling.
 
@@ -26,7 +26,7 @@ More information about the usage of this directory in [the documentation](https:
 
 ### `i18n`
 
-`i18n` (short for internationalizaion), is where we'll be storing our locales for translating this site into different languages.
+`i18n` (short for internationalization), is where we'll be storing our locales for translating this site into different languages.
 
 ### `layouts`
 

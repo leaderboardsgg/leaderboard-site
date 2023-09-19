@@ -18,7 +18,7 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 
 ## VSCode Setup
 
-- Install the reccomended extensions
+- Install the recommended extensions
 
   - These come from `/.vscode/extensions.json`
   - They will also appear in the extensions tab in the recommended dropdown alongside some automatically suggested extensions from VSCode itself.
@@ -65,7 +65,7 @@ Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/prese
 
 ## Development Environment
 
-If you're using VSCode (which we highly reccomend) please install the 6 extensions that we have in our `extensions.json` file. This in the extensions section then shows you ESLint, Prettier, Vetur, NPM Intellisense, TailwindCSS IntelliSense, PostCSS Language Support, etc. This will allow you to have proper automatic Linting, Formatting, and more with no extra setup!
+If you're using VSCode (which we highly recommend) please install the 6 extensions that we have in our `extensions.json` file. This in the extensions section then shows you ESLint, Prettier, Vetur, NPM Intellisense, TailwindCSS IntelliSense, PostCSS Language Support, etc. This will allow you to have proper automatic linting, formatting, and more with no extra setup!
 
 ## Vue File Structure
 
