@@ -14,13 +14,17 @@
 /public
 /.output
 
+# file types
+*.svg
+*.md
+
 # files
 pnpm-lock.yaml
 .gitkeep
-*.svg
 .gitignore
 .npmrc
 .nvmrc
 .pnpmrc
 .prettierignore
 COPYING
+components.d.ts

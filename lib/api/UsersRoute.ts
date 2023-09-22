@@ -27,7 +27,7 @@ export namespace Users {
     export type RequestParams = {
       /**
        * The ID of the `User` which should be retrieved.
-       * @format uuid
+       * @pattern ^[a-zA-Z0-9-_]{22}$
        */
       id: string
     }
