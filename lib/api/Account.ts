@@ -10,9 +10,11 @@
  */
 
 import {
+  ChangePasswordRequest,
   LoginRequest,
   LoginResponse,
   ProblemDetails,
+  RecoverAccountRequest,
   RegisterRequest,
   UserViewModel,
   ValidationProblemDetails,
@@ -34,6 +36,7 @@ export class Account<
    * @response `400` `void` The request was malformed.
    * @response `409` `ValidationProblemDetails` A `User` with the specified username or email already exists.<br /><br /> Validation error codes by property: - **Username**: - **UsernameTaken**: the username is already in use - **Email**: - **EmailAlreadyUsed**: the email is already in use
    * @response `422` `void` The request contains errors.<br /><br /> Validation error codes by property: - **Username**: - **UsernameFormat**: Invalid username format - **Password**: - **PasswordFormat**: Invalid password format - **Email**: - **EmailValidator**: Invalid email format
+   * @response `500` `void` Server Error
    */
   registerCreate = (data: RegisterRequest, params: RequestParams = {}) =>
     this.request<UserViewModel, void | ValidationProblemDetails>({
@@ -90,6 +93,95 @@ export class Account<
       path: `/Account/confirm`,
       method: 'POST',
       secure: true,
+      ...params,
+    })
+  /**
+   * No description
+   *
+   * @tags Account
+   * @name RecoverCreate
+   * @summary Sends an account recovery email.
+   * @request POST:/Account/recover
+   * @secure
+   * @response `200` `void` This endpoint returns 200 OK regardless of whether the email was sent successfully or not.
+   * @response `400` `ProblemDetails` The request object was malformed.
+   */
+  recoverCreate = (data: RecoverAccountRequest, params: RequestParams = {}) =>
+    this.request<void, ProblemDetails>({
+      path: `/Account/recover`,
+      method: 'POST',
+      body: data,
+      secure: true,
+      type: ContentType.Json,
+      ...params,
+    })
+  /**
+   * No description
+   *
+   * @tags Account
+   * @name ConfirmUpdate
+   * @summary Confirms a user account.
+   * @request PUT:/Account/confirm/{id}
+   * @secure
+   * @response `200` `void` The account was confirmed successfully.
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `404` `ProblemDetails` The token provided was invalid or expired.
+   * @response `409` `ProblemDetails` The user's account was either already confirmed or banned.
+   */
+  confirmUpdate = (id: string, params: RequestParams = {}) =>
+    this.request<void, ProblemDetails>({
+      path: `/Account/confirm/${id}`,
+      method: 'PUT',
+      secure: true,
+      ...params,
+    })
+  /**
+   * No description
+   *
+   * @tags Account
+   * @name RecoverDetail
+   * @summary Tests an account recovery token for validity.
+   * @request GET:/Account/recover/{id}
+   * @secure
+   * @response `200` `void` The token provided is valid.
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `404` `ProblemDetails` The token provided is invalid or expired, or the user is banned.
+   */
+  recoverDetail = (id: string, params: RequestParams = {}) =>
+    this.request<void, ProblemDetails>({
+      path: `/Account/recover/${id}`,
+      method: 'GET',
+      secure: true,
+      ...params,
+    })
+  /**
+   * No description
+   *
+   * @tags Account
+   * @name RecoverCreate2
+   * @summary Recover the user's account by resetting their password to a new value.
+   * @request POST:/Account/recover/{id}
+   * @originalName recoverCreate
+   * @duplicate
+   * @secure
+   * @response `200` `void` The user's password was reset successfully.
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `403` `ProblemDetails` The user is banned.
+   * @response `404` `ProblemDetails` The token provided is invalid or expired.
+   * @response `409` `ProblemDetails` The new password is the same as the user's existing password.
+   * @response `422` `ValidationProblemDetails` The request body contains errors.<br /> A **PasswordFormat** Validation error on the Password field indicates that the password format is invalid.
+   */
+  recoverCreate2 = (
+    id: string,
+    data: ChangePasswordRequest,
+    params: RequestParams = {},
+  ) =>
+    this.request<void, ProblemDetails | ValidationProblemDetails>({
+      path: `/Account/recover/${id}`,
+      method: 'POST',
+      body: data,
+      secure: true,
+      type: ContentType.Json,
       ...params,
     })
 }
