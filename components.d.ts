@@ -16,6 +16,7 @@ declare module 'vue' {
     ISvgEyeVisible: typeof import('~icons/svg/eye-visible')['default']
     ISvgMenu: typeof import('~icons/svg/menu')['default']
     ISvgSearch: typeof import('~icons/svg/search')['default']
+    ISvgSpinner: typeof import('~icons/svg/spinner')['default']
     ISvgTriangleExclamation: typeof import('~icons/svg/triangle-exclamation')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
