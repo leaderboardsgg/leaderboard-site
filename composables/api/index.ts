@@ -1,3 +1,4 @@
+export { default as useConfirmAccount } from './useConfirmAccount'
 export { default as useGetLeaderboardDetail } from './useGetLeaderboardDetail'
 export { default as useGetUserDetail } from './useGetUserDetail'
 export { default as useLoginUser } from './useLoginUser'
