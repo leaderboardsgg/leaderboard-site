@@ -3,13 +3,7 @@ import { mount, enableAutoUnmount } from '@vue/test-utils'
 import index from 'pages/index.vue'
 
 function getIndexWrapper() {
-  return mount(index, {
-    global: {
-      mocks: {
-        $t: (msg: any) => msg,
-      },
-    },
-  })
+  return mount(index)
 }
 
 enableAutoUnmount(afterEach)
