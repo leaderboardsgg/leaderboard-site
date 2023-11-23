@@ -3,11 +3,14 @@ import { useModalAlert } from 'composables/useModalAlert'
 
 export default defineNuxtRouteMiddleware((_to, from) => {
   const route = useRoute()
-  const confirmationCode = route.query.code as string
+  const confirmationCode = route.query?.code as string
   const modalAlertState = useModalAlert().value
 
-  if (from !== `/confirm-account?code=${confirmationCode}`) {
-    navigateTo('/', { replace: true })
+  if (
+    !confirmationCode ||
+    from?.fullPath !== `/confirm-account?code=${confirmationCode}`
+  ) {
+    return navigateTo('/', { replace: true })
   }
 
   useConfirmAccount(confirmationCode, {
