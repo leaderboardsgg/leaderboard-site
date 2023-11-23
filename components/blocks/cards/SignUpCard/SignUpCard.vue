@@ -98,12 +98,7 @@ async function signup() {
     },
     {
       onError: (val: any) => {
-        errorText.value = `Error(s): ${(
-          Object.values(val.error.errors) as string[]
-        ).reduce(
-          (accumulator: string, val: string) => `${accumulator} ${val}`,
-          '',
-        )}`
+        errorText.value = `Error(s): ${val.error.title as string}`
         showErrorsText.value = true
       },
       onOkay: () => {
