@@ -4,10 +4,10 @@
   "private": true,
   "engines": {
     "node": ">=18.0.0",
-    "pnpm": ">=8.7.5"
+    "pnpm": "8.11.0"
   },
   "engineStrict": true,
-  "packageManager": "pnpm@8.7.5",
+  "packageManager": "pnpm@8.11.0",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
