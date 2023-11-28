@@ -3,10 +3,10 @@ import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
 import { Users } from 'lib/api/Users'
 import type { UserViewModel } from 'lib/api/data-contracts'
 
-export const useGetUserDetail = async (
+export async function useGetUserDetail(
   userId: string,
   opts: optionalParameters<UserViewModel> = {},
-): Promise<ApiResponse<UserViewModel>> => {
+): Promise<ApiResponse<UserViewModel>> {
   const { onError, onOkay } = opts
   const responseData = ref<UserViewModel>({
     id: '',

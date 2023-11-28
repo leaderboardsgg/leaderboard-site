@@ -9,10 +9,10 @@ import type {
   UserViewModel,
 } from 'lib/api/data-contracts'
 
-export const useLoginUser = async (
+export async function useLoginUser(
   requestData: LoginRequest,
   opts: optionalParameters<UserViewModel> = {},
-): Promise<ApiResponse<LoginResponse>> => {
+): Promise<ApiResponse<LoginResponse>> {
   const { onError, onOkay } = opts
   const authToken = useSessionToken()
   const currentUser = useCurrentUser()

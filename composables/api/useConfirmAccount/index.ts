@@ -1,10 +1,10 @@
 import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 
-export const useConfirmAccount = async (
+export async function useConfirmAccount(
   confirmationToken: string,
   opts: optionalParameters<void> = {},
-): Promise<ApiResponse<void>> => {
+): Promise<ApiResponse<void>> {
   const { onError, onOkay } = opts
 
   const account = new Account({

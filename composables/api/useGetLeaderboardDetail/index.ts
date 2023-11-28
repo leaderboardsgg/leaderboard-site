@@ -3,10 +3,10 @@ import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
 import { Leaderboards } from 'lib/api/Leaderboards'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 
-export const useGetLeaderboardDetail = async (
+export async function useGetLeaderboardDetail(
   leaderboardSlug: string,
   opts: optionalParameters<LeaderboardViewModel> = {},
-): Promise<ApiResponse<LeaderboardViewModel>> => {
+): Promise<ApiResponse<LeaderboardViewModel>> {
   const { onError, onOkay } = opts
   const responseData = ref<LeaderboardViewModel>({
     categories: [],

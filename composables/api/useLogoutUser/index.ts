@@ -1,7 +1,7 @@
 import { useCurrentUser } from 'composables/useCurrentUser'
 import { useSessionToken } from 'composables/useSessionToken'
 
-export const useLogoutUser = (): void => {
+export function useLogoutUser(): void {
   const authToken = useSessionToken()
   const currentUser = useCurrentUser()
 

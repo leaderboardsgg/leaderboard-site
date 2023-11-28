@@ -8,7 +8,7 @@ import { useModalAlert } from 'composables/useModalAlert'
 
 const modalAlertState = useModalAlert()?.value
 
-const close = () => {
+function close() {
   modalAlertState.body = ''
   modalAlertState.show = false
   modalAlertState.title = ''
