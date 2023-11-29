@@ -43,6 +43,10 @@ export interface CategoryViewModel {
   rules?: string | null
 }
 
+export interface ChangePasswordRequest {
+  password: string
+}
+
 /** This request object is sent when creating a `Category`. */
 export interface CreateCategoryRequest {
   /**
@@ -184,6 +188,20 @@ export interface ProblemDetails {
   detail?: string | null
   instance?: string | null
   [key: string]: any
+}
+
+export interface RecoverAccountRequest {
+  /**
+   * The user's name.
+   * @minLength 1
+   */
+  username: string
+  /**
+   * The user's email address.
+   * @format email
+   * @minLength 1
+   */
+  email: string
 }
 
 /** This request object is sent when a `User` is attempting to register. */

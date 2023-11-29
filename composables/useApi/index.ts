@@ -32,10 +32,10 @@ export interface optionalParameters<T> {
  * @param {optionalParameters<T>} [opts = {}] - optional parameters. `onOkay`: a `function` to call when the API request succeeds. `responseData`: a `ref` to set the data to when the API request succeeds. If not passed it, a ref is created on a successful API call
  * @returns {Promise<ApiResponse<T>>} returns an `ApiResponse` object, but the `data` property is not guaranteed to be present
  */
-export const useApi = async <T>(
+export async function useApi<T>(
   apiRequest: () => Promise<HttpResponse<T, void | ProblemDetails>>,
   opts: optionalParameters<T> = {},
-): Promise<ApiResponse<T>> => {
+): Promise<ApiResponse<T>> {
   const responseError = ref<ProblemDetails | null | void>(null)
   const responseErrors = ref<ValidationProblemDetails | null | void>(null)
   const responseLoading = ref(true)

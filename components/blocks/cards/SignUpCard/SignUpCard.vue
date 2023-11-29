@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type Ref, ref } from 'vue'
+import { sentenceCase } from 'lib/helpers'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
@@ -98,12 +99,10 @@ async function signup() {
     },
     {
       onError: (val: any) => {
-        errorText.value = `Error(s): ${(
-          Object.values(val.error.errors) as string[]
-        ).reduce(
-          (accumulator: string, val: string) => `${accumulator} ${val}`,
-          '',
-        )}`
+        const errors = Object.values(val.error?.errors) as string[][]
+        errorText.value = `Error(s): ${errors
+          .map((errorType) => errorType.map(sentenceCase))
+          .join(', ')}`
         showErrorsText.value = true
       },
       onOkay: () => {

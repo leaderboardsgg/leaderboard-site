@@ -1,6 +1,13 @@
 import { DOMWrapper, VueWrapper } from '@vue/test-utils'
 type WrappedElement = Omit<DOMWrapper<Element>, 'exists'>
 
+export function getByClass(
+  wrapper: VueWrapper<any>,
+  className: string,
+): WrappedElement {
+  return wrapper.get(`.${className}`)
+}
+
 export function getByTestId(
   wrapper: VueWrapper<any>,
   testId: string,
