@@ -2,7 +2,7 @@
 import { type Ref, toRef } from 'vue'
 
 interface BaseInputProps {
-  model: Ref<string | number>
+  model?: Ref<string | number>
 }
 
 const props = defineProps<BaseInputProps>()

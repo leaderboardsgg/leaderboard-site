@@ -43,6 +43,21 @@ describe('<SiteNavbar />', () => {
 
         expect(getByTestId(wrapper, 'log-in-card').isVisible()).toBe(true)
       })
+
+      describe('when the login card is open and forgot password is clicked', () => {
+        it('should bring up the forgot password card', () => {
+          const wrapper = getSiteNavbarWrapper()
+
+          getByTestId(wrapper, 'site-navbar-login-button').trigger('click')
+          expect(getByTestId(wrapper, 'log-in-card').isVisible()).toBe(true)
+
+          getByTestId(wrapper, 'forgot-password-button').trigger('click')
+
+          expect(getByTestId(wrapper, 'forgot-password-card').isVisible()).toBe(
+            true,
+          )
+        })
+      })
     })
 
     describe('when the sign up button is clicked', () => {

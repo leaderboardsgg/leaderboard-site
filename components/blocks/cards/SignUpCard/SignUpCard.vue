@@ -2,6 +2,7 @@
 import { type Ref, ref } from 'vue'
 import { sentenceCase } from 'lib/helpers'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
@@ -122,6 +123,10 @@ async function signup() {
 
   emit('signUpClick')
 }
+
+function toggleShowPassword() {
+  state.showPassword.value = !state.showPassword.value
+}
 </script>
 
 <template>
@@ -179,23 +184,24 @@ async function signup() {
 
         <div class="signup-card__input-wrapper">
           <div class="signup-card__password-wrapper">
-            <BaseInput
+            <PasswordInput
               :model="register.password"
               name="password"
               class="signup-card__password-field"
               :style="{
                 'border-color': !passwordInputValid ? 'rgb(185 28 28 / 1)' : '',
               }"
-              :type="state.showPassword.value ? 'text' : 'password'"
+              :show-password="state.showPassword.value"
               placeholder="Password"
               autocomplete="password"
               data-testid="password-input"
               minlength="8"
               maxlength="80"
               @change="passwordInputValid = isPasswordValid()"
+              @hide-show-clicked="toggleShowPassword"
             />
 
-            <BaseInput
+            <PasswordInput
               :model="register.passwordConfirm"
               name="passwordConfirm"
               class="signup-card__password-field"
@@ -204,7 +210,7 @@ async function signup() {
                   ? 'rgb(185 28 28 / 1)'
                   : '',
               }"
-              :type="state.showPassword.value ? 'text' : 'password'"
+              :show-password="state.showPassword.value"
               placeholder="Confirm"
               autocomplete="password"
               data-testid="password-confirm-input"
@@ -214,17 +220,17 @@ async function signup() {
                 passwordConfirmValid =
                   passwordsAreTheSame() && isPasswordValid()
               "
+              @hide-show-clicked="toggleShowPassword"
             />
 
             <HideShowPassword
               id="hide-show-password"
               type="button"
               data-testid="hide-show-button"
-              @click="state.showPassword.value = !state.showPassword.value"
-              @keydown.enter.prevent=""
-              @keyup.enter="
-                state.showPassword.value = !state.showPassword.value
-              "
+              :hidden="state.showPassword.value"
+              @click="toggleShowPassword"
+              @keydown.enter="$event.preventDefault()"
+              @keyup.enter="toggleShowPassword"
             />
           </div>
 
@@ -287,19 +293,20 @@ async function signup() {
 
   & .signup-card__password-wrapper {
     @apply flex flex-1 flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-2;
+
+    #hide-show-password {
+      @apply hidden sm:inline;
+      @apply text-gray-700 hover:bg-gray-100 bg-gray-100 hover:bg-gray-300;
+    }
   }
 
   & .signup-card__password-field {
-    @apply grow sm:w-full md:w-9/12;
+    @apply grow sm:w-5/12;
   }
 
   & p {
     @apply text-sm;
   }
-}
-
-#hide-show-password {
-  @apply text-gray-700 hover:bg-gray-100;
 }
 
 #login-button {
