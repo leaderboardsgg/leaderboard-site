@@ -6,12 +6,34 @@ interface ModalAlertState {
 }
 
 export function useModalAlert() {
-  return useState<ModalAlertState>('modal_alert', () => ({
+  const state = useState<ModalAlertState>('modal_alert', () => ({
     body: '',
     show: false,
     title: '',
     type: '',
   }))
+
+  function closeAlert() {
+    state.value = {
+      body: '',
+      show: false,
+      title: '',
+      type: '',
+    }
+  }
+
+  function showAlert(stateProps: Omit<ModalAlertState, 'show'>) {
+    state.value = {
+      ...stateProps,
+      show: true,
+    }
+  }
+
+  return {
+    closeAlert,
+    showAlert,
+    state,
+  }
 }
 
 export default useModalAlert

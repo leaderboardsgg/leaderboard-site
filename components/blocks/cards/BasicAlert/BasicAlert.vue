@@ -6,14 +6,8 @@ import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import CardBody from 'elements/cards/CardBody/CardBody.vue'
 import { useModalAlert } from 'composables/useModalAlert'
 
-const modalAlertState = useModalAlert()?.value
-
-function close() {
-  modalAlertState.body = ''
-  modalAlertState.show = false
-  modalAlertState.title = ''
-  modalAlertState.type = ''
-}
+const { closeAlert, state } = useModalAlert()
+const modalAlertState = state.value
 </script>
 
 <template>
@@ -24,7 +18,7 @@ function close() {
     enter-to-class="opacity-100"
     leave-to-class="opacity-0"
   >
-    <BaseModal v-show="modalAlertState.show" @close="close">
+    <BaseModal v-show="modalAlertState.show" @close="closeAlert">
       <Card
         id="basicModalAlert"
         :class="['basic-modal-alert', modalAlertState.type]"
@@ -43,7 +37,7 @@ function close() {
           <CloseButton
             class="basic-modal-alert__close-button"
             data-testid="basic-modal-alert-close-button"
-            @click.prevent="close"
+            @click.prevent="closeAlert"
           />
         </CardHeader>
         <CardBody class="basic-modal-alert__body">
