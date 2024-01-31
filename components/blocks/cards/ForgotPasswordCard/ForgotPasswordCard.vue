@@ -6,6 +6,8 @@ import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
 import CardBody from 'elements/cards/CardBody/CardBody.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import Card from 'elements/cards/Card/Card.vue'
+import { useRecoverAccount } from 'composables/api'
+import { useModalAlert } from 'composables/useModalAlert'
 
 interface ForgotPasswordCardPops {
   modal?: boolean
@@ -30,6 +32,8 @@ const state: ForgotPasswordCardState = {
   username: ref(''),
 }
 
+const { showAlert } = useModalAlert()
+
 function clearState() {
   state.email.value = ''
   state.username.value = ''
@@ -41,8 +45,24 @@ function cancel() {
 }
 
 function resetPassword() {
-  clearState()
-  emit('close')
+  useRecoverAccount(
+    {
+      email: state.email.value,
+      username: state.username.value,
+    },
+    {
+      onOkay: () => {
+        clearState()
+        emit('close')
+
+        showAlert({
+          body: 'If an account with that email and username exists, we will send you an email with a link to reset your password.',
+          title: 'Success!',
+          type: 'success',
+        })
+      },
+    },
+  )
 }
 </script>
 
