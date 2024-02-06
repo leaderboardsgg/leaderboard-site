@@ -46,8 +46,7 @@ describe('<BasicAlert />', () => {
     )
   })
 
-  // Failing for some reason
-  describe.skip('when the close button is clicked', () => {
+  describe('when the close button is clicked', () => {
     it('should emit the close event', async () => {
       const wrapper = getBasicAlertWrapper()
 

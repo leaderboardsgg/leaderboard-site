@@ -31,7 +31,8 @@ const emit = defineEmits<{
 <style lang="postcss" scoped>
 .modal {
   & .modal__wrapper {
-    @apply fixed z-10 inset-0 overflow-y-auto bg-gray-900 bg-opacity-50 transition-opacity;
+    background-color: rgba(14, 19, 31, 0.75);
+    @apply fixed z-10 inset-0 overflow-y-auto transition-opacity;
   }
   & .modal__container {
     @apply flex items-center min-h-screen p-5;
