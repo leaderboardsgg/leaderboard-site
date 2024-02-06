@@ -1,10 +1,12 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
+import { mount, enableAutoUnmount, flushPromises } from '@vue/test-utils'
 import { getByTestId } from 'root/testUtils'
 import ForgotPasswordCard from './ForgotPasswordCard.vue'
 
 function getForgotPasswordCardWrapper() {
   return mount(ForgotPasswordCard)
 }
+
+const mockSuccessRecoverCreate = vi.fn(() => Promise.resolve({ ok: true }))
 
 enableAutoUnmount(afterEach)
 
@@ -35,14 +37,22 @@ describe('<ForgotPasswordCard />', () => {
     })
   })
 
-  // Failing for some reason
-  describe.skip('when the reset password button is clicked', () => {
-    it('should emit the close event', async () => {
-      const wrapper = getForgotPasswordCardWrapper()
+  describe('when the reset password button is clicked', () => {
+    describe('when everything is successful', () => {
+      it('should emit the close event', async () => {
+        vi.mock('lib/api/Account', () => ({
+          Account: function Account() {
+            this.recoverCreate = mockSuccessRecoverCreate
+          },
+        }))
 
-      await getByTestId(wrapper, 'reset-password-button').trigger('click')
+        const wrapper = getForgotPasswordCardWrapper()
 
-      expect(wrapper.emitted().close).toBeTruthy()
+        await getByTestId(wrapper, 'reset-password-button').trigger('click')
+        await flushPromises()
+
+        expect(wrapper.emitted().close).toBeTruthy()
+      })
     })
   })
 })
