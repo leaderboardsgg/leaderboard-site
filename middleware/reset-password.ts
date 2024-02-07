@@ -34,7 +34,9 @@ export default defineNuxtRouteMiddleware((_to, from) => {
       navigateTo('/', { replace: true })
     },
     onOkay: () => {
-      navigateTo('/recover-account', { replace: true })
+      navigateTo(`/recover-account?code=${resetPasswordCode}`, {
+        replace: true,
+      })
     },
   })
 })

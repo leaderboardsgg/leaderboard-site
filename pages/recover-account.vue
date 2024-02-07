@@ -1,32 +1,73 @@
 <script setup lang="ts">
 import { type Ref, ref } from 'vue'
-import { isPasswordValid, passwordsAreTheSame } from 'lib/form_helpers'
+import {
+  isPasswordValid,
+  passwordsAreTheSame,
+  renderErrors,
+} from 'lib/form_helpers'
 import { toggleState } from 'lib/helpers'
 import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
-import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import { useChangePassword } from 'composables/api'
+import { useModalAlert } from 'composables/useModalAlert'
 
 interface RecoverAccountFormState {
   password: Ref<string>
   passwordConfirm: Ref<string>
 }
 
+const route = useRoute()
+const resetPasswordCode = route.query?.code as string
+
 const formState: RecoverAccountFormState = {
   password: ref(''),
   passwordConfirm: ref(''),
 }
 
-const state = {
-  showPassword: ref(false),
-}
-
+const showPassword = ref(false)
 const errorText = ref('')
 const showErrorsText = ref(false)
 const passwordInputValid = ref(true)
 const passwordConfirmValid = ref(true)
 
+const { showAlert } = useModalAlert()
+
+async function changePassword() {
+  showErrorsText.value = false
+  await useChangePassword(
+    resetPasswordCode,
+    { password: formState.password.value },
+    {
+      onError: (response: any) => {
+        if (response.error && response.error?.errors) {
+          const errors = Object.values(response.error.errors) as string[][]
+          errorText.value = renderErrors(errors)
+        } else if (response.status === 404) {
+          errorText.value = 'Reset link has expired. Please request a new link'
+        } else if (response.status === 409) {
+          passwordInputValid.value = false
+          passwordConfirmValid.value = false
+          errorText.value =
+            'Password cannot be the same as the existing password'
+        } else {
+          errorText.value =
+            'Something went wrong. Reach out to support if the problem persists'
+        }
+        showErrorsText.value = true
+      },
+      onOkay: () => {
+        showAlert({
+          body: 'Password changed successfully',
+          title: 'Success!',
+          type: 'success',
+        })
+      },
+    },
+  )
+}
+
 function toggleShowPassword() {
-  toggleState(state.showPassword)
+  toggleState(showPassword)
 }
 </script>
 
@@ -44,7 +85,6 @@ function toggleShowPassword() {
             :style="{
               'border-color': !passwordInputValid ? 'rgb(185 28 28 / 1)' : '',
             }"
-            :show-password="state.showPassword.value"
             placeholder="Password"
             autocomplete="password"
             data-testid="password-input"
@@ -61,7 +101,6 @@ function toggleShowPassword() {
             :style="{
               'border-color': !passwordConfirmValid ? 'rgb(185 28 28 / 1)' : '',
             }"
-            :show-password="state.showPassword.value"
             placeholder="Confirm"
             autocomplete="password"
             data-testid="password-confirm-input"
@@ -75,16 +114,6 @@ function toggleShowPassword() {
                 ) && isPasswordValid(formState.password)
             "
             @hide-show-clicked="toggleShowPassword"
-          />
-
-          <HideShowPassword
-            id="hide-show-password"
-            type="button"
-            data-testid="hide-show-button"
-            :hidden="state.showPassword.value"
-            @click="toggleShowPassword"
-            @keydown.enter="$event.preventDefault()"
-            @keyup.enter="toggleShowPassword"
           />
         </div>
 
@@ -107,6 +136,7 @@ function toggleShowPassword() {
                 passwordConfirmValid
               )
             "
+            @click.prevent="changePassword"
           >
             Change Password
           </BaseButton>
