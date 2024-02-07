@@ -7,8 +7,7 @@ import {
 } from 'lib/api/data-contracts'
 
 export default defineNuxtRouteMiddleware((_to, from) => {
-  const route = useRoute()
-  const resetPasswordCode = route.query?.code as string
+  const resetPasswordCode = from.query?.code as string
   const { showAlert } = useModalAlert()
 
   if (
@@ -32,11 +31,6 @@ export default defineNuxtRouteMiddleware((_to, from) => {
         }
       }
       navigateTo('/', { replace: true })
-    },
-    onOkay: () => {
-      navigateTo(`/recover-account?code=${resetPasswordCode}`, {
-        replace: true,
-      })
     },
   })
 })
