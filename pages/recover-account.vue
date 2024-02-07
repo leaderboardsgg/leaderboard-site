@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { type Ref, ref } from 'vue'
+import { isPasswordValid, passwordsAreTheSame } from 'lib/form_helpers'
+import { toggleState } from 'lib/helpers'
 import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
@@ -23,24 +25,8 @@ const showErrorsText = ref(false)
 const passwordInputValid = ref(true)
 const passwordConfirmValid = ref(true)
 
-const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
-
-function isPasswordValid() {
-  // password length between 8-80 characters
-  // must contain a number, uppercase, and lowercase letter
-  return (
-    passwordRegex.test(formState.password.value) &&
-    formState.password.value.length > 7 &&
-    formState.password.value.length < 81
-  )
-}
-
-function passwordsAreTheSame() {
-  return formState.password.value === formState.passwordConfirm.value
-}
-
 function toggleShowPassword() {
-  state.showPassword.value = !state.showPassword.value
+  toggleState(state.showPassword)
 }
 </script>
 
@@ -64,7 +50,7 @@ function toggleShowPassword() {
             data-testid="password-input"
             minlength="8"
             maxlength="80"
-            @change="passwordInputValid = isPasswordValid()"
+            @change="passwordInputValid = isPasswordValid(formState.password)"
             @hide-show-clicked="toggleShowPassword"
           />
 
@@ -82,7 +68,11 @@ function toggleShowPassword() {
             minlength="8"
             maxlength="80"
             @change="
-              passwordConfirmValid = passwordsAreTheSame() && isPasswordValid()
+              passwordConfirmValid =
+                passwordsAreTheSame(
+                  formState.password,
+                  formState.passwordConfirm,
+                ) && isPasswordValid(formState.password)
             "
             @hide-show-clicked="toggleShowPassword"
           />
@@ -118,7 +108,7 @@ function toggleShowPassword() {
               )
             "
           >
-            Set Password
+            Change Password
           </BaseButton>
         </div>
       </div>
