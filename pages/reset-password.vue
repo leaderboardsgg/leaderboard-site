@@ -142,7 +142,7 @@ function toggleShowPassword() {
             "
             @click.prevent="changePassword"
           >
-            Change Password
+            Change password
           </BaseButton>
         </div>
       </div>
@@ -172,6 +172,10 @@ function toggleShowPassword() {
 
   .submit-button {
     @apply w-full fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
+
+    &:disabled {
+      @apply bg-gray-300 text-gray-500 cursor-not-allowed;
+    }
   }
 }
 </style>
