@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { type Ref, ref } from 'vue'
+import { isEmailValid, isUsernameValid } from 'lib/form_helpers'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
@@ -31,6 +32,9 @@ const state: ForgotPasswordCardState = {
   email: ref(''),
   username: ref(''),
 }
+
+const emailValid = ref(true)
+const usernameValid = ref(true)
 
 const { showAlert } = useModalAlert()
 
@@ -90,22 +94,38 @@ function resetPassword() {
           :model="state.email"
           name="email"
           type="text"
+          :style="{
+            'border-color': !emailValid ? 'rgb(185 28 28 / 1)' : '',
+          }"
           placeholder="Email"
           autocomplete="email"
           data-testid="email-input"
+          @change="emailValid = isEmailValid(state.email)"
         />
         <BaseInput
           :model="state.username"
           name="username"
           type="text"
+          :style="{
+            'border-color': !usernameValid ? 'rgb(185 28 28 / 1)' : '',
+          }"
           placeholder="Username"
           autocomplete="username"
           data-testid="username-input"
+          @change="usernameValid = isUsernameValid(state.username)"
         />
         <BaseButton
           id="reset-password-button"
           class="reset-password-button"
           data-testid="reset-password-button"
+          :disabled="
+            !(
+              state.email.value &&
+              state.username.value &&
+              emailValid &&
+              usernameValid
+            )
+          "
           @click="resetPassword"
         >
           Reset Password
@@ -145,6 +165,10 @@ function resetPassword() {
   .reset-password-button,
   .cancel-button {
     @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
+  }
+
+  .reset-password-button:disabled {
+    @apply bg-gray-300 text-gray-500 cursor-not-allowed;
   }
 
   .cancel-button {

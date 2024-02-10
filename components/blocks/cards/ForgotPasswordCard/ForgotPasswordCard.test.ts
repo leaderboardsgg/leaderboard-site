@@ -39,6 +39,9 @@ describe('<ForgotPasswordCard />', () => {
 
   describe('when the reset password button is clicked', () => {
     describe('when everything is successful', () => {
+      const username = 'strongbad'
+      const emailAddress = `${username}@homestarrunner.com`
+
       it('should emit the close event', async () => {
         vi.mock('lib/api/Account', () => ({
           Account: function Account() {
@@ -48,10 +51,26 @@ describe('<ForgotPasswordCard />', () => {
 
         const wrapper = getForgotPasswordCardWrapper()
 
+        const emailInput = getByTestId(wrapper, 'email-input')
+        await emailInput.setValue(emailAddress)
+
+        const usernameInput = getByTestId(wrapper, 'username-input')
+        await usernameInput.setValue(username)
+
         await getByTestId(wrapper, 'reset-password-button').trigger('click')
         await flushPromises()
 
         expect(wrapper.emitted().close).toBeTruthy()
+      })
+    })
+
+    describe('when one or more fields are invalid', () => {
+      it('should not emit the close event', async () => {
+        const wrapper = getForgotPasswordCardWrapper()
+
+        await getByTestId(wrapper, 'reset-password-button').trigger('click')
+
+        expect(wrapper.emitted().close).toBeFalsy()
       })
     })
   })
