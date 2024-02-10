@@ -1,12 +1,9 @@
 import { useValidateRecoveryToken } from 'composables/api'
 import { useModalAlert } from 'composables/useModalAlert'
 import { isProblemDetails } from 'lib/helpers'
-import {
-  ProblemDetails,
-  ValidationProblemDetails,
-} from 'lib/api/data-contracts'
+import { ProblemDetails } from 'lib/api/data-contracts'
 
-export default defineNuxtRouteMiddleware((_to, from) => {
+export default defineNuxtRouteMiddleware(async (_to, from) => {
   const resetPasswordCode = from.query?.code as string
   const { showAlert } = useModalAlert()
 
@@ -17,20 +14,21 @@ export default defineNuxtRouteMiddleware((_to, from) => {
     return navigateTo('/', { replace: true })
   }
 
-  useValidateRecoveryToken(resetPasswordCode, {
-    onError: (e: ProblemDetails | ValidationProblemDetails | unknown) => {
-      if (isProblemDetails(e)) {
-        const problemDetails = e as ProblemDetails
+  const response = await useValidateRecoveryToken(resetPasswordCode)
 
-        if (problemDetails.status === 400 || problemDetails.status === 404) {
-          showAlert({
-            body: 'Unable to recover account. Reach out to support if this persists.',
-            title: 'Something went wrong...',
-            type: 'error',
-          })
-        }
+  if (response?.error) {
+    if (isProblemDetails(response.error)) {
+      const problemDetails = response.error as ProblemDetails
+
+      if (problemDetails.status === 400 || problemDetails.status === 404) {
+        showAlert({
+          body: 'Unable to recover account. Reach out to support if this persists.',
+          title: 'Something went wrong...',
+          type: 'error',
+        })
       }
-      navigateTo('/', { replace: true })
-    },
-  })
+    }
+
+    return navigateTo('/', { replace: true })
+  }
 })
