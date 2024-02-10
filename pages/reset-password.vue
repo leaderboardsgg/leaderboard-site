@@ -34,6 +34,16 @@ const showErrorsText = ref(false)
 const passwordInputValid = ref(true)
 const passwordConfirmValid = ref(true)
 
+function validatePassword() {
+  passwordInputValid.value = isPasswordValid(formState.password)
+}
+
+function validatePasswordConfirm() {
+  passwordConfirmValid.value =
+    passwordsAreTheSame(formState.password, formState.passwordConfirm) &&
+    isPasswordValid(formState.password)
+}
+
 const { showAlert } = useModalAlert()
 
 async function changePassword() {
@@ -62,6 +72,7 @@ async function changePassword() {
       onOkay: () => {
         showAlert({
           body: 'Password changed successfully',
+          onClose: () => navigateTo('/', { replace: true }),
           title: 'Success!',
           type: 'success',
         })
@@ -94,7 +105,8 @@ function toggleShowPassword() {
             data-testid="password-input"
             minlength="8"
             maxlength="80"
-            @change="passwordInputValid = isPasswordValid(formState.password)"
+            @change="validatePassword"
+            @blur="validatePassword"
             @hide-show-clicked="toggleShowPassword"
           />
 
@@ -110,13 +122,8 @@ function toggleShowPassword() {
             data-testid="password-confirm-input"
             minlength="8"
             maxlength="80"
-            @change="
-              passwordConfirmValid =
-                passwordsAreTheSame(
-                  formState.password,
-                  formState.passwordConfirm,
-                ) && isPasswordValid(formState.password)
-            "
+            @change="validatePasswordConfirm"
+            @blur="validatePasswordConfirm"
             @hide-show-clicked="toggleShowPassword"
           />
         </div>

@@ -3,6 +3,7 @@ interface ModalAlertState {
   show: boolean
   title: string
   type: string
+  onClose?: () => void
 }
 
 export function useModalAlert() {
@@ -14,11 +15,16 @@ export function useModalAlert() {
   }))
 
   function closeAlert() {
+    const { onClose } = state.value
     state.value = {
+      ...state.value,
       body: '',
       show: false,
       title: '',
       type: '',
+    }
+    if (onClose) {
+      onClose()
     }
   }
 
