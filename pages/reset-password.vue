@@ -56,16 +56,22 @@ async function changePassword() {
         if (response.error && response.error?.errors) {
           const errors = Object.values(response.error.errors) as string[][]
           errorText.value = renderErrors(errors)
-        } else if (response.status === 404) {
-          errorText.value = 'Reset link has expired. Please request a new link'
-        } else if (response.status === 409) {
-          passwordInputValid.value = false
-          passwordConfirmValid.value = false
-          errorText.value =
-            'Password cannot be the same as the existing password'
         } else {
-          errorText.value =
-            'Something went wrong. Reach out to support if the problem persists'
+          switch (response.status) {
+            case 404:
+              errorText.value =
+                'Reset link has expired. Please request a new link'
+              break
+            case 409:
+              passwordInputValid.value = false
+              passwordConfirmValid.value = false
+              errorText.value =
+                'Password cannot be the same as the existing password'
+              break
+            default:
+              errorText.value =
+                'Something went wrong. Reach out to support if the problem persists'
+          }
         }
         showErrorsText.value = true
       },
