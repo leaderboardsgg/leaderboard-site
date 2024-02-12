@@ -4,7 +4,7 @@ import { useModalAlert } from 'composables/useModalAlert'
 export default defineNuxtRouteMiddleware((_to, from) => {
   const route = useRoute()
   const confirmationCode = route.query?.code as string
-  const modalAlertState = useModalAlert().value
+  const { showAlert } = useModalAlert()
 
   if (
     !confirmationCode ||
@@ -15,17 +15,19 @@ export default defineNuxtRouteMiddleware((_to, from) => {
 
   useConfirmAccount(confirmationCode, {
     onError: () => {
-      modalAlertState.show = true
-      modalAlertState.title = 'Something went wrong...'
-      modalAlertState.body = 'Unable to confirm account.'
-      modalAlertState.type = 'error'
+      showAlert({
+        body: 'Unable to confirm account.',
+        title: 'Something went wrong...',
+        type: 'error',
+      })
       navigateTo('/', { replace: true })
     },
     onOkay: () => {
-      modalAlertState.show = true
-      modalAlertState.title = 'Success!'
-      modalAlertState.body = 'Account confirmed successfully!'
-      modalAlertState.type = 'success'
+      showAlert({
+        body: 'Account confirmed successfully!',
+        title: 'Success!',
+        type: 'success',
+      })
       navigateTo('/', { replace: true })
     },
   })

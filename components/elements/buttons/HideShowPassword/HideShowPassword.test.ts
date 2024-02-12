@@ -1,6 +1,6 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
-import HideShowPassword from './HideShowPassword.vue'
 import { getByTestId, getHTMLElement } from 'root/testUtils'
+import HideShowPassword from './HideShowPassword.vue'
 
 function getHideShowPassword() {
   return mount(HideShowPassword)

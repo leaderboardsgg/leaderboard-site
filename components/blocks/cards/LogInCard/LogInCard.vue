@@ -3,7 +3,7 @@ import { type Ref, ref } from 'vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
-import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
+import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import CardBody from 'elements/cards/CardBody/CardBody.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import Card from 'elements/cards/Card/Card.vue'
@@ -21,6 +21,7 @@ interface LogInCardState {
 
 const emit = defineEmits<{
   (event: 'close'): void
+  (event: 'forgotPasswordClick'): void
   (event: 'signUpClick'): void
 }>()
 
@@ -89,32 +90,14 @@ function login() {
           data-testid="email-input"
         />
 
-        <div class="login-card__input-wrapper">
-          <BaseInput
-            :model="state.password"
-            class="login-card__password-field"
-            name="password"
-            :type="state.showPassword.value ? 'text' : 'password'"
-            placeholder="Password"
-            autocomplete="password"
-            data-testid="password-input"
-            @keyup.enter="login"
-          />
-
-          <div class="login-card__button-wrapper">
-            <HideShowPassword
-              id="hide-show-button"
-              type="button"
-              data-testid="hide-show-button"
-              @click="state.showPassword.value = !state.showPassword.value"
-              @keydown.enter.prevent=""
-              @keyup.enter="
-                state.showPassword.value = !state.showPassword.value
-              "
-              @keydown.enter="$event.preventDefault()"
-            />
-          </div>
-        </div>
+        <PasswordInput
+          :model="state.password"
+          class="login-card__password-field"
+          name="password"
+          data-testid="password-input"
+          placeholder="Password"
+          @keyup.enter="login"
+        />
         <p v-if="showErrorText" class="text-red-600">
           Error: Invalid Email, or Password for given email.
         </p>
@@ -126,6 +109,13 @@ function login() {
           @click="login"
         >
           Log In
+        </BaseButton>
+        <BaseButton
+          class="forgot-password-button"
+          data-testid="forgot-password-button"
+          @click="emit('forgotPasswordClick')"
+        >
+          Forgot Password?
         </BaseButton>
       </div>
     </CardBody>
@@ -153,9 +143,6 @@ function login() {
   & .login-card__button-wrapper {
     @apply absolute top-0 right-0 flex items-center h-full;
   }
-  & .login-card__password-field {
-    @apply bg-white pr-12;
-  }
 }
 
 #hide-show-button {
@@ -167,7 +154,12 @@ function login() {
   @apply hover:bg-gray-100;
 }
 
-.login-button {
+.login-button,
+.forgot-password-button {
   @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
+}
+
+.forgot-password-button {
+  @apply bg-transparent border border-gray-300;
 }
 </style>

@@ -52,21 +52,6 @@ describe('<LogInCard />', () => {
     })
   })
 
-  describe('when the hide/show button is clicked', () => {
-    it('changes the password input type to be text', async () => {
-      const wrapper = getLogInCardWrapper()
-      const passwordInputElement = getHTMLElement(
-        getByTestId(wrapper, 'password-input'),
-      ) as HTMLInputElement
-
-      expect(passwordInputElement.type).toBe('password')
-
-      await getByTestId(wrapper, 'hide-show-button').trigger('click')
-
-      expect(passwordInputElement.type).toBe('text')
-    })
-  })
-
   // TODO: skip this for now
   describe.skip('when enter key is released on the password input field', () => {
     it('emits the close event', async () => {
@@ -135,6 +120,16 @@ describe('<LogInCard />', () => {
       await getByTestId(wrapper, 'login-button').trigger('click')
 
       expect(useLoginUserSpy).toBeCalledTimes(1)
+    })
+  })
+
+  describe('when the forgot password button is clicked', () => {
+    it('emits the forgot password click event', async () => {
+      const wrapper = getLogInCardWrapper()
+
+      await getByTestId(wrapper, 'forgot-password-button').trigger('click')
+
+      expect(wrapper.emitted().forgotPasswordClick).toBeTruthy()
     })
   })
 
