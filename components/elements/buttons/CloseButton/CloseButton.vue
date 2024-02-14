@@ -4,7 +4,7 @@ import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 
 <template>
   <BaseButton class="close-button" v-bind="$attrs">
-    <i-svg-close class="h-5 w-5" />
+    <i-svg-close class="size-5" />
   </BaseButton>
 </template>
 

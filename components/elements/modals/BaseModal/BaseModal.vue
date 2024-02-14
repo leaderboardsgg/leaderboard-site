@@ -17,7 +17,7 @@ const emit = defineEmits<{
           @click="emit('close')"
           @keydown.esc="emit('close')"
         >
-          <i-svg-close class="h-5 w-5" />
+          <i-svg-close class="size-5" />
         </BaseButton>
 
         <div class="modal__content">

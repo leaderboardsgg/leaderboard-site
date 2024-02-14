@@ -8,10 +8,9 @@ import Icons from 'unplugin-icons/vite'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import IconResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
-import eslintPlugin from 'vite-plugin-eslint'
 import topLevelAwait from 'vite-plugin-top-level-await'
-import { ViteConfig } from 'nuxt/schema'
-import { supportedLocales, localeMessages } from './configUtils'
+import { supportedLocales } from './configUtils'
+import type { ViteConfig } from 'nuxt/schema'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
@@ -46,7 +45,7 @@ export const viteConfig: ViteConfig = {
         }),
       ],
     }),
-    eslintPlugin({ cache: true, failOnWarning: true, fix: true }),
+    // eslintPlugin({ cache: true, failOnWarning: true, fix: true }),
     // Needed this on my machine to prevent this erroneous error of
     // ✘ [ERROR] Top-level await is not available in the configured
     // target environment ("chrome87", "edge88", "es2020", "firefox78", "safari13" + 2 overrides)
@@ -97,13 +96,14 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'en',
     locales: supportedLocales,
-    vueI18n: {
-      fallbackLocale: 'en',
-      legacy: false,
-      locale: 'en',
-      // TODO: can this be cleaner via some sort of iteration? (not sure)
-      messages: localeMessages,
-    },
+    vueI18n: './i18n.config.ts',
+    // vueI18n: {
+    //   fallbackLocale: 'en',
+    //   legacy: false,
+    //   locale: 'en',
+    //   // TODO: can this be cleaner via some sort of iteration? (not sure)
+    //   messages: localeMessages,
+    // },
   },
 
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],

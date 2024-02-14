@@ -3,7 +3,7 @@
 //
 //  ERROR  Importing directly from a nuxt.config file is not allowed.
 // Instead, use runtime config or a module. [importing nuxt.config.js from vitest.setup.ts]
-import { type LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
+// import { type LocaleObject } from '@nuxtjs/i18n/dist/runtime/composables'
 
 import { Deutsch } from './i18n/de/index'
 import { English } from './i18n/en/index'
@@ -40,4 +40,5 @@ export const supportedLocales = [
     code: 'ja',
     name: '日本語',
   },
-] satisfies LocaleObject[]
+]
+// satisfies LocaleObject[]
