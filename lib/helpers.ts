@@ -1,3 +1,5 @@
+import type { Ref } from 'vue'
+
 /**
  * Takes a parameter of an unknown type and returns a
  * boolean indicating whether or not the parameter is
@@ -47,6 +49,15 @@ export function sentenceCase(string: string): string {
   let sentence = words.join(' ')
   sentence = sentence.charAt(0).toUpperCase() + sentence.slice(1)
   return sentence
+}
+
+/**
+ * Takes a boolean reference and flips it.
+ *
+ * @param state The state to toggle
+ */
+export function toggleState(state: Ref<boolean>): void {
+  state.value = !state.value
 }
 
 export default {

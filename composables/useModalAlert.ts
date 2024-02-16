@@ -3,15 +3,43 @@ interface ModalAlertState {
   show: boolean
   title: string
   type: string
+  onClose?: () => void
 }
 
 export function useModalAlert() {
-  return useState<ModalAlertState>('modal_alert', () => ({
+  const state = useState<ModalAlertState>('modal_alert', () => ({
     body: '',
     show: false,
     title: '',
     type: '',
   }))
+
+  function closeAlert() {
+    const { onClose } = state.value
+    state.value = {
+      ...state.value,
+      body: '',
+      show: false,
+      title: '',
+      type: '',
+    }
+    if (onClose) {
+      onClose()
+    }
+  }
+
+  function showAlert(stateProps: Omit<ModalAlertState, 'show'>) {
+    state.value = {
+      ...stateProps,
+      show: true,
+    }
+  }
+
+  return {
+    closeAlert,
+    showAlert,
+    state,
+  }
 }
 
 export default useModalAlert

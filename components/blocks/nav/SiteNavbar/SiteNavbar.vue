@@ -4,6 +4,7 @@ import NavLinks from 'elements/nav/NavLinks/NavLinks.vue'
 import LogoutButton from 'elements/buttons/LogoutButton/LogoutButton.vue'
 import SignUpButton from 'elements/buttons/SignUpButton/SignUpButton.vue'
 import LoginButton from 'elements/buttons/LoginButton/LoginButton.vue'
+import ForgotPasswordCard from 'blocks/cards/ForgotPasswordCard/ForgotPasswordCard.vue'
 import LogInCard from 'blocks/cards/LogInCard/LogInCard.vue'
 import SignUpCard from 'blocks/cards/SignUpCard/SignUpCard.vue'
 import BaseModal from 'elements/modals/BaseModal/BaseModal.vue'
@@ -13,14 +14,18 @@ import { useCurrentUser } from 'composables/useCurrentUser'
 
 interface NavbarState {
   mobileNavIsActive: boolean
+  showForgotPassword: boolean
   showLogin: boolean
   showModal: boolean
+  showSignUp: boolean
 }
 
 const state: NavbarState = reactive({
   mobileNavIsActive: false,
+  showForgotPassword: false,
   showLogin: false,
   showModal: false,
+  showSignUp: false,
 })
 
 const currentUser = useCurrentUser()
@@ -28,18 +33,36 @@ const loggedIn = computed(
   () => !!currentUser.value?.username && currentUser.value?.username !== '',
 )
 
+function showForgotPassword() {
+  state.showForgotPassword = true
+  state.showLogin = false
+  state.showSignUp = false
+}
+
+function showLogin() {
+  state.showForgotPassword = false
+  state.showLogin = true
+  state.showSignUp = false
+}
+
+function showSignUp() {
+  state.showForgotPassword = false
+  state.showLogin = false
+  state.showSignUp = true
+}
+
 function toggleMenu() {
   state.mobileNavIsActive = !state.mobileNavIsActive
 }
 
 function toggleLoginModal() {
   state.showModal = !state.showModal
-  state.showLogin = true
+  showLogin()
 }
 
 function toggleSignUpModal() {
   state.showModal = !state.showModal
-  state.showLogin = false
+  showSignUp()
 }
 
 function logout() {
@@ -90,27 +113,34 @@ function logout() {
       v-if="!loggedIn"
       enter-active-class="transition-opacity duration-200"
       leave-active-class="transition-opacity duration-200"
-      enter-class="opacity-0"
       enter-to-class="opacity-100"
-      leave-class="opacity-100"
       leave-to-class="opacity-0"
     >
       <BaseModal v-show="state.showModal" @close="state.showModal = false">
+        <ForgotPasswordCard
+          v-show="state.showForgotPassword"
+          data-testid="forgot-password-card"
+          class="shadow-xl"
+          :modal="true"
+          @close="state.showModal = false"
+          @cancel-click="showLogin"
+        />
         <LogInCard
           v-show="state.showLogin"
           data-testid="log-in-card"
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"
-          @sign-up-click="state.showLogin = false"
+          @sign-up-click="showSignUp"
+          @forgot-password-click="showForgotPassword"
         />
         <SignUpCard
-          v-show="!state.showLogin"
+          v-show="state.showSignUp"
           data-testid="sign-up-card"
           class="shadow-xl"
           :modal="true"
           @close="state.showModal = false"
-          @log-in-click="state.showLogin = true"
+          @log-in-click="showLogin"
         />
       </BaseModal>
     </transition>

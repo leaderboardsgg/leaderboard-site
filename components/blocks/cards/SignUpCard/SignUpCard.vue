@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { type Ref, ref } from 'vue'
-import { sentenceCase } from 'lib/helpers'
+import {
+  isEmailValid,
+  isPasswordValid,
+  isUsernameValid,
+  passwordsAreTheSame,
+  renderErrors,
+} from 'lib/form_helpers'
+import { toggleState } from 'lib/helpers'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
@@ -53,42 +61,6 @@ const passwordInputValid = ref(true)
 const passwordConfirmValid = ref(true)
 const usernameValid = ref(true)
 
-// Regex(s) //
-const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
-// Taken from: https://emailregex.com/index.html
-const emailRegex =
-  // eslint-disable-next-line
-  /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-
-// Below is our username specification :)
-// A valid username must not contain fewer than 2 characters.
-// A valid username must not contain greater than 25 characters.
-// A valid username must not contain any single character that is not alphanumeric, a hyphen, an underscore, or an apostrophe.
-// A valid username must not contain any hyphens, underscores, or apostrophes that are not immediately and individually preceded and followed by one or more alphanumeric characters.
-const usernameRegex = /^(?:[a-zA-Z0-9]+[-_']?[a-zA-Z0-9]+)+$/
-
-function isPasswordValid() {
-  // password length between 8-80 characters
-  // must contain a number, uppercase, and lowercase letter
-  return (
-    passwordRegex.test(register.password.value) &&
-    register.password.value.length > 7 &&
-    register.password.value.length < 81
-  )
-}
-
-function isUsernameValid() {
-  return (
-    usernameRegex.test(register.username.value) &&
-    register.username.value.length > 1 &&
-    register.username.value.length < 26
-  )
-}
-
-function passwordsAreTheSame() {
-  return register.password.value === register.passwordConfirm.value
-}
-
 async function signup() {
   showErrorsText.value = false
   await useRegisterUser(
@@ -100,9 +72,7 @@ async function signup() {
     {
       onError: (val: any) => {
         const errors = Object.values(val.error?.errors) as string[][]
-        errorText.value = `Error(s): ${errors
-          .map((errorType) => errorType.map(sentenceCase))
-          .join(', ')}`
+        errorText.value = renderErrors(errors)
         showErrorsText.value = true
       },
       onOkay: () => {
@@ -121,6 +91,10 @@ async function signup() {
   )
 
   emit('signUpClick')
+}
+
+function toggleShowPassword() {
+  toggleState(state.showPassword)
 }
 </script>
 
@@ -157,7 +131,7 @@ async function signup() {
           :style="{
             'border-color': !emailValid ? 'rgb(185 28 28 / 1)' : '',
           }"
-          @change="emailValid = emailRegex.test(register.email.value)"
+          @change="emailValid = isEmailValid(register.email)"
         />
 
         <div class="signup-card__input-wrapper">
@@ -173,29 +147,30 @@ async function signup() {
             :style="{
               'border-color': !usernameValid ? 'rgb(185 28 28 / 1)' : '',
             }"
-            @change="usernameValid = isUsernameValid()"
+            @change="usernameValid = isUsernameValid(register.username)"
           />
         </div>
 
         <div class="signup-card__input-wrapper">
           <div class="signup-card__password-wrapper">
-            <BaseInput
+            <PasswordInput
               :model="register.password"
               name="password"
               class="signup-card__password-field"
               :style="{
                 'border-color': !passwordInputValid ? 'rgb(185 28 28 / 1)' : '',
               }"
-              :type="state.showPassword.value ? 'text' : 'password'"
+              :show-password="state.showPassword.value"
               placeholder="Password"
               autocomplete="password"
               data-testid="password-input"
               minlength="8"
               maxlength="80"
-              @change="passwordInputValid = isPasswordValid()"
+              @change="passwordInputValid = isPasswordValid(register.password)"
+              @hide-show-clicked="toggleShowPassword"
             />
 
-            <BaseInput
+            <PasswordInput
               :model="register.passwordConfirm"
               name="passwordConfirm"
               class="signup-card__password-field"
@@ -204,7 +179,7 @@ async function signup() {
                   ? 'rgb(185 28 28 / 1)'
                   : '',
               }"
-              :type="state.showPassword.value ? 'text' : 'password'"
+              :show-password="state.showPassword.value"
               placeholder="Confirm"
               autocomplete="password"
               data-testid="password-confirm-input"
@@ -212,19 +187,22 @@ async function signup() {
               maxlength="80"
               @change="
                 passwordConfirmValid =
-                  passwordsAreTheSame() && isPasswordValid()
+                  passwordsAreTheSame(
+                    register.password,
+                    register.passwordConfirm,
+                  ) && isPasswordValid(register.password)
               "
+              @hide-show-clicked="toggleShowPassword"
             />
 
             <HideShowPassword
               id="hide-show-password"
               type="button"
               data-testid="hide-show-button"
-              @click="state.showPassword.value = !state.showPassword.value"
-              @keydown.enter.prevent=""
-              @keyup.enter="
-                state.showPassword.value = !state.showPassword.value
-              "
+              :hidden="state.showPassword.value"
+              @click="toggleShowPassword"
+              @keydown.enter="$event.preventDefault()"
+              @keyup.enter="toggleShowPassword"
             />
           </div>
 
@@ -287,19 +265,20 @@ async function signup() {
 
   & .signup-card__password-wrapper {
     @apply flex flex-1 flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-2;
+
+    #hide-show-password {
+      @apply hidden sm:inline;
+      @apply text-gray-700 hover:bg-gray-100 bg-gray-100 hover:bg-gray-300;
+    }
   }
 
   & .signup-card__password-field {
-    @apply grow sm:w-full md:w-9/12;
+    @apply grow sm:w-5/12;
   }
 
   & p {
     @apply text-sm;
   }
-}
-
-#hide-show-password {
-  @apply text-gray-700 hover:bg-gray-100;
 }
 
 #login-button {

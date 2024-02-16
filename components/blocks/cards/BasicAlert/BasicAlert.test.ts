@@ -8,7 +8,7 @@ function getBasicAlertWrapper() {
 }
 
 beforeEach(() => {
-  const modalAlertState = useModalAlert()
+  const { state: modalAlertState } = useModalAlert()
   modalAlertState.value = {
     body: 'This is a test',
     show: true,
