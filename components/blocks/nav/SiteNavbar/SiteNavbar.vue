@@ -75,7 +75,7 @@ function logout() {
     <div class="site-navbar__wrapper">
       <div class="site-logo">
         <NuxtLink class="site-navbar__homelink" to="/">
-          <i-svg-clock class="mx-1 h-10 w-10" />
+          <i-svg-clock class="mx-1 size-10" />
           <h1>leaderboards.gg</h1>
         </NuxtLink>
       </div>
@@ -104,7 +104,7 @@ function logout() {
         />
 
         <button class="mobile-menu__toggle" @click="toggleMenu">
-          <i-svg-menu class="mx-2 h-5 w-5 fill-current" />
+          <i-svg-menu class="mx-2 size-5 fill-current" />
         </button>
       </div>
     </div>

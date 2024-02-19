@@ -28,12 +28,12 @@ function toggleHidden() {
   >
     <i-svg-eye-hidden
       v-show="hiddenRef"
-      class="h-5 w-5"
+      class="size-5"
       data-testid="hidden-eye-icon"
     />
     <i-svg-eye-visible
       v-show="!hiddenRef"
-      class="h-5 w-5"
+      class="size-5"
       data-testid="visible-eye-icon"
     />
   </BaseButton>
