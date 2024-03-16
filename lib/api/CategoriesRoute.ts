@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import { CategoryViewModel, CreateCategoryRequest } from './data-contracts'
+import type { CategoryViewModel, CreateCategoryRequest } from './data-contracts'
 
 export namespace Categories {
   /**
