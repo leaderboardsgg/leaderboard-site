@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import {
+import type {
   ChangePasswordRequest,
   LoginRequest,
   LoginResponse,

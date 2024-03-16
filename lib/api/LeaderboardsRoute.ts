@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import {
+import type {
   CreateLeaderboardRequest,
   LeaderboardViewModel,
 } from './data-contracts'

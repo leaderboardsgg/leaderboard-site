@@ -9,6 +9,7 @@ import type { HttpResponse } from 'lib/api/http-client'
 /**
  * @property {T} [data]
  * @property {ProblemDetails | null} error
+ * @property {ValidationProblemDetails | null} errors
  * @property {boolean} loading
  */
 export interface ApiResponse<T> {
