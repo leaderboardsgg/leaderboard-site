@@ -1,6 +1,7 @@
 import { ref } from 'vue'
-import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
+import { useApi } from 'composables/useApi'
 import { Leaderboards } from 'lib/api/Leaderboards'
+import type { ApiResponse, optionalParameters } from 'composables/useApi'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 
 export async function useGetLeaderboardDetail(
