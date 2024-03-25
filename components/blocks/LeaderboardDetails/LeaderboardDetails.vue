@@ -1,24 +1,25 @@
 <script setup lang="ts">
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import DropDown from 'elements/buttons/DropDown/DropDown.vue'
+import DropDownContent from 'elements/buttons/DropDown/DropDownContent.vue'
+import DropDownItem from 'elements/buttons/DropDown/DropDownItem.vue'
 import FollowButton from 'elements/buttons/FollowButton/FollowButton.vue'
 import SocialButtons from 'elements/buttons/SocialButtons/SocialButtons.vue'
-import PlatformTags from './PlatformTags.vue'
-import Tag from 'elements/tags/Tag/tag.vue'
+import Tag from 'elements/tags/Tag/Tag.vue'
+import PlatformTags from './PlatformTags/PlatformTags.vue'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 
 interface LeaderboardDetailProps {
   leaderboardDetail: LeaderboardViewModel
 }
 
+// TODO: Remove this. Get from model instead.
 const todoPlatforms = ['PS4', 'PC', 'XboxSeriesX']
 
-const onFollow = () => {
-  // TODO: Trigger follow leaderboard flow
-}
-
-const onToggleMore = () => {
-  // TODO: Open the dropdown
-}
+// TODO: Implement listeners
+const emit = defineEmits<{
+  (event: 'follow', leaderboardId: number): void
+}>()
 
 // TODO: Get actual links tied to the leaderboard
 const socials: Socials[] = [
@@ -50,7 +51,11 @@ defineProps<LeaderboardDetailProps>()
       <Tag>{{ leaderboardDetail.categories[0] ?? 'TODO' }}</Tag>
       <span class="middle__published-year">TODO</span>
       <PlatformTags :tags="todoPlatforms" />
-      <FollowButton class="middle__follow" :on-click="onFollow" />
+      <FollowButton
+        class="middle__follow"
+        data-testid="middle__follow"
+        :on-click="() => emit('follow', leaderboardDetail.id)"
+      />
     </div>
     <div class="bottom">
       <BaseButton class="bottom__button" to="">
@@ -61,9 +66,18 @@ defineProps<LeaderboardDetailProps>()
         <i-svg-menu />
         <div>Resources</div>
       </BaseButton>
-      <BaseButton class="bottom__button" @click="onToggleMore">
-        <div>More &or;</div>
-      </BaseButton>
+      <DropDown class="bottom__button">
+        <template #toggler>
+          <span>More v</span>
+        </template>
+        <DropDownContent>
+          <DropDownItem>
+            <div class="w-full text-center">First</div>
+          </DropDownItem>
+          <DropDownItem>Second</DropDownItem>
+          <DropDownItem>Third</DropDownItem>
+        </DropDownContent>
+      </DropDown>
       <SocialButtons :socials="socials" />
     </div>
   </div>
