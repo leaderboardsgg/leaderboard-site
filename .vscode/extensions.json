@@ -6,6 +6,6 @@
     "bradlc.vscode-tailwindcss", // Tooling for Tailwind
     "csstools.postcss", // PostCSS as Tailwind is built on top of it
     "Vue.volar", // Vue 3 Language support for VSC https://github.com/johnsoncodehk/volar
-    "ZixuanChen.vitest-explorer" // Vitest extension to run tests inside of VSCode
+    "vitest.explorer" // Vitest extension to run tests inside of VSCode
   ]
 }
