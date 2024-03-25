@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Tag from 'elements/tags/Tag/tag.vue'
+import Tag from 'elements/tags/Tag/Tag.vue'
 interface PlatformTagsProps {
   tags: string[]
 }
