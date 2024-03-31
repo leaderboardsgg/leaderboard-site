@@ -5,26 +5,16 @@ export interface SharedState {
   active: Ref<boolean>
 }
 
-const sharedState: SharedState = { active: ref(true) }
+const sharedState: SharedState = { active: ref(false) }
 provide('state', sharedState)
 
 function toggle() {
   sharedState.active.value = !sharedState.active.value
 }
-
-function dismiss() {
-  sharedState.active.value = false
-}
 </script>
 
 <template>
-  <BaseButton
-    class="button__toggler"
-    @click="toggle"
-    @keyup.enter="toggle"
-    @keyup.space="toggle"
-    @keyup.esc="dismiss"
-  >
+  <BaseButton class="button__toggler" v-bind="$attrs" @click="toggle">
     <slot name="toggler">Toggle</slot>
   </BaseButton>
   <slot />

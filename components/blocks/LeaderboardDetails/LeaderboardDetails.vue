@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import ButtonLink from 'elements/buttons/ButtonLink/ButtonLink.vue'
 import DropDown from 'elements/buttons/DropDown/DropDown.vue'
 import DropDownContent from 'elements/buttons/DropDown/DropDownContent.vue'
 import DropDownItem from 'elements/buttons/DropDown/DropDownItem.vue'
@@ -58,22 +58,20 @@ defineProps<LeaderboardDetailProps>()
       />
     </div>
     <div class="bottom">
-      <BaseButton class="bottom__button" to="">
+      <ButtonLink class="bottom__button" to="#">
         <i-svg-menu />
         <span>Guides</span>
-      </BaseButton>
-      <BaseButton class="bottom__button" to="">
+      </ButtonLink>
+      <ButtonLink class="bottom__button" to="#">
         <i-svg-menu />
         <div>Resources</div>
-      </BaseButton>
+      </ButtonLink>
       <DropDown class="bottom__button">
         <template #toggler>
           <span>More v</span>
         </template>
         <DropDownContent>
-          <DropDownItem>
-            <div class="w-full text-center">First</div>
-          </DropDownItem>
+          <DropDownItem>First</DropDownItem>
           <DropDownItem>Second</DropDownItem>
           <DropDownItem>Third</DropDownItem>
         </DropDownContent>

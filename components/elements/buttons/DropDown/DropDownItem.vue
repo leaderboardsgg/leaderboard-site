@@ -1,13 +1,16 @@
 <script setup lang="ts" />
 
 <template>
-  <div class="container">
+  <button class="container">
     <slot />
-  </div>
+  </button>
 </template>
 
 <style lang="postcss" scoped>
 .container {
-  @apply bg-stone-500;
+  @apply py-2 text-center hover:bg-gray-100;
+}
+.container:not(:last-child) {
+  @apply border-gray-200 border-b;
 }
 </style>

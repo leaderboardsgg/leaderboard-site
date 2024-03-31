@@ -13,5 +13,6 @@ const sharedState: SharedState = inject('state', { active: ref(false) })
 <style lang="postcss" scoped>
 .drop-down-content__container {
   @apply flex flex-col;
+  @apply border border-gray-200 border-t-0;
 }
 </style>
