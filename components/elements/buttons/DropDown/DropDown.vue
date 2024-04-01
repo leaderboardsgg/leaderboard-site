@@ -14,14 +14,27 @@ function toggle() {
 </script>
 
 <template>
-  <BaseButton class="button__toggler" v-bind="$attrs" @click="toggle">
-    <slot name="toggler">Toggle</slot>
+  <!-- TODO: Come up with a good way to set active bg colour -->
+  <BaseButton v-bind="$attrs" @click="toggle">
+    <div class="container">
+      More
+      <img
+        src="/public/icons/arrows/down.svg"
+        alt="Dropdown arrow"
+        width="10"
+        :class="sharedState.active.value && 'selected'"
+      />
+    </div>
   </BaseButton>
   <slot />
 </template>
 
 <style lang="postcss" scoped>
-.button__toggler {
-  @apply bg-slate-50 hover:bg-slate-200;
+.container {
+  @apply flex flex-row justify-center items-center gap-2;
+
+  & img.selected {
+    @apply rotate-180;
+  }
 }
 </style>
