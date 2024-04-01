@@ -67,9 +67,6 @@ defineProps<LeaderboardDetailProps>()
         <div>Resources</div>
       </ButtonLink>
       <DropDown class="bottom__button">
-        <template #toggler>
-          <span>More v</span>
-        </template>
         <DropDownContent>
           <DropDownItem>First</DropDownItem>
           <DropDownItem>Second</DropDownItem>
@@ -110,7 +107,8 @@ defineProps<LeaderboardDetailProps>()
   & .bottom {
     @apply md:w-full md:p-4;
 
-    & .bottom__button {
+    & .bottom__button,
+    & :deep(button.bottom__button) {
       @apply w-full flex flex-row place-content-center gap-2 hover:bg-gray-100;
       @apply md:mr-1 md:my-1 md:p-1;
       @apply border-gray-200 border-2 rounded;
