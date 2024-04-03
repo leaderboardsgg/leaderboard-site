@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Info from 'blocks/LeaderboardDetails/LeaderboardDetails.vue'
+import LeaderboardInfo from 'blocks/LeaderboardInfo/LeaderboardInfo.vue'
 import Loader from 'blocks/Loader/Loader.vue'
 import { useGetLeaderboardDetail } from 'composables/api/useGetLeaderboardDetail'
 
@@ -11,9 +11,9 @@ const leaderboardDetail = await useGetLeaderboardDetail(leaderboardSlug)
 <template>
   <div>
     <Loader v-if="leaderboardDetail.loading"></Loader>
-    <Info
+    <LeaderboardInfo
       v-if="!leaderboardDetail.loading && leaderboardDetail.data != null"
-      :leaderboard-detail="leaderboardDetail.data!"
+      :leaderboard="leaderboardDetail.data!"
     />
   </div>
 </template>
