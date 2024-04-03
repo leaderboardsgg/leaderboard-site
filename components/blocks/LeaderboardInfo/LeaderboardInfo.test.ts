@@ -1,12 +1,12 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { getByTestId } from 'root/testUtils'
-import LeaderboardDetails from './LeaderboardDetails.vue'
+import LeaderboardInfo from './LeaderboardInfo.vue'
 
-describe.skip('<LeaderboardDetails />', () => {
-  function getLeaderboardDetailsWrapper() {
-    return mount(LeaderboardDetails, {
+describe.skip('<LeaderboardInfo />', () => {
+  function getLeaderboardInfoWrapper() {
+    return mount(LeaderboardInfo, {
       props: {
-        leaderboardDetail: {
+        leaderboard: {
           categories: [],
           id: 1,
           name: 'Stuck in the Train Simulator 2',
@@ -40,12 +40,12 @@ describe.skip('<LeaderboardDetails />', () => {
   enableAutoUnmount(afterEach)
 
   it('should render without crashing', () => {
-    const wrapper = getLeaderboardDetailsWrapper()
+    const wrapper = getLeaderboardInfoWrapper()
     expect(wrapper.isVisible()).toBe(true)
   })
 
   it('should trigger follow button', async () => {
-    const wrapper = getLeaderboardDetailsWrapper()
+    const wrapper = getLeaderboardInfoWrapper()
     await getByTestId(wrapper, 'middle__follow').trigger('click')
     expect(wrapper.emitted().follow?.[0]).toEqual([1])
   })

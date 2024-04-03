@@ -9,8 +9,8 @@ import Tag from 'elements/tags/Tag/Tag.vue'
 import PlatformTags from './PlatformTags/PlatformTags.vue'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 
-interface LeaderboardDetailProps {
-  leaderboardDetail: LeaderboardViewModel
+interface LeaderboardInfoProps {
+  leaderboard: LeaderboardViewModel
 }
 
 // TODO: Remove this. Get from model instead.
@@ -40,21 +40,21 @@ const socials: Socials[] = [
   },
 ]
 
-defineProps<LeaderboardDetailProps>()
+defineProps<LeaderboardInfoProps>()
 </script>
 
 <template>
-  <div class="leaderboard-details">
-    <div class="title">{{ leaderboardDetail.name }}</div>
+  <div class="leaderboard-info">
+    <div class="title">{{ leaderboard.name }}</div>
     <div class="middle">
       <img src="https://via.placeholder.com/220x220" alt="game-art" />
-      <Tag>{{ leaderboardDetail.categories[0] ?? 'TODO' }}</Tag>
+      <Tag>{{ leaderboard.categories[0] ?? 'TODO' }}</Tag>
       <span class="middle__published-year">TODO</span>
       <PlatformTags :tags="todoPlatforms" />
       <FollowButton
         class="middle__follow"
         data-testid="middle__follow"
-        :on-click="() => emit('follow', leaderboardDetail.id)"
+        :on-click="() => emit('follow', leaderboard.id)"
       />
     </div>
     <div class="bottom">
@@ -79,7 +79,7 @@ defineProps<LeaderboardDetailProps>()
 </template>
 
 <style lang="postcss" scoped>
-.leaderboard-details {
+.leaderboard-info {
   @apply h-[fit-content] min-h-[28.125rem] w-[fit-content] relative;
   @apply flex flex-col items-center;
   @apply border-gray-200 border-2 rounded;
