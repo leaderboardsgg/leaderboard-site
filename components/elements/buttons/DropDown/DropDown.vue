@@ -19,7 +19,7 @@ function toggle() {
     <div class="container">
       More
       <img
-        src="/public/icons/arrows/down.svg"
+        src="/icons/arrows/down.svg"
         alt="Dropdown arrow"
         width="10"
         :class="sharedState.active.value && 'selected'"
