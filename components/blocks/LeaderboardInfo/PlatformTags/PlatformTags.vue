@@ -17,6 +17,6 @@ defineProps<PlatformTagsProps>()
 
 <style lang="postcss" scoped>
 .platform-tags {
-  @apply flex flex-row place-content-center;
+  @apply flex flex-row place-content-center gap-1;
 }
 </style>
