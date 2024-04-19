@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from 'root/tailwind.config'
-import LeaderboardInfoDesktop from './LeaderboardInfoDesktop/LeaderboardInfoDesktop.vue'
-import LeaderboardInfoMobile from './LeaderboardInfoMobile/LeaderboardInfoMobile.vue'
+import Desktop from './Desktop/Desktop.vue'
+import Mobile from './Mobile/Mobile.vue'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 
 export interface LeaderboardInfoProps {
@@ -44,14 +44,14 @@ defineProps<LeaderboardInfoProps>()
 </script>
 
 <template>
-  <LeaderboardInfoDesktop
+  <Desktop
     v-if="!isMobile"
     :leaderboard="leaderboard"
     :todo-platforms="todoPlatforms"
     :on-click="() => emit('follow', leaderboard.id)"
     :socials="socials"
   />
-  <LeaderboardInfoMobile
+  <Mobile
     v-if="isMobile"
     :leaderboard="leaderboard"
     :todo-platforms="todoPlatforms"
