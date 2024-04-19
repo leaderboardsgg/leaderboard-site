@@ -17,30 +17,6 @@ const emit = defineEmits<{
   (event: 'follow', leaderboardId: number): void
 }>()
 
-// TODO: Get actual links tied to the leaderboard
-const socials: Socials[] = [
-  {
-    icon: 'twitch',
-    name: 'Twitch',
-    url: 'https://twitch.tv',
-  },
-  {
-    icon: 'globe',
-    name: 'Site',
-    url: '#',
-  },
-  {
-    icon: 'discord',
-    name: 'Discord',
-    url: 'https://discord.gg',
-  },
-  {
-    icon: 'message',
-    name: 'Message',
-    url: '#',
-  },
-]
-
 const isMobile =
   window.innerWidth <=
   parseInt(resolveConfig(tailwindConfig).theme.screens.sm.replace('px', ''), 10)
@@ -54,14 +30,12 @@ defineProps<LeaderboardInfoProps>()
     :leaderboard="leaderboard"
     :todo-platforms="todoPlatforms"
     :on-click="() => emit('follow', leaderboard.id)"
-    :socials="socials"
   />
   <Mobile
     v-if="isMobile"
     :leaderboard="leaderboard"
     :todo-platforms="todoPlatforms"
     :on-click="() => emit('follow', leaderboard.id)"
-    :socials="socials"
   />
 </template>
 

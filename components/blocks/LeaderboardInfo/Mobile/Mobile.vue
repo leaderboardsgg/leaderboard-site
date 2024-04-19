@@ -8,7 +8,6 @@ import type { LeaderboardInfoProps } from '../LeaderboardInfo.vue'
 interface Props extends LeaderboardInfoProps {
   todoPlatforms: string[]
   onClick: () => void
-  socials: Socials[]
 }
 
 defineProps<Props>()
