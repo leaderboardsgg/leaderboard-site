@@ -12,8 +12,31 @@ import type { LeaderboardInfoProps } from '../LeaderboardInfo.vue'
 interface Props extends LeaderboardInfoProps {
   todoPlatforms: string[]
   onClick: () => void
-  socials: Socials[]
 }
+
+// TODO: Get actual links tied to the leaderboard
+const socials: Socials[] = [
+  {
+    icon: 'twitch',
+    name: 'Twitch',
+    url: 'https://twitch.tv',
+  },
+  {
+    icon: 'globe',
+    name: 'Site',
+    url: '#',
+  },
+  {
+    icon: 'discord',
+    name: 'Discord',
+    url: 'https://discord.gg',
+  },
+  {
+    icon: 'message',
+    name: 'Message',
+    url: '#',
+  },
+]
 
 defineProps<Props>()
 </script>
