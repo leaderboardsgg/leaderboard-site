@@ -35,11 +35,11 @@ defineProps<Props>()
     </div>
     <div class="bottom">
       <ButtonLink class="bottom__button" to="#">
-        <i-svg-menu />
+        <i-svg-book />
         <span>Guides</span>
       </ButtonLink>
       <ButtonLink class="bottom__button" to="#">
-        <i-svg-menu />
+        <i-svg-link />
         <div>Resources</div>
       </ButtonLink>
       <DropDown class="bottom__button">

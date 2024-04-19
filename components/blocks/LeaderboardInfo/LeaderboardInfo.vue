@@ -25,14 +25,19 @@ const socials: Socials[] = [
     url: 'https://twitch.tv',
   },
   {
-    icon: 'youtube', // TODO: Add a globe SVG. Maybe from Icons8
-    name: 'Socials',
-    url: 'https://example.com',
+    icon: 'globe',
+    name: 'Site',
+    url: '#',
   },
   {
     icon: 'discord',
     name: 'Discord',
     url: 'https://discord.gg',
+  },
+  {
+    icon: 'message',
+    name: 'Message',
+    url: '#',
   },
 ]
 
