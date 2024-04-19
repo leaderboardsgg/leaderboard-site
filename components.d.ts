@@ -7,6 +7,7 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ISvgBook: typeof import('~icons/svg/book')['default']
     ISvgCircleCheck: typeof import('~icons/svg/circle-check')['default']
     ISvgCircleExclamation: typeof import('~icons/svg/circle-exclamation')['default']
     ISvgCircleInfo: typeof import('~icons/svg/circle-info')['default']
@@ -14,6 +15,7 @@ declare module 'vue' {
     ISvgClose: typeof import('~icons/svg/close')['default']
     ISvgEyeHidden: typeof import('~icons/svg/eye-hidden')['default']
     ISvgEyeVisible: typeof import('~icons/svg/eye-visible')['default']
+    ISvgLink: typeof import('~icons/svg/link')['default']
     ISvgMenu: typeof import('~icons/svg/menu')['default']
     ISvgSearch: typeof import('~icons/svg/search')['default']
     ISvgSpinner: typeof import('~icons/svg/spinner')['default']
