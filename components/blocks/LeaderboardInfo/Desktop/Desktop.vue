@@ -45,72 +45,91 @@ defineProps<Props>()
   <div class="leaderboard-info">
     <!-- TODO: Do not provide defaults and instead return nothing if on production -->
     <div class="title">{{ leaderboard.name || 'Game Name' }}</div>
-    <div class="middle">
-      <img src="https://via.placeholder.com/220x220" alt="game-art" />
+    <div class="body">
+      <img
+        src="https://via.placeholder.com/220x220"
+        alt="game-art"
+        class="body__game-art"
+      />
       <Tag>{{ leaderboard.categories[0] ?? 'TODO' }}</Tag>
-      <span class="middle__published-year">YEAR</span>
+      <span class="body__published-year">YEAR</span>
       <PlatformTags :tags="todoPlatforms" />
       <FollowButton
-        class="middle__follow"
-        data-testid="middle__follow"
+        class="body__follow"
+        data-testid="body__follow"
         :on-click="onClick"
       />
-    </div>
-    <div class="bottom">
-      <ButtonLink class="bottom__button" to="#">
-        <i-svg-book />
-        <span>Guides</span>
-      </ButtonLink>
-      <ButtonLink class="bottom__button" to="#">
-        <i-svg-link />
-        <div>Resources</div>
-      </ButtonLink>
-      <DropDown class="bottom__button">
-        <DropDownContent>
-          <DropDownItem>First</DropDownItem>
-          <DropDownItem>Second</DropDownItem>
-          <DropDownItem>Third</DropDownItem>
-        </DropDownContent>
-      </DropDown>
+      <div class="body__divider" />
+      <div class="body__internal-link-buttons">
+        <ButtonLink class="body__internal-link-buttons__button" to="#">
+          <i-svg-book />
+          <span>Guides</span>
+        </ButtonLink>
+        <ButtonLink class="body__internal-link-buttons__button" to="#">
+          <i-svg-link />
+          <div>Resources</div>
+        </ButtonLink>
+        <DropDown class-name="body__internal-link-buttons__button">
+          <DropDownContent>
+            <DropDownItem>First</DropDownItem>
+            <DropDownItem>Second</DropDownItem>
+            <DropDownItem>Third</DropDownItem>
+          </DropDownContent>
+        </DropDown>
+      </div>
       <SocialButtons :socials="socials" />
     </div>
   </div>
 </template>
 
 <style lang="postcss" scoped>
+.icon {
+  @apply w-2;
+}
+
 .leaderboard-info {
   @apply h-[fit-content] min-h-[28.125rem] w-[fit-content] relative;
   @apply flex flex-col items-center;
-  @apply border-gray-200 border-2 rounded;
+  @apply border-gray-300 border rounded;
 
   & .title {
     @apply w-full text-center;
-    @apply font-bold text-lg md:p-3;
+    @apply font-bold text-lg p-3;
     @apply border-b-gray-200 border-b-2;
   }
 
-  & .middle {
-    @apply md:m-4;
-    @apply flex flex-col items-center;
-    @apply border-b-gray-200 border-b-2;
+  & .body {
+    @apply m-4;
+    @apply flex flex-col items-center gap-1;
 
-    & .middle__published-year {
+    & .body__game-art {
+      @apply my-1 px-8;
+    }
+
+    & .body__published-year {
       @apply text-sm;
     }
 
-    & .middle__follow {
-      @apply md:m-4;
+    & .body__follow {
+      @apply mt-3;
     }
-  }
 
-  & .bottom {
-    @apply md:w-full md:p-4;
+    & .body__divider {
+      @apply border-b border-gray-300 w-full my-3;
+    }
 
-    & .bottom__button,
-    & :deep(button.bottom__button) {
-      @apply w-full flex flex-row place-content-center gap-2 hover:bg-gray-100;
-      @apply md:mr-1 md:my-1 md:p-1;
-      @apply border-gray-200 border-2 rounded;
+    & .body__internal-link-buttons {
+      @apply w-full flex flex-col mb-4 gap-2;
+
+      & .body__internal-link-buttons__button {
+        @apply w-full flex justify-center items-center gap-2 hover:bg-gray-100;
+        @apply border-gray-200 border-2 rounded;
+      }
+
+      & :deep(.body__internal-link-buttons__button) {
+        @apply w-full hover:bg-gray-100;
+        @apply border-gray-200 border-2 rounded;
+      }
     }
   }
 }
