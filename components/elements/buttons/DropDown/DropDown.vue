@@ -11,30 +11,42 @@ provide('state', sharedState)
 function toggle() {
   sharedState.active.value = !sharedState.active.value
 }
+
+interface Props {
+  className?: string
+}
+
+defineProps<Props>()
 </script>
 
 <template>
   <!-- TODO: Come up with a good way to set active bg colour -->
-  <BaseButton v-bind="$attrs" @click="toggle">
-    <div class="container">
-      More
-      <img
-        src="/icons/arrows/down.svg"
-        alt="Dropdown arrow"
-        width="10"
-        :class="sharedState.active.value && 'selected'"
-      />
-    </div>
-  </BaseButton>
-  <slot />
+  <div class="container">
+    <BaseButton :class="className" @click="toggle">
+      <div class="container__toggler">
+        More
+        <img
+          src="/icons/arrows/down.svg"
+          alt="Dropdown arrow"
+          width="10"
+          :class="sharedState.active.value && 'selected'"
+        />
+      </div>
+    </BaseButton>
+    <slot />
+  </div>
 </template>
 
 <style lang="postcss" scoped>
 .container {
-  @apply flex flex-row justify-center items-center gap-2;
+  @apply flex flex-col;
 
-  & img.selected {
-    @apply rotate-180;
+  & .container__toggler {
+    @apply flex justify-center items-center gap-2;
+
+    & img.selected {
+      @apply rotate-180;
+    }
   }
 }
 </style>

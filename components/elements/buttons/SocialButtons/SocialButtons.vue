@@ -22,21 +22,15 @@ defineProps<NavLinksProps>()
 
 <style lang="postcss" scoped>
 .social-buttons {
-  @apply my-1;
-  @apply grid auto-cols-fr grid-cols-4 gap-3;
-  @apply md:ml-5 md:mt-5;
+  @apply w-full grid auto-cols-fr grid-cols-4 gap-2;
 }
 
-@media (max-width: 767px) {
-  .social-button {
-    @apply flex content-center items-center justify-center justify-items-center;
-    @apply rounded bg-gray-100;
-    @apply p-2;
-  }
-  .social-button img {
-    @apply max-w-[30%];
-  }
+.social-button {
+  @apply flex content-center items-center justify-center;
+  @apply rounded bg-gray-100;
+  @apply p-2;
 }
+
 .social-button img {
   @apply w-5;
 }

@@ -8,9 +8,9 @@
 
 <style lang="postcss" scoped>
 .container {
-  @apply py-2 text-center hover:bg-gray-100;
+  @apply py-2 text-center border-b border-gray-200 hover:bg-gray-100;
 }
-.container:not(:last-child) {
-  @apply border-gray-200 border-b;
+.container:last-child {
+  @apply border-b-0;
 }
 </style>
