@@ -1,6 +1,6 @@
 {
   "extends": ["config:base"],
-  "compatibility": { "pnpm": "8.6.1" },
+  "compatibility": { "pnpm": "9.0.6" },
   "labels": ["dependencies"],
   "packageRules": [
     {
