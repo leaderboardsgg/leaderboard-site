@@ -7,7 +7,6 @@ import {
   passwordsAreTheSame,
   renderErrors,
 } from 'lib/form_helpers'
-import { toggleState } from 'lib/helpers'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
@@ -20,10 +19,6 @@ import { useLoginUser, useRegisterUser } from 'composables/api'
 
 interface SignUpCardProps {
   modal?: boolean
-}
-
-interface SignUpCardState {
-  showPassword: Ref<boolean>
 }
 
 interface UserRegister {
@@ -50,16 +45,13 @@ const register: UserRegister = {
   username: ref(''),
 }
 
-const state: SignUpCardState = {
-  showPassword: ref(false),
-}
-
 const errorText = ref('')
 const showErrorsText = ref(false)
 const emailValid = ref(true)
 const passwordInputValid = ref(true)
 const passwordConfirmValid = ref(true)
 const usernameValid = ref(true)
+const showPassword = ref(false)
 
 async function signup() {
   showErrorsText.value = false
@@ -84,17 +76,13 @@ async function signup() {
         register.password.value = ''
         register.passwordConfirm.value = ''
         register.username.value = ''
-        state.showPassword.value = false
+        showPassword.value = false
         emit('close')
       },
     },
   )
 
   emit('signUpClick')
-}
-
-function toggleShowPassword() {
-  toggleState(state.showPassword)
 }
 </script>
 
@@ -160,14 +148,13 @@ function toggleShowPassword() {
               :style="{
                 'border-color': !passwordInputValid ? 'rgb(185 28 28 / 1)' : '',
               }"
-              :show-password="state.showPassword.value"
+              :show-password="showPassword"
               placeholder="Password"
               autocomplete="password"
               data-testid="password-input"
               minlength="8"
               maxlength="80"
               @change="passwordInputValid = isPasswordValid(register.password)"
-              @hide-show-clicked="toggleShowPassword"
             />
 
             <PasswordInput
@@ -179,7 +166,7 @@ function toggleShowPassword() {
                   ? 'rgb(185 28 28 / 1)'
                   : '',
               }"
-              :show-password="state.showPassword.value"
+              :show-password="showPassword"
               placeholder="Confirm"
               autocomplete="password"
               data-testid="password-confirm-input"
@@ -190,19 +177,17 @@ function toggleShowPassword() {
                   passwordsAreTheSame(
                     register.password,
                     register.passwordConfirm,
-                  ) && isPasswordValid(register.password)
+                  ) && isPasswordValid(register.passwordConfirm)
               "
-              @hide-show-clicked="toggleShowPassword"
             />
 
             <HideShowPassword
               id="hide-show-password"
               type="button"
               data-testid="hide-show-button"
-              :hidden="state.showPassword.value"
-              @click="toggleShowPassword"
+              @click="showPassword = !showPassword"
               @keydown.enter="$event.preventDefault()"
-              @keyup.enter="toggleShowPassword"
+              @keyup.enter="showPassword = !showPassword"
             />
           </div>
 
@@ -223,6 +208,7 @@ function toggleShowPassword() {
               register.email.value &&
               register.password.value &&
               register.passwordConfirm.value &&
+              register.password.value === register.passwordConfirm.value &&
               register.username.value &&
               passwordConfirmValid &&
               passwordInputValid &&
@@ -286,6 +272,6 @@ function toggleShowPassword() {
 }
 
 .signup-button {
-  @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
+  @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 valid:hover:bg-gray-200 hover:bg-gray-100;
 }
 </style>

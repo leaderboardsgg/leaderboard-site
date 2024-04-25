@@ -1,14 +1,22 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
-import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 
-const showPassword = ref(false)
+interface PasswordInputProps {
+  showPassword: boolean
+}
+
+const props = defineProps<PasswordInputProps>()
+
 const inputType = ref('password')
 
+watch(
+  () => props.showPassword,
+  () => toggleShowPassword(),
+)
+
 function toggleShowPassword() {
-  showPassword.value = !showPassword.value
-  if (showPassword.value) {
+  if (props.showPassword) {
     inputType.value = 'text'
   } else {
     inputType.value = 'password'
@@ -24,16 +32,6 @@ function toggleShowPassword() {
       :type="inputType"
       v-bind="$attrs"
     />
-
-    <div class="button-wrapper">
-      <HideShowPassword
-        id="hide-show-button"
-        data-testid="hide-show-button"
-        @click="toggleShowPassword"
-        @keydown.enter="$event.preventDefault()"
-        @keyup.enter="toggleShowPassword"
-      />
-    </div>
   </div>
 </template>
 
