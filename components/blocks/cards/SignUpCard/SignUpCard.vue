@@ -7,7 +7,6 @@ import {
   passwordsAreTheSame,
   renderErrors,
 } from 'lib/form_helpers'
-import { toggleState } from 'lib/helpers'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
@@ -20,10 +19,6 @@ import { useLoginUser, useRegisterUser } from 'composables/api'
 
 interface SignUpCardProps {
   modal?: boolean
-}
-
-interface SignUpCardState {
-  showPassword: Ref<boolean>
 }
 
 interface UserRegister {
@@ -50,19 +45,15 @@ const register: UserRegister = {
   username: ref(''),
 }
 
-const state: SignUpCardState = {
-  showPassword: ref(false),
-}
-
 const errorText = ref('')
-const showErrorsText = ref(false)
+const passwordErrorsText = ref('')
 const emailValid = ref(true)
 const passwordInputValid = ref(true)
 const passwordConfirmValid = ref(true)
 const usernameValid = ref(true)
+const showPassword = ref(false)
 
 async function signup() {
-  showErrorsText.value = false
   await useRegisterUser(
     {
       email: register.email.value,
@@ -73,7 +64,6 @@ async function signup() {
       onError: (val: any) => {
         const errors = Object.values(val.error?.errors) as string[][]
         errorText.value = renderErrors(errors)
-        showErrorsText.value = true
       },
       onOkay: () => {
         useLoginUser({
@@ -84,7 +74,7 @@ async function signup() {
         register.password.value = ''
         register.passwordConfirm.value = ''
         register.username.value = ''
-        state.showPassword.value = false
+        showPassword.value = false
         emit('close')
       },
     },
@@ -93,8 +83,32 @@ async function signup() {
   emit('signUpClick')
 }
 
-function toggleShowPassword() {
-  toggleState(state.showPassword)
+function validatePasswordInputs() {
+  passwordErrorsText.value = ''
+  const passwordsTheSame = passwordsAreTheSame(
+    register.password,
+    register.passwordConfirm,
+  )
+  const passwordValid = isPasswordValid(register.password.value)
+
+  if (!passwordValid) {
+    passwordInputValid.value = false
+    // helps visually show that the password isn't valid as that's higher priority
+    // information than that of the passwords not being the same
+    passwordConfirmValid.value = true
+    passwordErrorsText.value = 'Password is not valid'
+    return
+  }
+
+  if (!passwordsTheSame) {
+    passwordInputValid.value = false
+    passwordConfirmValid.value = false
+    passwordErrorsText.value = 'Passwords are not the same'
+    return
+  }
+
+  passwordInputValid.value = true
+  passwordConfirmValid.value = true
 }
 </script>
 
@@ -160,14 +174,13 @@ function toggleShowPassword() {
               :style="{
                 'border-color': !passwordInputValid ? 'rgb(185 28 28 / 1)' : '',
               }"
-              :show-password="state.showPassword.value"
+              :show-password="showPassword"
               placeholder="Password"
               autocomplete="password"
               data-testid="password-input"
               minlength="8"
               maxlength="80"
-              @change="passwordInputValid = isPasswordValid(register.password)"
-              @hide-show-clicked="toggleShowPassword"
+              @change="validatePasswordInputs"
             />
 
             <PasswordInput
@@ -179,39 +192,34 @@ function toggleShowPassword() {
                   ? 'rgb(185 28 28 / 1)'
                   : '',
               }"
-              :show-password="state.showPassword.value"
+              :show-password="showPassword"
               placeholder="Confirm"
               autocomplete="password"
               data-testid="password-confirm-input"
               minlength="8"
               maxlength="80"
-              @change="
-                passwordConfirmValid =
-                  passwordsAreTheSame(
-                    register.password,
-                    register.passwordConfirm,
-                  ) && isPasswordValid(register.password)
-              "
-              @hide-show-clicked="toggleShowPassword"
+              @change="validatePasswordInputs"
             />
 
             <HideShowPassword
               id="hide-show-password"
               type="button"
               data-testid="hide-show-button"
-              :hidden="state.showPassword.value"
-              @click="toggleShowPassword"
+              @click="showPassword = !showPassword"
               @keydown.enter="$event.preventDefault()"
-              @keyup.enter="toggleShowPassword"
+              @keyup.enter="showPassword = !showPassword"
             />
           </div>
+          <p v-if="passwordErrorsText" class="text-red-600">
+            {{ passwordErrorsText }}
+          </p>
 
           <p>
             * Must be 8-80 characters, contain a number, lowercase, and
             uppercase letter
           </p>
 
-          <p v-if="showErrorsText" class="text-red-600">{{ errorText }}</p>
+          <p v-if="errorText" class="text-red-600">{{ errorText }}</p>
         </div>
 
         <!-- The disabled check is trivial because we're just checking already computed booleans -->
@@ -220,14 +228,10 @@ function toggleShowPassword() {
           data-testid="sign-up-button"
           :disabled="
             !(
-              register.email.value &&
-              register.password.value &&
-              register.passwordConfirm.value &&
-              register.username.value &&
-              passwordConfirmValid &&
-              passwordInputValid &&
               emailValid &&
-              usernameValid
+              passwordInputValid &&
+              usernameValid &&
+              register.password.value === register.passwordConfirm.value
             )
           "
           @click="signup"
@@ -286,6 +290,6 @@ function toggleShowPassword() {
 }
 
 .signup-button {
-  @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
+  @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 valid:hover:bg-gray-200 hover:bg-gray-100;
 }
 </style>

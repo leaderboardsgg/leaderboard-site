@@ -1,5 +1,5 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
-import { getByTestId, getHTMLElement } from 'root/testUtils'
+import { getHTMLElement } from 'root/testUtils'
 import PasswordInput from './PasswordInput.vue'
 
 function getPasswordInputWrapper() {
@@ -28,7 +28,7 @@ describe('<PasswordInput />', () => {
 
       expect(passwordInputElement.type).toBe('password')
 
-      await getByTestId(wrapper, 'hide-show-button').trigger('click')
+      await wrapper.setProps({ showPassword: true })
 
       expect(passwordInputElement.type).toBe('text')
     })
