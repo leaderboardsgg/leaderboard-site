@@ -26,13 +26,13 @@ const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
  * @param password The password reference
  * @returns boolean
  */
-export function isPasswordValid(password: Ref<string>): boolean {
+export function isPasswordValid(password: string): boolean {
   // password length between 8-80 characters
   // must contain a number, uppercase, and lowercase letter
   return (
-    passwordRegex.test(password.value) &&
-    password.value.length > 7 &&
-    password.value.length < 81
+    passwordRegex.test(password) &&
+    password.length > 7 &&
+    password.length < 81
   )
 }
 

@@ -7,6 +7,7 @@ import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import CardBody from 'elements/cards/CardBody/CardBody.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import Card from 'elements/cards/Card/Card.vue'
+import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
 import { useLoginUser } from 'composables/api/useLoginUser'
 
 interface LogInCardProps {
@@ -36,6 +37,7 @@ const state: LogInCardState = {
 }
 
 const showErrorText = ref(false)
+const showPassword = ref(false)
 
 function login() {
   showErrorText.value = false
@@ -90,14 +92,26 @@ function login() {
           data-testid="email-input"
         />
 
-        <PasswordInput
-          :model="state.password"
-          class="login-card__password-field"
-          name="password"
-          data-testid="password-input"
-          placeholder="Password"
-          @keyup.enter="login"
-        />
+        <div class="flex">
+          <PasswordInput
+            :model="state.password"
+            :show-password="showPassword"
+            class="login-card__password-field"
+            name="password"
+            data-testid="password-input"
+            placeholder="Password"
+            @keyup.enter="login"
+          />
+
+          <HideShowPassword
+            id="hide-show-password"
+            type="button"
+            data-testid="hide-show-button"
+            @click="showPassword = !showPassword"
+            @keydown.enter="$event.preventDefault()"
+            @keyup.enter="showPassword = !showPassword"
+          />
+        </div>
         <p v-if="showErrorText" class="text-red-600">
           Error: Invalid Email, or Password for given email.
         </p>
@@ -145,9 +159,9 @@ function login() {
   }
 }
 
-#hide-show-button {
-  @apply text-gray-700 hover:bg-gray-100;
-  @apply p-1 mr-2 rounded fill-current;
+#hide-show-password {
+  @apply hidden sm:inline;
+  @apply text-gray-700 hover:bg-gray-100 bg-gray-100 hover:bg-gray-300;
 }
 
 #sign-up-button {
