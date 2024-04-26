@@ -67,6 +67,7 @@ function toggleSignUpModal() {
 
 function logout() {
   useLogoutUser()
+  state.showModal = false
 }
 </script>
 
@@ -102,7 +103,6 @@ function logout() {
           @click="logout"
           @keyup.enter="logout"
         />
-
         <button class="mobile-menu__toggle" @click="toggleMenu">
           <i-svg-menu class="mx-2 size-5 fill-current" />
         </button>
