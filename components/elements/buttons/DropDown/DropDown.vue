@@ -1,15 +1,18 @@
 <script setup lang="ts">
+// Explicitly-importing these because tests don't like the auto-imports - zysim
+import { provide, ref } from 'vue'
 import BaseButton from '../BaseButton/BaseButton.vue'
 
 export interface SharedState {
   active: Ref<boolean>
 }
 
-const sharedState: SharedState = { active: ref(false) }
-provide('state', sharedState)
+const state: SharedState = { active: ref(false) }
+
+provide('state', state)
 
 function toggle() {
-  sharedState.active.value = !sharedState.active.value
+  state.active.value = !state.active.value
 }
 
 interface Props {
@@ -22,18 +25,29 @@ defineProps<Props>()
 <template>
   <!-- TODO: Come up with a good way to set active bg colour -->
   <div class="container">
-    <BaseButton :class="className" @click="toggle">
+    <BaseButton
+      data-testid="toggler"
+      :class="[className, 'container__button']"
+      @click="toggle"
+    >
       <div class="container__toggler">
         More
         <img
           src="/icons/arrows/down.svg"
           alt="Dropdown arrow"
           width="10"
-          :class="sharedState.active.value && 'selected'"
+          data-testid="arrow"
+          :class="state.active.value && 'selected'"
         />
       </div>
     </BaseButton>
-    <slot />
+    <div
+      v-if="state.active.value"
+      data-testid="dropdown-content"
+      class="container__content"
+    >
+      <slot />
+    </div>
   </div>
 </template>
 

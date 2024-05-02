@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import ButtonLink from 'elements/buttons/ButtonLink/ButtonLink.vue'
 import DropDown from 'elements/buttons/DropDown/DropDown.vue'
-import DropDownContent from 'elements/buttons/DropDown/DropDownContent.vue'
 import DropDownItem from 'elements/buttons/DropDown/DropDownItem.vue'
 import FollowButton from 'elements/buttons/FollowButton/FollowButton.vue'
 import SocialButtons from 'elements/buttons/SocialButtons/SocialButtons.vue'
@@ -70,11 +69,9 @@ defineProps<Props>()
           <div>Resources</div>
         </ButtonLink>
         <DropDown class-name="body__internal-link-buttons__button">
-          <DropDownContent>
-            <DropDownItem>First</DropDownItem>
-            <DropDownItem>Second</DropDownItem>
-            <DropDownItem>Third</DropDownItem>
-          </DropDownContent>
+          <DropDownItem>First</DropDownItem>
+          <DropDownItem>Second</DropDownItem>
+          <DropDownItem>Third</DropDownItem>
         </DropDown>
       </div>
       <SocialButtons :socials="socials" />

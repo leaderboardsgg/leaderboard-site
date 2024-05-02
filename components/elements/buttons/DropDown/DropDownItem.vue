@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import type { SharedState } from './DropDown.vue'
 
-const sharedState: SharedState = inject('state', { active: ref(false) })
-
 const emit = defineEmits<{
   (event: 'click'): void
 }>()
 
-function toggle() {
-  sharedState.active.value = false
+const state: SharedState = inject('state', { active: ref(false) })
+
+function hide() {
+  state.active.value = false
   emit('click')
 }
 </script>
 
 <template>
-  <button class="container" @click="toggle">
+  <button
+    :class="['container', state.active.value && 'selected']"
+    @click="hide"
+  >
     <slot />
   </button>
 </template>
