@@ -119,12 +119,12 @@ defineProps<Props>()
       @apply w-full flex flex-col mb-4 gap-2;
 
       & .body__internal-link-buttons__button {
-        @apply w-full flex justify-center items-center gap-2 hover:bg-gray-100;
+        @apply w-full flex justify-center items-center gap-2 bg-white hover:bg-gray-100;
         @apply border-gray-200 border-2 rounded;
       }
 
       & :deep(.body__internal-link-buttons__button) {
-        @apply w-full hover:bg-gray-100;
+        @apply w-full bg-white hover:bg-gray-100;
         @apply border-gray-200 border-2 rounded;
       }
     }

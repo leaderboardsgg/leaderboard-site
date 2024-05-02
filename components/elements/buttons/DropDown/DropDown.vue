@@ -55,12 +55,20 @@ defineProps<Props>()
 .container {
   @apply flex flex-col;
 
+  & .container__button {
+    @apply relative z-10;
+  }
+
   & .container__toggler {
     @apply flex justify-center items-center gap-2;
 
     & img.selected {
       @apply rotate-180;
     }
+  }
+
+  & .container__content {
+    @apply -mt-1;
   }
 }
 </style>
