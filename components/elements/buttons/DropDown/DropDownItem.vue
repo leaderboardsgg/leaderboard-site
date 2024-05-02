@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { inject, ref } from 'vue'
 import type { SharedState } from './DropDown.vue'
 
 const emit = defineEmits<{
@@ -24,10 +25,10 @@ function hide() {
 
 <style lang="postcss" scoped>
 .container {
-  @apply py-2 text-center border-b border-gray-200 hover:bg-gray-100;
+  @apply py-2 text-center border border-t-0 border-gray-200 hover:bg-gray-100;
 
-  &:last-child {
-    @apply border-b-0;
+  &.selected:first {
+    @apply pt-4;
   }
 }
 </style>
