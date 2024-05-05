@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ButtonLink from 'elements/buttons/ButtonLink/ButtonLink.vue'
-import DropDown from 'elements/buttons/DropDown/DropDown.vue'
-import DropDownItem from 'elements/buttons/DropDown/DropDownItem.vue'
+import Dropdown from 'elements/buttons/Dropdown/Dropdown.vue'
+import DropdownItem from 'elements/buttons/Dropdown/DropdownItem.vue'
 import FollowButton from 'elements/buttons/FollowButton/FollowButton.vue'
 import SocialButtons from 'elements/buttons/SocialButtons/SocialButtons.vue'
 import Tag from 'elements/tags/Tag/Tag.vue'
@@ -68,11 +68,11 @@ defineProps<Props>()
           <i-svg-link />
           <div>Resources</div>
         </ButtonLink>
-        <DropDown class-name="body__internal-link-buttons__button">
-          <DropDownItem>First</DropDownItem>
-          <DropDownItem>Second</DropDownItem>
-          <DropDownItem>Third</DropDownItem>
-        </DropDown>
+        <Dropdown class-name="body__internal-link-buttons__button">
+          <DropdownItem>First</DropdownItem>
+          <DropdownItem>Second</DropdownItem>
+          <DropdownItem>Third</DropdownItem>
+        </Dropdown>
       </div>
       <SocialButtons :socials="socials" />
     </div>
@@ -131,3 +131,4 @@ defineProps<Props>()
   }
 }
 </style>
+elements/buttons/Dropdown/Dropdown.vueelements/buttons/Dropdown/DropdownItem.vue

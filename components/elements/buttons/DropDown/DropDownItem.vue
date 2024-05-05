@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { inject, ref } from 'vue'
-import type { SharedState } from './DropDown.vue'
+import type { SharedState } from './Dropdown.vue'
 
 const emit = defineEmits<{
   (event: 'click'): void
@@ -24,8 +24,8 @@ function hide() {
 .container {
   @apply py-2 text-center border border-t-0 border-gray-200 hover:bg-gray-100;
 
-  &:first {
-    @apply pt-4;
+  &:first-child {
+    @apply pt-3;
   }
 }
 </style>
