@@ -46,14 +46,18 @@ defineProps<Props>()
 <template>
   <div class="leaderboard-info">
     <!-- TODO: Do not provide defaults and instead return nothing if on production -->
-    <div class="title">{{ leaderboard.name || 'Game Name' }}</div>
+    <div class="title" data-testid="title">
+      {{ leaderboard.name || 'Game Name' }}
+    </div>
     <div class="body">
       <img
         src="https://via.placeholder.com/220x220"
         alt="game-art"
         class="body__game-art"
       />
-      <Tag>{{ leaderboard.categories[0] ?? 'TODO' }}</Tag>
+      <Tag data-testid="tag">{{
+        leaderboard.categories[0]?.name ?? 'TODO'
+      }}</Tag>
       <span class="body__published-year">YEAR</span>
       <PlatformTags :tags="todoPlatforms" />
       <FollowButton
