@@ -1,17 +1,17 @@
 import { enableAutoUnmount, shallowMount } from '@vue/test-utils'
 import { getByTestId } from 'root/testUtils'
-import DropDownItem from './DropDownItem.vue'
+import DropdownItem from './DropdownItem.vue'
 import type { ComponentMountingOptions } from '@vue/test-utils'
 
 enableAutoUnmount(afterEach)
 
 function mountDropDownItem(
-  options?: ComponentMountingOptions<typeof DropDownItem>,
+  options?: ComponentMountingOptions<typeof DropdownItem>,
 ) {
-  return shallowMount(DropDownItem, options)
+  return shallowMount(DropdownItem, options)
 }
 
-describe('<DropDownItem />', () => {
+describe('<DropdownItem />', () => {
   it('should render without crashing', () => {
     const wrapper = mountDropDownItem({
       props: { slots: 'test' },

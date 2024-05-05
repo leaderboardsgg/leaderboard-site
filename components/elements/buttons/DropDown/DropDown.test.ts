@@ -1,18 +1,18 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { getByTestId } from 'root/testUtils'
-import DropDown from './DropDown.vue'
-import DropDownItem from './DropDownItem.vue'
+import Dropdown from './Dropdown.vue'
+import DropdownItem from './DropdownItem.vue'
 import type { ComponentMountingOptions } from '@vue/test-utils'
 
 enableAutoUnmount(afterEach)
 
-function mountDropDown(options?: ComponentMountingOptions<typeof DropDown>) {
-  return mount(DropDown, options)
+function mountDropdown(options?: ComponentMountingOptions<typeof Dropdown>) {
+  return mount(Dropdown, options)
 }
 
-describe('<DropDown />', () => {
+describe('<Dropdown />', () => {
   it('should render without crashing', () => {
-    const wrapper = mountDropDown({
+    const wrapper = mountDropdown({
       props: { className: 'test' },
     })
     expect(wrapper.isVisible()).toBe(true)
@@ -21,9 +21,9 @@ describe('<DropDown />', () => {
 
   describe('when the toggler is clicked', () => {
     it('should render the slot item, then hide it on a second click', async () => {
-      const itemWrapper = mount(DropDownItem)
+      const itemWrapper = mount(DropdownItem)
 
-      const wrapper = mountDropDown({
+      const wrapper = mountDropdown({
         slots: { default: itemWrapper.html() },
       })
 
@@ -35,7 +35,7 @@ describe('<DropDown />', () => {
     })
 
     it('should apply the style to the dropdown arrow', async () => {
-      const wrapper = mountDropDown()
+      const wrapper = mountDropdown()
 
       await getByTestId(wrapper, 'toggler').trigger('click')
 
