@@ -15,10 +15,7 @@ function hide() {
 </script>
 
 <template>
-  <button
-    :class="['container', state.active.value && 'selected']"
-    @click="hide"
-  >
+  <button class="container" data-testid="container" @click="hide">
     <slot />
   </button>
 </template>
@@ -27,7 +24,7 @@ function hide() {
 .container {
   @apply py-2 text-center border border-t-0 border-gray-200 hover:bg-gray-100;
 
-  &.selected:first {
+  &:first {
     @apply pt-4;
   }
 }
