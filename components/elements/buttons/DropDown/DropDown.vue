@@ -37,7 +37,7 @@ defineProps<Props>()
           alt="Dropdown arrow"
           width="10"
           data-testid="arrow"
-          :class="state.active.value && 'selected'"
+          :class="state.active.value && 'isOpen'"
         />
       </div>
     </BaseButton>
@@ -62,7 +62,7 @@ defineProps<Props>()
   & .container__toggler {
     @apply flex justify-center items-center gap-2;
 
-    & img.selected {
+    & img.isOpen {
       @apply rotate-180;
     }
   }
