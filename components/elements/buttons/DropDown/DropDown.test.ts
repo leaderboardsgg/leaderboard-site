@@ -39,7 +39,7 @@ describe('<DropDown />', () => {
 
       await getByTestId(wrapper, 'toggler').trigger('click')
 
-      expect(getByTestId(wrapper, 'arrow').classes()).toContain('selected')
+      expect(getByTestId(wrapper, 'arrow').classes()).toContain('isOpen')
     })
   })
 })
