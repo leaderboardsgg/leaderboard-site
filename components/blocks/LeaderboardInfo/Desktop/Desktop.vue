@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import ButtonLink from 'elements/buttons/ButtonLink/ButtonLink.vue'
 import Dropdown from 'elements/buttons/Dropdown/Dropdown.vue'
 import DropdownItem from 'elements/buttons/Dropdown/DropdownItem.vue'
+import ButtonLink from 'elements/buttons/ButtonLink/ButtonLink.vue'
 import FollowButton from 'elements/buttons/FollowButton/FollowButton.vue'
 import SocialButtons from 'elements/buttons/SocialButtons/SocialButtons.vue'
 import Tag from 'elements/tags/Tag/Tag.vue'
