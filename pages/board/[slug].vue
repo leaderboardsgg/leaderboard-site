@@ -14,6 +14,7 @@ const leaderboardDetail = await useGetLeaderboardDetail(leaderboardSlug)
     <LeaderboardInfo
       v-if="!leaderboardDetail.loading && leaderboardDetail.data != null"
       :leaderboard="leaderboardDetail.data!"
+      @follow="(id) => console.log(id)"
     />
   </div>
 </template>

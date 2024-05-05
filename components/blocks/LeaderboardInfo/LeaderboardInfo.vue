@@ -27,15 +27,17 @@ defineProps<LeaderboardInfoProps>()
 <template>
   <Desktop
     v-if="!isMobile"
+    data-testid="child"
     :leaderboard="leaderboard"
     :todo-platforms="todoPlatforms"
-    :on-click="() => emit('follow', leaderboard.id)"
+    @follow="emit('follow', leaderboard.id)"
   />
   <Mobile
     v-if="isMobile"
+    data-testid="child"
     :leaderboard="leaderboard"
     :todo-platforms="todoPlatforms"
-    :on-click="() => emit('follow', leaderboard.id)"
+    @follow="emit('follow', leaderboard.id)"
   />
 </template>
 
