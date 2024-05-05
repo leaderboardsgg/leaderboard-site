@@ -7,8 +7,11 @@ import type { LeaderboardInfoProps } from '../LeaderboardInfo.vue'
 
 interface Props extends LeaderboardInfoProps {
   todoPlatforms: string[]
-  onClick: () => void
 }
+
+const emit = defineEmits<{
+  (event: 'follow'): void
+}>()
 
 defineProps<Props>()
 </script>
@@ -22,7 +25,7 @@ defineProps<Props>()
         <FollowButton
           class="top__button top__button__follow"
           data-testid="top__button__follow"
-          :on-click="onClick"
+          @follow="emit('follow')"
         />
         <ButtonLink
           class="top__button top__button__submit"
