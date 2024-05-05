@@ -20,7 +20,9 @@ defineProps<Props>()
   <div class="leaderboard-info">
     <!-- TODO: Do not provide defaults and instead return nothing if on production -->
     <div class="top">
-      <div class="top__title">{{ leaderboard.name || 'Game Name' }}</div>
+      <div class="top__title" data-testid="title">
+        {{ leaderboard.name || 'Game Name' }}
+      </div>
       <div class="top__button-container">
         <FollowButton
           class="top__button top__button__follow"
@@ -38,7 +40,9 @@ defineProps<Props>()
     </div>
     <div class="bottom">
       <div class="bottom__category-year">
-        <Tag>{{ leaderboard.categories[0] ?? 'TODO' }}</Tag>
+        <Tag data-testid="tag">{{
+          leaderboard.categories[0]?.name ?? 'TODO'
+        }}</Tag>
         <span class="bottom__published-year">YEAR</span>
       </div>
       <PlatformTags :tags="todoPlatforms" />

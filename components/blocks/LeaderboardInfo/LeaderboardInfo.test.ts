@@ -1,8 +1,9 @@
 import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { vi } from 'vitest'
 import { getByTestId } from 'root/testUtils'
 import LeaderboardInfo from './LeaderboardInfo.vue'
 
-describe.skip('<LeaderboardInfo />', () => {
+describe('<LeaderboardInfo />', () => {
   function getLeaderboardInfoWrapper() {
     return mount(LeaderboardInfo, {
       props: {
@@ -35,6 +36,7 @@ describe.skip('<LeaderboardInfo />', () => {
 
   afterEach(() => {
     vi.restoreAllMocks()
+    vi.unstubAllGlobals()
   })
 
   enableAutoUnmount(afterEach)
@@ -44,13 +46,22 @@ describe.skip('<LeaderboardInfo />', () => {
     expect(wrapper.isVisible()).toBe(true)
   })
 
-  it('should trigger follow button', async () => {
+  it('should render <Desktop /> if device width is large', () => {
+    vi.stubGlobal('innerWidth', 1980)
     const wrapper = getLeaderboardInfoWrapper()
-    await getByTestId(wrapper, 'middle__follow').trigger('click')
-    expect(wrapper.emitted().follow?.[0]).toEqual([1])
+    expect(wrapper.html()).toContain('Guides')
   })
 
-  it('should trigger', () => {
-    //
+  it('should render <Mobile /> if device width is small', () => {
+    vi.stubGlobal('innerWidth', 600)
+    const wrapper = getLeaderboardInfoWrapper()
+    expect(wrapper.html()).toContain('Submit Run')
+  })
+
+  // TODO: The follow event doesn't trigger in the test, somehow
+  it.skip('should emit event when the Follow Button is triggered', async () => {
+    const wrapper = getLeaderboardInfoWrapper()
+    await getByTestId(wrapper, 'child').trigger('follow')
+    expect(wrapper.emitted().follow).toBeTruthy()
   })
 })
