@@ -5,7 +5,7 @@ import type { ComponentMountingOptions } from '@vue/test-utils'
 
 enableAutoUnmount(afterEach)
 
-function mountDropDownItem(
+function mountDropdownItem(
   options?: ComponentMountingOptions<typeof DropdownItem>,
 ) {
   return shallowMount(DropdownItem, options)
@@ -13,14 +13,14 @@ function mountDropDownItem(
 
 describe('<DropdownItem />', () => {
   it('should render without crashing', () => {
-    const wrapper = mountDropDownItem({
+    const wrapper = mountDropdownItem({
       props: { slots: 'test' },
     })
     expect(wrapper.isVisible()).toBe(true)
   })
 
   it("should trigger the click event when it's, well, clicked on", async () => {
-    const wrapper = mountDropDownItem({})
+    const wrapper = mountDropdownItem({})
 
     await getByTestId(wrapper, 'container').trigger('click')
 
