@@ -2,7 +2,7 @@ interface ModalAlertState {
   body: string
   show: boolean
   title: string
-  type: string
+  type: 'info' | 'success' | 'warning' | 'error' | ''
   onClose?: () => void
 }
 
