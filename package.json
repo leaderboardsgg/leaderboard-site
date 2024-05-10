@@ -63,6 +63,9 @@
     "vite-plugin-top-level-await": "^1.4.1",
     "vitest": "^1.5.2",
     "vitest-fetch-mock": "^0.2.2",
-    "vue": "^3.4.25"
+    "vue": "^3.4.19"
+  },
+  "dependencies": {
+    "@vueuse/core": "^10.9.0"
   }
 }
