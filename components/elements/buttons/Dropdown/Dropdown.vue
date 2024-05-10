@@ -1,8 +1,7 @@
 <script setup lang="ts">
 // Explicitly-importing these because tests don't like the auto-imports - zysim
-import { provide, ref } from 'vue'
+import { provide, ref, type Ref } from 'vue'
 import BaseButton from '../BaseButton/BaseButton.vue'
-import type { Ref } from 'vue'
 
 export interface SharedState {
   active: Ref<boolean>

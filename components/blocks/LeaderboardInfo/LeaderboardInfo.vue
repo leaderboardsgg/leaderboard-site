@@ -25,15 +25,15 @@ defineProps<LeaderboardInfoProps>()
 </script>
 
 <template>
-  <Desktop
-    v-if="!isMobile"
+  <Mobile
+    v-if="isMobile"
     data-testid="child"
     :leaderboard="leaderboard"
     :todo-platforms="todoPlatforms"
     @follow="emit('follow', leaderboard.id)"
   />
-  <Mobile
-    v-if="isMobile"
+  <Desktop
+    v-else
     data-testid="child"
     :leaderboard="leaderboard"
     :todo-platforms="todoPlatforms"

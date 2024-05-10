@@ -1,8 +1,11 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils'
+import {
+  enableAutoUnmount,
+  mount,
+  type ComponentMountingOptions,
+} from '@vue/test-utils'
 import { getByTestId } from 'root/testUtils'
 import Dropdown from './Dropdown.vue'
 import DropdownItem from './DropdownItem.vue'
-import type { ComponentMountingOptions } from '@vue/test-utils'
 
 enableAutoUnmount(afterEach)
 
