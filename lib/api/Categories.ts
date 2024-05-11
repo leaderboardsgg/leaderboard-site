@@ -9,13 +9,13 @@
  * ---------------------------------------------------------------
  */
 
-import {
+import type {
   CategoryViewModel,
   CreateCategoryRequest,
   ProblemDetails,
   ValidationProblemDetails,
 } from './data-contracts'
-import { ContentType, HttpClient, RequestParams } from './http-client'
+import { ContentType, HttpClient, type RequestParams } from './http-client'
 
 export class Categories<
   SecurityDataType = unknown,

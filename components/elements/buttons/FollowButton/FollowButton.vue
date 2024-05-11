@@ -1,19 +1,15 @@
 <script setup lang="ts">
-interface FollowButtonProps {
-  onClick: () => void
-}
-
-withDefaults(defineProps<FollowButtonProps>(), {
-  onClick: () => 2,
-})
+const emit = defineEmits<{
+  (event: 'follow'): void
+}>()
 </script>
 
 <template>
   <button
     class="follow-button"
     v-bind="$attrs"
-    @click="onClick"
-    @keyup.enter="onClick"
+    @click="emit('follow')"
+    @keyup.enter="emit('follow')"
   >
     Follow
   </button>

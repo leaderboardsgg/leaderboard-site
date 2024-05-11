@@ -1,0 +1,23 @@
+import { mount } from '@vue/test-utils'
+import PlatformTags from './PlatformTags.vue'
+
+describe('<PlatformTags />', () => {
+  const tags = ['XBox', 'PS4', 'Amiga DS']
+
+  it('should render without crashing', () => {
+    const wrapper = mount(PlatformTags, {
+      props: {
+        tags,
+      },
+    })
+
+    expect(wrapper.isVisible()).toBe(true)
+
+    wrapper
+      .getComponent('div.platform-tags')
+      .findAllComponents('div')
+      .forEach((c, i) => {
+        expect(c.text()).toBe(tags[i])
+      })
+  })
+})

@@ -1,5 +1,9 @@
 import { ref } from 'vue'
-import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
+import {
+  useApi,
+  type ApiResponse,
+  type optionalParameters,
+} from 'composables/useApi'
 import { Leaderboards } from 'lib/api/Leaderboards'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import LeaderboardInfo from 'blocks/LeaderboardInfo/LeaderboardInfo.vue'
+import Loader from 'blocks/Loader/Loader.vue'
 import { useGetLeaderboardDetail } from 'composables/api/useGetLeaderboardDetail'
 
 const route = useRoute()
@@ -7,5 +9,12 @@ const leaderboardDetail = await useGetLeaderboardDetail(leaderboardSlug)
 </script>
 
 <template>
-  <p>Leaderboard Name: {{ leaderboardDetail?.data?.name || 'ERROR' }}</p>
+  <div>
+    <Loader v-if="leaderboardDetail.loading"></Loader>
+    <LeaderboardInfo
+      v-if="!leaderboardDetail.loading && leaderboardDetail.data != null"
+      :leaderboard="leaderboardDetail.data!"
+      @follow="(id) => console.log(id)"
+    />
+  </div>
 </template>

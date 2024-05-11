@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import {
+import type {
   CategoryViewModel,
   CreateRunRequest,
   RunViewModel,

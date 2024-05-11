@@ -9,14 +9,14 @@
  * ---------------------------------------------------------------
  */
 
-import {
+import type {
   CategoryViewModel,
   CreateRunRequest,
   ProblemDetails,
   RunViewModel,
   ValidationProblemDetails,
 } from './data-contracts'
-import { ContentType, HttpClient, RequestParams } from './http-client'
+import { ContentType, HttpClient, type RequestParams } from './http-client'
 
 export class Runs<
   SecurityDataType = unknown,
