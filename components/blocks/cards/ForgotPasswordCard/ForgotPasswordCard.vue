@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { type Ref, ref } from 'vue'
-import { isEmailValid, isUsernameValid } from 'lib/form_helpers'
-import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
-import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
-import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
-import CardBody from 'elements/cards/CardBody/CardBody.vue'
-import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
-import Card from 'elements/cards/Card/Card.vue'
+import { ref, type Ref } from 'vue'
 import { useRecoverAccount } from 'composables/api'
 import { useModalAlert } from 'composables/useModalAlert'
+import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
+import Card from 'elements/cards/Card/Card.vue'
+import CardBody from 'elements/cards/CardBody/CardBody.vue'
+import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
+import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+import { isEmailValid, isUsernameValid } from 'lib/form_helpers'
 
 interface ForgotPasswordCardPops {
   modal?: boolean
@@ -61,8 +61,8 @@ function resetPassword() {
 
         showAlert({
           body: 'If an account with that email and username exists, we will send you an email with a link to reset your password.',
-          title: 'Success!',
-          type: 'success',
+          title: 'Password Recovery',
+          type: 'info',
         })
       },
     },

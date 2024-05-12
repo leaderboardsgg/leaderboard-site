@@ -1,5 +1,6 @@
-import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
+import { useApi } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
+import type { ApiResponse, optionalParameters } from 'composables/useApi'
 import type { RecoverAccountRequest } from 'lib/api/data-contracts'
 
 export async function useRecoverAccount(
