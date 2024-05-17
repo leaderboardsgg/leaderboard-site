@@ -1,4 +1,8 @@
-import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
+import {
+  type ApiResponse,
+  type optionalParameters,
+  useApi,
+} from 'composables/useApi'
 import { useCurrentUser } from 'composables/useCurrentUser'
 import { useSessionToken } from 'composables/useSessionToken'
 import { Account } from 'lib/api/Account'
