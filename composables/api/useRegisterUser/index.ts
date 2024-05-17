@@ -1,5 +1,9 @@
 import { ref } from 'vue'
-import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
+import {
+  type ApiResponse,
+  type optionalParameters,
+  useApi,
+} from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 import type { RegisterRequest, UserViewModel } from 'lib/api/data-contracts'
 
