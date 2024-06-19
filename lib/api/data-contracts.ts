@@ -106,8 +106,15 @@ export interface Era {
 
 export type Instant = object
 
-/** @format int32 */
-export type IsoDayOfWeek = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7
+export type IsoDayOfWeek =
+  | 'None'
+  | 'Monday'
+  | 'Tuesday'
+  | 'Wednesday'
+  | 'Thursday'
+  | 'Friday'
+  | 'Saturday'
+  | 'Sunday'
 
 /** Represents a collection of `Leaderboard` entities. */
 export interface LeaderboardViewModel {
@@ -243,6 +250,8 @@ export interface RunViewModel {
   categoryId: number
 }
 
+export type UserRole = 'Registered' | 'Confirmed' | 'Administrator' | 'Banned'
+
 export interface UserViewModel {
   /**
    * The unique identifier of the `User`.<br />
@@ -259,6 +268,7 @@ export interface UserViewModel {
    * @example "J'on-Doe"
    */
   username: string
+  role: UserRole
 }
 
 export interface ValidationProblemDetails {
