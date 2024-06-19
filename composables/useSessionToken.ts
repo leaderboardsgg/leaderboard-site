@@ -1,4 +1,3 @@
-import { useCookie } from 'nuxt/app'
 import type { CookieRef } from 'nuxt/app'
 
 export function useSessionToken(): CookieRef<string> {
