@@ -26,11 +26,5 @@
     "pnpm-lock.yaml": true,
     ".gitignore": true,
     ".eslintrc.json": true
-  },
-  // Volar settings
-  "volar.takeOverMode.enabled": true,
-  "volar.icon.preview": true,
-  "volar.autoCompleteRefs": true,
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.enableFiletypes": ["!html", "!jade", "!java", "!json", "!jsonc"]
+  }
 }
