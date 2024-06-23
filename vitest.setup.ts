@@ -11,6 +11,25 @@ const fetchMock = createFetchMock(vi)
 // sets globalThis.fetch and globalThis.fetchMock to our mocked version
 fetchMock.enableMocks()
 
+const cookies = reactive<{ [key: string]: any }>({})
+interface CookieOptions {
+  default?: () => any
+}
+
+export const useCookieMock = vi.fn((key: string, opts?: CookieOptions) => {
+  const cookie = toRef(cookies, key)
+  if (cookie.value === undefined && opts?.default) {
+    const initialValue = opts.default()
+    if (isRef(initialValue)) {
+      cookies[key] = initialValue
+      return initialValue as Ref<any>
+    }
+    cookie.value = initialValue
+  }
+  return cookie
+})
+vi.stubGlobal('useCookie', useCookieMock)
+
 // Stolen from here:
 // https://zenn.dev/ninebolt6/articles/cadc924cb2416d
 const payload = reactive<{ state: Record<string, any> }>({
