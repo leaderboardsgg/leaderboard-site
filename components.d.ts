@@ -20,7 +20,5 @@ declare module 'vue' {
     ISvgSearch: typeof import('~icons/svg/search')['default']
     ISvgSpinner: typeof import('~icons/svg/spinner')['default']
     ISvgTriangleExclamation: typeof import('~icons/svg/triangle-exclamation')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
   }
 }

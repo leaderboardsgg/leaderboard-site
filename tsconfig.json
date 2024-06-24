@@ -38,7 +38,6 @@
       "root/*": ["./*"]
     }
   },
-  "exclude": ["node_modules"],
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"
 }
