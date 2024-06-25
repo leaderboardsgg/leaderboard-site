@@ -44,7 +44,8 @@ export class Users<
    * @request GET:/api/Users/me
    * @secure
    * @response `200` `UserViewModel` The `User` was found and returned successfully..
-   * @response `403` `ProblemDetails` An invalid JWT was passed in.
+   * @response `401` `ProblemDetails` An invalid JWT was passed in.
+   * @response `404` `ProblemDetails` The user was not found in the database.
    */
   usersMeList = (params: RequestParams = {}) =>
     this.request<UserViewModel, ProblemDetails>({
