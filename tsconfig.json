@@ -16,7 +16,6 @@
     "forceConsistentCasingInFileNames": true,
 
     // Other
-    "baseUrl": ".",
     "jsx": "preserve",
     "lib": ["ESNext", "DOM"],
     "types": [
@@ -27,16 +26,7 @@
       "vite/client",
       "vitest/globals",
       ".nuxt"
-    ],
-    "paths": {
-      "blocks/*": ["./components/blocks/*"],
-      "composables/*": ["./composables/*"],
-      "elements/*": ["./components/elements/*"],
-      "layouts/*": ["./layouts/*"],
-      "lib/*": ["./lib/*"],
-      "pages/*": ["./pages/*"],
-      "root/*": ["./*"]
-    }
+    ]
   },
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"
