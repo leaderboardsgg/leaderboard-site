@@ -14,6 +14,7 @@ export async function useGetUserDetail(
   const { onError, onOkay } = opts
   const responseData = ref<UserViewModel>({
     id: '',
+    role: 'Banned',
     username: '',
   })
 
