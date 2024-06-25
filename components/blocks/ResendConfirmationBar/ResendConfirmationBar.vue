@@ -2,11 +2,17 @@
 import { ref } from 'vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import useResendAccountConfirmation from 'composables/api/useResendAccountConfirmation'
+import { useCurrentUser } from 'composables/useCurrentUser'
 import { useModalAlert } from 'composables/useModalAlert'
 
+const currentUser = useCurrentUser()
 const errorText = ref('')
 const showErrorText = ref(false)
 const { showAlert } = useModalAlert()
+
+const unconfirmed = ref(
+  !!currentUser.value?.username && currentUser.value?.role === 'Registered',
+)
 
 async function resend() {
   await useResendAccountConfirmation({
@@ -21,13 +27,14 @@ async function resend() {
         title: 'Confirmation Request Received',
         type: 'info',
       })
+      unconfirmed.value = false
     },
   })
 }
 </script>
 
 <template>
-  <div class="resend-confirmation-bar__container">
+  <div v-if="unconfirmed" class="resend-confirmation-bar__container">
     <div class="resend-confirmation-bar__content">
       <div class="resend-confirmation-bar__text">
         <i-svg-circle-info />
