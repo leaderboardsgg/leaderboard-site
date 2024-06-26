@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 /* eslint-disable vue/sort-keys */
 
 /*
@@ -11,6 +9,10 @@
  * path specified by the `output` argument.
  */
 
+import { resolve } from 'path'
+import { generateApi } from 'swagger-typescript-api'
+import { config } from 'dotenv-safe'
+
 const args = process.argv.reduce((acc, current) => {
   if (current.includes('=')) {
     const [key, value] = current.substring(2).split('=')
@@ -20,9 +22,7 @@ const args = process.argv.reduce((acc, current) => {
   return acc
 }, {})
 
-require('dotenv-safe').config()
-const { resolve } = require('path')
-const { generateApi } = require('swagger-typescript-api')
+config()
 const url =
   args?.url ?? `${process.env.BACKEND_BASE_URL}/swagger/v1/swagger.json`
 

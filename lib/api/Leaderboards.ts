@@ -11,8 +11,8 @@
 
 import type {
   CreateLeaderboardRequest,
-  LeaderboardViewModel,
   LeaderboardsListParams,
+  LeaderboardViewModel,
   ProblemDetails,
   ValidationProblemDetails,
 } from './data-contracts'
