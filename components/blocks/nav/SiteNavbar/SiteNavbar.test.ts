@@ -1,6 +1,7 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
 import * as apiComposables from 'composables/api'
 import { useCurrentUser } from 'composables/useCurrentUser'
+import { useSessionToken } from 'composables/useSessionToken.js'
 import { getByTestId } from 'root/testUtils'
 import SiteNavbar from './SiteNavbar.vue'
 
@@ -79,6 +80,8 @@ describe('<SiteNavbar />', () => {
         role: 'Administrator',
         username: 'lbgg_admin',
       }
+
+      useSessionToken().value = 'token'
     })
 
     it('should render the logout button', () => {
