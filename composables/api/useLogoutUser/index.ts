@@ -6,11 +6,7 @@ export function useLogoutUser(): void {
   const currentUser = useCurrentUser()
 
   authToken.value = ''
-  currentUser.value = {
-    id: '',
-    role: 'Banned',
-    username: '',
-  }
+  currentUser.value = undefined
 }
 
 export default useLogoutUser
