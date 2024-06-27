@@ -2,10 +2,12 @@ import { beforeEach } from 'vitest'
 import { useCurrentUser } from 'composables/useCurrentUser'
 import { useSessionToken } from 'composables/useSessionToken'
 import { useLogoutUser } from '.'
+import type { UserViewModel } from 'lib/api/data-contracts'
 
 const token = 'auth-token'
-const user = {
+const user: UserViewModel = {
   id: 'uuid-1234-23-111',
+  role: 'Confirmed',
   username: 'test',
 }
 
@@ -25,9 +27,6 @@ describe('useLogoutUser', () => {
     useLogoutUser()
 
     expect(authToken.value).toEqual('')
-    expect(currentUser.value).toEqual({
-      id: '',
-      username: '',
-    })
+    expect(currentUser.value).toBeUndefined()
   })
 })

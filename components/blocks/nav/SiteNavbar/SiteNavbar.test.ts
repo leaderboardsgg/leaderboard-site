@@ -76,6 +76,7 @@ describe('<SiteNavbar />', () => {
       const currentUser = useCurrentUser()
       currentUser.value = {
         id: 'uuid-1234-56',
+        role: 'Administrator',
         username: 'lbgg_admin',
       }
     })
