@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import {
   type ApiResponse,
   type optionalParameters,
@@ -12,11 +11,6 @@ export async function useGetUserDetail(
   opts: optionalParameters<UserViewModel> = {},
 ): Promise<ApiResponse<UserViewModel>> {
   const { onError, onOkay } = opts
-  const responseData = ref<UserViewModel>({
-    id: '',
-    role: 'Banned',
-    username: '',
-  })
 
   const userClient = new Users({
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
@@ -27,7 +21,6 @@ export async function useGetUserDetail(
     {
       onError,
       onOkay,
-      responseData,
     },
   )
 }

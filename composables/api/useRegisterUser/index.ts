@@ -1,4 +1,3 @@
-import { ref } from 'vue'
 import {
   type ApiResponse,
   type optionalParameters,
@@ -12,10 +11,6 @@ export async function useRegisterUser(
   opts: optionalParameters<UserViewModel> = {},
 ): Promise<ApiResponse<UserViewModel>> {
   const { onError, onOkay } = opts
-  const responseData = ref<UserViewModel>({
-    id: '',
-    username: '',
-  })
 
   const accountClient = new Account({
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
@@ -26,7 +21,6 @@ export async function useRegisterUser(
     {
       onError,
       onOkay,
-      responseData,
     },
   )
 }

@@ -24,7 +24,7 @@ export interface optionalParameters<T> {
     d: ProblemDetails | ValidationProblemDetails | unknown | null,
   ) => void | Promise<void> | unknown
   onOkay?: (d: T) => void | Promise<void> | unknown
-  responseData?: Ref<T>
+  responseData?: Ref<T | undefined>
 }
 
 /**
