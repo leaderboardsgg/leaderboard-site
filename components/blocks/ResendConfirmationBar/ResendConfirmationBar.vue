@@ -10,9 +10,7 @@ const errorText = ref('')
 const showErrorText = ref(false)
 const { showAlert } = useModalAlert()
 
-const unconfirmed = ref(
-  !!currentUser.value?.username && currentUser.value?.role === 'Registered',
-)
+const unconfirmed = ref(currentUser.value?.role === 'Registered')
 
 async function resend() {
   await useResendAccountConfirmation({
