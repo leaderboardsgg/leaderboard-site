@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import useResendAccountConfirmation from 'composables/api/useResendAccountConfirmation'
-import { useCurrentUser } from 'composables/useCurrentUser'
-import { useModalAlert } from 'composables/useModalAlert'
 
-const currentUser = useCurrentUser()
+const currentUser = await useCurrentUser()
 const errorText = ref('')
 const showErrorText = ref(false)
 const { showAlert } = useModalAlert()
-
-const unconfirmed = ref(currentUser.value?.role === 'Registered')
+const override = ref(false)
+const unconfirmed = computed(
+  () => !override.value && currentUser.data.value?.role === 'Registered',
+)
 
 async function resend() {
   await useResendAccountConfirmation({
@@ -25,7 +25,7 @@ async function resend() {
         title: 'Confirmation Request Received',
         type: 'info',
       })
-      unconfirmed.value = false
+      override.value = true
     },
   })
 }

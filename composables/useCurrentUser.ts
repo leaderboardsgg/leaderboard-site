@@ -1,7 +1,28 @@
+import { Users } from 'lib/api/Users'
+import { useApi } from 'composables/useApi'
 import type { UserViewModel } from 'lib/api/data-contracts'
 
-export function useCurrentUser() {
-  return useCookie<UserViewModel | undefined>('current_user')
-}
+export const useCurrentUser = () =>
+  useAsyncData(
+    'current_user',
+    async () => {
+      const token = useSessionToken().value
+      if (!token) return undefined
 
-export default useCurrentUser
+      const users = new Users({
+        baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+      })
+
+      const resp = await useApi<UserViewModel>(
+        async () =>
+          await users.usersMeList({
+            headers: { Authorization: `Bearer ${token}` },
+          }),
+      )
+
+      return resp.data
+    },
+    {
+      watch: [useSessionToken()],
+    },
+  )
