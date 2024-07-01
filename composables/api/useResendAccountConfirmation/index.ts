@@ -1,28 +1,33 @@
 import {
+  useApi,
   type ApiResponse,
   type optionalParameters,
-  useApi,
 } from 'composables/useApi'
+import { useSessionToken } from 'composables/useSessionToken'
 import { Account } from 'lib/api/Account'
-import type { ChangePasswordRequest } from 'lib/api/data-contracts'
 
-export async function useChangePassword(
-  token: string,
-  requestData: ChangePasswordRequest,
+/**
+ * Resends the account confirmation email for a newly-registered user.
+ */
+export default async function useResendAccountConfirmation(
   opts: optionalParameters<void> = {},
 ): Promise<ApiResponse<void>> {
   const { onError, onOkay } = opts
+  const authToken = useSessionToken()
   const account = new Account({
     baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
   })
 
   return await useApi<void>(
-    async () => await account.recoverCreate2(token, requestData),
+    async () =>
+      await account.confirmCreate({
+        headers: {
+          Authorization: `Bearer ${authToken.value}`,
+        },
+      }),
     {
       onError,
       onOkay,
     },
   )
 }
-
-export default useChangePassword

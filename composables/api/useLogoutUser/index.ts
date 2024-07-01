@@ -8,6 +8,7 @@ export function useLogoutUser(): void {
   authToken.value = ''
   currentUser.value = {
     id: '',
+    role: 'Banned',
     username: '',
   }
 }

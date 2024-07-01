@@ -1,5 +1,9 @@
 import { ref } from 'vue'
-import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
+import {
+  type ApiResponse,
+  type optionalParameters,
+  useApi,
+} from 'composables/useApi'
 import { Users } from 'lib/api/Users'
 import type { UserViewModel } from 'lib/api/data-contracts'
 
@@ -10,6 +14,7 @@ export async function useGetUserDetail(
   const { onError, onOkay } = opts
   const responseData = ref<UserViewModel>({
     id: '',
+    role: 'Banned',
     username: '',
   })
 

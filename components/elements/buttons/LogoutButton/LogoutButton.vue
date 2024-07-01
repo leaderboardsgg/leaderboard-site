@@ -3,7 +3,9 @@ import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 </script>
 
 <template>
-  <BaseButton class="logout-button" v-bind="$attrs"> Log Out </BaseButton>
+  <BaseButton class="logout-button" v-bind="$attrs">
+    {{ $t('logout') }}
+  </BaseButton>
 </template>
 
 <style lang="postcss" scoped>
