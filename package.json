@@ -32,6 +32,7 @@
   "devDependencies": {
     "@nuxt/kit": "^3.12.2",
     "@nuxt/schema": "^3.12.2",
+    "@nuxt/test-utils": "^3.12.2",
     "@nuxt/vite-builder": "^3.12.2",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/i18n": "^8.3.1",
