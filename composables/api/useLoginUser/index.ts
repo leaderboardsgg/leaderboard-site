@@ -4,26 +4,17 @@ import {
   useApi,
 } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
-import { Users } from 'lib/api/Users'
-import type {
-  LoginRequest,
-  LoginResponse,
-  UserViewModel,
-} from 'lib/api/data-contracts'
+import type { LoginRequest, LoginResponse } from 'lib/api/data-contracts'
 
-export async function useLoginUser(
+export default async function useLoginUser(
   requestData: LoginRequest,
-  opts: optionalParameters<UserViewModel> = {},
+  opts: optionalParameters<LoginResponse> = {},
 ): Promise<ApiResponse<LoginResponse>> {
   const { onError, onOkay } = opts
   const authToken = useSessionToken()
 
   const account = new Account({
-    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
-  })
-
-  const users = new Users({
-    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+    baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
   return await useApi<LoginResponse>(
@@ -32,20 +23,10 @@ export async function useLoginUser(
       onError,
       onOkay: async (d: LoginResponse) => {
         authToken.value = d.token
-
-        await useApi<UserViewModel>(
-          async () =>
-            await users.usersMeList({
-              headers: { Authorization: `Bearer ${d.token}` },
-            }),
-          {
-            onError,
-            onOkay,
-          },
-        )
+        if (onOkay) {
+          await onOkay(d)
+        }
       },
     },
   )
 }
-
-export default useLoginUser
