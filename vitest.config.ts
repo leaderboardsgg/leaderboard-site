@@ -1,51 +1,15 @@
 /// <reference types="vitest" />
-import { resolve } from 'path'
-import * as dotenv from 'dotenv-safe'
-import { mergeConfig } from 'vite'
-import { defineConfig } from 'vitest/config'
-import { viteConfig } from './nuxt.config'
-import Vue from '@vitejs/plugin-vue'
+import { defineVitestConfig } from '@nuxt/test-utils/config'
 
 // TODO: https://github.com/leaderboardsgg/leaderboard-site/issues/503
 
-const { parsed } = dotenv.config({
-  example: resolve(__dirname, '.env.example'),
-  path: resolve(__dirname, '.env.test'),
+export default defineVitestConfig({
+  test: {
+    environment: 'nuxt',
+    globals: true,
+    sequence: {
+      shuffle: true,
+    },
+    setupFiles: ['vitest.setup.ts'],
+  },
 })
-
-export default mergeConfig(
-  viteConfig,
-  defineConfig({
-    plugins: [
-      Vue({
-        template: {
-          compilerOptions: {
-            // This is to prevent the following warnings:
-            // [Vue warn]: Failed to resolve component: NuxtLink
-            // If this is a native custom element, make sure to exclude it from component resolution via compilerOptions.isCustomElement.
-            //   at <ButtonLink class="nav-link" name="About" to="#" >
-            //   at <NavLink name="About" to="#" key="About" >
-            //   at <NavLinks>
-            //   at <SiteNavbar ref="VTU_COMPONENT" >
-            //   at <VTUROOT>
-            isCustomElement: (tag) => tag === 'NuxtLink',
-          },
-        },
-      }),
-    ],
-    resolve: {
-      alias: {
-        '#app': resolve(__dirname, './node_modules/nuxt/dist/app'),
-      },
-    },
-    test: {
-      environment: 'happy-dom',
-      env: parsed,
-      globals: true,
-      sequence: {
-        shuffle: true,
-      },
-      setupFiles: ['vitest.setup.ts'],
-    },
-  }),
-)
