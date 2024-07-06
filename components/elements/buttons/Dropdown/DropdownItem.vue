@@ -1,15 +1,19 @@
 <script setup lang="ts">
-import { inject, ref } from 'vue'
+import { inject } from 'vue'
 import type { SharedState } from './Dropdown.vue'
 
 const emit = defineEmits<{
   (event: 'click'): void
 }>()
 
-const state: SharedState = inject('state', { active: ref(false) })
+const { setActive } = inject<SharedState>('active', {
+  active: ref(false),
+})
 
 function hide() {
-  state.active.value = false
+  if (setActive) {
+    setActive(false)
+  }
   emit('click')
 }
 </script>
