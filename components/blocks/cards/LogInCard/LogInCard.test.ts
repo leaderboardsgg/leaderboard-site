@@ -1,7 +1,7 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId, getHTMLElement } from 'root/testUtils'
-import * as apiComposables from 'composables/api'
 import LogInCard from './LogInCard.vue'
+import * as apiComposables from 'composables/api'
 
 const token = 'jwt-token'
 const mockSuccessUsersLoginCreate = vi.fn(() =>
@@ -14,15 +14,9 @@ const mockSuccessUsersMeList = vi.fn(() =>
   }),
 )
 
-function getLogInCardWrapper() {
-  return mount(LogInCard)
-}
-
 afterEach(() => {
   vi.restoreAllMocks()
 })
-
-enableAutoUnmount(afterEach)
 
 describe('<LogInCard />', () => {
   beforeEach(() => {
@@ -34,15 +28,15 @@ describe('<LogInCard />', () => {
     }))
   })
 
-  it('should render without crashing', () => {
-    const wrapper = getLogInCardWrapper()
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(LogInCard)
 
     expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('when the close button is clicked', () => {
     it('should emit the close event', async () => {
-      const wrapper = getLogInCardWrapper()
+      const wrapper = await mountSuspended(LogInCard)
 
       const closeButton = getByTestId(wrapper, 'close-button')
 
@@ -55,7 +49,7 @@ describe('<LogInCard />', () => {
   // TODO: skip this for now
   describe.skip('when enter key is released on the password input field', () => {
     it('emits the close event', async () => {
-      const wrapper = getLogInCardWrapper()
+      const wrapper = await mountSuspended(LogInCard)
 
       await getByTestId(wrapper, 'password-input').trigger('keyup.enter')
 
@@ -69,7 +63,7 @@ describe('<LogInCard />', () => {
     const password = 'homestarsux'
 
     it('emits the close event', async () => {
-      const wrapper = getLogInCardWrapper()
+      const wrapper = await mountSuspended(LogInCard)
 
       const emailInput = getByTestId(wrapper, 'email-input')
       const passwordInput = getByTestId(wrapper, 'password-input')
@@ -83,7 +77,7 @@ describe('<LogInCard />', () => {
     })
 
     it('clears the state', async () => {
-      const wrapper = getLogInCardWrapper()
+      const wrapper = await mountSuspended(LogInCard)
 
       const emailInput = getByTestId(wrapper, 'email-input')
       const passwordInput = getByTestId(wrapper, 'password-input')
@@ -109,7 +103,7 @@ describe('<LogInCard />', () => {
     it('calls the api', async () => {
       const useLoginUserSpy = vi.spyOn(apiComposables, 'useLoginUser')
 
-      const wrapper = getLogInCardWrapper()
+      const wrapper = await mountSuspended(LogInCard)
 
       const emailInput = getByTestId(wrapper, 'email-input')
       const passwordInput = getByTestId(wrapper, 'password-input')
@@ -125,7 +119,7 @@ describe('<LogInCard />', () => {
 
   describe('when the forgot password button is clicked', () => {
     it('emits the forgot password click event', async () => {
-      const wrapper = getLogInCardWrapper()
+      const wrapper = await mountSuspended(LogInCard)
 
       await getByTestId(wrapper, 'forgot-password-button').trigger('click')
 
@@ -135,7 +129,7 @@ describe('<LogInCard />', () => {
 
   describe('when the sign up button is clicked', () => {
     it('emits the sign up click event', async () => {
-      const wrapper = getLogInCardWrapper()
+      const wrapper = await mountSuspended(LogInCard)
 
       await getByTestId(wrapper, 'sign-up-button').trigger('click')
 

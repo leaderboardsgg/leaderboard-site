@@ -1,26 +1,17 @@
-import { enableAutoUnmount, shallowMount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId } from 'root/testUtils'
 import DropdownItem from './DropdownItem.vue'
-import type { ComponentMountingOptions } from '@vue/test-utils'
-
-enableAutoUnmount(afterEach)
-
-function mountDropdownItem(
-  options?: ComponentMountingOptions<typeof DropdownItem>,
-) {
-  return shallowMount(DropdownItem, options)
-}
 
 describe('<DropdownItem />', () => {
-  it('should render without crashing', () => {
-    const wrapper = mountDropdownItem({
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(DropdownItem, {
       props: { slots: 'test' },
     })
     expect(wrapper.isVisible()).toBe(true)
   })
 
   it("should trigger the click event when it's, well, clicked on", async () => {
-    const wrapper = mountDropdownItem({})
+    const wrapper = await mountSuspended(DropdownItem)
 
     await getByTestId(wrapper, 'container').trigger('click')
 

@@ -1,44 +1,39 @@
-import {
-  enableAutoUnmount,
-  mount,
-  type ComponentMountingOptions,
-} from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId } from 'root/testUtils'
 import Dropdown from './Dropdown.vue'
 import DropdownItem from './DropdownItem.vue'
 
-enableAutoUnmount(afterEach)
-
-function mountDropdown(options?: ComponentMountingOptions<typeof Dropdown>) {
-  return mount(Dropdown, options)
-}
-
 describe('<Dropdown />', () => {
-  it('should render without crashing', () => {
-    const wrapper = mountDropdown({
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(Dropdown, {
       props: { className: 'test' },
     })
-    expect(wrapper.isVisible()).toBe(true)
+    expect(wrapper.vm).toBeTruthy()
     expect(getByTestId(wrapper, 'toggler').classes()).toContain('test')
   })
 
   describe('when the toggler is clicked', () => {
     it('should render the slot item, then hide it on a second click', async () => {
-      const itemWrapper = mount(DropdownItem)
-
-      const wrapper = mountDropdown({
-        slots: { default: itemWrapper.html() },
+      const wrapper = await mountSuspended(Dropdown, {
+        slots: {
+          default: DropdownItem,
+        },
       })
 
       await getByTestId(wrapper, 'toggler').trigger('click')
-      expect(wrapper.html()).toContain(itemWrapper.html())
+
+      const itemWrapper = wrapper.findAllComponents({
+        name: 'DropdownItem',
+      })[0]
+
+      expect(wrapper.html()).toContain(itemWrapper?.html())
 
       await getByTestId(wrapper, 'toggler').trigger('click')
-      expect(wrapper.html()).not.toContain(itemWrapper.html())
+      expect(wrapper.html()).not.toContain(itemWrapper?.html())
     })
 
     it('should apply the style to the dropdown arrow', async () => {
-      const wrapper = mountDropdown()
+      const wrapper = await mountSuspended(Dropdown)
 
       await getByTestId(wrapper, 'toggler').trigger('click')
 

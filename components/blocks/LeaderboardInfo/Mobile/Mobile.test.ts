@@ -1,11 +1,11 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { vi } from 'vitest'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId } from 'root/testUtils'
 import Mobile from './Mobile.vue'
 
 describe('<Mobile />', () => {
-  function getMobileWrapper() {
-    return mount(Mobile, {
+  async function getMobileWrapper() {
+    return await mountSuspended(Mobile, {
       props: {
         leaderboard: {
           categories: [{ id: 1, name: 'Any%', slug: 'any' }],
@@ -22,10 +22,8 @@ describe('<Mobile />', () => {
     vi.restoreAllMocks()
   })
 
-  enableAutoUnmount(afterEach)
-
-  it('should render without crashing', () => {
-    const wrapper = getMobileWrapper()
+  it('should render without crashing', async () => {
+    const wrapper = await getMobileWrapper()
     expect(wrapper.isVisible()).toBe(true)
 
     expect(getByTestId(wrapper, 'title').text()).toBe(

@@ -1,27 +1,21 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getHTMLElement } from 'root/testUtils'
 import PasswordInput from './PasswordInput.vue'
-
-function getPasswordInputWrapper() {
-  return mount(PasswordInput)
-}
 
 afterEach(() => {
   vi.restoreAllMocks()
 })
 
-enableAutoUnmount(afterEach)
-
 describe('<PasswordInput />', () => {
-  it('should render without crashing', () => {
-    const wrapper = getPasswordInputWrapper()
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(PasswordInput)
 
     expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('when the hide/show button is clicked', () => {
     it('changes the password input type to be text', async () => {
-      const wrapper = getPasswordInputWrapper()
+      const wrapper = await mountSuspended(PasswordInput)
       const passwordInputElement = getHTMLElement(
         wrapper.get('input'),
       ) as HTMLInputElement

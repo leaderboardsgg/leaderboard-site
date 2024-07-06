@@ -1,23 +1,17 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId, getHTMLElement } from 'root/testUtils'
 import HideShowPassword from './HideShowPassword.vue'
 
-function getHideShowPassword() {
-  return mount(HideShowPassword)
-}
-
-enableAutoUnmount(afterEach)
-
 describe('<HideShowPassword />', () => {
-  it('should render without crashing', () => {
-    const wrapper = getHideShowPassword()
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(HideShowPassword)
 
     expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('Visible eye, hidden eye, and the button', () => {
-    it('should render without crashing', () => {
-      const wrapper = getHideShowPassword()
+    it('should render without crashing', async () => {
+      const wrapper = await mountSuspended(HideShowPassword)
       const passwordButton = getByTestId(wrapper, 'hide-show-password-button')
       const hiddenEyeIcon = getByTestId(wrapper, 'hidden-eye-icon')
       const visibleEyeIcon = getByTestId(wrapper, 'visible-eye-icon')
@@ -30,7 +24,7 @@ describe('<HideShowPassword />', () => {
 
   describe('when clicking the button', () => {
     it('should toggle the state', async () => {
-      const wrapper = getHideShowPassword()
+      const wrapper = await mountSuspended(HideShowPassword)
       const hiddenEyeIconElement = getHTMLElement(
         getByTestId(wrapper, 'hidden-eye-icon'),
       )
@@ -50,7 +44,7 @@ describe('<HideShowPassword />', () => {
 
   describe('when the button is focus and the enter key up event is triggered', () => {
     it('should toggle the state', async () => {
-      const wrapper = getHideShowPassword()
+      const wrapper = await mountSuspended(HideShowPassword)
       const hiddenEyeIconElement = getHTMLElement(
         getByTestId(wrapper, 'hidden-eye-icon'),
       )
