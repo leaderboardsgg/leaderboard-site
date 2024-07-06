@@ -107,6 +107,14 @@ export default defineNuxtConfig({
   },
 
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
+  imports: {
+    dirs: [
+      './composables',
+      './utils',
+      './composables/api',
+      './composables/useApi',
+    ],
+  },
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
     // https://tailwindcss.com
