@@ -1,5 +1,3 @@
-/* eslint-disable vue/sort-keys */
-
 /*
  * API Importer
  *
@@ -8,6 +6,9 @@
  * from the backend. The results of which are then stored in the
  * path specified by the `output` argument.
  */
+import { resolve } from 'path'
+import { generateApi } from 'swagger-typescript-api'
+import { config } from 'dotenv-safe'
 
 import { resolve } from 'path'
 import { generateApi } from 'swagger-typescript-api'
@@ -23,13 +24,12 @@ const args = process.argv.reduce((acc, current) => {
 }, {})
 
 config()
+
 const url =
-  args?.url ?? `${process.env.BACKEND_BASE_URL}/swagger/v1/swagger.json`
+  args?.url ??
+  `${process.env.NUXT_PUBLIC_BACKEND_BASE_URL}/swagger/v1/swagger.json`
 
 generateApi({
-  output: resolve(process.cwd(), './lib/api'),
-  url,
-
   enumNamesAsValues: true,
   extractRequestBody: true,
   extractRequestParams: true,
@@ -37,7 +37,9 @@ generateApi({
   generateRouteTypes: true,
   generateUnionEnums: true,
   httpClientType: 'fetch',
-  moduleNameFirstTag: true,
   modular: true,
+  moduleNameFirstTag: true,
+  output: resolve(process.cwd(), './lib/api'),
   singleHttpClient: false,
+  url,
 })
