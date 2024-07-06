@@ -1,5 +1,3 @@
-import { useValidateRecoveryToken } from 'composables/api'
-import { useModalAlert } from 'composables/useModalAlert'
 import { isProblemDetails } from 'lib/helpers'
 import { ProblemDetails } from 'lib/api/data-contracts'
 

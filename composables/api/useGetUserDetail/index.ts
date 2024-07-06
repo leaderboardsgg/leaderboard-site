@@ -1,8 +1,4 @@
-import {
-  type ApiResponse,
-  type optionalParameters,
-  useApi,
-} from 'composables/useApi'
+import { type ApiResponse, type optionalParameters } from 'composables/useApi'
 import { Users } from 'lib/api/Users'
 import type { UserViewModel } from 'lib/api/data-contracts'
 

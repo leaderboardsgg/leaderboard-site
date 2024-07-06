@@ -1,7 +1,4 @@
 import { beforeEach } from 'vitest'
-import { useCurrentUser } from 'composables/useCurrentUser'
-import { useSessionToken } from 'composables/useSessionToken'
-import { useLogoutUser } from '.'
 import type { UserViewModel } from 'lib/api/data-contracts'
 
 const token = 'auth-token'

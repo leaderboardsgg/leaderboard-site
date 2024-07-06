@@ -8,8 +8,6 @@ import {
 import { toggleState } from 'lib/helpers'
 import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
-import { useChangePassword } from 'composables/api'
-import { useModalAlert } from 'composables/useModalAlert'
 
 definePageMeta({
   middleware: 'reset-password',

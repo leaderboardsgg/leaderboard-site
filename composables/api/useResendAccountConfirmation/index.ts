@@ -3,7 +3,6 @@ import {
   type ApiResponse,
   type optionalParameters,
 } from 'composables/useApi'
-import { useSessionToken } from 'composables/useSessionToken'
 import { Account } from 'lib/api/Account'
 
 /**

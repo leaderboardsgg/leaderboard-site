@@ -1,5 +1,3 @@
-import { useRegisterUser } from '.'
-
 const mockSuccessRegisterCreate = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useRegisterUser', () => {

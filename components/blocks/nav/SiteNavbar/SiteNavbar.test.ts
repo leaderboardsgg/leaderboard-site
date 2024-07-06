@@ -1,7 +1,5 @@
 import { mount, enableAutoUnmount } from '@vue/test-utils'
 import * as apiComposables from 'composables/api'
-import { useCurrentUser } from 'composables/useCurrentUser'
-import { useSessionToken } from 'composables/useSessionToken.js'
 import { getByTestId } from 'root/testUtils'
 import SiteNavbar from './SiteNavbar.vue'
 

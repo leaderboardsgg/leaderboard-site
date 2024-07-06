@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { ref, type Ref } from 'vue'
-import { useRecoverAccount } from 'composables/api'
-import { useModalAlert } from 'composables/useModalAlert'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
 import Card from 'elements/cards/Card/Card.vue'

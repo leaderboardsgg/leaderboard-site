@@ -1,5 +1,4 @@
 import { Users } from 'lib/api/Users'
-import { useApi } from 'composables/useApi'
 import type { UserViewModel } from 'lib/api/data-contracts'
 
 export const useCurrentUser = () =>

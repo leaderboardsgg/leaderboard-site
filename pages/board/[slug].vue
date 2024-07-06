@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import LeaderboardInfo from 'blocks/LeaderboardInfo/LeaderboardInfo.vue'
 import Loader from 'blocks/Loader/Loader.vue'
-import { useGetLeaderboardDetail } from 'composables/api/useGetLeaderboardDetail'
 
 const route = useRoute()
 const leaderboardSlug = route.params.slug as string

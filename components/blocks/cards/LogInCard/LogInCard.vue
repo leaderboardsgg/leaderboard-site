@@ -8,7 +8,6 @@ import CardBody from 'elements/cards/CardBody/CardBody.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import Card from 'elements/cards/Card/Card.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
-import { useLoginUser } from 'composables/api/useLoginUser'
 
 interface LogInCardProps {
   modal?: boolean

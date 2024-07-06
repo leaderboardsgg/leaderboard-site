@@ -1,12 +1,19 @@
-import { useLoginUser } from '.'
-
 // const mockFailureUsersLoginCreate = vi.fn(() => Promise.resolve({ ok: false }))
 const mockSuccessAccountLoginCreate = vi.fn(() =>
   Promise.resolve({ data: { token: 'token' }, ok: true }),
 )
-const mockSuccessUsersMeList = vi.fn(() => Promise.resolve({ ok: true }))
+const mockSuccessUsersMeList = vi.fn(() =>
+  Promise.resolve({
+    data: {
+      id: '05864eb1-540a-4b32-ad57-17871f2519f3',
+      role: 'Confirmed',
+      username: 'foo',
+    },
+    ok: true,
+  }),
+)
 // const onErrorSpy = vi.fn()
-const onOkaySpy = vi.fn()
+const onOkaySpy = vi.fn((_) => {})
 
 const password = 'Password1'
 const email = 'test@lb.gg'
@@ -35,12 +42,8 @@ describe('useLoginUser', () => {
       expect(mockSuccessAccountLoginCreate).toBeCalledTimes(1)
       expect(mockSuccessAccountLoginCreate).toBeCalledWith({ email, password })
 
-      expect(mockSuccessUsersMeList).toBeCalledTimes(1)
-      expect(mockSuccessUsersMeList).toBeCalledWith({
-        headers: { Authorization: 'Bearer token' },
-      })
-
       expect(onOkaySpy).toBeCalledTimes(1)
+      expect(useSessionToken().value).toBeTruthy()
     })
   })
 

@@ -1,4 +1,3 @@
-import { useLoginUser } from '../useLoginUser'
 import useResendAccountConfirmation from '.'
 
 const mockSuccessLogin = vi.fn(() =>

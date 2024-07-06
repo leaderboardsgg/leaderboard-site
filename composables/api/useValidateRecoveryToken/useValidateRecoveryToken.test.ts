@@ -1,5 +1,3 @@
-import { useValidateRecoveryToken } from '.'
-
 const mockSuccessRecoverDetail = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useValidateRecoveryToken', () => {

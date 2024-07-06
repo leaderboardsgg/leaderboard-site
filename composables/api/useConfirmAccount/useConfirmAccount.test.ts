@@ -1,5 +1,3 @@
-import { useConfirmAccount } from '.'
-
 const mockSuccessAccountConfirmation = vi.fn(() =>
   Promise.resolve({ ok: true }),
 )
