@@ -38,18 +38,18 @@ const state: LogInCardState = {
 const showErrorText = ref(false)
 const showPassword = ref(false)
 
-function login() {
+async function login() {
   showErrorText.value = false
-  useLoginUser(
+  await useLoginUser(
     {
       email: state.email.value,
       password: state.password.value,
     },
     {
-      onError: () => {
+      onError: (_) => {
         showErrorText.value = true
       },
-      onOkay: () => {
+      onOkay: (_) => {
         state.email.value = ''
         state.password.value = ''
         state.showPassword.value = false
