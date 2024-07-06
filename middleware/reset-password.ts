@@ -1,5 +1,5 @@
 import { isProblemDetails } from 'lib/helpers'
-import { ProblemDetails } from 'lib/api/data-contracts'
+import type { ProblemDetails } from 'lib/api/data-contracts'
 
 export default defineNuxtRouteMiddleware(async (_to, from) => {
   const resetPasswordCode = from.query?.code as string
