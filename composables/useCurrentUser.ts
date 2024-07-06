@@ -10,7 +10,7 @@ export const useCurrentUser = () =>
       if (!token) return undefined
 
       const users = new Users({
-        baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+        baseUrl: useRuntimeConfig().public.backendBaseUrl,
       })
 
       const resp = await useApi<UserViewModel>(

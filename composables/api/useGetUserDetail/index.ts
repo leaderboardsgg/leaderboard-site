@@ -13,7 +13,7 @@ export async function useGetUserDetail(
   const { onError, onOkay } = opts
 
   const userClient = new Users({
-    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+    baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
   return await useApi<UserViewModel>(

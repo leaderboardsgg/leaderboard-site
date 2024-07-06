@@ -12,7 +12,7 @@ export async function useConfirmAccount(
   const { onError, onOkay } = opts
 
   const account = new Account({
-    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+    baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
   return await useApi<void>(

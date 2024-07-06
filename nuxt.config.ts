@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import { config } from 'dotenv-safe'
 
 // Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
@@ -13,9 +12,6 @@ import { supportedLocales } from './configUtils'
 import type { ViteConfig } from 'nuxt/schema'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-
-// Safely loads the .env file, making sure all the variables are defined
-config()
 
 const nuxtAliases = {
   blocks: resolve(__dirname, './components/blocks'),
@@ -133,7 +129,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+      backendBaseUrl: '',
     },
   },
 

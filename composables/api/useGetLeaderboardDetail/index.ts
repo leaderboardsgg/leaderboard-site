@@ -21,7 +21,7 @@ export async function useGetLeaderboardDetail(
   })
 
   const leaderboardClient = new Leaderboards({
-    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+    baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
   return await useApi<LeaderboardViewModel>(

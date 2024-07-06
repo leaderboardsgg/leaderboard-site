@@ -13,7 +13,7 @@ export async function useRegisterUser(
   const { onError, onOkay } = opts
 
   const accountClient = new Account({
-    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+    baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
   return await useApi<UserViewModel>(
