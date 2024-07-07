@@ -10,10 +10,6 @@ import { resolve } from 'path'
 import { generateApi } from 'swagger-typescript-api'
 import { config } from 'dotenv-safe'
 
-import { resolve } from 'path'
-import { generateApi } from 'swagger-typescript-api'
-import { config } from 'dotenv-safe'
-
 const args = process.argv.reduce((acc, current) => {
   if (current.includes('=')) {
     const [key, value] = current.substring(2).split('=')
