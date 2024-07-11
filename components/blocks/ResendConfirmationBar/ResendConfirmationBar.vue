@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
-import useResendAccountConfirmation from 'composables/api/useResendAccountConfirmation'
 
 const currentUser = await useCurrentUser()
 const errorText = ref('')
