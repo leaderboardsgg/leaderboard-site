@@ -4,5 +4,8 @@ export interface LanguageIndexFile {
   logout?: string
   needToConfirm?: string
   resendConfirmation?: string
+  resendConfirmationError?: string
+  confirmationReceived?: string
+  confirmationReceivedText?: string
   signup?: string
 }

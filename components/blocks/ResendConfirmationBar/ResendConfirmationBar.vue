@@ -11,17 +11,18 @@ const unconfirmed = computed(
   () => !override.value && currentUser.data.value?.role === 'Registered',
 )
 
+const { t } = useI18n()
+
 async function resend() {
   await useResendAccountConfirmation({
     onError: () => {
-      errorText.value =
-        'Something went wrong. Reach out to support if the problem persists'
+      errorText.value = t('resendConfirmationError')
       showErrorText.value = true
     },
     onOkay: () => {
       showAlert({
-        body: 'If you have a valid account with us, you should receive an email from us soon.',
-        title: 'Confirmation Request Received',
+        body: t('confirmationReceivedText'),
+        title: t('confirmationReceived'),
         type: 'info',
       })
       override.value = true
