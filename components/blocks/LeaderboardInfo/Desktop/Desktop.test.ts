@@ -1,11 +1,11 @@
-import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { vi } from 'vitest'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId } from 'root/testUtils'
 import Desktop from './Desktop.vue'
 
 describe('<Desktop />', () => {
-  function getDesktopWrapper() {
-    return mount(Desktop, {
+  async function getDesktopWrapper() {
+    return await mountSuspended(Desktop, {
       props: {
         leaderboard: {
           categories: [{ id: 1, name: 'Any%', slug: 'any' }],
@@ -22,10 +22,8 @@ describe('<Desktop />', () => {
     vi.restoreAllMocks()
   })
 
-  enableAutoUnmount(afterEach)
-
-  it('should render without crashing', () => {
-    const wrapper = getDesktopWrapper()
+  it('should render without crashing', async () => {
+    const wrapper = await getDesktopWrapper()
     expect(wrapper.isVisible()).toBe(true)
 
     expect(getByTestId(wrapper, 'title').text()).toBe(

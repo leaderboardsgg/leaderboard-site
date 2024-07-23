@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import SocialButtons from './SocialButtons.vue'
 
 describe('<SocialButtons />', () => {
-  it('should render without crashing', () => {
-    const wrapper = mount(SocialButtons, {
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(SocialButtons, {
       props: {
         socials: [
           {

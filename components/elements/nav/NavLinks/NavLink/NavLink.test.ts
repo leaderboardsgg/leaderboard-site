@@ -1,12 +1,9 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
-
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import NavLink from './NavLink.vue'
 
-enableAutoUnmount(afterEach)
-
 describe('<NavLink />', () => {
-  it('should render without crashing', () => {
-    const NavLinkWrapper = mount(NavLink, {
+  it('should render without crashing', async () => {
+    const NavLinkWrapper = await mountSuspended(NavLink, {
       attrs: { class: 'custom-link' },
       props: {
         to: '/games',

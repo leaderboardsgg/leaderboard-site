@@ -1,5 +1,3 @@
-import { useGetLeaderboardDetail } from '.'
-
 const mockSuccessLeaderboardsDetail = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useGetLeaderboardDetail', () => {

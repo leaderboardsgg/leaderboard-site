@@ -1,9 +1,9 @@
-import { mount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import ProfileHeader from './ProfileHeader.vue'
 
 describe('<ProfileHeader />', () => {
-  it('should render without crashing', () => {
-    const wrapper = mount(ProfileHeader, {
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(ProfileHeader, {
       props: {
         badges: [],
         bio: 'This is a bio!',

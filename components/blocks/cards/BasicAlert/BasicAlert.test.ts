@@ -1,11 +1,6 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
-import { useModalAlert } from 'composables/useModalAlert'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByClass, getByTestId, getHTMLElement } from 'root/testUtils'
 import BasicAlert from './BasicAlert.vue'
-
-function getBasicAlertWrapper() {
-  return mount(BasicAlert)
-}
 
 beforeEach(() => {
   const { state: modalAlertState } = useModalAlert()
@@ -17,22 +12,20 @@ beforeEach(() => {
   }
 })
 
-enableAutoUnmount(afterEach)
-
 afterEach(() => {
   fetchMock.resetMocks()
   vi.restoreAllMocks()
 })
 
 describe('<BasicAlert />', () => {
-  it('should render without crashing', () => {
-    const wrapper = getBasicAlertWrapper()
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(BasicAlert)
 
     expect(wrapper.isVisible()).toBe(true)
   })
 
-  it('renders with the correct information', () => {
-    const wrapper = getBasicAlertWrapper()
+  it('renders with the correct information', async () => {
+    const wrapper = await mountSuspended(BasicAlert)
 
     expect(
       getHTMLElement(getByClass(wrapper, 'basic-modal-alert__header'))
@@ -48,13 +41,13 @@ describe('<BasicAlert />', () => {
 
   describe('when the close button is clicked', () => {
     it('should emit the close event', async () => {
-      const wrapper = getBasicAlertWrapper()
-
+      const wrapper = await mountSuspended(BasicAlert)
+      expect(wrapper.find('.modal').exists()).toBe(true)
       await getByTestId(wrapper, 'basic-modal-alert-close-button').trigger(
         'click',
       )
 
-      expect(wrapper.isVisible()).toBe(false)
+      expect(wrapper.find('.modal').exists()).toBe(false)
     })
   })
 })

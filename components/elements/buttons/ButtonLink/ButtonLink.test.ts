@@ -1,15 +1,12 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
-
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import ButtonLink from './ButtonLink.vue'
-
-enableAutoUnmount(afterEach)
 
 describe('<ButtonLink />', () => {
   const defaultAttrs = { class: 'custom-link' }
   const defaultProps = { to: 'https://www.test.com/' }
 
-  it('should render without crashing', () => {
-    const ButtonLinkWrapper = mount(ButtonLink, {
+  it('should render without crashing', async () => {
+    const ButtonLinkWrapper = await mountSuspended(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
       slots: { default: 'Button' },
@@ -18,8 +15,8 @@ describe('<ButtonLink />', () => {
     expect(ButtonLinkWrapper.isVisible()).toBe(true)
   })
 
-  it('renders with the correct <slot />', () => {
-    const ButtonLinkWrapper = mount(ButtonLink, {
+  it('renders with the correct <slot />', async () => {
+    const ButtonLinkWrapper = await mountSuspended(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
       slots: { default: 'Any%' },
@@ -27,20 +24,22 @@ describe('<ButtonLink />', () => {
     expect(ButtonLinkWrapper.html()).toContain('Any%')
   })
 
-  it('renders with the passed link', () => {
-    const ButtonLinkWrapper = mount(ButtonLink, {
+  it('renders with the passed link', async () => {
+    const ButtonLinkWrapper = await mountSuspended(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
     })
 
-    const link = ButtonLinkWrapper.get('[data-testid="button-link"]')
+    const link = ButtonLinkWrapper.findComponent({
+      name: 'NuxtLink',
+    })
 
-    expect(link.element.tagName).toBe('NUXTLINK')
-    expect(link.attributes('to')).toBe('https://www.test.com/')
+    expect(link.exists()).toBe(true)
+    expect(link.props('to')).toBe('https://www.test.com/')
   })
 
-  it('renders with the custom classnames', () => {
-    const ButtonLinkWrapper = mount(ButtonLink, {
+  it('renders with the custom classnames', async () => {
+    const ButtonLinkWrapper = await mountSuspended(ButtonLink, {
       attrs: {
         ...defaultAttrs,
         class: 'go-fast',

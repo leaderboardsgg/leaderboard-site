@@ -1,4 +1,3 @@
-import { useApi } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 import type { ApiResponse, optionalParameters } from 'composables/useApi'
 import type { RecoverAccountRequest } from 'lib/api/data-contracts'
@@ -9,7 +8,7 @@ export async function useRecoverAccount(
 ): Promise<ApiResponse<void>> {
   const { onError, onOkay } = opts
   const account = new Account({
-    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+    baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
   return await useApi<void>(

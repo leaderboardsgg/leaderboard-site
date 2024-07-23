@@ -1,4 +1,4 @@
-import { ApiResponse, optionalParameters, useApi } from 'composables/useApi'
+import { type ApiResponse, type optionalParameters } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 
 export async function useValidateRecoveryToken(
@@ -8,7 +8,7 @@ export async function useValidateRecoveryToken(
   const { onError, onOkay } = opts
 
   const account = new Account({
-    baseUrl: useRuntimeConfig().public.BACKEND_BASE_URL,
+    baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
   return await useApi<void>(

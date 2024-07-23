@@ -1,5 +1,11 @@
 export interface LanguageIndexFile {
   welcome: string
-  signup?: string
   login?: string
+  logout?: string
+  needToConfirm?: string
+  resendConfirmation?: string
+  resendConfirmationError?: string
+  confirmationReceived?: string
+  confirmationReceivedText?: string
+  signup?: string
 }

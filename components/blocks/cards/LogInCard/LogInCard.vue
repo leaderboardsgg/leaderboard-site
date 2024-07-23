@@ -8,7 +8,6 @@ import CardBody from 'elements/cards/CardBody/CardBody.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import Card from 'elements/cards/Card/Card.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
-import { useLoginUser } from 'composables/api/useLoginUser'
 
 interface LogInCardProps {
   modal?: boolean
@@ -39,18 +38,18 @@ const state: LogInCardState = {
 const showErrorText = ref(false)
 const showPassword = ref(false)
 
-function login() {
+async function login() {
   showErrorText.value = false
-  useLoginUser(
+  await useLoginUser(
     {
       email: state.email.value,
       password: state.password.value,
     },
     {
-      onError: () => {
+      onError: (_) => {
         showErrorText.value = true
       },
-      onOkay: () => {
+      onOkay: (_) => {
         state.email.value = ''
         state.password.value = ''
         state.showPassword.value = false

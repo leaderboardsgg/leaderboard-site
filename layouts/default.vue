@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BasicAlert from 'blocks/cards/BasicAlert/BasicAlert.vue'
+import ResendConfirmationBar from 'blocks/ResendConfirmationBar/ResendConfirmationBar.vue'
 import SiteFooter from 'blocks/SiteFooter/SiteFooter.vue'
 import SiteNavbar from 'blocks/nav/SiteNavbar/SiteNavbar.vue'
 </script>
@@ -8,6 +9,7 @@ import SiteNavbar from 'blocks/nav/SiteNavbar/SiteNavbar.vue'
   <div class="mx-auto flex h-screen flex-col">
     <BasicAlert />
     <SiteNavbar />
+    <ResendConfirmationBar />
     <slot />
     <SiteFooter />
   </div>

@@ -1,6 +1,3 @@
-import { useConfirmAccount } from 'composables/api'
-import { useModalAlert } from 'composables/useModalAlert'
-
 export default defineNuxtRouteMiddleware((_to, from) => {
   const route = useRoute()
   const confirmationCode = route.query?.code as string

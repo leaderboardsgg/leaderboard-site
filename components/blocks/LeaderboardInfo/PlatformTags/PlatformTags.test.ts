@@ -1,11 +1,11 @@
-import { mount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import PlatformTags from './PlatformTags.vue'
 
 describe('<PlatformTags />', () => {
   const tags = ['XBox', 'PS4', 'Amiga DS']
 
-  it('should render without crashing', () => {
-    const wrapper = mount(PlatformTags, {
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(PlatformTags, {
       props: {
         tags,
       },

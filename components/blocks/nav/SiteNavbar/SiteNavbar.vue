@@ -9,8 +9,6 @@ import LogInCard from 'blocks/cards/LogInCard/LogInCard.vue'
 import SignUpCard from 'blocks/cards/SignUpCard/SignUpCard.vue'
 import BaseModal from 'elements/modals/BaseModal/BaseModal.vue'
 import SearchBar from 'blocks/SearchBar/SearchBar.vue'
-import { useLogoutUser } from 'composables/api'
-import { useCurrentUser } from 'composables/useCurrentUser'
 
 interface NavbarState {
   mobileNavIsActive: boolean
@@ -28,10 +26,8 @@ const state: NavbarState = reactive({
   showSignUp: false,
 })
 
-const currentUser = useCurrentUser()
-const loggedIn = computed(
-  () => !!currentUser.value?.username && currentUser.value?.username !== '',
-)
+const token = useSessionToken()
+const loggedIn = computed(() => !!token.value)
 
 function showForgotPassword() {
   state.showForgotPassword = true

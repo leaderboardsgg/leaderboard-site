@@ -1,25 +1,27 @@
 <script setup lang="ts">
-// Explicitly-importing these because tests don't like the auto-imports - zysim
-import { provide, ref, type Ref } from 'vue'
+import { provide, ref } from 'vue'
 import BaseButton from '../BaseButton/BaseButton.vue'
 
 export interface SharedState {
   active: Ref<boolean>
+  setActive?: (act: boolean) => void
 }
 
-const state: SharedState = { active: ref(false) }
+const active = ref(false)
 
-provide('state', state)
+function setActive(act: boolean) {
+  active.value = act
+}
+
+provide('active', { active, setActive })
 
 function toggle() {
-  state.active.value = !state.active.value
+  active.value = !active.value
 }
 
-interface Props {
+defineProps<{
   className?: string
-}
-
-defineProps<Props>()
+}>()
 </script>
 
 <template>
@@ -37,16 +39,16 @@ defineProps<Props>()
           alt="Dropdown arrow"
           width="10"
           data-testid="arrow"
-          :class="state.active.value && 'isOpen'"
+          :class="active ? 'isOpen' : 'isClosed'"
         />
       </div>
     </BaseButton>
     <div
-      v-if="state.active.value"
+      v-if="active"
       data-testid="dropdown-content"
       class="container__content"
     >
-      <slot />
+      <slot></slot>
     </div>
   </div>
 </template>

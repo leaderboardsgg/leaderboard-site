@@ -1,12 +1,6 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId, getHTMLElement } from 'root/testUtils'
 import SignUpCard from './SignUpCard.vue'
-
-function getSignUpCardWrapper() {
-  return mount(SignUpCard)
-}
-
-enableAutoUnmount(afterEach)
 
 afterEach(() => {
   fetchMock.resetMocks()
@@ -14,15 +8,15 @@ afterEach(() => {
 })
 
 describe('<SignUpCard />', () => {
-  it('should render without crashing', () => {
-    const wrapper = getSignUpCardWrapper()
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(SignUpCard)
 
     expect(wrapper.isVisible()).toBe(true)
   })
 
   describe('when the close button is clicked', () => {
     it('should emit the close event', async () => {
-      const wrapper = getSignUpCardWrapper()
+      const wrapper = await mountSuspended(SignUpCard)
 
       await getByTestId(wrapper, 'close-button').trigger('click')
 
@@ -33,7 +27,7 @@ describe('<SignUpCard />', () => {
   // TODO: Update this test once the inputs can be controlled together
   describe.skip('when the hide/show button is clicked', () => {
     it('changes the password input type to be text', async () => {
-      const wrapper = getSignUpCardWrapper()
+      const wrapper = await mountSuspended(SignUpCard)
 
       const passwordInputElement = getHTMLElement(
         getByTestId(wrapper, 'password-input'),
@@ -54,7 +48,7 @@ describe('<SignUpCard />', () => {
 
   describe('when the login button is clicked', () => {
     it('emits the log in click event', async () => {
-      const wrapper = getSignUpCardWrapper()
+      const wrapper = await mountSuspended(SignUpCard)
 
       await getByTestId(wrapper, 'login-button').trigger('click')
 
@@ -68,7 +62,7 @@ describe('<SignUpCard />', () => {
     const username = 'strongbad'
 
     it.skip('emits the sign up click event', async () => {
-      const wrapper = getSignUpCardWrapper()
+      const wrapper = await mountSuspended(SignUpCard)
 
       await getByTestId(wrapper, 'sign-up-button').trigger('click')
 
@@ -76,7 +70,7 @@ describe('<SignUpCard />', () => {
     })
 
     it.skip('clears the state', async () => {
-      const wrapper = getSignUpCardWrapper()
+      const wrapper = await mountSuspended(SignUpCard)
 
       const emailInputElement = getHTMLElement(
         getByTestId(wrapper, 'email-input'),
@@ -110,7 +104,7 @@ describe('<SignUpCard />', () => {
     })
 
     it('calls the api', async () => {
-      const wrapper = getSignUpCardWrapper()
+      const wrapper = await mountSuspended(SignUpCard)
 
       await getByTestId(wrapper, 'email-input').setValue(emailAddress)
       await getByTestId(wrapper, 'username-input').setValue(username)
@@ -122,9 +116,10 @@ describe('<SignUpCard />', () => {
         .setValue(password)
       await getByTestId(wrapper, 'sign-up-button').trigger('click')
 
+      const config = useRuntimeConfig()
       const apiCall = fetchMock.mock.calls[0]
       expect(apiCall?.[0]).toEqual(
-        `${process.env.BACKEND_BASE_URL}/Account/register`,
+        `${config.public.backendBaseUrl}/Account/register`,
       )
       expect(apiCall?.[1]?.method).toEqual('POST')
       expect(apiCall?.[1]?.body).toEqual(

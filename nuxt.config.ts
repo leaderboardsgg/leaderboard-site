@@ -1,5 +1,4 @@
 import { resolve } from 'path'
-import { config } from 'dotenv-safe'
 
 // Need to explicitly import this otherwise vite.config yells at us
 import { defineNuxtConfig } from 'nuxt/config'
@@ -13,9 +12,6 @@ import { supportedLocales } from './configUtils'
 import type { ViteConfig } from 'nuxt/schema'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
-
-// Safely loads the .env file, making sure all the variables are defined
-config()
 
 const nuxtAliases = {
   blocks: resolve(__dirname, './components/blocks'),
@@ -107,6 +103,14 @@ export default defineNuxtConfig({
   },
 
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
+  imports: {
+    dirs: [
+      './composables',
+      './utils',
+      './composables/api',
+      './composables/useApi',
+    ],
+  },
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
     // https://tailwindcss.com
@@ -121,21 +125,15 @@ export default defineNuxtConfig({
     ],
     'unplugin-icons/nuxt',
     '@nuxtjs/i18n',
+    '@nuxt/test-utils/module',
   ],
 
   runtimeConfig: {
     public: {
-      BACKEND_BASE_URL: process.env.BACKEND_BASE_URL,
+      backendBaseUrl: '',
     },
   },
 
   ssr: false,
-
-  typescript: {
-    // Disabled as using Volar take over mode is the reccomended way to do this
-    shim: false,
-    strict: true,
-  },
-
   vite: viteConfig,
 })

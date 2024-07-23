@@ -1,21 +1,15 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { supportedLocales } from 'root/configUtils'
 import LanguageSelector from './LanguageSelector.vue'
 
-function getLanguageSelectorWrapper() {
-  return mount(LanguageSelector)
-}
-
-enableAutoUnmount(afterEach)
-
 describe('<LanguageSelector />', () => {
-  it('should render without crashing', () => {
-    const LanguageSelectorWrapper = getLanguageSelectorWrapper()
-    expect(LanguageSelectorWrapper.isVisible()).toBe(true)
+  it('should render without crashing', async () => {
+    const LanguageSelectorWrapper = await mountSuspended(LanguageSelector)
+    expect(LanguageSelectorWrapper.vm).toBeTruthy()
   })
 
-  it('should render a dropdown with all the locales as options', () => {
-    const LanguageSelectorWrapper = getLanguageSelectorWrapper()
+  it('should render a dropdown with all the locales as options', async () => {
+    const LanguageSelectorWrapper = await mountSuspended(LanguageSelector)
     for (const locale of supportedLocales) {
       expect(LanguageSelectorWrapper.html()).toContain(locale.name)
     }
