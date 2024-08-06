@@ -1,10 +1,6 @@
 <script setup lang="ts">
 import { type Ref, ref } from 'vue'
-import {
-  isPasswordValid,
-  passwordsAreTheSame,
-  renderErrors,
-} from 'lib/form_helpers'
+import { isPasswordValid, renderErrors } from 'lib/form_helpers'
 import { toggleState } from 'lib/helpers'
 import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
@@ -29,18 +25,16 @@ const formState: RecoverAccountFormState = {
 const showPassword = ref(false)
 const errorText = ref('')
 const showErrorsText = ref(false)
-const passwordInputValid = ref(true)
-const passwordConfirmValid = ref(true)
 
-function validatePassword() {
-  passwordInputValid.value = isPasswordValid(formState.password)
-}
+const passwordInputValid = computed(() =>
+  isPasswordValid(formState.password.value),
+)
 
-function validatePasswordConfirm() {
-  passwordConfirmValid.value =
-    passwordsAreTheSame(formState.password, formState.passwordConfirm) &&
-    isPasswordValid(formState.password)
-}
+const passwordConfirmValid = computed(
+  () =>
+    formState.password.value === formState.passwordConfirm.value &&
+    isPasswordValid(formState.passwordConfirm.value),
+)
 
 const { showAlert } = useModalAlert()
 
@@ -61,8 +55,6 @@ async function changePassword() {
                 'Reset link has expired. Please request a new link'
               break
             case 409:
-              passwordInputValid.value = false
-              passwordConfirmValid.value = false
               errorText.value =
                 'Password cannot be the same as the existing password'
               break
@@ -109,8 +101,7 @@ function toggleShowPassword() {
             data-testid="password-input"
             minlength="8"
             maxlength="80"
-            @change="validatePassword"
-            @blur="validatePassword"
+            :show-password="showPassword"
             @hide-show-clicked="toggleShowPassword"
           />
 
@@ -126,8 +117,7 @@ function toggleShowPassword() {
             data-testid="password-confirm-input"
             minlength="8"
             maxlength="80"
-            @change="validatePasswordConfirm"
-            @blur="validatePasswordConfirm"
+            :show-password="showPassword"
             @hide-show-clicked="toggleShowPassword"
           />
         </div>
@@ -143,14 +133,7 @@ function toggleShowPassword() {
           <BaseButton
             class="submit-button"
             type="submit"
-            :disabled="
-              !(
-                formState.password.value &&
-                formState.passwordConfirm.value &&
-                passwordInputValid &&
-                passwordConfirmValid
-              )
-            "
+            :disabled="!(passwordInputValid && passwordConfirmValid)"
             @click.prevent="changePassword"
           >
             Change password
