@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { supportedLocales } from 'root/configUtils'
 import LanguageSelector from './LanguageSelector.vue'

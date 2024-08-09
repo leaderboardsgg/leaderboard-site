@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-invalid-void-type */
 import { ref, type Ref } from 'vue'
 import { isProblemDetails, isValidationProblemDetails } from 'lib/helpers'
 import type {

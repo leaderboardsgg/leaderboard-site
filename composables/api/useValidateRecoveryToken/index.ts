@@ -1,4 +1,4 @@
-import { type ApiResponse, type optionalParameters } from 'composables/useApi'
+import type { ApiResponse, optionalParameters } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 
 export async function useValidateRecoveryToken(
@@ -11,6 +11,7 @@ export async function useValidateRecoveryToken(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
     async () => await account.recoverDetail(recoveryToken),
     { onError, onOkay },

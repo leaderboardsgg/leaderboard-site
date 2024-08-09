@@ -15,6 +15,7 @@ export async function useConfirmAccount(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
     async () => await account.confirmUpdate(confirmationToken),
     { onError, onOkay },

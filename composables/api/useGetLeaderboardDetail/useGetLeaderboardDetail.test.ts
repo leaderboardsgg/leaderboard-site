@@ -1,3 +1,5 @@
+import { describe, expect, it, vi } from 'vitest'
+
 const mockSuccessLeaderboardsDetail = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useGetLeaderboardDetail', () => {

@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId, getHTMLElement } from 'root/testUtils'
 import HideShowPassword from './HideShowPassword.vue'
