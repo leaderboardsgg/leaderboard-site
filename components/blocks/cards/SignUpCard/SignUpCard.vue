@@ -28,9 +28,7 @@ interface UserRegister {
 }
 
 const emit = defineEmits<{
-  (event: 'close'): void
-  (event: 'logInClick'): void
-  (event: 'signUpClick'): void
+  (event: 'close' | 'logInClick' | 'signUpClick'): void
 }>()
 
 const props = withDefaults(defineProps<SignUpCardProps>(), {
@@ -271,7 +269,7 @@ function validatePasswordInputs() {
 
     #hide-show-password {
       @apply hidden sm:inline;
-      @apply text-gray-700 hover:bg-gray-100 bg-gray-100 hover:bg-gray-300;
+      @apply text-gray-700  bg-gray-100 hover:bg-gray-300;
     }
   }
 

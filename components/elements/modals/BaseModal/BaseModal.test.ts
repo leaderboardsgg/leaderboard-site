@@ -1,3 +1,5 @@
+import { afterEach, describe, expect, it } from 'vitest'
+
 import { mount, enableAutoUnmount } from '@vue/test-utils'
 
 import BaseModal from './BaseModal.vue'

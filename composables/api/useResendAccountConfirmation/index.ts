@@ -17,6 +17,7 @@ export default async function useResendAccountConfirmation(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
     async () =>
       await account.confirmCreate({

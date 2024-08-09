@@ -1,4 +1,3 @@
-/* eslint-disable vue/sort-keys */
 export default {
   content: [
     './components/**/*.{vue,js}',

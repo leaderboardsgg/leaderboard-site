@@ -17,16 +17,7 @@
 
     // Other
     "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
-    "types": [
-      "@types/node",
-      "@nuxt/types",
-      "@types/dotenv-safe",
-      "unplugin-icons/types/vue3",
-      "vite/client",
-      "vitest/globals",
-      ".nuxt"
-    ]
+    "lib": ["ESNext", "DOM"]
   },
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"

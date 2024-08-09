@@ -1,3 +1,5 @@
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByClass, getByTestId, getHTMLElement } from 'root/testUtils'
 import BasicAlert from './BasicAlert.vue'

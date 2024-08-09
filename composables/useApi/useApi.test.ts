@@ -1,3 +1,4 @@
+import { describe, expect, it, vi } from 'vitest'
 import { ref } from 'vue'
 import type { ProblemDetails } from 'lib/api/data-contracts'
 import type { HttpResponse } from 'lib/api/http-client'
@@ -54,6 +55,8 @@ describe('useApi', () => {
         })
 
         expect(onErrorSpy).toBeCalledTimes(1)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         expect(onErrorSpy.mock.calls[0][0]).toEqual(error)
       })
     })
@@ -68,6 +71,8 @@ describe('useApi', () => {
         await useApi(createApiCall({ data }), { onOkay: onOkaySpy })
 
         expect(onOkaySpy).toBeCalledTimes(1)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
         expect(onOkaySpy.mock.calls[0][0]).toEqual(data)
       })
 

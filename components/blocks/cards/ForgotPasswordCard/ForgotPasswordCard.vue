@@ -18,8 +18,7 @@ interface ForgotPasswordCardState {
 }
 
 const emit = defineEmits<{
-  (event: 'close'): void
-  (event: 'cancelClick'): void
+  (event: 'close' | 'cancelClick'): void
 }>()
 
 const props = withDefaults(defineProps<ForgotPasswordCardPops>(), {

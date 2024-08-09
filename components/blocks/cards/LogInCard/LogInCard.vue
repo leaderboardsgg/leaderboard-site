@@ -20,9 +20,7 @@ interface LogInCardState {
 }
 
 const emit = defineEmits<{
-  (event: 'close'): void
-  (event: 'forgotPasswordClick'): void
-  (event: 'signUpClick'): void
+  (event: 'close' | 'forgotPasswordClick' | 'signUpClick'): void
 }>()
 
 const props = withDefaults(defineProps<LogInCardProps>(), {
@@ -160,7 +158,7 @@ async function login() {
 
 #hide-show-password {
   @apply hidden sm:inline;
-  @apply text-gray-700 hover:bg-gray-100 bg-gray-100 hover:bg-gray-300;
+  @apply text-gray-700 bg-gray-100 hover:bg-gray-300;
 }
 
 #sign-up-button {

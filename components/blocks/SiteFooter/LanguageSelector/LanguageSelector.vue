@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type ComputedRef } from 'vue'
+import type { ComputedRef } from 'vue'
 // import { type LocaleObject } from '#imports'
 
 const NuxtI18n = useI18n()
