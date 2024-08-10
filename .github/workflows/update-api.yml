@@ -44,10 +44,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'pnpm'
 
-      # shows current pnpm version
-      - name: check pnpm version
-        run: pnpm -v
-
       - name: Install `node_modules`
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: pnpm install
