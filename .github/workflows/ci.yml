@@ -45,7 +45,7 @@ jobs:
 
       - uses: pnpm/action-setup@v4
         with:
-          version: '${{ steps.pnpm-version.outputs.version }}'
+          version: '9.0.6'
 
       - uses: actions/setup-node@v4
         with:
