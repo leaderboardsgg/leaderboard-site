@@ -50,16 +50,7 @@ jobs:
       - name: Copy `.env.test` -> `.env`
         run: cp .env.test .env
 
-      # - name: Cache build
-      #   uses: actions/cache@v4
-      #   id: cache-build
-      #   with:
-      #     path: .nuxt/
-      #     key: ${{ runner.os }}-build-${{ hashFiles('**/.nuxt') }}
-      #     restore-keys: ${{ runner.os }}-build-
-
       - name: Build the `.nuxt` directory
-        # if: steps.cache-build.outputs.cache-hit != 'true'
         run: pnpm build
 
       - name: Linting
