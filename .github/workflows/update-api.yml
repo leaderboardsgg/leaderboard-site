@@ -16,7 +16,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Read package.json
         id: package
@@ -36,7 +36,7 @@ jobs:
           packageJson-packageManager: '${{ fromJson(steps.package.outputs.content).packageManager }}'
 
       - name: Cache PNPM modules
-        uses: actions/cache@v3.7.0
+        uses: actions/cache@v4
         id: cache-modules
         with:
           path: |
@@ -45,11 +45,11 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-node-
 
-      - uses: pnpm/action-setup@v2.4.1
+      - uses: pnpm/action-setup@v4
         with:
           version: '${{ steps.pnpm-version.outputs.version }}'
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
@@ -67,7 +67,7 @@ jobs:
         run: cp .env.test .env
 
       - name: Cache build
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: cache-build
         with:
           path: .nuxt/
@@ -100,7 +100,7 @@ jobs:
           git push origin ${{ steps.branch.outputs.BRANCH_NAME }}
 
       - name: Create PR
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           github-token: ${{ secrets.WORKFLOW_ACCESS_TOKEN }}
           script: |
