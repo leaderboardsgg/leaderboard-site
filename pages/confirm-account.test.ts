@@ -1,3 +1,5 @@
+import { vi, describe, it, expect } from 'vitest'
+
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByClass } from 'root/testUtils'
 import confirmAccount from 'pages/confirm-account.vue'
