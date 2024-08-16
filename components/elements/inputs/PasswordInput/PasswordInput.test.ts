@@ -1,5 +1,3 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
-
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getHTMLElement } from 'root/testUtils'
 import PasswordInput from './PasswordInput.vue'

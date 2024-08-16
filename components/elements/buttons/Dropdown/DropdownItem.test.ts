@@ -1,5 +1,3 @@
-import { describe, expect, it } from 'vitest'
-
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId } from 'root/testUtils'
 import DropdownItem from './DropdownItem.vue'

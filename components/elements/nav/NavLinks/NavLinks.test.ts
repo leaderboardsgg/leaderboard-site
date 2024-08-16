@@ -1,4 +1,3 @@
-import { afterEach, describe, expect, it } from 'vitest'
 import { mount, enableAutoUnmount } from '@vue/test-utils'
 
 import NavLinks from './NavLinks.vue'

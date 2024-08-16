@@ -1,5 +1,3 @@
-import { afterEach, describe, expect, it, vi } from 'vitest'
-
 const mockSuccessLogin = vi.fn(() =>
   Promise.resolve({ data: { token: 'token' }, ok: true }),
 )

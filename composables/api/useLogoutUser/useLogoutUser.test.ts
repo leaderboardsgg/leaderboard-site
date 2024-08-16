@@ -1,4 +1,3 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import type { UserViewModel } from 'lib/api/data-contracts'
 
 const token = 'auth-token'

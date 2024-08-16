@@ -1,5 +1,3 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByClass, getByTestId, getHTMLElement } from 'root/testUtils'
 import BasicAlert from './BasicAlert.vue'
@@ -7,9 +5,9 @@ import BasicAlert from './BasicAlert.vue'
 beforeEach(() => {
   const { state: modalAlertState } = useModalAlert()
   modalAlertState.value = {
+    title: 'A test alert?',
     body: 'This is a test',
     show: true,
-    title: 'A test alert?',
     type: 'info',
   }
 })
