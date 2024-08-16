@@ -1,4 +1,3 @@
-import { beforeEach } from 'vitest'
 import type { UserViewModel } from 'lib/api/data-contracts'
 
 const token = 'auth-token'
@@ -32,7 +31,8 @@ describe('useLogoutUser', () => {
     expect(authToken.value).toBeFalsy()
 
     await refresh()
-    // eslint-disable-next-line no-unused-expressions
+
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     expect(data.value).to.be.empty
   })
 })

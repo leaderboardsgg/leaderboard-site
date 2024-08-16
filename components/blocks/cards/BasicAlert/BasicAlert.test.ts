@@ -5,9 +5,9 @@ import BasicAlert from './BasicAlert.vue'
 beforeEach(() => {
   const { state: modalAlertState } = useModalAlert()
   modalAlertState.value = {
+    title: 'A test alert?',
     body: 'This is a test',
     show: true,
-    title: 'A test alert?',
     type: 'info',
   }
 })

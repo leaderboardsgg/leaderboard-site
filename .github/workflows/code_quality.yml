@@ -16,7 +16,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Read package.json
         id: package
@@ -24,19 +24,8 @@ jobs:
         with:
           path: ./package.json
 
-      # Ensures pnpm version is consistent and gets back the value to be used in pnpm setup action
-      - name: Get PNPM version
-        id: pnpm-version
-        uses: buffet-time/pnpm-versions-check-action@v1.2
-        with:
-          # engines.pnpm
-          packageJson-engines-pnpm: '${{ fromJson(steps.package.outputs.content).engines.pnpm }}'
-
-          # packageManager
-          packageJson-packageManager: '${{ fromJson(steps.package.outputs.content).packageManager }}'
-
       - name: Cache PNPM modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: cache-modules
         with:
           path: |
@@ -45,18 +34,12 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-node-
 
-      - uses: pnpm/action-setup@v2.4.1
-        with:
-          version: '${{ steps.pnpm-version.outputs.version }}'
+      - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v3.8.2
+      - uses: actions/setup-node@v4
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
-
-      # shows current pnpm version
-      - name: check pnpm version
-        run: pnpm -v
 
       - name: Install `node_modules`
         if: steps.cache-modules.outputs.cache-hit != 'true'
@@ -65,16 +48,7 @@ jobs:
       - name: Copy `.env.test` -> `.env`
         run: cp .env.test .env
 
-      - name: Cache build
-        uses: actions/cache@v3
-        id: cache-build
-        with:
-          path: .nuxt/
-          key: ${{ runner.os }}-build-${{ hashFiles('**/.nuxt') }}
-          restore-keys: ${{ runner.os }}-build-
-
       - name: Build the `.nuxt` directory
-        if: steps.cache-build.outputs.cache-hit != 'true'
         run: pnpm build
 
       - name: Linting
