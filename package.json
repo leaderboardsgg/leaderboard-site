@@ -70,7 +70,6 @@
     "unplugin-vue-components": "^0.27.3",
     "vite": "^5.4.0",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-plugin-top-level-await": "^1.4.3",
     "vitest": "^2.0.5",
     "vitest-fetch-mock": "^0.3.0",
     "vue": "^3.4.37"

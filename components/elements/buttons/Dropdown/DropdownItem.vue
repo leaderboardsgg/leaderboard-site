@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { inject } from 'vue'
+import { inject, ref } from 'vue'
 import type { SharedState } from './Dropdown.vue'
 
 const emit = defineEmits<{

@@ -1,6 +1,11 @@
 import { Account } from 'lib/api/Account'
-import type { ApiResponse, optionalParameters } from 'composables/useApi'
+import {
+  useApi,
+  type ApiResponse,
+  type optionalParameters,
+} from 'composables/useApi'
 import type { RecoverAccountRequest } from 'lib/api/data-contracts'
+import { useRuntimeConfig } from '#imports'
 
 export async function useRecoverAccount(
   requestData: RecoverAccountRequest,

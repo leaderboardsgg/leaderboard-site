@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { provide, ref } from 'vue'
+import { provide, ref, type Ref } from 'vue'
 import BaseButton from '../BaseButton/BaseButton.vue'
 
 export interface SharedState {

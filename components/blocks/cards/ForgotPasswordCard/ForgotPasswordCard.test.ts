@@ -2,18 +2,32 @@ import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId } from 'root/testUtils'
 import ForgotPasswordCard from './ForgotPasswordCard.vue'
 import type { RecoverAccountRequest } from 'lib/api/data-contracts'
+import type { optionalParameters } from '~/composables/useApi'
 
-mockNuxtImport('useRecoverAccount', () => {
-  return async (
-    _requestData: RecoverAccountRequest,
-    opts: optionalParameters<void> = {},
-  ) => {
-    const { onOkay } = opts
-    if (onOkay) {
-      await onOkay()
+vi.mock(
+  import('~/composables/api/useRecoverAccount'),
+  async (importOriginal) => {
+    const mod = await importOriginal()
+
+    return {
+      ...mod,
+      // replace some exports
+      onOkay: vi.fn(),
     }
-  }
-})
+  },
+)
+
+// mockNuxtImport('useRecoverAccount', () => {
+//   return async (
+//     _requestData: RecoverAccountRequest,
+//     opts: optionalParameters<void> = {},
+//   ) => {
+//     const { onOkay } = opts
+//     if (onOkay) {
+//       await onOkay()
+//     }
+//   }
+// })
 
 afterAll(() => {
   vi.restoreAllMocks()

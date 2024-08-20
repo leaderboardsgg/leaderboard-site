@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import { useResendAccountConfirmation } from '~/composables/api'
+import { useCurrentUser, useI18n, useModalAlert } from '#imports'
 
 const currentUser = await useCurrentUser()
 const errorText = ref('')
@@ -69,3 +71,5 @@ async function resend() {
   @apply text-red-600;
 }
 </style>
+import { useCurrentUser, useModalAlert, useI18n } from '#imports'; import {
+useResendAccountConfirmation } from '~/composables/api';

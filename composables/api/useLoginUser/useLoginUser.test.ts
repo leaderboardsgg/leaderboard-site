@@ -1,3 +1,6 @@
+import { useSessionToken } from '#imports'
+import useLoginUser from '.'
+
 // const mockFailureUsersLoginCreate = vi.fn(() => Promise.resolve({ ok: false }))
 const mockSuccessAccountLoginCreate = vi.fn(() =>
   Promise.resolve({ data: { token: 'token' }, ok: true }),

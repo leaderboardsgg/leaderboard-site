@@ -8,6 +8,7 @@ import CardBody from 'elements/cards/CardBody/CardBody.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import Card from 'elements/cards/Card/Card.vue'
 import HideShowPassword from 'elements/buttons/HideShowPassword/HideShowPassword.vue'
+import { useLoginUser } from '~/composables/api'
 
 interface LogInCardProps {
   modal?: boolean
@@ -23,7 +24,7 @@ const emit = defineEmits<{
   (event: 'close' | 'forgotPasswordClick' | 'signUpClick'): void
 }>()
 
-const props = withDefaults(defineProps<LogInCardProps>(), {
+withDefaults(defineProps<LogInCardProps>(), {
   modal: false,
 })
 
@@ -72,7 +73,7 @@ async function login() {
       </BaseButton>
 
       <CloseButton
-        v-show="props.modal"
+        v-show="modal"
         data-testid="close-button"
         @click.prevent="emit('close')"
       />

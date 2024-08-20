@@ -2,6 +2,7 @@ import { mountSuspended } from '@nuxt/test-utils/runtime'
 import * as apiComposables from 'composables/api'
 import { getByTestId } from 'root/testUtils'
 import SiteNavbar from './SiteNavbar.vue'
+import { useSessionToken } from '#imports'
 
 afterEach(() => {
   vi.restoreAllMocks()

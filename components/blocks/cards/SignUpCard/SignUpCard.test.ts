@@ -1,6 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId, getHTMLElement } from 'root/testUtils'
 import SignUpCard from './SignUpCard.vue'
+import { useRuntimeConfig } from '#imports'
 
 afterEach(() => {
   fetchMock.resetMocks()

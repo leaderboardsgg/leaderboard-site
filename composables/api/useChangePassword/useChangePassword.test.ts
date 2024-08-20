@@ -1,3 +1,5 @@
+import useChangePassword from '.'
+
 const mockSuccessRecoverCreate2 = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useChangePassword', () => {
