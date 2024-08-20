@@ -52,6 +52,7 @@ async function login() {
         state.email.value = ''
         state.password.value = ''
         state.showPassword.value = false
+        emit('close')
       },
     },
   )

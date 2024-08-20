@@ -1,10 +1,10 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { getByTestId, getHTMLElement } from 'root/testUtils'
+import { getById, getByTestId, getHTMLElement } from 'root/testUtils'
 import LogInCard from './LogInCard.vue'
 import * as apiComposables from 'composables/api'
 
 const token = 'jwt-token'
-const mockSuccessUsersLoginCreate = vi.fn(() =>
+const mockSuccessAccountLoginCreate = vi.fn(() =>
   Promise.resolve({ data: { token }, ok: true }),
 )
 const mockSuccessUsersMeList = vi.fn(() =>
@@ -20,9 +20,13 @@ afterEach(() => {
 
 describe('<LogInCard />', () => {
   beforeEach(() => {
+    vi.mock('lib/api/Account', () => ({
+      Account: function Account() {
+        this.loginCreate = mockSuccessAccountLoginCreate
+      },
+    }))
     vi.mock('lib/api/Users', () => ({
       Users: function Users() {
-        this.usersLoginCreate = mockSuccessUsersLoginCreate
         this.usersMeList = mockSuccessUsersMeList
       },
     }))
@@ -46,8 +50,7 @@ describe('<LogInCard />', () => {
     })
   })
 
-  // TODO: skip this for now
-  describe.skip('when enter key is released on the password input field', () => {
+  describe('when enter key is released on the password input field', () => {
     it('emits the close event', async () => {
       const wrapper = await mountSuspended(LogInCard)
 
@@ -57,8 +60,7 @@ describe('<LogInCard />', () => {
     })
   })
 
-  // TODO: skip this for now
-  describe.skip('when the login button is clicked', () => {
+  describe('when the login button is clicked', () => {
     const emailAddress = 'strongbad@homestarrunner.com'
     const password = 'homestarsux'
 
@@ -66,7 +68,7 @@ describe('<LogInCard />', () => {
       const wrapper = await mountSuspended(LogInCard)
 
       const emailInput = getByTestId(wrapper, 'email-input')
-      const passwordInput = getByTestId(wrapper, 'password-input')
+      const passwordInput = getById(wrapper, 'password')
 
       await emailInput.setValue(emailAddress)
       await passwordInput.setValue(password)
@@ -80,7 +82,7 @@ describe('<LogInCard />', () => {
       const wrapper = await mountSuspended(LogInCard)
 
       const emailInput = getByTestId(wrapper, 'email-input')
-      const passwordInput = getByTestId(wrapper, 'password-input')
+      const passwordInput = getById(wrapper, 'password')
 
       await emailInput.setValue(emailAddress)
       await passwordInput.setValue(password)
@@ -99,14 +101,13 @@ describe('<LogInCard />', () => {
       expect(passwordInputElement.value).toBe('')
     })
 
-    // this test is still failing
     it('calls the api', async () => {
       const useLoginUserSpy = vi.spyOn(apiComposables, 'useLoginUser')
 
       const wrapper = await mountSuspended(LogInCard)
 
       const emailInput = getByTestId(wrapper, 'email-input')
-      const passwordInput = getByTestId(wrapper, 'password-input')
+      const passwordInput = getById(wrapper, 'password')
 
       await emailInput.setValue(emailAddress)
       await passwordInput.setValue(password)
@@ -114,6 +115,7 @@ describe('<LogInCard />', () => {
       await getByTestId(wrapper, 'login-button').trigger('click')
 
       expect(useLoginUserSpy).toBeCalledTimes(1)
+      expect(mockSuccessAccountLoginCreate).toBeCalledTimes(1)
     })
   })
 
