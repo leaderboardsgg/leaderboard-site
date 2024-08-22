@@ -71,5 +71,3 @@ async function resend() {
   @apply text-red-600;
 }
 </style>
-import { useCurrentUser, useModalAlert, useI18n } from '#imports'; import {
-useResendAccountConfirmation } from '~/composables/api';
