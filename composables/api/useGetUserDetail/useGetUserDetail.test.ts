@@ -1,3 +1,5 @@
+import useGetUserDetail from '.'
+
 const mockSuccessUsersDetail = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useGetUserDetail', () => {

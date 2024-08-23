@@ -1,3 +1,5 @@
+import useRecoverAccount from '.'
+
 const mockSuccessRecoverCreate = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useRecoverAccount', () => {

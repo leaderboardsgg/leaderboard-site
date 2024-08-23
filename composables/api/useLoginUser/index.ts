@@ -1,3 +1,4 @@
+import { useSessionToken, useRuntimeConfig } from '#imports'
 import {
   type ApiResponse,
   type optionalParameters,

@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import { type Ref, ref } from 'vue'
+import { computed, type Ref, ref } from 'vue'
 import { isPasswordValid, renderErrors } from 'lib/form_helpers'
 import { toggleState } from 'lib/helpers'
 import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
+import { useRoute, navigateTo } from '#app'
+import { definePageMeta, useModalAlert } from '#imports'
+import { useChangePassword } from '~/composables/api'
 
 definePageMeta({
   middleware: 'reset-password',

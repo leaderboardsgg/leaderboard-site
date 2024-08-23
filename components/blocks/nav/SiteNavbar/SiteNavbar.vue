@@ -9,6 +9,8 @@ import LogInCard from 'blocks/cards/LogInCard/LogInCard.vue'
 import SignUpCard from 'blocks/cards/SignUpCard/SignUpCard.vue'
 import BaseModal from 'elements/modals/BaseModal/BaseModal.vue'
 import SearchBar from 'blocks/SearchBar/SearchBar.vue'
+import { useSessionToken } from '#imports'
+import { useLogoutUser } from '~/composables/api'
 
 interface NavbarState {
   mobileNavIsActive: boolean

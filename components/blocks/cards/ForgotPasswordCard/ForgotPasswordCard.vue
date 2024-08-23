@@ -7,6 +7,8 @@ import CardBody from 'elements/cards/CardBody/CardBody.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import { isEmailValid, isUsernameValid } from 'lib/form_helpers'
+import { useModalAlert } from '#imports'
+import { useRecoverAccount } from '~/composables/api'
 
 interface ForgotPasswordCardPops {
   modal?: boolean
@@ -21,7 +23,7 @@ const emit = defineEmits<{
   (event: 'close' | 'cancelClick'): void
 }>()
 
-const props = withDefaults(defineProps<ForgotPasswordCardPops>(), {
+withDefaults(defineProps<ForgotPasswordCardPops>(), {
   modal: false,
 })
 
@@ -76,7 +78,7 @@ function resetPassword() {
     <CardHeader class="forgot-password-card__header">
       <div class="forgot-password-card__title">Forgot Password</div>
       <CloseButton
-        v-show="props.modal"
+        v-show="modal"
         data-testid="close-button"
         @click.prevent="emit('close')"
       />

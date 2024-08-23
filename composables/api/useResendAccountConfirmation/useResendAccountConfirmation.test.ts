@@ -1,3 +1,6 @@
+import useResendAccountConfirmation from '.'
+import useLoginUser from '../useLoginUser'
+
 const mockSuccessLogin = vi.fn(() =>
   Promise.resolve({ data: { token: 'token' }, ok: true }),
 )

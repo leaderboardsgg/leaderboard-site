@@ -1,6 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { getByTestId, getHTMLElement } from 'root/testUtils'
+import { getByQuery, getByTestId, getHTMLElement } from 'root/testUtils'
 import SignUpCard from './SignUpCard.vue'
+import { useRuntimeConfig } from '#imports'
 
 afterEach(() => {
   fetchMock.resetMocks()
@@ -24,16 +25,15 @@ describe('<SignUpCard />', () => {
     })
   })
 
-  // TODO: Update this test once the inputs can be controlled together
-  describe.skip('when the hide/show button is clicked', () => {
+  describe('when the hide/show button is clicked', () => {
     it('changes the password input type to be text', async () => {
       const wrapper = await mountSuspended(SignUpCard)
 
       const passwordInputElement = getHTMLElement(
-        getByTestId(wrapper, 'password-input'),
+        getByQuery(wrapper, '[data-testid="password-input"] #password'),
       ) as HTMLInputElement
       const passwordConfirmInputElement = getHTMLElement(
-        getByTestId(wrapper, 'password-confirm-input'),
+        getByQuery(wrapper, '[data-testid="password-confirm-input"] #password'),
       ) as HTMLInputElement
 
       expect(passwordInputElement.type).toBe('password')

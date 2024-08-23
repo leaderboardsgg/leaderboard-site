@@ -1,4 +1,6 @@
+import { useCurrentUser, useSessionToken } from '#imports'
 import type { UserViewModel } from 'lib/api/data-contracts'
+import useLogoutUser from '.'
 
 const token = 'auth-token'
 const user: UserViewModel = {

@@ -1,21 +1,12 @@
-import { mockNuxtImport, mountSuspended } from '@nuxt/test-utils/runtime'
+import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByTestId } from 'root/testUtils'
 import ForgotPasswordCard from './ForgotPasswordCard.vue'
-import type { RecoverAccountRequest } from 'lib/api/data-contracts'
 
-mockNuxtImport('useRecoverAccount', () => {
-  return async (
-    _requestData: RecoverAccountRequest,
-    opts: optionalParameters<void> = {},
-  ) => {
-    const { onOkay } = opts
-    if (onOkay) {
-      await onOkay()
-    }
-  }
-})
+const mockSuccessAccountRecoverCreate = vi.fn(() =>
+  Promise.resolve({ ok: true }),
+)
 
-afterAll(() => {
+afterEach(() => {
   vi.restoreAllMocks()
 })
 
@@ -52,6 +43,14 @@ describe('<ForgotPasswordCard />', () => {
       const username = 'strongbad'
       const emailAddress = `strongbad@homestarrunner.com`
 
+      beforeEach(() => {
+        vi.mock('lib/api/Account', () => ({
+          Account: function Account() {
+            this.recoverCreate = mockSuccessAccountRecoverCreate
+          },
+        }))
+      })
+
       it('should emit the close event', async () => {
         const wrapper = await mountSuspended(ForgotPasswordCard)
 
@@ -63,6 +62,7 @@ describe('<ForgotPasswordCard />', () => {
 
         await getByTestId(wrapper, 'reset-password-button').trigger('click')
 
+        expect(mockSuccessAccountRecoverCreate).toHaveBeenCalled()
         expect(wrapper.emitted().close).toBeTruthy()
       })
     })

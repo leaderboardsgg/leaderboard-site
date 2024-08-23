@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from '#imports'
 import type { ComputedRef } from 'vue'
 // import { type LocaleObject } from '#imports'
 

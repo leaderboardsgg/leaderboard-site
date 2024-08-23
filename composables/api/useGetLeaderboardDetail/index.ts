@@ -6,6 +6,7 @@ import {
 } from 'composables/useApi'
 import { Leaderboards } from 'lib/api/Leaderboards'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
+import { useRuntimeConfig } from '#imports'
 
 export async function useGetLeaderboardDetail(
   leaderboardSlug: string,

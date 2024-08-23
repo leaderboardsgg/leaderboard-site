@@ -33,6 +33,8 @@ jobs:
         with:
           path: ./package.json
 
+      - uses: pnpm/action-setup@v4
+
       - name: Cache PNPM modules
         uses: actions/cache@v4
         id: cache-modules
@@ -43,13 +45,11 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-node-
 
-      - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
-          cache: 'pnpm'
+          # cache: 'pnpm'
 
       - name: Install `node_modules`
         if: steps.cache-modules.outputs.cache-hit != 'true'

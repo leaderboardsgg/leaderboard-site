@@ -1,6 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByClass, getByTestId, getHTMLElement } from 'root/testUtils'
 import BasicAlert from './BasicAlert.vue'
+import { useModalAlert } from '#imports'
 
 beforeEach(() => {
   const { state: modalAlertState } = useModalAlert()

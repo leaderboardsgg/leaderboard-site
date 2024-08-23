@@ -8,6 +8,20 @@ export function getByClass(
   return wrapper.get(`.${className}`)
 }
 
+export function getById(
+  wrapper: VueWrapper<any>,
+  testId: string,
+): WrappedElement {
+  return wrapper.get(`#${testId}`)
+}
+
+export function getByQuery(
+  wrapper: VueWrapper<any>,
+  query: string,
+): WrappedElement {
+  return wrapper.get(query)
+}
+
 export function getByTestId(
   wrapper: VueWrapper<any>,
   testId: string,

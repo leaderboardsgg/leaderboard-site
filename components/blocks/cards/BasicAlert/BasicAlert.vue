@@ -4,6 +4,7 @@ import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
 import Card from 'elements/cards/Card/Card.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import CardBody from 'elements/cards/CardBody/CardBody.vue'
+import { useModalAlert } from '#imports'
 
 const { closeAlert, state } = useModalAlert()
 </script>

@@ -15,6 +15,7 @@ import CloseButton from 'elements/buttons/CloseButton/CloseButton.vue'
 import Card from 'elements/cards/Card/Card.vue'
 import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import CardBody from 'elements/cards/CardBody/CardBody.vue'
+import { useLoginUser, useRegisterUser } from '~/composables/api'
 
 interface SignUpCardProps {
   modal?: boolean
@@ -31,7 +32,7 @@ const emit = defineEmits<{
   (event: 'close' | 'logInClick' | 'signUpClick'): void
 }>()
 
-const props = withDefaults(defineProps<SignUpCardProps>(), {
+withDefaults(defineProps<SignUpCardProps>(), {
   modal: false,
 })
 
@@ -124,7 +125,7 @@ function validatePasswordInputs() {
       <div class="signup-card__title">Sign Up</div>
 
       <CloseButton
-        v-show="props.modal"
+        v-show="modal"
         data-testid="close-button"
         @click.prevent="emit('close')"
       />

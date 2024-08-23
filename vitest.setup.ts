@@ -2,7 +2,8 @@ import createFetchMock from 'vitest-fetch-mock'
 import { vi } from 'vitest'
 import { localeMessages } from './configUtils'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
-import type { CookieOptions } from 'nuxt/app'
+import { useState, type CookieOptions } from 'nuxt/app'
+import { ref } from 'vue'
 
 const fetchMock = createFetchMock(vi)
 

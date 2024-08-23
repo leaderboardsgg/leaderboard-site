@@ -1,4 +1,9 @@
-import type { ApiResponse, optionalParameters } from 'composables/useApi'
+import { useRuntimeConfig } from '#app'
+import {
+  useApi,
+  type ApiResponse,
+  type optionalParameters,
+} from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 
 export async function useValidateRecoveryToken(

@@ -7,7 +7,6 @@ import Icons from 'unplugin-icons/vite'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import IconResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
-import topLevelAwait from 'vite-plugin-top-level-await'
 import { supportedLocales } from './configUtils'
 import type { ViteConfig } from 'nuxt/schema'
 
@@ -41,16 +40,6 @@ export const viteConfig: ViteConfig = {
         }),
       ],
     }),
-    // eslintPlugin({ cache: true, failOnWarning: true, fix: true }),
-    // Needed this on my machine to prevent this erroneous error of
-    // ✘ [ERROR] Top-level await is not available in the configured
-    // target environment ("chrome87", "edge88", "es2020", "firefox78", "safari13" + 2 overrides)
-    topLevelAwait({
-      // The export name of top-level await promise for each chunk module
-      promiseExportName: '__tla',
-      // The function to generate import names of top-level await promise in each chunk module
-      promiseImportName: (i) => `__tla_${i}`,
-    }),
   ],
   resolve: {
     alias: nuxtAliases,
@@ -59,6 +48,7 @@ export const viteConfig: ViteConfig = {
 
 export default defineNuxtConfig({
   alias: nuxtAliases,
+
   app: {
     // Global page headers: https://v3.nuxtjs.org/api/configuration/nuxt.config#head
     head: {
@@ -78,46 +68,25 @@ export default defineNuxtConfig({
       title: 'leaderboards.gg',
     },
   },
+
   devServerHandlers: [],
 
-  // https://v3.nuxtjs.org/api/configuration/nuxt.config#components
-  // https://v3.nuxtjs.org/guide/directory-structure/components/
-
-  // https://v8.i18n.nuxtjs.org/getting-started/setup
-
-  // TODO: someone who's brain lets them, figure out more proper setup with lazy loading
-  // i tried and couldn't figure it out unfortunately
-
-  // https://v3.nuxtjs.org/api/configuration/nuxt.config#ignore
   i18n: {
     defaultLocale: 'en',
     locales: supportedLocales,
     vueI18n: './i18n.config.ts',
-    // vueI18n: {
-    //   fallbackLocale: 'en',
-    //   legacy: false,
-    //   locale: 'en',
-    //   // TODO: can this be cleaner via some sort of iteration? (not sure)
-    //   messages: localeMessages,
-    // },
   },
 
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
+
   imports: {
-    dirs: [
-      './composables',
-      './utils',
-      './composables/api',
-      './composables/useApi',
-    ],
+    autoImport: false,
   },
+
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
   modules: [
-    // https://tailwindcss.com
     [
       '@nuxtjs/tailwindcss',
-      // Global CSS: https://v3.nuxtjs.org/api/configuration/nuxt.config#css
-      // css: ['assets/css/tailwind.css'],
       {
         configPath: 'tailwind.config.js',
         cssPath: './assets/css/tailwind.css',
@@ -137,4 +106,5 @@ export default defineNuxtConfig({
 
   ssr: false,
   vite: viteConfig,
+  compatibilityDate: '2024-08-17',
 })
