@@ -1,6 +1,6 @@
 import useRegisterUser from '.'
 
-const mockSuccessRegisterCreate = vi.fn(() => Promise.resolve({ ok: true }))
+const mockSuccessRegister = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useRegisterUser', () => {
   describe('when everything is successful', () => {
@@ -11,7 +11,7 @@ describe('useRegisterUser', () => {
     it('registers a user, and returns the new user', async () => {
       vi.mock('lib/api/Account', () => ({
         Account: function Account() {
-          this.registerCreate = mockSuccessRegisterCreate
+          this.register = mockSuccessRegister
         },
       }))
 
@@ -21,8 +21,8 @@ describe('useRegisterUser', () => {
         username,
       })
 
-      expect(mockSuccessRegisterCreate).toBeCalledTimes(1)
-      expect(mockSuccessRegisterCreate).toBeCalledWith({
+      expect(mockSuccessRegister).toBeCalledTimes(1)
+      expect(mockSuccessRegister).toBeCalledWith({
         email,
         password,
         username,

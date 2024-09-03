@@ -18,20 +18,18 @@ export namespace Leaderboards {
   /**
    * No description
    * @tags Leaderboards
-   * @name LeaderboardsDetail
-   * @summary Gets a Leaderboard by its ID.
-   * @request GET:/api/Leaderboards/{id}
+   * @name GetLeaderboard
+   * @summary Gets a leaderboard by its ID.
+   * @request GET:/api/leaderboard/{id}
    * @secure
-   * @response `200` `LeaderboardViewModel` The `Leaderboard` was found and returned successfully.
+   * @response `200` `LeaderboardViewModel` OK
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID or slug could be found.
+   * @response `404` `void` Not Found
+   * @response `500` `void` Internal Server Error
    */
-  export namespace LeaderboardsDetail {
+  export namespace GetLeaderboard {
     export type RequestParams = {
-      /**
-       * The ID of the `Leaderboard` which should be retrieved.
-       * @format int64
-       */
+      /** @format int64 */
       id: number
     }
     export type RequestQuery = {}
@@ -43,22 +41,20 @@ export namespace Leaderboards {
   /**
    * No description
    * @tags Leaderboards
-   * @name LeaderboardsDetail2
+   * @name GetLeaderboardBySlug
    * @summary Gets a Leaderboard by its slug.
-   * @request GET:/api/Leaderboards/{slug}
-   * @originalName leaderboardsDetail
-   * @duplicate
+   * @request GET:/api/leaderboard
    * @secure
-   * @response `200` `LeaderboardViewModel` The `Leaderboard` was found and returned successfully.
+   * @response `200` `LeaderboardViewModel` OK
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID or slug could be found.
+   * @response `404` `void` Not Found
+   * @response `500` `void` Internal Server Error
    */
-  export namespace LeaderboardsDetail2 {
-    export type RequestParams = {
-      /** The slug of the `Leaderboard` which should be retrieved. */
+  export namespace GetLeaderboardBySlug {
+    export type RequestParams = {}
+    export type RequestQuery = {
       slug: string
     }
-    export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
     export type ResponseBody = LeaderboardViewModel
@@ -67,16 +63,17 @@ export namespace Leaderboards {
   /**
    * No description
    * @tags Leaderboards
-   * @name LeaderboardsList
-   * @summary Gets Leaderboards by their IDs.
-   * @request GET:/api/Leaderboards
+   * @name GetLeaderboards
+   * @summary Gets leaderboards by their IDs.
+   * @request GET:/api/leaderboards
    * @secure
-   * @response `200` `(LeaderboardViewModel)[]` The list of `Leaderboard`s was retrieved successfully. The result can be an empty collection.
+   * @response `200` `(LeaderboardViewModel)[]` OK
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `500` `void` Internal Server Error
    */
-  export namespace LeaderboardsList {
+  export namespace GetLeaderboards {
     export type RequestParams = {}
     export type RequestQuery = {
-      /** The IDs of the `Leaderboard`s which should be retrieved. */
       ids?: number[]
     }
     export type RequestBody = never
@@ -85,21 +82,20 @@ export namespace Leaderboards {
   }
 
   /**
- * No description
- * @tags Leaderboards
- * @name LeaderboardsCreate
- * @summary Creates a new Leaderboard.
-This request is restricted to Administrators.
- * @request POST:/api/Leaderboards
- * @secure
- * @response `201` `LeaderboardViewModel` The `Leaderboard` was created and returned successfully.
- * @response `400` `ProblemDetails` The request was malformed.
- * @response `401` `ProblemDetails` Unauthorized
- * @response `403` `ProblemDetails` Forbidden
- * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create `Leaderboard`s.
- * @response `422` `ValidationProblemDetails` Client Error
-*/
-  export namespace LeaderboardsCreate {
+   * No description
+   * @tags Leaderboards
+   * @name CreateLeaderboard
+   * @summary Creates a new leaderboard. This request is restricted to Administrators.
+   * @request POST:/leaderboards/create
+   * @secure
+   * @response `201` `LeaderboardViewModel` Created
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `401` `void` Unauthorized
+   * @response `403` `void` The requesting `User` is unauthorized to create `Leaderboard`s.
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
+   * @response `500` `void` Internal Server Error
+   */
+  export namespace CreateLeaderboard {
     export type RequestParams = {}
     export type RequestQuery = {}
     export type RequestBody = CreateLeaderboardRequest

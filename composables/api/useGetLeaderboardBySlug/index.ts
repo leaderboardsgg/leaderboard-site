@@ -8,7 +8,7 @@ import { Leaderboards } from 'lib/api/Leaderboards'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 import { useRuntimeConfig } from '#imports'
 
-export async function useGetLeaderboardDetail(
+export default async function useGetLeaderboardBySlug(
   leaderboardSlug: string,
   opts: optionalParameters<LeaderboardViewModel> = {},
 ): Promise<ApiResponse<LeaderboardViewModel>> {
@@ -17,8 +17,11 @@ export async function useGetLeaderboardDetail(
     categories: [],
     id: -1,
     name: '',
-    rules: '',
     slug: '',
+    info: null,
+    createdAt: '',
+    updatedAt: null,
+    deletedAt: null,
   })
 
   const leaderboardClient = new Leaderboards({
@@ -26,7 +29,8 @@ export async function useGetLeaderboardDetail(
   })
 
   return await useApi<LeaderboardViewModel>(
-    async () => await leaderboardClient.leaderboardsDetail2(leaderboardSlug),
+    async () =>
+      await leaderboardClient.getLeaderboardBySlug({ slug: leaderboardSlug }),
     {
       onError,
       onOkay,
@@ -34,5 +38,3 @@ export async function useGetLeaderboardDetail(
     },
   )
 }
-
-export default useGetLeaderboardDetail

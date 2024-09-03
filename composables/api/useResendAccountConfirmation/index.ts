@@ -21,7 +21,7 @@ export default async function useResendAccountConfirmation(
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
     async () =>
-      await account.confirmCreate({
+      await account.resendConfirmationEmail({
         headers: {
           Authorization: `Bearer ${authToken.value}`,
         },

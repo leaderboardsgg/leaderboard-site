@@ -19,7 +19,7 @@ export default async function useLoginUser(
   })
 
   return await useApi<LoginResponse>(
-    async () => await account.loginCreate(requestData),
+    async () => await account.login(requestData),
     {
       onError,
       onOkay: async (d: LoginResponse) => {

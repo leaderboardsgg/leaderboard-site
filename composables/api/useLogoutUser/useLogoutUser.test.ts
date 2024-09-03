@@ -7,6 +7,7 @@ const user: UserViewModel = {
   id: '575888bd-9702-41a9-9b75-fc87d785c22a',
   role: 'Confirmed',
   username: 'test',
+  createdAt: '1984-01-01T00:00:00Z',
 }
 
 afterEach(() => {
@@ -17,7 +18,7 @@ afterEach(() => {
 
 describe('useLogoutUser', () => {
   beforeEach(() => {
-    fetchMock.mockIf(/.*\/api\/[Uu]sers\/me/, () => JSON.stringify(user))
+    fetchMock.mockIf(/.*\/[Uu]ser\/me/, () => JSON.stringify(user))
     useSessionToken().value = token
   })
 

@@ -9,20 +9,10 @@
  * ---------------------------------------------------------------
  */
 
-export interface CalendarSystem {
-  id: string
-  name: string
-  /** @format int32 */
-  minYear: number
-  /** @format int32 */
-  maxYear: number
-  eras: Era[]
-}
-
 /** Represents a `Category` tied to a `Leaderboard`. */
 export interface CategoryViewModel {
   /**
-   * The unique identifier of the `Category`.<br />
+   * The unique identifier of the `Category`.
    * @format int64
    */
   id: number
@@ -32,15 +22,32 @@ export interface CategoryViewModel {
    */
   name: string
   /**
-   * The URL-scoped unique identifier of the `Category`.<br />
+   * The URL-scoped unique identifier of the `Category`.
    * @example "foo-bar-baz"
    */
   slug: string
   /**
-   * The rules of the `Category`.
+   * Information pertaining to the `Category`.
    * @example "Video proof is required."
    */
-  rules?: string | null
+  info: string | null
+  type: RunType
+  sortDirection: SortDirection
+  /**
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  createdAt: string
+  /**
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  updatedAt: string | null
+  /**
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  deletedAt: string | null
 }
 
 export interface ChangePasswordRequest {
@@ -51,27 +58,28 @@ export interface ChangePasswordRequest {
 export interface CreateCategoryRequest {
   /**
    * The display name of the `Category`.
-   * @minLength 1
    * @example "Foo Bar Baz%"
    */
   name: string
   /**
-   * The URL-scoped unique identifier of the `Category`.<br />
+   * The URL-scoped unique identifier of the `Category`.
+   *
    * Must be [2, 25] in length and consist only of alphanumeric characters and hyphens.
-   * @minLength 1
    * @example "foo-bar-baz"
    */
   slug: string
   /**
-   * The rules of the `Category`.
+   * Information pertaining to the `Category`.
    * @example "Video proof is required."
    */
-  rules?: string | null
+  info: string | null
   /**
    * The ID of the `Leaderboard` the `Category` is a part of.
    * @format int64
    */
   leaderboardId: number
+  sortDirection: SortDirection
+  type: RunType
 }
 
 /** This request object is sent when creating a `Leaderboard`. */
@@ -82,44 +90,38 @@ export interface CreateLeaderboardRequest {
    */
   name: string
   /**
-   * The URL-scoped unique identifier of the `Leaderboard`.<br />
+   * The URL-scoped unique identifier of the `Leaderboard`.
+   *
    * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
    * @example "foo-bar"
    */
   slug: string
+  info: string | null
 }
 
 /** This request object is sent when creating a `Run`. */
 export interface CreateRunRequest {
-  playedOn: LocalDate
-  submittedAt: Instant
+  info: string | null
+  /**
+   * The date the `Run` was played on.
+   * @format date
+   * @example "2000-01-01"
+   */
+  playedOn: string
   /**
    * The ID of the `Category` for the `Run`.
    * @format int64
    */
   categoryId: number
+  /** @format int64 */
+  timeOrScore: number
 }
-
-export interface Era {
-  name: string
-}
-
-export type Instant = object
-
-export type IsoDayOfWeek =
-  | 'None'
-  | 'Monday'
-  | 'Tuesday'
-  | 'Wednesday'
-  | 'Thursday'
-  | 'Friday'
-  | 'Saturday'
-  | 'Sunday'
 
 /** Represents a collection of `Leaderboard` entities. */
 export interface LeaderboardViewModel {
   /**
-   * The unique identifier of the `Leaderboard`.<br />
+   * The unique identifier of the `Leaderboard`.
+   *
    * Generated on creation.
    * @format int64
    */
@@ -130,34 +132,37 @@ export interface LeaderboardViewModel {
    */
   name: string
   /**
-   * The URL-scoped unique identifier of the `Leaderboard`.<br />
+   * The URL-scoped unique identifier of the `Leaderboard`.
+   *
    * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
    * @example "foo-bar"
    */
   slug: string
   /**
-   * The general rules for the Leaderboard.
+   * The general information for the Leaderboard.
    * @example "Timer starts on selecting New Game and ends when the final boss is beaten."
    */
-  rules?: string | null
+  info: string | null
+  /**
+   * The time the Leaderboard was created.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  createdAt: string
+  /**
+   * The last time the Leaderboard was updated or null.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  updatedAt: string | null
+  /**
+   * The time at which the Leaderboard was deleted, or null if the Leaderboard has not been deleted.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  deletedAt: string | null
   /** A collection of `Category` entities for the `Leaderboard`. */
   categories: CategoryViewModel[]
-}
-
-export interface LocalDate {
-  calendar: CalendarSystem
-  /** @format int32 */
-  year: number
-  /** @format int32 */
-  month: number
-  /** @format int32 */
-  day: number
-  dayOfWeek: IsoDayOfWeek
-  /** @format int32 */
-  yearOfEra: number
-  era: Era
-  /** @format int32 */
-  dayOfYear: number
 }
 
 /** This request object is sent when a `User` is attempting to log in. */
@@ -235,26 +240,38 @@ export interface RegisterRequest {
   password: string
 }
 
-export interface RunViewModel {
+export type RunType = 'Time' | 'Score'
+
+export type RunViewModel = BaseRunViewModel &
+  (
+    | BaseRunViewModelTypeMapping<'Time', TimedRunViewModel>
+    | BaseRunViewModelTypeMapping<'Score', ScoredRunViewModel>
+  )
+
+export type ScoredRunViewModel = BaseRunViewModel & {
   /**
-   * The unique identifier of the `Run`.<br />
-   * Generated on creation.
-   * @pattern ^[a-zA-Z0-9-_]{22}$
-   */
-  id: string
-  submittedAt: Instant
-  /**
-   * The ID of the `Category` for `Run`.
+   * The score achieved during the run.
    * @format int64
    */
-  categoryId: number
+  score: number
+}
+
+export type SortDirection = 'Ascending' | 'Descending'
+
+export type TimedRunViewModel = BaseRunViewModel & {
+  /**
+   * The duration of the run.
+   * @example "25:01:01.001"
+   */
+  time: string
 }
 
 export type UserRole = 'Registered' | 'Confirmed' | 'Administrator' | 'Banned'
 
 export interface UserViewModel {
   /**
-   * The unique identifier of the `User`.<br />
+   * The unique identifier of the `User`.
+   *
    * Generated on creation.
    * @pattern ^[a-zA-Z0-9-_]{22}$
    */
@@ -269,6 +286,11 @@ export interface UserViewModel {
    */
   username: string
   role: UserRole
+  /**
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  createdAt: string
 }
 
 export interface ValidationProblemDetails {
@@ -278,11 +300,59 @@ export interface ValidationProblemDetails {
   status?: number | null
   detail?: string | null
   instance?: string | null
-  errors: Record<string, string[]>
+  errors?: Record<string, string[]>
   [key: string]: any
 }
 
-export interface LeaderboardsListParams {
-  /** The IDs of the `Leaderboard`s which should be retrieved. */
+interface BaseRunViewModel {
+  $type: string
+  /**
+   * The unique identifier of the `Run`.
+   *
+   * Generated on creation.
+   * @pattern ^[a-zA-Z0-9-_]{22}$
+   */
+  id: string
+  /** User-provided details about the run. */
+  info: string | null
+  /**
+   * The time the run was created.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  createdAt: string
+  /**
+   * The last time the run was updated or null.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  updatedAt: string | null
+  /**
+   * The time at which the run was deleted, or null if the run has not been deleted.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  deletedAt: string | null
+  /**
+   * The ID of the `Category` for `Run`.
+   * @format int64
+   */
+  categoryId: number
+  /**
+   * The ID of the LeaderboardBackend.Models.Entities.User who submitted this run.
+   * @pattern ^[a-zA-Z0-9-_]{22}$
+   */
+  userId: string
+}
+
+type BaseRunViewModelTypeMapping<Key, Type> = {
+  $type: Key
+} & Type
+
+export interface GetLeaderboardBySlugParams {
+  slug: string
+}
+
+export interface GetLeaderboardsParams {
   ids?: number[]
 }

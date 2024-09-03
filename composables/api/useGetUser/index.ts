@@ -7,7 +7,7 @@ import {
 import { Users } from 'lib/api/Users'
 import type { UserViewModel } from 'lib/api/data-contracts'
 
-export async function useGetUserDetail(
+export default async function useGetUser(
   userId: string,
   opts: optionalParameters<UserViewModel> = {},
 ): Promise<ApiResponse<UserViewModel>> {
@@ -18,12 +18,10 @@ export async function useGetUserDetail(
   })
 
   return await useApi<UserViewModel>(
-    async () => await userClient.usersDetail(userId),
+    async () => await userClient.getUser(userId),
     {
       onError,
       onOkay,
     },
   )
 }
-
-export default useGetUserDetail

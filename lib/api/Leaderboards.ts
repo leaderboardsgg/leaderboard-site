@@ -11,7 +11,8 @@
 
 import type {
   CreateLeaderboardRequest,
-  LeaderboardsListParams,
+  GetLeaderboardBySlugParams,
+  GetLeaderboardsParams,
   LeaderboardViewModel,
   ProblemDetails,
   ValidationProblemDetails,
@@ -25,17 +26,18 @@ export class Leaderboards<
    * No description
    *
    * @tags Leaderboards
-   * @name LeaderboardsDetail
-   * @summary Gets a Leaderboard by its ID.
-   * @request GET:/api/Leaderboards/{id}
+   * @name GetLeaderboard
+   * @summary Gets a leaderboard by its ID.
+   * @request GET:/api/leaderboard/{id}
    * @secure
-   * @response `200` `LeaderboardViewModel` The `Leaderboard` was found and returned successfully.
+   * @response `200` `LeaderboardViewModel` OK
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID or slug could be found.
+   * @response `404` `void` Not Found
+   * @response `500` `void` Internal Server Error
    */
-  leaderboardsDetail = (id: number, params: RequestParams = {}) =>
-    this.request<LeaderboardViewModel, ProblemDetails>({
-      path: `/api/Leaderboards/${id}`,
+  getLeaderboard = (id: number, params: RequestParams = {}) =>
+    this.request<LeaderboardViewModel, ProblemDetails | void>({
+      path: `/api/leaderboard/${id}`,
       method: 'GET',
       secure: true,
       format: 'json',
@@ -45,40 +47,21 @@ export class Leaderboards<
    * No description
    *
    * @tags Leaderboards
-   * @name LeaderboardsDetail2
+   * @name GetLeaderboardBySlug
    * @summary Gets a Leaderboard by its slug.
-   * @request GET:/api/Leaderboards/{slug}
-   * @originalName leaderboardsDetail
-   * @duplicate
+   * @request GET:/api/leaderboard
    * @secure
-   * @response `200` `LeaderboardViewModel` The `Leaderboard` was found and returned successfully.
+   * @response `200` `LeaderboardViewModel` OK
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No `Leaderboard` with the requested ID or slug could be found.
+   * @response `404` `void` Not Found
+   * @response `500` `void` Internal Server Error
    */
-  leaderboardsDetail2 = (slug: string, params: RequestParams = {}) =>
-    this.request<LeaderboardViewModel, ProblemDetails>({
-      path: `/api/Leaderboards/${slug}`,
-      method: 'GET',
-      secure: true,
-      format: 'json',
-      ...params,
-    })
-  /**
-   * No description
-   *
-   * @tags Leaderboards
-   * @name LeaderboardsList
-   * @summary Gets Leaderboards by their IDs.
-   * @request GET:/api/Leaderboards
-   * @secure
-   * @response `200` `(LeaderboardViewModel)[]` The list of `Leaderboard`s was retrieved successfully. The result can be an empty collection.
-   */
-  leaderboardsList = (
-    query: LeaderboardsListParams,
+  getLeaderboardBySlug = (
+    query: GetLeaderboardBySlugParams,
     params: RequestParams = {},
   ) =>
-    this.request<LeaderboardViewModel[], any>({
-      path: `/api/Leaderboards`,
+    this.request<LeaderboardViewModel, ProblemDetails | void>({
+      path: `/api/leaderboard`,
       method: 'GET',
       query: query,
       secure: true,
@@ -86,30 +69,53 @@ export class Leaderboards<
       ...params,
     })
   /**
- * No description
- *
- * @tags Leaderboards
- * @name LeaderboardsCreate
- * @summary Creates a new Leaderboard.
-This request is restricted to Administrators.
- * @request POST:/api/Leaderboards
- * @secure
- * @response `201` `LeaderboardViewModel` The `Leaderboard` was created and returned successfully.
- * @response `400` `ProblemDetails` The request was malformed.
- * @response `401` `ProblemDetails` Unauthorized
- * @response `403` `ProblemDetails` Forbidden
- * @response `404` `ProblemDetails` The requesting `User` is unauthorized to create `Leaderboard`s.
- * @response `422` `ValidationProblemDetails` Client Error
- */
-  leaderboardsCreate = (
+   * No description
+   *
+   * @tags Leaderboards
+   * @name GetLeaderboards
+   * @summary Gets leaderboards by their IDs.
+   * @request GET:/api/leaderboards
+   * @secure
+   * @response `200` `(LeaderboardViewModel)[]` OK
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `500` `void` Internal Server Error
+   */
+  getLeaderboards = (
+    query: GetLeaderboardsParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<LeaderboardViewModel[], ProblemDetails | void>({
+      path: `/api/leaderboards`,
+      method: 'GET',
+      query: query,
+      secure: true,
+      format: 'json',
+      ...params,
+    })
+  /**
+   * No description
+   *
+   * @tags Leaderboards
+   * @name CreateLeaderboard
+   * @summary Creates a new leaderboard. This request is restricted to Administrators.
+   * @request POST:/leaderboards/create
+   * @secure
+   * @response `201` `LeaderboardViewModel` Created
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `401` `void` Unauthorized
+   * @response `403` `void` The requesting `User` is unauthorized to create `Leaderboard`s.
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
+   * @response `500` `void` Internal Server Error
+   */
+  createLeaderboard = (
     data: CreateLeaderboardRequest,
     params: RequestParams = {},
   ) =>
     this.request<
       LeaderboardViewModel,
-      ProblemDetails | ValidationProblemDetails
+      ProblemDetails | void | ValidationProblemDetails
     >({
-      path: `/api/Leaderboards`,
+      path: `/leaderboards/create`,
       method: 'POST',
       body: data,
       secure: true,

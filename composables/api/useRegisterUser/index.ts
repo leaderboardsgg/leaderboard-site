@@ -18,7 +18,7 @@ export async function useRegisterUser(
   })
 
   return await useApi<UserViewModel>(
-    async () => await accountClient.registerCreate(requestData),
+    async () => await accountClient.register(requestData),
     {
       onError,
       onOkay,

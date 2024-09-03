@@ -15,15 +15,16 @@ export namespace Users {
   /**
    * No description
    * @tags Users
-   * @name UsersDetail
+   * @name GetUser
    * @summary Gets a User by their ID.
-   * @request GET:/api/Users/{id}
+   * @request GET:/api/user/{id}
    * @secure
    * @response `200` `UserViewModel` The `User` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No `User` with the requested ID could be found.
+   * @response `404` `void` No `User` with the requested ID could be found.
+   * @response `500` `void` Internal Server Error
    */
-  export namespace UsersDetail {
+  export namespace GetUser {
     export type RequestParams = {
       /**
        * The ID of the `User` which should be retrieved.
@@ -38,17 +39,19 @@ export namespace Users {
   }
 
   /**
-   * @description Call this method with the 'Authorization' header. A valid JWT bearer token must be passed.<br /> Example: `{ 'Authorization': 'Bearer JWT' }`.
+   * @description Call this method with the 'Authorization' header. A valid JWT bearer token must be passed. Example: `{ 'Authorization': 'Bearer JWT' }`.
    * @tags Users
-   * @name UsersMeList
+   * @name Me
    * @summary Gets the currently logged-in User.
-   * @request GET:/api/Users/me
+   * @request GET:/user/me
    * @secure
-   * @response `200` `UserViewModel` The `User` was found and returned successfully..
-   * @response `401` `ProblemDetails` An invalid JWT was passed in.
-   * @response `404` `ProblemDetails` The user was not found in the database.
+   * @response `200` `UserViewModel` The `User` was found and returned successfully.
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `401` `void` An invalid JWT was passed in.
+   * @response `404` `void` The user was not found in the database.
+   * @response `500` `void` Internal Server Error
    */
-  export namespace UsersMeList {
+  export namespace Me {
     export type RequestParams = {}
     export type RequestQuery = {}
     export type RequestBody = never

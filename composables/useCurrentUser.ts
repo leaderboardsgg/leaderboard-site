@@ -18,7 +18,7 @@ export default function useCurrentUser() {
 
       const resp = await useApi<UserViewModel>(
         async () =>
-          await users.usersMeList({
+          await users.me({
             headers: { Authorization: `Bearer ${token}` },
           }),
       )
