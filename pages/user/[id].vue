@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import ProfileHeader from 'blocks/ProfileHeader/ProfileHeader.vue'
+import { useGetUser } from '~/composables/api'
 
 const route = useRoute()
 const userId = route.params.id as string
-const userDetail = await useGetUserDetail(userId)
+const userDetail = await useGetUser(userId)
 </script>
 
 <template>
