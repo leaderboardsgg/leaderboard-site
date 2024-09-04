@@ -46,7 +46,7 @@ describe('<ForgotPasswordCard />', () => {
       beforeEach(() => {
         vi.mock('lib/api/Account', () => ({
           Account: function Account() {
-            this.recoverCreate = mockSuccessAccountRecoverCreate
+            this.sendRecoveryEmail = mockSuccessAccountRecoverCreate
           },
         }))
       })

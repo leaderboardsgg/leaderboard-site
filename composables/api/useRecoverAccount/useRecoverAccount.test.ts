@@ -1,6 +1,6 @@
 import useRecoverAccount from '.'
 
-const mockSuccessRecoverCreate = vi.fn(() => Promise.resolve({ ok: true }))
+const mockSuccessRecover = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useRecoverAccount', () => {
   describe('when everything is successful', () => {
@@ -9,14 +9,14 @@ describe('useRecoverAccount', () => {
     it('kicks off the account recovery process', async () => {
       vi.mock('lib/api/Account', () => ({
         Account: function Account() {
-          this.recoverCreate = mockSuccessRecoverCreate
+          this.sendRecoveryEmail = mockSuccessRecover
         },
       }))
 
       await useRecoverAccount(requestData)
 
-      expect(mockSuccessRecoverCreate).toBeCalledTimes(1)
-      expect(mockSuccessRecoverCreate).toBeCalledWith(requestData)
+      expect(mockSuccessRecover).toBeCalledTimes(1)
+      expect(mockSuccessRecover).toBeCalledWith(requestData)
     })
   })
 })

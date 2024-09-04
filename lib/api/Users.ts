@@ -19,37 +19,40 @@ export class Users<
    * No description
    *
    * @tags Users
-   * @name UsersDetail
+   * @name GetUser
    * @summary Gets a User by their ID.
-   * @request GET:/api/Users/{id}
+   * @request GET:/api/user/{id}
    * @secure
    * @response `200` `UserViewModel` The `User` was found and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `ProblemDetails` No `User` with the requested ID could be found.
+   * @response `404` `void` No `User` with the requested ID could be found.
+   * @response `500` `void` Internal Server Error
    */
-  usersDetail = (id: string, params: RequestParams = {}) =>
-    this.request<UserViewModel, ProblemDetails>({
-      path: `/api/Users/${id}`,
+  getUser = (id: string, params: RequestParams = {}) =>
+    this.request<UserViewModel, ProblemDetails | void>({
+      path: `/api/user/${id}`,
       method: 'GET',
       secure: true,
       format: 'json',
       ...params,
     })
   /**
-   * @description Call this method with the 'Authorization' header. A valid JWT bearer token must be passed.<br /> Example: `{ 'Authorization': 'Bearer JWT' }`.
+   * @description Call this method with the 'Authorization' header. A valid JWT bearer token must be passed. Example: `{ 'Authorization': 'Bearer JWT' }`.
    *
    * @tags Users
-   * @name UsersMeList
+   * @name Me
    * @summary Gets the currently logged-in User.
-   * @request GET:/api/Users/me
+   * @request GET:/user/me
    * @secure
-   * @response `200` `UserViewModel` The `User` was found and returned successfully..
-   * @response `401` `ProblemDetails` An invalid JWT was passed in.
-   * @response `404` `ProblemDetails` The user was not found in the database.
+   * @response `200` `UserViewModel` The `User` was found and returned successfully.
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `401` `void` An invalid JWT was passed in.
+   * @response `404` `void` The user was not found in the database.
+   * @response `500` `void` Internal Server Error
    */
-  usersMeList = (params: RequestParams = {}) =>
-    this.request<UserViewModel, ProblemDetails>({
-      path: `/api/Users/me`,
+  me = (params: RequestParams = {}) =>
+    this.request<UserViewModel, ProblemDetails | void>({
+      path: `/user/me`,
       method: 'GET',
       secure: true,
       format: 'json',

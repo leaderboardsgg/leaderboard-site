@@ -13,52 +13,52 @@ import type {
   CategoryViewModel,
   CreateRunRequest,
   RunViewModel,
+  ScoredRunViewModel,
+  TimedRunViewModel,
 } from './data-contracts'
 
 export namespace Runs {
   /**
    * No description
    * @tags Runs
-   * @name RunsDetail
+   * @name GetRun
    * @summary Gets a Run by its ID.
-   * @request GET:/api/Runs/{id}
+   * @request GET:/api/run/{id}
    * @secure
-   * @response `200` `RunViewModel` The `Run` was found and returned successfully.
+   * @response `200` `(RunViewModel | TimedRunViewModel | ScoredRunViewModel)` OK
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `ProblemDetails` Unauthorized
-   * @response `403` `ProblemDetails` Forbidden
-   * @response `404` `ProblemDetails` No `Run` with the requested ID could be found.
+   * @response `404` `void` Not Found
+   * @response `500` `void` Internal Server Error
    */
-  export namespace RunsDetail {
+  export namespace GetRun {
     export type RequestParams = {
-      /**
-       * The ID of the `Run` which should be retrieved.<br />
-       * It must be possible to parse this to `long` for this request to complete.
-       * @pattern ^[a-zA-Z0-9-_]{22}$
-       */
+      /** @pattern ^[a-zA-Z0-9-_]{22}$ */
       id: string
     }
     export type RequestQuery = {}
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = RunViewModel
+    export type ResponseBody =
+      | RunViewModel
+      | TimedRunViewModel
+      | ScoredRunViewModel
   }
 
   /**
    * No description
    * @tags Runs
-   * @name RunsCreate
+   * @name CreateRun
    * @summary Creates a new Run.
-   * @request POST:/api/Runs
+   * @request POST:/runs/create
    * @secure
-   * @response `201` `void` The `Run` was created and returned successfully.
+   * @response `201` `void` Created
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `ProblemDetails` Unauthorized
-   * @response `403` `ProblemDetails` Forbidden
-   * @response `404` `ProblemDetails` Not Found
-   * @response `422` `ValidationProblemDetails` Client Error
+   * @response `401` `void` Unauthorized
+   * @response `403` `void` Forbidden
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
+   * @response `500` `void` Internal Server Error
    */
-  export namespace RunsCreate {
+  export namespace CreateRun {
     export type RequestParams = {}
     export type RequestQuery = {}
     export type RequestBody = CreateRunRequest
@@ -69,16 +69,16 @@ export namespace Runs {
   /**
    * No description
    * @tags Runs
-   * @name RunsCategoryDetail
-   * @request GET:/api/Runs/{id}/category
+   * @name GetRunCategory
+   * @summary Gets the category a run belongs to.
+   * @request GET:/api/run/{id}/category
    * @secure
-   * @response `200` `CategoryViewModel` Success
+   * @response `200` `CategoryViewModel` OK
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `ProblemDetails` Unauthorized
-   * @response `403` `ProblemDetails` Forbidden
-   * @response `404` `ProblemDetails` Not Found
+   * @response `404` `void` Not Found
+   * @response `500` `void` Internal Server Error
    */
-  export namespace RunsCategoryDetail {
+  export namespace GetRunCategory {
     export type RequestParams = {
       /** @pattern ^[a-zA-Z0-9-_]{22}$ */
       id: string

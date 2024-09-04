@@ -1,6 +1,6 @@
 import useChangePassword from '.'
 
-const mockSuccessRecoverCreate2 = vi.fn(() => Promise.resolve({ ok: true }))
+const mockSuccessChangePassword = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useChangePassword', () => {
   describe('when everything is successful', () => {
@@ -10,14 +10,14 @@ describe('useChangePassword', () => {
     it('changes the password for the user', async () => {
       vi.mock('lib/api/Account', () => ({
         Account: function Account() {
-          this.recoverCreate2 = mockSuccessRecoverCreate2
+          this.changePassword = mockSuccessChangePassword
         },
       }))
 
       await useChangePassword(token, requestData)
 
-      expect(mockSuccessRecoverCreate2).toBeCalledTimes(1)
-      expect(mockSuccessRecoverCreate2).toBeCalledWith(token, requestData)
+      expect(mockSuccessChangePassword).toBeCalledTimes(1)
+      expect(mockSuccessChangePassword).toBeCalledWith(token, requestData)
     })
   })
 })

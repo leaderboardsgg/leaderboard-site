@@ -18,7 +18,7 @@ export async function useConfirmAccount(
 
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
-    async () => await account.confirmUpdate(confirmationToken),
+    async () => await account.confirmAccount(confirmationToken),
     { onError, onOkay },
   )
 }

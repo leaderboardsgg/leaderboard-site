@@ -14,6 +14,8 @@ import type {
   CreateRunRequest,
   ProblemDetails,
   RunViewModel,
+  ScoredRunViewModel,
+  TimedRunViewModel,
   ValidationProblemDetails,
 } from './data-contracts'
 import { ContentType, HttpClient, type RequestParams } from './http-client'
@@ -25,19 +27,21 @@ export class Runs<
    * No description
    *
    * @tags Runs
-   * @name RunsDetail
+   * @name GetRun
    * @summary Gets a Run by its ID.
-   * @request GET:/api/Runs/{id}
+   * @request GET:/api/run/{id}
    * @secure
-   * @response `200` `RunViewModel` The `Run` was found and returned successfully.
+   * @response `200` `(RunViewModel | TimedRunViewModel | ScoredRunViewModel)` OK
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `ProblemDetails` Unauthorized
-   * @response `403` `ProblemDetails` Forbidden
-   * @response `404` `ProblemDetails` No `Run` with the requested ID could be found.
+   * @response `404` `void` Not Found
+   * @response `500` `void` Internal Server Error
    */
-  runsDetail = (id: string, params: RequestParams = {}) =>
-    this.request<RunViewModel, ProblemDetails>({
-      path: `/api/Runs/${id}`,
+  getRun = (id: string, params: RequestParams = {}) =>
+    this.request<
+      RunViewModel | TimedRunViewModel | ScoredRunViewModel,
+      ProblemDetails | void
+    >({
+      path: `/api/run/${id}`,
       method: 'GET',
       secure: true,
       format: 'json',
@@ -47,20 +51,20 @@ export class Runs<
    * No description
    *
    * @tags Runs
-   * @name RunsCreate
+   * @name CreateRun
    * @summary Creates a new Run.
-   * @request POST:/api/Runs
+   * @request POST:/runs/create
    * @secure
-   * @response `201` `void` The `Run` was created and returned successfully.
+   * @response `201` `void` Created
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `ProblemDetails` Unauthorized
-   * @response `403` `ProblemDetails` Forbidden
-   * @response `404` `ProblemDetails` Not Found
-   * @response `422` `ValidationProblemDetails` Client Error
+   * @response `401` `void` Unauthorized
+   * @response `403` `void` Forbidden
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
+   * @response `500` `void` Internal Server Error
    */
-  runsCreate = (data: CreateRunRequest, params: RequestParams = {}) =>
-    this.request<void, ProblemDetails | ValidationProblemDetails>({
-      path: `/api/Runs`,
+  createRun = (data: CreateRunRequest, params: RequestParams = {}) =>
+    this.request<void, ProblemDetails | void | ValidationProblemDetails>({
+      path: `/runs/create`,
       method: 'POST',
       body: data,
       secure: true,
@@ -71,18 +75,18 @@ export class Runs<
    * No description
    *
    * @tags Runs
-   * @name RunsCategoryDetail
-   * @request GET:/api/Runs/{id}/category
+   * @name GetRunCategory
+   * @summary Gets the category a run belongs to.
+   * @request GET:/api/run/{id}/category
    * @secure
-   * @response `200` `CategoryViewModel` Success
+   * @response `200` `CategoryViewModel` OK
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `ProblemDetails` Unauthorized
-   * @response `403` `ProblemDetails` Forbidden
-   * @response `404` `ProblemDetails` Not Found
+   * @response `404` `void` Not Found
+   * @response `500` `void` Internal Server Error
    */
-  runsCategoryDetail = (id: string, params: RequestParams = {}) =>
-    this.request<CategoryViewModel, ProblemDetails>({
-      path: `/api/Runs/${id}/category`,
+  getRunCategory = (id: string, params: RequestParams = {}) =>
+    this.request<CategoryViewModel, ProblemDetails | void>({
+      path: `/api/run/${id}/category`,
       method: 'GET',
       secure: true,
       format: 'json',

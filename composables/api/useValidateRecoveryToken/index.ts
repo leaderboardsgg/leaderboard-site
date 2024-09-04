@@ -18,7 +18,7 @@ export async function useValidateRecoveryToken(
 
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
-    async () => await account.recoverDetail(recoveryToken),
+    async () => await account.testRecoveryToken(recoveryToken),
     { onError, onOkay },
   )
 }

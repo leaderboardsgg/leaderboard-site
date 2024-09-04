@@ -4,10 +4,10 @@ import LogInCard from './LogInCard.vue'
 import * as apiComposables from 'composables/api'
 
 const token = 'jwt-token'
-const mockSuccessAccountLoginCreate = vi.fn(() =>
+const mockSuccessAccountLogin = vi.fn(() =>
   Promise.resolve({ data: { token }, ok: true }),
 )
-const mockSuccessUsersMeList = vi.fn(() =>
+const mockSuccessMe = vi.fn(() =>
   Promise.resolve({
     data: { id: 1, username: 'admin' },
     ok: true,
@@ -22,12 +22,12 @@ describe('<LogInCard />', () => {
   beforeEach(() => {
     vi.mock('lib/api/Account', () => ({
       Account: function Account() {
-        this.loginCreate = mockSuccessAccountLoginCreate
+        this.login = mockSuccessAccountLogin
       },
     }))
     vi.mock('lib/api/Users', () => ({
       Users: function Users() {
-        this.usersMeList = mockSuccessUsersMeList
+        this.me = mockSuccessMe
       },
     }))
   })
@@ -115,7 +115,7 @@ describe('<LogInCard />', () => {
       await getByTestId(wrapper, 'login-button').trigger('click')
 
       expect(useLoginUserSpy).toBeCalledTimes(1)
-      expect(mockSuccessAccountLoginCreate).toBeCalledTimes(1)
+      expect(mockSuccessAccountLogin).toBeCalledTimes(1)
     })
   })
 

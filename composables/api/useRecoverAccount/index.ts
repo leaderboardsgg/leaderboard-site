@@ -18,7 +18,7 @@ export async function useRecoverAccount(
 
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
-    async () => await account.recoverCreate(requestData),
+    async () => await account.sendRecoveryEmail(requestData),
     {
       onError,
       onOkay,
