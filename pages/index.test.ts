@@ -9,10 +9,6 @@ describe('/index', () => {
 
   it('should render the placeholder text', async () => {
     const IndexWrapper = await mountSuspended(index)
-    expect(
-      IndexWrapper.html().includes(
-        'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
-      ),
-    ).toBe(true)
+    expect(IndexWrapper.html().includes('About Leaderboards.gg')).toBe(true)
   })
 })

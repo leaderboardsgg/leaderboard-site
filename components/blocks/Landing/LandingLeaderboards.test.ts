@@ -1,13 +1,17 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import Landing from './LandingLeaderboards.vue'
+import { useGetLeaderboards } from '~/composables/api'
+
+const mockSuccessGetLeaderboards = vi.fn(() => Promise.resolve({ ok: true }))
+vi.mock('lib/api/Leaderboards', () => ({
+  Leaderboards: function Leaderboards() {
+    this.getLeaderboards = mockSuccessGetLeaderboards
+  },
+}))
+
+const leaderboards = await useGetLeaderboards()
 
 describe('LandingLeaderboards Component', () => {
-  const leaderboards = [
-    { id: 1, name: 'Getting Over It With Bennet Foddy' },
-    { id: 2, name: 'Getting Over It With Bennet Foddy' },
-    { id: 3, name: 'Getting Over It With Bennet Foddy' },
-  ]
-
   it('should render without crashing', async () => {
     const wrapper = await mountSuspended(Landing, {
       props: {
