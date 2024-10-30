@@ -1,6 +1,7 @@
 export { default as useChangePassword } from './useChangePassword'
 export { default as useConfirmAccount } from './useConfirmAccount'
 export { default as useGetLeaderboardBySlug } from './useGetLeaderboardBySlug'
+export { default as useGetLeaderboards } from './useGetLeaderboards'
 export { default as useGetUser } from './useGetUser'
 export { default as useLoginUser } from './useLoginUser'
 export { default as useLogoutUser } from './useLogoutUser'

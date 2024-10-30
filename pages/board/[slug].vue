@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRoute } from '#imports'
 import LeaderboardInfo from 'blocks/LeaderboardInfo/LeaderboardInfo.vue'
 import Loader from 'blocks/Loader/Loader.vue'
 import { useGetLeaderboardBySlug } from '~/composables/api'
