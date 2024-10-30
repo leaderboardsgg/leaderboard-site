@@ -13,12 +13,12 @@ defineProps<LandingLeaderboardsProps>()
 <template>
   <div
     id="landing-leaderboards"
-    class="grid w-full auto-rows-[1fr] grid-cols-1 items-start gap-4 align-middle lg:grid-cols-2"
+    class="mb-4 grid w-full grid-cols-1 content-start items-start gap-4 lg:grid-cols-2"
   >
     <NuxtLink
       v-for="leaderboard in leaderboards.data"
       :key="leaderboard.id"
-      class="mb-2 content-center bg-gray-200 px-8 py-8 hover:cursor-pointer hover:text-lbgreen"
+      class="mb-2 h-full content-center bg-gray-200 p-8 hover:cursor-pointer hover:text-lbgreen"
       :to="
         localePath({
           name: 'board-slug',
@@ -26,7 +26,7 @@ defineProps<LandingLeaderboardsProps>()
         })
       "
     >
-      <span class="break-words font-bold">
+      <span class="contents break-words font-bold">
         {{ leaderboard?.name }}
       </span>
     </NuxtLink>
