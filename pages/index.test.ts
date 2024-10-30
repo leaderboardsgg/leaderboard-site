@@ -11,7 +11,7 @@ describe('/index', () => {
     const IndexWrapper = await mountSuspended(index)
     expect(
       IndexWrapper.html().includes(
-        'This is just a primary content placeholder.',
+        'WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW',
       ),
     ).toBe(true)
   })
