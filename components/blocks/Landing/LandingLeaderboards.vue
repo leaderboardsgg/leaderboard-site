@@ -8,7 +8,7 @@ defineProps<LandingLeaderboardsProps>()
 <template>
   <div
     id="landing-leaderboards"
-    class="grid auto-rows-[1fr] grid-cols-2 justify-center gap-4 align-middle"
+    class="grid auto-rows-[1fr] grid-cols-1 justify-center gap-4 align-middle lg:grid-cols-2"
   >
     <div
       v-for="leaderboard in leaderboards"
