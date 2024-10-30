@@ -18,7 +18,7 @@ defineProps<LandingLeaderboardsProps>()
     <NuxtLink
       v-for="leaderboard in leaderboards.data"
       :key="leaderboard.id"
-      class="mb-2 content-center bg-gray-200 px-4 py-2 hover:cursor-pointer hover:text-lbgreen"
+      class="mb-2 content-center bg-gray-200 px-8 py-8 hover:cursor-pointer hover:text-lbgreen"
       :to="
         localePath({
           name: 'board-slug',
