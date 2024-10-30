@@ -3,3 +3,7 @@ interface Socials {
   name: string
   url: string
 }
+
+interface Leaderboard {
+  name: string
+}
