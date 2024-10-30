@@ -12,7 +12,7 @@ defineProps<LandingLeaderboardsProps>()
   >
     <div
       v-for="leaderboard in leaderboards"
-      :key="leaderboard"
+      :key="leaderboard.id"
       class="mb-2 content-center bg-gray-200 px-4 py-2"
     >
       <span class="break-words">

@@ -5,5 +5,6 @@ interface Socials {
 }
 
 interface Leaderboard {
+  id: number
   name: string
 }

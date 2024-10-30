@@ -3,9 +3,9 @@ import Landing from './LandingLeaderboards.vue'
 
 describe('LandingLeaderboards Component', () => {
   const leaderboards = [
-    { name: 'Getting Over It With Bennet Foddy' },
-    { name: 'Getting Over It With Bennet Foddy' },
-    { name: 'Getting Over It With Bennet Foddy' },
+    { id: 1, name: 'Getting Over It With Bennet Foddy' },
+    { id: 2, name: 'Getting Over It With Bennet Foddy' },
+    { id: 3, name: 'Getting Over It With Bennet Foddy' },
   ]
 
   it('should render without crashing', async () => {
