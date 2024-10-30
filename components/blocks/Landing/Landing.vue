@@ -30,7 +30,7 @@ const leaderboards: Leaderboard[] = [
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex flex-col lg:flex-row">
     <LandingLeaderboards :leaderboards="leaderboards"></LandingLeaderboards>
     <LandingAbout />
   </div>

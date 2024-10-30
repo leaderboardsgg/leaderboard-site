@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <div id="landing-about" class="max-w-[330px] pl-4">
+  <div id="landing-about" class="lg:max-w-[330px] lg:pl-4">
     <aside class="bg-gray-200 p-4">
       <h2>About Leaderboards.gg</h2>
       <h3>Explination 1</h3>
