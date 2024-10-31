@@ -13,7 +13,7 @@
           nunc vel quam congue, eget venenatis dui vehicula. Praesent mi tortor,
           accumsan commodo massa...
         </p>
-        <a href="#" class="text-sm text-lbgreen">Link Out</a>
+        <a href="#" class="text-sm text-blue-500 underline">Link Out</a>
       </div>
       <div class="mb-4">
         <h3 class="mb-2 text-lg font-bold">Explanation 2</h3>
@@ -24,7 +24,7 @@
           nunc vel quam congue, eget venenatis dui vehicula. Praesent mi tortor,
           accumsan commodo massa...
         </p>
-        <a href="#" class="text-sm text-lbgreen">Link Out</a>
+        <a href="#" class="text-sm text-blue-500 underline">Link Out</a>
       </div>
       <div class="mb-4">
         <h3 class="mb-2 text-lg font-bold">Explanation 3</h3>
@@ -35,7 +35,7 @@
           nunc vel quam congue, eget venenatis dui vehicula. Praesent mi tortor,
           accumsan commodo massa...
         </p>
-        <a href="#" class="text-sm text-lbgreen">Link Out</a>
+        <a href="#" class="text-sm text-blue-500 underline">Link Out</a>
       </div>
     </aside>
   </div>
