@@ -1,4 +1,4 @@
-import { DOMWrapper, VueWrapper } from '@vue/test-utils'
+import type { DOMWrapper, VueWrapper } from '@vue/test-utils'
 type WrappedElement = Omit<DOMWrapper<Element>, 'exists'>
 
 export function getByClass(
