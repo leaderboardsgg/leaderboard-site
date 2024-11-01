@@ -8,7 +8,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import js from '@eslint/js'
 import { FlatCompat } from '@eslint/eslintrc'
-import withNuxt from './.nuxt/eslint.config.mjs'
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -18,7 +18,7 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 })
 
-export default withNuxt(
+export default createConfigForNuxt(
   {
     ignores: [
       '**/.nuxt',
@@ -36,11 +36,8 @@ export default withNuxt(
     ],
   },
   ...compat.extends(
-    // '@nuxtjs/eslint-config-typescript',
     'plugin:vue/vue3-recommended',
     'plugin:@typescript-eslint/recommended',
-    // 'plugin:nuxt/recommended',
-    '@vue/eslint-config-typescript',
     'plugin:prettier/recommended',
     'plugin:vuejs-accessibility/recommended',
     'plugin:tailwindcss/recommended',
@@ -48,7 +45,6 @@ export default withNuxt(
   {
     plugins: {
       '@typescript-eslint': typescriptEslint,
-      // nuxt,
       prettier,
       tailwindcss,
       vue,
