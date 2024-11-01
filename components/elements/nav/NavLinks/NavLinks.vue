@@ -11,10 +11,6 @@ interface NavLinksProps {
 withDefaults(defineProps<NavLinksProps>(), {
   navLinks: () => [
     {
-      name: 'Games',
-      to: '#',
-    },
-    {
       name: 'About',
       to: '#',
     },
