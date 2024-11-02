@@ -15,7 +15,7 @@ defineProps<LandingLeaderboardsProps>()
     class="mb-4 grid w-full grid-cols-1 content-start items-start gap-4 lg:grid-cols-2"
   >
     <NuxtLink
-      v-for="leaderboard in leaderboards.data"
+      v-for="leaderboard in leaderboards"
       :key="leaderboard.id"
       class="mb-2 h-full content-center rounded-lg bg-gray-200 p-8 text-blue-500 underline hover:cursor-pointer"
       :to="
