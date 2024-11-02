@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import type { ApiResponse } from '~/composables/useApi'
 import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
 import { useLocalePath } from '#imports'
 const localePath = useLocalePath()
 
 interface LandingLeaderboardsProps {
-  leaderboards: ApiResponse<LeaderboardViewModel[]>
+  leaderboards: LeaderboardViewModel[]
 }
 
 defineProps<LandingLeaderboardsProps>()

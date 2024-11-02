@@ -15,7 +15,7 @@ const leaderboards = await useGetLeaderboards()
       <Loader v-if="leaderboards.loading"></Loader>
       <LandingLeaderboards
         v-if="!leaderboards.loading && leaderboards.data != null"
-        :leaderboards="leaderboards"
+        :leaderboards="leaderboards.data"
       />
       <LandingAbout />
     </div>

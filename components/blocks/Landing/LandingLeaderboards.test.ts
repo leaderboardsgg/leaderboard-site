@@ -1,15 +1,28 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import Landing from './LandingLeaderboards.vue'
-import { useGetLeaderboards } from '~/composables/api'
 
-const mockSuccessGetLeaderboards = vi.fn(() => Promise.resolve({ ok: true }))
-vi.mock('lib/api/Leaderboards', () => ({
-  Leaderboards: function Leaderboards() {
-    this.getLeaderboards = mockSuccessGetLeaderboards
+const leaderboards = [
+  {
+    id: 1,
+    name: 'Getting Over It With Bennet Foddy',
+    slug: 'slug-2',
+    info: null,
+    createdAt: '2024-11-02T22:11:08+0000',
+    updatedAt: '2024-11-02T22:11:08+0000',
+    deletedAt: null,
+    categories: [],
   },
-}))
-
-const leaderboards = await useGetLeaderboards()
+  {
+    id: 2,
+    name: 'Getting Over It With Bennet Foddy',
+    slug: 'slug-2',
+    info: null,
+    createdAt: '2024-11-02T22:11:08+0000',
+    updatedAt: '2024-11-02T22:11:08+0000',
+    deletedAt: null,
+    categories: [],
+  },
+]
 
 describe('LandingLeaderboards Component', () => {
   it('should render without crashing', async () => {
