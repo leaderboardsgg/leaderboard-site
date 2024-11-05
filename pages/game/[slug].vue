@@ -1,21 +1,27 @@
 <script setup lang="ts">
-import { useRoute } from '#imports'
-import LeaderboardInfo from 'blocks/LeaderboardInfo/LeaderboardInfo.vue'
+import { useRoute, createError } from '#imports'
+// import LeaderboardInfo from 'blocks/LeaderboardInfo/LeaderboardInfo.vue'
 import Loader from 'blocks/Loader/Loader.vue'
 import { useGetLeaderboardBySlug } from '~/composables/api'
-
+import LeaderboardInfo from '~/components/blocks/LeaderboardInfo/LeaderboardInfo.vue'
 const route = useRoute()
 const leaderboardSlug = route.params.slug as string
 const leaderboardDetail = await useGetLeaderboardBySlug(leaderboardSlug)
+
+if (leaderboardDetail?.error?.status == 404) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Page Not Found',
+    fatal: true,
+  })
+}
 </script>
 
 <template>
   <div>
     <Loader v-if="leaderboardDetail.loading"></Loader>
     <LeaderboardInfo
-      v-if="!leaderboardDetail.loading && leaderboardDetail.data != null"
-      :leaderboard="leaderboardDetail.data!"
-      @follow="(id) => console.log(id)"
+      :leaderboard="!leaderboardDetail.loading && leaderboardDetail.data"
     />
   </div>
 </template>

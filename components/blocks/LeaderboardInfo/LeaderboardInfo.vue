@@ -1,55 +1,21 @@
-<script setup lang="ts">
-import { useThrottleFn } from '@vueuse/core'
-import resolveConfig from 'tailwindcss/resolveConfig'
-import { ref } from 'vue'
-import tailwindConfig from 'root/tailwind.config'
-import Desktop from './Desktop/Desktop.vue'
-import Mobile from './Mobile/Mobile.vue'
-import type { LeaderboardViewModel } from 'lib/api/data-contracts'
-
-export interface LeaderboardInfoProps {
+<script lang="ts" setup>
+import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
+import LeaderboardInfoAccordion from './LeaderboardInfoAccordion.vue'
+interface LeaderboardInfoProps {
   leaderboard: LeaderboardViewModel
 }
-
-// TODO: Remove this. Get from model instead.
-const todoPlatforms = ['PS4', 'PC', 'XboxSeriesX']
-
-// TODO: Implement listeners
-const emit = defineEmits<{
-  (event: 'follow', leaderboardId: number): void
-}>()
-
-const mobileWidth = parseInt(
-  resolveConfig(tailwindConfig).theme.screens.sm.replace('px', ''),
-  10,
-)
-
-const isMobile = ref(window.innerWidth <= mobileWidth)
-
-function checkIsMobile() {
-  isMobile.value = window.innerWidth <= mobileWidth
-}
-
-window.addEventListener('resize', useThrottleFn(checkIsMobile, 20))
 
 defineProps<LeaderboardInfoProps>()
 </script>
 
 <template>
-  <Mobile
-    v-if="isMobile.valueOf()"
-    data-testid="child"
-    :leaderboard="leaderboard"
-    :todo-platforms="todoPlatforms"
-    @follow="emit('follow', leaderboard.id)"
-  />
-  <Desktop
-    v-else
-    data-testid="child"
-    :leaderboard="leaderboard"
-    :todo-platforms="todoPlatforms"
-    @follow="emit('follow', leaderboard.id)"
-  />
+  <div class="flex w-full flex-col rounded border border-gray-300 p-5">
+    <div id="leaderboard-show-header" class="mb-4 bg-gray-200 p-4">
+      <h1 class="mb-4 text-xl font-bold">{{ leaderboard.name }}</h1>
+      <LeaderboardInfoAccordion
+        v-if="leaderboard?.info"
+        :info="leaderboard.info"
+      />
+    </div>
+  </div>
 </template>
-
-<style lang="postcss" scoped></style>
