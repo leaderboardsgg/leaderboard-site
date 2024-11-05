@@ -18,8 +18,7 @@ import type {
   TimedRunViewModel,
   ValidationProblemDetails,
 } from './data-contracts'
-import type { RequestParams } from './http-client'
-import { ContentType, HttpClient } from './http-client'
+import { ContentType, HttpClient, type RequestParams } from './http-client'
 
 export class Runs<
   SecurityDataType = unknown,
