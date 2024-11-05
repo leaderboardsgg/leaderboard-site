@@ -10,7 +10,8 @@
  */
 
 import type { ProblemDetails, UserViewModel } from './data-contracts'
-import { HttpClient, type RequestParams } from './http-client'
+import type { RequestParams } from './http-client'
+import { HttpClient } from './http-client'
 
 export class Users<
   SecurityDataType = unknown,

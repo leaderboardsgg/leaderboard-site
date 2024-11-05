@@ -1,4 +1,4 @@
- 
+/* eslint-disable */
 /* tslint:disable */
 /*
  * ---------------------------------------------------------------
@@ -51,6 +51,7 @@ export interface CategoryViewModel {
 }
 
 export interface ChangePasswordRequest {
+  /** @minLength 1 */
   password: string
 }
 
@@ -86,6 +87,7 @@ export interface CreateCategoryRequest {
 export interface CreateLeaderboardRequest {
   /**
    * The display name of the `Leaderboard` to create.
+   * @minLength 1
    * @example "Foo Bar"
    */
   name: string
@@ -93,10 +95,11 @@ export interface CreateLeaderboardRequest {
    * The URL-scoped unique identifier of the `Leaderboard`.
    *
    * Must be [2, 80] in length and consist only of alphanumeric characters and hyphens.
+   * @minLength 1
    * @example "foo-bar"
    */
   slug: string
-  info: string | null
+  info?: string
 }
 
 /** This request object is sent when creating a `Run`. */
@@ -142,7 +145,7 @@ export interface LeaderboardViewModel {
    * The general information for the Leaderboard.
    * @example "Timer starts on selecting New Game and ends when the final boss is beaten."
    */
-  info: string | null
+  info: string
   /**
    * The time the Leaderboard was created.
    * @format date-time
@@ -224,17 +227,20 @@ export interface RegisterRequest {
    * Usernames are saved case-sensitively, but matched against case-insensitively.
    * A `User` may not register with the name 'Cool' when another `User` with the name 'cool'
    * exists.
+   * @minLength 1
    * @example "J'on-Doe"
    */
   username: string
   /**
    * The `User`'s email address.
+   * @minLength 1
    * @example "john.doe@example.com"
    */
   email: string
   /**
    * The `User`'s password. It:
    * <ul><li>supports Unicode;</li><li>must be [8, 80] in length;</li><li>must have at least:</li><ul><li>one uppercase letter;</li><li>one lowercase letter; and</li><li>one number.</li></ul></ul>
+   * @minLength 1
    * @example "P4ssword"
    */
   password: string
@@ -264,6 +270,12 @@ export type TimedRunViewModel = BaseRunViewModel & {
    * @example "25:01:01.001"
    */
   time: string
+}
+
+export interface UpdateLeaderboardRequest {
+  name?: string
+  slug?: string
+  info?: string
 }
 
 export type UserRole = 'Registered' | 'Confirmed' | 'Administrator' | 'Banned'
@@ -353,6 +365,7 @@ export interface GetLeaderboardBySlugParams {
   slug: string
 }
 
-export interface GetLeaderboardsParams {
-  ids?: number[]
+export interface ListLeaderboardsParams {
+  /** @default false */
+  includeDeleted?: boolean
 }

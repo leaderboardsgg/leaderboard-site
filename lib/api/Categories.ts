@@ -15,7 +15,8 @@ import type {
   ProblemDetails,
   ValidationProblemDetails,
 } from './data-contracts'
-import { ContentType, HttpClient, type RequestParams } from './http-client'
+import type { RequestParams } from './http-client'
+import { ContentType, HttpClient } from './http-client'
 
 export class Categories<
   SecurityDataType = unknown,
