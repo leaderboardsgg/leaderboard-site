@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useRoute, createError } from '#imports'
-// import LeaderboardInfo from 'blocks/LeaderboardInfo/LeaderboardInfo.vue'
 import Loader from 'blocks/Loader/Loader.vue'
 import { useGetLeaderboardBySlug } from '~/composables/api'
 import LeaderboardInfo from '~/components/blocks/LeaderboardInfo/LeaderboardInfo.vue'
@@ -20,8 +19,6 @@ if (leaderboardDetail?.error?.status == 404) {
 <template>
   <div>
     <Loader v-if="leaderboardDetail.loading"></Loader>
-    <LeaderboardInfo
-      :leaderboard="!leaderboardDetail.loading && leaderboardDetail.data"
-    />
+    <LeaderboardInfo v-else :leaderboard="leaderboardDetail?.data!" />
   </div>
 </template>
