@@ -52,7 +52,7 @@ export namespace Account {
    * @response `401` `void` The password given was incorrect.
    * @response `403` `void` The associated `User` is banned.
    * @response `404` `void` No `User` with the requested details could be found.
-   * @response `422` `ValidationProblemDetails` The request contains errors. Validation error codes by property: - **Password**: - **NotEmptyValidator**: No password was passed - **PasswordFormat**: Invalid password format - **Email**: - **NotNullValidator**: No email was passed - **EmailValidator**: Invalid email format
+   * @response `422` `ValidationProblemDetails` The request contains errors. Validation error codes by property: - **Password**: - **NotEmptyValidator**: No password was passed - **PasswordFormat**: Invalid password format - **Email**: - **NotEmptyValidator**: No email was passed - **EmailValidator**: Invalid email format
    * @response `500` `void` Internal Server Error
    */
   export namespace Login {

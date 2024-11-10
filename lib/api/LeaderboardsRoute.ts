@@ -12,6 +12,7 @@
 import type {
   CreateLeaderboardRequest,
   LeaderboardViewModel,
+  UpdateLeaderboardRequest,
 } from './data-contracts'
 
 export namespace Leaderboards {
@@ -42,7 +43,7 @@ export namespace Leaderboards {
    * No description
    * @tags Leaderboards
    * @name GetLeaderboardBySlug
-   * @summary Gets a Leaderboard by its slug.
+   * @summary Gets a leaderboard by its slug.
    * @request GET:/api/leaderboard
    * @secure
    * @response `200` `LeaderboardViewModel` OK
@@ -63,18 +64,19 @@ export namespace Leaderboards {
   /**
    * No description
    * @tags Leaderboards
-   * @name GetLeaderboards
-   * @summary Gets leaderboards by their IDs.
+   * @name ListLeaderboards
+   * @summary Gets all leaderboards.
    * @request GET:/api/leaderboards
    * @secure
    * @response `200` `(LeaderboardViewModel)[]` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `500` `void` Internal Server Error
    */
-  export namespace GetLeaderboards {
+  export namespace ListLeaderboards {
     export type RequestParams = {}
     export type RequestQuery = {
-      ids?: number[]
+      /** @default false */
+      includeDeleted?: boolean
     }
     export type RequestBody = never
     export type RequestHeaders = {}
@@ -92,7 +94,8 @@ export namespace Leaderboards {
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
    * @response `403` `void` The requesting `User` is unauthorized to create `Leaderboard`s.
-   * @response `422` `ValidationProblemDetails` Unprocessable Content
+   * @response `409` `ValidationProblemDetails` A Leaderboard with the specified slug already exists.
+   * @response `422` `ValidationProblemDetails` The request contains errors. The following errors can occur: NotEmptyValidator, SlugFormat
    * @response `500` `void` Internal Server Error
    */
   export namespace CreateLeaderboard {
@@ -101,5 +104,83 @@ export namespace Leaderboards {
     export type RequestBody = CreateLeaderboardRequest
     export type RequestHeaders = {}
     export type ResponseBody = LeaderboardViewModel
+  }
+
+  /**
+   * No description
+   * @tags Leaderboards
+   * @name RestoreLeaderboard
+   * @summary Restores a deleted leaderboard.
+   * @request PUT:/leaderboard/{id}/restore
+   * @secure
+   * @response `200` `LeaderboardViewModel` The restored `Leaderboard`s view model.
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `401` `void` Unauthorized
+   * @response `403` `void` The requesting `User` is unauthorized to restore `Leaderboard`s.
+   * @response `404` `ProblemDetails` The `Leaderboard` was not found, or it wasn't deleted in the first place. Includes a field, `title`, which will be "Not Found" in the former case, and "Not Deleted" in the latter.
+   * @response `409` `LeaderboardViewModel` Another `Leaderboard` with the same slug has been created since, and therefore can't be restored. Will include the conflicting board in the response.
+   * @response `500` `void` Internal Server Error
+   */
+  export namespace RestoreLeaderboard {
+    export type RequestParams = {
+      /** @format int64 */
+      id: number
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = LeaderboardViewModel
+  }
+
+  /**
+   * No description
+   * @tags Leaderboards
+   * @name DeleteLeaderboard
+   * @summary Deletes a leaderboard. This request is restricted to Administrators.
+   * @request DELETE:/leaderboard/{id}
+   * @secure
+   * @response `204` `void` No Content
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `401` `void` Unauthorized
+   * @response `403` `void` Forbidden
+   * @response `404` `ProblemDetails` The leaderboard does not exist (Not Found) or was already deleted (Already Deleted). Use the title field of the response to differentiate between the two cases if necessary.
+   * @response `500` `void` Internal Server Error
+   */
+  export namespace DeleteLeaderboard {
+    export type RequestParams = {
+      /** @format int64 */
+      id: number
+    }
+    export type RequestQuery = {}
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = void
+  }
+
+  /**
+   * No description
+   * @tags Leaderboards
+   * @name UpdateLeaderboard
+   * @summary Updates a leaderboard with the specified new fields. This request is restricted to administrators. This operation is atomic; if an error occurs, the leaderboard will not be updated. All fields of the request body are optional but you must specify at least one.
+   * @request PATCH:/leaderboard/{id}
+   * @secure
+   * @response `204` `void` No Content
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `401` `void` Unauthorized
+   * @response `403` `void` Forbidden
+   * @response `404` `ProblemDetails` Not Found
+   * @response `409` `LeaderboardViewModel` The specified slug is already in use by another leaderboard. Returns the conflicting leaderboard.
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
+   * @response `500` `void` Internal Server Error
+   */
+  export namespace UpdateLeaderboard {
+    export type RequestParams = {
+      /** @format int64 */
+      id: number
+    }
+    export type RequestQuery = {}
+    export type RequestBody = UpdateLeaderboardRequest
+    export type RequestHeaders = {}
+    export type ResponseBody = void
   }
 }
