@@ -1,7 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import useGetLeaderboardBySlug from '~/composables/api/useGetLeaderboardBySlug/index'
 import gamePage from 'pages/game/[slug].vue'
-
+import { useError } from '#imports'
 import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
 
 const leaderboard: LeaderboardViewModel = {
@@ -41,11 +41,13 @@ describe('/game/:slug', () => {
       errors: null,
     })
 
-    // this correctly does not render the component when error status is 404
     const wrapper = await mountSuspended(gamePage, {
       route: '/game/invalidslug',
     })
+
+    const error = useError()
+
+    expect(error?.value?.statusCode).toBe(404)
     expect(wrapper.text()).not.toContain(leaderboard.name)
-    // Ideally we'd check for the error
   })
 })
