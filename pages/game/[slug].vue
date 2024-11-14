@@ -5,9 +5,10 @@ import { useGetLeaderboardBySlug } from '~/composables/api'
 import LeaderboardInfo from '~/components/blocks/LeaderboardInfo/LeaderboardInfo.vue'
 const route = useRoute()
 const leaderboardSlug = route.params.slug as string
+
 const leaderboardDetail = await useGetLeaderboardBySlug(leaderboardSlug)
 
-if (leaderboardDetail?.error?.status == 404) {
+if (leaderboardDetail?.error?.status === 404) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page Not Found',
@@ -18,7 +19,7 @@ if (leaderboardDetail?.error?.status == 404) {
 
 <template>
   <div>
-    <Loader v-if="leaderboardDetail.loading"></Loader>
+    <Loader v-if="leaderboardDetail?.loading"></Loader>
     <LeaderboardInfo v-else :leaderboard="leaderboardDetail?.data!" />
   </div>
 </template>

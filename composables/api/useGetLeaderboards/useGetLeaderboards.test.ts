@@ -8,7 +8,7 @@ describe('useGetLeaderboard', () => {
     it('creates a GET request to fetch the a list of leaderboards', async () => {
       vi.mock('lib/api/Leaderboards', () => ({
         Leaderboards: function Leaderboards() {
-          this.getLeaderboards = mockSuccessGetLeaderboards
+          this.listLeaderboards = mockSuccessGetLeaderboards
         },
       }))
 

@@ -1,5 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import Landing from './LandingLeaderboards.vue'
+import LandingLeaderboards from './LandingLeaderboards.vue'
 import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
 
 const games: LeaderboardViewModel[] = [
@@ -36,12 +36,8 @@ const games: LeaderboardViewModel[] = [
 ]
 
 describe('LandingLeaderboards Component', () => {
-  afterEach(() => {
-    vi.restoreAllMocks()
-  })
-
   it('should render without crashing', async () => {
-    const wrapper = await mountSuspended(Landing, {
+    const wrapper = await mountSuspended(LandingLeaderboards, {
       props: {
         leaderboards: games,
       },

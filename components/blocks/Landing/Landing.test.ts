@@ -6,7 +6,7 @@ import LandingLeaderboards from './LandingLeaderboards.vue'
 const mockSuccessGetLeaderboards = vi.fn(() => Promise.resolve({ ok: true }))
 vi.mock('lib/api/Leaderboards', () => ({
   Leaderboards: function Leaderboards() {
-    this.getLeaderboards = mockSuccessGetLeaderboards
+    this.listLeaderboards = mockSuccessGetLeaderboards
   },
 }))
 

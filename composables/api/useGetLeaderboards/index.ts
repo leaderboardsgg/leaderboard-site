@@ -18,7 +18,7 @@ export default async function useGetLeaderboards(
       id: -1,
       name: '',
       slug: '',
-      info: null,
+      info: '',
       createdAt: '',
       updatedAt: null,
       deletedAt: null,
@@ -30,7 +30,7 @@ export default async function useGetLeaderboards(
   })
 
   return await useApi<LeaderboardViewModel[]>(
-    async () => await leaderboardClient.getLeaderboards({}),
+    async () => await leaderboardClient.listLeaderboards({}),
     {
       onError,
       onOkay,
