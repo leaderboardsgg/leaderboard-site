@@ -1,7 +1,5 @@
-import { useCookie } from '#imports'
+import { useLocalStorage } from '@vueuse/core'
 
 export default function useSessionToken() {
-  return useCookie('session_token', {
-    default: () => '',
-  })
+  return useLocalStorage<string>('session', '')
 }
