@@ -18,7 +18,6 @@ const leaderboard: LeaderboardViewModel = {
 vi.mock('composables/api/useGetLeaderboardBySlug')
 
 afterEach(() => {
-  fetchMock.resetMocks()
   vi.restoreAllMocks()
 })
 
