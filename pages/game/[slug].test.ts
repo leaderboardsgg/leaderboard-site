@@ -17,6 +17,11 @@ const leaderboard: LeaderboardViewModel = {
 
 vi.mock('composables/api/useGetLeaderboardBySlug')
 
+afterEach(() => {
+  fetchMock.resetMocks()
+  vi.restoreAllMocks()
+})
+
 describe('/game/:slug', () => {
   it('should render without crashing with a valid leaderboard', async () => {
     vi.mocked(useGetLeaderboardBySlug).mockResolvedValue({
