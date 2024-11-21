@@ -3,10 +3,11 @@ import { useRoute, createError } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
 import { useGetLeaderboardBySlug } from '~/composables/api'
 import LeaderboardInfo from '~/components/blocks/LeaderboardInfo/LeaderboardInfo.vue'
-const route = useRoute()
-const leaderboardSlug = route.params.slug as string
+const {
+  params: { slug },
+} = useRoute()
 
-const leaderboardDetail = await useGetLeaderboardBySlug(leaderboardSlug)
+const leaderboardDetail = await useGetLeaderboardBySlug(slug as string)
 
 if (leaderboardDetail?.error?.status === 404) {
   throw createError({
