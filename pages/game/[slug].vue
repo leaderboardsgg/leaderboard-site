@@ -7,9 +7,13 @@ const {
   params: { slug },
 } = useRoute()
 
-const leaderboardDetail = await useGetLeaderboardBySlug(slug as string)
+const {
+  loading,
+  error: leaderboardError,
+  data,
+} = await useGetLeaderboardBySlug(slug as string)
 
-if (leaderboardDetail?.error?.status === 404) {
+if (leaderboardError?.status === 404) {
   throw createError({
     statusCode: 404,
     statusMessage: 'Page Not Found',
@@ -20,7 +24,7 @@ if (leaderboardDetail?.error?.status === 404) {
 
 <template>
   <div>
-    <Loader v-if="leaderboardDetail?.loading"></Loader>
-    <LeaderboardInfo v-else :leaderboard="leaderboardDetail?.data!" />
+    <Loader v-if="loading"></Loader>
+    <LeaderboardInfo v-else :leaderboard="data!" />
   </div>
 </template>
