@@ -16,7 +16,7 @@ const {
 if (leaderboardError?.status === 404) {
   throw createError({
     statusCode: 404,
-    statusMessage: 'Page Not Found',
+    statusMessage: 'Board Not Found',
     fatal: true,
   })
 }
