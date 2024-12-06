@@ -12,4 +12,5 @@ export const English = {
     'Something went wrong. Reach out to support if the problem persists.',
   signup: 'Sign Up',
   welcome: 'Welcome',
+  info: 'Info',
 } satisfies LanguageIndexFile

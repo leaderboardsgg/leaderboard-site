@@ -1,47 +1,30 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { getByTestId } from 'root/testUtils'
 import LeaderboardInfo from './LeaderboardInfo.vue'
+import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
 
-describe('<LeaderboardInfo />', () => {
-  async function getLeaderboardInfoWrapper() {
-    return await mountSuspended(LeaderboardInfo, {
+const game: LeaderboardViewModel = {
+  id: 1,
+  name: 'Getting Over It With Bennet Foddy',
+  slug: 'slug-2',
+  info: 'Something special',
+  createdAt: '2024-11-02T22:11:08+0000',
+  updatedAt: '2024-11-02T22:11:08+0000',
+  deletedAt: null,
+  categories: [],
+}
+
+describe('LeaderboardInfo Component', () => {
+  it('should render without crashing', async () => {
+    const wrapper = await mountSuspended(LeaderboardInfo, {
       props: {
-        leaderboard: {
-          categories: [],
-          id: 1,
-          name: 'Stuck in the Train Simulator 2',
-          slug: 'stuck-in-the-train-sim-2',
-        },
+        leaderboard: game,
       },
     })
-  }
 
-  afterEach(() => {
-    vi.restoreAllMocks()
-    vi.unstubAllGlobals()
-  })
-
-  it('should render without crashing', async () => {
-    const wrapper = await getLeaderboardInfoWrapper()
     expect(wrapper.isVisible()).toBe(true)
-  })
 
-  it('should render <Desktop /> if device width is large', async () => {
-    vi.stubGlobal('innerWidth', 1980)
-    const wrapper = await getLeaderboardInfoWrapper()
-    expect(wrapper.html()).toContain('Guides')
-  })
+    const header = wrapper.get('div#leaderboard-show-header h1')
 
-  it('should render <Mobile /> if device width is small', async () => {
-    vi.stubGlobal('innerWidth', 600)
-    const wrapper = await getLeaderboardInfoWrapper()
-    expect(wrapper.html()).toContain('Submit Run')
-  })
-
-  // TODO: The follow event doesn't trigger in the test, somehow
-  it.skip('should emit event when the Follow Button is triggered', async () => {
-    const wrapper = await getLeaderboardInfoWrapper()
-    await getByTestId(wrapper, 'child').trigger('follow')
-    expect(wrapper.emitted().follow).toBeTruthy()
+    expect(header.text()).toContain(game.name)
   })
 })

@@ -20,7 +20,7 @@ defineProps<LandingLeaderboardsProps>()
       class="mb-2 h-full content-center rounded-lg bg-gray-200 p-8 text-blue-500 underline hover:cursor-pointer"
       :to="
         localePath({
-          name: 'board-slug',
+          name: 'game-slug',
           params: { slug: leaderboard.slug },
         })
       "

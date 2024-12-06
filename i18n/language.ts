@@ -8,4 +8,5 @@ export interface LanguageIndexFile {
   confirmationReceived?: string
   confirmationReceivedText?: string
   signup?: string
+  info?: string
 }

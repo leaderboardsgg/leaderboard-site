@@ -18,7 +18,7 @@ export default async function useGetLeaderboardBySlug(
     id: -1,
     name: '',
     slug: '',
-    info: null,
+    info: '',
     createdAt: '',
     updatedAt: null,
     deletedAt: null,

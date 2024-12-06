@@ -1,5 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import Landing from './LandingLeaderboards.vue'
+import LandingLeaderboards from './LandingLeaderboards.vue'
 import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
 
 const games: LeaderboardViewModel[] = [
@@ -7,7 +7,7 @@ const games: LeaderboardViewModel[] = [
     id: 1,
     name: 'Getting Over It With Bennet Foddy',
     slug: 'slug-2',
-    info: null,
+    info: '',
     createdAt: '2024-11-02T22:11:08+0000',
     updatedAt: '2024-11-02T22:11:08+0000',
     deletedAt: null,
@@ -17,7 +17,7 @@ const games: LeaderboardViewModel[] = [
     id: 2,
     name: 'Getting Over It With Bennet Foddy',
     slug: 'slug-2',
-    info: null,
+    info: '',
     createdAt: '2024-11-02T22:11:08+0000',
     updatedAt: '2024-11-02T22:11:08+0000',
     deletedAt: null,
@@ -27,7 +27,7 @@ const games: LeaderboardViewModel[] = [
     id: 3,
     name: 'Getting Over It With Bennet Foddy',
     slug: 'slug-3',
-    info: null,
+    info: '',
     createdAt: '2024-11-02T22:11:08+0000',
     updatedAt: '2024-11-02T22:11:08+0000',
     deletedAt: null,
@@ -36,12 +36,8 @@ const games: LeaderboardViewModel[] = [
 ]
 
 describe('LandingLeaderboards Component', () => {
-  afterEach(() => {
-    vi.restoreAllMocks()
-  })
-
   it('should render without crashing', async () => {
-    const wrapper = await mountSuspended(Landing, {
+    const wrapper = await mountSuspended(LandingLeaderboards, {
       props: {
         leaderboards: games,
       },
