@@ -13,6 +13,7 @@ import type {
   CreateLeaderboardRequest,
   GetLeaderboardBySlugParams,
   LeaderboardViewModel,
+  LeaderboardViewModelConflictDetails,
   ListLeaderboardsParams,
   ProblemDetails,
   UpdateLeaderboardRequest,
@@ -49,7 +50,7 @@ export class Leaderboards<
    *
    * @tags Leaderboards
    * @name GetLeaderboardBySlug
-   * @summary Gets a leaderboard by its slug.
+   * @summary Gets a leaderboard by its slug. Will not return deleted boards.
    * @request GET:/api/leaderboard
    * @secure
    * @response `200` `LeaderboardViewModel` OK
@@ -105,7 +106,7 @@ export class Leaderboards<
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
    * @response `403` `void` The requesting `User` is unauthorized to create `Leaderboard`s.
-   * @response `409` `ValidationProblemDetails` A Leaderboard with the specified slug already exists.
+   * @response `409` `LeaderboardViewModelConflictDetails` A Leaderboard with the specified slug already exists and will be returned in the `conflicting` field.
    * @response `422` `ValidationProblemDetails` The request contains errors. The following errors can occur: NotEmptyValidator, SlugFormat
    * @response `500` `void` Internal Server Error
    */
@@ -115,7 +116,10 @@ export class Leaderboards<
   ) =>
     this.request<
       LeaderboardViewModel,
-      ProblemDetails | void | ValidationProblemDetails
+      | ProblemDetails
+      | void
+      | LeaderboardViewModelConflictDetails
+      | ValidationProblemDetails
     >({
       path: `/leaderboards/create`,
       method: 'POST',
@@ -138,13 +142,13 @@ export class Leaderboards<
    * @response `401` `void` Unauthorized
    * @response `403` `void` The requesting `User` is unauthorized to restore `Leaderboard`s.
    * @response `404` `ProblemDetails` The `Leaderboard` was not found, or it wasn't deleted in the first place. Includes a field, `title`, which will be "Not Found" in the former case, and "Not Deleted" in the latter.
-   * @response `409` `LeaderboardViewModel` Another `Leaderboard` with the same slug has been created since, and therefore can't be restored. Will include the conflicting board in the response.
+   * @response `409` `LeaderboardViewModelConflictDetails` Another `Leaderboard` with the same slug has been created since and will be returned in the `conflicting` field, and therefore can't be restored.
    * @response `500` `void` Internal Server Error
    */
   restoreLeaderboard = (id: number, params: RequestParams = {}) =>
     this.request<
       LeaderboardViewModel,
-      ProblemDetails | void | LeaderboardViewModel
+      ProblemDetails | void | LeaderboardViewModelConflictDetails
     >({
       path: `/leaderboard/${id}/restore`,
       method: 'PUT',
