@@ -32,6 +32,8 @@ export interface CategoryViewModel {
   info: string | null
   type: RunType
   sortDirection: SortDirection
+  /** @format int64 */
+  leaderboardId: number
   /**
    * @format date-time
    * @example "1984-01-01T00:00:00Z"
@@ -49,6 +51,19 @@ export interface CategoryViewModel {
   deletedAt: string | null
 }
 
+/** A fake ProblemDetails subclass used for deserialization and documentation. Do not instantiate! */
+export interface CategoryViewModelConflictDetails {
+  type?: string | null
+  title?: string | null
+  /** @format int32 */
+  status?: number | null
+  detail?: string | null
+  instance?: string | null
+  /** Represents a `Category` tied to a `Leaderboard`. */
+  conflicting?: CategoryViewModel
+  [key: string]: any
+}
+
 export interface ChangePasswordRequest {
   /** @minLength 1 */
   password: string
@@ -58,6 +73,7 @@ export interface ChangePasswordRequest {
 export interface CreateCategoryRequest {
   /**
    * The display name of the `Category`.
+   * @minLength 1
    * @example "Foo Bar Baz%"
    */
   name: string
@@ -65,6 +81,7 @@ export interface CreateCategoryRequest {
    * The URL-scoped unique identifier of the `Category`.
    *
    * Must be [2, 25] in length and consist only of alphanumeric characters and hyphens.
+   * @minLength 1
    * @example "foo-bar-baz"
    */
   slug: string
@@ -72,12 +89,7 @@ export interface CreateCategoryRequest {
    * Information pertaining to the `Category`.
    * @example "Video proof is required."
    */
-  info: string | null
-  /**
-   * The ID of the `Leaderboard` the `Category` is a part of.
-   * @format int64
-   */
-  leaderboardId: number
+  info?: string
   sortDirection: SortDirection
   type: RunType
 }
@@ -163,8 +175,19 @@ export interface LeaderboardViewModel {
    * @example "1984-01-01T00:00:00Z"
    */
   deletedAt: string | null
-  /** A collection of `Category` entities for the `Leaderboard`. */
-  categories: CategoryViewModel[]
+}
+
+/** A fake ProblemDetails subclass used for deserialization and documentation. Do not instantiate! */
+export interface LeaderboardViewModelConflictDetails {
+  type?: string | null
+  title?: string | null
+  /** @format int32 */
+  status?: number | null
+  detail?: string | null
+  instance?: string | null
+  /** Represents a collection of `Leaderboard` entities. */
+  conflicting?: LeaderboardViewModel
+  [key: string]: any
 }
 
 /** This request object is sent when a `User` is attempting to log in. */
@@ -271,6 +294,13 @@ export type TimedRunViewModel = BaseRunViewModel & {
   time: string
 }
 
+export interface UpdateCategoryRequest {
+  name?: string
+  slug?: string
+  info?: string
+  sortDirection?: SortDirection
+}
+
 export interface UpdateLeaderboardRequest {
   name?: string
   slug?: string
@@ -359,6 +389,22 @@ interface BaseRunViewModel {
 type BaseRunViewModelTypeMapping<Key, Type> = {
   $type: Key
 } & Type
+
+export interface GetCategoryBySlugParams {
+  slug: string
+  /** @format int64 */
+  id: number
+}
+
+export interface GetCategoriesForLeaderboardParams {
+  /**
+   * Whether to include deleted Categories. Defaults to `false`.
+   * @default false
+   */
+  includeDeleted?: boolean
+  /** @format int64 */
+  id: number
+}
 
 export interface GetLeaderboardBySlugParams {
   slug: string
