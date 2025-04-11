@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { useRoute, createError } from '#imports'
+import { createError, useRoute } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
-import { useGetLeaderboardBySlug } from '~/composables/api'
-import LeaderboardInfo from '~/components/blocks/LeaderboardInfo/LeaderboardInfo.vue'
+import CategoryInfo from '~/components/RunsPage/CategoryInfo/CategoryInfo.vue'
+import LeaderboardInfo from '~/components/RunsPage/LeaderboardInfo/LeaderboardInfo.vue'
+import RunsTable from '~/components/RunsPage/RunsTable/RunsTable.vue'
+import {
+  useGetLeaderboardBySlug,
+  useGetCategoryBySlug,
+} from '~/composables/api'
 const {
   params: { slug },
+  query: { categorySlug },
 } = useRoute()
 
 const {
@@ -12,6 +18,11 @@ const {
   error: leaderboardError,
   data,
 } = await useGetLeaderboardBySlug(slug as string)
+
+const { data: category } = await useGetCategoryBySlug({
+  id: data!.id,
+  slug: categorySlug as string,
+})
 
 if (leaderboardError?.status === 404) {
   throw createError({
@@ -24,7 +35,32 @@ if (leaderboardError?.status === 404) {
 
 <template>
   <div>
-    <Loader v-if="loading"></Loader>
-    <LeaderboardInfo v-else :leaderboard="data!" />
+    <Loader v-if="loading" />
+    <div v-else class="flex flex-col gap-6 bg-[var(--bg-base)] p-6">
+      <LeaderboardInfo :leaderboard="data" />
+      <div
+        v-if="category != null"
+        class="flex gap-6 bg-[var(--bg-content)] text-[var(--text-colour)]"
+      >
+        <RunsTable :category="category" />
+        <CategoryInfo :category="category" />
+      </div>
+    </div>
   </div>
 </template>
+
+<!-- TODO: To move these styles to a global style file. These styles should live in one. -->
+<style lang="postcss">
+:root {
+  --bg-base: oklch(0.18 0.0101 285.36);
+  --bg-content: oklch(0.22 0.0116 285.41);
+  --text-colour: white;
+
+  --table-row-bg: var(--bg-content);
+  --table-row-bg-alt: oklch(0.24 0.017 285.06);
+
+  .table-row-bg-alt {
+    background-color: var(--table-row-bg-alt);
+  }
+}
+</style>

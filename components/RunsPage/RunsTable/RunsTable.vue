@@ -1,0 +1,39 @@
+<script setup lang="ts">
+import type { CategoryViewModel } from '~/lib/api/data-contracts'
+
+interface RunsTableProps {
+  category: CategoryViewModel
+}
+
+defineProps<RunsTableProps>()
+
+// TODO: Fetch runs
+</script>
+
+<template>
+  <table class="table h-fit flex-1 table-auto">
+    <thead class="table-header-group bg-[var(--table-row-bg)]">
+      <tr class="text-left">
+        <th class="pb-3 pl-6 pt-6">Rank</th>
+        <th>Name</th>
+        <th>Run Type</th>
+        <th>{{ category.type }}</th>
+        <th class="pr-6">Date</th>
+      </tr>
+    </thead>
+    <tbody class="table-row-group text-sm">
+      <!-- TODO: Fetch runs -->
+      <tr
+        v-for="i in Array.from(Array(100)).map((_, i) => i)"
+        :key="i"
+        class="table-row even:bg-[var(--table-row-bg-alt)]"
+      >
+        <td class="py-3 pl-6">{{ i + 1 }}</td>
+        <td>Test</td>
+        <td>Time</td>
+        <td>01:23:34.555</td>
+        <td class="pr-6">11/01/2025</td>
+      </tr>
+    </tbody>
+  </table>
+</template>
