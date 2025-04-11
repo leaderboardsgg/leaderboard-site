@@ -1,5 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import LeaderboardInfo from './LeaderboardInfo.vue'
+import Header from './Header.vue'
 import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
 
 const game: LeaderboardViewModel = {
@@ -12,9 +12,9 @@ const game: LeaderboardViewModel = {
   deletedAt: null,
 }
 
-describe('LeaderboardInfo Component', () => {
+describe('Header Component', () => {
   it('should render without crashing', async () => {
-    const wrapper = await mountSuspended(LeaderboardInfo, {
+    const wrapper = await mountSuspended(Header, {
       props: {
         leaderboard: game,
       },

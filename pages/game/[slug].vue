@@ -2,7 +2,7 @@
 import { createError, useRoute } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
 import CategoryInfo from '~/components/RunsPage/CategoryInfo/CategoryInfo.vue'
-import LeaderboardInfo from '~/components/RunsPage/LeaderboardInfo/LeaderboardInfo.vue'
+import Header from '~/components/RunsPage/Header/Header.vue'
 import RunsTable from '~/components/RunsPage/RunsTable/RunsTable.vue'
 import {
   useGetLeaderboardBySlug,
@@ -37,7 +37,7 @@ if (leaderboardError?.status === 404) {
   <div>
     <Loader v-if="loading" />
     <div v-else class="flex flex-col gap-6 bg-[var(--bg-base)] p-6">
-      <LeaderboardInfo :leaderboard="data" />
+      <Header :leaderboard="data" />
       <div
         v-if="category != null"
         class="flex gap-6 bg-[var(--bg-content)] text-[var(--text-colour)]"

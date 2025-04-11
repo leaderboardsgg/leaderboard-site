@@ -2,11 +2,11 @@
 import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
 import { useGetCategoriesForLeaderboard } from '~/composables/api'
 
-interface LeaderboardInfoProps {
+interface HeaderProps {
   leaderboard?: LeaderboardViewModel
 }
 
-const props = defineProps<LeaderboardInfoProps>()
+const props = defineProps<HeaderProps>()
 
 const categories =
   props.leaderboard != null
