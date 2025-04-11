@@ -10,7 +10,6 @@ const game: LeaderboardViewModel = {
   createdAt: '2024-11-02T22:11:08+0000',
   updatedAt: '2024-11-02T22:11:08+0000',
   deletedAt: null,
-  categories: [],
 }
 
 describe('LeaderboardInfo Component', () => {
@@ -23,7 +22,7 @@ describe('LeaderboardInfo Component', () => {
 
     expect(wrapper.isVisible()).toBe(true)
 
-    const header = wrapper.get('div#leaderboard-show-header h1')
+    const header = wrapper.get('h1')
 
     expect(header.text()).toContain(game.name)
   })
