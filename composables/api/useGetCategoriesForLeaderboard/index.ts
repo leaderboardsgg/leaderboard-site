@@ -8,8 +8,8 @@ import type {
 } from '~/lib/api/data-contracts'
 
 export default async function useGetCategoriesForLeaderboard(
-  opts: optionalParameters<CategoryViewModelListView> = {},
   params: GetCategoriesForLeaderboardParams,
+  opts: optionalParameters<CategoryViewModelListView> = {},
 ) {
   const { onError, onOkay } = opts
   const responseData = ref<CategoryViewModelListView>({
