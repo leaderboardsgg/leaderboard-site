@@ -9,17 +9,18 @@
  * ---------------------------------------------------------------
  */
 
-import type {
+import {
   CreateLeaderboardRequest,
   GetLeaderboardBySlugParams,
   LeaderboardViewModel,
   LeaderboardViewModelConflictDetails,
+  LeaderboardViewModelListView,
   ListLeaderboardsParams,
   ProblemDetails,
   UpdateLeaderboardRequest,
   ValidationProblemDetails,
 } from './data-contracts'
-import { ContentType, HttpClient, type RequestParams } from './http-client'
+import { ContentType, HttpClient, RequestParams } from './http-client'
 
 export class Leaderboards<
   SecurityDataType = unknown,
@@ -78,15 +79,19 @@ export class Leaderboards<
    * @summary Gets all leaderboards.
    * @request GET:/api/leaderboards
    * @secure
-   * @response `200` `(LeaderboardViewModel)[]` OK
+   * @response `200` `LeaderboardViewModelListView` OK
    * @response `400` `ProblemDetails` Bad Request
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
    * @response `500` `void` Internal Server Error
    */
   listLeaderboards = (
     query: ListLeaderboardsParams,
     params: RequestParams = {},
   ) =>
-    this.request<LeaderboardViewModel[], ProblemDetails | void>({
+    this.request<
+      LeaderboardViewModelListView,
+      ProblemDetails | ValidationProblemDetails | void
+    >({
       path: `/api/leaderboards`,
       method: 'GET',
       query: query,

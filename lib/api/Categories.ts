@@ -9,9 +9,10 @@
  * ---------------------------------------------------------------
  */
 
-import type {
+import {
   CategoryViewModel,
   CategoryViewModelConflictDetails,
+  CategoryViewModelListView,
   CreateCategoryRequest,
   GetCategoriesForLeaderboardParams,
   GetCategoryBySlugParams,
@@ -19,7 +20,7 @@ import type {
   UpdateCategoryRequest,
   ValidationProblemDetails,
 } from './data-contracts'
-import { ContentType, HttpClient, type RequestParams } from './http-client'
+import { ContentType, HttpClient, RequestParams } from './http-client'
 
 export class Categories<
   SecurityDataType = unknown,
@@ -78,16 +79,20 @@ export class Categories<
    * @summary Gets all Categories of Leaderboard `id`.
    * @request GET:/api/leaderboard/{id}/categories
    * @secure
-   * @response `200` `(CategoryViewModel)[]` OK
+   * @response `200` `CategoryViewModelListView` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` The Leaderboard with ID `id` could not be found.
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
    * @response `500` `void` Internal Server Error
    */
   getCategoriesForLeaderboard = (
     { id, ...query }: GetCategoriesForLeaderboardParams,
     params: RequestParams = {},
   ) =>
-    this.request<CategoryViewModel[], ProblemDetails | void>({
+    this.request<
+      CategoryViewModelListView,
+      ProblemDetails | ValidationProblemDetails | void
+    >({
       path: `/api/leaderboard/${id}/categories`,
       method: 'GET',
       query: query,
