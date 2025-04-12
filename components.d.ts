@@ -16,6 +16,7 @@ declare module 'vue' {
     ISvgEyeHidden: typeof import('~icons/svg/eye-hidden')['default']
     ISvgEyeVisible: typeof import('~icons/svg/eye-visible')['default']
     ISvgLink: typeof import('~icons/svg/link')['default']
+    ISvgLogo: typeof import('~icons/svg/logo')['default']
     ISvgMenu: typeof import('~icons/svg/menu')['default']
     ISvgSearch: typeof import('~icons/svg/search')['default']
     ISvgSpinner: typeof import('~icons/svg/spinner')['default']
