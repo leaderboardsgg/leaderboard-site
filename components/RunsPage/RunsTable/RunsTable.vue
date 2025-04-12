@@ -15,10 +15,10 @@ defineProps<RunsTableProps>()
     <thead class="table-header-group bg-bg-table-row">
       <tr class="text-left">
         <th class="pb-3 pl-6 pt-6">Rank</th>
-        <th>Name</th>
-        <th>Run Type</th>
-        <th>{{ category.type }}</th>
-        <th class="pr-6">Date</th>
+        <th class="pb-3 pt-6">Name</th>
+        <th class="pb-3 pt-6">Run Type</th>
+        <th class="pb-3 pt-6">{{ category.type }}</th>
+        <th class="pb-3 pr-6 pt-6">Date</th>
       </tr>
     </thead>
     <tbody class="table-row-group text-sm">
