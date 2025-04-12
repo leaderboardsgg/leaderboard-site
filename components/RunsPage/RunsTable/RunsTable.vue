@@ -12,7 +12,7 @@ defineProps<RunsTableProps>()
 
 <template>
   <table class="table h-fit flex-1 table-auto">
-    <thead class="table-header-group bg-[var(--table-row-bg)]">
+    <thead class="table-header-group bg-bg-table-row">
       <tr class="text-left">
         <th class="pb-3 pl-6 pt-6">Rank</th>
         <th>Name</th>
@@ -26,7 +26,7 @@ defineProps<RunsTableProps>()
       <tr
         v-for="i in Array.from(Array(100)).map((_, i) => i)"
         :key="i"
-        class="table-row even:bg-[var(--table-row-bg-alt)]"
+        class="table-row even:bg-bg-table-row-alt"
       >
         <td class="py-3 pl-6">{{ i + 1 }}</td>
         <td>Test</td>

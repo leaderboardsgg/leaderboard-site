@@ -36,14 +36,14 @@ if (leaderboardError?.status === 404) {
 <template>
   <div>
     <Loader v-if="loading" />
-    <div v-else class="flex flex-col gap-6 bg-[var(--bg-base)] p-6">
+    <div v-else class="flex flex-col gap-6 bg-black p-6 text-white">
       <Header
         :leaderboard="data"
         :active-category-slug="categorySlug as string"
       />
       <div
         v-if="category != null"
-        class="flex gap-6 bg-[var(--bg-content)] text-[var(--text-colour)]"
+        class="flex gap-6 bg-bg-content text-[var(--text-colour)]"
       >
         <RunsTable :category="category" />
         <CategoryInfo :category="category" />
@@ -51,19 +51,3 @@ if (leaderboardError?.status === 404) {
     </div>
   </div>
 </template>
-
-<!-- TODO: To move these styles to a global style file. These styles should live in one. -->
-<style lang="postcss">
-:root {
-  --bg-base: oklch(0.18 0.0101 285.36);
-  --bg-content: oklch(0.22 0.0116 285.41);
-  --text-colour: white;
-
-  --table-row-bg: var(--bg-content);
-  --table-row-bg-alt: oklch(0.24 0.017 285.06);
-
-  .table-row-bg-alt {
-    background-color: var(--table-row-bg-alt);
-  }
-}
-</style>

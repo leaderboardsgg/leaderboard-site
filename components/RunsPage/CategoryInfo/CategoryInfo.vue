@@ -18,10 +18,11 @@ defineProps<CategoryInfoProps>()
     <p class="text-xs">
       {{ category.info || '-' }}
     </p>
-    <button
+    <!-- TODO: Create Create Run page and add link to that page -->
+    <ButtonLink
       class="mt-12 rounded border border-yellow-400 px-9 py-3 font-semibold capitalize"
     >
       Submit A Run
-    </button>
+    </ButtonLink>
   </div>
 </template>
