@@ -13,4 +13,5 @@ export const English = {
   signup: 'Sign Up',
   welcome: 'Welcome',
   info: 'Info',
+  searchPlaceholder: 'search for games or players…',
 } satisfies LanguageIndexFile
