@@ -10,14 +10,14 @@ import {
 } from '~/composables/api'
 const {
   params: { slug },
-  query: { categorySlug },
+  query: { category: categorySlug },
 } = useRoute()
 
 const {
   loading,
   error: leaderboardError,
   data,
-} = await useGetLeaderboardBySlug(slug as string)
+} = await useGetLeaderboardBySlug((slug as string) ?? '')
 
 const { data: category } = await useGetCategoryBySlug({
   id: data!.id,
@@ -37,7 +37,10 @@ if (leaderboardError?.status === 404) {
   <div>
     <Loader v-if="loading" />
     <div v-else class="flex flex-col gap-6 bg-[var(--bg-base)] p-6">
-      <Header :leaderboard="data" />
+      <Header
+        :leaderboard="data"
+        :active-category-slug="categorySlug as string"
+      />
       <div
         v-if="category != null"
         class="flex gap-6 bg-[var(--bg-content)] text-[var(--text-colour)]"

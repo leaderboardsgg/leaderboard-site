@@ -12,11 +12,11 @@ defineProps<CategoryInfoProps>()
     <h2 class="text-lg font-semibold">{{ category.name }}</h2>
     <h3 class="mt-6">Run Type Description</h3>
     <p class="text-xs">
-      {{ category.info }}
+      {{ category.info || '-' }}
     </p>
     <h3 class="mt-6">Run Type Rules</h3>
     <p class="text-xs">
-      {{ category.info }}
+      {{ category.info || '-' }}
     </p>
     <button
       class="mt-12 rounded border border-yellow-400 px-9 py-3 font-semibold capitalize"
