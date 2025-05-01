@@ -146,7 +146,7 @@ importers:
         version: 2.1.9(@types/node@22.8.6)(happy-dom@15.10.2)(terser@5.36.0)
       vitest-fetch-mock:
         specifier: ^0.4.1
-        version: 0.4.4(vitest@2.1.9(@types/node@22.8.6)(happy-dom@15.10.2)(terser@5.36.0))
+        version: 0.4.5(vitest@2.1.9(@types/node@22.8.6)(happy-dom@15.10.2)(terser@5.36.0))
       vue:
         specifier: ^3.5.12
         version: 3.5.12(typescript@5.4.5)
@@ -5860,8 +5860,8 @@ packages:
   vitest-environment-nuxt@1.0.1:
     resolution: {integrity: sha512-eBCwtIQriXW5/M49FjqNKfnlJYlG2LWMSNFsRVKomc8CaMqmhQPBS5LZ9DlgYL9T8xIVsiA6RZn2lk7vxov3Ow==}
 
-  vitest-fetch-mock@0.4.4:
-    resolution: {integrity: sha512-i2RNEAKBgnLWwj5DVz8ouzaHaPVg1xaYgAUmU5p+baJ149upnO+yJLPchAiY9ij8hf0PDkJVVke1pftBxmT05g==}
+  vitest-fetch-mock@0.4.5:
+    resolution: {integrity: sha512-nhWdCQIGtaSEUVl96pMm0WggyDGPDv5FUy/Q9Hx3cs2RGmh3Q/uRsLClGbdG3kXBkJ3br5yTUjB2MeW25TwdOA==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       vitest: '>=2.0.0'
@@ -12877,7 +12877,7 @@ snapshots:
       - vue-router
       - webpack-sources
 
-  vitest-fetch-mock@0.4.4(vitest@2.1.9(@types/node@22.8.6)(happy-dom@15.10.2)(terser@5.36.0)):
+  vitest-fetch-mock@0.4.5(vitest@2.1.9(@types/node@22.8.6)(happy-dom@15.10.2)(terser@5.36.0)):
     dependencies:
       vitest: 2.1.9(@types/node@22.8.6)(happy-dom@15.10.2)(terser@5.36.0)
 
