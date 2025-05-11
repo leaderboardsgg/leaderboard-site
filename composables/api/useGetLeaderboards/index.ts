@@ -12,22 +12,7 @@ export default async function useGetLeaderboards(
   opts: optionalParameters<LeaderboardViewModelListView> = {},
 ): Promise<ApiResponse<LeaderboardViewModelListView>> {
   const { onError, onOkay } = opts
-  const responseData = ref<LeaderboardViewModelListView>({
-    data: [
-      {
-        id: -1,
-        name: '',
-        slug: '',
-        info: '',
-        createdAt: '',
-        updatedAt: null,
-        deletedAt: null,
-      },
-    ],
-    limitDefault: 0,
-    limitMax: 0,
-    total: 0,
-  })
+  const responseData = ref<LeaderboardViewModelListView>()
 
   const leaderboardClient = new Leaderboards({
     baseUrl: useRuntimeConfig().public.backendBaseUrl,

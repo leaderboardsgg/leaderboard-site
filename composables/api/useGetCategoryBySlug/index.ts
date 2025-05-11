@@ -12,18 +12,7 @@ export default async function useGetCategoryBySlug(
   opts: optionalParameters<CategoryViewModel> = {},
 ) {
   const { onError, onOkay } = opts
-  const responseData = ref<CategoryViewModel>({
-    id: -1,
-    name: '',
-    slug: '',
-    info: '',
-    type: 'Time',
-    sortDirection: 'Ascending',
-    leaderboardId: -1,
-    createdAt: '',
-    updatedAt: null,
-    deletedAt: null,
-  })
+  const responseData = ref<CategoryViewModel>()
 
   const client = new Categories({
     baseUrl: useRuntimeConfig().public.backendBaseUrl,

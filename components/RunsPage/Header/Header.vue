@@ -4,7 +4,7 @@ import { useGetCategoriesForLeaderboard } from '~/composables/api'
 import ButtonLink from '~/components/elements/buttons/ButtonLink/ButtonLink.vue'
 
 interface HeaderProps {
-  leaderboard?: LeaderboardViewModel
+  leaderboard: LeaderboardViewModel
   activeCategorySlug?: string
 }
 
@@ -29,10 +29,7 @@ const categories =
 </script>
 
 <template>
-  <div
-    v-if="leaderboard != null"
-    class="flex w-full flex-col gap-6 bg-bg-content p-6"
-  >
+  <div class="flex w-full flex-col gap-6 bg-bg-content p-6">
     <h1 class="mb-4 text-xl font-semibold text-white">
       {{ leaderboard.name }}
     </h1>

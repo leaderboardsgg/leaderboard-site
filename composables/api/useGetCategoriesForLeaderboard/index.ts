@@ -12,12 +12,7 @@ export default async function useGetCategoriesForLeaderboard(
   opts: optionalParameters<CategoryViewModelListView> = {},
 ) {
   const { onError, onOkay } = opts
-  const responseData = ref<CategoryViewModelListView>({
-    data: [],
-    limitDefault: 0,
-    limitMax: 0,
-    total: 0,
-  })
+  const responseData = ref<CategoryViewModelListView>()
 
   const client = new Categories({
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
