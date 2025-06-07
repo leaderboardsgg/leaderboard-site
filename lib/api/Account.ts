@@ -9,17 +9,16 @@
  * ---------------------------------------------------------------
  */
 
-import type {
-  ChangePasswordRequest,
-  LoginRequest,
+import {
+  ChangePasswordPayload,
+  LoginPayload,
   LoginResponse,
   ProblemDetails,
-  RecoverAccountRequest,
-  RegisterRequest,
-  UserViewModel,
+  RegisterPayload,
+  SendRecoveryEmailPayload,
   ValidationProblemDetails,
 } from './data-contracts'
-import { ContentType, HttpClient, type RequestParams } from './http-client'
+import { ContentType, HttpClient, RequestParams } from './http-client'
 
 export class Account<
   SecurityDataType = unknown,
@@ -32,23 +31,18 @@ export class Account<
    * @summary Registers a new User.
    * @request POST:/Account/register
    * @secure
-   * @response `201` `UserViewModel` The `User` was registered and returned successfully.
+   * @response `202` `void` The registration attempt was successfully received, and an email will be sent to the provided address. If an account with that address does not already exist, or if the account has not been confirmed yet, the email will contain a link to confirm the account. Otherwise, the email will inform the associated user that a registration attempt was made with their address.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `409` `ValidationProblemDetails` A `User` with the specified username or email already exists. Validation error codes by property: - **Username**: - **UsernameTaken**: the username is already in use - **Email**: - **EmailAlreadyUsed**: the email is already in use
-   * @response `422` `ValidationProblemDetails` The request contains errors. Validation error codes by property: - **Username**: - **UsernameFormat**: Invalid username format - **Password**: - **PasswordFormat**: Invalid password format - **Email**: - **EmailValidator**: Invalid email format
+   * @response `409` `ValidationProblemDetails` A `User` with the specified username already exists. The validation error code `UsernameTaken` will be returned.
    * @response `500` `void` Internal Server Error
    */
-  register = (data: RegisterRequest, params: RequestParams = {}) =>
-    this.request<
-      UserViewModel,
-      ProblemDetails | ValidationProblemDetails | void
-    >({
+  register = (data: RegisterPayload, params: RequestParams = {}) =>
+    this.request<void, ProblemDetails | ValidationProblemDetails | void>({
       path: `/Account/register`,
       method: 'POST',
       body: data,
       secure: true,
       type: ContentType.Json,
-      format: 'json',
       ...params,
     })
   /**
@@ -61,13 +55,12 @@ export class Account<
    * @secure
    * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned, containing a token.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `void` The password given was incorrect.
+   * @response `401` `void` The password given was incorrect, or no `User` could be found.
    * @response `403` `void` The associated `User` is banned.
-   * @response `404` `void` No `User` with the requested details could be found.
    * @response `422` `ValidationProblemDetails` The request contains errors. Validation error codes by property: - **Password**: - **NotEmptyValidator**: No password was passed - **PasswordFormat**: Invalid password format - **Email**: - **NotEmptyValidator**: No email was passed - **EmailValidator**: Invalid email format
    * @response `500` `void` Internal Server Error
    */
-  login = (data: LoginRequest, params: RequestParams = {}) =>
+  login = (data: LoginPayload, params: RequestParams = {}) =>
     this.request<
       LoginResponse,
       ProblemDetails | void | ValidationProblemDetails
@@ -114,7 +107,7 @@ export class Account<
    * @response `500` `void` Internal Server Error
    */
   sendRecoveryEmail = (
-    data: RecoverAccountRequest,
+    data: SendRecoveryEmailPayload,
     params: RequestParams = {},
   ) =>
     this.request<void, ProblemDetails | void>({
@@ -184,7 +177,7 @@ export class Account<
    */
   changePassword = (
     id: string,
-    data: ChangePasswordRequest,
+    data: ChangePasswordPayload,
     params: RequestParams = {},
   ) =>
     this.request<void, ProblemDetails | void | ValidationProblemDetails>({

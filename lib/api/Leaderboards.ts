@@ -9,17 +9,19 @@
  * ---------------------------------------------------------------
  */
 
-import type {
-  CreateLeaderboardRequest,
+import {
+  CreateLeaderboardPayload,
   GetLeaderboardBySlugParams,
   LeaderboardViewModel,
   LeaderboardViewModelConflictDetails,
+  LeaderboardViewModelListView,
   ListLeaderboardsParams,
   ProblemDetails,
-  UpdateLeaderboardRequest,
+  SearchLeaderboardsParams,
+  UpdateLeaderboardPayload,
   ValidationProblemDetails,
 } from './data-contracts'
-import { ContentType, HttpClient, type RequestParams } from './http-client'
+import { ContentType, HttpClient, RequestParams } from './http-client'
 
 export class Leaderboards<
   SecurityDataType = unknown,
@@ -78,16 +80,45 @@ export class Leaderboards<
    * @summary Gets all leaderboards.
    * @request GET:/api/leaderboards
    * @secure
-   * @response `200` `(LeaderboardViewModel)[]` OK
+   * @response `200` `LeaderboardViewModelListView` OK
    * @response `400` `ProblemDetails` Bad Request
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
    * @response `500` `void` Internal Server Error
    */
   listLeaderboards = (
     query: ListLeaderboardsParams,
     params: RequestParams = {},
   ) =>
-    this.request<LeaderboardViewModel[], ProblemDetails | void>({
+    this.request<
+      LeaderboardViewModelListView,
+      ProblemDetails | ValidationProblemDetails | void
+    >({
       path: `/api/leaderboards`,
+      method: 'GET',
+      query: query,
+      secure: true,
+      format: 'json',
+      ...params,
+    })
+  /**
+   * No description
+   *
+   * @tags Leaderboards
+   * @name SearchLeaderboards
+   * @summary Search leaderboards by name or slug.
+   * @request GET:/api/leaderboards/search
+   * @secure
+   * @response `200` `LeaderboardViewModelListView` OK
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `422` `ProblemDetails` Unprocessable Content
+   * @response `500` `void` Internal Server Error
+   */
+  searchLeaderboards = (
+    query: SearchLeaderboardsParams,
+    params: RequestParams = {},
+  ) =>
+    this.request<LeaderboardViewModelListView, ProblemDetails | void>({
+      path: `/api/leaderboards/search`,
       method: 'GET',
       query: query,
       secure: true,
@@ -111,7 +142,7 @@ export class Leaderboards<
    * @response `500` `void` Internal Server Error
    */
   createLeaderboard = (
-    data: CreateLeaderboardRequest,
+    data: CreateLeaderboardPayload,
     params: RequestParams = {},
   ) =>
     this.request<
@@ -197,7 +228,7 @@ export class Leaderboards<
    */
   updateLeaderboard = (
     id: number,
-    data: UpdateLeaderboardRequest,
+    data: UpdateLeaderboardPayload,
     params: RequestParams = {},
   ) =>
     this.request<
