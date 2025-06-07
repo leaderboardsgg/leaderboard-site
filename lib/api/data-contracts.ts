@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* tslint:disable */
 /*
  * ---------------------------------------------------------------
@@ -64,6 +65,29 @@ export interface CategoryViewModelConflictDetails {
   [key: string]: any
 }
 
+export interface CategoryViewModelListView {
+  data: CategoryViewModel[]
+  /**
+   * The total number of records matching the given criteria that
+   * exist in the database, NOT the total number of records returned.
+   * @format int64
+   */
+  total: number
+  /**
+   * The default limit that will be applied for this resource type
+   * if the client does not specify one in the query string.
+   * @format int32
+   */
+  limitDefault: number
+  /**
+   * The maximum value the client is allowed to specify as a limt for
+   * endpoints return a paginated list of resources of this type.
+   * Exceeding this value will result in an error.
+   * @format int32
+   */
+  limitMax: number
+}
+
 export interface ChangePasswordRequest {
   /** @minLength 1 */
   password: string
@@ -113,22 +137,33 @@ export interface CreateLeaderboardRequest {
   info?: string
 }
 
-/** This request object is sent when creating a `Run`. */
-export interface CreateRunRequest {
-  info: string | null
+/**
+ * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
+ * request, and `"Score"` for a scored one. `runType` *must* be at the top
+ * of the request object.
+ */
+export type CreateRunRequest = BaseCreateRunRequest &
+  (
+    | BaseCreateRunRequestRunTypeMapping<'Time', CreateTimedRunRequest>
+    | BaseCreateRunRequestRunTypeMapping<'Score', CreateScoredRunRequest>
+  )
+
+/** `runType: "Score"` */
+export type CreateScoredRunRequest = BaseCreateRunRequest & {
   /**
-   * The date the `Run` was played on.
-   * @format date
-   * @example "2000-01-01"
-   */
-  playedOn: string
-  /**
-   * The ID of the `Category` for the `Run`.
+   * The score achieved during the run.
    * @format int64
    */
-  categoryId: number
-  /** @format int64 */
-  timeOrScore: number
+  score: number
+}
+
+/** `runType: "Time"` */
+export type CreateTimedRunRequest = BaseCreateRunRequest & {
+  /**
+   * The duration of the run. Must obey the format 'HH:mm:ss.sss', with leading zeroes.
+   * @example "12:34:56.999"
+   */
+  time: string
 }
 
 /** Represents a collection of `Leaderboard` entities. */
@@ -188,6 +223,29 @@ export interface LeaderboardViewModelConflictDetails {
   /** Represents a collection of `Leaderboard` entities. */
   conflicting?: LeaderboardViewModel
   [key: string]: any
+}
+
+export interface LeaderboardViewModelListView {
+  data: LeaderboardViewModel[]
+  /**
+   * The total number of records matching the given criteria that
+   * exist in the database, NOT the total number of records returned.
+   * @format int64
+   */
+  total: number
+  /**
+   * The default limit that will be applied for this resource type
+   * if the client does not specify one in the query string.
+   * @format int32
+   */
+  limitDefault: number
+  /**
+   * The maximum value the client is allowed to specify as a limt for
+   * endpoints return a paginated list of resources of this type.
+   * Exceeding this value will result in an error.
+   * @format int32
+   */
+  limitMax: number
 }
 
 /** This request object is sent when a `User` is attempting to log in. */
@@ -272,9 +330,32 @@ export type RunType = 'Time' | 'Score'
 
 export type RunViewModel = BaseRunViewModel &
   (
-    | BaseRunViewModelTypeMapping<'Time', TimedRunViewModel>
-    | BaseRunViewModelTypeMapping<'Score', ScoredRunViewModel>
+    | BaseRunViewModelRunTypeMapping<RunType.Time, TimedRunViewModel>
+    | BaseRunViewModelRunTypeMapping<RunType.Score, ScoredRunViewModel>
   )
+
+export interface RunViewModelListView {
+  data: (TimedRunViewModel | ScoredRunViewModel)[]
+  /**
+   * The total number of records matching the given criteria that
+   * exist in the database, NOT the total number of records returned.
+   * @format int64
+   */
+  total: number
+  /**
+   * The default limit that will be applied for this resource type
+   * if the client does not specify one in the query string.
+   * @format int32
+   */
+  limitDefault: number
+  /**
+   * The maximum value the client is allowed to specify as a limt for
+   * endpoints return a paginated list of resources of this type.
+   * Exceeding this value will result in an error.
+   * @format int32
+   */
+  limitMax: number
+}
 
 export type ScoredRunViewModel = BaseRunViewModel & {
   /**
@@ -345,8 +426,28 @@ export interface ValidationProblemDetails {
   [key: string]: any
 }
 
+/**
+ * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
+ * request, and `"Score"` for a scored one. `runType` *must* be at the top
+ * of the request object.
+ */
+interface BaseCreateRunRequest {
+  runType: string
+  info?: string
+  /**
+   * The date the `Run` was played on. Must obey the format 'YYYY-MM-DD', with leading zeroes.
+   * @format date
+   * @example "2000-01-01"
+   */
+  playedOn: string
+}
+
+type BaseCreateRunRequestRunTypeMapping<Key, Type> = {
+  runType: Key
+} & Type
+
 interface BaseRunViewModel {
-  $type: string
+  runType: RunType
   /**
    * The unique identifier of the `Run`.
    *
@@ -357,7 +458,13 @@ interface BaseRunViewModel {
   /** User-provided details about the run. */
   info: string | null
   /**
-   * The time the run was created.
+   * The date the run was done, *not* when it was submitted.
+   * @format date
+   * @example "2000-01-01"
+   */
+  playedOn: string
+  /**
+   * The time the run was submitted to the DB.
    * @format date-time
    * @example "1984-01-01T00:00:00Z"
    */
@@ -386,8 +493,8 @@ interface BaseRunViewModel {
   userId: string
 }
 
-type BaseRunViewModelTypeMapping<Key, Type> = {
-  $type: Key
+type BaseRunViewModelRunTypeMapping<Key, Type> = {
+  runType: Key
 } & Type
 
 export interface GetCategoryBySlugParams {
@@ -397,6 +504,17 @@ export interface GetCategoryBySlugParams {
 }
 
 export interface GetCategoriesForLeaderboardParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number
   /**
    * Whether to include deleted Categories. Defaults to `false`.
    * @default false
@@ -411,6 +529,45 @@ export interface GetLeaderboardBySlugParams {
 }
 
 export interface ListLeaderboardsParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number
   /** @default false */
   includeDeleted?: boolean
+}
+
+/**
+ * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
+ * request, and `"Score"` for a scored one. `runType` *must* be at the top
+ * of the request object.
+ */
+export type CreateRunPayload = CreateTimedRunRequest | CreateScoredRunRequest
+
+export interface GetRunsForCategoryParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number
+  /**
+   * Whether to include deleted runs. Defaults false.
+   * @default false
+   */
+  includeDeleted?: boolean
+  /** @format int64 */
+  id: number
 }

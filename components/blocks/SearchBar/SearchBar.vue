@@ -24,37 +24,37 @@ function onEnter() {
 
 <template>
   <div class="search-bar">
+    <BaseButton data-testid="search-button" type="button" @click="onClick">
+      <i-svg-search />
+    </BaseButton>
     <BaseInput
       :model="state.input"
       data-testid="search-input"
       name="search"
-      placeholder="search..."
+      :placeholder="$t('searchPlaceholder')"
       @keyup.enter="onEnter"
     />
-    <BaseButton data-testid="search-button" type="button" @click="onClick">
-      <i-svg-search />
-    </BaseButton>
   </div>
 </template>
 
 <style lang="postcss" scoped>
 .search-bar {
-  @apply flex items-center px-2 relative w-full;
+  @apply flex items-center px-2 relative;
 }
 
 .search-bar > input {
-  @apply border border-gray-300 rounded bg-white w-full pr-12 px-4 py-1 focus:outline-none;
+  @apply border border-yellow-500 rounded bg-black w-fit pl-12 px-4 focus:outline-none;
 }
 
 .search-bar > input::placeholder {
-  @apply text-gray-300;
+  @apply text-white;
 }
 
 .search-bar > button {
-  @apply absolute right-4 hover:bg-transparent;
+  @apply absolute left-4 hover:bg-transparent;
 }
 
 .search-bar > button > svg {
-  @apply h-5 w-5 stroke-gray-300 hover:stroke-black;
+  @apply h-5 w-5 stroke-gray-300 hover:stroke-white;
 }
 </style>

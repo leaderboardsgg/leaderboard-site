@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import type {
+import {
   ChangePasswordRequest,
   LoginRequest,
   LoginResponse,
@@ -19,7 +19,7 @@ import type {
   UserViewModel,
   ValidationProblemDetails,
 } from './data-contracts'
-import { ContentType, HttpClient, type RequestParams } from './http-client'
+import { ContentType, HttpClient, RequestParams } from './http-client'
 
 export class Account<
   SecurityDataType = unknown,

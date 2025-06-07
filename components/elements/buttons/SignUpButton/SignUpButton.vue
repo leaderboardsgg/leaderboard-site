@@ -10,6 +10,6 @@ import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 
 <style lang="postcss" scoped>
 .sign-up-button {
-  @apply bg-gray-100 hover:bg-black mx-1 py-1 text-opacity-70 hover:text-white;
+  @apply hover:bg-black py-2 px-6 text-opacity-70 hover:text-white rounded border border-yellow-500;
 }
 </style>

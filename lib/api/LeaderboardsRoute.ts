@@ -9,9 +9,10 @@
  * ---------------------------------------------------------------
  */
 
-import type {
+import {
   CreateLeaderboardRequest,
   LeaderboardViewModel,
+  LeaderboardViewModelListView,
   UpdateLeaderboardRequest,
 } from './data-contracts'
 
@@ -68,19 +69,31 @@ export namespace Leaderboards {
    * @summary Gets all leaderboards.
    * @request GET:/api/leaderboards
    * @secure
-   * @response `200` `(LeaderboardViewModel)[]` OK
+   * @response `200` `LeaderboardViewModelListView` OK
    * @response `400` `ProblemDetails` Bad Request
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
    * @response `500` `void` Internal Server Error
    */
   export namespace ListLeaderboards {
     export type RequestParams = {}
     export type RequestQuery = {
+      /**
+       * The maximum number of records to return. Fewer records may be returned.
+       * @format int32
+       */
+      limit?: number
+      /**
+       * The zero-based index at which to begin selecting records to return.
+       * @format int32
+       * @default 0
+       */
+      offset?: number
       /** @default false */
       includeDeleted?: boolean
     }
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = LeaderboardViewModel[]
+    export type ResponseBody = LeaderboardViewModelListView
   }
 
   /**

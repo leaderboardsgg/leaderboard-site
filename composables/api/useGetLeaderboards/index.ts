@@ -5,31 +5,20 @@ import {
   type optionalParameters,
 } from 'composables/useApi'
 import { Leaderboards } from 'lib/api/Leaderboards'
-import type { LeaderboardViewModel } from 'lib/api/data-contracts'
+import type { LeaderboardViewModelListView } from 'lib/api/data-contracts'
 import { useRuntimeConfig } from '#imports'
 
 export default async function useGetLeaderboards(
-  opts: optionalParameters<LeaderboardViewModel[]> = {},
-): Promise<ApiResponse<LeaderboardViewModel[]>> {
+  opts: optionalParameters<LeaderboardViewModelListView> = {},
+): Promise<ApiResponse<LeaderboardViewModelListView>> {
   const { onError, onOkay } = opts
-  const responseData = ref<LeaderboardViewModel[]>([
-    {
-      categories: [],
-      id: -1,
-      name: '',
-      slug: '',
-      info: '',
-      createdAt: '',
-      updatedAt: null,
-      deletedAt: null,
-    },
-  ])
+  const responseData = ref<LeaderboardViewModelListView>()
 
   const leaderboardClient = new Leaderboards({
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
-  return await useApi<LeaderboardViewModel[]>(
+  return await useApi<LeaderboardViewModelListView>(
     async () => await leaderboardClient.listLeaderboards({}),
     {
       onError,
