@@ -9,13 +9,12 @@
  * ---------------------------------------------------------------
  */
 
-import type {
-  ChangePasswordRequest,
-  LoginRequest,
+import {
+  ChangePasswordPayload,
+  LoginPayload,
   LoginResponse,
-  RecoverAccountRequest,
-  RegisterRequest,
-  UserViewModel,
+  RegisterPayload,
+  SendRecoveryEmailPayload,
 } from './data-contracts'
 
 export namespace Account {
@@ -26,18 +25,17 @@ export namespace Account {
    * @summary Registers a new User.
    * @request POST:/Account/register
    * @secure
-   * @response `201` `UserViewModel` The `User` was registered and returned successfully.
+   * @response `202` `void` The registration attempt was successfully received, and an email will be sent to the provided address. If an account with that address does not already exist, or if the account has not been confirmed yet, the email will contain a link to confirm the account. Otherwise, the email will inform the associated user that a registration attempt was made with their address.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `409` `ValidationProblemDetails` A `User` with the specified username or email already exists. Validation error codes by property: - **Username**: - **UsernameTaken**: the username is already in use - **Email**: - **EmailAlreadyUsed**: the email is already in use
-   * @response `422` `ValidationProblemDetails` The request contains errors. Validation error codes by property: - **Username**: - **UsernameFormat**: Invalid username format - **Password**: - **PasswordFormat**: Invalid password format - **Email**: - **EmailValidator**: Invalid email format
+   * @response `409` `ValidationProblemDetails` A `User` with the specified username already exists. The validation error code `UsernameTaken` will be returned.
    * @response `500` `void` Internal Server Error
    */
   export namespace Register {
     export type RequestParams = {}
     export type RequestQuery = {}
-    export type RequestBody = RegisterRequest
+    export type RequestBody = RegisterPayload
     export type RequestHeaders = {}
-    export type ResponseBody = UserViewModel
+    export type ResponseBody = void
   }
 
   /**
@@ -49,16 +47,15 @@ export namespace Account {
    * @secure
    * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned, containing a token.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `void` The password given was incorrect.
+   * @response `401` `void` The password given was incorrect, or no `User` could be found.
    * @response `403` `void` The associated `User` is banned.
-   * @response `404` `void` No `User` with the requested details could be found.
    * @response `422` `ValidationProblemDetails` The request contains errors. Validation error codes by property: - **Password**: - **NotEmptyValidator**: No password was passed - **PasswordFormat**: Invalid password format - **Email**: - **NotEmptyValidator**: No email was passed - **EmailValidator**: Invalid email format
    * @response `500` `void` Internal Server Error
    */
   export namespace Login {
     export type RequestParams = {}
     export type RequestQuery = {}
-    export type RequestBody = LoginRequest
+    export type RequestBody = LoginPayload
     export type RequestHeaders = {}
     export type ResponseBody = LoginResponse
   }
@@ -98,7 +95,7 @@ export namespace Account {
   export namespace SendRecoveryEmail {
     export type RequestParams = {}
     export type RequestQuery = {}
-    export type RequestBody = RecoverAccountRequest
+    export type RequestBody = SendRecoveryEmailPayload
     export type RequestHeaders = {}
     export type ResponseBody = void
   }
@@ -180,7 +177,7 @@ export namespace Account {
       id: string
     }
     export type RequestQuery = {}
-    export type RequestBody = ChangePasswordRequest
+    export type RequestBody = ChangePasswordPayload
     export type RequestHeaders = {}
     export type ResponseBody = void
   }

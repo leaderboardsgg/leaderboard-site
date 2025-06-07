@@ -9,10 +9,12 @@
  * ---------------------------------------------------------------
  */
 
-import type {
+import {
   CategoryViewModel,
-  CreateCategoryRequest,
-  UpdateCategoryRequest,
+  CategoryViewModelListView,
+  CreateCategoryPayload,
+  StatusFilter,
+  UpdateCategoryPayload,
 } from './data-contracts'
 
 export namespace Categories {
@@ -71,9 +73,10 @@ export namespace Categories {
    * @summary Gets all Categories of Leaderboard `id`.
    * @request GET:/api/leaderboard/{id}/categories
    * @secure
-   * @response `200` `(CategoryViewModel)[]` OK
+   * @response `200` `CategoryViewModelListView` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` The Leaderboard with ID `id` could not be found.
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
    * @response `500` `void` Internal Server Error
    */
   export namespace GetCategoriesForLeaderboard {
@@ -83,14 +86,22 @@ export namespace Categories {
     }
     export type RequestQuery = {
       /**
-       * Whether to include deleted Categories. Defaults to `false`.
-       * @default false
+       * The maximum number of records to return. Fewer records may be returned.
+       * @format int32
        */
-      includeDeleted?: boolean
+      limit?: number
+      /**
+       * The zero-based index at which to begin selecting records to return.
+       * @format int32
+       * @default 0
+       */
+      offset?: number
+      /** @default "Published" */
+      status?: StatusFilter
     }
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = CategoryViewModel[]
+    export type ResponseBody = CategoryViewModelListView
   }
 
   /**
@@ -115,7 +126,7 @@ export namespace Categories {
       id: number
     }
     export type RequestQuery = {}
-    export type RequestBody = CreateCategoryRequest
+    export type RequestBody = CreateCategoryPayload
     export type RequestHeaders = {}
     export type ResponseBody = CategoryViewModel
   }
@@ -142,7 +153,7 @@ export namespace Categories {
       id: number
     }
     export type RequestQuery = {}
-    export type RequestBody = UpdateCategoryRequest
+    export type RequestBody = UpdateCategoryPayload
     export type RequestHeaders = {}
     export type ResponseBody = void
   }
