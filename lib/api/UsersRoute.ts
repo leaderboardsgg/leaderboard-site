@@ -9,7 +9,7 @@
  * ---------------------------------------------------------------
  */
 
-import type { UserViewModel } from './data-contracts'
+import { UserViewModel } from './data-contracts'
 
 export namespace Users {
   /**

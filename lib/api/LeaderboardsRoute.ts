@@ -9,10 +9,12 @@
  * ---------------------------------------------------------------
  */
 
-import type {
-  CreateLeaderboardRequest,
+import {
+  CreateLeaderboardPayload,
   LeaderboardViewModel,
-  UpdateLeaderboardRequest,
+  LeaderboardViewModelListView,
+  StatusFilter,
+  UpdateLeaderboardPayload,
 } from './data-contracts'
 
 export namespace Leaderboards {
@@ -68,19 +70,67 @@ export namespace Leaderboards {
    * @summary Gets all leaderboards.
    * @request GET:/api/leaderboards
    * @secure
-   * @response `200` `(LeaderboardViewModel)[]` OK
+   * @response `200` `LeaderboardViewModelListView` OK
    * @response `400` `ProblemDetails` Bad Request
+   * @response `422` `ValidationProblemDetails` Unprocessable Content
    * @response `500` `void` Internal Server Error
    */
   export namespace ListLeaderboards {
     export type RequestParams = {}
     export type RequestQuery = {
-      /** @default false */
-      includeDeleted?: boolean
+      /**
+       * The maximum number of records to return. Fewer records may be returned.
+       * @format int32
+       */
+      limit?: number
+      /**
+       * The zero-based index at which to begin selecting records to return.
+       * @format int32
+       * @default 0
+       */
+      offset?: number
+      /** @default "Published" */
+      status?: StatusFilter
     }
     export type RequestBody = never
     export type RequestHeaders = {}
-    export type ResponseBody = LeaderboardViewModel[]
+    export type ResponseBody = LeaderboardViewModelListView
+  }
+
+  /**
+   * No description
+   * @tags Leaderboards
+   * @name SearchLeaderboards
+   * @summary Search leaderboards by name or slug.
+   * @request GET:/api/leaderboards/search
+   * @secure
+   * @response `200` `LeaderboardViewModelListView` OK
+   * @response `400` `ProblemDetails` Bad Request
+   * @response `422` `ProblemDetails` Unprocessable Content
+   * @response `500` `void` Internal Server Error
+   */
+  export namespace SearchLeaderboards {
+    export type RequestParams = {}
+    export type RequestQuery = {
+      /** The query string. Must not be empty. */
+      q: string
+      /**
+       * The maximum number of records to return. Fewer records may be returned.
+       * @format int32
+       */
+      limit?: number
+      /**
+       * The zero-based index at which to begin selecting records to return.
+       * @format int32
+       * @default 0
+       */
+      offset?: number
+      /** @default "Published" */
+      status?: StatusFilter
+    }
+    export type RequestBody = never
+    export type RequestHeaders = {}
+    export type ResponseBody = LeaderboardViewModelListView
   }
 
   /**
@@ -101,7 +151,7 @@ export namespace Leaderboards {
   export namespace CreateLeaderboard {
     export type RequestParams = {}
     export type RequestQuery = {}
-    export type RequestBody = CreateLeaderboardRequest
+    export type RequestBody = CreateLeaderboardPayload
     export type RequestHeaders = {}
     export type ResponseBody = LeaderboardViewModel
   }
@@ -179,7 +229,7 @@ export namespace Leaderboards {
       id: number
     }
     export type RequestQuery = {}
-    export type RequestBody = UpdateLeaderboardRequest
+    export type RequestBody = UpdateLeaderboardPayload
     export type RequestHeaders = {}
     export type ResponseBody = void
   }
