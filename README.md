@@ -1,5 +1,6 @@
 # leaderboards.gg
 
+
 The frontend for the leaderboards.gg website. Backend repo: https://github.com/leaderboardsgg/leaderboard-backend
 
 ## Discord
