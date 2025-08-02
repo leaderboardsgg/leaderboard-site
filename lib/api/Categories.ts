@@ -15,7 +15,6 @@ import {
   CategoryViewModelListView,
   CreateCategoryPayload,
   GetCategoriesForLeaderboardParams,
-  GetCategoryBySlugParams,
   ProblemDetails,
   UpdateCategoryPayload,
   ValidationProblemDetails,
@@ -31,7 +30,7 @@ export class Categories<
    * @tags Categories
    * @name GetCategory
    * @summary Gets a Category by its ID.
-   * @request GET:/api/category/{id}
+   * @request GET:/api/categories/{id}
    * @secure
    * @response `200` `CategoryViewModel` OK
    * @response `400` `ProblemDetails` Bad Request
@@ -40,7 +39,7 @@ export class Categories<
    */
   getCategory = (id: number, params: RequestParams = {}) =>
     this.request<CategoryViewModel, ProblemDetails | void>({
-      path: `/api/category/${id}`,
+      path: `/api/categories/${id}`,
       method: 'GET',
       secure: true,
       format: 'json',
@@ -52,21 +51,17 @@ export class Categories<
    * @tags Categories
    * @name GetCategoryBySlug
    * @summary Gets a Category of Leaderboard `id` by its slug. Will not return deleted Categories.
-   * @request GET:/api/leaderboard/{id}/category
+   * @request GET:/api/leaderboards/{id}/categories/{slug}
    * @secure
    * @response `200` `CategoryViewModel` OK
    * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` The Category either doesn't exist for the Leaderboard, or it has been deleted.
    * @response `500` `void` Internal Server Error
    */
-  getCategoryBySlug = (
-    { id, ...query }: GetCategoryBySlugParams,
-    params: RequestParams = {},
-  ) =>
+  getCategoryBySlug = (id: number, slug: string, params: RequestParams = {}) =>
     this.request<CategoryViewModel, ProblemDetails | void>({
-      path: `/api/leaderboard/${id}/category`,
+      path: `/api/leaderboards/${id}/categories/${slug}`,
       method: 'GET',
-      query: query,
       secure: true,
       format: 'json',
       ...params,
@@ -77,7 +72,7 @@ export class Categories<
    * @tags Categories
    * @name GetCategoriesForLeaderboard
    * @summary Gets all Categories of Leaderboard `id`.
-   * @request GET:/api/leaderboard/{id}/categories
+   * @request GET:/api/leaderboards/{id}/categories
    * @secure
    * @response `200` `CategoryViewModelListView` OK
    * @response `400` `ProblemDetails` Bad Request
@@ -93,7 +88,7 @@ export class Categories<
       CategoryViewModelListView,
       ProblemDetails | ValidationProblemDetails | void
     >({
-      path: `/api/leaderboard/${id}/categories`,
+      path: `/api/leaderboards/${id}/categories`,
       method: 'GET',
       query: query,
       secure: true,
@@ -106,7 +101,7 @@ export class Categories<
    * @tags Categories
    * @name CreateCategory
    * @summary Creates a new Category for a Leaderboard with ID `id`. This request is restricted to Administrators.
-   * @request POST:/leaderboard/{id}/categories/create
+   * @request POST:/leaderboards/{id}/categories
    * @secure
    * @response `201` `CategoryViewModel` Created
    * @response `400` `ProblemDetails` Bad Request
@@ -129,7 +124,7 @@ export class Categories<
       | CategoryViewModelConflictDetails
       | ValidationProblemDetails
     >({
-      path: `/leaderboard/${id}/categories/create`,
+      path: `/leaderboards/${id}/categories`,
       method: 'POST',
       body: data,
       secure: true,
@@ -143,7 +138,7 @@ export class Categories<
    * @tags Categories
    * @name UpdateCategory
    * @summary Updates a category with the specified new fields. This request is restricted to administrators. Note: `type` cannot be updated. This operation is atomic; if an error occurs, the category will not be updated. All fields of the request body are optional but you must specify at least one.
-   * @request PATCH:/category/{id}
+   * @request PATCH:/categories/{id}
    * @secure
    * @response `204` `void` No Content
    * @response `400` `ProblemDetails` Bad Request
@@ -166,7 +161,7 @@ export class Categories<
       | CategoryViewModelConflictDetails
       | ValidationProblemDetails
     >({
-      path: `/category/${id}`,
+      path: `/categories/${id}`,
       method: 'PATCH',
       body: data,
       secure: true,
@@ -179,7 +174,7 @@ export class Categories<
    * @tags Categories
    * @name DeleteCategory
    * @summary Deletes a Category. This request is restricted to Administrators.
-   * @request DELETE:/category/{id}
+   * @request DELETE:/categories/{id}
    * @secure
    * @response `204` `void` No Content
    * @response `400` `ProblemDetails` Bad Request
@@ -190,36 +185,9 @@ export class Categories<
    */
   deleteCategory = (id: number, params: RequestParams = {}) =>
     this.request<void, ProblemDetails | void>({
-      path: `/category/${id}`,
+      path: `/categories/${id}`,
       method: 'DELETE',
       secure: true,
-      ...params,
-    })
-  /**
-   * No description
-   *
-   * @tags Categories
-   * @name RestoreCategory
-   * @summary Restores a deleted Category.
-   * @request PUT:/category/{id}/restore
-   * @secure
-   * @response `200` `CategoryViewModel` The restored `Category`s view model.
-   * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `void` Unauthorized
-   * @response `403` `void` The requesting `User` is unauthorized to restore `Category`s.
-   * @response `404` `ProblemDetails` The `Category` was not found, or it wasn't deleted in the first place. Includes a field, `title`, which will be "Not Found" in the former case, and "Not Deleted" in the latter.
-   * @response `409` `CategoryViewModelConflictDetails` Another `Category` with the same slug has been created since, and therefore can't be restored. Said `Category` will be returned in the `conflicting` field in the response.
-   * @response `500` `void` Internal Server Error
-   */
-  restoreCategory = (id: number, params: RequestParams = {}) =>
-    this.request<
-      CategoryViewModel,
-      ProblemDetails | void | CategoryViewModelConflictDetails
-    >({
-      path: `/category/${id}/restore`,
-      method: 'PUT',
-      secure: true,
-      format: 'json',
       ...params,
     })
 }
