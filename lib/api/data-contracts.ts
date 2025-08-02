@@ -369,6 +369,13 @@ export type ScoredRunViewModel = BaseRunViewModel & {
 
 export type SortDirection = 'Ascending' | 'Descending'
 
+/** Used in GetLeaderboards to sort leaderboards by a field. */
+export type SortLeaderboardsBy =
+  | 'Name_Asc'
+  | 'Name_Desc'
+  | 'CreatedAt_Asc'
+  | 'CreatedAt_Desc'
+
 export type Status = 'Published' | 'Deleted'
 
 export type StatusFilter = 'Published' | 'Deleted' | 'Any'
@@ -386,12 +393,14 @@ export interface UpdateCategoryRequest {
   slug?: string
   info?: string
   sortDirection?: SortDirection | null
+  status?: Status | null
 }
 
 export interface UpdateLeaderboardRequest {
   name?: string
   slug?: string
   info?: string
+  status?: Status | null
 }
 
 /**
@@ -412,6 +421,15 @@ export type UpdateScoredRunRequest = BaseUpdateRunRequest & {
 export type UpdateTimedRunRequest = BaseUpdateRunRequest & {
   /** @example "25:01:01.001" */
   time?: string | null
+}
+
+/**
+ * The request object sent when updating a `User`.
+ * Currently, only the `Role` field exists, which only accepts
+ * `UserRole.Banned` and `UserRole.Confirmed` as valid values.
+ */
+export interface UpdateUserRequest {
+  role?: UserRole
 }
 
 export type UserRole = 'Registered' | 'Confirmed' | 'Administrator' | 'Banned'
@@ -439,6 +457,29 @@ export interface UserViewModel {
    * @example "1984-01-01T00:00:00Z"
    */
   createdAt: string
+}
+
+export interface UserViewModelListView {
+  data: UserViewModel[]
+  /**
+   * The total number of records matching the given criteria that
+   * exist in the database, NOT the total number of records returned.
+   * @format int64
+   */
+  total: number
+  /**
+   * The default limit that will be applied for this resource type
+   * if the client does not specify one in the query string.
+   * @format int32
+   */
+  limitDefault: number
+  /**
+   * The maximum value the client is allowed to specify as a limt for
+   * endpoints return a paginated list of resources of this type.
+   * Exceeding this value will result in an error.
+   * @format int32
+   */
+  limitMax: number
 }
 
 export interface ValidationProblemDetails {
@@ -515,6 +556,12 @@ interface BaseRunViewModel {
   /** The user who submitted this run. */
   user: UserViewModel
   status: Status
+  /**
+   * The record's rank for its category. Will be 0 if it's not part of
+   * record retrieval.
+   * @format int32
+   */
+  rank?: number
 }
 
 type BaseRunViewModelRunTypeMapping<Key, Type> = {
@@ -533,6 +580,7 @@ interface BaseUpdateRunRequest {
    * @example "2000-01-01"
    */
   playedOn?: string | null
+  status?: Status | null
 }
 
 type BaseUpdateRunRequestRunTypeMapping<Key, Type> = {
@@ -548,12 +596,6 @@ export type LoginPayload = LoginRequest
 export type SendRecoveryEmailPayload = RecoverAccountRequest
 
 export type ChangePasswordPayload = ChangePasswordRequest
-
-export interface GetCategoryBySlugParams {
-  slug: string
-  /** @format int64 */
-  id: number
-}
 
 export interface GetCategoriesForLeaderboardParams {
   /**
@@ -578,10 +620,6 @@ export type CreateCategoryPayload = CreateCategoryRequest
 
 export type UpdateCategoryPayload = UpdateCategoryRequest
 
-export interface GetLeaderboardBySlugParams {
-  slug: string
-}
-
 export interface ListLeaderboardsParams {
   /**
    * The maximum number of records to return. Fewer records may be returned.
@@ -596,6 +634,11 @@ export interface ListLeaderboardsParams {
   offset?: number
   /** @default "Published" */
   status?: StatusFilter
+  /**
+   * Used in GetLeaderboards to sort leaderboards by a field.
+   * @default "Name_Asc"
+   */
+  sortBy?: SortLeaderboardsBy
 }
 
 export interface SearchLeaderboardsParams {
@@ -646,8 +689,50 @@ export interface GetRunsForCategoryParams {
   id: number
 }
 
+export interface GetRecordsForCategoryParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number
+  /** @format int64 */
+  id: number
+}
+
 /**
  * Request sent when updating a run.
  * All fields are optional but you must specify at least one.
  */
 export type UpdateRunPayload = UpdateTimedRunRequest | UpdateScoredRunRequest
+
+export interface ListUsersParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number
+  /**
+   * Multiple comma-separated values are allowed.
+   * @default "Confirmed, Administrator"
+   */
+  role?: UserRole
+}
+
+/**
+ * The request object sent when updating a `User`.
+ * Currently, only the `Role` field exists, which only accepts
+ * `UserRole.Banned` and `UserRole.Confirmed` as valid values.
+ */
+export type UpdateUserPayload = UpdateUserRequest

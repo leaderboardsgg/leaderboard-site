@@ -14,7 +14,6 @@ export default async function useGetLeaderboardBySlug(
 ): Promise<ApiResponse<LeaderboardViewModel>> {
   const { onError, onOkay } = opts
   const responseData = ref<LeaderboardViewModel>({
-    categories: [],
     id: -1,
     name: '',
     slug: '',
@@ -22,6 +21,7 @@ export default async function useGetLeaderboardBySlug(
     createdAt: '',
     updatedAt: null,
     deletedAt: null,
+    status: 'Published',
   })
 
   const leaderboardClient = new Leaderboards({
@@ -29,8 +29,7 @@ export default async function useGetLeaderboardBySlug(
   })
 
   return await useApi<LeaderboardViewModel>(
-    async () =>
-      await leaderboardClient.getLeaderboardBySlug({ slug: leaderboardSlug }),
+    async () => await leaderboardClient.getLeaderboardBySlug(leaderboardSlug),
     {
       onError,
       onOkay,
