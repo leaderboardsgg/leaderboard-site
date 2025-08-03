@@ -36,7 +36,7 @@ jobs:
       - uses: pnpm/action-setup@v4.1.0
 
       - name: Cache PNPM modules
-        uses: actions/checkout@v4.2.3
+        uses: actions/checkout@v4.2.2
         id: cache-modules
         with:
           path: |
