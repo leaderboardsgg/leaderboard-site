@@ -57,7 +57,7 @@
     "eslint-plugin-vuejs-accessibility": "^2.4.1",
     "eslint-typegen": "^2.3.0",
     "globals": "^15.11.0",
-    "happy-dom": "^15.7.4",
+    "happy-dom": "^18.0.1",
     "husky": "^9.1.6",
     "jiti": "^2.3.3",
     "nuxt": "^3.13.2",
@@ -69,9 +69,9 @@
     "typescript": "5.4.5",
     "unplugin-icons": "^0.20.0",
     "unplugin-vue-components": "^0.27.4",
-    "vite": "^5.4.10",
-    "vitest": "^2.1.4",
-    "vitest-fetch-mock": "^0.4.1",
+    "vite": "^7.0.6",
+    "vitest": "^3.2.4",
+    "vitest-fetch-mock": "^0.4.5",
     "vue": "^3.5.12"
   }
 }
