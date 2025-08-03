@@ -21,22 +21,22 @@ jobs:
       fail-fast: false
       max-parallel: 2
       matrix:
-        run_number: [1, 2, 3, 4, 5, 6, 7, 8]
+        run_number: [1, 2, 3, 4]
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4.2.2
+      - uses: actions/checkout@v4
 
       - name: Read package.json
         id: package
-        uses: juliangruber/read-file-action@v1.1.7
+        uses: juliangruber/read-file-action@v1
         with:
           path: ./package.json
 
-      - uses: pnpm/action-setup@v4.1.0
+      - uses: pnpm/action-setup@v4
 
       - name: Cache PNPM modules
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v4
         id: cache-modules
         with:
           path: |
@@ -45,7 +45,7 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-node-
 
-      - uses: actions/setup-node@v4.4.0
+      - uses: actions/setup-node@v4
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
