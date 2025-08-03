@@ -40,7 +40,7 @@ defineProps<{
           width="10"
           data-testid="arrow"
           :class="active ? 'isOpen' : 'isClosed'"
-        >
+        />
       </div>
     </BaseButton>
     <div
@@ -48,7 +48,7 @@ defineProps<{
       data-testid="dropdown-content"
       class="container__content"
     >
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>

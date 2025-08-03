@@ -12,7 +12,7 @@ const leaderboards = await useGetLeaderboards()
   <div>
     <h2 class="mb-4 text-3xl font-bold">Games</h2>
     <div class="flex flex-col lg:flex-row">
-      <Loader v-if="leaderboards.loading"/>
+      <Loader v-if="leaderboards.loading" />
       <LandingLeaderboards :leaderboards="leaderboards.data || []" />
       <LandingAbout />
     </div>
