@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface UserActivityProps {
-  gameCount: number
-  runCount: number
+  gameCount?: number
+  runCount?: number
 }
 
 withDefaults(defineProps<UserActivityProps>(), {

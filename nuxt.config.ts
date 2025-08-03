@@ -95,7 +95,6 @@ export default defineNuxtConfig({
     'unplugin-icons/nuxt',
     '@nuxtjs/i18n',
     '@nuxt/test-utils/module',
-    '@nuxt/eslint',
   ],
 
   runtimeConfig: {

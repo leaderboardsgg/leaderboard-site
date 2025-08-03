@@ -5,13 +5,13 @@ import SocialButtons from 'elements/buttons/SocialButtons/SocialButtons.vue'
 import FollowButton from 'elements/buttons/FollowButton/FollowButton.vue'
 
 interface ProfileHeaderProps {
-  badges: any[]
-  bio: string
-  gameCount: number
-  location: string
-  runCount: number
-  socials: Socials[]
-  username: string
+  badges?: any[]
+  bio?: string
+  gameCount?: number
+  location?: string
+  runCount?: number
+  socials?: Socials[]
+  username?: string
 }
 
 withDefaults(defineProps<ProfileHeaderProps>(), {
