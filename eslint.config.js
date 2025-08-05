@@ -1,56 +1,48 @@
 import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import prettier from 'eslint-plugin-prettier'
 import tailwindcss from 'eslint-plugin-tailwindcss'
-import vue from 'eslint-plugin-vue'
 import vuejsAccessibility from 'eslint-plugin-vuejs-accessibility'
 import globals from 'globals'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import js from '@eslint/js'
-import { FlatCompat } from '@eslint/eslintrc'
 import { createConfigForNuxt } from '@nuxt/eslint-config/flat'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-})
+import pluginVue from 'eslint-plugin-vue'
 
 export default createConfigForNuxt(
   {
-    ignores: [
-      '**/.nuxt',
-      '**/.output',
-      '**/.github',
-      '**/.husky',
-      '**/.vscode',
-      '**/coverage',
-      '**/node_modules',
-      '**/static',
-      '**/testUtils.ts',
-      '**/vite*.ts',
-      '**/*.d.ts',
-      '**/lib/api',
-    ],
+    name: 'Configs',
+    ...prettier.configs['recommended'],
+    ...tailwindcss.configs['recommended'],
+    ...typescriptEslint.configs['recommended'],
+    ...pluginVue.configs['flat/recommended'],
+    ...vuejsAccessibility.configs['flat/recommended'],
   },
-  ...compat.extends(
-    'plugin:vue/vue3-recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
-    'plugin:vuejs-accessibility/recommended',
-    'plugin:tailwindcss/recommended',
-  ),
   {
+    name: 'Plugins',
     plugins: {
       '@typescript-eslint': typescriptEslint,
       prettier,
       tailwindcss,
-      vue,
+      pluginVue,
       'vuejs-accessibility': vuejsAccessibility,
     },
-
+  },
+  {
+    name: 'Ignores',
+    ignores: [
+      './.nuxt/',
+      './.output/',
+      './.github/',
+      './.husky/',
+      './.vscode/',
+      './node_modules/',
+      './testUtils.ts',
+      './vitest.config.ts',
+      './vitest.setup.ts',
+      './types/shims-vue.d.ts',
+      './lib/api/',
+    ],
+  },
+  {
+    name: 'Leaderboards.gg config',
     languageOptions: {
       globals: {
         ...globals.browser,

@@ -48,7 +48,7 @@ defineProps<{
       data-testid="dropdown-content"
       class="container__content"
     >
-      <slot></slot>
+      <slot />
     </div>
   </div>
 </template>
