@@ -29,7 +29,7 @@ afterEach(() => {
 
 describe('useLogoutUser', () => {
   beforeEach(() => {
-    fetchMock.mockIf(/.*\/[Uu]ser\/me/, () => JSON.stringify(user))
+    fetchMock.mockIf(/.*\/[Uu]sers\/me/, () => JSON.stringify(user))
     token = 'auth-token'
   })
 
