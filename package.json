@@ -4,11 +4,11 @@
   "private": true,
   "engines": {
     "node": ">=24.0.0",
-    "pnpm": ">=10.14.0"
+    "pnpm": ">=10.13.1"
   },
   "engineStrict": true,
   "type": "module",
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.13.1",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
