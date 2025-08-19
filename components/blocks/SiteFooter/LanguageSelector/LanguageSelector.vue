@@ -1,16 +1,17 @@
 <script setup lang="ts">
-import { useI18n } from '#imports'
-import type { ComputedRef } from 'vue'
-// import { type LocaleObject } from '#imports'
+import { ref, useI18n, watch } from '#imports'
+const { locale, locales, setLocale } = useI18n()
 
-const NuxtI18n = useI18n()
-const locale = NuxtI18n.locale
-const locales = NuxtI18n.locales as ComputedRef<any[]>
+const localLocale = ref(locale.value)
+
+watch(localLocale, () => {
+  setLocale(localLocale.value)
+})
 </script>
 
 <template>
   <!-- eslint-disable vuejs-accessibility/form-control-has-label -->
-  <select v-model="locale" class="language-selector" role="listbox">
+  <select v-model="localLocale" class="language-selector" role="listbox">
     <option
       v-for="currentLocale in locales"
       :key="currentLocale.code"
