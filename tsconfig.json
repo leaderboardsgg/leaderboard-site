@@ -14,6 +14,7 @@
     "experimentalDecorators": true,
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": false,
 
     // Other
     "jsx": "preserve",

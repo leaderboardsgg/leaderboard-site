@@ -1,6 +1,6 @@
-import type { LanguageIndexFile } from '../language'
+import type { LanguageIndexFile } from '../i18nUtils'
 
-export const English = {
+export default {
   confirmationReceived: 'Confirmation Request Received',
   confirmationReceivedText:
     'If you have a valid account with us, you should receive an email from us soon.',

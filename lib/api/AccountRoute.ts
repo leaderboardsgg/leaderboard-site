@@ -1,5 +1,6 @@
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /*
  * ---------------------------------------------------------------
  * ## THIS FILE WAS GENERATED VIA SWAGGER-TYPESCRIPT-API        ##
@@ -10,12 +11,13 @@
  */
 
 import {
-  ChangePasswordPayload,
-  LoginPayload,
+  ChangePasswordRequest,
+  LoginRequest,
   LoginResponse,
-  RegisterPayload,
-  SendRecoveryEmailPayload,
-} from './data-contracts'
+  RecoverAccountRequest,
+  RegisterRequest,
+  UserViewModel,
+} from "./data-contracts";
 
 export namespace Account {
   /**
@@ -25,17 +27,18 @@ export namespace Account {
    * @summary Registers a new User.
    * @request POST:/Account/register
    * @secure
-   * @response `202` `void` The registration attempt was successfully received, and an email will be sent to the provided address. If an account with that address does not already exist, or if the account has not been confirmed yet, the email will contain a link to confirm the account. Otherwise, the email will inform the associated user that a registration attempt was made with their address.
+   * @response `201` `UserViewModel` The `User` was registered and returned successfully.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `409` `ValidationProblemDetails` A `User` with the specified username already exists. The validation error code `UsernameTaken` will be returned.
+   * @response `409` `ValidationProblemDetails` A `User` with the specified username or email already exists. Validation error codes by property: - **Username**: - **UsernameTaken**: the username is already in use - **Email**: - **EmailAlreadyUsed**: the email is already in use
+   * @response `422` `ValidationProblemDetails` The request contains errors. Validation error codes by property: - **Username**: - **UsernameFormat**: Invalid username format - **Password**: - **PasswordFormat**: Invalid password format - **Email**: - **EmailValidator**: Invalid email format
    * @response `500` `void` Internal Server Error
    */
   export namespace Register {
-    export type RequestParams = {}
-    export type RequestQuery = {}
-    export type RequestBody = RegisterPayload
-    export type RequestHeaders = {}
-    export type ResponseBody = void
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = RegisterRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = UserViewModel;
   }
 
   /**
@@ -47,17 +50,18 @@ export namespace Account {
    * @secure
    * @response `200` `LoginResponse` The `User` was logged in successfully. A `LoginResponse` is returned, containing a token.
    * @response `400` `ProblemDetails` Bad Request
-   * @response `401` `void` The password given was incorrect, or no `User` could be found.
+   * @response `401` `void` The password given was incorrect.
    * @response `403` `void` The associated `User` is banned.
+   * @response `404` `void` No `User` with the requested details could be found.
    * @response `422` `ValidationProblemDetails` The request contains errors. Validation error codes by property: - **Password**: - **NotEmptyValidator**: No password was passed - **PasswordFormat**: Invalid password format - **Email**: - **NotEmptyValidator**: No email was passed - **EmailValidator**: Invalid email format
    * @response `500` `void` Internal Server Error
    */
   export namespace Login {
-    export type RequestParams = {}
-    export type RequestQuery = {}
-    export type RequestBody = LoginPayload
-    export type RequestHeaders = {}
-    export type ResponseBody = LoginResponse
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = LoginRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = LoginResponse;
   }
 
   /**
@@ -74,11 +78,11 @@ export namespace Account {
    * @response `500` `void` The account recovery email failed to be created.
    */
   export namespace ResendConfirmationEmail {
-    export type RequestParams = {}
-    export type RequestQuery = {}
-    export type RequestBody = never
-    export type RequestHeaders = {}
-    export type ResponseBody = void
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = void;
   }
 
   /**
@@ -93,11 +97,11 @@ export namespace Account {
    * @response `500` `void` Internal Server Error
    */
   export namespace SendRecoveryEmail {
-    export type RequestParams = {}
-    export type RequestQuery = {}
-    export type RequestBody = SendRecoveryEmailPayload
-    export type RequestHeaders = {}
-    export type ResponseBody = void
+    export type RequestParams = {};
+    export type RequestQuery = {};
+    export type RequestBody = RecoverAccountRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = void;
   }
 
   /**
@@ -119,12 +123,12 @@ export namespace Account {
        * The confirmation token.
        * @pattern ^[a-zA-Z0-9-_]{22}$
        */
-      id: string
-    }
-    export type RequestQuery = {}
-    export type RequestBody = never
-    export type RequestHeaders = {}
-    export type ResponseBody = void
+      id: string;
+    };
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = void;
   }
 
   /**
@@ -145,12 +149,12 @@ export namespace Account {
        * The recovery token.
        * @pattern ^[a-zA-Z0-9-_]{22}$
        */
-      id: string
-    }
-    export type RequestQuery = {}
-    export type RequestBody = never
-    export type RequestHeaders = {}
-    export type ResponseBody = void
+      id: string;
+    };
+    export type RequestQuery = {};
+    export type RequestBody = never;
+    export type RequestHeaders = {};
+    export type ResponseBody = void;
   }
 
   /**
@@ -174,11 +178,11 @@ export namespace Account {
        * The recovery token.
        * @pattern ^[a-zA-Z0-9-_]{22}$
        */
-      id: string
-    }
-    export type RequestQuery = {}
-    export type RequestBody = ChangePasswordPayload
-    export type RequestHeaders = {}
-    export type ResponseBody = void
+      id: string;
+    };
+    export type RequestQuery = {};
+    export type RequestBody = ChangePasswordRequest;
+    export type RequestHeaders = {};
+    export type ResponseBody = void;
   }
 }

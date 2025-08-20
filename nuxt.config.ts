@@ -7,7 +7,7 @@ import Icons from 'unplugin-icons/vite'
 import { FileSystemIconLoader } from 'unplugin-icons/loaders'
 import IconResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
-import { supportedLocales } from './configUtils'
+import { supportedLocales } from './i18n/i18nUtils'
 import type { ViteConfig } from 'nuxt/schema'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
@@ -62,7 +62,7 @@ export default defineNuxtConfig({
       meta: [
         { charset: 'utf-8' },
         { content: 'width=device-width, initial-scale=1', name: 'viewport' },
-        { content: '', hid: 'description', name: 'description' },
+        { content: '', name: 'description' },
         { content: 'telephone=no', name: 'format-detection' },
       ],
       title: 'leaderboards.gg',
@@ -74,7 +74,6 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: 'en',
     locales: supportedLocales,
-    vueI18n: './i18n.config.ts',
   },
 
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],

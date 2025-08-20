@@ -1,6 +1,6 @@
-import type { LanguageIndexFile } from '../language'
+import type { LanguageIndexFile } from '../i18nUtils'
 
-export const Deutsch = {
+export default {
   login: 'Anmelden',
   welcome: 'Willkommen!',
 } satisfies LanguageIndexFile
