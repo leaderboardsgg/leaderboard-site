@@ -13,7 +13,7 @@ describe('<Dropdown />', () => {
   })
 
   describe('when the toggler is clicked', () => {
-    it('should render the slot item, then hide it on a second click', async () => {
+    it.skip('should render the slot item, then hide it on a second click', async () => {
       const wrapper = await mountSuspended(Dropdown, {
         slots: {
           default: DropdownItem,

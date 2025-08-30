@@ -1,4 +1,4 @@
-import { defineNuxtRouteMiddleware, useRoute, navigateTo } from '#app'
+import { defineNuxtRouteMiddleware, useRoute, navigateTo } from 'nuxt/app'
 import { useModalAlert } from '#imports'
 import { useConfirmAccount } from '~/composables/api'
 
@@ -25,7 +25,7 @@ export default defineNuxtRouteMiddleware((_to, from) => {
     },
     onOkay: () => {
       showAlert({
-        body: 'Account confirmed successfully!',
+        body: 'Account confirmed successfully!`',
         title: 'Success!',
         type: 'success',
       })

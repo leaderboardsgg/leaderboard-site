@@ -1,4 +1,5 @@
 onlyBuiltDependencies:
+  - codemod
   - esbuild
   - unrs-resolver
   - vue-demi

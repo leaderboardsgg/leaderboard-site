@@ -1,5 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { supportedLocales } from '~/i18n/i18nUtils'
+import { supportedLocales } from 'root/i18n/i18nUtils'
 import LanguageSelector from './LanguageSelector.vue'
 
 describe('<LanguageSelector />', () => {

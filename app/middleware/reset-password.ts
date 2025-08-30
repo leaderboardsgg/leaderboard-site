@@ -1,5 +1,8 @@
 import { isProblemDetails } from 'lib/helpers'
 import type { ProblemDetails } from 'lib/api/data-contracts'
+import { defineNuxtRouteMiddleware, navigateTo } from 'nuxt/app'
+import { useValidateRecoveryToken } from '~/composables/api'
+import { useModalAlert } from '#imports'
 
 export default defineNuxtRouteMiddleware(async (_to, from) => {
   const resetPasswordCode = from.query?.code as string

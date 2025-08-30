@@ -1,12 +1,11 @@
 export default {
   content: [
-    './components/**/*.{vue,js}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
+    './app/components/**/*.{vue,js}',
+    './app/layouts/**/*.vue',
+    './app/pages/**/*.vue',
   ],
   plugins: [],
   theme: {
-    // extend: {},
     screens: {
       sm: '640px',
       md: '768px',
