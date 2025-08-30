@@ -1,4 +1,4 @@
-import { defineNuxtRouteMiddleware, useRoute, navigateTo } from '#app'
+import { defineNuxtRouteMiddleware, useRoute, navigateTo } from 'nuxt/app'
 import { useModalAlert } from '#imports'
 import { useConfirmAccount } from '~/composables/api'
 

@@ -13,12 +13,12 @@ import type { ViteConfig } from 'nuxt/schema'
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
 const nuxtAliases = {
-  blocks: resolve(__dirname, './components/blocks'),
-  composables: resolve(__dirname, './composables'),
-  elements: resolve(__dirname, './components/elements'),
-  layouts: resolve(__dirname, './layouts'),
+  blocks: resolve(__dirname, './app/components/blocks'),
+  composables: resolve(__dirname, './app/composables'),
+  elements: resolve(__dirname, './app/components/elements'),
+  layouts: resolve(__dirname, './app/layouts'),
   lib: resolve(__dirname, './lib'),
-  pages: resolve(__dirname, './pages'),
+  pages: resolve(__dirname, './app/pages'),
   root: resolve(__dirname, './'),
 }
 
@@ -29,7 +29,7 @@ export const viteConfig: ViteConfig = {
       autoInstall: true,
       compiler: 'vue3',
       customCollections: {
-        svg: FileSystemIconLoader('./assets/sprite/svg'),
+        svg: FileSystemIconLoader('./app/assets/sprite/svg'),
       },
     }),
     Components({
@@ -88,7 +88,7 @@ export default defineNuxtConfig({
       '@nuxtjs/tailwindcss',
       {
         configPath: 'tailwind.config.js',
-        cssPath: './assets/css/tailwind.css',
+        cssPath: './app/assets/css/tailwind.css',
       },
     ],
     'unplugin-icons/nuxt',
@@ -104,5 +104,5 @@ export default defineNuxtConfig({
 
   ssr: false,
   vite: viteConfig,
-  compatibilityDate: '2024-08-17',
+  compatibilityDate: '2025-08-19',
 })
