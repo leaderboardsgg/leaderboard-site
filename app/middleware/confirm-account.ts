@@ -25,7 +25,7 @@ export default defineNuxtRouteMiddleware((_to, from) => {
     },
     onOkay: () => {
       showAlert({
-        body: 'Account confirmed successfully!`',
+        body: 'Account confirmed successfully!',
         title: 'Success!',
         type: 'success',
       })
