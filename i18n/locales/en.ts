@@ -13,4 +13,5 @@ export default {
   signup: 'Sign Up',
   welcome: 'Welcome',
   info: 'Info',
+  errorNavigateHome: 'Navigate to front page?',
 } satisfies LanguageIndexFile
