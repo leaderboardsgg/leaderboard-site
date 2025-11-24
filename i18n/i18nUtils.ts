@@ -43,4 +43,5 @@ export interface LanguageIndexFile {
   confirmationReceivedText?: string
   signup?: string
   info?: string
+  errorNavigateHome?: string
 }
