@@ -1,11 +1,11 @@
 import { useRuntimeConfig } from '#app'
 import { ref } from 'vue'
 import useApi, { type optionalParameters } from '~/composables/useApi'
-import { Categories } from '~/lib/api/Categories'
+import { Categories } from '~~/lib/api/Categories'
 import type {
   CategoryViewModelListView,
   GetCategoriesForLeaderboardParams,
-} from '~/lib/api/data-contracts'
+} from '~~/lib/api/data-contracts'
 
 export default async function useGetCategoriesForLeaderboard(
   params: GetCategoriesForLeaderboardParams,

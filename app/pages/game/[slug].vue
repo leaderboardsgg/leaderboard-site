@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useRoute } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
-import CategoryInfo from '~/components/RunsPage/CategoryInfo/CategoryInfo.vue'
-import Header from '~/components/RunsPage/Header/Header.vue'
-import RunsTable from '~/components/RunsPage/RunsTable/RunsTable.vue'
+import CategoryInfo from '~/components/blocks/RunsPage/CategoryInfo/CategoryInfo.vue'
+import Header from '~/components/blocks/RunsPage/Header/Header.vue'
+import RunsTable from '~/components/blocks/RunsPage/RunsTable/RunsTable.vue'
 import {
-  useGetLeaderboardBySlug,
   useGetCategoryBySlug,
+  useGetLeaderboardBySlug,
 } from '~/composables/api'
-import type { CategoryViewModel } from '~/lib/api/data-contracts'
+import type { CategoryViewModel } from '~~/lib/api/data-contracts'
 const {
   params: { slug },
   query: { category: categorySlug },

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { CategoryViewModel } from '~/lib/api/data-contracts'
+import type { CategoryViewModel } from '~~/lib/api/data-contracts'
 
 interface CategoryInfoProps {
   category: CategoryViewModel

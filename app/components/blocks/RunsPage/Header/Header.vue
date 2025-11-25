@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
+import type { LeaderboardViewModel } from '~~/lib/api/data-contracts'
 import { useGetCategoriesForLeaderboard } from '~/composables/api'
 import ButtonLink from '~/components/elements/buttons/ButtonLink/ButtonLink.vue'
 
