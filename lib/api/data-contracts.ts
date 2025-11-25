@@ -12,9 +12,47 @@
 
 export type UserRole = "Registered" | "Confirmed" | "Administrator" | "Banned";
 
+export type StatusFilter = "Published" | "Deleted" | "Any";
+
+export type Status = "Published" | "Deleted";
+
+/** Used in GetLeaderboards to sort leaderboards by a field. */
+export type SortLeaderboardsBy =
+  | "Name_Asc"
+  | "Name_Desc"
+  | "CreatedAt_Asc"
+  | "CreatedAt_Desc";
+
 export type SortDirection = "Ascending" | "Descending";
 
 export type RunType = "Time" | "Score";
+
+/**
+ * Request sent when updating a run.
+ * All fields are optional but you must specify at least one.
+ */
+export type UpdateRunRequest = BaseUpdateRunRequest &
+  (
+    | BaseUpdateRunRequestRunTypeMapping<"Time", UpdateTimedRunRequest>
+    | BaseUpdateRunRequestRunTypeMapping<"Score", UpdateScoredRunRequest>
+  );
+
+export type RunViewModel = BaseRunViewModel &
+  (
+    | BaseRunViewModelRunTypeMapping<"Time", TimedRunViewModel>
+    | BaseRunViewModelRunTypeMapping<"Score", ScoredRunViewModel>
+  );
+
+/**
+ * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
+ * request, and `"Score"` for a scored one. `runType` *must* be at the top
+ * of the request object.
+ */
+export type CreateRunRequest = BaseCreateRunRequest &
+  (
+    | BaseCreateRunRequestRunTypeMapping<"Time", CreateTimedRunRequest>
+    | BaseCreateRunRequestRunTypeMapping<"Score", CreateScoredRunRequest>
+  );
 
 /** Represents a `Category` tied to a `Leaderboard`. */
 export interface CategoryViewModel {
@@ -40,6 +78,8 @@ export interface CategoryViewModel {
   info: string | null;
   type: RunType;
   sortDirection: SortDirection;
+  /** @format int64 */
+  leaderboardId: number;
   /**
    * @format date-time
    * @example "1984-01-01T00:00:00Z"
@@ -55,6 +95,43 @@ export interface CategoryViewModel {
    * @example "1984-01-01T00:00:00Z"
    */
   deletedAt: string | null;
+  status: Status;
+}
+
+/** A fake ProblemDetails subclass used for deserialization and documentation. Do not instantiate! */
+export interface CategoryViewModelConflictDetails {
+  type?: string | null;
+  title?: string | null;
+  /** @format int32 */
+  status?: number | null;
+  detail?: string | null;
+  instance?: string | null;
+  /** Represents a `Category` tied to a `Leaderboard`. */
+  conflicting?: CategoryViewModel | null;
+  [key: string]: any;
+}
+
+export interface CategoryViewModelListView {
+  data: CategoryViewModel[];
+  /**
+   * The total number of records matching the given criteria that
+   * exist in the database, NOT the total number of records returned.
+   * @format int64
+   */
+  total: number;
+  /**
+   * The default limit that will be applied for this resource type
+   * if the client does not specify one in the query string.
+   * @format int32
+   */
+  limitDefault: number;
+  /**
+   * The maximum value the client is allowed to specify as a limt for
+   * endpoints return a paginated list of resources of this type.
+   * Exceeding this value will result in an error.
+   * @format int32
+   */
+  limitMax: number;
 }
 
 export interface ChangePasswordRequest {
@@ -66,6 +143,7 @@ export interface ChangePasswordRequest {
 export interface CreateCategoryRequest {
   /**
    * The display name of the `Category`.
+   * @minLength 1
    * @example "Foo Bar Baz%"
    */
   name: string;
@@ -73,6 +151,7 @@ export interface CreateCategoryRequest {
    * The URL-scoped unique identifier of the `Category`.
    *
    * Must be [2, 25] in length and consist only of alphanumeric characters and hyphens.
+   * @minLength 1
    * @example "foo-bar-baz"
    */
   slug: string;
@@ -80,12 +159,7 @@ export interface CreateCategoryRequest {
    * Information pertaining to the `Category`.
    * @example "Video proof is required."
    */
-  info: string | null;
-  /**
-   * The ID of the `Leaderboard` the `Category` is a part of.
-   * @format int64
-   */
-  leaderboardId: number;
+  info?: string;
   sortDirection: SortDirection;
   type: RunType;
 }
@@ -109,23 +183,23 @@ export interface CreateLeaderboardRequest {
   info?: string;
 }
 
-/** This request object is sent when creating a `Run`. */
-export interface CreateRunRequest {
-  info: string | null;
+/** `runType: "Score"` */
+export type CreateScoredRunRequest = BaseCreateRunRequest & {
   /**
-   * The date the `Run` was played on.
-   * @format date
-   * @example "2000-01-01"
-   */
-  playedOn: string;
-  /**
-   * The ID of the `Category` for the `Run`.
+   * The score achieved during the run.
    * @format int64
    */
-  categoryId: number;
-  /** @format int64 */
-  timeOrScore: number;
-}
+  score: number;
+};
+
+/** `runType: "Time"` */
+export type CreateTimedRunRequest = BaseCreateRunRequest & {
+  /**
+   * The duration of the run. Must obey the format 'HH:mm:ss.sss', with leading zeroes.
+   * @example "12:34:56.999"
+   */
+  time: string;
+};
 
 /** Represents a collection of `Leaderboard` entities. */
 export interface LeaderboardViewModel {
@@ -171,8 +245,43 @@ export interface LeaderboardViewModel {
    * @example "1984-01-01T00:00:00Z"
    */
   deletedAt: string | null;
-  /** A collection of `Category` entities for the `Leaderboard`. */
-  categories: CategoryViewModel[];
+  status: Status;
+}
+
+/** A fake ProblemDetails subclass used for deserialization and documentation. Do not instantiate! */
+export interface LeaderboardViewModelConflictDetails {
+  type?: string | null;
+  title?: string | null;
+  /** @format int32 */
+  status?: number | null;
+  detail?: string | null;
+  instance?: string | null;
+  /** Represents a collection of `Leaderboard` entities. */
+  conflicting?: LeaderboardViewModel | null;
+  [key: string]: any;
+}
+
+export interface LeaderboardViewModelListView {
+  data: LeaderboardViewModel[];
+  /**
+   * The total number of records matching the given criteria that
+   * exist in the database, NOT the total number of records returned.
+   * @format int64
+   */
+  total: number;
+  /**
+   * The default limit that will be applied for this resource type
+   * if the client does not specify one in the query string.
+   * @format int32
+   */
+  limitDefault: number;
+  /**
+   * The maximum value the client is allowed to specify as a limt for
+   * endpoints return a paginated list of resources of this type.
+   * Exceeding this value will result in an error.
+   * @format int32
+   */
+  limitMax: number;
 }
 
 /** This request object is sent when a `User` is attempting to log in. */
@@ -253,11 +362,28 @@ export interface RegisterRequest {
   password: string;
 }
 
-export type RunViewModel = BaseRunViewModel &
-  (
-    | BaseRunViewModelTypeMapping<"Time", TimedRunViewModel>
-    | BaseRunViewModelTypeMapping<"Score", ScoredRunViewModel>
-  );
+export interface RunViewModelListView {
+  data: (TimedRunViewModel | ScoredRunViewModel)[];
+  /**
+   * The total number of records matching the given criteria that
+   * exist in the database, NOT the total number of records returned.
+   * @format int64
+   */
+  total: number;
+  /**
+   * The default limit that will be applied for this resource type
+   * if the client does not specify one in the query string.
+   * @format int32
+   */
+  limitDefault: number;
+  /**
+   * The maximum value the client is allowed to specify as a limt for
+   * endpoints return a paginated list of resources of this type.
+   * Exceeding this value will result in an error.
+   * @format int32
+   */
+  limitMax: number;
+}
 
 export type ScoredRunViewModel = BaseRunViewModel & {
   /**
@@ -275,10 +401,38 @@ export type TimedRunViewModel = BaseRunViewModel & {
   time: string;
 };
 
+export interface UpdateCategoryRequest {
+  name?: string;
+  slug?: string;
+  info?: string;
+  sortDirection?: SortDirection | null;
+  status?: Status | null;
+}
+
 export interface UpdateLeaderboardRequest {
   name?: string;
   slug?: string;
   info?: string;
+  status?: Status | null;
+}
+
+export type UpdateScoredRunRequest = BaseUpdateRunRequest & {
+  /** @format int64 */
+  score?: number | null;
+};
+
+export type UpdateTimedRunRequest = BaseUpdateRunRequest & {
+  /** @example "25:01:01.001" */
+  time?: string | null;
+};
+
+/**
+ * The request object sent when updating a `User`.
+ * Currently, only the `Role` field exists, which only accepts
+ * `UserRole.Banned` and `UserRole.Confirmed` as valid values.
+ */
+export interface UpdateUserRequest {
+  role?: UserRole;
 }
 
 export interface UserViewModel {
@@ -306,6 +460,29 @@ export interface UserViewModel {
   createdAt: string;
 }
 
+export interface UserViewModelListView {
+  data: UserViewModel[];
+  /**
+   * The total number of records matching the given criteria that
+   * exist in the database, NOT the total number of records returned.
+   * @format int64
+   */
+  total: number;
+  /**
+   * The default limit that will be applied for this resource type
+   * if the client does not specify one in the query string.
+   * @format int32
+   */
+  limitDefault: number;
+  /**
+   * The maximum value the client is allowed to specify as a limt for
+   * endpoints return a paginated list of resources of this type.
+   * Exceeding this value will result in an error.
+   * @format int32
+   */
+  limitMax: number;
+}
+
 export interface ValidationProblemDetails {
   type?: string | null;
   title?: string | null;
@@ -317,8 +494,27 @@ export interface ValidationProblemDetails {
   [key: string]: any;
 }
 
+/**
+ * Request sent when updating a run.
+ * All fields are optional but you must specify at least one.
+ */
+interface BaseUpdateRunRequest {
+  runType: RunType;
+  info?: string;
+  /**
+   * @format date
+   * @example "2000-01-01"
+   */
+  playedOn?: string | null;
+  status?: Status | null;
+}
+
+type BaseUpdateRunRequestRunTypeMapping<Key, Type> = {
+  runType: Key;
+} & Type;
+
 interface BaseRunViewModel {
-  $type: string;
+  runType: RunType;
   /**
    * The unique identifier of the `Run`.
    *
@@ -329,7 +525,13 @@ interface BaseRunViewModel {
   /** User-provided details about the run. */
   info: string | null;
   /**
-   * The time the run was created.
+   * The date the run was done, *not* when it was submitted.
+   * @format date
+   * @example "2000-01-01"
+   */
+  playedOn: string;
+  /**
+   * The time the run was submitted to the DB.
    * @format date-time
    * @example "1984-01-01T00:00:00Z"
    */
@@ -351,22 +553,296 @@ interface BaseRunViewModel {
    * @format int64
    */
   categoryId: number;
+  /** The user who submitted this run. */
+  user: UserViewModel;
+  status: Status;
   /**
-   * The ID of the LeaderboardBackend.Models.Entities.User who submitted this run.
-   * @pattern ^[a-zA-Z0-9-_]{22}$
+   * The record's rank for its category. Will be 0 if it's not part of
+   * record retrieval.
+   * @format int32
    */
-  userId: string;
+  rank?: number;
 }
 
-type BaseRunViewModelTypeMapping<Key, Type> = {
-  $type: Key;
+type BaseRunViewModelRunTypeMapping<Key, Type> = {
+  runType: Key;
 } & Type;
+
+/**
+ * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
+ * request, and `"Score"` for a scored one. `runType` *must* be at the top
+ * of the request object.
+ */
+interface BaseCreateRunRequest {
+  runType: RunType;
+  info?: string;
+  /**
+   * The date the `Run` was played on. Must obey the format 'YYYY-MM-DD', with leading zeroes.
+   * @format date
+   * @example "2000-01-01"
+   */
+  playedOn: string;
+}
+
+type BaseCreateRunRequestRunTypeMapping<Key, Type> = {
+  runType: Key;
+} & Type;
+
+/** This request object is sent when a `User` is attempting to register. */
+export type RegisterPayload = RegisterRequest;
+
+/** This request object is sent when a `User` is attempting to log in. */
+export type LoginPayload = LoginRequest;
+
+/** The account recovery request. */
+export type SendRecoveryEmailPayload = RecoverAccountRequest;
+
+export interface ConfirmAccountParams {
+  /**
+   * The confirmation token.
+   * @pattern ^[a-zA-Z0-9-_]{22}$
+   */
+  id: string;
+}
+
+export interface TestRecoveryTokenParams {
+  /**
+   * The recovery token.
+   * @pattern ^[a-zA-Z0-9-_]{22}$
+   */
+  id: string;
+}
+
+/** The password recovery request object. */
+export type ChangePasswordPayload = ChangePasswordRequest;
+
+export interface ChangePasswordParams {
+  /**
+   * The recovery token.
+   * @pattern ^[a-zA-Z0-9-_]{22}$
+   */
+  id: string;
+}
+
+export interface GetCategoryParams {
+  /** @format int64 */
+  id: number;
+}
+
+export interface GetCategoryBySlugParams {
+  /** @format int64 */
+  id: number;
+  slug: string;
+}
+
+export interface GetCategoriesForLeaderboardParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number;
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number;
+  /** @default "Published" */
+  status?: StatusFilter;
+  /** @format int64 */
+  id: number;
+}
+
+/** This request object is sent when creating a `Category`. */
+export type CreateCategoryPayload = CreateCategoryRequest;
+
+export interface CreateCategoryParams {
+  /** @format int64 */
+  id: number;
+}
+
+export type UpdateCategoryPayload = UpdateCategoryRequest;
+
+export interface UpdateCategoryParams {
+  /** @format int64 */
+  id: number;
+}
+
+export interface DeleteCategoryParams {
+  /** @format int64 */
+  id: number;
+}
+
+export interface GetLeaderboardParams {
+  /** @format int64 */
+  id: number;
+}
 
 export interface GetLeaderboardBySlugParams {
   slug: string;
 }
 
 export interface ListLeaderboardsParams {
-  /** @default false */
-  includeDeleted?: boolean;
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number;
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number;
+  /** @default "Published" */
+  status?: StatusFilter;
+  /**
+   * Used in GetLeaderboards to sort leaderboards by a field.
+   * @default "Name_Asc"
+   */
+  sortBy?: SortLeaderboardsBy;
+}
+
+export interface SearchLeaderboardsParams {
+  /** The query string. Must not be empty. */
+  q: string;
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number;
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number;
+  /** @default "Published" */
+  status?: StatusFilter;
+}
+
+/** This request object is sent when creating a `Leaderboard`. */
+export type CreateLeaderboardPayload = CreateLeaderboardRequest;
+
+export interface DeleteLeaderboardParams {
+  /** @format int64 */
+  id: number;
+}
+
+export type UpdateLeaderboardPayload = UpdateLeaderboardRequest;
+
+export interface UpdateLeaderboardParams {
+  /** @format int64 */
+  id: number;
+}
+
+export interface GetRunParams {
+  /** @pattern ^[a-zA-Z0-9-_]{22}$ */
+  id: string;
+}
+
+/**
+ * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
+ * request, and `"Score"` for a scored one. `runType` *must* be at the top
+ * of the request object.
+ */
+export type CreateRunPayload = CreateTimedRunRequest | CreateScoredRunRequest;
+
+export interface CreateRunParams {
+  /** @format int64 */
+  id: number;
+}
+
+export interface GetRunsForCategoryParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number;
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number;
+  /** @default "Published" */
+  status?: StatusFilter;
+  /** @format int64 */
+  id: number;
+}
+
+export interface GetRecordsForCategoryParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number;
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number;
+  /** @format int64 */
+  id: number;
+}
+
+export interface GetRunCategoryParams {
+  /** @pattern ^[a-zA-Z0-9-_]{22}$ */
+  id: string;
+}
+
+/**
+ * Request sent when updating a run.
+ * All fields are optional but you must specify at least one.
+ */
+export type UpdateRunPayload = UpdateTimedRunRequest | UpdateScoredRunRequest;
+
+export interface UpdateRunParams {
+  /** @pattern ^[a-zA-Z0-9-_]{22}$ */
+  id: string;
+}
+
+export interface DeleteRunParams {
+  /** @pattern ^[a-zA-Z0-9-_]{22}$ */
+  id: string;
+}
+
+export interface GetUserParams {
+  /**
+   * The ID of the `User` which should be retrieved.
+   * @pattern ^[a-zA-Z0-9-_]{22}$
+   */
+  id: string;
+}
+
+export interface ListUsersParams {
+  /**
+   * The maximum number of records to return. Fewer records may be returned.
+   * @format int32
+   */
+  limit?: number;
+  /**
+   * The zero-based index at which to begin selecting records to return.
+   * @format int32
+   * @default 0
+   */
+  offset?: number;
+  /**
+   * Multiple comma-separated values are allowed.
+   * @default "Confirmed, Administrator"
+   */
+  role?: UserRole;
+}
+
+/**
+ * The request object sent when updating a `User`.
+ * Currently, only the `Role` field exists, which only accepts
+ * `UserRole.Banned` and `UserRole.Confirmed` as valid values.
+ */
+export type UpdateUserPayload = UpdateUserRequest;
+
+export interface UpdateUserParams {
+  /** @pattern ^[a-zA-Z0-9-_]{22}$ */
+  id: string;
 }
