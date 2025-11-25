@@ -24,6 +24,9 @@ function onEnter() {
 
 <template>
   <div class="search-bar">
+    <BaseButton data-testid="search-button" type="button" @click="onClick">
+      <i-svg-search />
+    </BaseButton>
     <BaseInput
       :model="state.input"
       data-testid="search-input"
