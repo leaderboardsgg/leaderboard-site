@@ -19,7 +19,9 @@ export async function useChangePassword(
 
   // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
-    async () => await account.changePassword(token, requestData),
+    async () => await account.changePassword({
+      id: token
+    }, requestData),
     {
       onError,
       onOkay,
