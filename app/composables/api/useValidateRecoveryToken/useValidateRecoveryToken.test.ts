@@ -16,7 +16,7 @@ describe('useValidateRecoveryToken', () => {
       await useValidateRecoveryToken(token)
 
       expect(mockSuccessTestRecoveryToken).toBeCalledTimes(1)
-      expect(mockSuccessTestRecoveryToken).toBeCalledWith(token)
+      expect(mockSuccessTestRecoveryToken).toBeCalledWith({id: token})
     })
   })
 })
