@@ -17,7 +17,10 @@ describe('useChangePassword', () => {
       await useChangePassword(token, requestData)
 
       expect(mockSuccessChangePassword).toBeCalledTimes(1)
-      expect(mockSuccessChangePassword).toBeCalledWith({id: token}, requestData)
+      expect(mockSuccessChangePassword).toBeCalledWith(
+        { id: token },
+        requestData,
+      )
     })
   })
 })

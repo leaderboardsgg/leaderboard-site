@@ -18,7 +18,7 @@ describe('useGetLeaderboardBySlug', () => {
       await useGetLeaderboardBySlug(slug)
 
       expect(mockSuccessGetLeaderboardBySlug).toBeCalledTimes(1)
-      expect(mockSuccessGetLeaderboardBySlug).toBeCalledWith({slug: slug})
+      expect(mockSuccessGetLeaderboardBySlug).toBeCalledWith({ slug: slug })
     })
   })
 })

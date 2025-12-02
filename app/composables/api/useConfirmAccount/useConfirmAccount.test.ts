@@ -18,7 +18,9 @@ describe('useConfirmAccount', () => {
       await useConfirmAccount(confirmationCode)
 
       expect(mockSuccessAccountConfirmation).toBeCalledTimes(1)
-      expect(mockSuccessAccountConfirmation).toBeCalledWith({id: confirmationCode})
+      expect(mockSuccessAccountConfirmation).toBeCalledWith({
+        id: confirmationCode,
+      })
     })
   })
 })
