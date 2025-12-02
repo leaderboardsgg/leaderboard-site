@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useRoute } from '#imports'
 import ProfileHeader from 'blocks/ProfileHeader/ProfileHeader.vue'
 import { useGetUser } from '~/composables/api'
 
