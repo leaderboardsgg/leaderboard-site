@@ -29,9 +29,10 @@ export default async function useGetLeaderboardBySlug(
   })
 
   return await useApi<LeaderboardViewModel>(
-    async () => await leaderboardClient.getLeaderboardBySlug({
-      slug: leaderboardSlug
-    }),
+    async () =>
+      await leaderboardClient.getLeaderboardBySlug({
+        slug: leaderboardSlug,
+      }),
     {
       onError,
       onOkay,
