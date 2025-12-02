@@ -21,7 +21,9 @@ export type SortLeaderboardsBy =
   | "Name_Asc"
   | "Name_Desc"
   | "CreatedAt_Asc"
-  | "CreatedAt_Desc";
+  | "CreatedAt_Desc"
+  | "RunCount_Asc"
+  | "RunCount_Desc";
 
 export type SortDirection = "Ascending" | "Descending";
 
@@ -201,6 +203,11 @@ export type CreateTimedRunRequest = BaseCreateRunRequest & {
   time: string;
 };
 
+export interface LeaderboardStats {
+  /** @format int64 */
+  runCount?: number;
+}
+
 /** Represents a collection of `Leaderboard` entities. */
 export interface LeaderboardViewModel {
   /**
@@ -246,6 +253,7 @@ export interface LeaderboardViewModel {
    */
   deletedAt: string | null;
   status: Status;
+  stats?: LeaderboardStats;
 }
 
 /** A fake ProblemDetails subclass used for deserialization and documentation. Do not instantiate! */
@@ -557,9 +565,8 @@ interface BaseRunViewModel {
   user: UserViewModel;
   status: Status;
   /**
-   * The record's rank for its category. Will be 0 if it's not part of
-   * record retrieval.
-   * @format int32
+   * The run's rank within its category.
+   * @format int64
    */
   rank?: number;
 }
