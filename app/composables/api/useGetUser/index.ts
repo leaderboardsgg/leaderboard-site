@@ -18,7 +18,9 @@ export default async function useGetUser(
   })
 
   return await useApi<UserViewModel>(
-    async () => await userClient.getUser(userId),
+    async () => await userClient.getUser({
+      id: userId
+    }),
     {
       onError,
       onOkay,
