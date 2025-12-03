@@ -55,6 +55,9 @@ Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 - generate static project
   - $ `pnpm generate`
 
+- enable husky pre-commit hooks
+  - $ `pnpm husky`
+
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
 ## Development Environment
