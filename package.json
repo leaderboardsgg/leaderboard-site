@@ -19,7 +19,6 @@
     "lint:prod": "set NODE_ENV=production&& eslint .",
     "lint:audit": "pnpm exec eslint-config-inspector",
     "precommit": "pnpm lint:prod && pnpm test && pnpm prettier:check ",
-    "prepare": "husky",
     "prettier:check": "prettier --check --ignore-path .prettierignore .",
     "prettier:fix": "prettier --check --write --ignore-path .prettierignore .",
     "preview": "nuxt preview",
