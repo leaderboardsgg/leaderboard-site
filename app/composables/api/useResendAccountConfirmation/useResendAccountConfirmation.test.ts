@@ -16,7 +16,7 @@ afterEach(() => {
 
 describe('useResendAccountConfirmation', () => {
   describe('when everything is successful', () => {
-    it('changes the password for the user', async () => {
+    it('resends the account confirmation email', async () => {
       vi.mock('lib/api/Account', () => ({
         Account: function Account() {
           this.login = mockSuccessLogin

@@ -16,7 +16,7 @@ describe('useGetUser', () => {
       await useGetUser(userId)
 
       expect(mockSuccessGetUser).toBeCalledTimes(1)
-      expect(mockSuccessGetUser).toBeCalledWith(userId)
+      expect(mockSuccessGetUser).toBeCalledWith({ id: userId })
     })
   })
 })

@@ -5,19 +5,20 @@ import {
   useApi,
 } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
-import type { RegisterRequest, UserViewModel } from 'lib/api/data-contracts'
+import type { RegisterRequest } from 'lib/api/data-contracts'
 
 export async function useRegisterUser(
   requestData: RegisterRequest,
-  opts: optionalParameters<UserViewModel> = {},
-): Promise<ApiResponse<UserViewModel>> {
+  opts: optionalParameters<void> = {},
+): Promise<ApiResponse<void>> {
   const { onError, onOkay } = opts
 
   const accountClient = new Account({
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
-  return await useApi<UserViewModel>(
+  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+  return await useApi<void>(
     async () => await accountClient.register(requestData),
     {
       onError,
