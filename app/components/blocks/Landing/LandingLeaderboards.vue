@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { LeaderboardViewModel } from '~~/lib/api/data-contracts'
-import { useLocalePath } from '#imports'
-const localePath = useLocalePath()
+import LandingLeaderboardsCard from './LandingLeaderboardsCard.vue'
 
 interface LandingLeaderboardsProps {
   leaderboards: LeaderboardViewModel[]
@@ -10,24 +9,33 @@ interface LandingLeaderboardsProps {
 defineProps<LandingLeaderboardsProps>()
 </script>
 <template>
-  <div
-    id="landing-leaderboards"
-    class="mb-4 grid w-full grid-cols-1 content-start items-start gap-4 lg:grid-cols-2"
-  >
-    <NuxtLink
-      v-for="leaderboard in leaderboards"
-      :key="leaderboard.id"
-      class="mb-2 h-full content-center rounded-lg bg-gray-200 p-8 text-blue-500 underline hover:cursor-pointer"
-      :to="
-        localePath({
-          name: 'game-slug',
-          params: { slug: leaderboard.slug },
-        })
-      "
-    >
-      <span class="contents break-words font-bold">
-        {{ leaderboard?.name }}
-      </span>
-    </NuxtLink>
+  <div id="landing-leaderboards" class="leaderboards-grid w-full">
+    <LandingLeaderboardsCard
+      v-for="{ id, name, slug, stats } in leaderboards"
+      :id="id"
+      :key="id"
+      :name="name"
+      :slug="slug"
+      :stats="stats"
+    />
   </div>
 </template>
+
+<style lang="postcss" scoped>
+.leaderboards-grid {
+  --grid-col-min-size: 200px;
+  --grid-item-max-height: 330px;
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--grid-col-min-size), 100%), 1fr)
+  );
+  grid-auto-rows: min-content;
+  gap: 1rem;
+
+  > * {
+    max-height: var(--grid-item-max-height);
+  }
+}
+</style>
