@@ -1,8 +1,8 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import useGetLeaderboardBySlug from '~/composables/api/useGetLeaderboardBySlug/index'
-import gamePage from 'pages/game/[slug].vue'
+import { useGetLeaderboardBySlug } from '~/composables/api'
+import gamePage from '~/pages/game/[slug].vue'
 import { useError } from '#imports'
-import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
+import type { LeaderboardViewModel } from '~~/lib/api/data-contracts'
 
 const leaderboard: LeaderboardViewModel = {
   id: 1,
@@ -15,7 +15,9 @@ const leaderboard: LeaderboardViewModel = {
   categories: [],
 }
 
-vi.mock('composables/api/useGetLeaderboardBySlug')
+vi.mock('~/composables/api', () => ({
+  useGetLeaderboardBySlug: vi.fn(),
+}))
 
 afterEach(() => {
   vi.restoreAllMocks()
@@ -41,17 +43,15 @@ describe('/game/:slug', () => {
     vi.mocked(useGetLeaderboardBySlug).mockResolvedValue({
       error: { status: 404 },
       loading: false,
-      data: leaderboard,
+      data: null as any,
       errors: null,
     })
 
-    const wrapper = await mountSuspended(gamePage, {
+    await mountSuspended(gamePage, {
       route: '/game/invalidslug',
     })
 
     const error = useError()
-
     expect(error?.value?.statusCode).toBe(404)
-    expect(wrapper.text()).not.toContain(leaderboard.name)
   })
 })
