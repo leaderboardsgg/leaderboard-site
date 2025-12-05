@@ -57,6 +57,8 @@ Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
 
 - enable husky pre-commit hooks
   - $ `pnpm husky`
+- disable husky pre-commit hooks
+  - $ `git config --unset core.hooksPath`
 
 Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
 
