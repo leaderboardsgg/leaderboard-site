@@ -1,6 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import * as apiComposables from 'composables/api'
-import { getByTestId } from 'root/testUtils'
 import SiteNavbar from './SiteNavbar.vue'
 import { useSessionToken } from '#imports'
 
@@ -20,12 +19,11 @@ describe('<SiteNavbar />', () => {
     it('should render the login/sign up buttons', async () => {
       const wrapper = await mountSuspended(SiteNavbar)
 
-      expect(getByTestId(wrapper, 'site-navbar-login-button').isVisible()).toBe(
+      expect(wrapper.getByTestId('site-navbar-login-button').isVisible()).toBe(
         true,
       )
-
       expect(
-        getByTestId(wrapper, 'site-navbar-sign-up-button').isVisible(),
+        wrapper.getByTestId('site-navbar-sign-up-button').isVisible(),
       ).toBe(true)
     })
 
@@ -33,21 +31,20 @@ describe('<SiteNavbar />', () => {
       it('should bring up the login card', async () => {
         const wrapper = await mountSuspended(SiteNavbar)
 
-        getByTestId(wrapper, 'site-navbar-login-button').trigger('click')
+        await wrapper.getByTestId('site-navbar-login-button').trigger('click')
 
-        expect(getByTestId(wrapper, 'log-in-card').isVisible()).toBe(true)
+        expect(wrapper.getByTestId('log-in-card').isVisible()).toBe(true)
       })
 
       describe('when the login card is open and forgot password is clicked', () => {
         it('should bring up the forgot password card', async () => {
           const wrapper = await mountSuspended(SiteNavbar)
 
-          getByTestId(wrapper, 'site-navbar-login-button').trigger('click')
-          expect(getByTestId(wrapper, 'log-in-card').isVisible()).toBe(true)
+          await wrapper.getByTestId('site-navbar-login-button').trigger('click')
+          expect(wrapper.getByTestId('log-in-card').isVisible()).toBe(true)
 
-          getByTestId(wrapper, 'forgot-password-button').trigger('click')
-
-          expect(getByTestId(wrapper, 'forgot-password-card').isVisible()).toBe(
+          await wrapper.getByTestId('forgot-password-button').trigger('click')
+          expect(wrapper.getByTestId('forgot-password-card').isVisible()).toBe(
             true,
           )
         })
@@ -58,9 +55,8 @@ describe('<SiteNavbar />', () => {
       it('should bring up the signup card', async () => {
         const wrapper = await mountSuspended(SiteNavbar)
 
-        getByTestId(wrapper, 'site-navbar-sign-up-button').trigger('click')
-
-        expect(getByTestId(wrapper, 'sign-up-card').isVisible()).toBe(true)
+        await wrapper.getByTestId('site-navbar-sign-up-button').trigger('click')
+        expect(wrapper.getByTestId('sign-up-card').isVisible()).toBe(true)
       })
     })
   })
@@ -73,9 +69,9 @@ describe('<SiteNavbar />', () => {
     it('should render the logout button', async () => {
       const wrapper = await mountSuspended(SiteNavbar)
 
-      expect(
-        getByTestId(wrapper, 'site-navbar-logout-button').isVisible(),
-      ).toBe(true)
+      expect(wrapper.getByTestId('site-navbar-logout-button').isVisible()).toBe(
+        true,
+      )
     })
 
     describe('when the logout button is clicked', () => {
@@ -83,8 +79,7 @@ describe('<SiteNavbar />', () => {
         const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
         const wrapper = await mountSuspended(SiteNavbar)
 
-        await getByTestId(wrapper, 'site-navbar-logout-button').trigger('click')
-
+        await wrapper.getByTestId('site-navbar-logout-button').trigger('click')
         expect(useLogoutUserSpy).toHaveBeenCalled()
       })
     })

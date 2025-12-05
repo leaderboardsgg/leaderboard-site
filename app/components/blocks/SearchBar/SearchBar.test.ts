@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import SearchBar from './SearchBar.vue'
-import { getByTestId } from 'root/testUtils'
 
 describe('<SearchBar />', () => {
   it('should render without crashing', async () => {
@@ -13,12 +12,9 @@ describe('<SearchBar />', () => {
     it('when the search button is clicked', async () => {
       const inputValue = 'click test'
       const SearchBarWrapper = await mountSuspended(SearchBar)
-      const searchButton = getByTestId(SearchBarWrapper, 'search-button')
-      const searchInput = getByTestId(SearchBarWrapper, 'search-input')
 
-      searchInput.setValue(inputValue)
-
-      await searchButton.trigger('click')
+      await SearchBarWrapper.getByTestId('search-input').setValue(inputValue)
+      await SearchBarWrapper.getByTestId('search-button').trigger('click')
 
       // @ts-expect-error
       expect(SearchBarWrapper.emitted()?.search[0][0]).toBe(inputValue)
@@ -27,11 +23,9 @@ describe('<SearchBar />', () => {
     it('when the enter key is released', async () => {
       const inputValue = 'enter test'
       const SearchBarWrapper = await mountSuspended(SearchBar)
-      const searchInput = getByTestId(SearchBarWrapper, 'search-input')
 
-      searchInput.setValue(inputValue)
-
-      await searchInput.trigger('keyup.enter')
+      await SearchBarWrapper.getByTestId('search-input').setValue(inputValue)
+      await SearchBarWrapper.getByTestId('search-input').trigger('keyup.enter')
 
       // @ts-expect-error
       expect(SearchBarWrapper.emitted()?.search[0][0]).toBe(inputValue)

@@ -4,6 +4,7 @@ import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 
 interface PasswordInputProps {
   showPassword: boolean
+  testId?: string
 }
 
 const props = defineProps<PasswordInputProps>()
@@ -29,6 +30,7 @@ function toggleShowPassword() {
     <BaseInput
       id="password"
       autocomplete="password"
+      :data-testid="testId"
       :type="inputType"
       v-bind="$attrs"
     />

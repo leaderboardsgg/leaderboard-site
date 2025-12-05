@@ -102,6 +102,12 @@ export default defineNuxtConfig({
     },
   },
 
+  typescript: {
+    tsConfig: {
+      include: ['../types/**/*.d.ts'],
+    },
+  },
+
   ssr: false,
   vite: viteConfig,
   compatibilityDate: '2025-08-19',

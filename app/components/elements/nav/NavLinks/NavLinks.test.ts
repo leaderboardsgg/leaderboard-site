@@ -1,4 +1,4 @@
-import { mount, enableAutoUnmount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 
 import NavLinks from './NavLinks.vue'
 
@@ -11,22 +11,21 @@ const props = {
 }
 
 function getNavLinksWrapper() {
-  return mount(NavLinks, {
+  return shallowMount(NavLinks, {
     props,
+    route: '/',
   })
 }
 
-enableAutoUnmount(afterEach)
-
 describe('<NavLinks />', () => {
-  it('should render without crashing', () => {
+  it('should render without crashing', async () => {
     const NavLinksWrapper = getNavLinksWrapper()
     expect(NavLinksWrapper.isVisible()).toBe(true)
   })
 
-  it('should render the same amount of <NavLink /> components as there are items in the navLinks props', () => {
+  it('should render the same amount of <NavLink /> components as there are items in the navLinks props', async () => {
+    const NavLinksWrapper = getNavLinksWrapper()
     props.navLinks.forEach((navLink) => {
-      const NavLinksWrapper = getNavLinksWrapper()
       expect(NavLinksWrapper.html()).toContain(navLink.name)
     })
   })

@@ -1,9 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const { to } = defineProps<{
+  to: string
+}>()
+</script>
 
 <template>
   <NuxtLink
-    class="button-link"
     v-bind="$attrs"
+    :to="to"
+    class="button-link"
     data-testid="button-link"
     role="button"
   >

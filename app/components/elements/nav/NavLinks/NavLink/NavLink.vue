@@ -1,9 +1,14 @@
 <script setup lang="ts">
 import ButtonLink from 'elements/buttons/ButtonLink/ButtonLink.vue'
+
+const { name, to } = defineProps<{
+  name: string
+  to: string
+}>()
 </script>
 
 <template>
-  <ButtonLink class="nav-link" v-bind="$attrs">
+  <ButtonLink class="nav-link" :name="name" :to="to">
     <slot />
   </ButtonLink>
 </template>

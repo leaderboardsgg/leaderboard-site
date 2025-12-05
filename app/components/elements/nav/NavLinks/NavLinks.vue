@@ -8,20 +8,13 @@ interface NavLinksProps {
   }[]
 }
 
-withDefaults(defineProps<NavLinksProps>(), {
-  navLinks: () => [
-    {
-      name: 'About',
-      to: '#',
-    },
-  ],
-})
+const { navLinks = [{ name: 'About', to: '#' }] } = defineProps<NavLinksProps>()
 </script>
 
 <template>
   <nav class="nav-link-container">
-    <NavLink v-for="navLink in navLinks" v-bind="navLink" :key="navLink.name">
-      {{ navLink.name }}
+    <NavLink v-for="{ name, to } in navLinks" :key="name" :name="name" :to="to">
+      {{ name }}
     </NavLink>
   </nav>
 </template>

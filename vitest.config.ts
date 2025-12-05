@@ -8,6 +8,6 @@ export default defineVitestConfig({
     sequence: {
       shuffle: true,
     },
-    setupFiles: ['../vitest.setup.ts'],
+    setupFiles: ['../vitest.setup.ts', './test/vue-test-util.plugin.ts'],
   },
 })
