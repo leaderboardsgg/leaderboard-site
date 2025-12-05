@@ -1,5 +1,4 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { getByTestId } from 'root/testUtils'
 import ForgotPasswordCard from './ForgotPasswordCard.vue'
 
 const mockSuccessAccountRecoverCreate = vi.fn(() =>
@@ -22,7 +21,7 @@ describe('<ForgotPasswordCard />', () => {
     it('should emit the close event', async () => {
       const wrapper = await mountSuspended(ForgotPasswordCard)
 
-      await getByTestId(wrapper, 'close-button').trigger('click')
+      await wrapper.getByTestId('close-button').trigger('click')
 
       expect(wrapper.emitted().close).toBeTruthy()
     })
@@ -32,7 +31,7 @@ describe('<ForgotPasswordCard />', () => {
     it('should emit the cancelClick event', async () => {
       const wrapper = await mountSuspended(ForgotPasswordCard)
 
-      await getByTestId(wrapper, 'cancel-button').trigger('click')
+      await wrapper.getByTestId('cancel-button').trigger('click')
 
       expect(wrapper.emitted().cancelClick).toBeTruthy()
     })
@@ -45,8 +44,8 @@ describe('<ForgotPasswordCard />', () => {
 
       beforeEach(() => {
         vi.mock('lib/api/Account', () => ({
-          Account: function Account() {
-            this.sendRecoveryEmail = mockSuccessAccountRecoverCreate
+          Account: class Account {
+            sendRecoveryEmail = mockSuccessAccountRecoverCreate
           },
         }))
       })
@@ -54,13 +53,9 @@ describe('<ForgotPasswordCard />', () => {
       it('should emit the close event', async () => {
         const wrapper = await mountSuspended(ForgotPasswordCard)
 
-        const emailInput = getByTestId(wrapper, 'email-input')
-        await emailInput.setValue(emailAddress)
-
-        const usernameInput = getByTestId(wrapper, 'username-input')
-        await usernameInput.setValue(username)
-
-        await getByTestId(wrapper, 'reset-password-button').trigger('click')
+        await wrapper.getByTestId('email-input').setValue(emailAddress)
+        await wrapper.getByTestId('username-input').setValue(username)
+        await wrapper.getByTestId('reset-password-button').trigger('click')
 
         expect(mockSuccessAccountRecoverCreate).toHaveBeenCalled()
         expect(wrapper.emitted().close).toBeTruthy()
@@ -71,7 +66,7 @@ describe('<ForgotPasswordCard />', () => {
       it('should not emit the close event', async () => {
         const wrapper = await mountSuspended(ForgotPasswordCard)
 
-        await getByTestId(wrapper, 'reset-password-button').trigger('click')
+        await wrapper.getByTestId('reset-password-button').trigger('click')
 
         expect(wrapper.emitted().close).toBeFalsy()
       })

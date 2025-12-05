@@ -1,9 +1,18 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineOptions({
+  inheritAttrs: false,
+})
+
+const { to } = defineProps<{
+  to: string
+}>()
+</script>
 
 <template>
   <NuxtLink
-    class="button-link"
     v-bind="$attrs"
+    :to="to"
+    class="button-link"
     data-testid="button-link"
     role="button"
   >
