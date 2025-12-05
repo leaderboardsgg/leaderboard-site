@@ -55,11 +55,8 @@ jobs:
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: pnpm install
 
-      - name: Copy `.env.test` -> `.env`
-        run: cp .env.test .env
-
       - name: Build the `.nuxt` directory
         run: pnpm build
 
       - name: Tests
-        run: pnpm run test
+        run: pnpm test

@@ -46,14 +46,11 @@ jobs:
         if: steps.cache-modules.outputs.cache-hit != 'true'
         run: pnpm install
 
-      - name: Copy `.env.test` -> `.env`
-        run: cp .env.test .env
-
       - name: Build the `.nuxt` directory
         run: pnpm build
 
       - name: Run the API generation
-        run: pnpm run generate:api --url=${{ vars.OPENAPI_URL }}
+        run: pnpm generate:api --url=${{ vars.OPENAPI_URL }}
 
       - name: Set git configs
         run: |
