@@ -34,7 +34,6 @@ export default createConfigForNuxt(
       './.husky/',
       './.vscode/',
       './node_modules/',
-      './testUtils.ts',
       './vitest.config.ts',
       './vitest.setup.ts',
       './types/shims-vue.d.ts',
