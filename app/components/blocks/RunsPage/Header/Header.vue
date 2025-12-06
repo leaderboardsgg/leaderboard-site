@@ -38,9 +38,9 @@ const { error, data } = await useGetCategoriesForLeaderboard(
     <span>{{
       error.title ??
       'Something went wrong. Please refresh this page.'
-    }}</span>
+      }}</span>
   </div>
-  <div v-else-if="data?.data != null" class="flex justify-between p-6">
+  <div v-else-if="data?.data != null" class="grid grid-cols-2 gap-6 p-6">
     <div class="flex gap-3">
       <ButtonLink v-for="cat of data.data" :key="cat.id" v-bind="{
         name: cat.name,
@@ -52,6 +52,12 @@ const { error, data } = await useGetCategoriesForLeaderboard(
         {{ cat.name }}
       </ButtonLink>
     </div>
-    Run Type: {{data.data.find(cat => cat.slug === activeCategorySlug)?.type}}
+    <div class="justify-self-end">
+      Run Type: {{data.data.find(cat => cat.slug === activeCategorySlug)?.type}}
+    </div>
+    <aside class="col-span-2">
+      <h2 class="text-xl">Category Description</h2>
+      <span>{{data.data.find(cat => cat.slug === activeCategorySlug)?.info || '-'}}</span>
+    </aside>
   </div>
 </template>
