@@ -14,18 +14,22 @@ const {
   query: { category: categorySlug },
 } = useRoute()
 
+if (typeof slug !== 'string' || typeof categorySlug !== 'string') {
+  throw new Error('Invalid game slug provided.')
+}
+
 const {
   loading,
   error: leaderboardError,
   data,
-} = await useGetLeaderboardBySlug((slug as string) ?? '')
+} = await useGetLeaderboardBySlug(slug)
 
 let category: CategoryViewModel | undefined
 
 if (data) {
   const { data: categoryData } = await useGetCategoryBySlug({
     id: data.id,
-    slug: categorySlug as string,
+    slug: categorySlug,
   })
   category = categoryData
 }
@@ -42,15 +46,9 @@ if (data) {
         'Something went wrong. Please refresh this page.'
       }}</span>
     </div>
-    <div v-else class="flex flex-col gap-6 bg-black p-6 text-white">
-      <Header
-        :leaderboard="data!"
-        :active-category-slug="categorySlug as string"
-      />
-      <div
-        v-if="category !== undefined"
-        class="flex gap-6 bg-bg-content text-[var(--text-colour)]"
-      >
+    <div v-else-if="data !== undefined" class="flex flex-col gap-6 bg-black p-6 text-white">
+      <Header :leaderboard="data" :active-category-slug="categorySlug" />
+      <div v-if="category !== undefined" class="flex gap-6 bg-bg-content text-[var(--text-colour)]">
         <RunsTable :category="category" />
         <CategoryInfo :category="category" />
       </div>
