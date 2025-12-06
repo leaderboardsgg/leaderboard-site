@@ -14,5 +14,4 @@ export default {
   welcome: 'Welcome',
   info: 'Info',
   errorNavigateHome: 'Navigate to front page?',
-  searchPlaceholder: 'search for games or players...',
 } satisfies LanguageIndexFile
