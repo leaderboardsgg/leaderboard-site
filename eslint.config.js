@@ -68,6 +68,7 @@ export default createConfigForNuxt(
       'space-before-function-paren': 'off',
       'tailwindcss/no-custom-classname': 'off',
       'vue/html-self-closing': 'off',
+      'vue/first-attribute-linebreak': 'off',
       'vue/multi-word-component-names': 'off',
       'vue/multiline-html-element-content-newline': 'off',
       'vue/singleline-html-element-content-newline': 'off',
