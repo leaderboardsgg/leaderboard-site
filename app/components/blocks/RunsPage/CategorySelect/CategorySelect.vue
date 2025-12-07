@@ -2,6 +2,7 @@
 import type { LeaderboardViewModel } from '~~/lib/api/data-contracts'
 import { useGetCategoriesForLeaderboard } from '~/composables/api'
 import ButtonLink from '~/components/elements/buttons/ButtonLink/ButtonLink.vue'
+import { computed } from 'vue'
 
 interface CategorySelect {
   leaderboard: LeaderboardViewModel
@@ -22,6 +23,10 @@ const { error, data } = await useGetCategoriesForLeaderboard(
       return d
     },
   },
+)
+
+const activeCategory = computed(() =>
+  data?.data?.find((cat) => cat.slug === props.activeCategorySlug.toLocaleLowerCase())
 )
 </script>
 
@@ -47,13 +52,13 @@ const { error, data } = await useGetCategoriesForLeaderboard(
       </ButtonLink>
     </div>
     <div class="justify-self-end">
-      Run Type: {{data.data.find(cat => cat.slug === activeCategorySlug)?.type}}
+      Run Type: {{ activeCategory?.type }}
     </div>
     <aside class="col-span-2">
       <h2 class="text-xl">Category Description</h2>
-      <span>{{data.data.find(cat => cat.slug === activeCategorySlug)?.info || '-'}}</span>
+      <span>{{ activeCategory?.info || '-' }}</span>
     </aside>
-    <ButtonLink class="rounded-none bg-white text-black">
+    <ButtonLink class="w-fit !bg-white !text-black">
       Submit your run!
     </ButtonLink>
   </div>
