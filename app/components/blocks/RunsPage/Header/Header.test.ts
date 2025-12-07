@@ -1,5 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
+import type { LeaderboardViewModel } from '~~/lib/api/data-contracts'
 import Header from './Header.vue'
 
 const game: LeaderboardViewModel = {
@@ -10,7 +10,7 @@ const game: LeaderboardViewModel = {
   createdAt: '2024-11-02T22:11:08+0000',
   updatedAt: '2024-11-02T22:11:08+0000',
   deletedAt: null,
-  categories: [],
+  status: 'Published',
 }
 
 describe('Header Component', () => {
