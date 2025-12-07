@@ -11,7 +11,7 @@ defineProps<RunsTableProps>()
 </script>
 
 <template>
-  <table class="table h-fit flex-1 table-auto">
+  <table class="table h-fit table-auto bg-bg-content text-[var(--text-colour)]">
     <thead class="table-header-group bg-bg-table-row">
       <tr class="text-left">
         <th class="pb-3 pl-6 pt-6">Rank</th>
@@ -23,11 +23,7 @@ defineProps<RunsTableProps>()
     </thead>
     <tbody class="table-row-group text-sm">
       <!-- TODO: Fetch runs -->
-      <tr
-        v-for="i in Array.from(Array(100)).map((_, i) => i)"
-        :key="i"
-        class="table-row even:bg-bg-table-row-alt"
-      >
+      <tr v-for="i in Array.from(Array(100)).map((_, i) => i)" :key="i" class="table-row even:bg-bg-table-row-alt">
         <td class="py-3 pl-6">{{ i + 1 }}</td>
         <td>Test</td>
         <td>Time</td>

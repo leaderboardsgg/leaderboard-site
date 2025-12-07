@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRoute } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
-import CategoryInfo from '~/components/blocks/RunsPage/CategoryInfo/CategoryInfo.vue'
+import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/CategorySelect.vue'
 import Header from '~/components/blocks/RunsPage/Header/Header.vue'
 import RunsTable from '~/components/blocks/RunsPage/RunsTable/RunsTable.vue'
 import {
@@ -47,11 +47,9 @@ if (data) {
       }}</span>
     </div>
     <div v-else-if="data !== undefined" class="flex flex-col gap-6 bg-black p-6 text-white">
-      <Header :leaderboard="data" :active-category-slug="categorySlug" />
-      <div v-if="category !== undefined" class="flex gap-6 bg-bg-content text-[var(--text-colour)]">
-        <RunsTable :category="category" />
-        <CategoryInfo :category="category" />
-      </div>
+      <Header :leaderboard="data" />
+      <CategorySelect :leaderboard="data" :active-category-slug="categorySlug" />
+      <RunsTable v-if="category !== undefined" :category="category" />
     </div>
   </div>
 </template>
