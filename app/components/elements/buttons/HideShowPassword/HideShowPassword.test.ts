@@ -1,5 +1,4 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { getByTestId, getHTMLElement } from 'root/testUtils'
 import HideShowPassword from './HideShowPassword.vue'
 
 describe('<HideShowPassword />', () => {
@@ -12,9 +11,9 @@ describe('<HideShowPassword />', () => {
   describe('Visible eye, hidden eye, and the button', () => {
     it('should render without crashing', async () => {
       const wrapper = await mountSuspended(HideShowPassword)
-      const passwordButton = getByTestId(wrapper, 'hide-show-password-button')
-      const hiddenEyeIcon = getByTestId(wrapper, 'hidden-eye-icon')
-      const visibleEyeIcon = getByTestId(wrapper, 'visible-eye-icon')
+      const passwordButton = wrapper.getByTestId('hide-show-password-button')
+      const hiddenEyeIcon = wrapper.getByTestId('hidden-eye-icon')
+      const visibleEyeIcon = wrapper.getByTestId('visible-eye-icon')
 
       expect(passwordButton.isVisible()).toBe(true)
       expect(hiddenEyeIcon.isVisible()).toBe(true)
@@ -24,43 +23,35 @@ describe('<HideShowPassword />', () => {
 
   describe('when clicking the button', () => {
     it('should toggle the state', async () => {
-      const wrapper = await mountSuspended(HideShowPassword)
-      const hiddenEyeIconElement = getHTMLElement(
-        getByTestId(wrapper, 'hidden-eye-icon'),
-      )
-      const visibleEyeIconElement = getHTMLElement(
-        getByTestId(wrapper, 'visible-eye-icon'),
-      )
+      const wrapper = await mountSuspended(HideShowPassword, {
+        attachTo: document.body,
+      })
 
-      expect(hiddenEyeIconElement.style.display).not.toBe('none')
-      expect(visibleEyeIconElement.style.display).toBe('none')
+      expect(wrapper.getByTestId('hidden-eye-icon').isVisible()).toBe(true)
+      expect(wrapper.getByTestId('visible-eye-icon').isVisible()).toBe(false)
 
-      await getByTestId(wrapper, 'hide-show-password-button').trigger('click')
+      await wrapper.getByTestId('hide-show-password-button').trigger('click')
 
-      expect(hiddenEyeIconElement.style.display).toBe('none')
-      expect(visibleEyeIconElement.style.display).not.toBe('none')
+      expect(wrapper.getByTestId('hidden-eye-icon').isVisible()).toBe(false)
+      expect(wrapper.getByTestId('visible-eye-icon').isVisible()).toBe(true)
     })
   })
 
   describe('when the button is focus and the enter key up event is triggered', () => {
     it('should toggle the state', async () => {
-      const wrapper = await mountSuspended(HideShowPassword)
-      const hiddenEyeIconElement = getHTMLElement(
-        getByTestId(wrapper, 'hidden-eye-icon'),
-      )
-      const visibleEyeIconElement = getHTMLElement(
-        getByTestId(wrapper, 'visible-eye-icon'),
-      )
+      const wrapper = await mountSuspended(HideShowPassword, {
+        attachTo: document.body,
+      })
 
-      expect(hiddenEyeIconElement.style.display).not.toBe('none')
-      expect(visibleEyeIconElement.style.display).toBe('none')
+      expect(wrapper.getByTestId('hidden-eye-icon').isVisible()).toBe(true)
+      expect(wrapper.getByTestId('visible-eye-icon').isVisible()).toBe(false)
 
-      await getByTestId(wrapper, 'hide-show-password-button').trigger(
-        'keyup.enter',
-      )
+      await wrapper
+        .getByTestId('hide-show-password-button')
+        .trigger('keyup.enter')
 
-      expect(hiddenEyeIconElement.style.display).toBe('none')
-      expect(visibleEyeIconElement.style.display).not.toBe('none')
+      expect(wrapper.getByTestId('hidden-eye-icon').isVisible()).toBe(false)
+      expect(wrapper.getByTestId('visible-eye-icon').isVisible()).toBe(true)
     })
   })
 })
