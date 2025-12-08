@@ -28,6 +28,10 @@ const { error, data } = await useGetCategoriesForLeaderboard(
 const activeCategory = computed(() =>
   data?.data?.find((cat) => cat.slug === props.activeCategorySlug.toLocaleLowerCase())
 )
+
+const isActiveCategorySlug = (slug: string) =>
+  props.activeCategorySlug.toLocaleLowerCase() === slug
+
 </script>
 
 <template>
@@ -41,14 +45,9 @@ const activeCategory = computed(() =>
   </div>
   <div v-else-if="data?.data != null" class="grid grid-cols-2 gap-6 p-6">
     <div class="flex gap-3">
-      <ButtonLink v-for="cat of data.data" :key="cat.id" v-bind="{
-        name: cat.name,
-        to: `?category=${cat.slug}`,
-      }" :class="activeCategorySlug.toLocaleLowerCase() === cat.slug
-        ? 'border-red-500 text-red-500'
-        : ''
-        " class="border border-white px-6 py-3 text-xs text-white">
-        {{ cat.name }}
+      <ButtonLink v-for="{ name, slug, id } of data.data" :key="id" :name="name" :to="`?category=${slug}`"
+        :class="{ 'active': isActiveCategorySlug(slug) }" class="border border-white px-6 py-3 text-xs text-white">
+        {{ name }}
       </ButtonLink>
     </div>
     <div class="justify-self-end">
@@ -63,3 +62,9 @@ const activeCategory = computed(() =>
     </ButtonLink>
   </div>
 </template>
+
+<style lang="postcss" scoped>
+.active {
+  @apply border-red-500 text-red-500;
+}
+</style>
