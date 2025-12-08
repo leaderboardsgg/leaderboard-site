@@ -2,7 +2,7 @@
 import { useRoute } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
 import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/CategorySelect.vue'
-import Header from '~/components/blocks/RunsPage/Header/Header.vue'
+import RunsHeader from '~/components/blocks/RunsPage/Header/Header.vue'
 import RunsTable from '~/components/blocks/RunsPage/RunsTable/RunsTable.vue'
 import {
   useGetCategoryBySlug,
@@ -44,10 +44,10 @@ if (data) {
       <span>{{
         leaderboardError.title ??
         'Something went wrong. Please refresh this page.'
-      }}</span>
+        }}</span>
     </div>
     <div v-else-if="data !== undefined" class="flex flex-col gap-6 bg-black p-6 text-white">
-      <Header :leaderboard="data" />
+      <RunsHeader :leaderboard="data" />
       <CategorySelect :leaderboard="data" :active-category-slug="categorySlug" />
       <RunsTable v-if="category !== undefined" :category="category" />
     </div>
