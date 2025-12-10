@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { LeaderboardViewModel } from '~~/lib/api/data-contracts';
+import type { LeaderboardViewModel } from '~~/lib/api/data-contracts'
 
 interface HeaderProps {
   leaderboard: LeaderboardViewModel

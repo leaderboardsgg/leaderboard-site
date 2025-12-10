@@ -26,12 +26,13 @@ const { error, data } = await useGetCategoriesForLeaderboard(
 )
 
 const activeCategory = computed(() =>
-  data?.data?.find((cat) => cat.slug === props.activeCategorySlug.toLocaleLowerCase())
+  data?.data?.find(
+    (cat) => cat.slug === props.activeCategorySlug.toLocaleLowerCase(),
+  ),
 )
 
 const isActiveCategorySlug = (slug: string) =>
   props.activeCategorySlug.toLocaleLowerCase() === slug
-
 </script>
 
 <template>
@@ -39,20 +40,23 @@ const isActiveCategorySlug = (slug: string) =>
     <span>{{ error.status ?? 500 }}</span>
     <br />
     <span>{{
-      error.title ??
-      'Something went wrong. Please refresh this page.'
-      }}</span>
+      error.title ?? 'Something went wrong. Please refresh this page.'
+    }}</span>
   </div>
   <div v-else-if="data?.data != null" class="grid grid-cols-2 gap-6 p-6">
     <div class="flex gap-3">
-      <ButtonLink v-for="{ name, slug, id } of data.data" :key="id" :name="name" :to="`?category=${slug}`"
-        :class="{ 'active': isActiveCategorySlug(slug) }" class="border border-white px-6 py-3 text-xs text-white">
+      <ButtonLink
+        v-for="{ name, slug, id } of data.data"
+        :key="id"
+        :name="name"
+        :to="`?category=${slug}`"
+        :class="{ active: isActiveCategorySlug(slug) }"
+        class="border border-white px-6 py-3 text-xs text-white"
+      >
         {{ name }}
       </ButtonLink>
     </div>
-    <div class="justify-self-end">
-      Run Type: {{ activeCategory?.type }}
-    </div>
+    <div class="justify-self-end">Run Type: {{ activeCategory?.type }}</div>
     <aside class="col-span-2">
       <h2 class="text-xl">Category Description</h2>
       <span>{{ activeCategory?.info || '-' }}</span>

@@ -22,7 +22,11 @@ defineProps<RunsTableProps>()
     </thead>
     <tbody class="table-row-group text-sm">
       <!-- TODO: Fetch runs -->
-      <tr v-for="i in Array.from(Array(100)).map((_, i) => i)" :key="i" class="table-row even:bg-bg-table-row-alt">
+      <tr
+        v-for="i in Array.from(Array(100)).map((_, i) => i)"
+        :key="i"
+        class="table-row even:bg-bg-table-row-alt"
+      >
         <td class="py-3 pl-6">{{ i + 1 }}</td>
         <td>Test</td>
         <td>01:23:34.555</td>

@@ -15,7 +15,7 @@ const leaderboard: LeaderboardViewModel = {
   createdAt: '2024-11-02T22:11:08+0000',
   updatedAt: '2024-11-02T22:11:08+0000',
   deletedAt: null,
-  status: 'Published'
+  status: 'Published',
 }
 
 const category: CategoryViewModel = {
@@ -29,7 +29,7 @@ const category: CategoryViewModel = {
   leaderboardId: 1,
   sortDirection: 'Ascending',
   type: 'Time',
-  status: 'Published'
+  status: 'Published',
 }
 
 vi.mock('composables/api/useGetLeaderboardBySlug')

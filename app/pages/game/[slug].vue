@@ -46,9 +46,15 @@ if (data) {
         'Something went wrong. Please refresh this page.'
       }}</span>
     </div>
-    <div v-else-if="data !== undefined" class="flex flex-col gap-6 bg-black p-6 text-white">
+    <div
+      v-else-if="data !== undefined"
+      class="flex flex-col gap-6 bg-black p-6 text-white"
+    >
       <RunsHeader :leaderboard="data" />
-      <CategorySelect :leaderboard="data" :active-category-slug="categorySlug" />
+      <CategorySelect
+        :leaderboard="data"
+        :active-category-slug="categorySlug"
+      />
       <RunsTable v-if="category !== undefined" :category="category" />
     </div>
   </div>
