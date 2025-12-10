@@ -44,7 +44,7 @@ if (data) {
       <span>{{
         leaderboardError.title ??
         'Something went wrong. Please refresh this page.'
-        }}</span>
+      }}</span>
     </div>
     <div v-else-if="data !== undefined" class="flex flex-col gap-6 bg-black p-6 text-white">
       <RunsHeader :leaderboard="data" />

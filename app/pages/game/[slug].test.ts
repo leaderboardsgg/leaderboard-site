@@ -5,7 +5,7 @@ import useGetLeaderboardBySlug from '~/composables/api/useGetLeaderboardBySlug/i
 import type {
   CategoryViewModel,
   LeaderboardViewModel,
-} from '~/lib/api/data-contracts'
+} from '~~/lib/api/data-contracts'
 
 const leaderboard: LeaderboardViewModel = {
   id: 1,
@@ -15,6 +15,7 @@ const leaderboard: LeaderboardViewModel = {
   createdAt: '2024-11-02T22:11:08+0000',
   updatedAt: '2024-11-02T22:11:08+0000',
   deletedAt: null,
+  status: 'Published'
 }
 
 const category: CategoryViewModel = {
@@ -28,6 +29,7 @@ const category: CategoryViewModel = {
   leaderboardId: 1,
   sortDirection: 'Ascending',
   type: 'Time',
+  status: 'Published'
 }
 
 vi.mock('composables/api/useGetLeaderboardBySlug')
@@ -68,7 +70,7 @@ describe('/game/:slug', () => {
     })
 
     const wrapper = await mountSuspended(gamePage, {
-      route: '/game/invalidslug',
+      route: '/game/validslug?category=not-found',
     })
 
     expect(wrapper.text()).toContain('404Not Found')
