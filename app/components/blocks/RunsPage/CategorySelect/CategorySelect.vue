@@ -1,52 +1,23 @@
 <script lang="ts" setup>
-import type { LeaderboardViewModel } from '~~/lib/api/data-contracts'
-import { useGetCategoriesForLeaderboard } from '~/composables/api'
 import ButtonLink from '~/components/elements/buttons/ButtonLink/ButtonLink.vue'
-import { computed } from 'vue'
+import type { CategoryViewModel } from '~~/lib/api/data-contracts'
 
 interface CategorySelect {
-  leaderboard: LeaderboardViewModel
-  activeCategorySlug: string
+  categories: CategoryViewModel[]
+  activeCategory: CategoryViewModel
 }
 
 const props = defineProps<CategorySelect>()
 
-const { error, data } = await useGetCategoriesForLeaderboard(
-  {
-    id: props.leaderboard.id,
-  },
-  {
-    onError() {
-      return null
-    },
-    onOkay(d) {
-      return d
-    },
-  },
-)
-
-const activeCategory = computed(() =>
-  data?.data?.find(
-    (cat) => cat.slug === props.activeCategorySlug.toLocaleLowerCase(),
-  ),
-)
-
 const isActiveCategorySlug = (slug: string) =>
-  props.activeCategorySlug.toLocaleLowerCase() === slug
+  props.activeCategory.slug.toLocaleLowerCase() === slug
 </script>
 
 <template>
-  <div v-if="error !== null" class="bg-black p-6 text-white">
-    <span>{{ error.status ?? 500 }}</span>
-    <br />
-    <span>{{
-      error.title ?? 'Something went wrong. Please refresh this page.'
-    }}</span>
-  </div>
-  <div v-else-if="data?.data != null" class="grid grid-cols-2 gap-6 p-6">
+  <div class="grid grid-cols-2 gap-6 p-6">
     <div class="flex gap-3">
       <ButtonLink
-        v-for="{ name, slug, id } of data.data"
+        v-for="{ name, slug, id } of categories"
         :key="id"
         :name="name"
         :to="`?category=${slug}`"

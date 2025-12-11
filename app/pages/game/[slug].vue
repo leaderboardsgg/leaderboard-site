@@ -1,38 +1,45 @@
 <script setup lang="ts">
 import { useRoute } from '#imports'
+import { computedAsync } from '@vueuse/core'
 import Loader from 'blocks/Loader/Loader.vue'
 import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/CategorySelect.vue'
 import RunsHeader from '~/components/blocks/RunsPage/Header/Header.vue'
 import RunsTable from '~/components/blocks/RunsPage/RunsTable/RunsTable.vue'
 import {
-  useGetCategoryBySlug,
+  useGetCategoriesForLeaderboard,
   useGetLeaderboardBySlug,
 } from '~/composables/api'
-import type { CategoryViewModel } from '~~/lib/api/data-contracts'
 const {
   params: { slug },
   query: { category: categorySlug },
 } = useRoute()
 
-if (typeof slug !== 'string' || typeof categorySlug !== 'string') {
-  throw new Error('Invalid game slug provided.')
-}
-
 const {
   loading,
   error: leaderboardError,
   data,
-} = await useGetLeaderboardBySlug(slug)
+} = await useGetLeaderboardBySlug(slug as string)
 
-let category: CategoryViewModel | undefined
-
-if (data) {
-  const { data: categoryData } = await useGetCategoryBySlug({
-    id: data.id,
-    slug: categorySlug,
-  })
-  category = categoryData
-}
+const categoriesData = computedAsync(
+  async () => {
+    if (data) {
+      const response = await useGetCategoriesForLeaderboard({ id: data.id })
+      if (response.data?.data) {
+        return {
+          categories: response.data.data,
+          activeCategory:
+            response.data.data.find((cat) => cat.slug === categorySlug) ||
+            response.data.data.at(0),
+        }
+      }
+    }
+    return { categories: [], activeCategory: undefined }
+  },
+  {
+    categories: [],
+    activeCategory: undefined,
+  },
+)
 </script>
 
 <template>
@@ -52,10 +59,17 @@ if (data) {
     >
       <RunsHeader :leaderboard="data" />
       <CategorySelect
-        :leaderboard="data"
-        :active-category-slug="categorySlug"
+        v-if="
+          categoriesData?.categories !== undefined &&
+          categoriesData.activeCategory !== undefined
+        "
+        :categories="categoriesData.categories"
+        :active-category="categoriesData.activeCategory"
       />
-      <RunsTable v-if="category !== undefined" :category="category" />
+      <RunsTable
+        v-if="categoriesData?.activeCategory !== undefined"
+        :category="categoriesData.activeCategory"
+      />
     </div>
   </div>
 </template>
