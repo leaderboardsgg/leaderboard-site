@@ -78,25 +78,61 @@ function logout() {
       <SearchBar />
       <div class="mobile-navbar">
         <NavLinks />
-        <LoginButton v-if="!loggedIn" data-testid="site-navbar-login-button" @click="toggleLoginModal" />
-        <SignUpButton v-if="!loggedIn" data-testid="site-navbar-sign-up-button" class="ml-4"
-          @click="toggleSignUpModal" />
-        <LogoutButton v-if="loggedIn" data-testid="site-navbar-logout-button" @click="logout" />
+        <LoginButton
+          v-if="!loggedIn"
+          data-testid="site-navbar-login-button"
+          @click="toggleLoginModal"
+        />
+        <SignUpButton
+          v-if="!loggedIn"
+          data-testid="site-navbar-sign-up-button"
+          class="ml-4"
+          @click="toggleSignUpModal"
+        />
+        <LogoutButton
+          v-if="loggedIn"
+          data-testid="site-navbar-logout-button"
+          @click="logout"
+        />
         <button class="mobile-navbar__toggle" @click="toggleMenu">
           <i-svg-menu class="mx-2 size-5 fill-current" />
         </button>
       </div>
     </div>
 
-    <transition v-if="!loggedIn" enter-active-class="transition-opacity duration-200"
-      leave-active-class="transition-opacity duration-200" enter-to-class="opacity-100" leave-to-class="opacity-0">
+    <transition
+      v-if="!loggedIn"
+      enter-active-class="transition-opacity duration-200"
+      leave-active-class="transition-opacity duration-200"
+      enter-to-class="opacity-100"
+      leave-to-class="opacity-0"
+    >
       <BaseModal v-show="state.showModal" @close="state.showModal = false">
-        <ForgotPasswordCard v-show="state.showForgotPassword" data-testid="forgot-password-card" class="shadow-xl"
-          :modal="true" @close="state.showModal = false" @cancel-click="showLogin" />
-        <LogInCard v-show="state.showLogin" data-testid="log-in-card" class="shadow-xl" :modal="true"
-          @close="state.showModal = false" @sign-up-click="showSignUp" @forgot-password-click="showForgotPassword" />
-        <SignUpCard v-show="state.showSignUp" data-testid="sign-up-card" class="shadow-xl" :modal="true"
-          @close="state.showModal = false" @log-in-click="showLogin" />
+        <ForgotPasswordCard
+          v-show="state.showForgotPassword"
+          data-testid="forgot-password-card"
+          class="shadow-xl"
+          :modal="true"
+          @close="state.showModal = false"
+          @cancel-click="showLogin"
+        />
+        <LogInCard
+          v-show="state.showLogin"
+          data-testid="log-in-card"
+          class="shadow-xl"
+          :modal="true"
+          @close="state.showModal = false"
+          @sign-up-click="showSignUp"
+          @forgot-password-click="showForgotPassword"
+        />
+        <SignUpCard
+          v-show="state.showSignUp"
+          data-testid="sign-up-card"
+          class="shadow-xl"
+          :modal="true"
+          @close="state.showModal = false"
+          @log-in-click="showLogin"
+        />
       </BaseModal>
     </transition>
   </div>
