@@ -14,7 +14,7 @@ export default async function useGetLeaderboardBySlug(
 ): Promise<ApiResponse<LeaderboardViewModel>> {
   const { onError, onOkay } = opts
   const responseData = ref<LeaderboardViewModel>({
-    categories: [],
+    status: 'Published',
     id: -1,
     name: '',
     slug: '',
