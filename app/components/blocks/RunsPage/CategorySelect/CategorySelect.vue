@@ -9,8 +9,9 @@ interface CategorySelect {
 
 const props = defineProps<CategorySelect>()
 
-const isActiveCategorySlug = (slug: string) =>
-  props.activeCategory.slug.toLocaleLowerCase() === slug
+function isActiveCategorySlug(slug: string) {
+  return props.activeCategory.slug.toLocaleLowerCase() === slug
+}
 </script>
 
 <template>
