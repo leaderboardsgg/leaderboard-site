@@ -46,12 +46,13 @@ const categoriesData = computedAsync(
   <div>
     <Loader v-if="loading" />
     <div v-else-if="leaderboardError !== null" class="bg-black p-6 text-white">
-      <span>{{ leaderboardError.status ?? 500 }}</span>
-      <br />
-      <span>{{
-        leaderboardError.title ??
-        'Something went wrong. Please refresh this page.'
-      }}</span>
+      <p>{{ leaderboardError.status ?? 500 }}</p>
+      <p>
+        {{
+          leaderboardError.title ??
+          'Something went wrong. Please refresh this page.'
+        }}
+      </p>
     </div>
     <div
       v-else-if="data !== undefined"
