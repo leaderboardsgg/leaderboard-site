@@ -102,6 +102,8 @@ export default defineNuxtConfig({
     },
   },
 
+  plugins: ['./plugins/msw.ts'],
+
   ssr: false,
   vite: viteConfig,
   compatibilityDate: '2025-08-19',
