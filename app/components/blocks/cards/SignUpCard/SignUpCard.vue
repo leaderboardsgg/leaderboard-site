@@ -270,7 +270,7 @@ function validatePasswordInputs() {
 
     #hide-show-password {
       @apply hidden sm:inline;
-      @apply text-gray-700  bg-gray-100 hover:bg-gray-300;
+      @apply text-gray-700 bg-gray-100 hover:bg-gray-300;
     }
   }
 
