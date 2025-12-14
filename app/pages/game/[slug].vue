@@ -29,7 +29,8 @@ let activeCategory: CategoryViewModel | undefined
 
 watchEffect(() => {
   const { hash } = useRoute()
-  activeCategory = categories?.data?.data?.find((cat) => cat.slug === hash.replace('#', '')) ||
+  activeCategory =
+    categories?.data?.data?.find((cat) => cat.slug === hash.replace('#', '')) ||
     categories?.data?.data?.at(0)
 })
 
