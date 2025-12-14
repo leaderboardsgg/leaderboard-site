@@ -1,6 +1,15 @@
 import type { Ref } from 'vue'
 
 /**
+ * @returns The base URL for the backend API.
+ */
+export function getBaseUrl(): string {
+  return (
+    process.env.NUXT_PUBLIC_BACKEND_BASE_URL || 'http://localhost:8000'
+  )
+}
+
+/**
  * Takes a parameter of an unknown type and returns a
  * boolean indicating whether or not the parameter is
  * an instance of the ProblemDetails interface.

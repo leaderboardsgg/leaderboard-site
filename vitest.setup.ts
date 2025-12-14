@@ -1,8 +1,21 @@
 import createFetchMock from 'vitest-fetch-mock'
-import { vi } from 'vitest'
+import { beforeAll, afterEach, afterAll, vi } from 'vitest'
+import { server } from 'mocks/server'
 import { mockNuxtImport } from '@nuxt/test-utils/runtime'
 import { useState, type CookieOptions } from 'nuxt/app'
 import { ref } from 'vue'
+
+beforeAll(() => {
+  server.listen({ onUnhandledRequest: 'error' })
+})
+
+afterEach(() => {
+  server.resetHandlers()
+})
+
+afterAll(() => {
+  server.close()
+})
 
 const fetchMock = createFetchMock(vi)
 

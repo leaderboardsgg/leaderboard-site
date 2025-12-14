@@ -18,7 +18,9 @@ const nuxtAliases = {
   elements: resolve(__dirname, './app/components/elements'),
   layouts: resolve(__dirname, './app/layouts'),
   lib: resolve(__dirname, './lib'),
+  mocks: resolve(__dirname, './mocks'),
   pages: resolve(__dirname, './app/pages'),
+  plugins: resolve(__dirname, './plugins'),
   root: resolve(__dirname, './'),
 }
 
@@ -102,9 +104,14 @@ export default defineNuxtConfig({
     },
   },
 
-  plugins: ['./plugins/msw.ts'],
-
   ssr: false,
   vite: viteConfig,
   compatibilityDate: '2025-08-19',
+
+  $development: {
+    devtools: {
+      enabled: true,
+    },
+    plugins: ['./plugins/msw.ts'],
+  },
 })
