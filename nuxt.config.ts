@@ -102,6 +102,8 @@ export default defineNuxtConfig({
     },
   },
 
+  plugins: ['./plugins/msw.ts'],
+
   typescript: {
     tsConfig: {
       include: ['../types/**/*.d.ts'],
