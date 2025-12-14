@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, useRoute } from '#imports'
+import { computed, useRoute, watchEffect } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
 import CategoryInfo from '~/components/blocks/RunsPage/CategoryInfo/CategoryInfo.vue'
 import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/CategorySelect.vue'
@@ -9,9 +9,10 @@ import {
   useGetCategoriesForLeaderboard,
   useGetLeaderboardBySlug,
 } from '~/composables/api'
+import type { CategoryViewModel } from '~~/lib/api/data-contracts'
+
 const {
   params: { slug },
-  hash: categorySlug,
 } = useRoute()
 
 const {
@@ -24,11 +25,13 @@ const categories = data
   ? await useGetCategoriesForLeaderboard({ id: data.id })
   : undefined
 
-const activeCategory = computed(
-  () =>
-    categories?.data?.data?.find((cat) => cat.slug === categorySlug) ||
-    categories?.data?.data?.at(0),
-)
+let activeCategory: CategoryViewModel | undefined
+
+watchEffect(() => {
+  const { hash } = useRoute()
+  activeCategory = categories?.data?.data?.find((cat) => cat.slug === hash.replace('#', '')) ||
+    categories?.data?.data?.at(0)
+})
 
 const errorStatus = computed(() => {
   const s = leaderboardError?.status ?? 500
