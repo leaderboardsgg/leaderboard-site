@@ -11,19 +11,17 @@ const props = defineProps<CategorySelect>()
 </script>
 
 <template>
-  <div class="grid grid-cols-2 gap-6 p-6">
-    <div class="flex gap-3">
-      <ButtonLink
-        v-for="{ name, slug, id } of props.categories"
-        :key="id"
-        :name="name"
-        :to="`#${slug}`"
-        active-class="active"
-        class="border border-white px-6 py-3 text-xs text-white"
-      >
-        {{ name }}
-      </ButtonLink>
-    </div>
+  <div class="flex gap-3">
+    <ButtonLink
+      v-for="{ name, slug, id } of props.categories"
+      :key="id"
+      :name="name"
+      :to="`#${slug}`"
+      active-class="active"
+      class="border border-white px-6 py-3 text-xs text-white"
+    >
+      {{ name }}
+    </ButtonLink>
   </div>
 </template>
 

@@ -47,12 +47,14 @@ const errorStatus = computed(() => {
     </div>
     <div v-else-if="data" class="flex flex-col gap-6 bg-black p-6 text-white">
       <RunsHeader :leaderboard="data" />
-      <CategorySelect
-        v-if="categories?.data?.data"
-        :categories="categories.data.data"
-        :active-category-slug="activeCategory?.slug ?? ''"
-      />
-      <CategoryInfo v-if="activeCategory" :category="activeCategory" />
+      <div class="grid grid-cols-2 gap-6 p-6">
+        <CategorySelect
+          v-if="categories?.data?.data"
+          :categories="categories.data.data"
+          :active-category-slug="activeCategory?.slug ?? ''"
+        />
+        <CategoryInfo v-if="activeCategory" :category="activeCategory" />
+      </div>
       <RunsTable v-if="activeCategory" :category="activeCategory" />
     </div>
   </div>
