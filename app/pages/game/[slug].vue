@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useRoute } from '#imports'
-import { computedAsync } from '@vueuse/core'
+import { computed, useRoute } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
+import CategoryInfo from '~/components/blocks/RunsPage/CategoryInfo/CategoryInfo.vue'
 import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/CategorySelect.vue'
 import RunsHeader from '~/components/blocks/RunsPage/Header/Header.vue'
 import RunsTable from '~/components/blocks/RunsPage/RunsTable/RunsTable.vue'
@@ -11,7 +11,7 @@ import {
 } from '~/composables/api'
 const {
   params: { slug },
-  query: { category: categorySlug },
+  hash: categorySlug,
 } = useRoute()
 
 const {
@@ -20,57 +20,40 @@ const {
   data,
 } = await useGetLeaderboardBySlug(slug as string)
 
-const categoriesData = computedAsync(
-  async () => {
-    if (data) {
-      const response = await useGetCategoriesForLeaderboard({ id: data.id })
-      if (response.data?.data) {
-        return {
-          categories: response.data.data,
-          activeCategory:
-            response.data.data.find((cat) => cat.slug === categorySlug) ||
-            response.data.data.at(0),
-        }
-      }
-    }
-    return { categories: [], activeCategory: undefined }
-  },
-  {
-    categories: [],
-    activeCategory: undefined,
-  },
+const categories = data
+  ? await useGetCategoriesForLeaderboard({ id: data.id })
+  : undefined
+
+const activeCategory = computed(
+  () =>
+    categories?.data?.data?.find((cat) => cat.slug === categorySlug) ||
+    categories?.data?.data?.at(0),
 )
+
+const errorStatus = computed(() => {
+  const s = leaderboardError?.status ?? 500
+  if (s >= 400 && s < 500) {
+    return 'Game not found.'
+  }
+  return 'An error occurred.'
+})
 </script>
 
 <template>
   <div>
     <Loader v-if="loading" />
-    <div v-else-if="leaderboardError !== null" class="bg-black p-6 text-white">
-      <p>{{ leaderboardError.status ?? 500 }}</p>
-      <p>
-        {{
-          leaderboardError.title ??
-          'Something went wrong. Please refresh this page.'
-        }}
-      </p>
+    <div v-else-if="leaderboardError" class="bg-black p-6 text-white">
+      {{ errorStatus }}
     </div>
-    <div
-      v-else-if="data !== undefined"
-      class="flex flex-col gap-6 bg-black p-6 text-white"
-    >
+    <div v-else-if="data" class="flex flex-col gap-6 bg-black p-6 text-white">
       <RunsHeader :leaderboard="data" />
       <CategorySelect
-        v-if="
-          categoriesData?.categories !== undefined &&
-          categoriesData.activeCategory !== undefined
-        "
-        :categories="categoriesData.categories"
-        :active-category="categoriesData.activeCategory"
+        v-if="categories?.data?.data"
+        :categories="categories.data.data"
+        :active-category-slug="activeCategory?.slug ?? ''"
       />
-      <RunsTable
-        v-if="categoriesData?.activeCategory !== undefined"
-        :category="categoriesData.activeCategory"
-      />
+      <CategoryInfo v-if="activeCategory" :category="activeCategory" />
+      <RunsTable v-if="activeCategory" :category="activeCategory" />
     </div>
   </div>
 </template>
