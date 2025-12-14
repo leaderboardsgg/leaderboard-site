@@ -73,6 +73,6 @@ describe('/game/:slug', () => {
       route: '/game/validslug?category=not-found',
     })
 
-    expect(wrapper.text()).toContain('404Not Found')
+    expect(wrapper.text()).toContain('Game not found.')
   })
 })
