@@ -1,10 +1,11 @@
 ---
 name: Bug Report
-description: Create a report to help us improve
+about: Found a bug? Let us know so we can get it fixed
 title: 'Bug: {short description}'
 labels: bug, needs triage
----
+assignees: ''
 
+---
 
 Please take the time to fill out this bug report. Thanks!
 

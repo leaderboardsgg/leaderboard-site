@@ -1,8 +1,10 @@
 ---
 name: Feature Request
-description: Suggest an idea to add support for this project
+about: Have a feature in mind? Tell us about it!
 title: 'Feature Request: {short description}'
 labels: enhancement, needs triage
+assignees: ''
+
 ---
 
 Please take the time to fill out this . Thanks!
