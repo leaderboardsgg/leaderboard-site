@@ -30,14 +30,14 @@ ex. I was on X page, and clicked Y thing
 Yes / No
 
 ### What browser(s) are you seeing the problem on?
-- Brave
-- Chrome
-- Firefox
-- Microsoft Edge
-- Opera
-- Safari
-- Vivaldi
-- Other
+- [ ] Brave
+- [ ] Chrome
+- [ ] Firefox
+- [ ] Microsoft Edge
+- [ ] Opera
+- [ ] Safari
+- [ ] Vivaldi
+- [ ] Other
 
 ### Relevant log output
 Please copy and paste any relevant log output.
