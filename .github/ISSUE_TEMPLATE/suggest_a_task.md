@@ -1,8 +1,10 @@
 ---
 name: Suggest a task
-description: Suggest an idea for improving this project without changing functionality
+about: Need something done? How can we help?
 title: 'Task: {short description}'
 labels: needs triage
+assignees: ''
+
 ---
 
 Please take the time to fill out this . Thanks!
