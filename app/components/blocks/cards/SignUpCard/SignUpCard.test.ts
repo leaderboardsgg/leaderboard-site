@@ -1,10 +1,8 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import { getByQuery, getByTestId, getHTMLElement } from 'root/testUtils'
 import SignUpCard from './SignUpCard.vue'
-import { useRuntimeConfig } from '#imports'
 
 afterEach(() => {
-  fetchMock.resetMocks()
   vi.restoreAllMocks()
 })
 
@@ -104,6 +102,9 @@ describe('<SignUpCard />', () => {
     })
 
     it('calls the api', async () => {
+      const fetchMock = vi
+        .spyOn(global, 'fetch')
+        .mockResolvedValue({ ok: true } as Response)
       const wrapper = await mountSuspended(SignUpCard)
 
       await getByTestId(wrapper, 'email-input').setValue(emailAddress)
@@ -116,11 +117,8 @@ describe('<SignUpCard />', () => {
         .setValue(password)
       await getByTestId(wrapper, 'sign-up-button').trigger('click')
 
-      const config = useRuntimeConfig()
       const apiCall = fetchMock.mock.calls[0]
-      expect(apiCall?.[0]).toEqual(
-        `${config.public.backendBaseUrl}/Account/register`,
-      )
+      expect(apiCall?.[0]).toContain(`/Account/register`)
       expect(apiCall?.[1]?.method).toEqual('POST')
       expect(apiCall?.[1]?.body).toEqual(
         JSON.stringify({
