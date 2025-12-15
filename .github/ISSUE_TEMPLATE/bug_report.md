@@ -8,12 +8,6 @@ labels: bug, needs triage
 
 Please take the time to fill out this bug report. Thanks!
 
-## Contact Details
-How can we get in touch with you if we need more info?
-<!--
-ex. email@example.com
--->
-
 ## What happened?
 Tell us what you saw
 
