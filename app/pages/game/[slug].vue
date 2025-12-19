@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ComputedRef } from '#imports'
 import { computed, useRoute, watchEffect } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
 import CategoryInfo from '~/components/blocks/RunsPage/CategoryInfo/CategoryInfo.vue'
@@ -25,13 +26,23 @@ const categories = data
   ? await useGetCategoriesForLeaderboard({ id: data.id })
   : undefined
 
+const categoriesDict: ComputedRef<Record<string, CategoryViewModel>> = computed(
+  () =>
+    categories?.data?.data?.reduce(
+      (acc, cat) => ({
+        ...acc,
+        [cat.slug]: cat,
+      }),
+      {},
+    ) || {},
+)
+const firstCategory = computed(() => categories?.data?.data?.at(0))
 let activeCategory: CategoryViewModel | undefined
 
 watchEffect(() => {
   const { hash } = useRoute()
   activeCategory =
-    categories?.data?.data?.find((cat) => cat.slug === hash.replace('#', '')) ||
-    categories?.data?.data?.at(0)
+    categoriesDict.value[hash.replace('#', '')] || firstCategory.value
 })
 
 const errorStatus = computed(() => {
