@@ -1,5 +1,4 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { getById, getByTestId, getHTMLElement } from 'root/testUtils'
 import LogInCard from './LogInCard.vue'
 import * as apiComposables from 'composables/api'
 
@@ -42,9 +41,7 @@ describe('<LogInCard />', () => {
     it('should emit the close event', async () => {
       const wrapper = await mountSuspended(LogInCard)
 
-      const closeButton = getByTestId(wrapper, 'close-button')
-
-      await closeButton.trigger('click')
+      await wrapper.getByTestId('close-button').trigger('click')
 
       expect(wrapper.emitted().close).toBeTruthy()
     })
@@ -54,7 +51,7 @@ describe('<LogInCard />', () => {
     it('emits the close event', async () => {
       const wrapper = await mountSuspended(LogInCard)
 
-      await getByTestId(wrapper, 'password-input').trigger('keyup.enter')
+      await wrapper.getByTestId('password-input').trigger('keyup.enter')
 
       expect(wrapper.emitted().close).toBeTruthy()
     })
@@ -67,13 +64,9 @@ describe('<LogInCard />', () => {
     it('emits the close event', async () => {
       const wrapper = await mountSuspended(LogInCard)
 
-      const emailInput = getByTestId(wrapper, 'email-input')
-      const passwordInput = getById(wrapper, 'password')
-
-      await emailInput.setValue(emailAddress)
-      await passwordInput.setValue(password)
-
-      await getByTestId(wrapper, 'login-button').trigger('click')
+      await wrapper.getByTestId('email-input').setValue(emailAddress)
+      await wrapper.getById('password').setValue(password)
+      await wrapper.getByTestId('login-button').trigger('click')
 
       expect(wrapper.emitted().close).toBeTruthy()
     })
@@ -81,21 +74,19 @@ describe('<LogInCard />', () => {
     it('clears the state', async () => {
       const wrapper = await mountSuspended(LogInCard)
 
-      const emailInput = getByTestId(wrapper, 'email-input')
-      const passwordInput = getById(wrapper, 'password')
+      const emailInput = wrapper.getByTestId('email-input')
+      const passwordInput = wrapper.getById('password')
 
       await emailInput.setValue(emailAddress)
       await passwordInput.setValue(password)
 
-      const emailInputElement = getHTMLElement(emailInput) as HTMLInputElement
-      const passwordInputElement = getHTMLElement(
-        passwordInput,
-      ) as HTMLInputElement
+      const emailInputElement = emailInput.element as HTMLInputElement
+      const passwordInputElement = passwordInput.element as HTMLInputElement
 
       expect(emailInputElement.value).toBe(emailAddress)
       expect(passwordInputElement.value).toBe(password)
 
-      await getByTestId(wrapper, 'login-button').trigger('click')
+      await wrapper.getByTestId('login-button').trigger('click')
 
       expect(emailInputElement.value).toBe('')
       expect(passwordInputElement.value).toBe('')
@@ -106,13 +97,10 @@ describe('<LogInCard />', () => {
 
       const wrapper = await mountSuspended(LogInCard)
 
-      const emailInput = getByTestId(wrapper, 'email-input')
-      const passwordInput = getById(wrapper, 'password')
+      await wrapper.getByTestId('email-input').setValue(emailAddress)
+      await wrapper.getById('password').setValue(password)
 
-      await emailInput.setValue(emailAddress)
-      await passwordInput.setValue(password)
-
-      await getByTestId(wrapper, 'login-button').trigger('click')
+      await wrapper.getByTestId('login-button').trigger('click')
 
       expect(useLoginUserSpy).toBeCalledTimes(1)
       expect(mockSuccessAccountLogin).toBeCalledTimes(1)
@@ -123,7 +111,7 @@ describe('<LogInCard />', () => {
     it('emits the forgot password click event', async () => {
       const wrapper = await mountSuspended(LogInCard)
 
-      await getByTestId(wrapper, 'forgot-password-button').trigger('click')
+      await wrapper.getByTestId('forgot-password-button').trigger('click')
 
       expect(wrapper.emitted().forgotPasswordClick).toBeTruthy()
     })
@@ -133,7 +121,7 @@ describe('<LogInCard />', () => {
     it('emits the sign up click event', async () => {
       const wrapper = await mountSuspended(LogInCard)
 
-      await getByTestId(wrapper, 'sign-up-button').trigger('click')
+      await wrapper.getByTestId('sign-up-button').trigger('click')
 
       expect(wrapper.emitted().signUpClick).toBeTruthy()
     })
