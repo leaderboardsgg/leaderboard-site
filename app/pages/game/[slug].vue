@@ -37,12 +37,9 @@ const categoriesDict: ComputedRef<Record<string, CategoryViewModel>> = computed(
     ) || {},
 )
 const firstCategory = computed(() => categories?.data?.data?.at(0))
-let activeCategory: CategoryViewModel | undefined
-
-watchEffect(() => {
+const activeCategory = computed(() => {
   const { hash } = useRoute()
-  activeCategory =
-    categoriesDict.value[hash.replace('#', '')] || firstCategory.value
+  return categoriesDict.value[hash.replace('#', '')] || firstCategory.value
 })
 
 const errorStatus = computed(() => {
@@ -64,9 +61,9 @@ const errorStatus = computed(() => {
       <RunsHeader :leaderboard="data" />
       <div class="grid grid-cols-2 gap-6 p-6">
         <CategorySelect
-          v-if="categories?.data?.data"
+          v-if="categories?.data?.data && activeCategory"
           :categories="categories.data.data"
-          :active-category-slug="activeCategory?.slug ?? ''"
+          :active-category-slug="activeCategory.slug"
         />
         <CategoryInfo v-if="activeCategory" :category="activeCategory" />
       </div>
