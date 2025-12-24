@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ComputedRef } from '#imports'
-import { computed, useRoute } from '#imports'
+import { computed, navigateTo, useRoute } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
 import CategoryInfo from '~/components/blocks/RunsPage/CategoryInfo/CategoryInfo.vue'
 import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/CategorySelect.vue'
@@ -14,6 +14,7 @@ import type { CategoryViewModel } from '~~/lib/api/data-contracts'
 
 const {
   params: { slug },
+  hash,
 } = useRoute()
 
 const {
@@ -36,10 +37,16 @@ const categoriesDict: ComputedRef<Record<string, CategoryViewModel>> = computed(
       {},
     ) || {},
 )
+
 const firstCategory = computed(() => categories?.data?.data?.at(0))
+
+if (firstCategory.value && !hash) {
+  navigateTo(`#${firstCategory.value.slug}`)
+}
+
 const activeCategory = computed(() => {
   const { hash } = useRoute()
-  return categoriesDict.value[hash.replace('#', '')] || firstCategory.value
+  return categoriesDict.value[hash.replace('#', '')]
 })
 
 const errorStatus = computed(() => {
