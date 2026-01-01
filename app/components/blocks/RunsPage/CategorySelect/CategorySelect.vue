@@ -17,7 +17,7 @@ const props = defineProps<CategorySelect>()
       :key="id"
       :name="name"
       :to="`#${slug}`"
-      :class="slug === activeCategorySlug ? 'active' : ''"
+      :class="{ active: activeCategorySlug === slug }"
       class="border border-white px-6 py-3 text-xs text-white"
     >
       {{ name }}
