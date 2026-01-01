@@ -11,7 +11,7 @@ const games: LeaderboardViewModel[] = [
     createdAt: '2024-11-02T22:11:08+0000',
     updatedAt: '2024-11-02T22:11:08+0000',
     deletedAt: null,
-    categories: [],
+    status: 'Published',
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const games: LeaderboardViewModel[] = [
     createdAt: '2024-11-02T22:11:08+0000',
     updatedAt: '2024-11-02T22:11:08+0000',
     deletedAt: null,
-    categories: [],
+    status: 'Published',
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ const games: LeaderboardViewModel[] = [
     createdAt: '2024-11-02T22:11:08+0000',
     updatedAt: '2024-11-02T22:11:08+0000',
     deletedAt: null,
-    categories: [],
+    status: 'Published',
   },
 ]
 
