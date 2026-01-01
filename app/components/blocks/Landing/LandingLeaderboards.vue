@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
+import type { LeaderboardViewModel } from '~~/lib/api/data-contracts'
 import { useLocalePath } from '#imports'
 const localePath = useLocalePath()
 

@@ -1,8 +1,11 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import useGetLeaderboardBySlug from '~/composables/api/useGetLeaderboardBySlug/index'
 import gamePage from 'pages/game/[slug].vue'
-import { useError } from '#imports'
-import type { LeaderboardViewModel } from '~/lib/api/data-contracts'
+import useGetCategoryBySlug from '~/composables/api/useGetCategoryBySlug/index'
+import useGetLeaderboardBySlug from '~/composables/api/useGetLeaderboardBySlug/index'
+import type {
+  CategoryViewModel,
+  LeaderboardViewModel,
+} from '~~/lib/api/data-contracts'
 
 const leaderboard: LeaderboardViewModel = {
   id: 1,
@@ -12,10 +15,25 @@ const leaderboard: LeaderboardViewModel = {
   createdAt: '2024-11-02T22:11:08+0000',
   updatedAt: '2024-11-02T22:11:08+0000',
   deletedAt: null,
-  categories: [],
+  status: 'Published',
+}
+
+const category: CategoryViewModel = {
+  id: 1,
+  name: 'Getting Over It With Bennet Foddy',
+  slug: 'slug-2',
+  info: '',
+  createdAt: '2024-11-02T22:11:08+0000',
+  updatedAt: '2024-11-02T22:11:08+0000',
+  deletedAt: null,
+  leaderboardId: 1,
+  sortDirection: 'Ascending',
+  type: 'Time',
+  status: 'Published',
 }
 
 vi.mock('composables/api/useGetLeaderboardBySlug')
+vi.mock('composables/api/useGetCategoryBySlug')
 
 afterEach(() => {
   vi.restoreAllMocks()
@@ -29,8 +47,15 @@ describe('/game/:slug', () => {
       data: leaderboard,
       errors: null,
     })
+
+    vi.mocked(useGetCategoryBySlug).mockResolvedValue({
+      error: null,
+      loading: false,
+      data: category,
+      errors: null,
+    })
     const wrapper = await mountSuspended(gamePage, {
-      route: '/game/validslug',
+      route: '/game/validslug?category=slug-2',
     })
 
     expect(wrapper.text()).toContain(leaderboard.name)
@@ -39,19 +64,15 @@ describe('/game/:slug', () => {
 
   it('should render 404 if leaderboard status is 404', async () => {
     vi.mocked(useGetLeaderboardBySlug).mockResolvedValue({
-      error: { status: 404 },
+      error: { status: 404, title: 'Not Found' },
       loading: false,
-      data: leaderboard,
       errors: null,
     })
 
     const wrapper = await mountSuspended(gamePage, {
-      route: '/game/invalidslug',
+      route: '/game/validslug?category=not-found',
     })
 
-    const error = useError()
-
-    expect(error?.value?.statusCode).toBe(404)
-    expect(wrapper.text()).not.toContain(leaderboard.name)
+    expect(wrapper.text()).toContain('Game not found.')
   })
 })
