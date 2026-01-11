@@ -1,8 +1,9 @@
 import { useCurrentUser, useSessionToken } from '#imports'
 import type { UserViewModel } from 'lib/api/data-contracts'
+import { ref } from 'vue'
 import useLogoutUser from '.'
 
-let token = ''
+const tokenRef = ref('')
 const user: UserViewModel = {
   id: '575888bd-9702-41a9-9b75-fc87d785c22a',
   role: 'Confirmed',
@@ -11,14 +12,7 @@ const user: UserViewModel = {
 }
 
 vi.mock('@vueuse/core', () => ({
-  useLocalStorage: () => ({
-    get value() {
-      return token
-    },
-    set value(val) {
-      token = val
-    },
-  }),
+  useLocalStorage: () => tokenRef,
 }))
 
 afterEach(() => {
@@ -30,11 +24,10 @@ afterEach(() => {
 describe('useLogoutUser', () => {
   beforeEach(() => {
     fetchMock.mockIf(/.*\/[Uu]sers\/me/, () => JSON.stringify(user))
-    token = 'auth-token'
+    tokenRef.value = 'auth-token'
   })
 
-  // TODO: fix this
-  it.skip('sets the `authToken` and `currentUser` back to the default values', async () => {
+  it('sets the `authToken` and `currentUser` back to the default values', async () => {
     const authToken = useSessionToken()
     const { data, refresh } = await useCurrentUser()
 
@@ -47,7 +40,6 @@ describe('useLogoutUser', () => {
 
     await refresh()
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    expect(data.value).to.be.empty
+    expect(data.value).toEqual({})
   })
 })

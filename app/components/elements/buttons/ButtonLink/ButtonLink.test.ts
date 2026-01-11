@@ -1,31 +1,32 @@
-import { mountSuspended } from '@nuxt/test-utils/runtime'
+import { shallowMount } from '@vue/test-utils'
 import ButtonLink from './ButtonLink.vue'
 
 describe('<ButtonLink />', () => {
   const defaultAttrs = { class: 'custom-link' }
   const defaultProps = { to: 'https://www.test.com/' }
 
-  it('should render without crashing', async () => {
-    const ButtonLinkWrapper = await mountSuspended(ButtonLink, {
+  it('should render without crashing', () => {
+    const ButtonLinkWrapper = shallowMount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
-      slots: { default: 'Button' },
+      slots: { default: () => 'Button' },
     })
 
     expect(ButtonLinkWrapper.isVisible()).toBe(true)
   })
 
-  it('renders with the correct <slot />', async () => {
-    const ButtonLinkWrapper = await mountSuspended(ButtonLink, {
+  it('renders with the correct <slot />', () => {
+    const ButtonLinkWrapper = shallowMount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
-      slots: { default: 'Any%' },
+      slots: { default: () => 'Any%' },
+      global: { stubs: { NuxtLink: { template: `<a><slot /></a>` } } },
     })
     expect(ButtonLinkWrapper.html()).toContain('Any%')
   })
 
-  it('renders with the passed link', async () => {
-    const ButtonLinkWrapper = await mountSuspended(ButtonLink, {
+  it('renders with the passed link', () => {
+    const ButtonLinkWrapper = shallowMount(ButtonLink, {
       attrs: defaultAttrs,
       props: defaultProps,
     })
@@ -38,8 +39,8 @@ describe('<ButtonLink />', () => {
     expect(link.props('to')).toBe('https://www.test.com/')
   })
 
-  it('renders with the custom classnames', async () => {
-    const ButtonLinkWrapper = await mountSuspended(ButtonLink, {
+  it('renders with the custom classnames', () => {
+    const ButtonLinkWrapper = shallowMount(ButtonLink, {
       attrs: {
         ...defaultAttrs,
         class: 'go-fast',

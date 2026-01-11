@@ -1,43 +1,41 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import { getByTestId } from 'root/testUtils'
 import Dropdown from './Dropdown.vue'
 import DropdownItem from './DropdownItem.vue'
+import { h } from 'vue'
 
 describe('<Dropdown />', () => {
   it('should render without crashing', async () => {
     const wrapper = await mountSuspended(Dropdown, {
       props: { className: 'test' },
     })
-    expect(wrapper.vm).toBeTruthy()
-    expect(getByTestId(wrapper, 'toggler').classes()).toContain('test')
+
+    expect(wrapper.isVisible()).toBe(true)
+    expect(wrapper.getByTestId('toggler').classes()).toContain('test')
   })
 
   describe('when the toggler is clicked', () => {
-    it.skip('should render the slot item, then hide it on a second click', async () => {
+    it('should render the slot item, then hide it on a second click', async () => {
       const wrapper = await mountSuspended(Dropdown, {
         slots: {
-          default: DropdownItem,
+          default: () => h(DropdownItem),
         },
       })
 
-      await getByTestId(wrapper, 'toggler').trigger('click')
-
-      const itemWrapper = wrapper.findAllComponents({
-        name: 'DropdownItem',
-      })[0]
+      await wrapper.getByTestId('toggler').trigger('click')
+      const itemWrapper = wrapper.findAllComponents(DropdownItem)[0]
 
       expect(wrapper.html()).toContain(itemWrapper?.html())
 
-      await getByTestId(wrapper, 'toggler').trigger('click')
+      await wrapper.getByTestId('toggler').trigger('click')
       expect(wrapper.html()).not.toContain(itemWrapper?.html())
     })
 
     it('should apply the style to the dropdown arrow', async () => {
       const wrapper = await mountSuspended(Dropdown)
 
-      await getByTestId(wrapper, 'toggler').trigger('click')
+      await wrapper.getByTestId('toggler').trigger('click')
 
-      expect(getByTestId(wrapper, 'arrow').classes()).toContain('isOpen')
+      expect(wrapper.getByTestId('arrow').classes()).toContain('isOpen')
     })
   })
 })
