@@ -29,4 +29,14 @@ const props = defineProps<CategorySelect>()
 .active {
   @apply border-red-500 text-red-500;
 }
+
+/*  Quick fix for the broken hover state but probably
+    need to redo how the buttons are styled at some point */
+a:not(.active):hover {
+  @apply bg-white text-black;
+}
+
+a.active:hover {
+  @apply bg-red-500 text-white;
+}
 </style>
