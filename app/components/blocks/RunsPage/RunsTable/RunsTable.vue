@@ -1,17 +1,47 @@
 <script setup lang="ts">
-import type { CategoryViewModel } from '~~/lib/api/data-contracts'
+import { ref, watch } from 'vue'
+import type {
+  CategoryViewModel,
+  TimedRunViewModel,
+  ScoredRunViewModel,
+} from '~~/lib/api/data-contracts'
+import useGetRunsForCategory from 'composables/api/useGetRunsForCategory'
+import { useFormatDate } from 'composables/useFormatDate'
 
 interface RunsTableProps {
   category: CategoryViewModel
 }
 
-defineProps<RunsTableProps>()
+const { category } = defineProps<RunsTableProps>()
+const { formatDate } = useFormatDate()
 
-// TODO: Fetch runs
+const runs = ref<(TimedRunViewModel | ScoredRunViewModel)[]>()
+
+const fetchRuns = async () => {
+  if (!category?.id) return
+
+  const { data } = await useGetRunsForCategory({
+    id: category.id,
+  })
+
+  runs.value = data?.data
+}
+
+await fetchRuns()
+
+watch(
+  () => category?.id,
+  async () => {
+    await fetchRuns()
+  },
+)
 </script>
 
 <template>
-  <table class="table h-fit table-auto bg-bg-content text-[var(--text-colour)]">
+  <table
+    v-if="runs?.length"
+    class="table h-fit table-auto bg-bg-content text-[var(--text-colour)]"
+  >
     <thead class="table-header-group bg-bg-table-row">
       <tr class="text-left">
         <th class="pb-3 pl-6 pt-6">Rank</th>
@@ -21,17 +51,13 @@ defineProps<RunsTableProps>()
       </tr>
     </thead>
     <tbody class="table-row-group text-sm">
-      <!-- TODO: Fetch runs -->
-      <tr
-        v-for="i in Array.from(Array(100)).map((_, i) => i)"
-        :key="i"
-        class="table-row even:bg-bg-table-row-alt"
-      >
-        <td class="py-3 pl-6">{{ i + 1 }}</td>
-        <td>Test</td>
-        <td>01:23:34.555</td>
-        <td class="text-right pr-6">11/01/2025</td>
+      <tr v-for="(run, index) in runs" :key="run.id">
+        <td class="py-3 pl-6">{{ index + 1 }}</td>
+        <td>{{ run.user?.username }}</td>
+        <td>{{ category.type === 'Score' ? (run as ScoredRunViewModel).score : (run as TimedRunViewModel).time }}</td>
+        <td class="text-right pr-6">{{ formatDate(run.playedOn) }}</td>
       </tr>
     </tbody>
   </table>
+  <h2 v-else class="mx-auto font-extrabold text-5xl">No runs found</h2>
 </template>
