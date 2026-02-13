@@ -1,3 +1,4 @@
 import { leaderboardsHandlers } from './leaderboards'
+import { usersHandlers } from './users'
 
-export const handlers = [...leaderboardsHandlers]
+export const handlers = [...leaderboardsHandlers, ...usersHandlers]

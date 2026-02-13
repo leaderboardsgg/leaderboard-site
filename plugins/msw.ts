@@ -1,6 +1,6 @@
 import { defineNuxtPlugin } from '#imports'
-import { worker } from '../mocks/browser'
+import { server } from '../mocks/server'
 
 export default defineNuxtPlugin(() => {
-  worker.start()
+  server.listen()
 })

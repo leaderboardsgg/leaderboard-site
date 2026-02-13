@@ -5,7 +5,7 @@ import type { Ref } from 'vue'
  */
 export function getBaseUrl(): string {
   return (
-    process.env.NUXT_PUBLIC_BACKEND_BASE_URL || 'http://localhost:8000'
+    process.env.NUXT_PUBLIC_BACKEND_BASE_URL || ''
   )
 }
 
