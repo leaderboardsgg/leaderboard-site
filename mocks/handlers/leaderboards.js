@@ -4,7 +4,12 @@ import mockLeaderboards from 'mocks/data/api/leaderboards'
 
 export const leaderboardsHandlers = [
   http.get(`${getBaseUrl()}/api/leaderboards`, () =>
-    HttpResponse.json(mockLeaderboards),
+    HttpResponse.json({
+      data: mockLeaderboards,
+      total: mockLeaderboards.length,
+      limitDefault: 20,
+      limitMax: 100,
+    }),
   ),
   http.get(`${getBaseUrl()}/api/leaderboards/:slug`, (req) => {
     const { slug } = req.params
