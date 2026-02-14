@@ -4,8 +4,13 @@ import type { Ref } from 'vue'
  * @returns The base URL for the backend API.
  */
 export function getBaseUrl(): string {
+  let fallbackUrl = 'http://localhost:8000'
+  if (process.env.TEST) {
+    fallbackUrl = ''
+  }
+
   return (
-    process.env.NUXT_PUBLIC_BACKEND_BASE_URL || ''
+    process.env.NUXT_PUBLIC_BACKEND_BASE_URL ?? fallbackUrl
   )
 }
 
