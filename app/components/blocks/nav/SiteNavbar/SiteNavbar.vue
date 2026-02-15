@@ -75,18 +75,19 @@ function logout() {
       <NuxtLink to="/">
         <i-svg-logo />
       </NuxtLink>
-      <SearchBar />
+      <SearchBar class="ml-4" />
       <div class="mobile-navbar">
         <NavLinks />
         <LoginButton
           v-if="!loggedIn"
           data-testid="site-navbar-login-button"
+          class="text-nowrap"
           @click="toggleLoginModal"
         />
         <SignUpButton
           v-if="!loggedIn"
           data-testid="site-navbar-sign-up-button"
-          class="ml-4"
+          class="ml-4 text-nowrap"
           @click="toggleSignUpModal"
         />
         <LogoutButton

@@ -18,7 +18,9 @@ const nuxtAliases = {
   elements: resolve(__dirname, './app/components/elements'),
   layouts: resolve(__dirname, './app/layouts'),
   lib: resolve(__dirname, './lib'),
+  mocks: resolve(__dirname, './mocks'),
   pages: resolve(__dirname, './app/pages'),
+  plugins: resolve(__dirname, './plugins'),
   root: resolve(__dirname, './'),
 }
 
@@ -98,7 +100,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      backendBaseUrl: '',
+      backendBaseUrl: process.env.NUXT_PUBLIC_BACKEND_BASE_URL || '',
     },
   },
 
@@ -111,4 +113,10 @@ export default defineNuxtConfig({
   ssr: false,
   vite: viteConfig,
   compatibilityDate: '2025-08-19',
+
+  $development: {
+    devtools: {
+      enabled: true,
+    },
+  },
 })
