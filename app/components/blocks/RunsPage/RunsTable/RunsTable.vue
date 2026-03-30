@@ -51,8 +51,8 @@ watch(
       </tr>
     </thead>
     <tbody class="table-row-group text-sm">
-      <tr v-for="(run, rank) in runs" :key="run.id">
-        <td class="py-3 pl-6">{{ rank }}</td>
+      <tr v-for="run in runs" :key="run.id">
+        <td class="py-3 pl-6">{{ run.rank }}</td>
         <td>{{ run.user.username }}</td>
         <td>
           {{
