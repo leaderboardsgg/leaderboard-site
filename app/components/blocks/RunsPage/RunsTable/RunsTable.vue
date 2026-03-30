@@ -53,7 +53,7 @@ watch(
     <tbody class="table-row-group text-sm">
       <tr v-for="(run, rank) in runs" :key="run.id">
         <td class="py-3 pl-6">{{ rank }}</td>
-        <td>{{ run.user?.username }}</td>
+        <td>{{ run.user.username }}</td>
         <td>
           {{
             category.type === 'Score'
