@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, watch } from 'vue'
 import type {
   CategoryViewModel,
   TimedRunViewModel,
@@ -7,6 +6,7 @@ import type {
 } from '~~/lib/api/data-contracts'
 import useGetRecordsForCategory from 'composables/api/useGetRecordsForCategory'
 import { useFormatDate } from 'composables/useFormatDate'
+import { useAsyncData } from '#app';
 
 interface RunsTableProps {
   category: CategoryViewModel
@@ -15,26 +15,14 @@ interface RunsTableProps {
 const { category } = defineProps<RunsTableProps>()
 const { formatDate } = useFormatDate()
 
-const runs = ref<(TimedRunViewModel | ScoredRunViewModel)[]>()
-
-const fetchRuns = async () => {
-  if (!category?.id) return
-
+const { data: runs } = await useAsyncData(() => category.id.toString(), async () => {
   const { data } = await useGetRecordsForCategory({
     id: category.id,
   })
 
-  runs.value = data?.data
-}
+  return data?.data || []
+})
 
-await fetchRuns()
-
-watch(
-  () => category?.id,
-  async () => {
-    await fetchRuns()
-  },
-)
 </script>
 
 <template>
@@ -51,9 +39,9 @@ watch(
       </tr>
     </thead>
     <tbody class="table-row-group text-sm">
-      <tr v-for="(run, rank) in runs" :key="run.id">
-        <td class="py-3 pl-6">{{ rank }}</td>
-        <td>{{ run.user?.username }}</td>
+      <tr v-for="run in runs" :key="run.id">
+        <td class="py-3 pl-6">{{ run.rank }}</td>
+        <td>{{ run.user.username }}</td>
         <td>
           {{
             category.type === 'Score'
