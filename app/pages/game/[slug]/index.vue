@@ -75,6 +75,7 @@ const errorStatus = computed(() => {
         <CategoryInfo v-if="activeCategory" :category="activeCategory" />
       </div>
       <RunsTable v-if="activeCategory" :category="activeCategory" />
+      <NuxtPage />
     </div>
   </div>
 </template>
