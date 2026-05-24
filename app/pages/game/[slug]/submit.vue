@@ -83,7 +83,7 @@ const payload = computed<CreateRunPayload | null>(() => {
 })
 
 async function submit() {
-  if (category == null || payload.value === null) {
+  if (category == null || payload.value === null || isSubmitting.value) {
     return
   }
 
@@ -283,9 +283,10 @@ async function submit() {
                   class="text-black"
                 />
                 <label for="agreement"
-                  >Submissions that violate the site rules may result in your
-                  account getting banned. Check this box if you have read
-                  this.</label
+                  >Submissions that violate the site rules may result in
+                  punishment including removal of the submission and/or a ban
+                  from the website. Check this box if you have read and agree
+                  with this.</label
                 >
               </fieldset>
               <BaseButton type="submit" class="col-span-2">{{
