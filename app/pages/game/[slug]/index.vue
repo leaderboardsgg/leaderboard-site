@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ComputedRef } from '#imports'
-import { computed, navigateTo, useRoute, useRouter } from '#imports'
+import { computed, navigateTo, useRoute } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
 import CategoryInfo from '~/components/blocks/RunsPage/CategoryInfo/CategoryInfo.vue'
 import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/CategorySelect.vue'

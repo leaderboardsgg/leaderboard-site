@@ -21,10 +21,7 @@ describe('useCreateRun', () => {
       await useCreateRun(catId, requestData)
 
       expect(mockSuccessCreateRun).toBeCalledTimes(1)
-      expect(mockSuccessCreateRun).toBeCalledWith(
-        { id: 1 },
-        requestData,
-      )
+      expect(mockSuccessCreateRun).toBeCalledWith({ id: 1 }, requestData)
     })
   })
 })

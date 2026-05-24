@@ -1,9 +1,10 @@
 import { useRuntimeConfig } from '#imports'
-import {
-  useApi,
-  type optionalParameters
-} from 'composables/useApi'
-import type { CreateRunPayload, ScoredRunViewModel, TimedRunViewModel } from 'lib/api/data-contracts'
+import { useApi, type optionalParameters } from 'composables/useApi'
+import type {
+  CreateRunPayload,
+  ScoredRunViewModel,
+  TimedRunViewModel,
+} from 'lib/api/data-contracts'
 import { Runs } from '~~/lib/api/Runs'
 
 export async function useCreateRun(
