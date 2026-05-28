@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ComputedRef } from '#imports'
 import { computed, navigateTo, useCurrentUser, useRoute } from '#imports'
 import { createRef } from '@vueuse/core'
 import Loader from '~/components/blocks/Loader/Loader.vue'
@@ -43,16 +44,16 @@ const {
     }
 
 const errorStatus = computed(() => {
-  const s = leaderboardError?.status ?? 500
-  if (s >= 400 && s < 500) {
+  const status = leaderboardError?.status ?? 500
+  if (status >= 400 && status < 500) {
     return 'Game not found.'
   }
   return 'An error occurred.'
 })
 
 const categoryErrorStatus = computed(() => {
-  const s = categoryError?.status ?? 500
-  if (s >= 400 && s < 500) {
+  const status = categoryError?.status ?? 500
+  if (status >= 400 && status < 500) {
     return 'Category not found.'
   }
   return 'An error occurred.'
@@ -92,7 +93,8 @@ async function submit() {
   isSubmitting.value = true
 
   if (category.type === 'Time') {
-    ;(payload.value as CreateTimedRunRequest).time = [
+    const { value } = payload as ComputedRef<CreateTimedRunRequest>
+    value.time = [
       hours.value.toString(10).padStart(2, '0'),
       minutes.value.toString(10).padStart(2, '0'),
       seconds.value.toString(10).padStart(2, '0'),
@@ -156,10 +158,9 @@ async function submit() {
           </ul>
         </li>
       </ul>
-      <span
-        >Please fix any errors listed and try again, or contact us for
-        help.</span
-      >
+      <span>
+        Please fix any errors listed and try again, or contact us for help.
+      </span>
     </div>
     <div class="flex flex-col gap-6 bg-black p-6 text-white">
       <h1 class="text-lg">

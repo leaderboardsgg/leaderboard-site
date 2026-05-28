@@ -58,7 +58,7 @@ const errorStatus = computed(() => {
   return 'An error occurred.'
 })
 
-async function goToSubmission() {
+function goToSubmission() {
   if (activeCategory.value !== undefined) {
     navigateTo(`./${slug}/submit?cat=${activeCategory.value.slug}`)
   }
