@@ -29,9 +29,7 @@ export namespace Runs {
    * @request GET:/api/runs/{id}
    * @secure
    * @response `200` `(TimedRunViewModel | ScoredRunViewModel)` OK
-   * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` The Run with ID `id` could not be found.
-   * @response `500` `void` Internal Server Error
    */
   export namespace GetRun {
     export type RequestParams = {
@@ -57,7 +55,6 @@ export namespace Runs {
    * @response `403` `ProblemDetails` The requesting User is unauthorized to create Runs.
    * @response `404` `ProblemDetails` The Category with ID `id` could not be found, or has been deleted. Read `title` for more information.
    * @response `422` `ProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   export namespace CreateRun {
     export type RequestParams = {
@@ -74,14 +71,12 @@ export namespace Runs {
    * No description
    * @tags Runs
    * @name GetRunsForCategory
-   * @summary Gets the Runs for a Category.
+   * @summary Gets all Runs submitted by users for a Category. To get only the personal bests of every user instead, call `GetRecordsForCategory`.
    * @request GET:/api/categories/{id}/runs
    * @secure
    * @response `200` `RunViewModelListView` OK
-   * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` The Category with ID `id` could not be found, or has been deleted. Read `title` for more information.
    * @response `422` `ValidationProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   export namespace GetRunsForCategory {
     export type RequestParams = {
@@ -116,10 +111,8 @@ export namespace Runs {
    * @request GET:/api/categories/{id}/records
    * @secure
    * @response `200` `RunViewModelListView` OK
-   * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `void` Not Found
+   * @response `404` `ProblemDetails` Not Found
    * @response `422` `ValidationProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   export namespace GetRecordsForCategory {
     export type RequestParams = {
@@ -152,9 +145,7 @@ export namespace Runs {
    * @request GET:/api/runs/{id}/category
    * @secure
    * @response `200` `CategoryViewModel` OK
-   * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `void` Not Found
-   * @response `500` `void` Internal Server Error
+   * @response `404` `ProblemDetails` Not Found
    */
   export namespace GetRunCategory {
     export type RequestParams = {
@@ -175,12 +166,11 @@ export namespace Runs {
    * @request PATCH:/runs/{id}
    * @secure
    * @response `204` `void` No Content
-   * @response `400` `ProblemDetails` Bad Request
+   * @response `400` `ValidationProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
    * @response `403` `ProblemDetails` The user attempted to update another user's run, the user is banned or not yet confirmed, or the user attempted to change the status of a run.
    * @response `404` `ProblemDetails` The Run with ID `id` could not be found, or has been deleted. Read `title` for more information.
    * @response `422` `ProblemDetails` Response can be a `ProblemDetails` for a request that doesn't match the run type of a category, or a `ValidationProblemDetails` otherwise.
-   * @response `500` `void` Internal Server Error
    */
   export namespace UpdateRun {
     export type RequestParams = {
@@ -201,11 +191,9 @@ export namespace Runs {
    * @request DELETE:/runs/{id}
    * @secure
    * @response `204` `void` No Content
-   * @response `400` `ProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
    * @response `403` `void` Forbidden
    * @response `404` `ProblemDetails` The run does not exist (Not Found) or was already deleted (Already Deleted). Use the `title` field of the response to differentiate between the two cases if necessary.
-   * @response `500` `void` Internal Server Error
    */
   export namespace DeleteRun {
     export type RequestParams = {

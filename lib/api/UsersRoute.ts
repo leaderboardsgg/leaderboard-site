@@ -26,9 +26,7 @@ export namespace Users {
    * @request GET:/api/users/{id}
    * @secure
    * @response `200` `UserViewModel` The `User` was found and returned successfully.
-   * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `void` No `User` with the requested ID could be found.
-   * @response `500` `void` Internal Server Error
+   * @response `404` `ProblemDetails` No `User` with the requested ID could be found.
    */
   export namespace GetUser {
     export type RequestParams = {
@@ -52,11 +50,9 @@ export namespace Users {
    * @request GET:/users
    * @secure
    * @response `200` `UserViewModelListView` OK
-   * @response `400` `ProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
    * @response `403` `void` Forbidden
    * @response `422` `ValidationProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   export namespace ListUsers {
     export type RequestParams = {};
@@ -84,17 +80,15 @@ export namespace Users {
   }
 
   /**
-   * @description Call this method with the 'Authorization' header. A valid JWT bearer token must be passed. Example: `{ 'Authorization': 'Bearer JWT' }`.
+   * No description
    * @tags Users
    * @name Me
    * @summary Gets the currently logged-in User.
    * @request GET:/users/me
    * @secure
    * @response `200` `UserViewModel` The `User` was found and returned successfully.
-   * @response `400` `ProblemDetails` Bad Request
    * @response `401` `void` An invalid JWT was passed in.
-   * @response `404` `void` The user was not found in the database.
-   * @response `500` `void` Internal Server Error
+   * @response `404` `ProblemDetails` The user was not found in the database.
    */
   export namespace Me {
     export type RequestParams = {};
@@ -112,12 +106,11 @@ export namespace Users {
    * @request PATCH:/users/{id}
    * @secure
    * @response `204` `void` No Content
-   * @response `400` `ProblemDetails` Bad Request
+   * @response `400` `ValidationProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
    * @response `403` `ProblemDetails` This request was not sent by an admin, the target user is an admin, or the role provided was neither BANNED nor CONFIRMED.
    * @response `404` `ProblemDetails` Not Found
    * @response `422` `ValidationProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   export namespace UpdateUser {
     export type RequestParams = {

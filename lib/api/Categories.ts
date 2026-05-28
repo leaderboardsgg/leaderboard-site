@@ -39,15 +39,10 @@ export class Categories<
    * @request GET:/api/categories/{id}
    * @secure
    * @response `200` `CategoryViewModel` OK
-   * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `void` Not Found
-   * @response `500` `void` Internal Server Error
+   * @response `404` `ProblemDetails` Not Found
    */
-  getCategory = (
-    { id, ...query }: GetCategoryParams,
-    params: RequestParams = {},
-  ) =>
-    this.request<CategoryViewModel, ProblemDetails | void>({
+  getCategory = ({ id }: GetCategoryParams, params: RequestParams = {}) =>
+    this.request<CategoryViewModel, ProblemDetails>({
       path: `/api/categories/${id}`,
       method: "GET",
       secure: true,
@@ -63,15 +58,13 @@ export class Categories<
    * @request GET:/api/leaderboards/{id}/categories/{slug}
    * @secure
    * @response `200` `CategoryViewModel` OK
-   * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` The Category either doesn't exist for the Leaderboard, or it has been deleted.
-   * @response `500` `void` Internal Server Error
    */
   getCategoryBySlug = (
-    { id, slug, ...query }: GetCategoryBySlugParams,
+    { id, slug }: GetCategoryBySlugParams,
     params: RequestParams = {},
   ) =>
-    this.request<CategoryViewModel, ProblemDetails | void>({
+    this.request<CategoryViewModel, ProblemDetails>({
       path: `/api/leaderboards/${id}/categories/${slug}`,
       method: "GET",
       secure: true,
@@ -87,10 +80,8 @@ export class Categories<
    * @request GET:/api/leaderboards/{id}/categories
    * @secure
    * @response `200` `CategoryViewModelListView` OK
-   * @response `400` `ProblemDetails` Bad Request
    * @response `404` `ProblemDetails` The Leaderboard with ID `id` could not be found.
    * @response `422` `ValidationProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   getCategoriesForLeaderboard = (
     { id, ...query }: GetCategoriesForLeaderboardParams,
@@ -98,7 +89,7 @@ export class Categories<
   ) =>
     this.request<
       CategoryViewModelListView,
-      ProblemDetails | ValidationProblemDetails | void
+      ProblemDetails | ValidationProblemDetails
     >({
       path: `/api/leaderboards/${id}/categories`,
       method: "GET",
@@ -118,14 +109,13 @@ export class Categories<
    * @response `201` `CategoryViewModel` Created
    * @response `400` `ProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
-   * @response `403` `void` The requesting `User` is unauthorized to create Categories.
-   * @response `404` `ProblemDetails` The Leaderboard with ID `id` could not be found.
+   * @response `403` `void` Forbidden
+   * @response `404` `ProblemDetails` Not Found
    * @response `409` `CategoryViewModelConflictDetails` A Category with the specified slug already exists.
    * @response `422` `ValidationProblemDetails` The request contains errors. The following errors can occur: NotEmptyValidator, SlugFormat
-   * @response `500` `void` Internal Server Error
    */
   createCategory = (
-    { id, ...query }: CreateCategoryParams,
+    { id }: CreateCategoryParams,
     data: CreateCategoryPayload,
     params: RequestParams = {},
   ) =>
@@ -159,10 +149,9 @@ export class Categories<
    * @response `404` `ProblemDetails` Not Found
    * @response `409` `CategoryViewModelConflictDetails` The specified slug is already in use by another category. Returns the conflicting category.
    * @response `422` `ValidationProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   updateCategory = (
-    { id, ...query }: UpdateCategoryParams,
+    { id }: UpdateCategoryParams,
     data: UpdateCategoryPayload,
     params: RequestParams = {},
   ) =>
@@ -189,17 +178,12 @@ export class Categories<
    * @request DELETE:/categories/{id}
    * @secure
    * @response `204` `void` No Content
-   * @response `400` `ProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
    * @response `403` `void` Forbidden
    * @response `404` `ProblemDetails` The Category does not exist (Not Found) or was already deleted (Already Deleted). Use the `title` field of the response to differentiate between the two cases if necessary.
-   * @response `500` `void` Internal Server Error
    */
-  deleteCategory = (
-    { id, ...query }: DeleteCategoryParams,
-    params: RequestParams = {},
-  ) =>
-    this.request<void, ProblemDetails | void>({
+  deleteCategory = ({ id }: DeleteCategoryParams, params: RequestParams = {}) =>
+    this.request<void, void | ProblemDetails>({
       path: `/categories/${id}`,
       method: "DELETE",
       secure: true,

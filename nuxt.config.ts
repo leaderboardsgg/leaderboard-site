@@ -106,7 +106,7 @@ export default defineNuxtConfig({
 
   typescript: {
     tsConfig: {
-      include: ['../types/**/*.d.ts'],
+      include: ['./types/**/*.d.ts'],
     },
   },
 
