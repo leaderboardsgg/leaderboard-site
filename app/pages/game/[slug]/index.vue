@@ -6,6 +6,7 @@ import CategoryInfo from '~/components/blocks/RunsPage/CategoryInfo/CategoryInfo
 import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/CategorySelect.vue'
 import RunsHeader from '~/components/blocks/RunsPage/Header/Header.vue'
 import RunsTable from '~/components/blocks/RunsPage/RunsTable/RunsTable.vue'
+import BaseButton from '~/components/elements/buttons/BaseButton/BaseButton.vue'
 import {
   useGetCategoriesForLeaderboard,
   useGetLeaderboardBySlug,
@@ -56,6 +57,12 @@ const errorStatus = computed(() => {
   }
   return 'An error occurred.'
 })
+
+function goToSubmission() {
+  if (activeCategory.value !== undefined) {
+    navigateTo(`./${slug}/submit?cat=${activeCategory.value.slug}`)
+  }
+}
 </script>
 
 <template>
@@ -74,6 +81,7 @@ const errorStatus = computed(() => {
         />
         <CategoryInfo v-if="activeCategory" :category="activeCategory" />
       </div>
+      <BaseButton @click="goToSubmission">Submit Run</BaseButton>
       <RunsTable v-if="activeCategory" :category="activeCategory" />
     </div>
   </div>

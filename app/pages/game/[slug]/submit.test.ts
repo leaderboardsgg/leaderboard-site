@@ -1,5 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import gamePage from 'pages/game/[slug].vue'
+import gamePage from 'pages/game/[slug]/submit.vue'
 import useGetCategoryBySlug from '~/composables/api/useGetCategoryBySlug/index'
 import useGetLeaderboardBySlug from '~/composables/api/useGetLeaderboardBySlug/index'
 import type {
@@ -10,7 +10,7 @@ import type {
 const leaderboard: LeaderboardViewModel = {
   id: 1,
   name: 'Getting Over It With Bennet Foddy',
-  slug: 'slug-2',
+  slug: 'slug',
   info: '',
   createdAt: '2024-11-02T22:11:08+0000',
   updatedAt: '2024-11-02T22:11:08+0000',
@@ -39,7 +39,7 @@ afterEach(() => {
   vi.restoreAllMocks()
 })
 
-describe('/game/:slug', () => {
+describe('/game/:slug/submit', () => {
   it('should render without crashing with a valid leaderboard', async () => {
     vi.mocked(useGetLeaderboardBySlug).mockResolvedValue({
       error: null,
@@ -55,7 +55,7 @@ describe('/game/:slug', () => {
       errors: null,
     })
     const wrapper = await mountSuspended(gamePage, {
-      route: '/game/validslug?category=slug-2',
+      route: '/game/slug/submit?cat=slug-2',
     })
 
     expect(wrapper.text()).toContain(leaderboard.name)
@@ -70,7 +70,7 @@ describe('/game/:slug', () => {
     })
 
     const wrapper = await mountSuspended(gamePage, {
-      route: '/game/validslug?category=not-found',
+      route: '/game/slug?cat=not-found',
     })
 
     expect(wrapper.text()).toContain('Game not found.')
