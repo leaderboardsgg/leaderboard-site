@@ -113,6 +113,16 @@ async function submit() {
     navigateTo(`/run/${data.id}`)
   }
 }
+
+const submissionErrorMessage = computed(() => {
+  if (submissionError.value === null) {
+    return ''
+  }
+  const title = submissionError.value.title
+    ? `: ${submissionError.value.title}`
+    : ''
+  return `${submissionError.value.status}${title}`
+})
 </script>
 
 <template>
@@ -137,9 +147,7 @@ async function submit() {
       <span>Submission failed:</span>
       <ul class="list-disc list-inside">
         <li v-if="submissionError">
-          {{
-            `${submissionError.status}${submissionError.title != null ? ': ' + submissionError.title : ''}`
-          }}
+          {{ submissionErrorMessage }}
         </li>
         <li v-if="submissionValidationError">
           {{ submissionValidationError.status }}
