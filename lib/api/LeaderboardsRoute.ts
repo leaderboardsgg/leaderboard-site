@@ -28,9 +28,7 @@ export namespace Leaderboards {
    * @request GET:/api/leaderboards/{id}
    * @secure
    * @response `200` `LeaderboardViewModel` OK
-   * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `void` Not Found
-   * @response `500` `void` Internal Server Error
+   * @response `404` `ProblemDetails` Not Found
    */
   export namespace GetLeaderboard {
     export type RequestParams = {
@@ -51,9 +49,7 @@ export namespace Leaderboards {
    * @request GET:/api/leaderboards/{slug}
    * @secure
    * @response `200` `LeaderboardViewModel` OK
-   * @response `400` `ProblemDetails` Bad Request
-   * @response `404` `void` Not Found
-   * @response `500` `void` Internal Server Error
+   * @response `404` `ProblemDetails` Not Found
    */
   export namespace GetLeaderboardBySlug {
     export type RequestParams = {
@@ -73,9 +69,7 @@ export namespace Leaderboards {
    * @request GET:/api/leaderboards
    * @secure
    * @response `200` `LeaderboardViewModelListView` OK
-   * @response `400` `ProblemDetails` Bad Request
    * @response `422` `ValidationProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   export namespace ListLeaderboards {
     export type RequestParams = {};
@@ -112,9 +106,7 @@ export namespace Leaderboards {
    * @request GET:/api/search/leaderboards
    * @secure
    * @response `200` `LeaderboardViewModelListView` OK
-   * @response `400` `ProblemDetails` Bad Request
    * @response `422` `ProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   export namespace SearchLeaderboards {
     export type RequestParams = {};
@@ -153,7 +145,6 @@ export namespace Leaderboards {
    * @response `403` `void` The requesting `User` is unauthorized to create `Leaderboard`s.
    * @response `409` `LeaderboardViewModelConflictDetails` A Leaderboard with the specified slug already exists and will be returned in the `conflicting` field.
    * @response `422` `ValidationProblemDetails` The request contains errors. The following errors can occur: NotEmptyValidator, SlugFormat
-   * @response `500` `void` Internal Server Error
    */
   export namespace CreateLeaderboard {
     export type RequestParams = {};
@@ -171,11 +162,9 @@ export namespace Leaderboards {
    * @request DELETE:/leaderboards/{id}
    * @secure
    * @response `204` `void` No Content
-   * @response `400` `ProblemDetails` Bad Request
    * @response `401` `void` Unauthorized
    * @response `403` `void` Forbidden
    * @response `404` `ProblemDetails` The leaderboard does not exist (Not Found) or was already deleted (Already Deleted). Use the title field of the response to differentiate between the two cases if necessary.
-   * @response `500` `void` Internal Server Error
    */
   export namespace DeleteLeaderboard {
     export type RequestParams = {
@@ -202,7 +191,6 @@ export namespace Leaderboards {
    * @response `404` `ProblemDetails` Not Found
    * @response `409` `LeaderboardViewModelConflictDetails` The specified slug is already in use by another leaderboard. Returns the conflicting leaderboard.
    * @response `422` `ValidationProblemDetails` Unprocessable Content
-   * @response `500` `void` Internal Server Error
    */
   export namespace UpdateLeaderboard {
     export type RequestParams = {

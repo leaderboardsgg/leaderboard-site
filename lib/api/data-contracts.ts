@@ -35,25 +35,24 @@ export type RunType = "Time" | "Score";
  */
 export type UpdateRunRequest = BaseUpdateRunRequest &
   (
-    | BaseUpdateRunRequestRunTypeMapping<"Time", UpdateTimedRunRequest>
-    | BaseUpdateRunRequestRunTypeMapping<"Score", UpdateScoredRunRequest>
+    | BaseUpdateRunRequestTypeMapping<"Time", UpdateTimedRunRequest>
+    | BaseUpdateRunRequestTypeMapping<"Score", UpdateScoredRunRequest>
   );
 
 export type RunViewModel = BaseRunViewModel &
   (
-    | BaseRunViewModelRunTypeMapping<"Time", TimedRunViewModel>
-    | BaseRunViewModelRunTypeMapping<"Score", ScoredRunViewModel>
+    | BaseRunViewModelTypeMapping<"Time", TimedRunViewModel>
+    | BaseRunViewModelTypeMapping<"Score", ScoredRunViewModel>
   );
 
 /**
- * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
- * request, and `"Score"` for a scored one. `runType` *must* be at the top
- * of the request object.
+ * Request sent when creating a Run. Set `"time"` for a timed request
+ * and `"score"` for a scored one.
  */
 export type CreateRunRequest = BaseCreateRunRequest &
   (
-    | BaseCreateRunRequestRunTypeMapping<"Time", CreateTimedRunRequest>
-    | BaseCreateRunRequestRunTypeMapping<"Score", CreateScoredRunRequest>
+    | BaseCreateRunRequestTypeMapping<"Time", CreateTimedRunRequest>
+    | BaseCreateRunRequestTypeMapping<"Score", CreateScoredRunRequest>
   );
 
 /** Represents a `Category` tied to a `Leaderboard`. */
@@ -100,7 +99,6 @@ export interface CategoryViewModel {
   status: Status;
 }
 
-/** A fake ProblemDetails subclass used for deserialization and documentation. Do not instantiate! */
 export interface CategoryViewModelConflictDetails {
   type?: string | null;
   title?: string | null;
@@ -109,7 +107,7 @@ export interface CategoryViewModelConflictDetails {
   detail?: string | null;
   instance?: string | null;
   /** Represents a `Category` tied to a `Leaderboard`. */
-  conflicting?: CategoryViewModel | null;
+  conflicting: CategoryViewModel | null;
   [key: string]: any;
 }
 
@@ -185,7 +183,6 @@ export interface CreateLeaderboardRequest {
   info?: string;
 }
 
-/** `runType: "Score"` */
 export type CreateScoredRunRequest = BaseCreateRunRequest & {
   /**
    * The score achieved during the run.
@@ -194,7 +191,6 @@ export type CreateScoredRunRequest = BaseCreateRunRequest & {
   score: number;
 };
 
-/** `runType: "Time"` */
 export type CreateTimedRunRequest = BaseCreateRunRequest & {
   /**
    * The duration of the run. Must obey the format 'HH:mm:ss.sss', with leading zeroes.
@@ -256,7 +252,6 @@ export interface LeaderboardViewModel {
   stats?: LeaderboardStats;
 }
 
-/** A fake ProblemDetails subclass used for deserialization and documentation. Do not instantiate! */
 export interface LeaderboardViewModelConflictDetails {
   type?: string | null;
   title?: string | null;
@@ -265,7 +260,7 @@ export interface LeaderboardViewModelConflictDetails {
   detail?: string | null;
   instance?: string | null;
   /** Represents a collection of `Leaderboard` entities. */
-  conflicting?: LeaderboardViewModel | null;
+  conflicting: LeaderboardViewModel | null;
   [key: string]: any;
 }
 
@@ -507,7 +502,7 @@ export interface ValidationProblemDetails {
  * All fields are optional but you must specify at least one.
  */
 interface BaseUpdateRunRequest {
-  runType: RunType;
+  $type: string;
   info?: string;
   /**
    * @format date
@@ -517,12 +512,12 @@ interface BaseUpdateRunRequest {
   status?: Status | null;
 }
 
-type BaseUpdateRunRequestRunTypeMapping<Key, Type> = {
-  runType: Key;
+type BaseUpdateRunRequestTypeMapping<Key, Type> = {
+  $type: Key;
 } & Type;
 
 interface BaseRunViewModel {
-  runType: RunType;
+  $type: string;
   /**
    * The unique identifier of the `Run`.
    *
@@ -571,17 +566,16 @@ interface BaseRunViewModel {
   rank?: number;
 }
 
-type BaseRunViewModelRunTypeMapping<Key, Type> = {
-  runType: Key;
+type BaseRunViewModelTypeMapping<Key, Type> = {
+  $type: Key;
 } & Type;
 
 /**
- * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
- * request, and `"Score"` for a scored one. `runType` *must* be at the top
- * of the request object.
+ * Request sent when creating a Run. Set `"time"` for a timed request
+ * and `"score"` for a scored one.
  */
 interface BaseCreateRunRequest {
-  runType: RunType;
+  $type: string;
   info?: string;
   /**
    * The date the `Run` was played on. Must obey the format 'YYYY-MM-DD', with leading zeroes.
@@ -591,8 +585,8 @@ interface BaseCreateRunRequest {
   playedOn: string;
 }
 
-type BaseCreateRunRequestRunTypeMapping<Key, Type> = {
-  runType: Key;
+type BaseCreateRunRequestTypeMapping<Key, Type> = {
+  $type: Key;
 } & Type;
 
 /** This request object is sent when a `User` is attempting to register. */
@@ -749,9 +743,8 @@ export interface GetRunParams {
 }
 
 /**
- * Request sent when creating a Run. Set `runType` to `"Time"` for a timed
- * request, and `"Score"` for a scored one. `runType` *must* be at the top
- * of the request object.
+ * Request sent when creating a Run. Set `"time"` for a timed request
+ * and `"score"` for a scored one.
  */
 export type CreateRunPayload = CreateTimedRunRequest | CreateScoredRunRequest;
 
