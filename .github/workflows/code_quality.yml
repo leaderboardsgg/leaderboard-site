@@ -52,4 +52,4 @@ jobs:
         run: pnpm lint
 
       - name: Prettier
-        run: pnpm formata:check
+        run: pnpm format:check
