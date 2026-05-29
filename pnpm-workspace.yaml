@@ -1,5 +1,7 @@
 onlyBuiltDependencies:
   - esbuild
+  - '@parcel/watcher'
+  - msw
 
 trustPolicy: no-downgrade
 trustPolicyExclude:
