@@ -193,10 +193,12 @@ const submissionErrorMessage = computed(() => {
                 </p>
               </fieldset>
               <fieldset class="flex gap-2">
-                <label for="time-or-score">{{ category.type }}:</label>
+                <label :for="category.type === 'Score' ? 'score' : 'hours'"
+                  >{{ category.type }}:</label
+                >
                 <input
                   v-if="category.type === 'Score'"
-                  id="time-or-score"
+                  id="score"
                   v-model="(payload as CreateScoredRunRequest).score"
                   type="number"
                   required
