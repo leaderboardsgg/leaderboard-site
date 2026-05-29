@@ -36,7 +36,7 @@ jobs:
       - uses: pnpm/action-setup@v6
 
       - name: Cache PNPM modules
-        uses: actions/cache@v6
+        uses: actions/cache@v5
         id: cache-modules
         with:
           path: |
