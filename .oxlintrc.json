@@ -10,6 +10,8 @@
     "dist",
     "public",
     "src/credentials",
-    ".env"
+    ".env",
+    "pnpm-workspace.yaml",
+    "pnpm-lock.yaml"
   ]
 }
