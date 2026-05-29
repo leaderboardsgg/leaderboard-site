@@ -11,7 +11,7 @@
     "lint:all": "oxlint",
     "lint": "pnpm lint:all",
     "precommit": "pnpm lint:prod && pnpm test && pnpm prettier:check ",
-    "format:check": "oxfmt --ccheck",
+    "format:check": "oxfmt --check",
     "format:fix": "oxfmt",
     "preview": "nuxt preview",
     "test": "vitest --run",
