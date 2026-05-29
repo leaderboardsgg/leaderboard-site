@@ -4,6 +4,7 @@ import { computed, navigateTo, useCurrentUser, useRoute } from '#imports'
 import { createRef } from '@vueuse/core'
 import Loader from '~/components/blocks/Loader/Loader.vue'
 import BaseButton from '~/components/elements/buttons/BaseButton/BaseButton.vue'
+import TimeInput from '~/components/elements/inputs/TimeInput/TimeInput.vue'
 import { useGetCategoryBySlug, useGetLeaderboardBySlug } from '~/composables/api'
 import useCreateRun from '~/composables/api/useCreateRun'
 import type {
@@ -57,10 +58,10 @@ const categoryErrorStatus = computed(() => {
 })
 
 const isAgreementChecked = createRef(false)
-const hours = createRef(0)
-const minutes = createRef(0)
-const seconds = createRef(0)
-const millis = createRef(0)
+const hours = createRef<string | null>(null)
+const minutes = createRef<string | null>(null)
+const seconds = createRef<string | null>(null)
+const millis = createRef<string | null>(null)
 const isSubmitting = createRef(false)
 const submissionError = createRef<ProblemDetails | null>(null)
 const submissionValidationError = createRef<ValidationProblemDetails | null>(null)
@@ -89,14 +90,14 @@ async function submit() {
 
   if (category.type === 'Time') {
     const { value } = payload as ComputedRef<CreateTimedRunRequest>
-    value.time = [
-      hours.value.toString(10).padStart(2, '0'),
-      minutes.value.toString(10).padStart(2, '0'),
-      seconds.value.toString(10).padStart(2, '0'),
-    ]
-      .join(':')
-      .concat('.', millis.value.toString(10).padStart(3, '0'))
+    value.time = `${[
+      hours.value ?? '0',
+      (minutes.value ?? '').padStart(2, '0'),
+      (seconds.value ?? '').padStart(2, '0'),
+    ].join(':')}.${(millis.value ?? '').padStart(3, '0')}`
   }
+
+  console.log(payload.value)
 
   const { error, errors, data } = await useCreateRun(category.id, payload.value)
 
@@ -201,52 +202,13 @@ const submissionErrorMessage = computed(() => {
                   required
                   class="flex-1 text-black px-2"
                 />
-                <div v-else id="time-or-score" class="flex-1 flex flex-col md:flex-row gap-2">
-                  <fieldset class="flex gap-2">
-                    <input
-                      id="hours"
-                      v-model="hours"
-                      type="number"
-                      min="0"
-                      required
-                      class="text-black px-2 flex-1"
-                    />
-                    <label for="hour">h</label>
-                  </fieldset>
-                  <fieldset class="flex gap-2">
-                    <input
-                      id="minutes"
-                      v-model="minutes"
-                      type="number"
-                      min="0"
-                      required
-                      class="text-black px-2 flex-1"
-                    />
-                    <label for="minute">m</label>
-                  </fieldset>
-                  <fieldset class="flex gap-2">
-                    <input
-                      id="seconds"
-                      v-model="seconds"
-                      type="number"
-                      min="0"
-                      required
-                      class="text-black px-2 flex-1"
-                    />
-                    <label for="second">s</label>
-                  </fieldset>
-                  <fieldset class="flex gap-2">
-                    <input
-                      id="millis"
-                      v-model="millis"
-                      type="number"
-                      min="0"
-                      required
-                      class="text-black px-2 flex-1"
-                    />
-                    <label for="second">ms</label>
-                  </fieldset>
-                </div>
+                <TimeInput
+                  v-else
+                  v-model:hours="hours"
+                  v-model:minutes="minutes"
+                  v-model:seconds="seconds"
+                  v-model:millis="millis"
+                />
               </fieldset>
               <fieldset class="flex gap-2">
                 <label for="info">Info (optional): </label>
