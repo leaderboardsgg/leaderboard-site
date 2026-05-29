@@ -1,8 +1,6 @@
 import useConfirmAccount from '.'
 
-const mockSuccessAccountConfirmation = vi.fn(() =>
-  Promise.resolve({ ok: true }),
-)
+const mockSuccessAccountConfirmation = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useConfirmAccount', () => {
   describe('when everything is successful', () => {

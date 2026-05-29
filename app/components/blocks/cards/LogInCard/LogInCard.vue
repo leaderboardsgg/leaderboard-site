@@ -73,11 +73,7 @@ async function login() {
         Sign Up
       </BaseButton>
 
-      <CloseButton
-        v-show="modal"
-        data-testid="close-button"
-        @click.prevent="emit('close')"
-      />
+      <CloseButton v-show="modal" data-testid="close-button" @click.prevent="emit('close')" />
     </CardHeader>
 
     <CardBody>

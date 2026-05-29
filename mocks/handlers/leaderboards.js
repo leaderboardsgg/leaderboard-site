@@ -18,10 +18,7 @@ export const leaderboardsHandlers = [
     if (leaderboard) {
       return HttpResponse.json(leaderboard)
     } else {
-      return HttpResponse.json(
-        { title: 'Leaderboard not found' },
-        { status: 404 },
-      )
+      return HttpResponse.json({ title: 'Leaderboard not found' }, { status: 404 })
     }
   }),
 ]

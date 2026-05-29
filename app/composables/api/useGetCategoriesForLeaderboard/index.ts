@@ -18,12 +18,9 @@ export default async function useGetCategoriesForLeaderboard(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
-  return useApi<CategoryViewModelListView>(
-    async () => client.getCategoriesForLeaderboard(params),
-    {
-      onError,
-      onOkay,
-      responseData,
-    },
-  )
+  return useApi<CategoryViewModelListView>(async () => client.getCategoriesForLeaderboard(params), {
+    onError,
+    onOkay,
+    responseData,
+  })
 }

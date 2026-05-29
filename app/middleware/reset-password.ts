@@ -8,10 +8,7 @@ export default defineNuxtRouteMiddleware(async (_to, from) => {
   const resetPasswordCode = from.query?.code as string
   const { showAlert } = useModalAlert()
 
-  if (
-    !resetPasswordCode ||
-    from?.fullPath !== `/reset-password?code=${resetPasswordCode}`
-  ) {
+  if (!resetPasswordCode || from?.fullPath !== `/reset-password?code=${resetPasswordCode}`) {
     return navigateTo('/', { replace: true })
   }
 

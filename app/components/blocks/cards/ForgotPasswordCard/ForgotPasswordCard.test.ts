@@ -1,9 +1,7 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import ForgotPasswordCard from './ForgotPasswordCard.vue'
 
-const mockSuccessAccountRecoverCreate = vi.fn(() =>
-  Promise.resolve({ ok: true }),
-)
+const mockSuccessAccountRecoverCreate = vi.fn(() => Promise.resolve({ ok: true }))
 
 afterEach(() => {
   vi.restoreAllMocks()

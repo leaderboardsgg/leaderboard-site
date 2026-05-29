@@ -1,0 +1,15 @@
+{
+  "ignorePatterns": [
+    "node_modules",
+    "lib/api",
+    ".github",
+    ".husky",
+    ".nuxt",
+    ".output",
+    ".vscode",
+    "dist",
+    "public",
+    "src/credentials",
+    ".env"
+  ]
+}

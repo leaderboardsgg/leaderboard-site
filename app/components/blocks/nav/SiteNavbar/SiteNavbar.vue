@@ -90,11 +90,7 @@ function logout() {
           class="ml-4 text-nowrap"
           @click="toggleSignUpModal"
         />
-        <LogoutButton
-          v-if="loggedIn"
-          data-testid="site-navbar-logout-button"
-          @click="logout"
-        />
+        <LogoutButton v-if="loggedIn" data-testid="site-navbar-logout-button" @click="logout" />
         <button class="mobile-navbar__toggle" @click="toggleMenu">
           <i-svg-menu class="mx-2 size-5 fill-current" />
         </button>

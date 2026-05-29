@@ -1,9 +1,7 @@
 import useResendAccountConfirmation from '.'
 import useLoginUser from '../useLoginUser'
 
-const mockSuccessLogin = vi.fn(() =>
-  Promise.resolve({ data: { token: 'token' }, ok: true }),
-)
+const mockSuccessLogin = vi.fn(() => Promise.resolve({ data: { token: 'token' }, ok: true }))
 const mockSuccessResendConfirmation = vi.fn(() => Promise.resolve({ ok: true }))
 const onOkaySpy = vi.fn()
 const email = 'test@lb.gg'

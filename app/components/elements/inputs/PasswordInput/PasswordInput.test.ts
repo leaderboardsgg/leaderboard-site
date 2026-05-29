@@ -19,8 +19,7 @@ describe('<PasswordInput />', () => {
       const wrapper = await mountSuspended(PasswordInput, {
         props: { showPassword: false },
       })
-      const passwordInputElement = wrapper.get('input')
-        .element as HTMLInputElement
+      const passwordInputElement = wrapper.get('input').element as HTMLInputElement
 
       expect(passwordInputElement.type).toBe('password')
 

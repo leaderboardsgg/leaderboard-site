@@ -1,13 +1,4 @@
-import {
-  alttp,
-  dkc,
-  octodad,
-  oot,
-  shrek2,
-  smw,
-  superMario64,
-  superMetroid,
-} from './leaderboards'
+import { alttp, dkc, octodad, oot, shrek2, smw, superMario64, superMetroid } from './leaderboards'
 
 const generateCategory = (opts = {}) => ({
   name: 'Any%',

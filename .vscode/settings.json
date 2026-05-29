@@ -26,5 +26,8 @@
     "pnpm-lock.yaml": true,
     ".gitignore": true,
     ".eslintrc.json": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   }
 }

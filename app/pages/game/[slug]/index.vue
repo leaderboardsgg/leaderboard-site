@@ -7,10 +7,7 @@ import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/Category
 import RunsHeader from '~/components/blocks/RunsPage/Header/Header.vue'
 import RunsTable from '~/components/blocks/RunsPage/RunsTable/RunsTable.vue'
 import BaseButton from '~/components/elements/buttons/BaseButton/BaseButton.vue'
-import {
-  useGetCategoriesForLeaderboard,
-  useGetLeaderboardBySlug,
-} from '~/composables/api'
+import { useGetCategoriesForLeaderboard, useGetLeaderboardBySlug } from '~/composables/api'
 import type { CategoryViewModel } from '~~/lib/api/data-contracts'
 
 const {
@@ -18,15 +15,9 @@ const {
   hash,
 } = useRoute()
 
-const {
-  loading,
-  error: leaderboardError,
-  data,
-} = await useGetLeaderboardBySlug(slug as string)
+const { loading, error: leaderboardError, data } = await useGetLeaderboardBySlug(slug as string)
 
-const categories = data
-  ? await useGetCategoriesForLeaderboard({ id: data.id })
-  : undefined
+const categories = data ? await useGetCategoriesForLeaderboard({ id: data.id }) : undefined
 
 const categoriesDict: ComputedRef<Record<string, CategoryViewModel>> = computed(
   () =>

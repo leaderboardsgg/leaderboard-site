@@ -1,9 +1,5 @@
 import { useRuntimeConfig } from '#imports'
-import {
-  type ApiResponse,
-  type optionalParameters,
-  useApi,
-} from 'composables/useApi'
+import { type ApiResponse, type optionalParameters, useApi } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 import type { ChangePasswordRequest } from 'lib/api/data-contracts'
 
@@ -17,7 +13,6 @@ export async function useChangePassword(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
     async () =>
       await account.changePassword(

@@ -9,9 +9,7 @@ const errorText = ref('')
 const showErrorText = ref(false)
 const { showAlert } = useModalAlert()
 const override = ref(false)
-const unconfirmed = computed(
-  () => !override.value && currentUser.data.value?.role === 'Registered',
-)
+const unconfirmed = computed(() => !override.value && currentUser.data.value?.role === 'Registered')
 
 const { t } = useI18n()
 

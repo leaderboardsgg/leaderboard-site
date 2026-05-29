@@ -55,31 +55,25 @@ describe('LandingLeaderboards Component', () => {
     expect(wrapper.isVisible()).toBe(true)
   })
 
-  it.each(games)(
-    'should render game name "$name" in leaderboard card',
-    async (game) => {
-      const wrapper = await mountSuspended(LandingLeaderboards, {
-        props: {
-          leaderboards: games,
-        },
-      })
+  it.each(games)('should render game name "$name" in leaderboard card', async (game) => {
+    const wrapper = await mountSuspended(LandingLeaderboards, {
+      props: {
+        leaderboards: games,
+      },
+    })
 
-      expect(wrapper.html()).toContain(game.name)
-    },
-  )
+    expect(wrapper.html()).toContain(game.name)
+  })
 
-  it.each(games)(
-    'should render run stats for "$name" in leaderboard card',
-    async (game) => {
-      const wrapper = await mountSuspended(LandingLeaderboards, {
-        props: {
-          leaderboards: games,
-        },
-      })
+  it.each(games)('should render run stats for "$name" in leaderboard card', async (game) => {
+    const wrapper = await mountSuspended(LandingLeaderboards, {
+      props: {
+        leaderboards: games,
+      },
+    })
 
-      expect(wrapper.html()).toContain(game?.stats?.runCount)
-    },
-  )
+    expect(wrapper.html()).toContain(game?.stats?.runCount)
+  })
 
   it('should not render stats for leaderboard if stats are falsy', async () => {
     const mockLeaderBoardsWithoutStats: LeaderboardViewModel[] = [

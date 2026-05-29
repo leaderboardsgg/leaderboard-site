@@ -55,7 +55,6 @@ describe('useApi', () => {
         })
 
         expect(onErrorSpy).toBeCalledTimes(1)
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         expect(onErrorSpy.mock.calls[0][0]).toEqual(error)
       })
@@ -71,7 +70,6 @@ describe('useApi', () => {
         await useApi(createApiCall({ data }), { onOkay: onOkaySpy })
 
         expect(onOkaySpy).toBeCalledTimes(1)
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         expect(onOkaySpy.mock.calls[0][0]).toEqual(data)
       })
@@ -89,7 +87,7 @@ describe('useApi', () => {
       const data = { test: '123' }
 
       it('returns the data', async () => {
-        const response = await await useApi(createApiCall({ data, ok: true }))
+        const response = await useApi(createApiCall({ data, ok: true }))
 
         expect(response).toHaveProperty('data')
         expect(response).toHaveProperty('error')
@@ -117,9 +115,7 @@ describe('useApi', () => {
 
       describe('when it is not set', () => {
         it('does not return the data, when not ok', async () => {
-          const response = await await useApi(
-            createApiCall({ data, ok: false }),
-          )
+          const response = await useApi(createApiCall({ data, ok: false }))
 
           expect(response).not.toHaveProperty('data')
           expect(response).toHaveProperty('error')

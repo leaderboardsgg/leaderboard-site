@@ -1,9 +1,5 @@
 import { ref } from 'vue'
-import {
-  useApi,
-  type ApiResponse,
-  type optionalParameters,
-} from 'composables/useApi'
+import { useApi, type ApiResponse, type optionalParameters } from 'composables/useApi'
 import { Leaderboards } from 'lib/api/Leaderboards'
 import type { LeaderboardViewModel } from 'lib/api/data-contracts'
 import { useRuntimeConfig } from '#imports'
@@ -29,8 +25,7 @@ export default async function useGetLeaderboardBySlug(
   })
 
   return await useApi<LeaderboardViewModel>(
-    async () =>
-      await leaderboardClient.getLeaderboardBySlug({ slug: leaderboardSlug }),
+    async () => await leaderboardClient.getLeaderboardBySlug({ slug: leaderboardSlug }),
     {
       onError,
       onOkay,

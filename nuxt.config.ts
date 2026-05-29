@@ -46,6 +46,10 @@ export const viteConfig: ViteConfig = {
   resolve: {
     alias: nuxtAliases,
   },
+
+  optimizeDeps: {
+    include: ['@vueuse/core', 'msw', 'msw/browser'],
+  },
 }
 
 export default defineNuxtConfig({

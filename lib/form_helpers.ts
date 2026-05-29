@@ -29,11 +29,7 @@ const passwordRegex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/
 export function isPasswordValid(password: string): boolean {
   // password length between 8-80 characters
   // must contain a number, uppercase, and lowercase letter
-  return (
-    passwordRegex.test(password) &&
-    password.length > 7 &&
-    password.length < 81
-  )
+  return passwordRegex.test(password) && password.length > 7 && password.length < 81
 }
 
 // Below is our username specification :)
@@ -54,9 +50,7 @@ const usernameRegex = /^(?:[a-zA-Z0-9]+[-_']?[a-zA-Z0-9]+)+$/
  */
 export function isUsernameValid(username: Ref<string>): boolean {
   return (
-    usernameRegex.test(username.value) &&
-    username.value.length > 1 &&
-    username.value.length < 26
+    usernameRegex.test(username.value) && username.value.length > 1 && username.value.length < 26
   )
 }
 
@@ -67,10 +61,7 @@ export function isUsernameValid(username: Ref<string>): boolean {
  * @param passwordConfirm The password confirmation reference
  * @returns boolean
  */
-export function passwordsAreTheSame(
-  password: Ref<string>,
-  passwordConfirm: Ref<string>,
-): boolean {
+export function passwordsAreTheSame(password: Ref<string>, passwordConfirm: Ref<string>): boolean {
   return password.value === passwordConfirm.value
 }
 
@@ -82,8 +73,6 @@ export function passwordsAreTheSame(
  * @returns string
  */
 export function renderErrors(errors: string[][]): string {
-  const errorText = errors
-    .map((errorType) => errorType.map(sentenceCase))
-    .join(', ')
+  const errorText = errors.map((errorType) => errorType.map(sentenceCase)).join(', ')
   return `Error(s): ${errorText}`
 }

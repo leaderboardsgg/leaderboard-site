@@ -27,10 +27,7 @@ defineProps<LandingLeaderboardsProps>()
   --grid-item-max-height: 330px;
 
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(min(var(--grid-col-min-size), 100%), 1fr)
-  );
+  grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-col-min-size), 100%), 1fr));
   grid-auto-rows: min-content;
   gap: 1rem;
 

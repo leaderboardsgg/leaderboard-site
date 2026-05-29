@@ -19,12 +19,8 @@ describe('<SiteNavbar />', () => {
     it('should render the login/sign up buttons', async () => {
       const wrapper = await mountSuspended(SiteNavbar)
 
-      expect(wrapper.getByTestId('site-navbar-login-button').isVisible()).toBe(
-        true,
-      )
-      expect(
-        wrapper.getByTestId('site-navbar-sign-up-button').isVisible(),
-      ).toBe(true)
+      expect(wrapper.getByTestId('site-navbar-login-button').isVisible()).toBe(true)
+      expect(wrapper.getByTestId('site-navbar-sign-up-button').isVisible()).toBe(true)
     })
 
     describe('when the login button is clicked', () => {
@@ -44,9 +40,7 @@ describe('<SiteNavbar />', () => {
           expect(wrapper.getByTestId('log-in-card').isVisible()).toBe(true)
 
           await wrapper.getByTestId('forgot-password-button').trigger('click')
-          expect(wrapper.getByTestId('forgot-password-card').isVisible()).toBe(
-            true,
-          )
+          expect(wrapper.getByTestId('forgot-password-card').isVisible()).toBe(true)
         })
       })
     })
@@ -69,9 +63,7 @@ describe('<SiteNavbar />', () => {
     it('should render the logout button', async () => {
       const wrapper = await mountSuspended(SiteNavbar)
 
-      expect(wrapper.getByTestId('site-navbar-logout-button').isVisible()).toBe(
-        true,
-      )
+      expect(wrapper.getByTestId('site-navbar-logout-button').isVisible()).toBe(true)
     })
 
     describe('when the logout button is clicked', () => {

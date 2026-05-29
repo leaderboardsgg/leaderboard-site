@@ -7,10 +7,7 @@ export default defineNuxtRouteMiddleware((_to, from) => {
   const confirmationCode = route.query?.code as string
   const { showAlert } = useModalAlert()
 
-  if (
-    !confirmationCode ||
-    from?.fullPath !== `/confirm-account?code=${confirmationCode}`
-  ) {
+  if (!confirmationCode || from?.fullPath !== `/confirm-account?code=${confirmationCode}`) {
     return navigateTo('/', { replace: true })
   }
 

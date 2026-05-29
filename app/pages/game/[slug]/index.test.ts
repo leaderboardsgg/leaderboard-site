@@ -2,10 +2,7 @@ import { mountSuspended } from '@nuxt/test-utils/runtime'
 import gamePage from 'pages/game/[slug]/index.vue'
 import useGetCategoryBySlug from '~/composables/api/useGetCategoryBySlug/index'
 import useGetLeaderboardBySlug from '~/composables/api/useGetLeaderboardBySlug/index'
-import type {
-  CategoryViewModel,
-  LeaderboardViewModel,
-} from '~~/lib/api/data-contracts'
+import type { CategoryViewModel, LeaderboardViewModel } from '~~/lib/api/data-contracts'
 
 const leaderboard: LeaderboardViewModel = {
   id: 1,

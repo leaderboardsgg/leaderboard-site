@@ -28,10 +28,7 @@ const { data: runs } = await useAsyncData(
 </script>
 
 <template>
-  <table
-    v-if="runs?.length"
-    class="table h-fit table-auto bg-bg-content text-[var(--text-colour)]"
-  >
+  <table v-if="runs?.length" class="table h-fit table-auto bg-bg-content text-[var(--text-colour)]">
     <thead class="table-header-group bg-bg-table-row">
       <tr class="text-left">
         <th class="pb-3 pl-6 pt-6">Rank</th>
