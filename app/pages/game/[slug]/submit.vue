@@ -177,18 +177,18 @@ const submissionErrorMessage = computed(() => {
               class="max-w-screen-xl flex flex-col gap-3 p-6 mx-auto"
               @submit.prevent="submit"
             >
-              <fieldset class="flex flex-col gap-1">
-                <div class="flex gap-2">
-                  <label for="played-on">Played On: </label>
-                  <input
-                    id="played-on"
-                    v-model="payload.playedOn"
-                    type="date"
-                    required
-                    class="flex-1 text-black px-2"
-                  />
-                </div>
-                <p class="text-right italic">
+              <fieldset
+                class="grid grid-cols-[max-content_1fr] md:[max-content_min-content_1fr] gap-x-2 gap-y-1"
+              >
+                <label for="played-on">Played On: </label>
+                <input
+                  id="played-on"
+                  v-model="payload.playedOn"
+                  type="date"
+                  required
+                  class="max-w-[min-content] self-start text-black px-2"
+                />
+                <p class="col-start-2 md:col-start-3 md:text-right italic">
                   This must be the date you made this run, and not the date you're submitting it.
                 </p>
               </fieldset>
