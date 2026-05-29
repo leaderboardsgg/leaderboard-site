@@ -1,8 +1,6 @@
 import useGetLeaderboardBySlug from '.'
 
-const mockSuccessGetLeaderboardBySlug = vi.fn(() =>
-  Promise.resolve({ ok: true }),
-)
+const mockSuccessGetLeaderboardBySlug = vi.fn(() => Promise.resolve({ ok: true }))
 
 describe('useGetLeaderboardBySlug', () => {
   describe('when everything is successful', () => {

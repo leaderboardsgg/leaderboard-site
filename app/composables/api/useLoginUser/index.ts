@@ -1,9 +1,5 @@
 import { useSessionToken, useRuntimeConfig } from '#imports'
-import {
-  type ApiResponse,
-  type optionalParameters,
-  useApi,
-} from 'composables/useApi'
+import { type ApiResponse, type optionalParameters, useApi } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 import type { LoginRequest, LoginResponse } from 'lib/api/data-contracts'
 
@@ -18,16 +14,13 @@ export default async function useLoginUser(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
-  return await useApi<LoginResponse>(
-    async () => await account.login(requestData),
-    {
-      onError,
-      onOkay: async (d: LoginResponse) => {
-        authToken.value = d.token
-        if (onOkay) {
-          await onOkay(d)
-        }
-      },
+  return await useApi<LoginResponse>(async () => await account.login(requestData), {
+    onError,
+    onOkay: async (d: LoginResponse) => {
+      authToken.value = d.token
+      if (onOkay) {
+        await onOkay(d)
+      }
     },
-  )
+  })
 }

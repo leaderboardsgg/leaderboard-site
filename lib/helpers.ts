@@ -9,9 +9,7 @@ export function getBaseUrl(): string {
     fallbackUrl = ''
   }
 
-  return (
-    process.env.NUXT_PUBLIC_BACKEND_BASE_URL ?? fallbackUrl
-  )
+  return process.env.NUXT_PUBLIC_BACKEND_BASE_URL ?? fallbackUrl
 }
 
 /**
@@ -25,9 +23,9 @@ export function getBaseUrl(): string {
 export function isProblemDetails(o: unknown): boolean {
   return Boolean(
     o &&
-      typeof o === 'object' &&
-      o instanceof Response &&
-      (Object.keys(o).includes('data') || Object.keys(o).includes('error')),
+    typeof o === 'object' &&
+    o instanceof Response &&
+    (Object.keys(o).includes('data') || Object.keys(o).includes('error')),
   )
 }
 
@@ -41,10 +39,7 @@ export function isProblemDetails(o: unknown): boolean {
  */
 export function isValidationProblemDetails(o: unknown): boolean {
   return Boolean(
-    o &&
-      typeof o === 'object' &&
-      o instanceof Response &&
-      Object.keys(o).includes('errors'),
+    o && typeof o === 'object' && o instanceof Response && Object.keys(o).includes('errors'),
   )
 }
 

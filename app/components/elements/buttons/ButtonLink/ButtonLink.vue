@@ -5,13 +5,7 @@ const { to } = defineProps<{
 </script>
 
 <template>
-  <NuxtLink
-    v-bind="$attrs"
-    :to="to"
-    class="button-link"
-    data-testid="button-link"
-    role="button"
-  >
+  <NuxtLink v-bind="$attrs" :to="to" class="button-link" data-testid="button-link" role="button">
     <slot>Placeholder Link Text</slot>
   </NuxtLink>
 </template>

@@ -1,9 +1,5 @@
 import { useRuntimeConfig } from '#imports'
-import {
-  useApi,
-  type ApiResponse,
-  type optionalParameters,
-} from 'composables/useApi'
+import { useApi, type ApiResponse, type optionalParameters } from 'composables/useApi'
 import { Users } from 'lib/api/Users'
 import type { UserViewModel } from 'lib/api/data-contracts'
 

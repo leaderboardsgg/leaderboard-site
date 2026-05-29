@@ -8,8 +8,7 @@ export default {
   logout: 'Log Out',
   needToConfirm: 'Looks like you still need to confirm your email address.',
   resendConfirmation: 'Resend confirmation',
-  resendConfirmationError:
-    'Something went wrong. Reach out to support if the problem persists.',
+  resendConfirmationError: 'Something went wrong. Reach out to support if the problem persists.',
   signup: 'Sign Up',
   welcome: 'Welcome',
   info: 'Info',

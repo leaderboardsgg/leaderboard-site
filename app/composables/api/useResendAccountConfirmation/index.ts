@@ -1,9 +1,5 @@
 import { useRuntimeConfig, useSessionToken } from '#imports'
-import {
-  useApi,
-  type ApiResponse,
-  type optionalParameters,
-} from 'composables/useApi'
+import { useApi, type ApiResponse, type optionalParameters } from 'composables/useApi'
 import { Account } from 'lib/api/Account'
 
 /**
@@ -18,7 +14,6 @@ export default async function useResendAccountConfirmation(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
   return await useApi<void>(
     async () =>
       await account.resendConfirmationEmail({

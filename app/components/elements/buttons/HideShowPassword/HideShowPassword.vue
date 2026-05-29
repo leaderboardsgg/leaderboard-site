@@ -26,16 +26,8 @@ function toggleHidden() {
     @click="toggleHidden"
     @keyup.enter="toggleHidden"
   >
-    <i-svg-eye-hidden
-      v-show="hiddenRef"
-      class="size-5"
-      data-testid="hidden-eye-icon"
-    />
-    <i-svg-eye-visible
-      v-show="!hiddenRef"
-      class="size-5"
-      data-testid="visible-eye-icon"
-    />
+    <i-svg-eye-hidden v-show="hiddenRef" class="size-5" data-testid="hidden-eye-icon" />
+    <i-svg-eye-visible v-show="!hiddenRef" class="size-5" data-testid="visible-eye-icon" />
   </BaseButton>
 </template>
 

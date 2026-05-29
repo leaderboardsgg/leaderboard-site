@@ -2,10 +2,7 @@ import { useRuntimeConfig } from '#app'
 import { ref } from 'vue'
 import useApi, { type optionalParameters } from '~/composables/useApi'
 import { Runs } from '~~/lib/api/Runs'
-import type {
-  GetRunsForCategoryParams,
-  RunViewModelListView,
-} from '~~/lib/api/data-contracts'
+import type { GetRunsForCategoryParams, RunViewModelListView } from '~~/lib/api/data-contracts'
 
 export default async function useGetRecordsForCategory(
   params: GetRunsForCategoryParams,
@@ -18,12 +15,9 @@ export default async function useGetRecordsForCategory(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
-  return useApi<RunViewModelListView>(
-    async () => client.getRecordsForCategory(params),
-    {
-      onError,
-      onOkay,
-      responseData,
-    },
-  )
+  return useApi<RunViewModelListView>(async () => client.getRecordsForCategory(params), {
+    onError,
+    onOkay,
+    responseData,
+  })
 }

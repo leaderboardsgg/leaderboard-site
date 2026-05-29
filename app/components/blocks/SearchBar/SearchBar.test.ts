@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import SearchBar from './SearchBar.vue'
 

@@ -1,4 +1,11 @@
 onlyBuiltDependencies:
   - esbuild
-  - unrs-resolver
-  - vue-demi
+  - '@parcel/watcher'
+  - msw
+
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - 'tinyexec@1.2.2' # checked to validate that provenance is there and no major issue
+  - 'chokidar@4.0.3' # this is a noted example of a false positive
+
+minimumReleaseAge: 1440

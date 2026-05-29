@@ -1,9 +1,5 @@
 import { Account } from 'lib/api/Account'
-import {
-  useApi,
-  type ApiResponse,
-  type optionalParameters,
-} from 'composables/useApi'
+import { useApi, type ApiResponse, type optionalParameters } from 'composables/useApi'
 import type { RecoverAccountRequest } from 'lib/api/data-contracts'
 import { useRuntimeConfig } from '#imports'
 
@@ -16,14 +12,10 @@ export async function useRecoverAccount(
     baseUrl: useRuntimeConfig().public.backendBaseUrl,
   })
 
-  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-  return await useApi<void>(
-    async () => await account.sendRecoveryEmail(requestData),
-    {
-      onError,
-      onOkay,
-    },
-  )
+  return await useApi<void>(async () => await account.sendRecoveryEmail(requestData), {
+    onError,
+    onOkay,
+  })
 }
 
 export default useRecoverAccount

@@ -1,10 +1,6 @@
-/* eslint-disable @typescript-eslint/no-invalid-void-type */
 import { ref, type Ref } from 'vue'
 import { isProblemDetails, isValidationProblemDetails } from 'lib/helpers'
-import type {
-  ProblemDetails,
-  ValidationProblemDetails,
-} from 'lib/api/data-contracts'
+import type { ProblemDetails, ValidationProblemDetails } from 'lib/api/data-contracts'
 import type { HttpResponse } from 'lib/api/http-client'
 
 /**

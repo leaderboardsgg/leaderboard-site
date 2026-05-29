@@ -21,9 +21,7 @@ const args = process.argv.reduce((acc, current) => {
 
 config()
 
-const url =
-  args?.url ??
-  `${process.env.NUXT_PUBLIC_BACKEND_BASE_URL}/swagger/v1/swagger.json`
+const url = args?.url ?? `${process.env.NUXT_PUBLIC_BACKEND_BASE_URL}/swagger/v1/swagger.json`
 
 generateApi({
   enumNamesAsValues: true,

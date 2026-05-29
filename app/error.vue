@@ -4,7 +4,6 @@ import { clearError } from '#imports'
 import BaseButton from './components/elements/buttons/BaseButton/BaseButton.vue'
 
 defineProps({
-  // eslint-disable-next-line vue/require-default-prop
   error: Object as () => NuxtError,
 })
 
@@ -14,9 +13,7 @@ function handleError() {
 </script>
 
 <template>
-  <div
-    class="flex flex-col gap-1 w-[100vw] h-[100vh] items-center justify-center"
-  >
+  <div class="flex flex-col gap-1 w-[100vw] h-[100vh] items-center justify-center">
     <h1 class="font-bold">[HTTP Status Code: {{ error?.statusCode }}]</h1>
     <h2 class="mb-2">
       {{ error }}

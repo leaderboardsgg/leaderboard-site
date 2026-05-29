@@ -13,8 +13,6 @@ describe('<SiteFooter />', () => {
     const SiteFooterWrapper = await mountSuspended(SiteFooter, {
       shallow: true,
     })
-    expect(SiteFooterWrapper.html()).toContain(
-      `Copyright ${new Date().getFullYear()}`,
-    )
+    expect(SiteFooterWrapper.html()).toContain(`Copyright ${new Date().getFullYear()}`)
   })
 })

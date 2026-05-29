@@ -13,7 +13,6 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 ## VSCode Setup
 
 - Install the recommended extensions
-
   - These come from `/.vscode/extensions.json`
   - They will also appear in the extensions tab in the recommended dropdown alongside some automatically suggested extensions from VSCode itself.
 
@@ -24,7 +23,7 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
 
 - set node version with nvm
   - $ `nvm use`
-  (You may need to run `nvm install` first)
+    (You may need to run `nvm install` first)
 
 - install pnpm (Performant NPM)
   - $ `npm install -g pnpm`
@@ -36,7 +35,6 @@ If you'd like to start contributing to the project please check [`CONTRIBUTING.m
   - $ `pnpm generate`
 
 - run and connect to backend
-  
   - Create a copy of `.env.example` named `.env` file with the `BACKEND_BASE_URL` set to the address of the backend.
     1. you can use `https://lbgg-backend-dev.fly.dev` as is in the `.env.example` file if you don't want to run the backend locally
     2. You can download the backend project and run it locally [here](https://github.com/leaderboardsgg/leaderboard-backend)

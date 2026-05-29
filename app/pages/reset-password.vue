@@ -29,9 +29,7 @@ const showPassword = ref(false)
 const errorText = ref('')
 const showErrorsText = ref(false)
 
-const passwordInputValid = computed(() =>
-  isPasswordValid(formState.password.value),
-)
+const passwordInputValid = computed(() => isPasswordValid(formState.password.value))
 
 const passwordConfirmValid = computed(
   () =>
@@ -54,16 +52,13 @@ async function changePassword() {
         } else {
           switch (response.status) {
             case 404:
-              errorText.value =
-                'Reset link has expired. Please request a new link'
+              errorText.value = 'Reset link has expired. Please request a new link'
               break
             case 409:
-              errorText.value =
-                'Password cannot be the same as the existing password'
+              errorText.value = 'Password cannot be the same as the existing password'
               break
             default:
-              errorText.value =
-                'Something went wrong. Reach out to support if the problem persists'
+              errorText.value = 'Something went wrong. Reach out to support if the problem persists'
           }
         }
         showErrorsText.value = true
@@ -125,10 +120,7 @@ function toggleShowPassword() {
           />
         </div>
 
-        <p>
-          * Must be 8-80 characters, contain a number, lowercase, and uppercase
-          letter
-        </p>
+        <p>* Must be 8-80 characters, contain a number, lowercase, and uppercase letter</p>
 
         <p v-if="showErrorsText" class="text-red-600">{{ errorText }}</p>
 

@@ -70,24 +70,16 @@ function resetPassword() {
 </script>
 
 <template>
-  <Card
-    id="forgotPasswordCard"
-    data-testid="forgot-password-card"
-    class="forgot-password-card"
-  >
+  <Card id="forgotPasswordCard" data-testid="forgot-password-card" class="forgot-password-card">
     <CardHeader class="forgot-password-card__header">
       <div class="forgot-password-card__title">Forgot Password</div>
-      <CloseButton
-        v-show="modal"
-        data-testid="close-button"
-        @click.prevent="emit('close')"
-      />
+      <CloseButton v-show="modal" data-testid="close-button" @click.prevent="emit('close')" />
     </CardHeader>
     <CardBody>
       <div class="forgot-password-card__body-wrapper">
         <p class="instructions">
-          Enter the email and username associated with your account, and we'll
-          send you a link to reset your password.
+          Enter the email and username associated with your account, and we'll send you a link to
+          reset your password.
         </p>
         <BaseInput
           :model="state.email"
@@ -117,23 +109,12 @@ function resetPassword() {
           id="reset-password-button"
           class="reset-password-button"
           data-testid="reset-password-button"
-          :disabled="
-            !(
-              state.email.value &&
-              state.username.value &&
-              emailValid &&
-              usernameValid
-            )
-          "
+          :disabled="!(state.email.value && state.username.value && emailValid && usernameValid)"
           @click="resetPassword"
         >
           Reset Password
         </BaseButton>
-        <BaseButton
-          class="cancel-button"
-          data-testid="cancel-button"
-          @click="cancel"
-        >
+        <BaseButton class="cancel-button" data-testid="cancel-button" @click="cancel">
           Cancel
         </BaseButton>
       </div>

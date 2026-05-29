@@ -10,7 +10,6 @@ watch(localLocale, () => {
 </script>
 
 <template>
-  <!-- eslint-disable vuejs-accessibility/form-control-has-label -->
   <select v-model="localLocale" class="language-selector" role="listbox">
     <option
       v-for="currentLocale in locales"

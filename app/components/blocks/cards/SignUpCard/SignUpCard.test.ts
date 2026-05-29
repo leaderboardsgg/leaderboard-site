@@ -26,11 +26,9 @@ describe('<SignUpCard />', () => {
     it('changes the password input type to be text', async () => {
       const wrapper = await mountSuspended(SignUpCard)
 
-      const passwordInputElement = wrapper.getByTestId('password-input')
+      const passwordInputElement = wrapper.getByTestId('password-input').element as HTMLInputElement
+      const passwordConfirmInputElement = wrapper.getByTestId('password-confirm-input')
         .element as HTMLInputElement
-      const passwordConfirmInputElement = wrapper.getByTestId(
-        'password-confirm-input',
-      ).element as HTMLInputElement
 
       expect(passwordInputElement.type).toBe('password')
       expect(passwordConfirmInputElement.type).toBe('password')
@@ -66,18 +64,14 @@ describe('<SignUpCard />', () => {
         expect(wrapper.emitted().signUpClick).toBeTruthy()
       })
 
-      const emailInputElement = wrapper.getByTestId('email-input')
+      const emailInputElement = wrapper.getByTestId('email-input').element as HTMLInputElement
+
+      const passwordInputElement = wrapper.getByTestId('password-input').element as HTMLInputElement
+
+      const passwordConfirmInputElement = wrapper.getByTestId('password-confirm-input')
         .element as HTMLInputElement
 
-      const passwordInputElement = wrapper.getByTestId('password-input')
-        .element as HTMLInputElement
-
-      const passwordConfirmInputElement = wrapper.getByTestId(
-        'password-confirm-input',
-      ).element as HTMLInputElement
-
-      const usernameInputElement = wrapper.getByTestId('username-input')
-        .element as HTMLInputElement
+      const usernameInputElement = wrapper.getByTestId('username-input').element as HTMLInputElement
 
       await wrapper.getByTestId('email-input').setValue(emailAddress)
       await wrapper.getByTestId('username-input').setValue(username)
@@ -100,16 +94,12 @@ describe('<SignUpCard />', () => {
     })
 
     it('calls the api', async () => {
-      const fetchMock = vi
-        .spyOn(global, 'fetch')
-        .mockResolvedValue({ ok: true } as Response)
+      const fetchMock = vi.spyOn(global, 'fetch').mockResolvedValue({ ok: true } as Response)
       const wrapper = await mountSuspended(SignUpCard)
 
       await wrapper.getByTestId('email-input').setValue(emailAddress)
       await wrapper.getByTestId('username-input').setValue(username)
-      await wrapper
-        .get(`.password-input > [data-testid="password-input"]`)
-        .setValue(password)
+      await wrapper.get(`.password-input > [data-testid="password-input"]`).setValue(password)
       await wrapper
         .get(`.password-input > [data-testid="password-confirm-input"]`)
         .setValue(password)

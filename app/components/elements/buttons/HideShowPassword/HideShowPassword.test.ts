@@ -46,9 +46,7 @@ describe('<HideShowPassword />', () => {
       expect(wrapper.getByTestId('hidden-eye-icon').isVisible()).toBe(true)
       expect(wrapper.getByTestId('visible-eye-icon').isVisible()).toBe(false)
 
-      await wrapper
-        .getByTestId('hide-show-password-button')
-        .trigger('keyup.enter')
+      await wrapper.getByTestId('hide-show-password-button').trigger('keyup.enter')
 
       expect(wrapper.getByTestId('hidden-eye-icon').isVisible()).toBe(false)
       expect(wrapper.getByTestId('visible-eye-icon').isVisible()).toBe(true)

@@ -27,11 +27,7 @@ defineProps<{
 <template>
   <!-- TODO: Come up with a good way to set active bg colour -->
   <div class="container">
-    <BaseButton
-      data-testid="toggler"
-      :class="[className, 'container__button']"
-      @click="toggle"
-    >
+    <BaseButton data-testid="toggler" :class="[className, 'container__button']" @click="toggle">
       <div class="container__toggler">
         More
         <img
@@ -43,11 +39,7 @@ defineProps<{
         />
       </div>
     </BaseButton>
-    <div
-      v-if="active"
-      data-testid="dropdown-content"
-      class="container__content"
-    >
+    <div v-if="active" data-testid="dropdown-content" class="container__content">
       <slot />
     </div>
   </div>

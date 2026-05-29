@@ -8,10 +8,7 @@ const currentYear = computed(() => new Date().getFullYear())
 <template>
   <div class="site-footer">
     <p class="site-footer__copyright">Copyright {{ currentYear }}</p>
-    <LanguageSelector
-      class="site-footer__language-selector"
-      data-testid="language-selector"
-    />
+    <LanguageSelector class="site-footer__language-selector" data-testid="language-selector" />
   </div>
 </template>
 

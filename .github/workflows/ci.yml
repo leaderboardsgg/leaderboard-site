@@ -25,7 +25,7 @@ jobs:
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Read package.json
         id: package
@@ -33,31 +33,30 @@ jobs:
         with:
           path: ./package.json
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
-      - name: Cache PNPM modules
-        uses: actions/cache@v4
-        id: cache-modules
-        with:
-          path: |
-            ~/.pnpm-store
-            node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: ${{ runner.os }}-node-
+      # - name: Cache PNPM modules
+      #   uses: actions/cache@v5
+      #   id: cache-modules
+      #   with:
+      #     path: |
+      #       ~/.pnpm-store
+      #       node_modules
+      #     key: ${{ runner.os }}-node-${{ hashFiles('**/pnpm-lock.yaml') }}
+      #     restore-keys: ${{ runner.os }}-node-
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           # use the version found in `.nvmrc`
           node-version-file: '.nvmrc'
           # cache: 'pnpm'
 
       - name: Install `node_modules`
-        if: steps.cache-modules.outputs.cache-hit != 'true'
+        # if: steps.cache-modules.outputs.cache-hit != 'true'
         run: pnpm install
 
       - name: Build the `.nuxt` directory
         run: pnpm build
 
-      # temporarily disabled!
-      # - name: Tests
-      #   run: pnpm test
+      - name: Tests
+        run: pnpm test

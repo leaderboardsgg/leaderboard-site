@@ -83,10 +83,7 @@ async function signup() {
 
 function validatePasswordInputs() {
   passwordErrorsText.value = ''
-  const passwordsTheSame = passwordsAreTheSame(
-    register.password,
-    register.passwordConfirm,
-  )
+  const passwordsTheSame = passwordsAreTheSame(register.password, register.passwordConfirm)
   const passwordValid = isPasswordValid(register.password.value)
 
   if (!passwordValid) {
@@ -124,11 +121,7 @@ function validatePasswordInputs() {
 
       <div class="signup-card__title">Sign Up</div>
 
-      <CloseButton
-        v-show="modal"
-        data-testid="close-button"
-        @click.prevent="emit('close')"
-      />
+      <CloseButton v-show="modal" data-testid="close-button" @click.prevent="emit('close')" />
     </CardHeader>
 
     <CardBody>
@@ -186,9 +179,7 @@ function validatePasswordInputs() {
               name="passwordConfirm"
               class="signup-card__password-field"
               :style="{
-                'border-color': !passwordConfirmValid
-                  ? 'rgb(185 28 28 / 1)'
-                  : '',
+                'border-color': !passwordConfirmValid ? 'rgb(185 28 28 / 1)' : '',
               }"
               :show-password="showPassword"
               placeholder="Confirm"
@@ -212,10 +203,7 @@ function validatePasswordInputs() {
             {{ passwordErrorsText }}
           </p>
 
-          <p>
-            * Must be 8-80 characters, contain a number, lowercase, and
-            uppercase letter
-          </p>
+          <p>* Must be 8-80 characters, contain a number, lowercase, and uppercase letter</p>
 
           <p v-if="errorText" class="text-red-600">{{ errorText }}</p>
         </div>

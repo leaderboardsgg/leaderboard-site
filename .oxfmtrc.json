@@ -1,0 +1,24 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": [
+    "node_modules",
+    "lib/api",
+    ".github",
+    ".husky",
+    ".nuxt",
+    ".output",
+    ".vscode",
+    "dist",
+    "public",
+    "src/credentials",
+    ".env",
+    "pnpm-workspace.yaml",
+    "pnpm-lock.yaml"
+  ],
+  "endOfLine": "lf",
+  "useTabs": false,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "semi": false,
+  "singleQuote": true
+}

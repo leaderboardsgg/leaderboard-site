@@ -110,15 +110,6 @@ export const octodad = {
   },
 }
 
-const mockLeaderboards = [
-  smw,
-  superMetroid,
-  alttp,
-  dkc,
-  superMario64,
-  oot,
-  shrek2,
-  octodad,
-]
+const mockLeaderboards = [smw, superMetroid, alttp, dkc, superMario64, oot, shrek2, octodad]
 
 export default mockLeaderboards

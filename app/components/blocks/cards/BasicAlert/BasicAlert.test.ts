@@ -27,15 +27,9 @@ describe('<BasicAlert />', () => {
   it('renders with the correct information', async () => {
     const wrapper = await mountSuspended(BasicAlert)
 
-    expect(
-      wrapper.getByClass('basic-modal-alert__header').element.childElementCount,
-    ).toEqual(3)
-    expect(wrapper.getByClass('basic-modal-alert__title').text()).toEqual(
-      'A test alert?',
-    )
-    expect(wrapper.getByClass('basic-modal-alert__body').text()).toEqual(
-      'This is a test',
-    )
+    expect(wrapper.getByClass('basic-modal-alert__header').element.childElementCount).toEqual(3)
+    expect(wrapper.getByClass('basic-modal-alert__title').text()).toEqual('A test alert?')
+    expect(wrapper.getByClass('basic-modal-alert__body').text()).toEqual('This is a test')
   })
 
   describe('when the close button is clicked', () => {
@@ -43,9 +37,7 @@ describe('<BasicAlert />', () => {
       const wrapper = await mountSuspended(BasicAlert)
       expect(wrapper.find('.modal').exists()).toBe(true)
 
-      await wrapper
-        .getByTestId('basic-modal-alert-close-button')
-        .trigger('click')
+      await wrapper.getByTestId('basic-modal-alert-close-button').trigger('click')
       expect(wrapper.find('.modal').exists()).toBe(false)
     })
   })
