@@ -5,7 +5,7 @@ import type {
   ScoredRunViewModel,
   TimedRunViewModel,
 } from 'lib/api/data-contracts'
-import { Runs } from '~~/lib/api/Runs'
+import { Runs } from 'lib/api/Runs'
 
 export async function useCreateRun(
   categoryId: number,

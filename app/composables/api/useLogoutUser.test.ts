@@ -1,7 +1,7 @@
 import { useCurrentUser, useSessionToken } from '#imports'
 import { confirmedUser } from 'mocks/data/api/users'
 import { ref } from 'vue'
-import useLogoutUser from '.'
+import useLogoutUser from '~/composables/api/useLogoutUser'
 
 const tokenRef = ref('')
 

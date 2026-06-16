@@ -1,6 +1,12 @@
-import useCreateRun from '.'
+import useCreateRun from 'composables/api/useCreateRun'
 
 const mockSuccessCreateRun = vi.fn(() => Promise.resolve({ ok: true }))
+
+vi.mock('lib/api/Runs', () => ({
+  Runs: vi.fn().mockImplementation(function () {
+    return { createRun: mockSuccessCreateRun }
+  }),
+}))
 
 describe('useCreateRun', () => {
   describe('when everything is successful', () => {
@@ -12,12 +18,6 @@ describe('useCreateRun', () => {
     }
 
     it('changes the password for the user', async () => {
-      vi.mock('lib/api/Runs', () => ({
-        Runs: function Runs() {
-          this.createRun = mockSuccessCreateRun
-        },
-      }))
-
       await useCreateRun(catId, requestData)
 
       expect(mockSuccessCreateRun).toBeCalledTimes(1)

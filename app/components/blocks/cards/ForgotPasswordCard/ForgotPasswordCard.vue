@@ -8,7 +8,7 @@ import CardHeader from 'elements/cards/CardHeader/CardHeader.vue'
 import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
 import { isEmailValid, isUsernameValid } from 'lib/form_helpers'
 import { useModalAlert } from '#imports'
-import { useRecoverAccount } from '~/composables/api'
+import useRecoverAccount from '~/composables/api/useRecoverAccount'
 
 interface ForgotPasswordCardPops {
   modal?: boolean

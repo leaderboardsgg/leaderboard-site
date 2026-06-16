@@ -7,7 +7,8 @@ import CategorySelect from '~/components/blocks/RunsPage/CategorySelect/Category
 import RunsHeader from '~/components/blocks/RunsPage/Header/Header.vue'
 import RunsTable from '~/components/blocks/RunsPage/RunsTable/RunsTable.vue'
 import BaseButton from '~/components/elements/buttons/BaseButton/BaseButton.vue'
-import { useGetCategoriesForLeaderboard, useGetLeaderboardBySlug } from '~/composables/api'
+import useGetCategoriesForLeaderboard from '~/composables/api/useGetCategoriesForLeaderboard'
+import useGetLeaderboardBySlug from '~/composables/api/useGetLeaderboardBySlug'
 import type { CategoryViewModel } from '~~/lib/api/data-contracts'
 
 const {

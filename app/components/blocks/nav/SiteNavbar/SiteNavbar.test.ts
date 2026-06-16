@@ -1,5 +1,5 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
-import * as apiComposables from 'composables/api'
+import * as useLogoutUser from 'composables/api/useLogoutUser'
 import SiteNavbar from './SiteNavbar.vue'
 import { useSessionToken } from '#imports'
 
@@ -68,7 +68,7 @@ describe('<SiteNavbar />', () => {
 
     describe('when the logout button is clicked', () => {
       it('should log out the user', async () => {
-        const useLogoutUserSpy = vi.spyOn(apiComposables, 'useLogoutUser')
+        const useLogoutUserSpy = vi.spyOn(useLogoutUser, 'default')
         const wrapper = await mountSuspended(SiteNavbar)
 
         await wrapper.getByTestId('site-navbar-logout-button').trigger('click')

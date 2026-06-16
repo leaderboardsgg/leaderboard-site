@@ -1,6 +1,6 @@
 import { defineNuxtRouteMiddleware, useRoute, navigateTo } from 'nuxt/app'
 import { useModalAlert } from '#imports'
-import { useConfirmAccount } from '~/composables/api'
+import useConfirmAccount from '~/composables/api/useConfirmAccount'
 
 export default defineNuxtRouteMiddleware((_to, from) => {
   const route = useRoute()
