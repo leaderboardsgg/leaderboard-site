@@ -3,7 +3,7 @@ import { useApi, type ApiResponse, type optionalParameters } from 'composables/u
 import type { RecoverAccountRequest } from 'lib/api/data-contracts'
 import { useRuntimeConfig } from '#imports'
 
-export async function useRecoverAccount(
+export default async function useRecoverAccount(
   requestData: RecoverAccountRequest,
   opts: optionalParameters<void> = {},
 ): Promise<ApiResponse<void>> {
@@ -17,5 +17,3 @@ export async function useRecoverAccount(
     onOkay,
   })
 }
-
-export default useRecoverAccount

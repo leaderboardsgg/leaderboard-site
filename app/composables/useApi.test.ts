@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import type { ProblemDetails } from 'lib/api/data-contracts'
 import type { HttpResponse } from 'lib/api/http-client'
-import useApi from '.'
+import useApi from './useApi'
 
 interface Opts {
   data?: object

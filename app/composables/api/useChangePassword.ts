@@ -3,7 +3,7 @@ import { type ApiResponse, type optionalParameters, useApi } from 'composables/u
 import { Account } from 'lib/api/Account'
 import type { ChangePasswordRequest } from 'lib/api/data-contracts'
 
-export async function useChangePassword(
+export default async function useChangePassword(
   token: string,
   requestData: ChangePasswordRequest,
   opts: optionalParameters<void> = {},
@@ -27,5 +27,3 @@ export async function useChangePassword(
     },
   )
 }
-
-export default useChangePassword

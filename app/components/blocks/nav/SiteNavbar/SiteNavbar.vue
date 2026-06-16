@@ -10,7 +10,7 @@ import SignUpButton from 'elements/buttons/SignUpButton/SignUpButton.vue'
 import BaseModal from 'elements/modals/BaseModal/BaseModal.vue'
 import { computed, reactive } from 'vue'
 import NavLinks from '~/components/elements/nav/NavLinks/NavLinks.vue'
-import { useLogoutUser } from '~/composables/api'
+import useLogoutUser from '~/composables/api/useLogoutUser'
 
 interface NavbarState {
   mobileNavIsActive: boolean

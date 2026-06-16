@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
-import { useResendAccountConfirmation } from '~/composables/api'
+import useResendAccountConfirmation from '~/composables/api/useResendAccountConfirmation'
 import { useCurrentUser, useI18n, useModalAlert } from '#imports'
 
 const currentUser = await useCurrentUser()

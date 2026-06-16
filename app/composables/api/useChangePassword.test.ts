@@ -1,6 +1,12 @@
-import useChangePassword from '.'
+import useChangePassword from 'composables/api/useChangePassword'
 
 const mockSuccessChangePassword = vi.fn(() => Promise.resolve({ ok: true }))
+
+vi.mock('lib/api/Account', () => ({
+  Account: vi.fn().mockImplementation(function () {
+    return { changePassword: mockSuccessChangePassword }
+  }),
+}))
 
 describe('useChangePassword', () => {
   describe('when everything is successful', () => {
@@ -8,12 +14,6 @@ describe('useChangePassword', () => {
     const requestData = { password: 'Password1' }
 
     it('changes the password for the user', async () => {
-      vi.mock('lib/api/Account', () => ({
-        Account: function Account() {
-          this.changePassword = mockSuccessChangePassword
-        },
-      }))
-
       await useChangePassword(token, requestData)
 
       expect(mockSuccessChangePassword).toBeCalledTimes(1)

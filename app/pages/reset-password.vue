@@ -6,7 +6,7 @@ import PasswordInput from 'elements/inputs/PasswordInput/PasswordInput.vue'
 import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
 import { useRoute, navigateTo } from '#app'
 import { definePageMeta, useModalAlert } from '#imports'
-import { useChangePassword } from '~/composables/api'
+import useChangePassword from '~/composables/api/useChangePassword'
 
 definePageMeta({
   middleware: 'reset-password',
