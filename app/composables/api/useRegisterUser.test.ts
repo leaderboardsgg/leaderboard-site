@@ -1,6 +1,12 @@
-import useRegisterUser from '.'
+import useRegisterUser from '~/composables/api/useRegisterUser'
 
 const mockSuccessRegister = vi.fn(() => Promise.resolve({ ok: true }))
+
+vi.mock('lib/api/Account', () => ({
+  Account: vi.fn().mockImplementation(function () {
+    return { register: mockSuccessRegister }
+  }),
+}))
 
 describe('useRegisterUser', () => {
   describe('when everything is successful', () => {
@@ -9,12 +15,6 @@ describe('useRegisterUser', () => {
     const username = 'test'
 
     it('registers a user, and returns the new user', async () => {
-      vi.mock('lib/api/Account', () => ({
-        Account: function Account() {
-          this.register = mockSuccessRegister
-        },
-      }))
-
       await useRegisterUser({
         email,
         password,

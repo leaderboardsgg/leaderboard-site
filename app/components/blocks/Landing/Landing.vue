@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import LandingLeaderboards from './LandingLeaderboards.vue'
 import LandingAbout from './LandingAbout.vue'
-import { useGetLeaderboards } from '~/composables/api'
+import useGetLeaderboards from '~/composables/api/useGetLeaderboards'
 import Loader from 'blocks/Loader/Loader.vue'
 
 const { data: leaderboards, loading } = await useGetLeaderboards()

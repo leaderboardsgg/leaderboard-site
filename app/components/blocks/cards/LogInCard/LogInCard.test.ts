@@ -1,6 +1,6 @@
 import { mountSuspended } from '@nuxt/test-utils/runtime'
 import LogInCard from './LogInCard.vue'
-import * as apiComposables from 'composables/api'
+import * as useLoginUser from 'composables/api/useLoginUser'
 
 const token = 'jwt-token'
 const mockSuccessAccountLogin = vi.fn(() => Promise.resolve({ data: { token }, ok: true }))
@@ -91,7 +91,7 @@ describe('<LogInCard />', () => {
     })
 
     it('calls the api', async () => {
-      const useLoginUserSpy = vi.spyOn(apiComposables, 'useLoginUser')
+      const useLoginUserSpy = vi.spyOn(useLoginUser, 'default')
 
       const wrapper = await mountSuspended(LogInCard)
 

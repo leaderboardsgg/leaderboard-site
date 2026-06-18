@@ -4,8 +4,9 @@ import { computed, navigateTo, useCurrentUser, useRoute } from '#imports'
 import { createRef } from '@vueuse/core'
 import Loader from '~/components/blocks/Loader/Loader.vue'
 import BaseButton from '~/components/elements/buttons/BaseButton/BaseButton.vue'
-import { useGetCategoryBySlug, useGetLeaderboardBySlug } from '~/composables/api'
-import useCreateRun from '~/composables/api/useCreateRun'
+import useGetCategoryBySlug from 'composables/api/useGetCategoryBySlug'
+import useGetLeaderboardBySlug from 'composables/api/useGetLeaderboardBySlug'
+import useCreateRun from 'composables/api/useCreateRun'
 import type {
   CreateRunPayload,
   CreateScoredRunRequest,
