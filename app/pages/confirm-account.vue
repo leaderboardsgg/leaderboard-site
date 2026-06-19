@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { definePageMeta } from '#imports';
+import { definePageMeta } from '#imports'
 import Loader from 'blocks/Loader/Loader.vue'
 
 definePageMeta({
