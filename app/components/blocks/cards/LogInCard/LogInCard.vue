@@ -112,7 +112,7 @@ async function login() {
         </p>
 
         <BaseButton
-          class="login-button"
+          class="login-button hover:text-black hover:bg-gray-100"
           data-testid="login-button"
           :disabled="!(state.email.value && state.password.value)"
           @click="login"
