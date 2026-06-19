@@ -12,7 +12,7 @@ const { navLinks = [{ name: 'About', to: '#' }] } = defineProps<NavLinksProps>()
 </script>
 
 <template>
-  <nav class="nav-link-container">
+  <nav class="nav-link-container hover:text-black">
     <NavLink v-for="{ name, to } in navLinks" :key="name" :name="name" :to="to">
       {{ name }}
     </NavLink>

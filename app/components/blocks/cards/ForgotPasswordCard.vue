@@ -77,7 +77,7 @@ function resetPassword() {
     </CardHeader>
     <CardBody>
       <div class="forgot-password-card__body-wrapper">
-        <p class="instructions">
+        <p class="instructions text-black">
           Enter the email and username associated with your account, and we'll send you a link to
           reset your password.
         </p>

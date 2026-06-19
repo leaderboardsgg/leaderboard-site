@@ -113,7 +113,7 @@ function validatePasswordInputs() {
     <CardHeader class="signup-card__header">
       <BaseButton
         id="login-button"
-        class="signup-card__login-button"
+        class="signup-card__login-button hover:text-black"
         data-testid="login-button"
         @click="emit('logInClick')"
       >
