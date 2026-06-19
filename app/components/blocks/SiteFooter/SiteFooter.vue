@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import LanguageSelector from './LanguageSelector/LanguageSelector.vue'
+import LanguageSelector from './LanguageSelector.vue'
 
 const currentYear = computed(() => new Date().getFullYear())
 </script>
