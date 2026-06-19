@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { NuxtError } from '#app'
 import { clearError } from '#imports'
-import BaseButton from './components/elements/buttons/BaseButton/BaseButton.vue'
+import BaseButton from './components/elements/buttons/BaseButton.vue'
 
 defineProps({
   error: Object as () => NuxtError,

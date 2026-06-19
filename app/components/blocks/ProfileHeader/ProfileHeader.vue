@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import UserActivity from 'blocks/ProfileHeader/UserActivity/UserActivity.vue'
-import UserBadges from 'blocks/ProfileHeader/UserBadges/UserBadges.vue'
-import SocialButtons from 'elements/buttons/SocialButtons/SocialButtons.vue'
-import FollowButton from 'elements/buttons/FollowButton/FollowButton.vue'
+import UserActivity from '~/components/blocks/ProfileHeader/UserActivity.vue'
+import UserBadges from '~/components/blocks/ProfileHeader/UserBadges.vue'
+import SocialButtons from '~/components/elements/buttons/SocialButtons.vue'
+import FollowButton from 'elements/buttons/FollowButton.vue'
 
 interface ProfileHeaderProps {
   badges?: any[]

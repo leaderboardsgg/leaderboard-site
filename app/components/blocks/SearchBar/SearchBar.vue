@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { type Ref, ref } from 'vue'
-import BaseButton from 'elements/buttons/BaseButton/BaseButton.vue'
-import BaseInput from 'elements/inputs/BaseInput/BaseInput.vue'
+import BaseButton from 'elements/buttons/BaseButton.vue'
+import BaseInput from '~/components/elements/inputs/BaseInput.vue'
 
 const emit = defineEmits<{ (e: 'search', value: string): void }>()
 
