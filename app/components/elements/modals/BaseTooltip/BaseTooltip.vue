@@ -44,10 +44,10 @@ function positionTooltip({ trigger, tooltip }: PositionTooltip) {
     ref="popoverTrigger"
     :popoverTarget="tooltipId"
     :aria-describedby="tooltipId"
-    v-on:focus="showTooltip"
-    v-on:focusout="hideTooltip"
-    v-on:mouseover="showTooltip"
-    v-on:mouseout="hideTooltip"
+    :focus="showTooltip"
+    :focusout="hideTooltip"
+    :mouseover="showTooltip"
+    :mouseout="hideTooltip"
   >
     <slot name="component" />
   </span>
