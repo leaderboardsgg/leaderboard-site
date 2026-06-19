@@ -6,10 +6,10 @@ const currentYear = computed(() => new Date().getFullYear())
 </script>
 
 <template>
-  <div class="site-footer">
+  <footer class="site-footer mt-auto">
     <p class="site-footer__copyright">Copyright {{ currentYear }}</p>
     <LanguageSelector class="site-footer__language-selector" data-testid="language-selector" />
-  </div>
+  </footer>
 </template>
 
 <style lang="postcss" scoped>

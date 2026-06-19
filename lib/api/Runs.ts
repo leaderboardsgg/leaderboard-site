@@ -27,7 +27,7 @@ import {
   UpdateRunPayload,
   ValidationProblemDetails,
 } from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Runs<
   SecurityDataType = unknown,
@@ -79,7 +79,7 @@ export class Runs<
       method: "POST",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       format: "json",
       ...params,
     });
@@ -181,7 +181,7 @@ export class Runs<
       method: "PATCH",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       ...params,
     });
   /**

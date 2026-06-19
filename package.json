@@ -42,7 +42,7 @@
     "nuxt": "^4.4.6",
     "oxfmt": "^0.52.0",
     "oxlint": "^1.67.0",
-    "swagger-typescript-api": "13.7.2",
+    "swagger-typescript-api": "^13.12.2",
     "tailwindcss": "^3.4.19",
     "typescript": "^5.9.3",
     "unplugin-icons": "^23.0.1",

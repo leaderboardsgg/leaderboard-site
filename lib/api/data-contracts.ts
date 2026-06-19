@@ -564,6 +564,10 @@ interface BaseRunViewModel {
    * @format int64
    */
   rank?: number;
+  leaderboardName: string,
+  categoryName: string,
+  leaderboardSlug: string,
+  categorySlug: string,
 }
 
 type BaseRunViewModelTypeMapping<Key, Type> = {

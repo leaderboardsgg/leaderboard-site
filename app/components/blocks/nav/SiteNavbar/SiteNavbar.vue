@@ -70,7 +70,7 @@ function logout() {
 </script>
 
 <template>
-  <div class="site-navbar">
+  <header class="site-navbar sticky top-0">
     <div class="site-navbar__wrapper">
       <NuxtLink to="/">
         <i-svg-logo />
@@ -132,7 +132,7 @@ function logout() {
         />
       </BaseModal>
     </transition>
-  </div>
+  </header>
 </template>
 
 <style lang="postcss" scoped>
