@@ -1,18 +1,11 @@
-<script setup lang="ts"></script>
-
 <template>
-  <div class="loader__container">
-    <i-svg-spinner class="loader__spinner" />
+  <div class="flex justify-center items-center h-screen w-full">
+    <i-svg-spinner class="loader-spinner h-20 w-20 fill-current" />
   </div>
 </template>
 
-<style lang="postcss" scoped>
-.loader__container {
-  @apply flex justify-center items-center h-screen w-full;
-}
-
-.loader__spinner {
-  @apply h-20 w-20 fill-current;
+<style scoped>
+.loader-spinner {
   animation: spin 1.25s steps(9, end) infinite;
 
   @media (prefers-reduced-motion) {

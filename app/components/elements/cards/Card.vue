@@ -1,13 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="card" v-bind="$attrs">
+  <div class="rounded border border-gray-300" v-bind="$attrs">
     <slot />
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.card {
-  @apply rounded border border-gray-300;
-}
-</style>

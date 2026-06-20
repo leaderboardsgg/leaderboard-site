@@ -83,10 +83,12 @@ function toggleShowPassword() {
 <template>
   <div class="flex grow justify-center p-5">
     <div class="w-full rounded border-gray-300 p-5">
-      <div class="form-wrapper">
-        <h2 class="form-header">Please set a new password for your account.</h2>
+      <div class="relative flex flex-col justify-center inset-0 h-full sm:max-w-xl mx-auto">
+        <h2 class="text-xl border-2 border-transparent border-b-gray-300 pb-4 mb-4">
+          Please set a new password for your account.
+        </h2>
 
-        <div class="password-wrapper">
+        <div class="flex flex-col mb-4">
           <PasswordInput
             :model="formState.password"
             name="password"
@@ -124,9 +126,9 @@ function toggleShowPassword() {
 
         <p v-if="showErrorsText" class="text-red-600">{{ errorText }}</p>
 
-        <div class="submit-button-container">
+        <div class="relative h-1/4 w-full flex items-center justify-center mt-4">
           <BaseButton
-            class="submit-button"
+            class="w-full fill-current bg-gray-100 text-gray-900 hover:bg-gray-200 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
             type="submit"
             :disabled="!(passwordInputValid && passwordConfirmValid)"
             @click.prevent="changePassword"
@@ -138,33 +140,3 @@ function toggleShowPassword() {
     </div>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.form-wrapper {
-  @apply relative flex flex-col justify-center inset-0 h-full sm:max-w-xl mx-auto;
-
-  .form-header {
-    @apply text-xl border-2 border-transparent border-b-gray-300 pb-4 mb-4;
-  }
-}
-
-.password-wrapper {
-  @apply flex flex-col mb-4;
-
-  .password-input {
-    @apply py-2;
-  }
-}
-
-.submit-button-container {
-  @apply relative h-1/4 w-full flex items-center justify-center mt-4;
-
-  .submit-button {
-    @apply w-full fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
-
-    &:disabled {
-      @apply bg-gray-300 text-gray-500 cursor-not-allowed;
-    }
-  }
-}
-</style>

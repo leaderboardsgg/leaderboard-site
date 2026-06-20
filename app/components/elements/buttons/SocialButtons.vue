@@ -7,31 +7,15 @@ defineProps<NavLinksProps>()
 </script>
 
 <template>
-  <div class="social-buttons">
+  <div class="w-full grid auto-cols-fr grid-cols-4 gap-2">
     <a
       v-for="social in socials"
       :key="social.name"
-      class="social-button"
+      class="flex content-center items-center justify-center rounded bg-gray-100 p-2"
       :alt="social.name"
       :href="social.url"
     >
-      <img :src="`/icons/social/${social.icon}.svg`" :alt="social.icon" />
+      <img class="w-5" :src="`/icons/social/${social.icon}.svg`" :alt="social.icon" />
     </a>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.social-buttons {
-  @apply w-full grid auto-cols-fr grid-cols-4 gap-2;
-}
-
-.social-button {
-  @apply flex content-center items-center justify-center;
-  @apply rounded bg-gray-100;
-  @apply p-2;
-}
-
-.social-button img {
-  @apply w-5;
-}
-</style>

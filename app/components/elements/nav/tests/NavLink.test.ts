@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import NavLink from '../NavLink.vue'
+import NavLink from '../NavLink.vue/index.js'
 
 describe('<NavLink />', () => {
   it('should render without crashing', () => {

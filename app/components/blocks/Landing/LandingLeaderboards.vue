@@ -9,7 +9,7 @@ interface LandingLeaderboardsProps {
 defineProps<LandingLeaderboardsProps>()
 </script>
 <template>
-  <div id="landing-leaderboards" class="leaderboards-grid w-full">
+  <div id="landing-leaderboards" class="leaderboards-grid w-full gap-4 grid">
     <LandingLeaderboardsCard
       v-for="{ id, name, slug, stats } in leaderboards"
       :id="id"
@@ -21,15 +21,13 @@ defineProps<LandingLeaderboardsProps>()
   </div>
 </template>
 
-<style lang="postcss" scoped>
+<style scoped>
 .leaderboards-grid {
   --grid-col-min-size: 200px;
   --grid-item-max-height: 330px;
 
-  display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(var(--grid-col-min-size), 100%), 1fr));
   grid-auto-rows: min-content;
-  gap: 1rem;
 
   > * {
     max-height: var(--grid-item-max-height);

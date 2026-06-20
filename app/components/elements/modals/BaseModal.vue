@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import BaseButton from 'elements/buttons/BaseButton.vue'
-
 const emit = defineEmits<{
   (event: 'close'): void
 }>()
@@ -8,41 +6,12 @@ const emit = defineEmits<{
 
 <template>
   <div class="modal">
-    <div class="modal__wrapper">
-      <div class="modal__container">
-        <BaseButton
-          class="modal__close-button"
-          data-testid="modal-close-button"
-          type="button"
-          @click="emit('close')"
-          @keydown.esc="emit('close')"
-        >
-          <i-svg-close class="size-5" />
-        </BaseButton>
-
-        <div class="modal__content">
+    <div class="fixed z-10 inset-0 overflow-y-auto transition-opacity bg-gray-900/50 ]">
+      <div class="flex items-center min-h-screen p-5">
+        <div class="relative flex justify-center w-full">
           <slot />
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.modal {
-  & .modal__wrapper {
-    background-color: rgba(14, 19, 31, 0.75);
-    @apply fixed z-10 inset-0 overflow-y-auto transition-opacity;
-  }
-  & .modal__container {
-    @apply flex items-center min-h-screen p-5;
-  }
-  & .modal__content {
-    @apply relative flex justify-center w-full;
-  }
-}
-
-.modal__close-button {
-  @apply absolute top-2 left-2 p-1 bg-gray-100 bg-opacity-50 hover:bg-gray-100 hover:bg-opacity-75;
-}
-</style>

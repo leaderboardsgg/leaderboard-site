@@ -21,7 +21,7 @@ function toggleHidden() {
   <BaseButton
     id="hide-show-password"
     data-testid="hide-show-password-button"
-    class="button"
+    class="hidden sm:inline bg-white"
     v-bind="$attrs"
     @click="toggleHidden"
     @keyup.enter="toggleHidden"
@@ -30,9 +30,3 @@ function toggleHidden() {
     <i-svg-eye-visible v-show="!hiddenRef" class="size-5" data-testid="visible-eye-icon" />
   </BaseButton>
 </template>
-
-<style lang="postcss" scoped>
-.button {
-  @apply hidden sm:inline bg-white;
-}
-</style>

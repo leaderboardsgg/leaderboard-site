@@ -26,43 +26,21 @@ defineProps<{
 
 <template>
   <!-- TODO: Come up with a good way to set active bg colour -->
-  <div class="container">
-    <BaseButton data-testid="toggler" :class="[className, 'container__button']" @click="toggle">
-      <div class="container__toggler">
+  <div class="flex flex-col">
+    <BaseButton data-testid="toggler" :class="[className, 'relative', 'z-10']" @click="toggle">
+      <div class="flex justify-center items-center gap-2">
         More
         <img
           src="/icons/arrows/down.svg"
           alt="Dropdown arrow"
           width="10"
           data-testid="arrow"
-          :class="active ? 'isOpen' : 'isClosed'"
+          :class="active ? 'rotate-180' : ''"
         />
       </div>
     </BaseButton>
-    <div v-if="active" data-testid="dropdown-content" class="container__content">
+    <div v-if="active" data-testid="dropdown-content" class="-mt-1">
       <slot />
     </div>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.container {
-  @apply flex flex-col;
-
-  & .container__button {
-    @apply relative z-10;
-  }
-
-  & .container__toggler {
-    @apply flex justify-center items-center gap-2;
-
-    & img.isOpen {
-      @apply rotate-180;
-    }
-  }
-
-  & .container__content {
-    @apply -mt-1;
-  }
-}
-</style>

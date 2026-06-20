@@ -70,14 +70,14 @@ function resetPassword() {
 </script>
 
 <template>
-  <Card id="forgotPasswordCard" data-testid="forgot-password-card" class="forgot-password-card">
-    <CardHeader class="forgot-password-card__header">
-      <div class="forgot-password-card__title">Forgot Password</div>
+  <Card id="forgotPasswordCard" data-testid="forgot-password-card" class="bg-white w-full max-w-xl">
+    <CardHeader class="flex flex-row space-x-3">
+      <div class="flex flex-1 justify-center px-3 py-2 rounded text-gray-900">Forgot Password</div>
       <CloseButton v-show="modal" data-testid="close-button" @click.prevent="emit('close')" />
     </CardHeader>
     <CardBody>
-      <div class="forgot-password-card__body-wrapper">
-        <p class="instructions text-black">
+      <div class="flex flex-col space-y-3 pb-3 mb-3">
+        <p class="px-4 py-2 text-black">
           Enter the email and username associated with your account, and we'll send you a link to
           reset your password.
         </p>
@@ -107,52 +107,21 @@ function resetPassword() {
         />
         <BaseButton
           id="reset-password-button"
-          class="reset-password-button"
+          class="flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed"
           data-testid="reset-password-button"
           :disabled="!(state.email.value && state.username.value && emailValid && usernameValid)"
           @click="resetPassword"
         >
           Reset Password
         </BaseButton>
-        <BaseButton class="cancel-button" data-testid="cancel-button" @click="cancel">
+        <BaseButton
+          class="flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200 bg-transparent border border-gray-300"
+          data-testid="cancel-button"
+          @click="cancel"
+        >
           Cancel
         </BaseButton>
       </div>
     </CardBody>
   </Card>
 </template>
-
-<style lang="postcss" scoped>
-.forgot-password-card {
-  @apply bg-white w-full max-w-xl;
-
-  & .forgot-password-card__header {
-    @apply flex flex-row space-x-3;
-  }
-
-  & .forgot-password-card__title {
-    @apply flex flex-1 justify-center px-3 py-2 rounded text-gray-900;
-  }
-
-  & .forgot-password-card__body-wrapper {
-    @apply flex flex-col space-y-3 pb-3 mb-3;
-
-    & .instructions {
-      @apply px-4 py-2;
-    }
-  }
-
-  .reset-password-button,
-  .cancel-button {
-    @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
-  }
-
-  .reset-password-button:disabled {
-    @apply bg-gray-300 text-gray-500 cursor-not-allowed;
-  }
-
-  .cancel-button {
-    @apply bg-transparent border border-gray-300;
-  }
-}
-</style>

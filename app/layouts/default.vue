@@ -17,5 +17,3 @@ await enableMocking()
     <SiteFooter />
   </div>
 </template>
-
-<style lang="postcss" scoped></style>
