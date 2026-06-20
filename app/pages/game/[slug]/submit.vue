@@ -174,7 +174,7 @@ const submissionErrorMessage = computed(() => {
           <template v-else-if="payload">
             <form
               autocomplete="on"
-              class="max-w-screen-xl flex flex-col gap-3 p-6 mx-auto"
+              class="max-w-(--breakpoint-xl) flex flex-col gap-3 p-6 mx-auto"
               @submit.prevent="submit"
             >
               <fieldset class="flex flex-col gap-1">

@@ -11,7 +11,7 @@ defineProps<NavLinksProps>()
     <a
       v-for="social in socials"
       :key="social.name"
-      class="flex content-center items-center justify-center rounded bg-gray-100 p-2"
+      class="flex content-center items-center justify-center rounded-sm bg-gray-100 p-2"
       :alt="social.name"
       :href="social.url"
     >

@@ -12,7 +12,7 @@ watch(localLocale, () => {
 <template>
   <select
     v-model="localLocale"
-    class="bg-white border border-current rounded flex items-center px-2 py-2 relative w-32"
+    class="bg-white border border-current rounded-sm flex items-center px-2 py-2 relative w-32"
     role="listbox"
   >
     <option

@@ -62,7 +62,7 @@ async function login() {
 <template>
   <Card id="logInCard" data-testid="log-in-card" class="bg-white w-full max-w-xl">
     <CardHeader class="flex flex-row space-x-3">
-      <div class="flex flex-1 justify-center px-3 py-2 rounded bg-gray-100 text-gray-900">
+      <div class="flex flex-1 justify-center px-3 py-2 rounded-sm bg-gray-100 text-gray-900">
         Log In
       </div>
 

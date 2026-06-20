@@ -12,7 +12,7 @@ const model = toRef(props, 'model')
 <template>
   <input
     v-model="model"
-    class="border border-gray-300 text-black rounded px-3 py-2 focus:outline-none"
+    class="border border-gray-300 text-black rounded-sm px-3 py-2 focus:outline-hidden"
     v-bind="$attrs"
   />
 </template>

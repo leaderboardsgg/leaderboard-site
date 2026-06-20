@@ -82,7 +82,7 @@ function toggleShowPassword() {
 
 <template>
   <div class="flex grow justify-center p-5">
-    <div class="w-full rounded border-gray-300 p-5">
+    <div class="w-full rounded-sm border-gray-300 p-5">
       <div class="relative flex flex-col justify-center inset-0 h-full sm:max-w-xl mx-auto">
         <h2 class="text-xl border-2 border-transparent border-b-gray-300 pb-4 mb-4">
           Please set a new password for your account.

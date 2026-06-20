@@ -29,7 +29,7 @@ function onEnter() {
     </BaseButton>
     <BaseInput
       :model="state.input"
-      class="border border-gray-300 rounded bg-white w-full pr-12 px-4 py-1 focus:outline-none"
+      class="border border-gray-300 rounded-sm bg-white w-full pr-12 px-4 py-1 focus:outline-hidden"
       data-testid="search-input"
       name="search"
       placeholder="search..."

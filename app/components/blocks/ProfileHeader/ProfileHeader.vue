@@ -90,10 +90,10 @@ withDefaults(defineProps<ProfileHeaderProps>(), {
 
 <style lang="postcss" scoped>
 .profile-header {
-  @apply h-[fit-content] min-h-[28.125rem] relative;
+  @apply h-fit min-h-112.5 relative;
 
   @apply flex flex-col;
-  @apply max-w-screen-md md:max-w-full md:min-h-0 md:h-auto;
+  @apply max-w-(--breakpoint-md) md:max-w-full md:min-h-0 md:h-auto;
   @apply border md:border-gray-300 md:rounded;
 
   & .profile-header__user-activity {
@@ -128,10 +128,10 @@ withDefaults(defineProps<ProfileHeaderProps>(), {
         & .profile-info__picture-container {
           @apply relative flex justify-center;
           & > img {
-            @apply max-h-[7.5rem] max-w-[7.5rem];
+            @apply max-h-30 max-w-[7.5rem];
             @apply drop-shadow-md;
 
-            @apply absolute md:relative md:max-h-[5.125rem] md:max-w-[5.125rem] rounded -translate-y-1/2;
+            @apply absolute md:relative md:max-h-20.5 md:max-w-20.5 rounded -translate-y-1/2;
           }
         }
       }

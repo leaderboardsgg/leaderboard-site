@@ -6,7 +6,7 @@ const emit = defineEmits<{
 
 <template>
   <button
-    class="px-3 py-2 text-center border border-current rounded border-gray-300 hover:bg-gray-100"
+    class="px-3 py-2 text-center border border-current rounded-sm border-gray-300 hover:bg-gray-100"
     v-bind="$attrs"
     @click="emit('follow')"
     @keyup.enter="emit('follow')"
