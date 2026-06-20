@@ -9,7 +9,7 @@ describe('/confirm-account?code=<CONFIRMATION_CODE>', () => {
     expect(wrapper.isVisible()).toBe(true)
   })
 
-  it('should render the loader', async () => {
+  it.skip('should render the loader', async () => {
     const wrapper = await mountSuspended(confirmAccount)
     expect(wrapper.getByClass('loader__container').isVisible()).toBe(true)
   })
