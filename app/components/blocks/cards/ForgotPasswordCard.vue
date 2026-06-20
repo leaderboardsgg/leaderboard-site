@@ -72,7 +72,9 @@ function resetPassword() {
 <template>
   <Card id="forgotPasswordCard" data-testid="forgot-password-card" class="bg-white w-full max-w-xl">
     <CardHeader class="flex flex-row space-x-3">
-      <div class="flex flex-1 justify-center px-3 py-2 rounded-sm text-gray-900">Forgot Password</div>
+      <div class="flex flex-1 justify-center px-3 py-2 rounded-sm text-gray-900">
+        Forgot Password
+      </div>
       <CloseButton v-show="modal" data-testid="close-button" @click.prevent="emit('close')" />
     </CardHeader>
     <CardBody>
