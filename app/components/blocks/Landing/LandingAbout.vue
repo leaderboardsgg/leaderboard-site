@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
   <div id="landing-about" class="lg:max-w-[330px] lg:pl-4">
     <aside class="bg-gray-200 p-4">
@@ -37,5 +35,3 @@
     </aside>
   </div>
 </template>
-
-<style></style>

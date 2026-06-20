@@ -19,14 +19,11 @@ function handleError() {
       {{ error }}
     </h2>
 
-    <BaseButton class="error-navigation-button" @click="handleError">
+    <BaseButton
+      class="bg-gray-100 hover:bg-black mx-1 py-1 text-opacity-70 hover:text-white"
+      @click="handleError"
+    >
       {{ $t('errorNavigateHome') }}
     </BaseButton>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.error-navigation-button {
-  @apply bg-gray-100 hover:bg-black mx-1 py-1 text-opacity-70 hover:text-white;
-}
-</style>

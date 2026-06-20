@@ -10,9 +10,14 @@ watch(localLocale, () => {
 </script>
 
 <template>
-  <select v-model="localLocale" class="language-selector" role="listbox">
+  <select
+    v-model="localLocale"
+    class="bg-white border border-current rounded flex items-center px-2 py-2 relative w-32"
+    role="listbox"
+  >
     <option
       v-for="currentLocale in locales"
+      class="flex items-center py-2"
       :key="currentLocale.code"
       :value="currentLocale.code"
       :selected="currentLocale.code === locale"
@@ -21,14 +26,3 @@ watch(localLocale, () => {
     </option>
   </select>
 </template>
-
-<style lang="postcss" scoped>
-.language-selector {
-  @apply bg-white border border-current rounded;
-  @apply flex items-center px-2 py-2 relative;
-  @apply w-32;
-}
-.language-selector > option {
-  @apply flex items-center py-2;
-}
-</style>

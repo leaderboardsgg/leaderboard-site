@@ -70,13 +70,13 @@ function logout() {
 </script>
 
 <template>
-  <nav class="site-navbar">
-    <div class="site-navbar__wrapper">
+  <nav class="bg-bg-content text-white text-lg">
+    <div class="flex justify-between items-center m-6">
       <NuxtLink to="/">
         <i-svg-logo />
       </NuxtLink>
       <SearchBar class="ml-4" />
-      <div class="mobile-navbar">
+      <div class="flex">
         <NavLinks />
         <LoginButton
           v-if="!loggedIn"
@@ -91,7 +91,7 @@ function logout() {
           @click="toggleSignUpModal"
         />
         <LogoutButton v-if="loggedIn" data-testid="site-navbar-logout-button" @click="logout" />
-        <button class="mobile-navbar__toggle" @click="toggleMenu">
+        <button class="items-center rounded lg:hidden" @click="toggleMenu">
           <i-svg-menu class="mx-2 size-5 fill-current" />
         </button>
       </div>
@@ -134,21 +134,3 @@ function logout() {
     </transition>
   </nav>
 </template>
-
-<style lang="postcss" scoped>
-.site-navbar {
-  @apply bg-bg-content text-white text-lg;
-
-  & .site-navbar__wrapper {
-    @apply flex justify-between items-center m-6;
-
-    & .mobile-navbar {
-      @apply flex;
-
-      & .mobile-navbar__toggle {
-        @apply items-center rounded lg:hidden;
-      }
-    }
-  }
-}
-</style>

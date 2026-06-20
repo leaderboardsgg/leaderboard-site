@@ -99,10 +99,8 @@ describe('<SignUpCard />', () => {
 
       await wrapper.getByTestId('email-input').setValue(emailAddress)
       await wrapper.getByTestId('username-input').setValue(username)
-      await wrapper.get(`.password-input > [data-testid="password-input"]`).setValue(password)
-      await wrapper
-        .get(`.password-input > [data-testid="password-confirm-input"]`)
-        .setValue(password)
+      await wrapper.get(`[data-testid="password-input"]`).setValue(password)
+      await wrapper.get(`[data-testid="password-confirm-input"]`).setValue(password)
       await wrapper.getByTestId('sign-up-button').trigger('click')
 
       const apiCall = fetchMock.mock.calls[0]

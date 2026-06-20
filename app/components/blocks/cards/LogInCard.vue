@@ -60,13 +60,15 @@ async function login() {
 </script>
 
 <template>
-  <Card id="logInCard" data-testid="log-in-card" class="login-card">
-    <CardHeader class="login-card__header">
-      <div class="login-card__title">Log In</div>
+  <Card id="logInCard" data-testid="log-in-card" class="bg-white w-full max-w-xl">
+    <CardHeader class="flex flex-row space-x-3">
+      <div class="flex flex-1 justify-center px-3 py-2 rounded bg-gray-100 text-gray-900">
+        Log In
+      </div>
 
       <BaseButton
         id="sign-up-button"
-        class="login-card__sign-up-button"
+        class="flex flex-1 justify-center bg-white text-gray-900 border border-gray-300 hover:bg-gray-100"
         data-testid="sign-up-button"
         @click="emit('signUpClick')"
       >
@@ -77,7 +79,7 @@ async function login() {
     </CardHeader>
 
     <CardBody>
-      <div class="login-card__body-wrapper">
+      <div class="flex flex-col space-y-3 pb-3 mb-3">
         <BaseInput
           :model="state.email"
           name="email"
@@ -91,7 +93,6 @@ async function login() {
           <PasswordInput
             :model="state.password"
             :show-password="showPassword"
-            class="login-card__password-field"
             name="password"
             data-testid="password-input"
             placeholder="Password"
@@ -102,6 +103,7 @@ async function login() {
             id="hide-show-password"
             type="button"
             data-testid="hide-show-button"
+            class="hidden sm:inline text-gray-700 bg-gray-100 hover:bg-gray-300"
             @click="showPassword = !showPassword"
             @keydown.enter="$event.preventDefault()"
             @keyup.enter="showPassword = !showPassword"
@@ -112,7 +114,7 @@ async function login() {
         </p>
 
         <BaseButton
-          class="login-button hover:text-black hover:bg-gray-100"
+          class="flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200 hover:text-black"
           data-testid="login-button"
           :disabled="!(state.email.value && state.password.value)"
           @click="login"
@@ -120,7 +122,7 @@ async function login() {
           Log In
         </BaseButton>
         <BaseButton
-          class="forgot-password-button"
+          class="flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200 bg-transparent border border-gray-300"
           data-testid="forgot-password-button"
           @click="emit('forgotPasswordClick')"
         >
@@ -130,45 +132,3 @@ async function login() {
     </CardBody>
   </Card>
 </template>
-
-<style lang="postcss" scoped>
-.login-card {
-  @apply bg-white w-full max-w-xl;
-  & .login-card__header {
-    @apply flex flex-row space-x-3;
-  }
-  & .login-card__title {
-    @apply flex flex-1 justify-center px-3 py-2 rounded bg-gray-100 text-gray-900;
-  }
-  & .login-card__sign-up-button {
-    @apply flex flex-1 justify-center bg-white text-gray-900 border border-gray-300;
-  }
-  & .login-card__body-wrapper {
-    @apply flex flex-col space-y-3 pb-3 mb-3;
-  }
-  & .login-card__input-wrapper {
-    @apply relative flex flex-col w-full;
-  }
-  & .login-card__button-wrapper {
-    @apply absolute top-0 right-0 flex items-center h-full;
-  }
-}
-
-#hide-show-password {
-  @apply hidden sm:inline;
-  @apply text-gray-700 bg-gray-100 hover:bg-gray-300;
-}
-
-#sign-up-button {
-  @apply hover:bg-gray-100;
-}
-
-.login-button,
-.forgot-password-button {
-  @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200;
-}
-
-.forgot-password-button {
-  @apply bg-transparent border border-gray-300;
-}
-</style>

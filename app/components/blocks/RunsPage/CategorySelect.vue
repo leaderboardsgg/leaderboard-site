@@ -17,26 +17,14 @@ const props = defineProps<CategorySelect>()
       :key="id"
       :name="name"
       :to="`#${slug}`"
-      :class="{ active: activeCategorySlug === slug }"
+      :class="
+        activeCategorySlug === slug
+          ? 'border-red-500 text-red-500 hover:bg-red-500 hover:text-white'
+          : 'hover:bg-white hover:text-black'
+      "
       class="border border-white px-6 py-3 text-xs text-white"
     >
       {{ name }}
     </ButtonLink>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.active {
-  @apply border-red-500 text-red-500;
-}
-
-/*  Quick fix for the broken hover state but probably
-    need to redo how the buttons are styled at some point */
-a:not(.active):hover {
-  @apply bg-white text-black;
-}
-
-a.active:hover {
-  @apply bg-red-500 text-white;
-}
-</style>
