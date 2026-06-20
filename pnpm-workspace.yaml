@@ -1,11 +1,13 @@
-onlyBuiltDependencies:
-  - esbuild
-  - '@parcel/watcher'
-  - msw
-
 trustPolicy: no-downgrade
 trustPolicyExclude:
   - 'tinyexec@1.2.2' # checked to validate that provenance is there and no major issue
   - 'chokidar@4.0.3' # this is a noted example of a false positive
+  - 'semver@6.3.1' # checked to validate that provenance is there and no major issue
+  - 'tinyclip@0.1.13' # checked to validate that provenance is there and no major issue
 
 minimumReleaseAge: 1440
+
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false
+  msw: false
