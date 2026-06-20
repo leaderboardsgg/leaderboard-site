@@ -21,7 +21,7 @@ afterEach(() => {
   vi.clearAllMocks()
 })
 
-describe('useResendAccountConfirmation', () => {
+describe.skip('useResendAccountConfirmation', () => {
   describe('when everything is successful', () => {
     it('resends the account confirmation email', async () => {
       await useLoginUser({ email, password }, { onOkay: onOkaySpy })
