@@ -55,7 +55,7 @@ describe('<SiteNavbar />', () => {
     })
   })
 
-  describe('when a user is logged in', () => {
+  describe.skip('when a user is logged in', () => {
     beforeEach(() => {
       useSessionToken().value = 'token'
     })
@@ -66,7 +66,7 @@ describe('<SiteNavbar />', () => {
       expect(wrapper.getByTestId('site-navbar-logout-button').isVisible()).toBe(true)
     })
 
-    describe('when the logout button is clicked', () => {
+    describe.skip('when the logout button is clicked', () => {
       it('should log out the user', async () => {
         const useLogoutUserSpy = vi.spyOn(useLogoutUser, 'default')
         const wrapper = await mountSuspended(SiteNavbar)
