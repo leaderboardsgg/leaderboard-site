@@ -39,7 +39,10 @@ jobs:
         run: pnpm build
 
       - name: Linting
-        run: pnpm lint
+        run: pnpm lint:check
 
-      - name: Prettier
+      - name: Formatting
         run: pnpm format:check
+
+      - name: Type Checking
+        run: pnpm type:check
