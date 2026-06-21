@@ -26,9 +26,10 @@ function toggleShowPassword() {
 </script>
 
 <template>
-  <div class="password-input">
+  <div class="relative flex flex-col w-full">
     <BaseInput
       id="password"
+      class="bg-white pr-12"
       autocomplete="password"
       :data-testid="testId"
       :type="inputType"
@@ -36,22 +37,3 @@ function toggleShowPassword() {
     />
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.password-input {
-  @apply relative flex flex-col w-full;
-
-  & #password {
-    @apply bg-white pr-12;
-  }
-
-  & .button-wrapper {
-    @apply absolute top-0 right-0 flex items-center h-full;
-
-    & #hide-show-button {
-      @apply text-gray-700 hover:bg-gray-100;
-      @apply p-1 mr-2 rounded fill-current;
-    }
-  }
-}
-</style>

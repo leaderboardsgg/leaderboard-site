@@ -11,16 +11,8 @@ withDefaults(defineProps<UserActivityProps>(), {
 </script>
 
 <template>
-  <div class="user-activity" v-bind="$attrs">
-    <p><span>Runs: </span>{{ runCount }}</p>
-    <p><span>Games: </span>{{ gameCount }}</p>
+  <div class="font-semibold" v-bind="$attrs">
+    <p><span class="font-semibold">Runs: </span>{{ runCount }}</p>
+    <p><span class="font-semibold">Games: </span>{{ gameCount }}</p>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.user-activity {
-  & span {
-    @apply font-semibold;
-  }
-}
-</style>

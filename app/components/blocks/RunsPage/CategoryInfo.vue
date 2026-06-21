@@ -15,9 +15,3 @@ const props = defineProps<CategoryInfo>()
     <span>{{ props.category.info || '-' }}</span>
   </aside>
 </template>
-
-<style lang="postcss" scoped>
-.active {
-  @apply border-red-500 text-red-500;
-}
-</style>

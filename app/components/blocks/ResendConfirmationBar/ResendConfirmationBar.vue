@@ -32,40 +32,18 @@ async function resend() {
 </script>
 
 <template>
-  <div v-if="unconfirmed" class="resend-confirmation-bar__container">
-    <div class="resend-confirmation-bar__content">
-      <div class="resend-confirmation-bar__text">
+  <div v-if="unconfirmed" class="flex flex-col items-center justify-center">
+    <div
+      class="flex flex-col items-center justify-center mt-4 gap-y-2 md:flex-row md:gap-x-2 fill-blue-500"
+    >
+      <div class="flex items-center gap-x-2">
         <i-svg-circle-info />
         <span>{{ $t('needToConfirm') }}</span>
       </div>
-      <BaseButton class="resend-confirmation__button" @click="resend">
+      <BaseButton class="mx-1 py-1 bg-blue-100 hover:bg-blue-300" @click="resend">
         {{ $t('resendConfirmation') }}
       </BaseButton>
     </div>
-    <p v-if="showErrorText" class="error-text">{{ errorText }}</p>
+    <p v-if="showErrorText" class="text-red-600">{{ errorText }}</p>
   </div>
 </template>
-
-<style lang="postcss" scoped>
-.resend-confirmation-bar__container,
-.resend-confirmation-bar__content {
-  @apply flex flex-col items-center justify-center;
-}
-
-.resend-confirmation-bar__content {
-  @apply mt-4 gap-y-2 md:flex-row md:gap-x-2;
-  @apply fill-blue-500;
-}
-
-.resend-confirmation-bar__text {
-  @apply flex items-center gap-x-2;
-}
-
-.resend-confirmation__button {
-  @apply mx-1 py-1 bg-blue-100 hover:bg-blue-300;
-}
-
-.error-text {
-  @apply text-red-600;
-}
-</style>
