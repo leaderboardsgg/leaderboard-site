@@ -91,7 +91,7 @@ function logout() {
           @click="toggleSignUpModal"
         />
         <LogoutButton v-if="loggedIn" data-testid="site-navbar-logout-button" @click="logout" />
-        <button class="items-center rounded lg:hidden" @click="toggleMenu">
+        <button class="items-center rounded-sm lg:hidden" @click="toggleMenu">
           <i-svg-menu class="mx-2 size-5 fill-current" />
         </button>
       </div>

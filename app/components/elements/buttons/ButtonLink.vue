@@ -8,7 +8,7 @@ const { to } = defineProps<{
   <NuxtLink
     v-bind="$attrs"
     :to="to"
-    class="rounded px-3 py-2 text-current hover:bg-current"
+    class="rounded-sm px-3 py-2 text-current hover:bg-current"
     data-testid="button-link"
     role="button"
   >

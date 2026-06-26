@@ -9,6 +9,7 @@ import IconResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import { supportedLocales } from './i18n/i18nUtils'
 import type { ViteConfig } from 'nuxt/schema'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 
@@ -42,6 +43,7 @@ export const viteConfig: ViteConfig = {
         }),
       ],
     }),
+    tailwindcss(),
   ],
   resolve: {
     alias: nuxtAliases,
@@ -82,6 +84,8 @@ export default defineNuxtConfig({
     locales: supportedLocales,
   },
 
+  css: ['./app/assets/css/tailwind.css'],
+
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
 
   imports: {
@@ -89,18 +93,7 @@ export default defineNuxtConfig({
   },
 
   // Modules: https://v3.nuxtjs.org/api/configuration/nuxt.config#modules
-  modules: [
-    [
-      '@nuxtjs/tailwindcss',
-      {
-        configPath: 'tailwind.config.js',
-        cssPath: './app/assets/css/tailwind.css',
-      },
-    ],
-    'unplugin-icons/nuxt',
-    '@nuxtjs/i18n',
-    '@nuxt/test-utils/module',
-  ],
+  modules: ['unplugin-icons/nuxt', '@nuxtjs/i18n', '@nuxt/test-utils/module'],
 
   runtimeConfig: {
     public: {
