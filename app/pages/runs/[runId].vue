@@ -2,22 +2,32 @@
 import { ref, useRoute } from '#imports'
 import BaseTooltip from '~/components/elements/modals/BaseTooltip/BaseTooltip.vue'
 import useGetRun from '~/composables/api/useGetRun'
-import type { TimedRunViewModel, ScoredRunViewModel } from '~~/lib/api/data-contracts'
+import type { TimedRunViewModelFull, ScoredRunViewModelFull } from '~~/lib/api/data-contracts'
 
-const run = ref<TimedRunViewModel | ScoredRunViewModel | null>(null)
+const run = ref<TimedRunViewModelFull | ScoredRunViewModelFull | null>(null)
 
 const route = useRoute()
-const userId = route.params.runId as string
 
-await useGetRun(userId, {
+function guidToBase64Url(guidStr: string) {
+  const bytes = guidStr
+    .replace(/-/g, '')
+    .match(/../g)!
+    .map((h) => parseInt(h, 16))
+  const order = [3, 2, 1, 0, 5, 4, 7, 6, 8, 9, 10, 11, 12, 13, 14, 15]
+  const netBytes = new Uint8Array(order.map((i) => bytes[i]))
+
+  return btoa(String.fromCharCode(...netBytes))
+    .replace(/=/g, '')
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+}
+
+const runID = guidToBase64Url(route.params.runId as string)
+
+await useGetRun(runID, {
   onOkay: (validResponse) => {
     run.value = {
       ...validResponse,
-      // TEMP NAMES MAY CHANGE
-      leaderboardName: 'Super Mario World',
-      categoryName: 'SixSeven%',
-      leaderboardSlug: 'smw',
-      categorySlug: 'all-castles',
     }
   },
 })
@@ -39,7 +49,9 @@ await useGetRun(userId, {
     <template v-else>
       <section class="text-xl">
         <span>Run of </span>
-        <NuxtLink :to="`/game/${run.leaderboardSlug}`">{{ run.leaderboardName }}</NuxtLink>
+        <NuxtLink :to="`/game/${run.category.leaderboard.slug}`">
+          {{ run.category.leaderboard.name }}
+        </NuxtLink>
         <span> by </span>
 
         <NuxtLink v-if="run.user.role !== 'Banned'" :to="`/user/${run.user.id}`">
@@ -56,8 +68,8 @@ await useGetRun(userId, {
       <section>
         <template v-if="'time' in run">
           <p class="text-2xl">
-            <NuxtLink :to="`/game/${run.leaderboardSlug}#${run.categorySlug}`">
-              {{ run.categoryName }}
+            <NuxtLink :to="`/game/${run.category.leaderboard.slug}#${run.category.slug}`">
+              {{ run.category.name }}
             </NuxtLink>
             in
             <span> {{ run.time }}</span>
@@ -66,8 +78,8 @@ await useGetRun(userId, {
 
         <template v-else>
           <p class="text-2xl">
-            <NuxtLink :to="`/game/${run.leaderboardSlug}#${run.categorySlug}`">
-              {{ run.categoryName }}
+            <NuxtLink :to="`/game/${run.category.leaderboard.slug}#${run.category.slug}`">
+              {{ run.category.name }}
             </NuxtLink>
             <span> finished with a score of: </span>
             <span> {{ run.score }} pts.</span>

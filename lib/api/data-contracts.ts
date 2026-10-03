@@ -39,6 +39,13 @@ export type UpdateRunRequest = BaseUpdateRunRequest &
     | BaseUpdateRunRequestTypeMapping<"Score", UpdateScoredRunRequest>
   );
 
+/** A LeaderboardBackend.Models.ViewModels.RunViewModel with relations attached. */
+export type RunViewModelFull = BaseRunViewModelFull &
+  (
+    | BaseRunViewModelFullTypeMapping<"Time", TimedRunViewModelFull>
+    | BaseRunViewModelFullTypeMapping<"Score", ScoredRunViewModelFull>
+  );
+
 export type RunViewModel = BaseRunViewModel &
   (
     | BaseRunViewModelTypeMapping<"Time", TimedRunViewModel>
@@ -109,6 +116,52 @@ export interface CategoryViewModelConflictDetails {
   /** Represents a `Category` tied to a `Leaderboard`. */
   conflicting: CategoryViewModel | null;
   [key: string]: any;
+}
+
+/** A LeaderboardBackend.Models.ViewModels.CategoryViewModel with relations attached. */
+export interface CategoryViewModelFull {
+  /**
+   * The unique identifier of the `Category`.
+   * @format int64
+   */
+  id: number;
+  /**
+   * The display name of the `Category`.
+   * @example "Foo Bar Baz%"
+   */
+  name: string;
+  /**
+   * The URL-scoped unique identifier of the `Category`.
+   * @example "foo-bar-baz"
+   */
+  slug: string;
+  /**
+   * Information pertaining to the `Category`.
+   * @example "Video proof is required."
+   */
+  info: string | null;
+  type: RunType;
+  sortDirection: SortDirection;
+  /** @format int64 */
+  leaderboardId: number;
+  /**
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  createdAt: string;
+  /**
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  updatedAt: string | null;
+  /**
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  deletedAt: string | null;
+  status: Status;
+  /** Represents a collection of `Leaderboard` entities. */
+  leaderboard: LeaderboardViewModel;
 }
 
 export interface CategoryViewModelListView {
@@ -396,11 +449,23 @@ export type ScoredRunViewModel = BaseRunViewModel & {
   score: number;
 };
 
+/** A LeaderboardBackend.Models.ViewModels.ScoredRunViewModel with relations attached. */
+export type ScoredRunViewModelFull = BaseRunViewModelFull & {
+  /** @format int64 */
+  score: number;
+};
+
 export type TimedRunViewModel = BaseRunViewModel & {
   /**
    * The duration of the run.
    * @example "25:01:01.001"
    */
+  time: string;
+};
+
+/** A LeaderboardBackend.Models.ViewModels.TimedRunViewModel with relations attached. */
+export type TimedRunViewModelFull = BaseRunViewModelFull & {
+  /** @example "25:01:01.001" */
   time: string;
 };
 
@@ -516,6 +581,63 @@ type BaseUpdateRunRequestTypeMapping<Key, Type> = {
   $type: Key;
 } & Type;
 
+/** A LeaderboardBackend.Models.ViewModels.RunViewModel with relations attached. */
+interface BaseRunViewModelFull {
+  $type: string;
+  /**
+   * The unique identifier of the `Run`.
+   *
+   * Generated on creation.
+   * @pattern ^[a-zA-Z0-9-_]{22}$
+   */
+  id: string;
+  /** User-provided details about the run. */
+  info: string | null;
+  /**
+   * The date the run was done, *not* when it was submitted.
+   * @format date
+   * @example "2000-01-01"
+   */
+  playedOn: string;
+  /**
+   * The time the run was submitted to the DB.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  createdAt: string;
+  /**
+   * The last time the run was updated or null.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  updatedAt: string | null;
+  /**
+   * The time at which the run was deleted, or null if the run has not been deleted.
+   * @format date-time
+   * @example "1984-01-01T00:00:00Z"
+   */
+  deletedAt: string | null;
+  /**
+   * The ID of the `Category` for `Run`.
+   * @format int64
+   */
+  categoryId: number;
+  /** The user who submitted this run. */
+  user: UserViewModel;
+  status: Status;
+  /**
+   * The run's rank within its category.
+   * @format int64
+   */
+  rank?: number;
+  /** A LeaderboardBackend.Models.ViewModels.CategoryViewModel with relations attached. */
+  category: CategoryViewModelFull;
+}
+
+type BaseRunViewModelFullTypeMapping<Key, Type> = {
+  $type: Key;
+} & Type;
+
 interface BaseRunViewModel {
   $type: string;
   /**
@@ -564,10 +686,6 @@ interface BaseRunViewModel {
    * @format int64
    */
   rank?: number;
-  leaderboardName: string,
-  categoryName: string,
-  leaderboardSlug: string,
-  categorySlug: string,
 }
 
 type BaseRunViewModelTypeMapping<Key, Type> = {
