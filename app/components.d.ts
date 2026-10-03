@@ -15,8 +15,6 @@ declare module 'vue' {
     ISvgCircleExclamation: typeof import('~icons/svg/circle-exclamation')['default']
     ISvgCircleInfo: typeof import('~icons/svg/circle-info')['default']
     ISvgClose: typeof import('~icons/svg/close')['default']
-    ISvgEyeHidden: typeof import('~icons/svg/eye-hidden')['default']
-    ISvgEyeVisible: typeof import('~icons/svg/eye-visible')['default']
     ISvgLogo: typeof import('~icons/svg/logo')['default']
     ISvgMenu: typeof import('~icons/svg/menu')['default']
     ISvgSearch: typeof import('~icons/svg/search')['default']

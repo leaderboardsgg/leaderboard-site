@@ -14,9 +14,9 @@ const { id, slug, name, stats } =
     :to="localePath({ name: 'game-slug', params: { slug: slug } })"
   >
     <!-- TODO: replace span with image tag when backend returns image from model -->
-    <span class="h-[250px] w-full flex-shrink object-cover" />
+    <span class="h-[250px] w-full shrink object-cover" />
     <div class="p-2">
-      <span class="block break-words font-bold"> {{ name }} </span>
+      <span class="block wrap-break-word font-bold"> {{ name }} </span>
       <span v-if="stats?.runCount">{{ stats.runCount }} runs</span>
     </div>
   </NuxtLink>

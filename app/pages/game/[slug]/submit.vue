@@ -3,7 +3,7 @@ import type { ComputedRef } from '#imports'
 import { computed, navigateTo, useCurrentUser, useRoute } from '#imports'
 import { createRef } from '@vueuse/core'
 import Loader from '~/components/blocks/Loader/Loader.vue'
-import BaseButton from '~/components/elements/buttons/BaseButton/BaseButton.vue'
+import BaseButton from '~/components/elements/buttons/BaseButton.vue'
 import useGetCategoryBySlug from 'composables/api/useGetCategoryBySlug'
 import useGetLeaderboardBySlug from 'composables/api/useGetLeaderboardBySlug'
 import useCreateRun from 'composables/api/useCreateRun'
@@ -174,7 +174,7 @@ const submissionErrorMessage = computed(() => {
           <template v-else-if="payload">
             <form
               autocomplete="on"
-              class="max-w-screen-xl flex flex-col gap-3 p-6 mx-auto"
+              class="max-w-(--breakpoint-xl) flex flex-col gap-3 p-6 mx-auto"
               @submit.prevent="submit"
             >
               <fieldset class="flex flex-col gap-1">
