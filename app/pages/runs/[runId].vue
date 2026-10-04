@@ -8,28 +8,8 @@ const run = ref<TimedRunViewModelFull | ScoredRunViewModelFull | null>(null)
 
 const route = useRoute()
 
-function guidToBase64Url(guidStr: string) {
-  const bytes = guidStr
-    .replace(/-/g, '')
-    .match(/../g)!
-    .map((h) => parseInt(h, 16))
-  const order = [3, 2, 1, 0, 5, 4, 7, 6, 8, 9, 10, 11, 12, 13, 14, 15]
-  const netBytes = new Uint8Array(order.map((i) => bytes[i]))
-
-  return btoa(String.fromCharCode(...netBytes))
-    .replace(/=/g, '')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-}
-
-const runID = guidToBase64Url(route.params.runId as string)
-
-await useGetRun(runID, {
-  onOkay: (validResponse) => {
-    run.value = {
-      ...validResponse,
-    }
-  },
+await useGetRun(route.params.runId as string, {
+  onOkay: (validResponse) => (run.value = validResponse),
 })
 </script>
 
@@ -37,7 +17,7 @@ await useGetRun(runID, {
   <div class="mt-8 flex flex-col items-center">
     <template v-if="!run">
       <p>
-        ERROR: The run you have navigated to either doesn't exist, was deleted, or some error has
+        ERROR: The run you have navigated to either doesn't exist, was deleted, or an error has
         occurred.
       </p>
     </template>
