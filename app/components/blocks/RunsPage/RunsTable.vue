@@ -50,7 +50,7 @@ const { data: runs } = await useAsyncData(
         <td>
           {{
             category.type === 'Score'
-              ? (run as ScoredRunViewModel).id
+              ? (run as ScoredRunViewModel).score
               : (run as TimedRunViewModel).time
           }}
         </td>
