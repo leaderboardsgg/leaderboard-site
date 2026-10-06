@@ -45,6 +45,11 @@ export const viteConfig: ViteConfig = {
     }),
     tailwindcss(),
   ],
+
+  build: {
+    cssMinify: 'esbuild',
+  },
+
   resolve: {
     alias: nuxtAliases,
   },
