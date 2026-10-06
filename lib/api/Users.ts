@@ -20,7 +20,7 @@ import {
   UserViewModelListView,
   ValidationProblemDetails,
 } from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Users<
   SecurityDataType = unknown,
@@ -57,7 +57,7 @@ export class Users<
    * @response `403` `void` Forbidden
    * @response `422` `ValidationProblemDetails` Unprocessable Content
    */
-  listUsers = (query: ListUsersParams, params: RequestParams = {}) =>
+  listUsers = (query: ListUsersParams = {}, params: RequestParams = {}) =>
     this.request<UserViewModelListView, void | ValidationProblemDetails>({
       path: `/users`,
       method: "GET",
@@ -111,7 +111,7 @@ export class Users<
       method: "PATCH",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       ...params,
     });
 }

@@ -45,6 +45,11 @@ export const viteConfig: ViteConfig = {
     }),
     tailwindcss(),
   ],
+
+  build: {
+    cssMinify: 'esbuild',
+  },
+
   resolve: {
     alias: nuxtAliases,
   },
@@ -84,7 +89,7 @@ export default defineNuxtConfig({
     locales: supportedLocales,
   },
 
-  css: ['./app/assets/css/tailwind.css'],
+  css: ['~/assets/css/tailwind.css'],
 
   ignore: ['**/*.test.ts', '**/node_modules', '.output', '.dist'],
 

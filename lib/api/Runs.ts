@@ -20,14 +20,17 @@ import {
   GetRunParams,
   GetRunsForCategoryParams,
   ProblemDetails,
+  RunViewModelFull,
   RunViewModelListView,
   ScoredRunViewModel,
+  ScoredRunViewModelFull,
   TimedRunViewModel,
+  TimedRunViewModelFull,
   UpdateRunParams,
   UpdateRunPayload,
   ValidationProblemDetails,
 } from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Runs<
   SecurityDataType = unknown,
@@ -40,11 +43,14 @@ export class Runs<
    * @summary Gets a Run by its ID.
    * @request GET:/api/runs/{id}
    * @secure
-   * @response `200` `(TimedRunViewModel | ScoredRunViewModel)` OK
+   * @response `200` `(RunViewModelFull | TimedRunViewModelFull | ScoredRunViewModelFull)` OK
    * @response `404` `ProblemDetails` The Run with ID `id` could not be found.
    */
   getRun = ({ id }: GetRunParams, params: RequestParams = {}) =>
-    this.request<TimedRunViewModel | ScoredRunViewModel, ProblemDetails>({
+    this.request<
+      RunViewModelFull | TimedRunViewModelFull | ScoredRunViewModelFull,
+      ProblemDetails
+    >({
       path: `/api/runs/${id}`,
       method: "GET",
       secure: true,
@@ -79,7 +85,7 @@ export class Runs<
       method: "POST",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       format: "json",
       ...params,
     });
@@ -181,7 +187,7 @@ export class Runs<
       method: "PATCH",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       ...params,
     });
   /**
