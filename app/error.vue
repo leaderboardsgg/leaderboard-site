@@ -14,7 +14,7 @@ function handleError() {
 
 <template>
   <div class="flex flex-col gap-1 w-[100vw] h-[100vh] items-center justify-center">
-    <h1 class="font-bold">[HTTP Status Code: {{ error?.statusCode }}]</h1>
+    <h1 class="font-bold">[HTTP Status Code: {{ error?.status }}]</h1>
     <h2 class="mb-2">
       {{ error }}
     </h2>

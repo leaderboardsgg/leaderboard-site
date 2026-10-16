@@ -13,10 +13,13 @@
 import {
   CategoryViewModel,
   CreateRunPayload,
+  RunViewModelFull,
   RunViewModelListView,
   ScoredRunViewModel,
+  ScoredRunViewModelFull,
   StatusFilter,
   TimedRunViewModel,
+  TimedRunViewModelFull,
   UpdateRunPayload,
 } from "./data-contracts";
 
@@ -28,7 +31,7 @@ export namespace Runs {
    * @summary Gets a Run by its ID.
    * @request GET:/api/runs/{id}
    * @secure
-   * @response `200` `(TimedRunViewModel | ScoredRunViewModel)` OK
+   * @response `200` `(RunViewModelFull | TimedRunViewModelFull | ScoredRunViewModelFull)` OK
    * @response `404` `ProblemDetails` The Run with ID `id` could not be found.
    */
   export namespace GetRun {
@@ -39,7 +42,10 @@ export namespace Runs {
     export type RequestQuery = {};
     export type RequestBody = never;
     export type RequestHeaders = {};
-    export type ResponseBody = TimedRunViewModel | ScoredRunViewModel;
+    export type ResponseBody =
+      | RunViewModelFull
+      | TimedRunViewModelFull
+      | ScoredRunViewModelFull;
   }
 
   /**

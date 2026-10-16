@@ -22,7 +22,7 @@ import {
   TestRecoveryTokenParams,
   ValidationProblemDetails,
 } from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Account<
   SecurityDataType = unknown,
@@ -46,7 +46,7 @@ export class Account<
       method: "POST",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       ...params,
     });
   /**
@@ -72,7 +72,7 @@ export class Account<
       method: "POST",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       format: "json",
       ...params,
     });
@@ -117,7 +117,7 @@ export class Account<
       method: "POST",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       ...params,
     });
   /**
@@ -185,7 +185,7 @@ export class Account<
       method: "POST",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       ...params,
     });
 }

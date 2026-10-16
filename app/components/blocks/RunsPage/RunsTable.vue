@@ -6,12 +6,13 @@ import type {
 } from '~~/lib/api/data-contracts'
 import useGetRecordsForCategory from 'composables/api/useGetRecordsForCategory'
 import { useFormatDate } from 'composables/useFormatDate'
-import { useAsyncData } from '#app'
+import { useAsyncData, useRouter } from '#app'
 
 interface RunsTableProps {
   category: CategoryViewModel
 }
 
+const router = useRouter()
 const { category } = defineProps<RunsTableProps>()
 const { formatDate } = useFormatDate()
 
@@ -38,7 +39,12 @@ const { data: runs } = await useAsyncData(
       </tr>
     </thead>
     <tbody class="table-row-group text-sm">
-      <tr v-for="run in runs" :key="run.id">
+      <tr
+        v-for="run in runs"
+        :key="run.id"
+        class="cursor-pointer"
+        @click="() => router.push(`/runs/${run.id}`)"
+      >
         <td class="py-3 pl-6">{{ run.rank }}</td>
         <td>{{ run.user.username }}</td>
         <td>

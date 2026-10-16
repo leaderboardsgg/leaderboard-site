@@ -25,7 +25,7 @@ import {
   UpdateLeaderboardPayload,
   ValidationProblemDetails,
 } from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Leaderboards<
   SecurityDataType = unknown,
@@ -83,7 +83,7 @@ export class Leaderboards<
    * @response `422` `ValidationProblemDetails` Unprocessable Content
    */
   listLeaderboards = (
-    query: ListLeaderboardsParams,
+    query: ListLeaderboardsParams = {},
     params: RequestParams = {},
   ) =>
     this.request<LeaderboardViewModelListView, ValidationProblemDetails>({
@@ -147,7 +147,7 @@ export class Leaderboards<
       method: "POST",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       format: "json",
       ...params,
     });
@@ -206,7 +206,7 @@ export class Leaderboards<
       method: "PATCH",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       ...params,
     });
 }

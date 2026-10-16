@@ -25,7 +25,7 @@ import {
   UpdateCategoryPayload,
   ValidationProblemDetails,
 } from "./data-contracts";
-import { ContentType, HttpClient, RequestParams } from "./http-client";
+import { HttpClient, RequestParams } from "./http-client";
 
 export class Categories<
   SecurityDataType = unknown,
@@ -130,7 +130,7 @@ export class Categories<
       method: "POST",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       format: "json",
       ...params,
     });
@@ -166,7 +166,7 @@ export class Categories<
       method: "PATCH",
       body: data,
       secure: true,
-      type: ContentType.Json,
+      type: "application/json",
       ...params,
     });
   /**
