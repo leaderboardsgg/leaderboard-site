@@ -47,12 +47,19 @@ await useGetRun(route.params.runId as string, {
 
       <section>
         <template v-if="'time' in run">
-          <p class="text-2xl">
+          <p class="text-2xl" v-if="run.category.sortDirection === 'Ascending'">
             <NuxtLink :to="`/game/${run.category.leaderboard.slug}#${run.category.slug}`">
               {{ run.category.name }}
             </NuxtLink>
             in
             <span> {{ run.time }}</span>
+          </p>
+
+          <p class="text-2xl" v-else>
+            <span> Lasted for {{ run.time }} </span>
+            <NuxtLink :to="`/game/${run.category.leaderboard.slug}#${run.category.slug}`">
+              {{ run.category.name }}
+            </NuxtLink>
           </p>
         </template>
 
@@ -61,7 +68,10 @@ await useGetRun(route.params.runId as string, {
             <NuxtLink :to="`/game/${run.category.leaderboard.slug}#${run.category.slug}`">
               {{ run.category.name }}
             </NuxtLink>
-            <span> finished with a score of: </span>
+            <span>
+              finished with a
+              {{ run.category.sortDirection === 'Ascending' ? 'High' : 'Low' }} Score of:
+            </span>
             <span> {{ run.score }} pts.</span>
           </p>
         </template>
