@@ -56,6 +56,7 @@ Filing issues is as simple as going to [the issue tracker](https://github.com/le
 ### JavaScript (TypeScript)
 
 - Include proper error handling for any `async` functions.
+  - As in, anything `async` the promise can fail for a multitude of reasons given the reason for it's asynchronicity. So make sure to handle that so people don't run into esoteric issues.
 - Prefer usage of `async/await` for asynchronous functions.
   - only use Promise syntax for needed more advanced Async programming that either can't be done or is harder to be done with `async/await`
 
