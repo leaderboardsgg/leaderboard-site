@@ -4,6 +4,7 @@ import { computed, navigateTo, useCurrentUser, useRoute } from '#imports'
 import { createRef } from '@vueuse/core'
 import Loader from '~/components/blocks/Loader/Loader.vue'
 import BaseButton from '~/components/elements/buttons/BaseButton.vue'
+import CloseButton from '~/components/elements/buttons/CloseButton.vue'
 import useGetCategoryBySlug from 'composables/api/useGetCategoryBySlug'
 import useGetLeaderboardBySlug from 'composables/api/useGetLeaderboardBySlug'
 import useCreateRun from 'composables/api/useCreateRun'
@@ -110,6 +111,11 @@ async function submit() {
   }
 }
 
+function closeErrorBanner() {
+  submissionError.value = null
+  submissionValidationError.value = null
+}
+
 const submissionErrorMessage = computed(() => {
   if (submissionError.value === null) {
     return ''
@@ -121,56 +127,87 @@ const submissionErrorMessage = computed(() => {
 
 <template>
   <Loader v-if="loading || loadingCategory" />
+
   <div v-else-if="leaderboardError || board == null" class="bg-black p-6 text-white">
     {{ errorStatus }}
   </div>
+
   <div v-else-if="categoryError || category == null" class="bg-black p-6 text-white">
     {{ categoryErrorStatus }}
   </div>
-  <div v-else>
-    <div v-if="submissionError || submissionValidationError" class="flex flex-col gap-3">
-      <span>Submission failed:</span>
+
+  <div v-else class="h-full">
+    <div
+      v-if="submissionError || submissionValidationError"
+      class="flex flex-col py-2 items-center gap-3 bg-red-400 text-gray-800"
+    >
+      <h1 class="text-2xl">Submission failed:</h1>
+
       <ul class="list-disc list-inside">
         <li v-if="submissionError">
-          {{ submissionErrorMessage }}
+          <span class="text-lg">
+            {{ submissionErrorMessage }}
+          </span>
         </li>
+
         <li v-if="submissionValidationError">
-          {{ submissionValidationError.status }}
+          <span class="text-lg">
+            {{ submissionValidationError.status }}
+          </span>
         </li>
+
         <li v-for="(details, error) in submissionValidationError?.errors" :key="error">
-          {{ error }}
+          <span class="text-lg">
+            {{ error }}
+          </span>
           <ul
             v-for="detail in details"
             :key="`${error}.${detail}`"
             class="ml-4 list-disc list-inside"
           >
-            <li>{{ detail }}</li>
+            <li>
+              <span class="text-lg">
+                {{ detail }}
+              </span>
+            </li>
           </ul>
         </li>
       </ul>
-      <span> Please fix any errors listed and try again, or contact us for help. </span>
+
+      <h2 class="text-xl">Please fix any errors listed and try again, or contact us for help.</h2>
+
+      <CloseButton
+        data-testid="error-banner-close-button"
+        class="absolute right-2"
+        @click.prevent="closeErrorBanner"
+      />
     </div>
-    <div class="flex flex-col gap-6 bg-black p-6 text-white">
+
+    <div class="flex flex-col gap-6 bg-black p-6 text-white h-full">
       <h1 class="text-lg">
         Submit
-        <NuxtLink :to="`/game/${board.slug}#${category.slug}`"
-          >{{ board.name }}: {{ category.name }}</NuxtLink
-        >
+        <NuxtLink :to="`/game/${board.slug}#${category.slug}`">
+          {{ board.name }}: {{ category.name }}
+        </NuxtLink>
       </h1>
 
       <div>
         <template v-if="board.deletedAt !== null">
           The leaderboard has been deleted, and no new runs can be submitted.
         </template>
+
         <template v-else-if="category.deletedAt !== null">
           The category has been deleted, and no new runs can be submitted.
         </template>
+
         <!-- If logged-out, `user` is an empty object, and *not* `undefined`. -->
         <template v-else-if="user?.id">
           <template v-if="user.role === 'Banned'"> You are banned </template>
+
           <template v-else-if="user.role === 'Registered'">
             You need to confirm your email first before submitting.
           </template>
+
           <template v-else-if="payload">
             <form
               autocomplete="on"
@@ -185,13 +222,14 @@ const submissionErrorMessage = computed(() => {
                     v-model="payload.playedOn"
                     type="date"
                     required
-                    class="flex-1 text-black px-2"
+                    class="flex-1 text-white px-2"
                   />
                 </div>
                 <p class="text-right italic">
                   This must be the date you made this run, and not the date you're submitting it.
                 </p>
               </fieldset>
+
               <fieldset class="flex gap-2">
                 <label for="time-or-score">{{ category.type }}:</label>
                 <input
@@ -200,8 +238,9 @@ const submissionErrorMessage = computed(() => {
                   v-model="(payload as CreateScoredRunRequest).score"
                   type="number"
                   required
-                  class="flex-1 text-black px-2"
+                  class="flex-1 text-white px-2"
                 />
+
                 <div v-else id="time-or-score" class="flex-1 flex flex-col md:flex-row gap-2">
                   <fieldset class="flex gap-2">
                     <input
@@ -210,7 +249,7 @@ const submissionErrorMessage = computed(() => {
                       type="number"
                       min="0"
                       required
-                      class="text-black px-2 flex-1"
+                      class="text-white px-2 flex-1"
                     />
                     <label for="hour">h</label>
                   </fieldset>
@@ -221,7 +260,7 @@ const submissionErrorMessage = computed(() => {
                       type="number"
                       min="0"
                       required
-                      class="text-black px-2 flex-1"
+                      class="text-white px-2 flex-1"
                     />
                     <label for="minute">m</label>
                   </fieldset>
@@ -232,7 +271,7 @@ const submissionErrorMessage = computed(() => {
                       type="number"
                       min="0"
                       required
-                      class="text-black px-2 flex-1"
+                      class="text-white px-2 flex-1"
                     />
                     <label for="second">s</label>
                   </fieldset>
@@ -243,34 +282,37 @@ const submissionErrorMessage = computed(() => {
                       type="number"
                       min="0"
                       required
-                      class="text-black px-2 flex-1"
+                      class="text-white px-2 flex-1"
                     />
                     <label for="second">ms</label>
                   </fieldset>
                 </div>
               </fieldset>
+
               <fieldset class="flex gap-2">
                 <label for="info">Info (optional): </label>
                 <textarea
                   id="info"
                   v-model="payload.info"
                   rows="5"
-                  class="flex-1 text-black px-2"
+                  placeholder="Optional run info here :)"
+                  class="flex-1 text-white px-2"
                 />
               </fieldset>
+
               <fieldset class="flex gap-2">
                 <input
                   id="agreement"
                   v-model="isAgreementChecked"
                   type="checkbox"
                   required
-                  class="text-black"
+                  class="text-white"
                 />
-                <label for="agreement"
-                  >Submissions that violate the site rules may result in punishment including
-                  removal of the submission and/or a ban from the website. Check this box if you
-                  have read and agree with this.</label
-                >
+                <label for="agreement">
+                  Submissions that violate the site rules may result in punishment including removal
+                  of the submission and/or a ban from the website. Check this box if you have read
+                  and agree with this.
+                </label>
               </fieldset>
               <BaseButton type="submit" class="col-span-2">{{
                 isSubmitting ? 'Submitting' : 'Submit'

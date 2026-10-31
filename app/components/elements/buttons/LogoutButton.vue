@@ -3,7 +3,7 @@ import BaseButton from 'elements/buttons/BaseButton.vue'
 </script>
 
 <template>
-  <BaseButton class="mx-1 py-1 hover:bg-gray-100 hover:text-black" v-bind="$attrs">
+  <BaseButton class="w-24 mx-1 py-1" v-bind="$attrs">
     {{ $t('logout') }}
   </BaseButton>
 </template>

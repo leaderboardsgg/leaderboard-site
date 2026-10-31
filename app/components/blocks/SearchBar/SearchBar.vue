@@ -24,7 +24,7 @@ function onEnter() {
 
 <template>
   <div class="flex items-center px-2 relative w-full">
-    <BaseButton data-testid="search-button" type="button" @click="onClick">
+    <BaseButton data-testid="search-button" type="button" @click="onClick" class="mr-1">
       <i-svg-search />
     </BaseButton>
     <BaseInput
