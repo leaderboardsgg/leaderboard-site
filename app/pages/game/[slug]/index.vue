@@ -58,23 +58,21 @@ function goToSubmission() {
 </script>
 
 <template>
-  <div>
-    <Loader v-if="loading" />
-    <div v-else-if="leaderboardError" class="bg-black p-6 text-white">
-      {{ errorStatus }}
+  <Loader v-if="loading" />
+  <div v-else-if="leaderboardError" class="bg-black p-6 text-white">
+    {{ errorStatus }}
+  </div>
+  <div v-else-if="data" class="flex flex-col gap-6 bg-black p-6 text-white h-full">
+    <RunsHeader :leaderboard="data" />
+    <div class="grid grid-cols-2 gap-6 p-6">
+      <CategorySelect
+        v-if="categories?.data?.data && activeCategory"
+        :categories="categories.data.data"
+        :active-category-slug="activeCategory.slug"
+      />
+      <CategoryInfo v-if="activeCategory" :category="activeCategory" />
     </div>
-    <div v-else-if="data" class="flex flex-col gap-6 bg-black p-6 text-white">
-      <RunsHeader :leaderboard="data" />
-      <div class="grid grid-cols-2 gap-6 p-6">
-        <CategorySelect
-          v-if="categories?.data?.data && activeCategory"
-          :categories="categories.data.data"
-          :active-category-slug="activeCategory.slug"
-        />
-        <CategoryInfo v-if="activeCategory" :category="activeCategory" />
-      </div>
-      <BaseButton @click="goToSubmission">Submit Run</BaseButton>
-      <RunsTable v-if="activeCategory" :category="activeCategory" />
-    </div>
+    <BaseButton @click="goToSubmission" class="w-40 mx-auto">Submit Run</BaseButton>
+    <RunsTable v-if="activeCategory" :category="activeCategory" />
   </div>
 </template>

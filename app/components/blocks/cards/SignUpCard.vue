@@ -109,24 +109,26 @@ function validatePasswordInputs() {
 </script>
 
 <template>
-  <Card id="signUpCard" data-testid="sign-up-card" class="signup-card">
-    <CardHeader class="signup-card__header">
+  <Card id="signUpCard" data-testid="sign-up-card" class="bg-white w-full max-w-xl">
+    <CardHeader class="flex flex-row space-x-3">
       <BaseButton
         id="login-button"
-        class="signup-card__login-button hover:text-black"
+        class="flex flex-1 justify-center bg-white text-gray-900 border border-gray-300 hover:bg-gray-100"
         data-testid="login-button"
         @click="emit('logInClick')"
       >
         Log In
       </BaseButton>
 
-      <div class="signup-card__title">Sign Up</div>
+      <div class="flex flex-1 justify-center px-3 py-2 rounded-sm bg-gray-100 text-gray-900">
+        Sign Up
+      </div>
 
       <CloseButton v-show="modal" data-testid="close-button" @click.prevent="emit('close')" />
     </CardHeader>
 
     <CardBody>
-      <div class="signup-card__body-wrapper">
+      <div class="flex flex-col space-y-3 pb-3 mb-3">
         <BaseInput
           :model="register.email"
           name="email"
@@ -140,78 +142,82 @@ function validatePasswordInputs() {
           @change="emailValid = isEmailValid(register.email)"
         />
 
-        <div class="signup-card__input-wrapper">
-          <BaseInput
-            :model="register.username"
-            name="username"
-            type="text"
-            placeholder="Username"
-            autocomplete="nickname"
-            data-testid="username-input"
-            minlength="2"
-            maxlength="25"
-            :style="{
-              'border-color': !usernameValid ? 'rgb(185 28 28 / 1)' : '',
-            }"
-            @change="usernameValid = isUsernameValid(register.username)"
-          />
-        </div>
+        <BaseInput
+          :model="register.username"
+          name="username"
+          type="text"
+          placeholder="Username"
+          autocomplete="nickname"
+          data-testid="username-input"
+          minlength="2"
+          maxlength="25"
+          :style="{
+            'border-color': !usernameValid ? 'rgb(185 28 28 / 1)' : '',
+          }"
+          @change="usernameValid = isUsernameValid(register.username)"
+        />
 
         <div class="signup-card__input-wrapper">
-          <div class="signup-card__password-wrapper">
-            <PasswordInput
-              :model="register.password"
-              name="password"
-              class="signup-card__password-field"
-              :style="{
-                'border-color': !passwordInputValid ? 'rgb(185 28 28 / 1)' : '',
-              }"
-              :show-password="showPassword"
-              placeholder="Password"
-              autocomplete="password"
-              test-id="password-input"
-              minlength="8"
-              maxlength="80"
-              @change="validatePasswordInputs"
-            />
+          <div class="flex flex-row gap-1">
+            <div class="flex flex-col gap-1 grow">
+              <PasswordInput
+                :model="register.password"
+                name="password"
+                class="signup-card__password-field"
+                :style="{
+                  'border-color': !passwordInputValid ? 'rgb(185 28 28 / 1)' : '',
+                }"
+                :show-password="showPassword"
+                placeholder="Password"
+                autocomplete="password"
+                test-id="password-input"
+                minlength="8"
+                maxlength="80"
+                @change="validatePasswordInputs"
+              />
 
-            <PasswordInput
-              :model="register.passwordConfirm"
-              name="passwordConfirm"
-              class="signup-card__password-field"
-              :style="{
-                'border-color': !passwordConfirmValid ? 'rgb(185 28 28 / 1)' : '',
-              }"
-              :show-password="showPassword"
-              placeholder="Confirm"
-              autocomplete="password"
-              test-id="password-confirm-input"
-              minlength="8"
-              maxlength="80"
-              @change="validatePasswordInputs"
-            />
+              <PasswordInput
+                :model="register.passwordConfirm"
+                name="passwordConfirm"
+                class="signup-card__password-field"
+                :style="{
+                  'border-color': !passwordConfirmValid ? 'rgb(185 28 28 / 1)' : '',
+                }"
+                :show-password="showPassword"
+                placeholder="Confirm"
+                autocomplete="password"
+                test-id="password-confirm-input"
+                minlength="8"
+                maxlength="80"
+                @change="validatePasswordInputs"
+              />
+            </div>
 
             <HideShowPassword
               id="hide-show-password"
               type="button"
               data-testid="hide-show-button"
+              class="hidden sm:inline text-gray-700 bg-gray-100 hover:bg-gray-300 mt-1 grow-0"
               @click="showPassword = !showPassword"
               @keydown.enter="$event.preventDefault()"
               @keyup.enter="showPassword = !showPassword"
             />
           </div>
+
           <p v-if="passwordErrorsText" class="text-red-600">
             {{ passwordErrorsText }}
           </p>
 
-          <p>* Must be 8-80 characters, contain a number, lowercase, and uppercase letter</p>
+          <p class="text-black">
+            * Must be 8-80 characters, contain a number, lowercase, and uppercase letter
+          </p>
 
           <p v-if="errorText" class="text-red-600">{{ errorText }}</p>
         </div>
 
         <!-- The disabled check is trivial because we're just checking already computed booleans -->
         <BaseButton
-          class="signup-button"
+          class="flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 hover:bg-gray-200 hover:text-black"
           data-testid="sign-up-button"
           :disabled="
             !(
@@ -229,54 +235,3 @@ function validatePasswordInputs() {
     </CardBody>
   </Card>
 </template>
-
-<style lang="postcss" scoped>
-.signup-card {
-  @apply bg-white w-full max-w-xl;
-
-  & .signup-card__header {
-    @apply flex flex-row space-x-3;
-  }
-
-  & .signup-card__title {
-    @apply flex flex-1 justify-center px-3 py-2 rounded bg-gray-100 text-gray-900;
-  }
-
-  & .signup-card__login-button {
-    @apply flex flex-1 justify-center bg-white text-gray-900 border border-gray-300;
-  }
-
-  & .signup-card__body-wrapper {
-    @apply flex flex-col space-y-3 pb-3 mb-3;
-  }
-
-  & .signup-card__input-wrapper {
-    @apply flex flex-1 flex-col space-y-1;
-  }
-
-  & .signup-card__password-wrapper {
-    @apply flex flex-1 flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-2;
-
-    #hide-show-password {
-      @apply hidden sm:inline;
-      @apply text-gray-700 bg-gray-100 hover:bg-gray-300;
-    }
-  }
-
-  & .signup-card__password-field {
-    @apply grow sm:w-5/12;
-  }
-
-  & p {
-    @apply text-sm;
-  }
-}
-
-#login-button {
-  @apply hover:bg-gray-100;
-}
-
-.signup-button {
-  @apply flex flex-1 items-center justify-center fill-current bg-gray-100 text-gray-900 valid:hover:bg-gray-200 hover:bg-gray-100;
-}
-</style>
