@@ -41,32 +41,33 @@ Filing issues is as simple as going to [the issue tracker](https://github.com/le
 - Be inclusive, this is a project for everyone.
 - Be descriptive, it can be hard to understand abbreviations or short-hand.
   - prefer `catch(error)` over `catch(e)`
-- Make sure that your components are _responsive_.
 - Two major philosophies we adhere to are KISS (keep it super simple) and DRY (don't repeat yourself)
   - In general try not to make your code too "clever" if it's possible to do it in a less "clever" way so that it's easily read by other contributors.
+- A good rule is to try and write code that does not need comments to explain it
+  - Sometimes you can't avoid this so add a comment when it's not obvious, or incredibly obtuse.
+- Ensure cross-browser compatability, when in doubt check the [Browser Compatibility](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API#browser_compatibility) section on MDN.
 
-### Nuxt/Vue
+### Layout/ Styling (HTML & CSS)
 
-- Comments should be full sentences, starting with a capital letter and ending with punctuation.
-- Comments above a function should start with the name of the thing being described.
-- Make sure any data and prop names are as descriptive as possible.
-- Try to move any repetitive elements into child components to reduce clutter in parent components.
+- Major focus should be on a mobile-first style responsive design
+  - We want the layout to scale across phones, tablets, laptops, small monitors, and large monitors.
+- We focus on [Semantic HTML](https://web.dev/learn/html/semantic-html), this leads to more readable markup, better out of the box accessibility and more.
+
+### JavaScript (TypeScript)
+
+- Include proper error handling for any `async` functions.
 - Prefer usage of `async/await` for asynchronous functions.
   - only use Promise syntax for needed more advanced Async programming that either can't be done or is harder to be done with `async/await`
 
-- Include proper error handling for any `async` functions.
+### Nuxt/ Vue
+
+- Make sure any data and prop names are as descriptive as possible.
+- Try to move any repetitive elements into child components to reduce clutter in parent components.
 - Make all components compatible with server side rendering where possible.
 
 ### Git
 
-- Try to have an informative branch name for others e.g. `LBGG-{issue number}-{ghusername}`.
+- Try to have an informative branch name for others e.g. `{ghusername}/{descriptive-name}`.
   - Do not make pull requests from `main`.
-  - Do not include slashes in your branch name.
-    - Nested paths can act strange when other people start looking at your branch.
 - Try to keep commit line length below 80 characters.
-- All commit titles should be of the format `{area} {optional sub-area}: commit description`.
-  - This will help people reading through commits quickly find the relevant ones.
-  - Some examples might include:
-    - `profile header: add support for badges`
-    - `leaderboard: adjusted sidebar spacing`
 - Commits should be as [atomic](https://www.freshconsulting.com/insights/blog/atomic-commits/) as possible.
