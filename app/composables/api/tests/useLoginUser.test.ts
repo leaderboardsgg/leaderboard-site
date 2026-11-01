@@ -27,7 +27,7 @@ vi.mock('lib/api/Account', () => ({
 }))
 
 // const onErrorSpy = vi.fn()
-const onOkaySpy = vi.fn((_) => {})
+const onOkaySpy = vi.fn(() => {})
 
 const password = 'Password1'
 const email = 'test@lb.gg'
