@@ -15,11 +15,20 @@
     "noUncheckedIndexedAccess": true,
     "forceConsistentCasingInFileNames": true,
     "verbatimModuleSyntax": false,
-
     // Other
     "jsx": "preserve",
-    "lib": ["ESNext", "DOM"],
-    "types": ["vitest/globals"]
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    // Starting from v6, all @types packages in package.json must be added
+    // here explicitly, as this field defaults to []. If we want to keep
+    // the old behaviour, set this field to ["*"].
+    "types": [
+      "vitest/globals",
+      "dotenv-safe",
+      "node"
+    ]
   },
   // https://v3.nuxtjs.org/concepts/typescript
   "extends": "./.nuxt/tsconfig.json"
