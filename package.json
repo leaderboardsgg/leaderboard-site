@@ -2,6 +2,7 @@
   "name": "leaderboardsgg",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
