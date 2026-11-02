@@ -3,7 +3,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.defaultFormatter": "oxc.oxc-vscode",
   "eslint.validate": ["javascript", "typescript", "vue"],
 
   // Spaces, 2 space size, and LF line endings, and ensure it works
@@ -32,5 +32,17 @@
   },
   "[vue]": {
     "editor.defaultFormatter": "oxc.oxc-vscode"
-  }
+  },
+  "[css]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
 }
