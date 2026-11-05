@@ -10,7 +10,7 @@ vi.mock('lib/api/Runs', () => ({
 }))
 
 vi.mock('app/composables/useSessionToken.ts', () => ({
-  default: vi.fn(() => createRef('token'))
+  default: vi.fn(() => createRef('token')),
 }))
 
 describe('useCreateRun', () => {
