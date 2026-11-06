@@ -1,4 +1,4 @@
-import { useRuntimeConfig } from '#imports'
+import { useRuntimeConfig, useSessionToken } from '#imports'
 import { useApi, type optionalParameters } from 'composables/useApi'
 import type {
   CreateRunPayload,
@@ -18,7 +18,12 @@ export async function useCreateRun(
   })
 
   return useApi<TimedRunViewModel | ScoredRunViewModel>(
-    async () => runs.createRun({ id: categoryId }, requestData),
+    async () =>
+      runs.createRun({ id: categoryId }, requestData, {
+        headers: {
+          Authorization: `Bearer ${useSessionToken().value}`,
+        },
+      }),
     {
       onError,
       onOkay,
